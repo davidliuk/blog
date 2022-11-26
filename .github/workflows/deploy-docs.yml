@@ -18,16 +18,29 @@ jobs:
           # 如果你文档需要 Git 子模块，取消注释下一行
           # submodules: true
 
-
-
       - name: 设置 Node.js
         uses: actions/setup-node@v3
         with:
           node-version: 18
           cache: npm
+      
+      # 缓存 node_modules
+      - name: Cache node dependency
+        uses: actions/cache@v2
+        id: node-cache
+        with:
+          path: | # 缓存目录
+            **/node_modules
+            # ~/.npm
+          key: ${{ runner.os }}-cache-node-${{ hashFiles('**/package-lock.json') }} # 缓存的key
+          restore-keys: | # 恢复缓存时要去匹配的key
+            ${{ runner.os }}-cache-node-
+            # ${{ runner.os }}-cache-
 
+      # 如果缓存没有命中，安装依赖
       - name: 安装依赖
-        run: npm ci
+        if: steps.node-cache.outputs.cache-hit != 'true'
+        run: npm install
 
       - name: 构建文档
         env:
