@@ -1,1 +1,0 @@
-import{_}from"./_plugin-vue_export-helper.cdc0426e.js";import{o as e,c as t}from"./app.b6c2567d.js";const c={};function o(r,n){return e(),t("div")}const f=_(c,[["render",o],["__file","8. 否定事实信息题.html.vue"]]);export{f as default};

@@ -1,0 +1,1 @@
+import{_ as t}from"./_plugin-vue_export-helper.cdc0426e.js";import{o as r,c as a,a as e,b as c}from"./app.b1dc14c1.js";const o={},s=e("h1",{id:"安全",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#安全","aria-hidden":"true"},"#"),c(" 安全")],-1),n=[s];function _(i,d){return r(),a("div",null,n)}const f=t(o,[["render",_],["__file","security.html.vue"]]);export{f as default};
