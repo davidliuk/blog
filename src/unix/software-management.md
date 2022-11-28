@@ -1,4 +1,8 @@
-分发软件的格式
+# 软件管理
+
+
+
+## 分发软件的格式
 
 - .tar.gz
 - .rpm (Red Hat, Fedora, SUSE, ..) yum
@@ -6,17 +10,13 @@
 
 
 
-包管理器
-
-
+## 包管理器
 
 ### RPM
 
 Redhat Package management
 
 rpm xxx，缺的依赖还得一个一个自己下，非常不方便
-
-
 
 
 
@@ -28,18 +28,11 @@ yum + 安装包名，
 
 自动下载缺的依赖
 
-
-
 安装的软件，会分到很多地方都有，usr/bin, etc, ...好多
-
-
 
 ```shell
 yum list
-
 ```
-
-
 
 
 
