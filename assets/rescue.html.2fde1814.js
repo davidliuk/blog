@@ -1,1 +1,0 @@
-import{_ as t}from"./_plugin-vue_export-helper.cdc0426e.js";import{o as r,c as a,a as e,b as c}from"./app.b1dc14c1.js";const o={},s=e("h1",{id:"救援",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#救援","aria-hidden":"true"},"#"),c(" 救援")],-1),n=[s];function _(d,i){return r(),a("div",null,n)}const f=t(o,[["render",_],["__file","rescue.html.vue"]]);export{f as default};
