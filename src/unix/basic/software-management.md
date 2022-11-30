@@ -36,6 +36,12 @@ yum list
 
 
 
+dnf
+
+brew
+
+
+
 ### apt
 
 Debian的

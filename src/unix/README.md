@@ -89,7 +89,7 @@ shell编程
 
 ### UNIX 常见分支
 
-- System V，贝尔实验室的正统的Unix
+- System V，贝尔实验室的正统的Unix，init
 - BSD，
 - POSIX，ieee指定的标准
 
