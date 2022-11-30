@@ -1,0 +1,1 @@
+import{_ as t}from"./_plugin-vue_export-helper.cdc0426e.js";import{o as n,c as o,a as e}from"./app.4ed69784.js";const s={},_=e("p",null,"Redundancy 冗余",-1),c=e("p",null,"spare",-1),l=e("p",null,"如何知道服务挂了，以及如何进行切换",-1),r=[_,c,l];function a(d,i){return n(),o("div",null,r)}const f=t(s,[["render",a],["__file","index.html.vue"]]);export{f as default};
