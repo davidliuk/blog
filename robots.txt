@@ -2,4 +2,4 @@
 User-agent:*
 Disallow:
 
-Sitemap: https://mister-hope.github.io/blog/sitemap.xml
+Sitemap: https://davidliuk.github.io/blog/blog/sitemap.xml
