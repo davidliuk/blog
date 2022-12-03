@@ -68,7 +68,7 @@ export default hopeTheme({
       // sidebar
       sidebar: enSidebar,
 
-      footer: "Default footer",
+      footer: "David's Blog",
 
       displayFooter: true,
 
@@ -92,7 +92,7 @@ export default hopeTheme({
       // sidebar
       sidebar: zhSidebar,
 
-      footer: "默认页脚",
+      footer: " David's Blog",
 
       displayFooter: true,
 

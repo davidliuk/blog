@@ -7,7 +7,7 @@ tag:
   - red
   - round
 star: true
-sticky: true
+# sticky: true
 ---
 
 # Tomato

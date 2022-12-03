@@ -2,6 +2,6 @@
 icon: info
 ---
 
-# Intro Page
+# Intro Page for David
 
-Place your introduction and profile here.
+Hello! I am David Liu, a junior student majoring software engineering in Northeastern University! Nice to see you.
