@@ -19,7 +19,7 @@ export const enSidebar = sidebar({
   //   "intro",
   //   "slides",
   // ],
-  "/unix/": [
+  "/se/unix/": [
     "",
     {
       text: "UNIX 基础",

@@ -1,8 +1,10 @@
-# 推荐系统
+# Recommendation System 推荐系统
 
 
 
+## 算法库
 
+Librec
 
 librec 使用
 

@@ -2,38 +2,51 @@ import { navbar } from "vuepress-theme-hope";
 
 export const enNavbar = navbar([
   "/",
-  // { text: "Demo", icon: "discover", link: "/demo/" },
   {
-    text: "Unix",
+    text: "Computer Science",
     icon: "edit",
-    link: "/unix/"
-  },
-  {
-    text: "Database",
-    icon: "edit",
-    prefix: "/database/",
+    prefix: "/cs/",
     children: [
       {
-        text: "MySQK",
+        text: "Database",
         icon: "edit",
-        prefix: "mysql/",
+        prefix: "database/",
         children: [
-          { text: "Transaction", icon: "edit", link: "transaction" },
-          { text: "Index", icon: "edit", link: "index" },
-          { text: "Lock", icon: "edit", link: "lock" },
-          { text: "Log", icon: "edit", link: "log" },
+          {
+            text: "MySQK",
+            icon: "edit",
+            prefix: "mysql/",
+            link: "mysql/",
+            children: [
+              { text: "Transaction", icon: "edit", link: "transaction" },
+              { text: "Index", icon: "edit", link: "index" },
+              { text: "Lock", icon: "edit", link: "lock" },
+              { text: "Log", icon: "edit", link: "log" },
+            ]
+          },
+          {
+            text: "Redis",
+            icon: "edit",
+            prefix: "redis/",
+            link: "redis/",
+            children: [
+              { text: "Clients", icon: "edit", link: "clients" },
+              { text: "Commands", icon: "edit", link: "commands" },
+              { text: "Data structure", icon: "edit", link: "data-structure" },
+            ]
+          },
         ]
       },
       {
-        text: "Redis",
+        text: "Network",
         icon: "edit",
-        prefix: "redis/",
-        children: [
-          { text: "Clients", icon: "edit", link: "clients" },
-          { text: "Commands", icon: "edit", link: "commands" },
-          { text: "Data structure", icon: "edit", link: "data-structure" },
-        ]
+        link: "/network/",
       },
+      {
+        text: "Operating System",
+        icon: "edit",
+        link: "/os/",
+      }
     ]
   },
   {
@@ -44,11 +57,22 @@ export const enNavbar = navbar([
       {
         text: "Unix",
         icon: "edit",
-        prefix: "unix/",
-        children: [
-          // { text: "Apple1", icon: "edit", link: "1" },
-          // { text: "Apple2", icon: "edit", link: "2" }
-        ]
+        link: "unix/",
+        // prefix: "unix/",
+        // children: [
+        //   { text: "Apple1", icon: "edit", link: "1" },
+        //   { text: "Apple2", icon: "edit", link: "2" }
+        // ]
+      },
+      {
+        text: "Framework",
+        icon: "edit",
+        link: "framework/",
+      },
+      {
+        text: "Systen design",
+        icon: "edit",
+        link: "systen-design/",
       }
     ]
   },
@@ -60,7 +84,26 @@ export const enNavbar = navbar([
       {
         text: "Java",
         icon: "edit",
-        link: "java"
+        link: "java/",
+        // prefix: "java/",
+        // children: [
+        //   { text: "Apple1", icon: "edit", link: "1" },
+        //   { text: "Apple2", icon: "edit", link: "2" }
+        // ]
+      }
+    ]
+  },
+  "/algo/",
+  "/tools/",
+  {
+    text: "Aritificial Intelligence",
+    icon: "note",
+    prefix: "/ai/",
+    children: [
+      {
+        text: "RS",
+        icon: "edit",
+        link: "rs/",
         // prefix: "java/",
         // children: [
         //   { text: "Apple1", icon: "edit", link: "1" },
@@ -96,6 +139,12 @@ export const enNavbar = navbar([
       },
     ]
   },
+  // { text: "Demo", icon: "discover", link: "/demo/" },
+  // {
+  //   text: "Unix",
+  //   icon: "edit",
+  //   link: "/unix/"
+  // },
   // {
   //   text: "V2 Docs",
   //   icon: "note",
