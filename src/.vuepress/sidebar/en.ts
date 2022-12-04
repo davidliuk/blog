@@ -19,20 +19,45 @@ export const enSidebar = sidebar({
   //   "intro",
   //   "slides",
   // ],
+  "/cs/algo/": [
+    "",
+    {
+      text: "基础",
+      icon: "note",
+      prefix: "basic/",
+      // link: "basic/",
+      children: "structure",
+    },
+    {
+      text: "总结",
+      icon: "note",
+      prefix: "summary/",
+      // link: "summary/",
+      children: "structure",
+    },
+    {
+      text: "高频题",
+      icon: "note",
+      prefix: "faq/",
+      // link: "faq/",
+      children: "structure",
+    },
+
+  ],
   "/se/unix/": [
     "",
     {
       text: "UNIX 基础",
       icon: "note",
       prefix: "basic/",
-      link: "basic/",
+      // link: "basic/",
       children: "structure",
     },
     {
       text: "Availability 可用性",
       icon: "note",
       prefix: "availability/",
-      link: "availability/",
+      // link: "availability/",
       children: "structure",
     },
   ],

@@ -40,13 +40,14 @@ export const enNavbar = navbar([
       {
         text: "Network",
         icon: "edit",
-        link: "/network/",
+        link: "network/",
       },
       {
         text: "Operating System",
         icon: "edit",
-        link: "/os/",
-      }
+        link: "os/",
+      },
+      "algo/",
     ]
   },
   {
@@ -73,7 +74,8 @@ export const enNavbar = navbar([
         text: "Systen design",
         icon: "edit",
         link: "systen-design/",
-      }
+      },
+      "tools/",
     ]
   },
   {
@@ -93,10 +95,8 @@ export const enNavbar = navbar([
       }
     ]
   },
-  "/algo/",
-  "/tools/",
   {
-    text: "Aritificial Intelligence",
+    text: "AI ",
     icon: "note",
     prefix: "/ai/",
     children: [

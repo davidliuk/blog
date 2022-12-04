@@ -2,7 +2,7 @@
 home: true
 layout: Blog
 icon: home
-title: Blog Home
+title: Home
 heroImage: /logo.svg
 heroText: David's blog
 tagline: Life is real, life is earnest.
