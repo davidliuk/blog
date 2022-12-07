@@ -3,8 +3,9 @@ home: true
 layout: Blog
 icon: home
 title: Home
-heroImage: /logo.svg
+heroImage: /favicon.ico
 heroText: David's blog
+bgImage: /bg.png
 tagline: Life is real, life is earnest.
 heroFullScreen: true
 projects:
@@ -33,7 +34,7 @@ projects:
     desc: Detailed description of friend
     link: https://link.to.your.friend
 
-  - icon: /logo.svg
+  - icon: /favicon.ico
     name: custom item
     desc: Detailed description of this custom item
     link: https://link.to.your.friend
