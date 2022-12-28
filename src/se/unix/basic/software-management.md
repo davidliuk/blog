@@ -5,8 +5,8 @@
 ## 分发软件的格式
 
 - .tar.gz
-- .rpm (Red Hat, Fedora, SUSE, ..) yum
-- .deb 
+- .rpm (Red Hat, Fedora, SUSE, OEL ..) yum
+- .deb (debian, Ubuntu)
 
 
 
@@ -16,7 +16,11 @@
 
 Redhat Package management
 
-rpm xxx，缺的依赖还得一个一个自己下，非常不方便
+```sh
+rpm <name>
+```
+
+缺的依赖还得一个一个自己下，非常不方便
 
 
 
@@ -34,11 +38,54 @@ yum + 安装包名，
 yum list
 ```
 
+https://www.likecs.com/show-305689800.html
+
+默认源非常旧，所以一般需要配置源，如下city-fan是一种内容都很新的源
+
+```sh
+wget http://mirror.city-fan.org/ftp/contrib/yum-repo/rhel7/x86_64/city-fan.org-release-2-2.rhel7.noarch.rpm
+rpm -ivh city-fan.org-release-2-2.rhel7.noarch.rpm
+```
+
+https://blog.csdn.net/just_lion/article/details/7797009
+
+git yum源：https://zhuanlan.zhihu.com/p/534957630
+
+`yum-utils` package (which provides the `yum-config-manager` utility)
 
 
-dnf
 
-brew
+Centos yum命令提示failed to set locale, defaulting to C
+
+出现这个问题是由于系统没有正确设置locale环境, 而locale是用于设置本地环境的比如：语言、时区、数字等
+
+解决方案
+
+方案一：设置系统环境变量
+
+```sh
+echo "export LC_ALL=en_US.UTF-8"  >>  /etc/profile
+source /etc/profile
+```
+
+方案二：设置个人环境变量
+
+```sh
+echo "export LC_ALL=en_US.UTF-8"  >>  ~/.bashrc
+source ~/.bashrc
+```
+
+
+
+### dnf
+
+大多数指令与yum兼容，内存管理更好，效率更高
+
+```sh
+yum install dnf
+```
+
+
 
 
 
@@ -48,7 +95,7 @@ Debian的
 
 Advanced package tool
 
-apt-get现在比yum好
+apt-get现在比yum好（版本更加新一些）
 
 深度学习、机器学习用Ubuntu更好，apt-get维护的更好一些
 
@@ -64,3 +111,4 @@ apt-get现在比yum好
 
 
 
+### brew

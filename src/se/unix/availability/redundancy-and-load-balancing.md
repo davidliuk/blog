@@ -1,10 +1,17 @@
 # Redundancy and Load Balancing
 
+Possible failures
+
+- Web server failure 服务器失败
+- 
+
+
+
 stand by
 
 
 
-spare
+spare 方式
 
 - cold spare
 - warm spare
