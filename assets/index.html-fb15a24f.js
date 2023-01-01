@@ -1,0 +1,1 @@
+import{_ as a,V as t,W as c,X as e,Y as n}from"./framework-705b829b.js";const r={},s=e("h1",{id:"faq-高频题",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#faq-高频题","aria-hidden":"true"},"#"),n(" FAQ 高频题")],-1),o=[s];function _(d,i){return t(),c("div",null,o)}const h=a(r,[["render",_],["__file","index.html.vue"]]);export{h as default};

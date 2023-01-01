@@ -1,0 +1,1 @@
+import{_ as t,V as a,W as n,X as e,Y as r}from"./framework-705b829b.js";const o={},c=e("h1",{id:"_13-网络管理",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#_13-网络管理","aria-hidden":"true"},"#"),r(" 13. 网络管理")],-1),s=[c];function _(d,i){return a(),n("div",null,s)}const l=t(o,[["render",_],["__file","network-management.html.vue"]]);export{l as default};

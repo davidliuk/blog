@@ -1,0 +1,1 @@
+import{_ as t,V as _,W as c,X as e}from"./framework-705b829b.js";const n={},o=e("p",null,[e("img",{src:"https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/3978/截屏2022-10-16 16.22.21.png",alt:"截屏2022-10-16 16.22.21",loading:"lazy"})],-1),s=[o];function a(l,r){return _(),c("div",null,s)}const u=t(n,[["render",a],["__file","9. 词汇题.html.vue"]]);export{u as default};

@@ -1,0 +1,1 @@
+import{_ as t,V as a,W as n,X as e,Y as c}from"./framework-705b829b.js";const r={},s=e("h1",{id:"unix-基础",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#unix-基础","aria-hidden":"true"},"#"),c(" UNIX 基础")],-1),o=[s];function _(d,i){return a(),n("div",null,o)}const l=t(r,[["render",_],["__file","index.html.vue"]]);export{l as default};

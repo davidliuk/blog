@@ -1,0 +1,1 @@
+import{_ as e,V as t,W as o,X as _}from"./framework-705b829b.js";const s={},c=_("p",null,"归纳",-1),n=_("p",null,"support",-1),l=[c,n];function r(a,d){return t(),o("div",null,l)}const p=e(s,[["render",r],["__file","10. 归纳与解释.html.vue"]]);export{p as default};

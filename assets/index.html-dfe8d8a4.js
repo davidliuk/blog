@@ -1,0 +1,1 @@
+import{_ as t,V as o,W as s,X as e,Y as a}from"./framework-705b829b.js";const n={},c=e("h1",{id:"tools",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#tools","aria-hidden":"true"},"#"),a(" Tools")],-1),r=e("p",null,"实用工具",-1),_=[c,r];function d(l,i){return o(),s("div",null,_)}const f=t(n,[["render",d],["__file","index.html.vue"]]);export{f as default};

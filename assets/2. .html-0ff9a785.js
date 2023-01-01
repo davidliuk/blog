@@ -1,0 +1,1 @@
+import{_ as e,V as t,W as o,X as a}from"./framework-705b829b.js";const s={},n=a("p",null,"There is a natural tendency that people will ponder over all aspects, when they plan to buy some goods that costs a great deal of money.",-1),l=[n];function _(c,r){return t(),o("div",null,l)}const h=e(s,[["render",_],["__file","2. .html.vue"]]);export{h as default};

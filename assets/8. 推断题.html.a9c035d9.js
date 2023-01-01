@@ -1,1 +1,0 @@
-import{_ as e}from"./_plugin-vue_export-helper.cdc0426e.js";import{o as t,c as o,a as _}from"./app.f0487600.js";const s={},c=_("p",null,"GRE推断题的简-版",-1),n=_("p",null,"正向推断",-1),l=_("p",null,"负向推断",-1),r=[c,n,l];function a(i,d){return t(),o("div",null,r)}const p=e(s,[["render",a],["__file","8. 推断题.html.vue"]]);export{p as default};
