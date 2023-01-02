@@ -112,3 +112,5 @@ apt-get现在比yum好（版本更加新一些）
 
 
 ### brew
+
+配置镜像：https://blog.csdn.net/CaptainJava/article/details/109132783

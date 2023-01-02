@@ -42,7 +42,33 @@ export const enSidebar = sidebar({
       // link: "faq/",
       children: "structure",
     },
-
+  ],
+  "/cs/database/mysql/": [
+    "",
+    {
+      text: "事务",
+      icon: "note",
+      prefix: "transaction/",
+      children: "structure",
+    },
+    {
+      text: "索引",
+      icon: "note",
+      prefix: "index/",
+      children: "structure",
+    },
+    {
+      text: "引擎",
+      icon: "note",
+      prefix: "engine/",
+      children: "structure",
+    },
+    {
+      text: "日志",
+      icon: "note",
+      prefix: "log/",
+      children: "structure",
+    },
   ],
   "/se/unix/": [
     "",

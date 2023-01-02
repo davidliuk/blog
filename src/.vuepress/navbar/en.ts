@@ -78,23 +78,23 @@ export const enNavbar = navbar([
       "tools/",
     ]
   },
-  {
-    text: "Lang",
-    icon: "note",
-    prefix: "/lang/",
-    children: [
-      {
-        text: "Java",
-        icon: "edit",
-        link: "java/",
-        // prefix: "java/",
-        // children: [
-        //   { text: "Apple1", icon: "edit", link: "1" },
-        //   { text: "Apple2", icon: "edit", link: "2" }
-        // ]
-      }
-    ]
-  },
+  // {
+  //   text: "Lang",
+  //   icon: "note",
+  //   prefix: "/lang/",
+  //   children: [
+  //     {
+  //       text: "Java",
+  //       icon: "edit",
+  //       link: "java/",
+  //       // prefix: "java/",
+  //       // children: [
+  //       //   { text: "Apple1", icon: "edit", link: "1" },
+  //       //   { text: "Apple2", icon: "edit", link: "2" }
+  //       // ]
+  //     }
+  //   ]
+  // },
   {
     text: "AI ",
     icon: "note",
