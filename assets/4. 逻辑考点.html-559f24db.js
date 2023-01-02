@@ -1,1 +1,0 @@
-import{_,V as t,W as a,X as e}from"./framework-705b829b.js";const c={},n=e("p",null,[e("img",{src:"https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/3978/image-20221108195703623.png",alt:"image-20221108195703623",loading:"lazy"})],-1),o=[n];function s(l,i){return t(),a("div",null,o)}const m=_(c,[["render",s],["__file","4. 逻辑考点.html.vue"]]);export{m as default};

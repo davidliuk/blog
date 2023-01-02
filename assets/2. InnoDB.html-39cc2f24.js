@@ -1,0 +1,1 @@
+import{_ as n,V as o,W as t,X as e,Y as a}from"./framework-705b829b.js";const _={},c=e("h1",{id:"innodb",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#innodb","aria-hidden":"true"},"#"),a(" InnoDB")],-1),r=[c];function s(d,i){return o(),t("div",null,r)}const l=n(_,[["render",s],["__file","2. InnoDB.html.vue"]]);export{l as default};

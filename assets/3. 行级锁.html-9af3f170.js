@@ -1,0 +1,1 @@
+import{_ as t,V as _,W as a,X as e,Y as c}from"./framework-705b829b.js";const r={},s=e("h1",{id:"行级锁",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#行级锁","aria-hidden":"true"},"#"),c(" 行级锁")],-1),o=[s];function n(d,i){return _(),a("div",null,o)}const l=t(r,[["render",n],["__file","3. 行级锁.html.vue"]]);export{l as default};

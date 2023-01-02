@@ -1,0 +1,1 @@
+import{_ as c,V as t,W as a,X as e,Y as _}from"./framework-705b829b.js";const r={},s=e("h1",{id:"mvcc",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#mvcc","aria-hidden":"true"},"#"),_(" MVCC")],-1),o=[s];function n(d,i){return t(),a("div",null,o)}const l=c(r,[["render",n],["__file","3. MVCC.html.vue"]]);export{l as default};

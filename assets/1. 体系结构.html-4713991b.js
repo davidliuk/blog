@@ -1,0 +1,1 @@
+import{_,V as t,W as a,X as e,Y as c}from"./framework-705b829b.js";const r={},s=e("h1",{id:"体系结构",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#体系结构","aria-hidden":"true"},"#"),c(" 体系结构")],-1),o=[s];function n(d,i){return t(),a("div",null,o)}const l=_(r,[["render",n],["__file","1. 体系结构.html.vue"]]);export{l as default};
