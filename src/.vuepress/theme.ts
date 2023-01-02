@@ -26,7 +26,7 @@ export default hopeTheme({
       Gitee: "https://gitee.com/da-wei-liu",
       Linkedin: "https://www.linkedin.cn/incareer/in/ACoAAChiGB8BoHZIY3GXEyeAxfCUVmL5EpXQY6c",
       Email: "l729641074@163.com",
-      BiliBili: "https://example.com",
+      // BiliBili: "https://example.com",
       // Baidu: "https://example.com",
       // Bitbucket: "https://example.com",
       // Dingding: "https://example.com",
@@ -117,7 +117,7 @@ export default hopeTheme({
 
   plugins: {
     blog: {
-      autoExcerpt: true,
+      // autoExcerpt: true,
     },
 
     // If you don’t need comment feature, you can remove following option
@@ -158,7 +158,7 @@ export default hopeTheme({
       flowchart: true,
       gfm: true,
       imageLazyload: true,
-      imageTitle: true,
+      // imageTitle: true,
       imageSize: true,
       include: true,
       katex: true,

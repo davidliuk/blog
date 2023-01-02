@@ -38,14 +38,20 @@ export const enNavbar = navbar([
         ]
       },
       {
-        text: "Network",
+        text: "Basic",
         icon: "edit",
-        link: "network/",
-      },
-      {
-        text: "Operating System",
-        icon: "edit",
-        link: "os/",
+        children: [
+          {
+            text: "Network",
+            icon: "edit",
+            link: "network/",
+          },
+          {
+            text: "Operating System",
+            icon: "edit",
+            link: "os/",
+          },
+        ]
       },
       "algo/",
     ]

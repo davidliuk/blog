@@ -1,4 +1,6 @@
-读一题做一题 
+# 公式法
+
+读一题做一题
 
 ![截屏2022-10-12 15.33.51](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/3978/%E6%88%AA%E5%B1%8F2022-10-12%2015.33.51.png)
 
