@@ -22,7 +22,7 @@ export const enNavbar = navbar([
               { text: "Index", icon: "edit", link: "index" },
               { text: "Lock", icon: "edit", link: "lock" },
               { text: "Log", icon: "edit", link: "log" },
-            ]
+            ],
           },
           {
             text: "Redis",
@@ -33,9 +33,9 @@ export const enNavbar = navbar([
               { text: "Clients", icon: "edit", link: "clients" },
               { text: "Commands", icon: "edit", link: "commands" },
               { text: "Data structure", icon: "edit", link: "data-structure" },
-            ]
+            ],
           },
-        ]
+        ],
       },
       {
         text: "Basic",
@@ -51,10 +51,10 @@ export const enNavbar = navbar([
             icon: "edit",
             link: "os/",
           },
-        ]
+        ],
       },
       "algo/",
-    ]
+    ],
   },
   {
     text: "Software Engineer",
@@ -62,19 +62,45 @@ export const enNavbar = navbar([
     prefix: "/se/",
     children: [
       {
-        text: "Unix",
-        icon: "edit",
-        link: "unix/",
-        // prefix: "unix/",
-        // children: [
-        //   { text: "Apple1", icon: "edit", link: "1" },
-        //   { text: "Apple2", icon: "edit", link: "2" }
-        // ]
+        text: "Lang",
+        icon: "note",
+        prefix: "lang/",
+        children: [
+          {
+            text: "Java",
+            icon: "edit",
+            link: "java/",
+          },
+        ],
       },
       {
         text: "Framework",
         icon: "edit",
-        link: "framework/",
+        prefix: "framework/",
+        children: [
+          {
+            text: "Spring",
+            icon: "edit",
+            link: "spring/",
+          },
+          {
+            text: "ORM",
+            icon: "edit",
+            link: "orm/",
+          },
+        ],
+      },
+      {
+        text: "DevOps",
+        icon: "note",
+        prefix: "devops/",
+        children: [
+          {
+            text: "Unix",
+            icon: "edit",
+            link: "unix/",
+          },
+        ],
       },
       {
         text: "Systen design",
@@ -82,25 +108,8 @@ export const enNavbar = navbar([
         link: "systen-design/",
       },
       "tools/",
-    ]
+    ],
   },
-  // {
-  //   text: "Lang",
-  //   icon: "note",
-  //   prefix: "/lang/",
-  //   children: [
-  //     {
-  //       text: "Java",
-  //       icon: "edit",
-  //       link: "java/",
-  //       // prefix: "java/",
-  //       // children: [
-  //       //   { text: "Apple1", icon: "edit", link: "1" },
-  //       //   { text: "Apple2", icon: "edit", link: "2" }
-  //       // ]
-  //     }
-  //   ]
-  // },
   {
     text: "AI ",
     icon: "note",
@@ -115,8 +124,8 @@ export const enNavbar = navbar([
         //   { text: "Apple1", icon: "edit", link: "1" },
         //   { text: "Apple2", icon: "edit", link: "2" }
         // ]
-      }
-    ]
+      },
+    ],
   },
   {
     text: "Standardized",
@@ -130,7 +139,7 @@ export const enNavbar = navbar([
         children: [
           { text: "QUANTITATIVE", icon: "edit", link: "QUANTITATIVE" },
           { text: "VERBAL", icon: "edit", link: "VERBAL" },
-        ]
+        ],
       },
       {
         text: "TOEFL",
@@ -141,9 +150,9 @@ export const enNavbar = navbar([
           { text: "READING", icon: "edit", link: "READING" },
           { text: "SPEAKING", icon: "edit", link: "SPEAKING" },
           { text: "WRITING", icon: "edit", link: "WRITING" },
-        ]
+        ],
       },
-    ]
+    ],
   },
   // { text: "Demo", icon: "discover", link: "/demo/" },
   // {

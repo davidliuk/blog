@@ -25,6 +25,7 @@ export const enSidebar = sidebar({
       children: "structure",
     },
   ],
+  "/cs/database/redis/": 'structure',
   "/cs/database/mysql/": [
     "",
     {
@@ -58,7 +59,9 @@ export const enSidebar = sidebar({
       children: "structure",
     },
   ],
-  "/se/unix/": [
+  "/se/lang/java/": "structure",
+  "/se/framework/": "structure",
+  "/se/devops/unix/": [
     "",
     {
       text: "UNIX 基础",
@@ -75,6 +78,7 @@ export const enSidebar = sidebar({
       children: "structure",
     },
   ],
+  "/se/tools/": "structure",
   "/standardized/": [
     "",
     {
