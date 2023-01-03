@@ -7,25 +7,22 @@ export const enSidebar = sidebar({
       text: "基础",
       icon: "note",
       prefix: "basic/",
-      // link: "basic/",
       children: "structure",
     },
     {
       text: "总结",
       icon: "note",
       prefix: "summary/",
-      // link: "summary/",
       children: "structure",
     },
     {
       text: "高频题",
       icon: "note",
       prefix: "faq/",
-      // link: "faq/",
       children: "structure",
     },
   ],
-  "/cs/database/redis/": 'structure',
+  "/cs/database/redis/": "structure",
   "/cs/database/mysql/": [
     "",
     {
@@ -61,6 +58,8 @@ export const enSidebar = sidebar({
   ],
   "/se/lang/java/": "structure",
   "/se/framework/": "structure",
+  "/se/devops/": "structure",
+  "/se/system-design/": "structure",
   "/se/devops/unix/": [
     "",
     {

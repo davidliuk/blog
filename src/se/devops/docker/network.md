@@ -2,8 +2,6 @@
 
 
 
-
-
 bridge是一个interface，可以把多个网络连接到一个网
 
 
