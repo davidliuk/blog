@@ -1,1 +1,0 @@
-import{_ as t,V as r,W as o,X as e,Y as a}from"./framework-705b829b.js";const c={},n=e("h1",{id:"computer-network",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#computer-network","aria-hidden":"true"},"#"),a(" Computer Network")],-1),s=[n];function _(d,i){return r(),o("div",null,s)}const l=t(c,[["render",_],["__file","index.html.vue"]]);export{l as default};

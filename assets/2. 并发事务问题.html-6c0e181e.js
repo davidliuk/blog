@@ -1,1 +1,0 @@
-import{_,V as t,W as a,X as e,Y as c}from"./framework-705b829b.js";const r={},s=e("h1",{id:"并发事务的问题",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#并发事务的问题","aria-hidden":"true"},"#"),c(" 并发事务的问题")],-1),o=[s];function n(d,i){return t(),a("div",null,o)}const l=_(r,[["render",n],["__file","2. 并发事务问题.html.vue"]]);export{l as default};

@@ -1,1 +1,0 @@
-import{_ as a,V as t,W as c,X as e,Y as _}from"./framework-705b829b.js";const r={},s=e("h1",{id:"acid",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#acid","aria-hidden":"true"},"#"),_(" ACID")],-1),o=[s];function n(d,i){return t(),c("div",null,o)}const l=a(r,[["render",n],["__file","1. ACID.html.vue"]]);export{l as default};
