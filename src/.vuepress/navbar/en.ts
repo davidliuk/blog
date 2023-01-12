@@ -104,12 +104,24 @@ export const enNavbar = navbar([
           "k8s/",
         ],
       },
-      // {
-      //   text: "System design",
-      //   icon: "edit",
-      //   link: "system-design/",
-      // },
-      "system-design/",
+      {
+        text: "Design",
+        icon: "note",
+        prefix: "design/",
+        children: [
+          {
+            text: "System design",
+            icon: "edit",
+            link: "system-design/",
+          },
+          // "system-design/",
+          {
+            text: "OOD",
+            icon: "edit",
+            link: "ood/",
+          },
+        ],
+      },
       "tools/",
     ],
   },
