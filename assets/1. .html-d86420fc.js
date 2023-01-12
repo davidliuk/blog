@@ -1,1 +1,0 @@
-import{_ as n,V as s,W as t,X as e}from"./framework-705b829b.js";const _={},o=e("p",null,"连续、非连续",-1),c=e("p",null,"连续On2：substring, subarray",-1),l=e("p",null,"非连续O2n：subsequence O2n",-1),r=e("p",null,"On：双指针、单调栈、快速选择、树上各类遍历与分治、n次并查集操作、n次哈希表",-1),a=[o,c,l,r];function u(i,d){return s(),t("div",null,a)}const p=n(_,[["render",u],["__file","1. .html.vue"]]);export{p as default};
