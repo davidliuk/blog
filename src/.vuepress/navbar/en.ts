@@ -53,7 +53,29 @@ export const enNavbar = navbar([
           },
         ],
       },
-      "algo/",
+      {
+        text: "Algorithm",
+        icon: "edit",
+        prefix: "algo/",
+        children: [
+          {
+            text: "Basic",
+            icon: "edit",
+            link: "basic/",
+          },
+          {
+            text: "Summary",
+            icon: "edit",
+            link: "summary/",
+          },
+          {
+            text: "FAQ",
+            icon: "edit",
+            link: "faq/",
+          },
+        ],
+      },
+      
     ],
   },
   {
