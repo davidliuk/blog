@@ -1,8 +1,10 @@
-# 算法基础
+# 框架
 
 ![image](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/3978/image.png)
 
-逻辑结构
+
+
+结构
 
 - 线：减治，
 
@@ -26,7 +28,7 @@
 
 - 减治：无效优化
 - 动规：重叠优化
-- （分治：并行优化，可以分布式计算如mapreduce）
+- 分治：并行优化，可以分布式计算如mapreduce
 
 顺序
 

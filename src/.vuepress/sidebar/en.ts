@@ -4,9 +4,9 @@ export const enSidebar = sidebar({
   "/cs/algo/": [
     "",
     {
-      text: "基础",
+      text: "框架",
       icon: "note",
-      prefix: "basic/",
+      prefix: "framework/",
       children: "structure",
     },
     {
@@ -22,6 +22,7 @@ export const enSidebar = sidebar({
       children: "structure",
     },
   ],
+  "/cs/basic/": "structure",
   "/cs/database/redis/": "structure",
   "/cs/database/mysql/": [
     "",
@@ -59,7 +60,8 @@ export const enSidebar = sidebar({
   "/se/lang/java/": "structure",
   "/se/framework/": "structure",
   "/se/devops/": "structure",
-  "/se/system-design/": "structure",
+  "/se/design/": "structure",
+  "/se/tools/": "structure",
   "/se/devops/unix/": [
     "",
     {
@@ -77,7 +79,6 @@ export const enSidebar = sidebar({
       children: "structure",
     },
   ],
-  "/se/tools/": "structure",
   "/standardized/": [
     "",
     {

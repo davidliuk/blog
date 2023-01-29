@@ -8,6 +8,23 @@ export const enNavbar = navbar([
     prefix: "/cs/",
     children: [
       {
+        text: "Basic",
+        icon: "edit",
+        prefix: "basic/",
+        children: [
+          {
+            text: "Network",
+            icon: "edit",
+            link: "network/",
+          },
+          {
+            text: "Operating System",
+            icon: "edit",
+            link: "os/",
+          },
+        ],
+      },
+      {
         text: "Database",
         icon: "edit",
         prefix: "database/",
@@ -38,30 +55,14 @@ export const enNavbar = navbar([
         ],
       },
       {
-        text: "Basic",
-        icon: "edit",
-        children: [
-          {
-            text: "Network",
-            icon: "edit",
-            link: "network/",
-          },
-          {
-            text: "Operating System",
-            icon: "edit",
-            link: "os/",
-          },
-        ],
-      },
-      {
         text: "Algorithm",
         icon: "edit",
         prefix: "algo/",
         children: [
           {
-            text: "Basic",
+            text: "Framework",
             icon: "edit",
-            link: "basic/",
+            link: "framework/",
           },
           {
             text: "Summary",
@@ -131,16 +132,26 @@ export const enNavbar = navbar([
         icon: "note",
         prefix: "design/",
         children: [
-          {
-            text: "System design",
-            icon: "edit",
-            link: "system-design/",
-          },
           // "system-design/",
+          {
+            text: "Design Principal",
+            icon: "edit",
+            link: "principal/",
+          },
+          {
+            text: "Design Pattern",
+            icon: "edit",
+            link: "pattern/",
+          },
           {
             text: "OOD",
             icon: "edit",
             link: "ood/",
+          },
+          {
+            text: "System Design",
+            icon: "edit",
+            link: "system-design/",
           },
         ],
       },
