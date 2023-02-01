@@ -51,6 +51,8 @@ int searchFirst(int start, int end, IntPredicate isValid) {
 
 - 符合条件的最小值（如求最小花费）
 
+<iframe width="800" height="500" frameborder="0" src="https://pythontutor.com/iframe-embed.html#code=import%20java.util.function.IntPredicate%3B%0A%0Apublic%20class%20BinarySearch%20%7B%0A%20%20%20%20public%20static%20int%20searchFirst%28int%20start,%20int%20end,%20IntPredicate%20isValid%29%20%7B%0A%20%20%20%20%20%20%20%20while%20%28start%20%3C%20end%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20int%20mid%20%3D%20start%20%2B%20%28end%20-%20start%29%20/%202%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20if%20%28isValid.test%28mid%29%29%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20end%20%3D%20mid%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20%20start%20%3D%20mid%20%2B%201%3B%0A%20%20%20%20%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%20%20%20%20%7D%0A%20%20%20%20%0A%20%20%20%20%20%20%20%20return%20start%3B%0A%20%20%20%20%7D%0A%20%20%20%20%0A%20%20%20%20public%20static%20void%20main%28String%5B%5D%20args%29%20%7B%0A%20%20%20%20%20%20%20%20int%5B%5D%20nums%20%3D%20new%20int%5B%5D%7B1,%202,%203,%203,%203,%204,%205%7D%3B%0A%20%20%20%20%20%20%20%20searchFirst%280,%20nums.length%20-%201,%20%28mid%29%20-%3E%20nums%5Bmid%5D%20%3E%3D%203%29%3B%0A%20%20%20%20%7D%0A%7D&codeDivHeight=400&codeDivWidth=350&cumulative=false&curInstr=35&heapPrimitives=nevernest&origin=opt-frontend.js&py=java&rawInputLstJSON=%5B%5D&textReferences=false"> </iframe>
+
 
 
 #### 寻找符合条件的最靠后的
