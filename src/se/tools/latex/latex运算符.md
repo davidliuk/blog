@@ -22,3 +22,9 @@
 
 https://www.jianshu.com/p/22117d964baf
 
+
+
+$\mathbf{LER} = \sum\limits_{i=0}^n \mathbf{PLER}_i = \sum\limits_{i=0}^n \frac{B_{i\_mix}}{B_{i\_mono}}$
+
+
+

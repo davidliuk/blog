@@ -29,9 +29,12 @@
   - 同向双指针
     - 反转链表：reverse
     - 链表去重：deduplication
+    - 划分链表：partition，lomoto写法，结合前序遍历可拓展为quickSort
+    - 倒序查找：findFromEnd
   - 平行双指针
     - 合并链表：merge，结合后序遍历可拓展为mergeSort
     - 划分链表：partition，结合前序遍历可拓展为quickSort
+    - 链表交点
 
 
 
