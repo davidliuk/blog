@@ -1,1 +1,0 @@
-import{_,V as t,W as a,X as e,Y as c}from"./framework-705b829b.js";const r={},s=e("h1",{id:"设计原则",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#设计原则","aria-hidden":"true"},"#"),c(" 设计原则")],-1),o=[s];function n(d,i){return t(),a("div",null,o)}const l=_(r,[["render",n],["__file","5. 设计原则.html.vue"]]);export{l as default};
