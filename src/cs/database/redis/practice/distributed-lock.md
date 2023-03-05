@@ -37,7 +37,6 @@ SET lock thread1 EX 10 NX
 存在问题：
 
 1. 设置超时时间
-2. 
 
 
 
