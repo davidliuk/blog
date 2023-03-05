@@ -1,1 +1,0 @@
-import{_ as t,V as a,W as c,X as e,Y as r}from"./framework-705b829b.js";const s={},_=e("h1",{id:"参数",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#参数","aria-hidden":"true"},"#"),r(" 参数")],-1),o=[_];function n(d,i){return a(),c("div",null,o)}const l=t(s,[["render",n],["__file","参数.html.vue"]]);export{l as default};

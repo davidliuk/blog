@@ -1,1 +1,0 @@
-import{_ as t,V as _,W as a,X as e,Y as s}from"./framework-705b829b.js";const c={},o=e("h1",{id:"基本类型",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#基本类型","aria-hidden":"true"},"#"),s(" 基本类型")],-1),n=e("p",null,"五种",-1),r=[o,n];function d(i,l){return _(),a("div",null,r)}const f=t(c,[["render",d],["__file","基本类型.html.vue"]]);export{f as default};
