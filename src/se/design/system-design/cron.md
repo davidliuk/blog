@@ -52,10 +52,10 @@ ScheduledExecutorService 是基于多线程的，设计的初衷是为了解决 
 
 它主要包含4个方法：
 
-- schedule(Runnable command,long delay,TimeUnit unit) ，带延迟时间的调度，只执行一次，调度之后可通过Future.get()阻塞直至任务执行完毕。
-- schedule(Callable<V> callable,long delay,TimeUnit unit) ，带延迟时间的调度，只执行一次，调度之后可通过Future.get()阻塞直至任务执行完毕，并且可以获取执行结果。
-- scheduleAtFixedRate ，表示以固定频率执行的任务，如果当前任务耗时较多，超过定时周期period，则当前任务结束后会立即执行。
-- scheduleWithFixedDelay ，表示以固定延时执行任务，延时是相对当前任务结束为起点计算开始时间。
+- `schedule(Runnable command,long delay,TimeUnit unit)` ，带延迟时间的调度，只执行一次，调度之后可通过Future.get()阻塞直至任务执行完毕。
+- `schedule(Callable<V> callable,long delay,TimeUnit unit)` ，带延迟时间的调度，只执行一次，调度之后可通过Future.get()阻塞直至任务执行完毕，并且可以获取执行结果。
+- `scheduleAtFixedRate` ，表示以固定频率执行的任务，如果当前任务耗时较多，超过定时周期period，则当前任务结束后会立即执行。
+- `scheduleWithFixedDelay` ，表示以固定延时执行任务，延时是相对当前任务结束为起点计算开始时间。
 
 
 
