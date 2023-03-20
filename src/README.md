@@ -10,14 +10,15 @@ tagline: Life is real, life is earnest.
 heroFullScreen: true
 projects:
   - icon: project
-    name: project name
-    desc: project detailed description
-    link: https://your.project.link
+    name: Algo Summary
+    desc: A summary of algorithms and data structures
+    link: /cs/algo/
 
   - icon: /favicon.ico
-    name: custom item
-    desc: Detailed description of this custom item
-    link: https://link.to.your.friend
+    name: Database Summary
+    desc: A summary of database including SQL, NoSQL, and so on
+    link: /cs/database/
+    # link: https://link.to.your.friend
 
 footer: David Liu's blog
 ---

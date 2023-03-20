@@ -39,8 +39,6 @@ public class SpringAMQPTest {
 
 
 
-
-
 ```java
 @Component
 public class SpringRabbitListener {

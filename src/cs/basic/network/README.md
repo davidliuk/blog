@@ -4,23 +4,25 @@
 
 
 
-
-
 应用层
 
-- HTTP
+- HTTP/HTTPS
 - DNS
+- ICMP
 
-
-
-传输曾
+传输层
 
 - TCP
 - UDP
-
-
 
 网络层
 
 - ARP
 - ASPF
+
+链路层
+
+- 以太网
+
+
+
