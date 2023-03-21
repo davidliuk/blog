@@ -1,1 +1,0 @@
-import{_ as t,V as a,W as s,X as e,Y as n}from"./framework-705b829b.js";const r={},o=e("h1",{id:"operating-system",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#operating-system","aria-hidden":"true"},"#"),n(" Operating System")],-1),c=[o];function i(_,d){return a(),s("div",null,c)}const l=t(r,[["render",i],["__file","index.html.vue"]]);export{l as default};

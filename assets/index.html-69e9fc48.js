@@ -1,1 +1,0 @@
-import{_ as t,V as a,W as c,X as e,Y as n}from"./framework-705b829b.js";const r={},s=e("h1",{id:"latex",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#latex","aria-hidden":"true"},"#"),n(" LaTeX")],-1),o=[s];function _(d,i){return a(),c("div",null,o)}const h=t(r,[["render",_],["__file","index.html.vue"]]);export{h as default};
