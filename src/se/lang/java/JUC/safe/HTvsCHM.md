@@ -4,8 +4,6 @@
 
 共同点
 
-
-
 HashTable 与 ConcurrentHashMap 都是线程安全的Map集合
 
 HashTable 并发度低，整个 HashTable 对应一把锁，只能有一个线程操作它

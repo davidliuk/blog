@@ -15,7 +15,9 @@ await方法，在不为0时，阻塞线程，等到计数器变成0时唤醒线�
 
 
 
-例子：
+## 例子
+
+### 生活场景
 
 6个同学陆续离开教师后，班长才可以锁门
 
@@ -37,4 +39,12 @@ public static void main(String[] args) throws InterruptedException {
     System.out.println(Thread.currentThread().getName() + "班长锁门了");
 }
 ```
+
+
+
+### 工作场景
+
+我们要读取处理 6 个文件，这 6 个任务都是没有执行顺序依赖的任务，但是我们需要返回给用户的时候将这几个文件的处理的结果进行统计整理。
+
+
 
