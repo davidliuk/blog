@@ -1,0 +1,1 @@
+import{_,V as t,W as a,X as e,Y as c}from"./framework-e5d7a6b2.js";const r={},s=e("h1",{id:"产品定位",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#产品定位","aria-hidden":"true"},"#"),c(" 产品定位")],-1),o=[s];function n(d,i){return t(),a("div",null,o)}const l=_(r,[["render",n],["__file","作业3 产品定位.html.vue"]]);export{l as default};

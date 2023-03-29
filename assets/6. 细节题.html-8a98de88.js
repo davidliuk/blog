@@ -1,1 +1,0 @@
-import{_ as t,V as _,W as a,X as e,Y as c}from"./framework-705b829b.js";const r={},s=e("h1",{id:"细节题",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#细节题","aria-hidden":"true"},"#"),c(" 细节题")],-1),o=[s];function n(d,i){return _(),a("div",null,o)}const l=t(r,[["render",n],["__file","6. 细节题.html.vue"]]);export{l as default};

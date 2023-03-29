@@ -1,0 +1,1 @@
+import{_ as t,V as r,W as n,X as e,Y as o}from"./framework-e5d7a6b2.js";const a={},s=e("h1",{id:"dns-drbd-network",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#dns-drbd-network","aria-hidden":"true"},"#"),o(" DNS DRBD network")],-1),d=[s];function c(_,i){return r(),n("div",null,d)}const l=t(a,[["render",c],["__file","DNS-DRBD-network.html.vue"]]);export{l as default};

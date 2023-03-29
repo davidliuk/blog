@@ -1,0 +1,1 @@
+import{_ as e,V as n,W as t,X as o}from"./framework-e5d7a6b2.js";const a={},c=o("p",null,"If you have any ideas to share, please contact me at any time in your convenience",-1),s=[c];function _(r,i){return n(),t("div",null,s)}const d=e(a,[["render",_],["__file","index.html.vue"]]);export{d as default};

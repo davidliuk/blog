@@ -1,1 +1,0 @@
-import{_ as r,V as t,W as a,X as e,Y as c}from"./framework-705b829b.js";const n={},s=e("h1",{id:"四种引用",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#四种引用","aria-hidden":"true"},"#"),c(" 四种引用")],-1),o=[s];function _(d,i){return t(),a("div",null,o)}const h=r(n,[["render",_],["__file","reference.html.vue"]]);export{h as default};

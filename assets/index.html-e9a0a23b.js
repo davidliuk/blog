@@ -1,1 +1,0 @@
-import{_ as t,V as o,W as a,X as e,Y as n}from"./framework-705b829b.js";const s={},c=e("h1",{id:"toefl",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#toefl","aria-hidden":"true"},"#"),n(" TOEFL")],-1),r=e("p",null,"110+",-1),_=[c,r];function d(i,l){return o(),a("div",null,_)}const f=t(s,[["render",d],["__file","index.html.vue"]]);export{f as default};

@@ -1,0 +1,1 @@
+import{_ as a,V as r,W as t,X as e,Y as c}from"./framework-e5d7a6b2.js";const d={},s=e("h1",{id:"mermaid",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#mermaid","aria-hidden":"true"},"#"),c(" Mermaid")],-1),o=[s];function i(n,_){return r(),t("div",null,o)}const h=a(d,[["render",i],["__file","mermaid.html.vue"]]);export{h as default};
