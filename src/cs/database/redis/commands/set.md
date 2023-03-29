@@ -2,8 +2,6 @@
 
 与 Java 中的 HashSet 类似，可以认为是 value 为 null 的 HashMap
 
-
-
 ## 常见命令
 
 - `sadd` 向 set 中添加一个或多个元素
@@ -14,6 +12,3 @@
 - `Sinter` 交集
 - `sdiff` 差集
 - `sunion` 并集
-
-
-

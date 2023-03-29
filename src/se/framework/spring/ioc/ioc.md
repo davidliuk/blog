@@ -2,12 +2,16 @@
 
 
 
+### Spring IoC 的了解
+
 **IoC（Inversion of Control:控制反转）** 是一种设计思想，而不是一个具体的技术实现。IoC 的思想就是将原本在程序中手动创建对象的控制权，交由 Spring 框架来管理。不过， IoC 并非 Spring 特有，在其他语言中也有应用。
 
 **为什么叫控制反转？**
 
 - **控制** ：指的是对象创建（实例化、管理）的权力
 - **反转** ：控制权交给外部环境（Spring 框架、IoC 容器）
+
+![img](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/frc-365faceb5697f04f31399937c059c162.png)
 
 
 
@@ -69,3 +73,12 @@
 
 不过，大部分 Bean 实际都是无状态（没有实例变量）的（比如 Dao、Service），这种情况下， Bean 是线程安全的。
 
+
+
+### 源码
+
+工厂模式里面，单例注册表（懒加载）
+
+https://www.cnblogs.com/nickup/p/9800120.html?ivk_sa=1024320u
+
+https://www.likecs.com/show-308120142.html

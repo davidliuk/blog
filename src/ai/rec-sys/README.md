@@ -1,4 +1,22 @@
-# Recommendation System 推荐系统
+# Recommendation System 
+
+推荐系统
+
+
+
+经典算法
+
+- User-based
+
+- Item-based
+
+- Context-based
+
+  - Social rec
+
+    TrustSVD
+
+深度学习
 
 
 

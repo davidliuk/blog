@@ -1,10 +1,6 @@
 # Redis 数据结构
 
-
-
-Redis是key-value的数据库，key一般是String类型，不过value的类型多种多样：
-
-
+Redis 是 key-value 的数据库，key 一般是 String 类型，不过 value 的类型多种多样：
 
 ### 基本类型
 
@@ -18,9 +14,7 @@ Redis是key-value的数据库，key一般是String类型，不过value的类型�
 
 - Set
 
-- Sorted Set（即ZSet）
-
-
+- Sorted Set（即 ZSet）
 
 ### 特殊类型
 
