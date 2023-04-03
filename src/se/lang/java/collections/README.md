@@ -1,14 +1,8 @@
 # 集合
 
-
-
 Java集合的架构如下
 
 ![截屏2023-03-16 21.15.43](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/%E6%88%AA%E5%B1%8F2023-03-16%2021.15.43.png)
-
-（Stack是继承自Vector的类，但是一般不推荐使用，ArrayDeque更快）
-
-
 
 内容大概分为如下三个部分：
 
@@ -16,9 +10,21 @@ Java集合的架构如下
 - Map接口
 - 集合线程安全
 
+## 性质
 
+### comparable 和 Comparator 的区别
 
+ - comparable 接口实际上是出自java.lang包 它有一个 compareTo(Object obj)方法用 来排序
+ - comparator接口实际上是出自 java.util 包它有一个compare(Object obj1, Object obj2) 方法用来排序
 
+ 一般我们需要对一个集合使用自定义排序时，我们就要重写 compareTo() 方法或 compare() 方法， 当我们需要对某一个集合实现两种排序方式，比如一个 song 对象中的歌名和歌手名分别采用一种排序 方法的话，我们可以重写compareTo()方法和使用自制的Comparator方法或者以两个 Comparator 来实现歌名排序和歌星名排序，第二种代表我们只能使用两个参数版的 Collections.sort() .
+
+### 无序性和不可重复性
+
+1. 什么是无序性?无序性不等于随机性，无序性是指存储的数据在底层数组中并非按照数组索引的顺序添加 ，而是根据数据的哈希值决定的。
+2. 什么是不可重复性?不可重复性是指添加的元素按照 equals()判断时 ，返回 false，需要同时重写 equals()方法和 HashCode()方法。
+
+## 异常
 
 
 ### 快速失败(fail-fast)?
@@ -40,3 +46,5 @@ Java集合的架构如下
 什么是安全失败(fail-safe)呢? 明白了快速失败(fail-fast)之后，安全失败(fail-safe)我们就很好理解了。
 
 采用安全失败机制的集合容器，在遍历时不是直接在集合内容上访问的，而是先复制原有集合内容，在拷⻉的集合上进行遍历。所以，在遍历过程中对原集合所作的修改并不能被迭代器检测到，故不会抛ConcurrentModificationException 异常。
+
+1. 

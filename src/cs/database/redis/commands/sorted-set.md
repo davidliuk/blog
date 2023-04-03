@@ -14,9 +14,9 @@
 
 ## 常见命令
 
-- `zadd`
+- `zadd` 增
 
-- `zrem`
+- `zrem` 删
 
 - `zscore` 获取指定元素的 score 值
 
@@ -24,9 +24,9 @@
 
 - `zcard` 获取元素个数
 
-- `zcount`
+- `zcount` 指定范围内元素个数
 
-- `zincrby` 让指定元素自增
+- `zincrby` 让指定元素的分值自增
 
 - `zrange` key min max 按照 score 升序排序后，获取指定排名范围内的元素
 

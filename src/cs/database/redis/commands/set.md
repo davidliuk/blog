@@ -9,6 +9,6 @@
 - `scard` 返回 set 中元素个数
 - `sismember` 判断一个元素是否存在 set 中
 - `smembers` 获取 set 中的所有元素
-- `Sinter` 交集
+- `sinter` 交集
 - `sdiff` 差集
 - `sunion` 并集

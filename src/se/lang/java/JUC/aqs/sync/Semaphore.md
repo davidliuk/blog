@@ -2,18 +2,14 @@
 
 信号量
 
-
-
 ## 方法
 
 - acquire，抢占一个资源
 - release，释放以后，别的阻塞进程被唤醒来抢这个资源
 
-
-
 ## 例子
 
-6辆汽车，停3个车位
+6 辆汽车，停 3 个车位
 
 ```java
 public static void main(String[] args) {
@@ -36,4 +32,3 @@ public static void main(String[] args) {
     }
 }
 ```
-
