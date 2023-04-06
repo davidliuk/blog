@@ -2,17 +2,21 @@
 
 ## List 接口
 
+- Vector，List 接口旧的实现，是线程安全的，方法前都
 - ArrayList
-- Vector
 - LinkedList
 
 （Stack是继承自Vector的类，但是一般不推荐使用，ArrayDeque更快）
 
 ### ArrayList
 
+#### 初始容量
+
+如果是无参构造，初始容量是0，加入第一个元素的时候会扩容成10。
+
 #### 扩容机制
 
-
+当装满的时候，会扩容数组大小为1.5倍。
 
 
 

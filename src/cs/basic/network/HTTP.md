@@ -1,6 +1,6 @@
 # HTTP
 
-HTTP 协是基于 TCP协议，发送 HTTP 请求之前首先要建立 TCP 连接也就是要经历 3 次握手。目前使用的 HTTP 协议大部分都是 1.1。在 1.1 的协议里面，默认是开启了 Keep-Alive 的，这样的话建立的连接就可以在多次请求中被复用了。
+HTTP 协是基于 TCP 协议，发送 HTTP 请求之前首先要建立 TCP 连接也就是要经历 3 次握手。目前使用的 HTTP 协议大部分都是 1.1。在 1.1 的协议里面，默认是开启了 Keep-Alive 的，这样的话建立的连接就可以在多次请求中被复用了。
 
 另外， HTTP 协议是”无状态”的协议，它无法记录客户端用户的状态，一般我们都是通过 Session 来记录客户端用户的状态。
 
@@ -10,7 +10,7 @@ HTTP 是超文本传输协议，也就是**H**yperText **T**ransfer **P**rotocol
 
 ### 报文格式
 
-<img src="/Users/davidliu/Library/Application%20Support/typora-user-images/%E6%88%AA%E5%B1%8F2023-03-31%2023.19.30.png" alt="截屏2023-03-31 23.19.30" style="zoom:50%;" />
+<img src="https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/%E6%88%AA%E5%B1%8F2023-04-03%2011.39.56.png" alt="截屏2023-04-03 11.39.56" style="zoom:50%;" />
 
 #### 请求报文
 
@@ -33,25 +33,14 @@ HTTP 是超文本传输协议，也就是**H**yperText **T**ransfer **P**rotocol
 
 HTTP 的 Keep-Alive 也叫 HTTP 长连接，该功能是由「应用程序」实现的，可以使得用同一个 TCP 连接来发送和接收多个 HTTP 请求/应答，减少了 HTTP 短连接带来的多次 TCP 连接建立和释放的开销。
 
-Connection: 
+Connection:
 
 - Keep-Alive
 - close
 
-
-
 #### 响应报文
 
-
-
-
-
-
 ## 特性
-
-
-
-
 
 ## 优化
 
@@ -60,10 +49,6 @@ Connection:
 - 减少服务器的 HTTP 响应的数据大小；
 
 ### 避免发送 HTTP 请求 - 缓存
-
-
-
-
 
 ## 发展
 
@@ -88,17 +73,10 @@ HTTP/2 协议是基于 HTTPS 的，所以 HTTP/2 的安全性也是有保障的�
 
 #### 头部压缩
 
-
-
 #### 二进制帧
-
-
 
 #### 并发传输
 
 HTTP/2 通过 Stream 的并发能力，解决了 HTTP/1 队头阻塞的问题，看似很完美了，但是 HTTP/2 还是存在“队头阻塞”的问题，只不过问题不是在 HTTP 这一层面，而是在 TCP 这一层。
 
 #### 服务器主动推送资源
-
-
-
