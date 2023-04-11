@@ -1,0 +1,1 @@
+import{_ as a,V as c,W as t,X as e,Y as r}from"./framework-e5d7a6b2.js";const _={},s=e("h1",{id:"fabric",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#fabric","aria-hidden":"true"},"#"),r(" Fabric")],-1),o=e("p",null,"联盟链=公链-去中性化+监管",-1),n=[s,o];function i(d,l){return c(),t("div",null,n)}const f=a(_,[["render",i],["__file","8. Fabric.html.vue"]]);export{f as default};

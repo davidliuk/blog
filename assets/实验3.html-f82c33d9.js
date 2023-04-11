@@ -1,0 +1,1 @@
+import{_ as t,V as _,W as o,X as e}from"./framework-e5d7a6b2.js";const s={},c=e("p",null,"第三个在remix平台找一个智能合约，看一下看懂调用一下就可以了",-1),n=e("p",null,"三选二",-1),l=[c,n];function r(a,i){return _(),o("div",null,l)}const f=t(s,[["render",r],["__file","实验3.html.vue"]]);export{f as default};

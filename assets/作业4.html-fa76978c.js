@@ -1,1 +1,0 @@
-import{_ as t,V as _,W as o,X as e}from"./framework-e5d7a6b2.js";const s={},n=e("p",null,"注册中国专利网，在政务服务分区到专利检索里面找智能冰箱的专利",-1),c=e("p",null,"找一个专利，在雨课堂里面提及作业",-1),l=e("p",null,"保护文字，不保护配图，必须是写成具体的文字描述才能得到保护，图想要保护，一定要详细用文字描述出来才行。",-1),r=[n,c,l];function a(d,i){return _(),o("div",null,r)}const f=t(s,[["render",a],["__file","作业4.html.vue"]]);export{f as default};
