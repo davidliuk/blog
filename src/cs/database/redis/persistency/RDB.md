@@ -1,10 +1,6 @@
 # RDB
 
-
-
 Rediscover Database Backup file，数据备份文件，数据快照。
-
-
 
 ### 使用方式
 
@@ -13,8 +9,6 @@ redis-cli
 save # 主进程执行RDB，阻塞所有命令，停机时实际上会自动执行一次，一般是宕机时使用
 bgsave # 子进程执行RDB，避免主进程受到影响
 ```
-
-
 
 ### 配置参数
 
@@ -34,13 +28,9 @@ dbfilename dump.rdb
 dir ./
 ```
 
-
-
 一般设置为60秒尽量减少宕机时数据丢失，但是还是可能会丢失；为什么不能太小，因为写一遍比较耗时
 
 解决方案：AOF来补充
-
-
 
 
 
@@ -55,8 +45,6 @@ bgsave开始时会fork主进程得到子进程，子进程会把页表拷贝一�
 为了防止新写入的数据被fork子进程记录，
 
 ![截屏2023-02-16 20.22.39](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/3978/%E6%88%AA%E5%B1%8F2023-02-16%2020.22.39.png)
-
-
 
 
 

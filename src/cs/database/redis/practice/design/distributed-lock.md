@@ -20,7 +20,7 @@
 #### 获取锁
 
 ```redis
-# 添加锁，NX是互斥，EX是超时时间
+# 添加锁，NX是互斥，EX是超时时间秒，PX是毫秒
 SET lock thread1 EX 10 NX
 ```
 

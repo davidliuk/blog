@@ -30,8 +30,6 @@
 
 
 
-
-
 ## 考核方式
 
 分数主要基于课堂表现
@@ -54,7 +52,7 @@
 
 期末作业题目来源于实际项目，这个不是决定性的
 
-期末最后两节课给时间，自己找idea做presentation
+期末最后三节课给时间，自己找idea做presentation
 
 非常开放和自由
 
@@ -68,11 +66,21 @@
 
 一个人不能超过八分钟
 
+> 选做，做的人分会高一些，20多人要做
+>
+> 第七周周四就开始
+>
+> 要求：
+>
+> 1. 不要超时
+> 2. 不要讲概念，没做出来说一声，（没跑出来）也不会影响分数
+> 3. 最简单的做一个手写数字的识别也可以，工作量也不低
+
+不是考察大家做的好坏，就看看投入，给个评估
+
 
 
 不需要讲lstm等模型的结构
-
-
 
 用什么方法，解决什么问题，实现效果怎么样
 
@@ -85,3 +93,8 @@ https://www.scikitlearn.com.cn
 https://mp.weixin.qq.com/s?__biz=MzU0MDQ1NjAzNg==&mid=2247557282&idx=1&sn=b9b3a3e852706409a64bbe5d0bd274c4&chksm=fb3b45a9cc4cccbf92d487776e8a9a9f62743608b228ffbc1888acc26141c3d195c322b1e46b&scene=27
 
 https://aistudio.baidu.com/aistudio/projectdetail/1888288?ad-from=1604
+
+
+
+不用解决一个问题，拿出一个态度就可以了
+

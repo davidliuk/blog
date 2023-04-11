@@ -1,8 +1,3 @@
 # JUC
 
-
-
 Java.util.concurrent
-
-
-
