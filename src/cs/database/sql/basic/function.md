@@ -1,7 +1,5 @@
 # 函数
 
-
-
 ## 聚合函数
 
 最大值，最小值
@@ -78,7 +76,35 @@ Lead向下（后），Lag向上（前）
 
 
 
+### 数字处理函数
 
+在 SQL 中，可以使用 ROUND 函数来保留指定位数的小数。ROUND 函数的语法如下：
+
+```
+ROUND(number, decimal_places)
+```
+
+其中，number 是要进行舍入的数字，decimal_places 是要保留的小数位数。例如，要将一个数保留两位小数，可以使用以下 SQL 语句：
+
+```
+SELECT ROUND(number, 2) FROM table_name;
+```
+
+其中，number 是要进行舍入的数字，2 是要保留的小数位数。执行该 SQL 语句后，将返回一个保留两位小数的结果集。
+
+需要注意的是，ROUND 函数会根据第二个参数进行四舍五入操作。如果要对小数进行截断操作，可以使用 TRUNCATE 函数。TRUNCATE 函数的语法如下：
+
+```
+TRUNCATE(number, decimal_places)
+```
+
+其中，number 是要进行截断的数字，decimal_places 是要保留的小数位数。例如，要将一个数截断到两位小数，可以使用以下 SQL 语句：
+
+```
+SELECT TRUNCATE(number, 2) FROM table_name;
+```
+
+执行该 SQL 语句后，将返回一个截断到两位小数的结果集。
 
 ### 日期处理函数
 
@@ -109,10 +135,4 @@ ADDDATE( date , days )
 | value   | 必填。要添加的时间/日期间隔的值。允许正值和负值              |
 | addunit | 必填。要添加的间隔类型。可以是以下值之一：MICROSECON 、 DSECOND、MINUTE、HOUR、DAY、WEEK、MONTH、QUARTER、YEAR、 SECOND_MICROSECOND、YEAR_MONTH、MINUTE_MICROSECOND、MINUTE_SECOND 、HOUR_MICROSECOND、HOUR_SECOND 、HOUR_MINUTE、DAY_MICROSECOND、DAY_SECOND、DAY_MINUTE、DAY_HOUR |
 
-
-
 `update salary set sex=IF(sex='f','m','f')`
-
-
-
-2 1 2 1 1

@@ -9,8 +9,6 @@
 1. `default`修饰的方法，是普通实例方法，可以用`this`调用，可以被子类继承、重写。
 2. `static`修饰的方法，使用上和一般类静态方法一样。但它不能被子类继承，只能用`Interface`调用。
 
-
-
 **在 Java 8 ，接口和抽象类有什么区别的？**
 
 很多小伙伴认为：“既然 interface 也可以有自己的方法实现，似乎和 abstract class 没多大区别了。”
@@ -26,8 +24,6 @@
 
 **记住接口永远和类不一样。**
 
-
-
 ## functional interface 函数式接口
 
 **定义**：也称 SAM 接口，即 Single Abstract Method interfaces，有且只有一个抽象方法，但可以有多个非抽象方法的接口。
@@ -37,8 +33,6 @@
 在其他包中也有函数式接口，其中一些没有`@FunctionalInterface` 注解，但是只要符合函数式接口的定义就是函数式接口，与是否有
 
 `@FunctionalInterface`注解无关，注解只是在编译时起到强制规范定义的作用。其在 Lambda 表达式中有广泛的应用。
-
-
 
 ## Lambda 表达式
 
@@ -63,29 +57,25 @@
 
 过去给方法传动态参数的唯一方法是使用内部类。
 
-
-
 ## Optional
 
 防止 NPE，是程序员的基本修养，注意 NPE 产生的场景：
 
-1） 返回类型为基本数据类型，return 包装数据类型的对象时，自动拆箱有可能产生 NPE。
+1. 返回类型为基本数据类型，return 包装数据类型的对象时，自动拆箱有可能产生 NPE。
 
-反例：public int f() { return Integer 对象}， 如果为 null，自动解箱抛 NPE。
+   反例：public int f() { return Integer 对象}， 如果为 null，自动解箱抛 NPE。
 
-2） 数据库的查询结果可能为 null。
+2. 数据库的查询结果可能为 null。
 
-3） 集合里的元素即使 isNotEmpty，取出的数据元素也可能为 null。
+3. 集合里的元素即使 isNotEmpty，取出的数据元素也可能为 null。
 
-4） 远程调用返回对象时，一律要求进行空指针判断，防止 NPE。
+4. 远程调用返回对象时，一律要求进行空指针判断，防止 NPE。
 
-5） 对于 Session 中获取的数据，建议进行 NPE 检查，避免空指针。
+5. 对于 Session 中获取的数据，建议进行 NPE 检查，避免空指针。
 
-6） 级联调用 obj.getA().getB().getC()；一连串调用，易产生 NPE。
+6. 级联调用 obj.getA().getB().getC()；一连串调用，易产生 NPE。
 
-正例：使用 JDK8 的 Optional 类来防止 NPE 问题。
-
-
+   正例：使用 JDK8 的 Optional 类来防止 NPE 问题。
 
 ## Date-Time API
 

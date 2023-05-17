@@ -1,7 +1,5 @@
 # 空值
 
-
-
 - is null
 - is not null
 - Ifnull(a, b)

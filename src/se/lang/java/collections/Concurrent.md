@@ -46,6 +46,20 @@ Java7 中 `ConcurrentHashMap` 使用的分段锁，也就是每一个 Segment �
 
 - 1.8开始 ConcurrentHashMap 将数组的每个头节点作为锁（这个时候结构也是数组加链表或红黑树），如果多个线程访问的头节点不同，则不会冲突。
 
+#### 使用场景
+
+ConcurrentHashMap是Java中线程安全的哈希表实现，常用于以下场景：
+
+1. 高并发场景：ConcurrentHashMap支持高并发的读写操作，可以在多线程环境下保证数据的一致性和线程安全性。
+
+2. 缓存场景：ConcurrentHashMap可以用于缓存数据，提高数据的访问速度和响应速度。
+
+3. 分布式场景：ConcurrentHashMap可以用于分布式环境下的数据共享和同步，例如多个节点之间共享数据、同步数据等。
+
+4. 数据统计场景：ConcurrentHashMap可以用于数据统计，例如统计网站的访问量、用户的在线时长等。
+
+总的来说，ConcurrentHashMap适用于多线程环境下的高并发场景，可以用于缓存、分布式、数据统计等场景。需要注意的是，ConcurrentHashMap虽然是线程安全的，但是在使用时需要注意一些细节，例如避免死锁、避免竞争等问题。
+
 ### ConcurrentSkipListMap
 
 ### 线程安全的使用
@@ -63,4 +77,27 @@ Java7 中 `ConcurrentHashMap` 使用的分段锁，也就是每一个 Segment �
 
 
 ### BlockingQueue
+
+blocked queue双向链表
+
+waiting queue单向链表，0-多个
+
+在等待队列里面的线程获取锁是有顺序的，外面的线程就是无序的可以直接插队先执行
+
+tryLock(时间)这种会尊从创建锁的时候的公平非公平
+
+无参的tryLock，不管创建的锁是什么样，他都是非公平执行
+
+### 条件变量 Condition
+
+然后就会进入等待队列
+
+- notEmpty
+- notFull
+
+
+
+Lock唤醒waiting queue的线程时，会放入block queue的尾部
+
+synchronized唤醒waiting queue的线程时，到blockde queue中优先级更高一些
 

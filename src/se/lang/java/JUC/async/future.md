@@ -27,3 +27,26 @@
 没有返回值的：runAsync
 
 有返回值的：submitAsync
+
+### Future 的方法
+
+`Future` 接口有 5 个方法：
+
+- `boolean cancel(boolean mayInterruptIfRunning)` ：尝试取消执行任务。
+- `boolean isCancelled()` ：判断任务是否被取消。
+- `boolean isDone()` ： 判断任务是否已经被执行完成。
+- `get()` ：等待任务执行完成并获取运算结果。
+- `get(long timeout, TimeUnit unit)` ：多了一个超时时间。
+
+## CompletableFuture
+
+`Future` 在实际使用过程中存在一些局限性比如不支持异步任务的编排组合、获取计算结果的 `get()` 方法为阻塞调用。
+
+Java 8 才被引入`CompletableFuture` 类可以解决`Future` 的这些缺陷。`CompletableFuture` 除了提供了更为好用和强大的 `Future` 特性之外，还提供了函数式编程、异步任务编排组合（可以将多个异步任务串联起来，组成一个完整的链式调用）等能力。
+
+下面我们来简单看看 `CompletableFuture` 类的定义。
+
+`CompletionStage` 接口描述了一个异步计算的阶段。很多计算可以分成多个阶段或步骤，此时可以通过它将所有步骤组合起来，形成异步计算的流水线。
+
+`CompletionStage` 接口中的方法比较多，`CompletableFuture` 的函数式能力就是这个接口赋予的。从这个接口的方法参数你就可以发现其大量使用了 Java8 引入的函数式编程。
+

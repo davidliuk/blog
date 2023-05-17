@@ -27,3 +27,4 @@ purge master logs to 'binlog.**\*\***
 删除\*\*幸编号之前的所有日志
 purge master logs before 'yyyy-mm-dd hh24:mi:ss'
 删除日志为"yyyy-mm-ddhh24:mi:ss"之前产生的所有日志
+
