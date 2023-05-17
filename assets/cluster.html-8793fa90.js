@@ -1,1 +1,0 @@
-import{_ as t,V as r,W as s,X as e,Y as c}from"./framework-e5d7a6b2.js";const a={},o=e("h1",{id:"cluster-数据分片",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#cluster-数据分片","aria-hidden":"true"},"#"),c(" Cluster：数据分片")],-1),n=[o];function _(l,d){return r(),s("div",null,n)}const u=t(a,[["render",_],["__file","cluster.html.vue"]]);export{u as default};
