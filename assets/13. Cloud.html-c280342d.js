@@ -1,0 +1,1 @@
+import{_ as e,V as _,W as t,X as o}from"./framework-e5d7a6b2.js";const c={},s=o("p",null,"熔断，降级",-1),n=[s];function l(r,a){return _(),t("div",null,n)}const u=e(c,[["render",l],["__file","13. Cloud.html.vue"]]);export{u as default};

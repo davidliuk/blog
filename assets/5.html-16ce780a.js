@@ -1,0 +1,1 @@
+import{_ as l,V as t,W as n,X as e,Y as _}from"./framework-e5d7a6b2.js";const o={},s=e("p",null,"并列理论",-1),c=e("ul",null,[e("li",null,"简单并列："),e("li",null,[_("让步转折： "),e("ul",null,[e("li",null,"虽然方法是并列的，但是前面的有缺陷才讲后面的方法")])])],-1),a=[s,c];function r(u,i){return t(),n("div",null,a)}const f=l(o,[["render",r],["__file","5.html.vue"]]);export{f as default};
