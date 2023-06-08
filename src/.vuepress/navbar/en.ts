@@ -159,14 +159,29 @@ export const enNavbar = navbar([
     ],
   },
   {
-    text: "AI ",
+    text: "Course",
     icon: "note",
-    prefix: "/ai/",
+    prefix: "/course/",
     children: [
       {
-        text: "RS",
+        text: "Rec Sys",
         icon: "edit",
-        link: "rs/",
+        link: "rec-sys/",
+      },
+      {
+        text: "Deep Learning",
+        icon: "edit",
+        link: "deep-learning/",
+      },
+      {
+        text: "Block Chain",
+        icon: "edit",
+        link: "block-chain/",
+      },
+      {
+        text: "XR Tech",
+        icon: "edit",
+        link: "xr-tech/",
       },
     ],
   },
