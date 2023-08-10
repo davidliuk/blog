@@ -1,12 +1,16 @@
 # Listening
 
+28题，30分
+
 ## 考试划分
 
 ### 时间划分
 
 无加试2个section
 
-有加试3个section
+> 有加试3个section
+>
+> 新托福无加时
 
 > 在Direction里面第一句说是2 section还是3 section，如果说3则遇到加试
 
@@ -186,8 +190,6 @@ https://www.xiaohongshu.com/discovery/item/62a97c70000000001401915a
 
 分阶段定目标
 
-
-
 ## 讲座特点
 
 ### 题目特点
@@ -262,11 +264,4 @@ https://www.xiaohongshu.com/discovery/item/62a97c70000000001401915a
 
 
 一篇文章大概就是三四段，30-40句话
-
-
-
-训练目标：
-
-- lecture，越听越简单
-- 对话，能听出对话的逻辑思路
 

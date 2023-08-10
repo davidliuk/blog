@@ -45,7 +45,7 @@ AutoConfigurationImportSelector 类中 getCandidateConfigurations 方法会将�
 1. 从 spring.factories 配置文件中加载 EventPublishingRunListener 对象，该对象拥有 SimpleApplicationEventMulticaster 属性，即在 SpringBoot 启动过程的不同阶段用来发射内置的生命周期事件;
 2. 准备环境变量，包括系统变量，环境变量，命令行参数，默认变量，servlet 相关配置变量，随机值以及配置文件（比如 application.properties）等;
 3. 控制台打印 SpringBoot 的 bannner 标志；
-4. 根据不同类型环境创建不同类型的 applicationcontext 容器，因为这里是 servlet 环境，所以创建的是 AnnotationConfigServletWebServerApplicationContext 容器对象；
+4. 根据不同类型环境创建不同类型的 applicationContext 容器，因为这里是 servlet 环境，所以创建的是 AnnotationConfigServletWebServerApplicationContext 容器对象；
 5. 从 spring.factories 配置文件中加载 FailureAnalyzers 对象,用来报告 SpringBoot 启动过程中的异常；
 6. 为刚创建的容器对象做一些初始化工作，准备一些容器属性值等，对 ApplicationContext 应用一些相关的后置处理和调用各个 ApplicationContextInitializer 的初始化方法来执行一些初始化逻辑等；
 7. 刷新容器，这一步至关重要。比如调用 bean factory 的后置处理器，注册 BeanPostProcessor 后置处理器，初始化事件广播器且广播事件，初始化剩下的单例 bean 和 SpringBoot 创建内嵌的 Tomcat 服务器等等重要且复杂的逻辑都在这里实现，主要步骤可见代码的注释，关于这里的逻辑会在以后的 spring 源码分析专题详细分析；

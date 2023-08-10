@@ -10,7 +10,11 @@
 
 ### 阅读 45-50s
 
+阅读结构：
+
 <img src="https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/%E6%88%AA%E5%B1%8F2023-06-05%2013.09.15.png" alt="截屏2023-06-05 13.09.15" style="zoom: 33%;" />
+
+
 
 1个主题（阅读标题，不需要记录，因为阅读结束以后屏幕上会出现这个标题）
 
@@ -43,21 +47,21 @@
 - XXX means + 句子 
 - XXX is +名词
 
-
-
 ### 听力 60s
 
 lecture
 
-主题+例子
+主题 + 例子
 
-例子1-2个，90%情况下2个例子
+例子 1-2 个，90%情况下2个例子
 
 可能是主观例子（人的亲身经历），可能是客观例子，主观例子居多
 
 （其实不同话题都有万能定义句）
 
 只记框架信息
+
+### 准备 16+30s
 
 
 
@@ -79,4 +83,29 @@ lecture
 
 
 
-实验题
+练习：
+
+阅读：The Suspension of Disbelief....(10s) 
+
+过渡：(5s)
+
+- For example:
+- Professor gives us an example of XXX to further explain the concept. 
+
+听力：(40s)
+
+起因铺垫:
+
+经过:
+
+结果:
+
+总结：(5s)
+
+This is The Suspension of Disbelief mentioned in the lecture.
+
+
+
+### 实验题
+
+很少，但是有的时候会有，就是按顺序说下来步骤

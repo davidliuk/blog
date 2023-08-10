@@ -8,13 +8,15 @@
 
 ### 听力
 
-lecture
+lecture 90-120s
 
-1-2个例子，90%是2个例子
+1-2-3个例子，90%是2个例子
 
 听懂80%就可以答出来
 
-### 固定结构
+#### 固定结构
+
+<img src="https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/%E6%88%AA%E5%B1%8F2023-06-11%2022.58.44.png" alt="截屏2023-06-11 22.58.44" style="zoom:25%;" />
 
 第一段：背景。听懂为主，作用类似task 3 的阅读，讲关系
 
@@ -36,9 +38,7 @@ lecture
 
 第三段：主题2，结构同一
 
-
-
-### 准备 50s
+#### 笔记
 
 四线笔记法：
 
@@ -46,7 +46,9 @@ lecture
 
 主题 | 例子 | 结果
 
+### 准备 20+30s
 
+整理笔记
 
 ### 答题 60s
 
@@ -58,7 +60,7 @@ In the lecture, the professor is tallking about ...
 
 主题1: 25s
 
-The first .… is...
+The first .… is... (because /which means...)
 
 For example ...
 
@@ -66,23 +68,13 @@ As a result ...
 
 主题2: 25s
 
-The second ... is...
+The second ... is... (because/ which means...)
 
-For example ...
+For instance ...
 
 As a result ...
 
 
-
-模考：换环境模考：在食堂，站着、坐着、倒计时
-
-
-
-21-30语料
-
-2 3 4各两个
-
-重听录屏整理笔记
 
 
 
@@ -101,3 +93,4 @@ resolve conflict
 - decision
 
   1 win 2 lose
+

@@ -41,17 +41,15 @@ https://zhuanlan.zhihu.com/p/382642079
 
 
 
-题目形式
+### 题目形式
 
 - 单选
 - 不定项
 - 选句子
 
-
-
 7类题
 
-
+### 做题顺序
 
 托福和雅思是边读边做：顺序出题
 
@@ -70,8 +68,6 @@ minor and major point
 summarizing a passage
 
 relationship
-
-
 
 
 
