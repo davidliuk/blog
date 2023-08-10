@@ -1,0 +1,1 @@
+import{_ as s,V as t,W as _,X as e}from"./framework-e5d7a6b2.js";const n={},c=e("p",null,"opencs.app",-1),o=e("p",null,"csrankings",-1),a=[c,o];function l(r,i){return t(),_("div",null,a)}const d=s(n,[["render",l],["__file","信息.html.vue"]]);export{d as default};

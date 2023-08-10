@@ -1,0 +1,1 @@
+import{_ as t,V as o,W as s,X as e}from"./framework-e5d7a6b2.js";const _={},n=e("p",null,"get by 勉强、凑合、过得去",-1),c=e("p",null,"my english is not good, but it gets by",-1),l=[n,c];function r(a,i){return o(),s("div",null,l)}const u=t(_,[["render",r],["__file","积累.html.vue"]]);export{u as default};
