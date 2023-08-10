@@ -1,18 +1,12 @@
 # Installation
 
-
-
 ## 本地
-
-
 
 mac环境下使用的brew作为包管理器，通过brew的方式安装最新的docker desktop
 
 ```sh
 brew install --cask docker
 ```
-
-
 
 由于k8s是谷歌的服务以及一些网络的因素，k8s的安装过程会非常受阻
 

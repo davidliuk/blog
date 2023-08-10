@@ -1,7 +1,5 @@
 # 企业级服务器系统导论
 
-
-
 ## 课程章程
 
 1. Linux、Unix用法
@@ -10,46 +8,30 @@
 
 2. 运维硬件的角度
 
-   1. 给很多的脚本
-   2. 冗余、故障转移（冗余节点对故障节点的接管）
-   
+    1. 给很多的脚本
+    2. 冗余、故障转移（冗余节点对故障节点的接管）
+
 3. Docker容器
 
 4. Kubernetes
-
-
 
 Linux
 
 讲生产环节下的Linux环境下的东西
 
-
-
 一般用GNU：bash
 
-
-
 上班有用，不上班不太有用，学了很快就忘了
-
-
 
 理论性和思维性，掌握Linux的思维、计算机的思想
 
 Devops、Kubernetes
 
-
-
 prefork多线程怎么选择模式
-
-
 
 教材：Unix and linux system administration handbook
 
-
-
 Unix-base或VM player
-
-
 
 ## 分数构成
 
@@ -59,25 +41,15 @@ Unix-base或VM player
 
 大作业： 50% 报告
 
-
-
 mainframe，追求极高的availablility，最强的机器
 
 1000多w一台，电费、网费也很贵
 
-
-
 钢厂、银行用mainframe
-
-
 
 阿里巴巴民企唯一一个院士：wangjian
 
-
-
 互联网在Unix上发展的
-
-
 
 availablility
 
@@ -85,15 +57,11 @@ availablility
 
 shell编程
 
-
-
 ### UNIX 常见分支
 
 - System V，贝尔实验室的正统的Unix，init
 - BSD，
 - POSIX，ieee指定的标准
-
-
 
 Linux kernel 单核
 
@@ -105,27 +73,19 @@ GNU ：
 
 GPL：
 
-
-
 Scientific Linux
 
 SuSe：华晨宝马用的（德国的）
 
-
-
 企业级就用CentOS
 
 人工智能深度学习主要用的Ubuntu
-
-
 
 涉及到UNIX的电影
 
 bladerunner：cyberpunk鼻祖
 
 gods in the shell：
-
-
 
 UNIX指令哲学
 

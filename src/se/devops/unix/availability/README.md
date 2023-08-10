@@ -14,8 +14,6 @@ Redundancy 冗余
 - active
 - spare 后备
 
-
-
 核心问题：
 
 - 如何知道服务挂了，

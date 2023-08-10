@@ -3,13 +3,9 @@
 Possible failures
 
 - Web server failure 服务器失败
-- 
-
-
+-
 
 stand by
-
-
 
 spare 方式
 
@@ -17,15 +13,9 @@ spare 方式
 - warm spare
 - hot spare
 
-
-
-
-
 failover 故障转移（实际上是服务转义）
 
 虚拟IP技术，大家都用同一个虚拟IP地址
-
-
 
 failover.sh
 
@@ -36,10 +26,6 @@ DEV="eth0"
 
 ```
 
-
-
-
-
 ## Health Check
 
 判断服务是否坏的方法
@@ -48,25 +34,11 @@ DEV="eth0"
 2. Monitor，监视进程发起的
 3. Heartbeat，被监视方发的，自己说我没事
 
-
-
-
-
 round robin
-
-
-
-
 
 ## Load Balancer
 
-
-
-
-
 ## IPVS (IP Virtual Server): Linux's load balancer
-
-
 
 ### Use IPVS
 
@@ -78,29 +50,13 @@ two software
 
   SOAP, REST都是基于HTTP
 
-
-
 ### Build IPVS
-
-
-
-
 
 L4 Switch vs. L7 Switch
 
-
-
-
-
 内容服务器
 
-
-
-
-
 ## Redundancy of Routers and Load Balancer
-
-
 
 ### VRRP
 
@@ -109,11 +65,5 @@ Virtual router redundancy protocol
 - IP Address
 - Virtual Rtr ID ()
 - Priority (优先顺序)
-
-
-
-
-
-
 
 四层负载均衡
