@@ -72,8 +72,6 @@
 
 - 财务结算
 
-![截屏2023-06-12 09.40.30](/Users/davidliu/Library/Application%20Support/typora-user-images/%E6%88%AA%E5%B1%8F2023-06-12%2009.40.30.png)
-
 要弄清楚模块之间的联系
 
 
