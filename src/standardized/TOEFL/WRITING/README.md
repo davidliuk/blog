@@ -13,8 +13,6 @@
 
 
 
-
-
 ### 事实类
 
 标志词：无
@@ -62,7 +60,7 @@
 
 
 
-短语+例句
+短语 + 例句
 
 Due to the fierce competition in society
 
