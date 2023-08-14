@@ -1,1 +1,0 @@
-import{_ as t,V as _,W as a,X as e,Y as s}from"./framework-e5d7a6b2.js";const c={},o=e("h1",{id:"三剑客",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#三剑客","aria-hidden":"true"},"#"),s(" 三剑客")],-1),r=e("p",null,"三剑客：grep、sed、awk",-1),n=[o,r];function d(i,l){return _(),a("div",null,n)}const f=t(c,[["render",d],["__file","1.2 三剑客.html.vue"]]);export{f as default};
