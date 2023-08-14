@@ -18,4 +18,3 @@ cd k8s-for-docker-desktop
 // 执行脚本安装K8S相关镜像（确认k8s-for-docker-desktop文件夹下的images中的k8s和本地安装的docker中需要的k8s版本保持一致）
 ./load_images.sh
 ```
-

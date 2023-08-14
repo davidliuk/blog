@@ -92,10 +92,14 @@ UNIX指令哲学
 单一职责原则：任何一个UNIX命令都叫做一个软件工具，都是标准输入输出，所以可以串联，需要用到“管道”：`|`用来连接两个命令，eg
 
 ```shell
-cat /usr/include/stdio.h | grep #endif | wc -l
+cat /usr/include/stdio.h | grep "#endif" | wc -l
 ```
 
 标准输出重定向指令：后面+`> 文件名`
 
 标准输入重定向指令：后面+`< 文件名`（sort有点bug）
 
+命令集合：command1 && command2
+该形式将两个命令连接起来，只有当 command1 执行成功时，才会执行 command2。这样可以实现条件执行。
+
+例如，make && make install 表示只有在 make 命令执行成功后，才会执行 make install 命令。
