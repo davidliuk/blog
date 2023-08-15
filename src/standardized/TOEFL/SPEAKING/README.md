@@ -1,5 +1,7 @@
 # Speaking
 
+06-23年，从来没有变过；改革，口语没有任何变化
+
 ### 题型划分
 
 - 独立题
@@ -72,6 +74,8 @@
 
 ## 评分
 
+### 评分维度
+
 Delivery
 
 Language use
@@ -81,11 +85,11 @@ Language use
 
 Topic development
 
-内容要完整，体现逻辑，上下文过渡自然
+- 内容要完整，体现逻辑，上下文过渡自然
+- Evidence-center design
 
-Evidence-center design
 
-
+### 分数层次
 
 25-30，Advanced
 
@@ -108,10 +112,4 @@ Evidence-center design
 ![截屏2022-08-25 21.00.00](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/3978/%E6%88%AA%E5%B1%8F2022-08-25%2021.00.00.png)
 
 
-
-
-
-改革，口语没有任何变化
-
-06-23年，从来没有变过
 
