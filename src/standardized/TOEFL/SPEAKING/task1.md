@@ -6,14 +6,10 @@
 
 背诵：33则语料
 
-
-
 二选一：
 
 Personally speaking + 态度 I think + 态度
 I agree/disagree + 态度
-
-
 
 ### 题型辨析
 
@@ -40,7 +36,7 @@ I agree/disagree + 态度
 
 ### 答题模板
 
-Topic sentence 
+Topic sentence
 
 > 主题句：
 >
@@ -75,7 +71,7 @@ Reason 2 如果有时间，则 reason2 和 conclusion，没时间就不说
 
 conclusion
 
->So, that's why I choose ... 
+> So, that's why I choose ...
 
 
 

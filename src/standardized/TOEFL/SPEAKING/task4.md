@@ -1,6 +1,6 @@
 # Task 4
 
-步骤：听力 > 准备 > 答题
+步骤：**听力 > 准备 > 答题**
 
 特点：无阅读了，难度更大（缺乏预判的文本依据，不过听力文本有如下固定结构）
 
@@ -30,7 +30,7 @@ lecture 90-120s
 
 3. **例子**。
 
-   标志词：for ex, instance, say, like，
+   标志词：for example, instance, say, like，
 
    记例子
 
@@ -42,7 +42,7 @@ lecture 90-120s
 
 四线笔记法：
 
-主题 | 例子 | 结果、
+主题 | 例子 | 结果
 
 主题 | 例子 | 结果
 
@@ -74,23 +74,18 @@ For instance ...
 
 As a result ...
 
-
-
-
-
 ---
 
 例题：
 
 resolve conflict
 
-- mediation 
+- mediation
 
   achieve compromise
 
-  Friend help them to achieve 
+  Friend help them to achieve
 
 - decision
 
   1 win 2 lose
-

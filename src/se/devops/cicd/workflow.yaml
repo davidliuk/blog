@@ -1,0 +1,139 @@
+metadata:
+  name: go-cicd-ldw
+  namespace: public-resource
+  selfLink: >-
+    /apis/argoproj.io/v1alpha1/namespaces/public-resource/workflowtemplates/go-cicd-ldw
+  uid: 50be95d8-8ca2-4911-9f23-a9c119db932e
+  resourceVersion: '2088527956'
+  generation: 12
+  creationTimestamp: '2023-08-16T07:37:09Z'
+  managedFields:
+    - manager: kubectl
+      operation: Update
+      apiVersion: argoproj.io/v1alpha1
+      time: '2023-08-10T05:58:51Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations: {}
+        f:spec:
+          .: {}
+          f:entrypoint: {}
+    - manager: kubectl-client-side-apply
+      operation: Update
+      apiVersion: argoproj.io/v1alpha1
+      time: '2023-08-11T02:45:11Z'
+      fieldsType: FieldsV1
+      fieldsV1:
+        f:metadata:
+          f:annotations:
+            f:kubectl.kubernetes.io/last-applied-configuration: {}
+        f:spec:
+          f:arguments: {}
+          f:templates: {}
+          f:volumeClaimTemplates: {}
+spec:
+  templates:
+    - name: main
+      inputs: {}
+      outputs: {}
+      metadata: {}
+      dag:
+        tasks:
+          - name: clone
+            template: clone
+            arguments:
+              parameters:
+                - name: repo
+                  value: '{{workflow.parameters.repo}}'
+                - name: branch
+                  value: '{{workflow.parameters.branch}}'
+          - name: image
+            template: image
+            arguments:
+              parameters:
+                - name: path
+                  value: '{{workflow.parameters.path}}'
+                - name: image
+                  value: '{{workflow.parameters.image}}'
+                - name: tag
+                  value: '{{tasks.clone.outputs.result}}'
+            depends: clone
+    - name: clone
+      inputs:
+        parameters:
+          - name: repo
+          - name: branch
+      outputs: {}
+      metadata: {}
+      script:
+        name: ''
+        image: dockerhub.mlops.jd.com/ai-platform/git-utils:latest
+        command:
+          - sh
+        workingDir: /{{workflow.parameters.path}}
+        resources: {}
+        volumeMounts:
+          - name: work
+            mountPath: /{{workflow.parameters.path}}
+        source: >
+          git clone --depth 1 -b {{inputs.parameters.branch}} --single-branch
+          {{inputs.parameters.repo}} . 
+
+          git config --global --add safe.directory /work
+
+          echo | git rev-parse --short HEAD
+    - name: image
+      inputs:
+        parameters:
+          - name: image
+          - name: tag
+      outputs: {}
+      metadata: {}
+      container:
+        name: ''
+        image: dockerhub.mlops.jd.com/tektoncd/executor:latest
+        command:
+          - /kaniko/executor
+        args:
+          - '--context=dir:////{{workflow.parameters.path}}'
+          - '--dockerfile=/work/deployment/Dockerfile'
+          - >-
+            --destination={{workflow.parameters.image}}:{{inputs.parameters.tag}}
+          - '--skip-tls-verify-pull=true'
+          - '--insecure-pull=true'
+          - '--skip-tls-verify=true'
+          - '--insecure=true'
+        workingDir: /{{workflow.parameters.path}}
+        resources: {}
+        volumeMounts:
+          - name: docker-config
+            mountPath: /kaniko/.docker/
+          - name: work
+            mountPath: /{{workflow.parameters.path}}
+      volumes:
+        - name: docker-config
+          secret:
+            secretName: docker-secret
+  entrypoint: main
+  arguments:
+    parameters:
+      - name: repo
+        value: git@coding.jd.com:liudawei47/CronDeleteJob.git
+      - name: branch
+        value: master
+      - name: path
+        value: work
+      - name: image
+        value: dockerhub.mlops.jd.com/ai-platform/cron-delete-job
+  volumeClaimTemplates:
+    - metadata:
+        name: work
+        creationTimestamp: null
+      spec:
+        accessModes:
+          - ReadWriteOnce
+        resources:
+          requests:
+            storage: 64Mi
+      status: {}
