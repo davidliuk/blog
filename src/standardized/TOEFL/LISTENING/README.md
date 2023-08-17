@@ -1,33 +1,32 @@
 # Listening
 
-28题，30分
+28 题，30 分
 
 ## 考试划分
 
 ### 时间划分
 
-无加试2个section
+无加试 2 个 section
 
-> 有加试3个section
+> 有加试 3 个 section
 >
 > 新托福无加时
 
-> 在Direction里面第一句说是2 section还是3 section，如果说3则遇到加试
+> 在 Direction 里面第一句说是 2 section 还是 3 section，如果说 3 则遇到加试
 
 答题时间
 
-- 1对话+1讲座 11题，6.5m答题
-- 1对话+2讲座 17题，10m答题
-- 1对话+1讲座 11题，6.5m答题（加试）
+- 1 对话+1 讲座 11 题，6.5m 答题
+- 1 对话+2 讲座 17 题，10m 答题
+- 1 对话+1 讲座 11 题，6.5m 答题（加试）
 
 > 顺序随机，全部认真作答
 >
-> 现在是非经典加试了，所以遇不到可以直接跳过的section了
+> 现在是非经典加试了，所以遇不到可以直接跳过的 section 了
 
-- 对话2.5-3m 5题
+- 对话 2.5-3m 5 题
 
-- 讲座4.5-5m 6题
-
+- 讲座 4.5-5m 6 题
 
 读题目的时候，不计时，出现选项的时候计时
 
@@ -35,8 +34,8 @@
 
 ### 讲座难度划分
 
-- 1.0 版本，TPO靠前的文章（前20），真题里面没有
-- 2.0 版本，TPO靠前的文章（前20）文章简单，但是题可能简单，可能复杂
+- 1.0 版本，TPO 靠前的文章（前 20），真题里面没有
+- 2.0 版本，TPO 靠前的文章（前 20）文章简单，但是题可能简单，可能复杂
 - 3.0 逻辑复杂，理科性文章，大量真题
 - 4.0 时间长，主要是艺术类的文章，很多时候不说人话（难听懂），只出现在新政的
 
@@ -55,14 +54,9 @@ Basic Comprehension Questions
 2. Gist-Purpose 主旨目的题
 3. Detail 细节题
 
-Pragmatic Understanding Questions
-4. Understanding the Function of What ls Said
-5. Understanding the Speakers Attitude
+Pragmatic Understanding Questions 4. Understanding the Function of What ls Said 5. Understanding the Speakers Attitude
 
-Connecting Information Questions
-6. Understanding Organization
-7. Connecting Content
-8. Making Inferencos
+Connecting Information Questions 6. Understanding Organization 7. Connecting Content 8. Making Inferencos
 
 做笔记：思维导图
 
@@ -78,7 +72,7 @@ Connecting Information Questions
 
 Lecture
 
-- Today, 
+- Today,
 - 疑问句：
 
 https://www.xiaohongshu.com/discovery/item/62a97c70000000001401915a
@@ -91,8 +85,8 @@ https://www.xiaohongshu.com/discovery/item/62a97c70000000001401915a
 
 <img src="https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/v2-3e30fe2392aa49e53cb9e1b4c93c18ef_1440w.png" alt="img" style="zoom:33%;" />
 
-- 所有题答对1题得1分，答错1题得0分。注，多选题只要不全对就得0分。
-- 听力满分容错率高达3题，遇到的试卷难度不同，错0-3题都可以拿到托福满分！
+- 所有题答对 1 题得 1 分，答错 1 题得 0 分。注，多选题只要不全对就得 0 分。
+- 听力满分容错率高达 3 题，遇到的试卷难度不同，错 0-3 题都可以拿到托福满分！
 - 在新的算分标准下，听力题目减少，容错率也相应的有所提高，对高分段同学而言，更容易拿高分。
 
 ## 课前学习
@@ -101,11 +95,11 @@ https://www.xiaohongshu.com/discovery/item/62a97c70000000001401915a
 
 - 基础词
 
-  22分以下的同学必须从这个开始背
+  22 分以下的同学必须从这个开始背
 
 - 小伴侣
 
-  22分以上的同学可以从这个开始背
+  22 分以上的同学可以从这个开始背
 
 词汇测试：不能先看单词，不然不能检测是不是听出来的
 
@@ -138,9 +132,9 @@ https://www.xiaohongshu.com/discovery/item/62a97c70000000001401915a
 
 背熟要求：
 
-- 裸测 6秒 顺序中文
-- 测试 6秒 乱序中文
-- 复习 2秒 乱序中文
+- 裸测 6 秒 顺序中文
+- 测试 6 秒 乱序中文
+- 复习 2 秒 乱序中文
   - 重复测试、官网+小程序
 - 做到听到发音，迅速反应出意思
 
@@ -161,7 +155,7 @@ https://www.xiaohongshu.com/discovery/item/62a97c70000000001401915a
 
 听完以后英文复述（三次听，越来越全）
 
-20分以上的同学不需要抄写，口说即可还可以同时练口语
+20 分以上的同学不需要抄写，口说即可还可以同时练口语
 
 看：
 
@@ -178,15 +172,13 @@ https://www.xiaohongshu.com/discovery/item/62a97c70000000001401915a
 
 学科分类练，本质思路是一样的
 
-
-
 一个月备考
 
-单词阅读2小时
+单词阅读 2 小时
 
-听力每天3小时
+听力每天 3 小时
 
-备考周期1个半月比较合适
+备考周期 1 个半月比较合适
 
 分阶段定目标
 
@@ -202,15 +194,13 @@ https://www.xiaohongshu.com/discovery/item/62a97c70000000001401915a
 
 ### 内容特点
 
-一篇文章大概就是三四段，30-40句话
+一篇文章大概就是三四段，30-40 句话
 
 三段话结束，文章基本上要结束了
 
-每篇文章就是四段话（加上主题段共4段）
+每篇文章就是四段话（加上主题段共 4 段）
 
-时间不重要：所有200篇TPO+100篇真题中都是这样，没有任何一题会受时间影响
-
-
+时间不重要：所有 200 篇 TPO+100 篇真题中都是这样，没有任何一题会受时间影响
 
 基础：词句段篇，没到这个程度就词句练习
 
@@ -221,47 +211,26 @@ https://www.xiaohongshu.com/discovery/item/62a97c70000000001401915a
 
 提高方法：背单词、听课、做作业
 
-刷题不重要，不用刷完TPO，刷完的人一般出分不高（
-
-
-
-
+刷题不重要，不用刷完 TPO，刷完的人一般出分不高（
 
 讲座：第一题是主旨题，后面五个也会尽量和中心相关的题
-
-
 
 提高方法：背单词、听课、做作业
 
 基础：词句段篇
 
-
-
-刷题不重要，不用刷完TPO，刷完的人一般出分不高（
-
-
+刷题不重要，不用刷完 TPO，刷完的人一般出分不高（
 
 三段话结束，文章基本上要结束了
 
-每篇文章就是四段话（加上主题段共4段）
-
-
+每篇文章就是四段话（加上主题段共 4 段）
 
 没到这个程度就词句练习
 
-
-
 题目选项
 
-
-
-时间不重要：所有的，200篇TPO+100篇真题中都是这样，没有任何一题会受时间影响
-
-
+时间不重要：所有的，200 篇 TPO+100 篇真题中都是这样，没有任何一题会受时间影响
 
 绝大多数都是按原文顺序出题，但是也有极少概率出现乱序的题（可能一共就两篇乱序）
 
-
-
-一篇文章大概就是三四段，30-40句话
-
+一篇文章大概就是三四段，30-40 句话

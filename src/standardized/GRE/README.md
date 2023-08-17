@@ -8,10 +8,5 @@
 - 语文 170
 - 写作 6
 
-
-
 - Quantitative
 - Verbal
-
-
-

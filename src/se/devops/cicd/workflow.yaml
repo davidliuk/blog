@@ -1,12 +1,12 @@
 metadata:
-  name: go-cicd-ldw
+  name: go-cicd-gitops
   namespace: public-resource
   selfLink: >-
-    /apis/argoproj.io/v1alpha1/namespaces/public-resource/workflowtemplates/go-cicd-ldw
-  uid: 50be95d8-8ca2-4911-9f23-a9c119db932e
-  resourceVersion: '2088527956'
-  generation: 12
-  creationTimestamp: '2023-08-16T07:37:09Z'
+    /apis/argoproj.io/v1alpha1/namespaces/public-resource/workflowtemplates/go-cicd-gitops
+  uid: c87f6713-6ff5-4407-8fc6-519f9909f370
+  resourceVersion: '2091078457'
+  generation: 15
+  creationTimestamp: '2023-08-16T09:28:18Z'
   managedFields:
     - manager: kubectl
       operation: Update
@@ -16,9 +16,6 @@ metadata:
       fieldsV1:
         f:metadata:
           f:annotations: {}
-        f:spec:
-          .: {}
-          f:entrypoint: {}
     - manager: kubectl-client-side-apply
       operation: Update
       apiVersion: argoproj.io/v1alpha1
@@ -28,10 +25,16 @@ metadata:
         f:metadata:
           f:annotations:
             f:kubectl.kubernetes.io/last-applied-configuration: {}
+    - manager: argo
+      operation: Update
+      apiVersion: argoproj.io/v1alpha1
+      time: '2023-08-17T02:16:55Z'
+      fieldsType: FieldsV1
+      fieldsV1:
         f:spec:
           f:arguments: {}
+          f:serviceAccountName: {}
           f:templates: {}
-          f:volumeClaimTemplates: {}
 spec:
   templates:
     - name: main
@@ -57,14 +60,31 @@ spec:
                 - name: image
                   value: '{{workflow.parameters.image}}'
                 - name: tag
-                  value: '{{tasks.clone.outputs.result}}'
+                  value: '{{tasks.clone.outputs.parameters.tag}}'
             depends: clone
+          - name: deploy
+            template: deploy
+            arguments:
+              parameters:
+                - name: repo
+                  value: '{{workflow.parameters.cd-repo}}'
+                - name: branch
+                  value: '{{workflow.parameters.cd-branch}}'
+                - name: path
+                  value: '{{workflow.parameters.cd-path}}'
+                - name: tag
+                  value: '{{tasks.clone.outputs.parameters.tag}}'
+            depends: image
     - name: clone
       inputs:
         parameters:
           - name: repo
           - name: branch
-      outputs: {}
+      outputs:
+        parameters:
+          - name: tag
+            valueFrom:
+              path: /tmp/tag
       metadata: {}
       script:
         name: ''
@@ -74,15 +94,23 @@ spec:
         workingDir: /{{workflow.parameters.path}}
         resources: {}
         volumeMounts:
+          - name: git-account-config
+            mountPath: /ssh
           - name: work
             mountPath: /{{workflow.parameters.path}}
         source: >
+          ls -Al /ssh
+
           git clone --depth 1 -b {{inputs.parameters.branch}} --single-branch
           {{inputs.parameters.repo}} . 
 
-          git config --global --add safe.directory /work
+          git config --global --add safe.directory /{{workflow.parameters.path}}
 
-          echo | git rev-parse --short HEAD
+          git rev-parse --short HEAD > /tmp/tag && cat /tmp/tag
+      volumes:
+        - name: git-account-config
+          secret:
+            secretName: git-account-secret
     - name: image
       inputs:
         parameters:
@@ -115,6 +143,53 @@ spec:
         - name: docker-config
           secret:
             secretName: docker-secret
+    - name: deploy
+      inputs:
+        parameters:
+          - name: repo
+          - name: branch
+          - name: path
+          - name: tag
+      outputs: {}
+      metadata: {}
+      script:
+        name: ''
+        image: dockerhub.mlops.jd.com/ai-platform/git-utils:latest
+        command:
+          - sh
+        workingDir: /{{workflow.parameters.path}}
+        resources: {}
+        volumeMounts:
+          - name: git-account-config
+            mountPath: /ssh
+        source: >
+          ls -Al /ssh
+
+          cat /ssh/git-account-config
+
+          git clone --depth 1 -b {{inputs.parameters.branch}} --single-branch
+          {{inputs.parameters.repo}} . 
+
+          git config --global --add safe.directory .
+
+          git config user.name org.mlops.support1
+
+          git config user.email org.mlops.support1@jd.com
+
+          cd {{inputs.parameters.path}}
+
+          sed -i "s/newTag: .*/newTag: {{inputs.parameters.tag}}/g"
+          kustomization.yaml
+
+          git add --all
+
+          git commit -m "update image tag"
+
+          git push origin {{inputs.parameters.branch}}
+      volumes:
+        - name: git-account-config
+          secret:
+            secretName: git-account-secret
   entrypoint: main
   arguments:
     parameters:
@@ -126,6 +201,13 @@ spec:
         value: work
       - name: image
         value: dockerhub.mlops.jd.com/ai-platform/cron-delete-job
+      - name: cd-repo
+        value: git@coding.jd.com:jdt-ai-platform/AIPlatformDeploy.git
+      - name: cd-branch
+        value: feature/resource-pruner-cron
+      - name: cd-path
+        value: deploy/resource-pruner
+  serviceAccountName: go-cicd
   volumeClaimTemplates:
     - metadata:
         name: work
