@@ -53,7 +53,11 @@ conversation，有一个主讲人（1min Conversation Between a Man & a Woman）
 
 垂直记做笔记（在阅读下面）
 
-支持/反对
+支持/反对:
+
+- 男/女：M/W
+
+- 支持/反对：  +/-
 
 一条竖线
 
@@ -70,10 +74,6 @@ conversation，有一个主讲人（1min Conversation Between a Man & a Woman）
 
 30s准备（+读题共60s），补充笔记（补逻辑词、补句子）
 
-男/女 支持/反对
-
-M/W  +/-
-
 ### 答题 60s
 
 看着倒计时严格按照时间卡点来练习和做题
@@ -82,7 +82,6 @@ M/W  +/-
 - 45 观点
 - 40 论点一
 - 20 论点二
-- 0
 
 1. 阅读 15s
 
@@ -96,28 +95,33 @@ M/W  +/-
 
 2. 听力 45s
 
-   明确态度：
+   - 明确态度：
 
-   观点：The woman/man in the conversation argrees/disagrees with proposal/plan. (5s)
+       观点：The woman/man in the conversation argrees/disagrees with proposal/plan. (5s)
 
-   - Firstly, ... (20s) She/he thinks firstly/ first of all
+       - Firstly, ... (20s) She/he thinks firstly/ first of all
+
+         论点1:
+         解释1:
+         总结1:
+
+       - Secondly, ... (20s) Besides/ in addition/ the second reason
+
+         论点2:
+         解释2:
+         总结2:
    
-     论点1:
-     解释1:
-     总结1:
+   - 混合态度：（TPO里面没有，新政后真题有）
    
-   - Secondly, ... (20s) Besides/ in addition/ the second reason
-   
-     论点2:
-     解释2:
-     总结2:
-   
-   混合态度：（TPO里面没有，新政后真题有）
-   
-   观点：the woman/man has mixed feelings about the reading 
-   
-   - when talking about the first point in the reading, he agrees: 
-   - but about the second point in the reading, he disagrees
+       观点：the woman/man has mixed feelings about the reading 
+
+       - when talking about the first point in the reading, he agrees: 
+       
+         论点1:
+         解释1:
+         总结1:
+       
+       - but about the second point in the reading, he disagrees
 
 - 总结 5s 
 

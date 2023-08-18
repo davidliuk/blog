@@ -10,13 +10,13 @@
 
 ### 阅读 45-50s
 
-阅读结构：
+阅读文章结构
 
 <img src="https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/%E6%88%AA%E5%B1%8F2023-06-05%2013.09.15.png" alt="截屏2023-06-05 13.09.15" style="zoom: 33%;" />
 
 
 
-1个主题（阅读标题，不需要记录，因为阅读结束以后屏幕上会出现这个标题）
+1个主题句（阅读标题，不需要记录，因为阅读结束以后屏幕上会出现这个标题）
 
 1个定义句（对主题的解释，预判听力内容）
 
@@ -26,7 +26,7 @@
 
   这种情况也只需要记这一句
 
-信号词
+定义句信号词
 
 - Known as
 - this is referred to as
@@ -42,10 +42,10 @@
 
 理想情况：locate 主题句+摘抄下来+通读全文+预测听力 
 
-模版:
+模版
 
 - XXX means + 句子 
-- XXX is +名词
+- XXX is + 名词
 
 ### 听力 60s
 
@@ -57,13 +57,15 @@ lecture
 
 可能是主观例子（人的亲身经历），可能是客观例子，主观例子居多
 
-（其实不同话题都有万能定义句）
+> 其实不同话题都有万能定义句
 
 只记框架信息
 
 ### 准备 16+30s
 
+读题16s
 
+整理笔记
 
 ### 答题 60s
 
@@ -79,11 +81,11 @@ lecture
 
 3. As you can see this is the example which can explain what is ***
 
-原文什么时态，就用什么时态
+原文什么时态，答题就用什么时态
 
 
 
-练习：
+## 练习
 
 阅读：The Suspension of Disbelief....(10s) 
 
@@ -103,8 +105,6 @@ lecture
 总结：(5s)
 
 This is The Suspension of Disbelief mentioned in the lecture.
-
-
 
 ### 实验题
 
