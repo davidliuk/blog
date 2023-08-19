@@ -2,11 +2,64 @@
 
 论点
 
-原因 = 好处 = 意义
-
 论据 = 例子
 
 论证
+
+- 举例
+- 因果：原因 = 好处 = 意义
+- 对比
+- 道理
+- 比喻
+
+## 模板
+
+看着倒计时严格按照时间卡点来练习和做题
+
+- 45 观点
+- 30 论点一
+- 05 论点二/总结
+
+1. Topic sentence + Reason 15s
+
+   - TS：
+
+     - From my perspective/ For me/ Personally speaking/ In my opinion,
+     - Personally speaking, I prefer ... for several reasons.
+     - Personally speaking, I think + 态度
+     - Well, in my opinion, I would definitely agree/disagree with the point that ...
+     - I agree/disagree + 态度
+
+   - Reason：
+
+     原因 = 好处 = 意义
+
+     because
+
+   - 排除句：
+
+     > 选择题，排除其他选项：选 A，however，选 B 会怎么不好。
+
+     - However, xxx is xxx, so we may xxx.
+     - However, if we xxx, we may xxx. / 虚拟语气
+
+2. Examples and details 30s
+
+   > The first reason I wanna say is that…
+
+   语料相当于例子和细节
+
+   （说否定时：没钱、没时间是万能原因）
+
+   （说小孩时：不成熟、没有自控力、浪费时间）
+
+3. Reason 2 如果有时间，则 reason2 和 conclusion，没时间就不说
+
+   More importantly, ...
+
+4. Conclusion
+
+   So, that's why I choose/agree ...
 
 ## 教育类
 
@@ -21,26 +74,28 @@ Time is very precious for students, because
 后面接
 
 1. 时间宝贵
-  - 需要提高效率
 
-    Therefore, it's very necessary for me to maximize the time efficiency.
+- 需要提高效率
 
-  - 需要节省时间
+  Therefore, it's very necessary for me to maximize the time efficiency.
 
-    Therefore, it's very important for me to save time. However, learning international news is very time-consuming.
+- 需要节省时间
 
-    However, doing an experiment costs a lot of time, I mean, you need to go to the lab, prepare some materials, and do the experiment step by step by yourself.
+  Therefore, it's very important for me to save time. However, learning international news is very time-consuming.
 
-  - 没有时间
+  However, doing an experiment costs a lot of time, I mean, you need to go to the lab, prepare some materials, and do the experiment step by step by yourself.
 
-    They have no time to 
+- 没有时间
 
-    However, secondary school kids are very busy with academic subjects, so they have no time to learn computer systematically.
+  They have no time to
+
+  However, secondary school kids are very busy with academic subjects, so they have no time to learn computer systematically.
 
 2. 身心疲惫
-  - 需要释放压力
-  - 需要广泛交友
-  - 需要运动健身
+
+- 需要释放压力
+- 需要广泛交友
+- 需要运动健身
 
 ### 学生没钱
 
@@ -68,7 +123,7 @@ However, if I can graduate as soon as possible, I can earn money to make a livin
 
 ### 学业工作
 
-> 主要是对writing paper或其他学业工作具体内容的展开
+> 主要是对 writing paper 或其他学业工作具体内容的展开
 
 such as searching for information online, reading reference books and writing the outline
 
@@ -168,9 +223,9 @@ What's more, when kids need to deal with negative consequences of their mistakes
 
 ### 热爱父母
 
-I love my parents, because they are the people who love and understand me most in the world. They know my personality and habits.Therefore,it's easy for us to communicate and talking with them makes me feel happy and safe.Last time,I traveled to Boston,and every night before asleep I called my parents I shared my happy experiences in the trip with them,and it helped me to feel less homesick.
+I love my parents, because they are the people who love and understand me most in the world. They know my personality and habits.Therefore,it's easy for us to communicate and talking with them makes me feel happy and safe. Last time,I traveled to Boston,and every night before asleep I called my parents I shared my happy experiences in the trip with them,and it helped me to feel less homesick.
 
-I love my parents and they are the people who understand me the most in the world.They know my personality,my habits and my everything.Every time when I need to make some important decisions,I often ask them for advice, and they never fail to give me useful ones.
+I love my parents and they are the people who understand me the most in the world. They know my personality, my habits and my everything. Every time when I need to make some important decisions,I often ask them for advice, and they never fail to give me useful ones.
 
 ### 童不成熟
 
@@ -222,7 +277,7 @@ it's also beneficial for students'study if they need to complete some projects, 
 
 Last summer vacation, I worked in a local company. Our boss Fancy was very friendly and nice. She often discussed with all the group members in the company when she needed to make some important decisions. During the discussion, all the members exchanged their different ideas and thoughts, so that Fancy could make better decisions.This is good for the company.
 
-Group discussion is very beneficial to students,  because two heads are better than one. During the discussion, students can exchange their different ideas and thoughts,and learn from each other.Every time when I encounter some difficult problems in study,I often discuss with my classmates, and they always offer me better ideas to solve those problems.It's very efficient.
+Group discussion is very beneficial to students, because two heads are better than one. During the discussion, students can exchange their different ideas and thoughts,and learn from each other.Every time when I encounter some difficult problems in study,I often discuss with my classmates, and they always offer me better ideas to solve those problems.It's very efficient.
 
 University students often need to have group discussion on their projects, so if boys and girls can live together in the same hall, they can discuss with each other whenever they want. It's more convenient.
 
@@ -263,10 +318,6 @@ Having a good manner plays a very important role in our life, because it enables
 
 ## 工作类
 
-
-
-
-
 ## 科技类
 
 ### 科技便利
@@ -285,77 +336,75 @@ thanks to the technology, people can use all kinds of translation tools to help 
 
 Computers can help you learn how to do almost anything and may be used to get answers to practically any question. If students encounter some problems in study, they can search the answer online with their computers.
 
-
-
 ## 语料频率
 
-  18 学生繁忙
-  13 释放压力
-   8 提高效率
-   6 集中精力
-   6 科技便利
-   6 思维碰撞
-   6 人际关系
-   5 空闲活动
-   5 广泛交友
-   5 学生没钱
-   5 学业工作
-   5 参观展馆
-   5 加深理解
-   4 节省时间
-   4 紧急情况
-   3 舒适体验
-   3 耗费精力
-   3 童不成熟
-   3 强迫致怨
-   3 开拓视野
-   3 夯实基础
-   2 长辈经验
-   2 避免尴尬
-   2 避免危险
-   2 祖父爬山
-   2 珍贵回忆
-   2 热爱父母
-   2 演讲比赛
-   2 没有时间
-   2 尝试犯错
-   2 尊重他人
-   2 学习经验
-   2 出舒适圈
-   2 减少犯错
-   2 倾听他人
-   2 保持礼仪
-   2 任务清单
-   2 不感兴趣
-   1 避免冲突
-   1 遵守计划
-   1 逻辑思维
-   1 运动健身
-   1 趁早学习
-   1 资源丰富
-   1 认真思考
-   1 经验丰富
-   1 童用零钱
-   1 男女互助
-   1 电脑解惑
-   1 父母赞赏
-   1 父母帮助
-   1 熊猫保护
-   1 浪费金钱
-   1 沟通能力
-   1 放松安全
-   1 提升兴趣
-   1 提前准备
-   1 感同身受
-   1 当面交流
-   1 家人第一
-   1 学校责任
-   1 坚持立场
-   1 团队协作
-   1 因材施教
-   1 善意谎言
-   1 保证公平
-   1 保持公平
-   1 保护环境
-   1 人生困境
-   1 交通便利
+18 学生繁忙
+13 释放压力
+8 提高效率
+6 集中精力
+6 科技便利
+6 思维碰撞
+6 人际关系
+5 空闲活动
+5 广泛交友
+5 学生没钱
+5 学业工作
+5 参观展馆
+5 加深理解
+4 节省时间
+4 紧急情况
+3 舒适体验
+3 耗费精力
+3 童不成熟
+3 强迫致怨
+3 开拓视野
+3 夯实基础
+2 长辈经验
+2 避免尴尬
+2 避免危险
+2 祖父爬山
+2 珍贵回忆
+2 热爱父母
+2 演讲比赛
+2 没有时间
+2 尝试犯错
+2 尊重他人
+2 学习经验
+2 出舒适圈
+2 减少犯错
+2 倾听他人
+2 保持礼仪
+2 任务清单
+2 不感兴趣
+1 避免冲突
+1 遵守计划
+1 逻辑思维
+1 运动健身
+1 趁早学习
+1 资源丰富
+1 认真思考
+1 经验丰富
+1 童用零钱
+1 男女互助
+1 电脑解惑
+1 父母赞赏
+1 父母帮助
+1 熊猫保护
+1 浪费金钱
+1 沟通能力
+1 放松安全
+1 提升兴趣
+1 提前准备
+1 感同身受
+1 当面交流
+1 家人第一
+1 学校责任
+1 坚持立场
+1 团队协作
+1 因材施教
+1 善意谎言
+1 保证公平
+1 保持公平
+1 保护环境
+1 人生困境
+1 交通便利

@@ -14,11 +14,9 @@
 
 <img src="https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/%E6%88%AA%E5%B1%8F2023-06-05%2013.09.15.png" alt="截屏2023-06-05 13.09.15" style="zoom: 33%;" />
 
+1 个主题句（阅读标题，不需要记录，因为阅读结束以后屏幕上会出现这个标题）
 
-
-1个主题句（阅读标题，不需要记录，因为阅读结束以后屏幕上会出现这个标题）
-
-1个定义句（对主题的解释，预判听力内容）
+1 个定义句（对主题的解释，预判听力内容）
 
 - 可以是解释清晰的
 
@@ -36,15 +34,15 @@
 - Concerned with
 - \* is the .... 术语本身
 
-> 可以做专项练习，专门做阅读找定义句，比如说专门找TPO的t3阅读
+> 可以做专项练习，专门做阅读找定义句，比如说专门找 TPO 的 t3 阅读
 
 基本要求：locate 主题句+摘抄下来
 
-理想情况：locate 主题句+摘抄下来+通读全文+预测听力 
+理想情况：locate 主题句+摘抄下来+通读全文+预测听力
 
-模版
+定义句模版
 
-- XXX means + 句子 
+- XXX means + 句子
 - XXX is + 名词
 
 ### 听力 60s
@@ -53,7 +51,7 @@ lecture
 
 主题 + 例子
 
-例子 1-2 个，90%情况下2个例子
+例子 1-2 个，90%情况下 2 个例子
 
 可能是主观例子（人的亲身经历），可能是客观例子，主观例子居多
 
@@ -63,7 +61,7 @@ lecture
 
 ### 准备 16+30s
 
-读题16s
+读题 16s
 
 整理笔记
 
@@ -71,28 +69,28 @@ lecture
 
 15+45
 
-1. 阅读15s
+1. 阅读 15s
 
-   _ is a concept in the reading, which means.…
+   \_ is a concept in the reading, which means.…
 
-2. 听力45s
+2. 听力 45s
 
-  In the lecture, the professor uses an example/two examples/his own life experience/his friend’s life experience to explain it...
+In the lecture, the professor uses an example/two examples/his own life experience/his friend’s life experience to explain it...
 
-3. As you can see this is the example which can explain what is ***
+3. As you can see this is the example which can explain what is \*\*\*
 
 原文什么时态，答题就用什么时态
 
-
+--
 
 ## 练习
 
-阅读：The Suspension of Disbelief....(10s) 
+阅读：The Suspension of Disbelief....(10s)
 
 过渡：(5s)
 
 - For example:
-- Professor gives us an example of XXX to further explain the concept. 
+- Professor gives us an example of XXX to further explain the concept.
 
 听力：(40s)
 

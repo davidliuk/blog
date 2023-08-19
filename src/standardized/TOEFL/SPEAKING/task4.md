@@ -10,17 +10,17 @@
 
 lecture 90-120s
 
-1-2-3个例子，90%是2个例子
+1-2-3 个例子，90%是 2 个例子
 
-听懂80%就可以答出来
+听懂 80% 就可以答出来
 
 #### 固定结构
 
 <img src="https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/%E6%88%AA%E5%B1%8F2023-06-11%2022.58.44.png" alt="截屏2023-06-11 22.58.44" style="zoom:25%;" />
 
-第一段：背景。听懂为主，作用类似task 3 的阅读，讲关系
+第一段：背景。听懂为主，作用类似 task 3 的阅读，讲关系
 
-第二段：主题1
+第二段：主题 1
 
 > 不一定准确的听懂关键词，重点是不能怂，记住读音，到时候说出气势
 
@@ -36,7 +36,7 @@ lecture 90-120s
 
 4. 结果
 
-第三段：主题2，结构同一
+第三段：主题 2，结构同一
 
 #### 笔记
 
@@ -58,7 +58,7 @@ In the lecture, the professor is tallking about ...
 
 > 99%的情况下可以直接读屏幕上的内容，即这个的主题
 
-主题1: 25s
+主题 1: 25s
 
 The first .… is... (because /which means...)
 
@@ -66,7 +66,7 @@ For example ...
 
 As a result ...
 
-主题2: 25s
+主题 2: 25s
 
 The second ... is... (because/ which means...)
 
@@ -76,9 +76,9 @@ As a result ...
 
 ---
 
-例题：
+## 练习
 
-resolve conflict
+### resolve conflict
 
 - mediation
 
