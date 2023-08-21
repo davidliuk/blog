@@ -1,5 +1,0 @@
-import{_ as n,V as s,W as a,Z as e}from"./framework-e5d7a6b2.js";const t={},c=e(`<h1 id="优化" tabindex="-1"><a class="header-anchor" href="#优化" aria-hidden="true">#</a> 优化</h1><p>行锁优化</p><p>为Map的Value封装为一个结构体，其中包含一个读写锁，这样可以在读取的时候不会阻塞写入，提高并发性能</p><div class="language-go line-numbers-mode" data-ext="go"><pre class="language-go"><code><span class="token keyword">type</span> Map <span class="token keyword">struct</span> <span class="token punctuation">{</span>
-    m <span class="token keyword">map</span><span class="token punctuation">[</span><span class="token builtin">string</span><span class="token punctuation">]</span><span class="token operator">*</span>entry
-    sync<span class="token punctuation">.</span>RWMutex
-<span class="token punctuation">}</span>
-</code></pre><div class="line-numbers" aria-hidden="true"><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div><div class="line-number"></div></div></div><p>慢同步任务优化</p><p>由于同步任务</p>`,6),p=[c];function o(i,l){return s(),a("div",null,p)}const d=n(t,[["render",o],["__file","优化.html.vue"]]);export{d as default};
