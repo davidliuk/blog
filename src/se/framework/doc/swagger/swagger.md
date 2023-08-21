@@ -1,7 +1,5 @@
 # swagger
 
-
-
 在线文档
 
 1. 及时性（接口变更后，能够及时准确地通知相关前后端开发人员）
@@ -9,15 +7,11 @@
 3. 一致性（接口信息一致，不会出现因开发人员拿到的文档版本不一致，而出现分歧）
 4. 可测性（直接在接口文档进行测试，以方便理解业务）
 
-
-
 kife4j
 
-knife4i是为ava MVC框架集成Swaggers生成Api文档的增强解决方案。
+knife4i 是为 ava MVC 框架集成 Swaggers 生成 Api 文档的增强解决方案。
 
-knife4j属于service模块公共资源，因此我们集成到service-util模块
-
-
+knife4j 属于 service 模块公共资源，因此我们集成到 service-util 模块
 
 ### Docket
 

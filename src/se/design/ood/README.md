@@ -1,7 +1,5 @@
 # 面向对象设计
 
-
-
 ### 类型划分
 
 - 管理类
@@ -9,15 +7,11 @@
 - 实物类
 - 游戏类
 
-
-
-### OOP三大特征
+### OOP 三大特征
 
 - 封装
 - 继承
 - 多态
-
-
 
 ### 设计原则
 
@@ -41,13 +35,9 @@ SOLID：
 
 - D – Dependency inversion principle
 
-  抽象不应该依赖于具体实现，具体实现应该依赖于抽象 
+  抽象不应该依赖于具体实现，具体实现应该依赖于抽象
 
-  High-level的实体不应该依赖于low-level的实体
-
-
-
-
+  High-level 的实体不应该依赖于 low-level 的实体
 
 ## 解题法
 
@@ -56,10 +46,6 @@ SOLID：
 - Cases
 - Classes
 - Correctness
-
-
-
-
 
 Clarify
 
@@ -73,17 +59,13 @@ Classes 说人话:通过类图的方式，具体填充题目中涉及的类
 
 Correctness 说人话:检查自己的设计，是否满足关键点
 
-
-
 ### Correctness
 
-- Validate use cases (检查是否支持所有的use case)
+- Validate use cases (检查是否支持所有的 use case)
 - Follow good practice (面试当中的加分项，展现一个程序员的经验)
 - S.O.L.I.D
 - Design pattern
 
-
-
-并行VS串行
+并行 VS 串行
 
 单线程 VS 多线程

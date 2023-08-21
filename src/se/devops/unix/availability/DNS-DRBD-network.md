@@ -1,8 +1,1 @@
 # DNS DRBD network
-
-
-
-
-
-
-

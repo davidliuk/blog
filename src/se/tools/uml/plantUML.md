@@ -1,12 +1,6 @@
 # Plant UML
 
-
-
-
-
 https://blog.csdn.net/vidar_li/article/details/86495811
-
-
 
 <img src='https://g.gravizo.com/svg?
   digraph G {
@@ -26,10 +20,6 @@ https://blog.csdn.net/vidar_li/article/details/86495811
   }
 '>
 
-
-
 https://blog.csdn.net/fleaxin/article/details/104776154/
-
-
 
 https://plantuml.com/zh/stdlib

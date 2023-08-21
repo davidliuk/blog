@@ -19,10 +19,7 @@ Slave 查，查很多
 异步同步
 
 > Slave + Load Balance
->
 
 ## Lightweight Storage Servers
 
-Web server甚至不需要存储数据
-
-
+Web server 甚至不需要存储数据

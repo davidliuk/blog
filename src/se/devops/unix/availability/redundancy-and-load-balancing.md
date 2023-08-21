@@ -15,7 +15,7 @@ spare 方式
 
 failover 故障转移（实际上是服务转义）
 
-虚拟IP技术，大家都用同一个虚拟IP地址
+虚拟 IP 技术，大家都用同一个虚拟 IP 地址
 
 failover.sh
 
@@ -48,7 +48,7 @@ two software
 
 - keepalived (use VRRP protocol)
 
-  SOAP, REST都是基于HTTP
+  SOAP, REST 都是基于 HTTP
 
 ### Build IPVS
 

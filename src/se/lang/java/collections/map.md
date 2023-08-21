@@ -2,14 +2,13 @@
 
 主要根据集合的特点来选用，比如我们需要根据键值获取到元素值时就选用 Map 接口下的集合，需 要排序时选择 TreeMap ,不需要排序时就选择 HashMap ,需要保证线程安全就选用 ConcurrentHashMap 。
 
-当我们只需要存放元素值时，就选择实现Collection 接口的集合，需要保证元素唯一时选择实现 Set 接口的集合比如 TreeSet 或 HashSet，不需要就选择实现 List 接口的比如 ArrayList或 LinkedList ，然后再根据实现这些接口的集合的特点来选用。
+当我们只需要存放元素值时，就选择实现 Collection 接口的集合，需要保证元素唯一时选择实现 Set 接口的集合比如 TreeSet 或 HashSet，不需要就选择实现 List 接口的比如 ArrayList 或 LinkedList ，然后再根据实现这些接口的集合的特点来选用。
 
 ## HashMap
 
-
 capacity，factor
 
-capacity是元素个数，factor只有构造的时候考虑（容量初始设置比capacity/factor大的第一个2^n），后面还是按3/4
+capacity 是元素个数，factor 只有构造的时候考虑（容量初始设置比 capacity/factor 大的第一个 2^n），后面还是按 3/4
 
 ### 扰动函数：hash
 
@@ -29,8 +28,8 @@ return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
 
 `HashMap` 默认的初始化大小为 16。之后每次扩充，容量变为原来的 2 倍。并且， `HashMap` 总是使用 2 的幂作为哈希表的大小。
 
-- 1.8及以后，满3/4时就扩容
-- 1.8以前，超3/4时扩容
+- 1.8 及以后，满 3/4 时就扩容
+- 1.8 以前，超 3/4 时扩容
 
 扩容的时候，从后往前迁移
 
@@ -48,27 +47,28 @@ return (key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);
 
 ### 遍历方式
 
- HashMap 4 大类遍历方式：
- - 迭代器
- - for
- - lambda
- - stream
+HashMap 4 大类遍历方式：
 
- 具体为 7 种遍历方法，除了 Stream 的并行循环，其他几种遍历方法的性能差别不大，但从简洁性和优雅性上来看，Lambda 和 Stream 无疑是最适合的遍历方式。
+- 迭代器
+- for
+- lambda
+- stream
 
- 除此之外我们还从「安全性」方面测试了 4 大类遍历结果，从安全性来讲，我们应该使用迭代器提供的 iterator.remove() 方法来进行删除，这种方式是安全的在遍历中删除集合的方式，或者使用 Stream 中的 filter 过滤掉要删除的数据再进行循环，也是安全的操作方式。
+具体为 7 种遍历方法，除了 Stream 的并行循环，其他几种遍历方法的性能差别不大，但从简洁性和优雅性上来看，Lambda 和 Stream 无疑是最适合的遍历方式。
 
- 我们不能在遍历中使用集合 map.remove() 来删除数据，这是非安全的操作方式，但我们可以使用迭代器的 iterator.remove() 的方法来删除数据，这是安全的删除集合的方式。同样的我们也可以使用 Lambda 中的 removeIf 来提前删除数据，或者是使用 Stream 中的 filter 过滤掉要删除的数据进行循环，这样都是安全的，当然我们也可以在 for 循环前删除数据在遍历也是线程安全的。
+除此之外我们还从「安全性」方面测试了 4 大类遍历结果，从安全性来讲，我们应该使用迭代器提供的 iterator.remove() 方法来进行删除，这种方式是安全的在遍历中删除集合的方式，或者使用 Stream 中的 filter 过滤掉要删除的数据再进行循环，也是安全的操作方式。
+
+我们不能在遍历中使用集合 map.remove() 来删除数据，这是非安全的操作方式，但我们可以使用迭代器的 iterator.remove() 的方法来删除数据，这是安全的删除集合的方式。同样的我们也可以使用 Lambda 中的 removeIf 来提前删除数据，或者是使用 Stream 中的 filter 过滤掉要删除的数据进行循环，这样都是安全的，当然我们也可以在 for 循环前删除数据在遍历也是线程安全的。
 
 ### 注意事项
 
 #### 对象 key
 
-> 需要重写对象的hashcode和equals方法
+> 需要重写对象的 hashcode 和 equals 方法
 
-先用hashcode放入node的位置，如果hash冲突，就是放入这个位置链表的末端（如果遍历的时候equals方法发现元素已经存在则不放）
+先用 hashcode 放入 node 的位置，如果 hash 冲突，就是放入这个位置链表的末端（如果遍历的时候 equals 方法发现元素已经存在则不放）
 
-判断相等的过程是：先判断两个对象的HashCode的值是否相等，若相等，再进行equals（）判断。若HashCode不相等，则判断两个对象不相等，直接加入到容器中，不再进行equals（）比较。
+判断相等的过程是：先判断两个对象的 HashCode 的值是否相等，若相等，再进行 equals（）判断。若 HashCode 不相等，则判断两个对象不相等，直接加入到容器中，不再进行 equals（）比较。
 
 例如：
 
@@ -88,7 +88,7 @@ class Student {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) 
+        if (o == null || getClass() != o.getClass())
             return false;
         Student student = (Student) o;
         return Objects.equals(name, student.name);
@@ -100,25 +100,25 @@ class Student {
 }
 ```
 
-#### 数组key
+#### 数组 key
 
-> 存放的是其地址，无法重写hashcode等
+> 存放的是其地址，无法重写 hashcode 等
 
-所以一般不能把数组作为key，因为无法重写hashcode和equals
+所以一般不能把数组作为 key，因为无法重写 hashcode 和 equals
 
 - TreeMap 底层使用红黑树，能够按照添加元素的顺序进行遍历，排序的方式有自然排序和定制排序。
 
 ### 红黑树
 
-红黑树是一种特化的AVL树（平衡二叉树），都是在进行插入和删除操作时通过特定操作保持二叉查找树的平衡，从而保证较高的查找性能。 
+红黑树是一种特化的 AVL 树（平衡二叉树），都是在进行插入和删除操作时通过特定操作保持二叉查找树的平衡，从而保证较高的查找性能。
 
-它虽然是复杂的，但它的最坏情况运行时间也是非常良好的，并且在实践中是高效的： 它可以在O(log n)时间内做查找，插入和删除
+它虽然是复杂的，但它的最坏情况运行时间也是非常良好的，并且在实践中是高效的： 它可以在 O(log n)时间内做查找，插入和删除
 
-- 性质1. 结点是红色或黑色。
-- 性质2. 根结点是黑色。
-- 性质3. 所有叶子都是黑色。（叶子是NIL结点）
-- 性质4. 每个红色结点的两个子结点都是黑色。（从每个叶子到根的所有路径上不能有两个连续的红色结点）
-- 性质5. 从任一结点到其每个叶子的所有路径都包含相同数目的黑色结点。
+- 性质 1. 结点是红色或黑色。
+- 性质 2. 根结点是黑色。
+- 性质 3. 所有叶子都是黑色。（叶子是 NIL 结点）
+- 性质 4. 每个红色结点的两个子结点都是黑色。（从每个叶子到根的所有路径上不能有两个连续的红色结点）
+- 性质 5. 从任一结点到其每个叶子的所有路径都包含相同数目的黑色结点。
 
 ## HashTable
 
@@ -127,13 +127,13 @@ class Student {
 - **对 Null key 和 Null value 的支持：**
   1. `HashMap` 可以存储 null 的 key 和 value，但 null 作为键只能有一个，null 作为值可以有多个；
      - key
-       - hash方法`(key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);`
-       - equals方法调用前都有判断是否为null
-     - value不作规定（也不会调用他的什么方法，所以不会NPE）
+       - hash 方法`(key == null) ? 0 : (h = key.hashCode()) ^ (h >>> 16);`
+       - equals 方法调用前都有判断是否为 null
+     - value 不作规定（也不会调用他的什么方法，所以不会 NPE）
   2. Hashtable 不允许有 null 键和 null 值，否则会抛出 `NullPointerException`。
-     - put方法先检查value是否为null，抛出NPE
-     - put方法中调用`int hash = key.hashCode();`如果Key为null则NPE
-- **初始容量大小和每次扩充容量大小的不同 ：** 
+     - put 方法先检查 value 是否为 null，抛出 NPE
+     - put 方法中调用`int hash = key.hashCode();`如果 Key 为 null 则 NPE
+- **初始容量大小和每次扩充容量大小的不同 ：**
   1. 创建时如果不指定容量初始值，`Hashtable` 默认的初始大小为 11，之后每次扩充，容量变为原来的 2n+1。`HashMap` 默认的初始化大小为 16。之后每次扩充，容量变为原来的 2 倍。
   2. 创建时如果给定了容量初始值，那么 `Hashtable` 会直接使用你给定的大小，而 `HashMap` 会将其扩充为 2 的幂次方大小（`HashMap` 中的`tableSizeFor()`方法保证，下面给出了源代码）。也就是说 `HashMap` 总是使用 2 的幂作为哈希表的大小,后面会介绍到为什么是 2 的幂次方。
 - **底层数据结构：** JDK1.8 以后的 `HashMap` 在解决哈希冲突时有了较大的变化，当链表长度大于阈值（默认为 8）时，将链表转化为红黑树（将链表转换成红黑树前会判断，如果当前数组的长度小于 64，那么会选择先进行数组扩容，而不是转换为红黑树），以减少搜索时间（后文中我会结合源码对这一过程进行分析）。`Hashtable` 没有这样的机制。
@@ -149,4 +149,3 @@ class Student {
 实现`SortedMap`接口让 `TreeMap` 有了对集合中的元素根据键排序的能力。默认是按 key 的升序排序，不过我们也可以指定排序的比较器。
 
 **相比于`HashMap`来说 `TreeMap` 主要多了对集合中的元素根据键排序的能力以及对集合内元素的搜索的能力，同时也提供了范围查找的可行性。**
-

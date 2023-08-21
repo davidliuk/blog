@@ -1,6 +1,6 @@
 # load assessment and tuning
 
-sar：发现瓶颈在哪，cpu还是io
+sar：发现瓶颈在哪，cpu 还是 io
 
 ### When CPU load is high
 
@@ -14,7 +14,7 @@ strace 看系统调用
 
 swap 内存不够
 
-数据库I/O多
+数据库 I/O 多
 
 ### prefork
 
@@ -26,13 +26,13 @@ swap 内存不够
 
 epoll
 
-nginx和redis都是这个，高性能，多路复用
+nginx 和 redis 都是这个，高性能，多路复用
 
-copy on write多进程多线程没有本质区别
+copy on write 多进程多线程没有本质区别
 
 但是上下文切换很大区别
 
-使用work可能提高上下文切换的
+使用 work 可能提高上下文切换的
 
 现代计算机硬盘瓶颈：IO
 
@@ -42,7 +42,7 @@ copy on write多进程多线程没有本质区别
 
 2. 网络传输慢
 
-Hadoop访问硬盘，spark全放内存里，所以spark快很多
+Hadoop 访问硬盘，spark 全放内存里，所以 spark 快很多
 
 内存死亡
 
@@ -55,4 +55,3 @@ Hadoop访问硬盘，spark全放内存里，所以spark快很多
 多进场多线程
 
 优化：
-

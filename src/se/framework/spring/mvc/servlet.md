@@ -1,50 +1,50 @@
 # Servlet
 
-在Java Web程序中，**Servlet**主要负责接收用户请求 `HttpServletRequest`,在`doGet()`,`doPost()`中做相应的处理，并将回应`HttpServletResponse`反馈给用户。**Servlet** 可以设置初始化参数，供Servlet内部使用。一个Servlet类只会有一个实例，在它初始化时调用`init()`方法，销毁时调用`destroy()`方法**。**Servlet需要在web.xml中配置（MyEclipse中创建Servlet会自动配置），**一个Servlet可以设置多个URL访问**。**Servlet不是线程安全**，因此要谨慎使用类变量。
+在 Java Web 程序中，**Servlet**主要负责接收用户请求 `HttpServletRequest`,在`doGet()`,`doPost()`中做相应的处理，并将回应`HttpServletResponse`反馈给用户。**Servlet** 可以设置初始化参数，供 Servlet 内部使用。一个 Servlet 类只会有一个实例，在它初始化时调用`init()`方法，销毁时调用`destroy()`方法**。**Servlet 需要在 web.xml 中配置（MyEclipse 中创建 Servlet 会自动配置），**一个 Servlet 可以设置多个 URL 访问**。**Servlet 不是线程安全**，因此要谨慎使用类变量。
 
 ## Servlet 重要方法
 
-Servlet是Java Web应用程序中的一种Java类，用于处理HTTP请求和响应。以下是Servlet中一些重要的方法：
+Servlet 是 Java Web 应用程序中的一种 Java 类，用于处理 HTTP 请求和响应。以下是 Servlet 中一些重要的方法：
 
-1. init()方法：在Servlet被创建时调用，用于初始化Servlet。可以在这个方法中进行一些初始化操作，例如读取配置文件、建立数据库连接等。
+1. init()方法：在 Servlet 被创建时调用，用于初始化 Servlet。可以在这个方法中进行一些初始化操作，例如读取配置文件、建立数据库连接等。
 
-2. service()方法：用于处理HTTP请求和响应。当客户端发送请求时，容器会调用Servlet的service()方法来处理请求，并将响应发送回客户端。
+2. service()方法：用于处理 HTTP 请求和响应。当客户端发送请求时，容器会调用 Servlet 的 service()方法来处理请求，并将响应发送回客户端。
 
-3. doGet()方法和doPost()方法：这两个方法是service()方法的具体实现。当客户端发送GET请求时，容器会调用doGet()方法来处理请求；当客户端发送POST请求时，容器会调用doPost()方法来处理请求。在这两个方法中，可以通过HttpServletRequest对象获取请求参数，并通过HttpServletResponse对象设置响应内容。
+3. doGet()方法和 doPost()方法：这两个方法是 service()方法的具体实现。当客户端发送 GET 请求时，容器会调用 doGet()方法来处理请求；当客户端发送 POST 请求时，容器会调用 doPost()方法来处理请求。在这两个方法中，可以通过 HttpServletRequest 对象获取请求参数，并通过 HttpServletResponse 对象设置响应内容。
 
-   需要重写HttpServlet中的这些方法doPost、doDelete，不然就会显示methodNotAllowed
+   需要重写 HttpServlet 中的这些方法 doPost、doDelete，不然就会显示 methodNotAllowed
 
-4. destroy()方法：在Servlet被销毁时调用，用于释放资源。可以在这个方法中进行一些清理操作，例如关闭数据库连接、释放内存等。
+4. destroy()方法：在 Servlet 被销毁时调用，用于释放资源。可以在这个方法中进行一些清理操作，例如关闭数据库连接、释放内存等。
 
-5. getServletConfig()方法和getServletContext()方法：这两个方法用于获取Servlet的配置信息和上下文信息。可以通过getServletConfig()方法获取Servlet的初始化参数，通过getServletContext()方法获取Servlet上下文信息。
+5. getServletConfig()方法和 getServletContext()方法：这两个方法用于获取 Servlet 的配置信息和上下文信息。可以通过 getServletConfig()方法获取 Servlet 的初始化参数，通过 getServletContext()方法获取 Servlet 上下文信息。
 
-6. getServletInfo()方法：用于获取Servlet的描述信息。可以在web.xml文件中配置Servlet的描述信息。
+6. getServletInfo()方法：用于获取 Servlet 的描述信息。可以在 web.xml 文件中配置 Servlet 的描述信息。
 
-总之，Servlet中的这些方法都是非常重要的，它们可以帮助我们处理HTTP请求和响应，并进行一些初始化和清理操作。在编写Servlet时，需要根据实际情况重写这些方法，以实现自己的业务逻辑。
+总之，Servlet 中的这些方法都是非常重要的，它们可以帮助我们处理 HTTP 请求和响应，并进行一些初始化和清理操作。在编写 Servlet 时，需要根据实际情况重写这些方法，以实现自己的业务逻辑。
 
-## 什么情况下调用doGet()和doPost()
+## 什么情况下调用 doGet()和 doPost()
 
-Form标签里的method的属性为get时调用doGet()，为post时调用doPost()。
+Form 标签里的 method 的属性为 get 时调用 doGet()，为 post 时调用 doPost()。
 
 ## 转发(Forward)和重定向(Redirect)的区别
 
 **转发是服务器行为，重定向是客户端行为。**
 
-**转发（Forward）** 通过RequestDispatcher对象的forward（HttpServletRequest request,HttpServletResponse response）方法实现的。RequestDispatcher可以通过HttpServletRequest 的getRequestDispatcher()方法获得。例如下面的代码就是跳转到login_success.jsp页面。
+**转发（Forward）** 通过 RequestDispatcher 对象的 forward（HttpServletRequest request,HttpServletResponse response）方法实现的。RequestDispatcher 可以通过 HttpServletRequest 的 getRequestDispatcher()方法获得。例如下面的代码就是跳转到 login_success.jsp 页面。
 
 ```java
 request.getRequestDispatcher("login_success.jsp").forward(request, response);
 ```
 
-**重定向（Redirect）** 是利用服务器返回的状态码来实现的。客户端浏览器请求服务器的时候，服务器会返回一个状态码。服务器通过 `HttpServletResponse` 的 `setStatus(int status)` 方法设置状态码。如果服务器返回301或者302，则浏览器会到新的网址重新请求该资源。
+**重定向（Redirect）** 是利用服务器返回的状态码来实现的。客户端浏览器请求服务器的时候，服务器会返回一个状态码。服务器通过 `HttpServletResponse` 的 `setStatus(int status)` 方法设置状态码。如果服务器返回 301 或者 302，则浏览器会到新的网址重新请求该资源。
 
 1. **从地址栏显示来说**
 
-forward是服务器请求资源,服务器直接访问目标地址的URL,把那个URL的响应内容读取过来,然后把这些内容再发给浏览器.浏览器根本不知道服务器发送的内容从哪里来的,所以它的地址栏还是原来的地址. redirect是服务端根据逻辑,发送一个状态码,告诉浏览器重新去请求那个地址.所以地址栏显示的是新的URL.
+forward 是服务器请求资源,服务器直接访问目标地址的 URL,把那个 URL 的响应内容读取过来,然后把这些内容再发给浏览器.浏览器根本不知道服务器发送的内容从哪里来的,所以它的地址栏还是原来的地址. redirect 是服务端根据逻辑,发送一个状态码,告诉浏览器重新去请求那个地址.所以地址栏显示的是新的 URL.
 
 1. **从数据共享来说**
 
-forward:转发页面和转发到的页面可以共享request里面的数据. redirect:不能共享数据.
+forward:转发页面和转发到的页面可以共享 request 里面的数据. redirect:不能共享数据.
 
 1. **从运用地方来说**
 
@@ -56,15 +56,14 @@ forward:高. redirect:低.
 
 ## 自动刷新(Refresh)
 
-自动刷新不仅可以实现一段时间之后自动跳转到另一个页面，还可以实现一段时间之后自动刷新本页面。Servlet中通过HttpServletResponse对象设置Header属性实现自动刷新例如：
+自动刷新不仅可以实现一段时间之后自动跳转到另一个页面，还可以实现一段时间之后自动刷新本页面。Servlet 中通过 HttpServletResponse 对象设置 Header 属性实现自动刷新例如：
 
 ```java
 Response.setHeader("Refresh","5;URL=http://localhost:8080/servlet/example.htm");
 ```
 
-其中5为时间，单位为秒。URL指定就是要跳转的页面（如果设置自己的路径，就会实现每过5秒自动刷新本页面一次）
+其中 5 为时间，单位为秒。URL 指定就是要跳转的页面（如果设置自己的路径，就会实现每过 5 秒自动刷新本页面一次）
 
-## Servlet与线程安全
+## Servlet 与线程安全
 
-**Servlet不是线程安全的，多线程并发的读写会导致数据不同步的问题。** 解决的办法是尽量不要定义name属性，而是要把name变量分别定义在doGet()和doPost()方法内。虽然使用synchronized(name){}语句块可以解决问题，但是会造成线程的等待，不是很科学的办法。 注意：多线程的并发的读写Servlet类属性会导致数据不同步。但是如果只是并发地读取属性而不写入，则不存在数据不同步的问题。因此Servlet里的只读属性最好定义为final类型的。
-
+**Servlet 不是线程安全的，多线程并发的读写会导致数据不同步的问题。** 解决的办法是尽量不要定义 name 属性，而是要把 name 变量分别定义在 doGet()和 doPost()方法内。虽然使用 synchronized(name){}语句块可以解决问题，但是会造成线程的等待，不是很科学的办法。 注意：多线程的并发的读写 Servlet 类属性会导致数据不同步。但是如果只是并发地读取属性而不写入，则不存在数据不同步的问题。因此 Servlet 里的只读属性最好定义为 final 类型的。

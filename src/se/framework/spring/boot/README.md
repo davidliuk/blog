@@ -56,7 +56,7 @@ AutoConfigurationImportSelector 类中 getCandidateConfigurations 方法会将�
 
 [spring boot 启动流程分析 - 掘金 (juejin.cn)](https://juejin.cn/post/7035910505810100255)
 
-- 准备Environment
+- 准备 Environment
 - 发布事件
 - 创建上下文、bean
 - 刷新上下文
@@ -66,16 +66,16 @@ AutoConfigurationImportSelector 类中 getCandidateConfigurations 方法会将�
 
 #### 格式
 
-Spring Boot核心配置文件有以下几种格式：
+Spring Boot 核心配置文件有以下几种格式：
 
-1. Properties格式：以.properties为后缀，采用键值对的方式进行配置，例如：
+1. Properties 格式：以.properties 为后缀，采用键值对的方式进行配置，例如：
 
    ```
    server.port=8080
    spring.datasource.url=jdbc:mysql://localhost:3306/test
    ```
 
-2. YAML格式：以.yml或.yaml为后缀，采用缩进的方式进行配置，例如：
+2. YAML 格式：以.yml 或.yaml 为后缀，采用缩进的方式进行配置，例如：
 
    ```
    server:
@@ -85,7 +85,7 @@ Spring Boot核心配置文件有以下几种格式：
        url: jdbc:mysql://localhost:3306/test
    ```
 
-3. XML格式：以.xml为后缀，采用标签的方式进行配置，例如：
+3. XML 格式：以.xml 为后缀，采用标签的方式进行配置，例如：
 
    ```
    <server>
@@ -98,15 +98,15 @@ Spring Boot核心配置文件有以下几种格式：
    </spring>
    ```
 
-这三种格式的配置文件都可以用于Spring Boot应用的配置，但是它们之间有一些区别：
+这三种格式的配置文件都可以用于 Spring Boot 应用的配置，但是它们之间有一些区别：
 
-1. Properties格式的配置文件比较简单，适合用于简单的配置场景，例如单个属性的配置。
+1. Properties 格式的配置文件比较简单，适合用于简单的配置场景，例如单个属性的配置。
 
-2. YAML格式的配置文件比较灵活，可以支持复杂的数据结构，例如列表、映射等，适合用于复杂的配置场景。
+2. YAML 格式的配置文件比较灵活，可以支持复杂的数据结构，例如列表、映射等，适合用于复杂的配置场景。
 
-3. XML格式的配置文件比较冗长，但是可以支持复杂的数据结构和多语言的配置，适合用于大型项目的配置场景。
+3. XML 格式的配置文件比较冗长，但是可以支持复杂的数据结构和多语言的配置，适合用于大型项目的配置场景。
 
-总的来说，Spring Boot支持Properties、YAML和XML三种格式的配置文件，每种格式都有其适用的场景和特点，需要根据实际情况选择合适的格式进行配置。
+总的来说，Spring Boot 支持 Properties、YAML 和 XML 三种格式的配置文件，每种格式都有其适用的场景和特点，需要根据实际情况选择合适的格式进行配置。
 
 #### 种类
 
@@ -119,8 +119,8 @@ Spring Boot核心配置文件有以下几种格式：
 4、bootstrap 优于 application 加载；bootstrap 偏向系统层级的参数配置，Bootstrap 属性有高优先级，默认情况下，它们不会被本地配置覆盖。application 偏向应用层级的参数配置。
 
 4、使用 Spring Cloud Config 配置中心时，这时需要在 bootstrap 配置文件中添加连接到配置中心的配置属性来加载外部配置中心的配置信息；
-     a、一些固定的不能被覆盖的属性
-     b、一些加密/解密的场景；
+a、一些固定的不能被覆盖的属性
+b、一些加密/解密的场景；
 
 #### Spring Boot 多环境配置
 
@@ -130,7 +130,7 @@ Spring Boot核心配置文件有以下几种格式：
 
 3、spring.profiles.active 的值为多个时，用逗号隔开，[官网文档](https://docs.spring.io/spring-boot/docs/2.1.6.RELEASE/reference/htmlsingle/#common-application-properties)。
 
-**方式1：多 profile 文件形式**
+**方式 1：多 profile 文件形式**
 
 1、格式：application-{profile}.properties/yml，如：application-dev.properties、application-prod.properties 等
 
@@ -138,7 +138,7 @@ Spring Boot核心配置文件有以下几种格式：
 
 3、然后在全局配置文件 application.properties 和 application.yml 激活使用 “spring.profiles.active=profile” 激活指定文件.
 
-方式2： **yml 文档块形式**
+方式 2： **yml 文档块形式**
 
 1、yml 文件支持多文档块方式，同一个 yml 文件中，可以使用"---"来区分不同的文档，相当于不同的配置文件
 
@@ -146,20 +146,20 @@ Spring Boot核心配置文件有以下几种格式：
 
 ```yaml
 spring:
- profiles:
-  active: dev #指定激活哪个环境配置，激活后，第一个文档内容失效;不指定时，以第一个文档为准
+  profiles:
+    active: dev #指定激活哪个环境配置，激活后，第一个文档内容失效;不指定时，以第一个文档为准
 server:
- port: 8083
+  port: 8083
 --- #"---"用于分隔不同的profiles（）文档块
 spring:
- profiles: dev #指定环境标识为"devel",相当于"application-{profile}.properties/yml"中的profile
+  profiles: dev #指定环境标识为"devel",相当于"application-{profile}.properties/yml"中的profile
 server:
- port: 8081
+  port: 8081
 ---
 spring:
- profiles: deploy #指定环境标识为"deploy",相当于"application-{profile}.properties/yml"中的profile
+  profiles: deploy #指定环境标识为"deploy",相当于"application-{profile}.properties/yml"中的profile
 server:
- port: 8082
+  port: 8082
 ```
 
 #### 配置文件位置与加载顺序
@@ -168,9 +168,9 @@ server:
 
 1、Spring boot 启动时自动扫描以下位置的 application.properties 或者 application.yml 文件作为 Spring boot 的默认配置文件。
 
-1. file:./config/  -------------整个项目根目录下的config目录下
-2. file:./  ---------------------整个项目根目录下
-3. classpath:/config/---------类路径下的config目录下
+1. file:./config/ -------------整个项目根目录下的 config 目录下
+2. file:./ ---------------------整个项目根目录下
+3. classpath:/config/---------类路径下的 config 目录下
 4. classpath:/-----------------类路径根目录下
 
 2、优先级从上往下由高到底，高优先级的配置会覆盖低优先级的配置；Spring Boot 会从这四个位置加载所有的主配置文件，如果高优先级的内容与低优先级的内容相同，则覆盖；如果低优先级的内容在高优先级中没有，则形成互补。
@@ -179,4 +179,4 @@ server:
 
 3、应用启动后，1 位置的端口会生效，控制台会输出：Tomcat started on port(s): 8081 (http) with context path '/coco'
 
-4、项目打包之后，与 jar 同目录下的位置相当于位置2，与 jar 同目录下的 config 子目录相当于位置 1.
+4、项目打包之后，与 jar 同目录下的位置相当于位置 2，与 jar 同目录下的 config 子目录相当于位置 1.

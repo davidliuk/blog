@@ -86,4 +86,3 @@
 3. `Timestamp` ---> `LocalDateTime`
 
 而之前统统对应 `Date`，也只有 `Date`。
-

@@ -7,7 +7,7 @@
 - 实现资源对象的线程隔离，让每个线程各用各的资源对象，避免争用引发的线程安全问题
 - 实现了线程内的资源共享
 
-局部变量：可以线程隔离，但是不能跨方法。Thread Local主要解决的就是这个跨方法的问题
+局部变量：可以线程隔离，但是不能跨方法。Thread Local 主要解决的就是这个跨方法的问题
 
 ## 线程关联的原理
 
@@ -15,7 +15,7 @@ ThreadLocal 并不是一个独立的存在, 它与 Thread 类是存在耦合的,
 
 ```go
 /* ThreadLocal values pertaining to this thread. This map is maintained
- * by the ThreadLocal class. 
+ * by the ThreadLocal class.
  */
 ThreadLocal.ThreadLocalMap threadLocals = null;
 ```
@@ -46,19 +46,19 @@ ThreadLocal.ThreadLocalMap threadLocals = null;
 
 ## 内存泄漏
 
-**ThreadLocal** 在 **ThreadLocalMap** 中是以一个弱引用身份被Entry中的Key引用的，因此如果ThreadLocal没有外部强引用来引用它，那么ThreadLocal会在下次JVM垃圾收集时被回收。这个时候就会出现Entry中Key已经被回收，出现一个null Key的情况，外部读取ThreadLocalMap中的元素是无法通过null Key来找到Value的。因此如果当前线程的生命周期很长，一直存在，那么其内部的ThreadLocalMap对象也一直生存下来，这些null key就存在一条强引用链的关系一直存在：Thread --> ThreadLocalMap-->Entry-->Value，这条强引用链会导致Entry不会回收，Value也不会回收，但Entry中的Key却已经被回收的情况，造成内存泄漏。
+**ThreadLocal** 在 **ThreadLocalMap** 中是以一个弱引用身份被 Entry 中的 Key 引用的，因此如果 ThreadLocal 没有外部强引用来引用它，那么 ThreadLocal 会在下次 JVM 垃圾收集时被回收。这个时候就会出现 Entry 中 Key 已经被回收，出现一个 null Key 的情况，外部读取 ThreadLocalMap 中的元素是无法通过 null Key 来找到 Value 的。因此如果当前线程的生命周期很长，一直存在，那么其内部的 ThreadLocalMap 对象也一直生存下来，这些 null key 就存在一条强引用链的关系一直存在：Thread --> ThreadLocalMap-->Entry-->Value，这条强引用链会导致 Entry 不会回收，Value 也不会回收，但 Entry 中的 Key 却已经被回收的情况，造成内存泄漏。
 
-但是JVM团队已经考虑到这样的情况，并做了一些措施来保证ThreadLocal尽量不会内存泄漏：在ThreadLocal的get()、set()、remove()方法调用的时候会清除掉线程ThreadLocalMap中所有Entry中Key为null的Value，并将整个Entry设置为null，利于下次内存
+但是 JVM 团队已经考虑到这样的情况，并做了一些措施来保证 ThreadLocal 尽量不会内存泄漏：在 ThreadLocal 的 get()、set()、remove()方法调用的时候会清除掉线程 ThreadLocalMap 中所有 Entry 中 Key 为 null 的 Value，并将整个 Entry 设置为 null，利于下次内存
 
-由于**ThreadLocalMap**的key是弱引用，而Value是强引用。这就导致了一个问题，ThreadLocal在没有外部对象强引用时，发生GC时弱引用Key会被回收，而Value不会回收，如果创建ThreadLocal的线程一直持续运行，那么这个Entry对象中的value就有可能一直得不到回收，发生内存泄露。
+由于**ThreadLocalMap**的 key 是弱引用，而 Value 是强引用。这就导致了一个问题，ThreadLocal 在没有外部对象强引用时，发生 GC 时弱引用 Key 会被回收，而 Value 不会回收，如果创建 ThreadLocal 的线程一直持续运行，那么这个 Entry 对象中的 value 就有可能一直得不到回收，发生内存泄露。
 
 ## 线程池脏读问题
 
 ThreadLocal 是利用独占资源的方式，来解决线程安全问题，那如果我们确实需要有资源在线程之间共享，应该怎么办呢？这时，我们可能就需要用到线程安全的容器了。
 
-上个例子说明，**ThreadLocal用不好也会产生副作用**，线程复用会产生脏数据。由于线程 池会重用Thread对象，那么与Thread绑定的类的静态属性ThreadLocal变量也会被重用。如果在实现的线程run()方法体中不显式地调用于线程相关的ThreadLocal信息，那么倘若下一个线程不调用set()设置初始值，就可能get到重用的线程信息，包括ThreadLocal所关联的线程对象的value值。
+上个例子说明，**ThreadLocal 用不好也会产生副作用**，线程复用会产生脏数据。由于线程 池会重用 Thread 对象，那么与 Thread 绑定的类的静态属性 ThreadLocal 变量也会被重用。如果在实现的线程 run()方法体中不显式地调用于线程相关的 ThreadLocal 信息，那么倘若下一个线程不调用 set()设置初始值，就可能 get 到重用的线程信息，包括 ThreadLocal 所关联的线程对象的 value 值。
 
-解决方案也很简单，在每个线程执行中，往ThreadLocal对象设置值后，执行完核心逻辑代码，最后对ThreadLocal对象进行清理。优化后的代码如下：
+解决方案也很简单，在每个线程执行中，往 ThreadLocal 对象设置值后，执行完核心逻辑代码，最后对 ThreadLocal 对象进行清理。优化后的代码如下：
 
 ## 父子线程间共享
 
@@ -84,8 +84,8 @@ public class InheritableThreadLocalDemo {
 
 打印结果：
 
-- 子线程获取父类ThreadLocal数据：null
-- 子线程获取父类inheritableThreadLocal数据：父类数据:inheritableThreadLocal
+- 子线程获取父类 ThreadLocal 数据：null
+- 子线程获取父类 inheritableThreadLocal 数据：父类数据:inheritableThreadLocal
 
 实现原理是子线程是通过在父线程中通过调用`new Thread()`方法来创建子线程，`Thread#init`方法在`Thread`的构造方法中被调用。在`init`方法中拷贝父线程数据到子线程中：
 

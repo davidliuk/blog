@@ -1,7 +1,5 @@
 # Spring
 
-
-
 核心模块
 
 - IoC 控制反转
@@ -10,11 +8,7 @@
 
   代理模式，开闭原则
 
-
-
 ![Spring5.x主要模块](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/20200831175708.png)
-
-
 
 ![Spring 各个模块的依赖关系](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/20200902100038.png)
 

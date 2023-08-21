@@ -4,14 +4,14 @@ metadata:
   selfLink: >-
     /apis/argoproj.io/v1alpha1/namespaces/public-resource/workflowtemplates/go-cicd-gitops
   uid: c87f6713-6ff5-4407-8fc6-519f9909f370
-  resourceVersion: '2091078457'
+  resourceVersion: "2091078457"
   generation: 15
-  creationTimestamp: '2023-08-16T09:28:18Z'
+  creationTimestamp: "2023-08-16T09:28:18Z"
   managedFields:
     - manager: kubectl
       operation: Update
       apiVersion: argoproj.io/v1alpha1
-      time: '2023-08-10T05:58:51Z'
+      time: "2023-08-10T05:58:51Z"
       fieldsType: FieldsV1
       fieldsV1:
         f:metadata:
@@ -19,7 +19,7 @@ metadata:
     - manager: kubectl-client-side-apply
       operation: Update
       apiVersion: argoproj.io/v1alpha1
-      time: '2023-08-11T02:45:11Z'
+      time: "2023-08-11T02:45:11Z"
       fieldsType: FieldsV1
       fieldsV1:
         f:metadata:
@@ -28,7 +28,7 @@ metadata:
     - manager: argo
       operation: Update
       apiVersion: argoproj.io/v1alpha1
-      time: '2023-08-17T02:16:55Z'
+      time: "2023-08-17T02:16:55Z"
       fieldsType: FieldsV1
       fieldsV1:
         f:spec:
@@ -48,32 +48,32 @@ spec:
             arguments:
               parameters:
                 - name: repo
-                  value: '{{workflow.parameters.repo}}'
+                  value: "{{workflow.parameters.repo}}"
                 - name: branch
-                  value: '{{workflow.parameters.branch}}'
+                  value: "{{workflow.parameters.branch}}"
           - name: image
             template: image
             arguments:
               parameters:
                 - name: path
-                  value: '{{workflow.parameters.path}}'
+                  value: "{{workflow.parameters.path}}"
                 - name: image
-                  value: '{{workflow.parameters.image}}'
+                  value: "{{workflow.parameters.image}}"
                 - name: tag
-                  value: '{{tasks.clone.outputs.parameters.tag}}'
+                  value: "{{tasks.clone.outputs.parameters.tag}}"
             depends: clone
           - name: deploy
             template: deploy
             arguments:
               parameters:
                 - name: repo
-                  value: '{{workflow.parameters.cd-repo}}'
+                  value: "{{workflow.parameters.cd-repo}}"
                 - name: branch
-                  value: '{{workflow.parameters.cd-branch}}'
+                  value: "{{workflow.parameters.cd-branch}}"
                 - name: path
-                  value: '{{workflow.parameters.cd-path}}'
+                  value: "{{workflow.parameters.cd-path}}"
                 - name: tag
-                  value: '{{tasks.clone.outputs.parameters.tag}}'
+                  value: "{{tasks.clone.outputs.parameters.tag}}"
             depends: image
     - name: clone
       inputs:
@@ -87,7 +87,7 @@ spec:
               path: /tmp/tag
       metadata: {}
       script:
-        name: ''
+        name: ""
         image: dockerhub.mlops.jd.com/ai-platform/git-utils:latest
         command:
           - sh
@@ -119,19 +119,19 @@ spec:
       outputs: {}
       metadata: {}
       container:
-        name: ''
+        name: ""
         image: dockerhub.mlops.jd.com/tektoncd/executor:latest
         command:
           - /kaniko/executor
         args:
-          - '--context=dir:////{{workflow.parameters.path}}'
-          - '--dockerfile=/work/deployment/Dockerfile'
+          - "--context=dir:////{{workflow.parameters.path}}"
+          - "--dockerfile=/work/deployment/Dockerfile"
           - >-
             --destination={{workflow.parameters.image}}:{{inputs.parameters.tag}}
-          - '--skip-tls-verify-pull=true'
-          - '--insecure-pull=true'
-          - '--skip-tls-verify=true'
-          - '--insecure=true'
+          - "--skip-tls-verify-pull=true"
+          - "--insecure-pull=true"
+          - "--skip-tls-verify=true"
+          - "--insecure=true"
         workingDir: /{{workflow.parameters.path}}
         resources: {}
         volumeMounts:
@@ -153,7 +153,7 @@ spec:
       outputs: {}
       metadata: {}
       script:
-        name: ''
+        name: ""
         image: dockerhub.mlops.jd.com/ai-platform/git-utils:latest
         command:
           - sh
