@@ -181,6 +181,8 @@ I can do something to unwind, such as listening to music, chatting with my frien
 
 Doing sports is beneficial to people's physical and mental health. For example, I like doing various kinds of sports, such as swimming, jogging,playing tennis and so on. Doing sports can let me stretch out my arms and legs, improve my flexibility and strength and lose calories.
 
+During the process of exercising, students possess a robust body,which lays a solid foundation for their busy learning.
+
 ### 集中精力
 
 When doing important tasks, you should be 100% focused and concentrated so that you can finish the tasks on time with high quality. For example,I often discuss the group project with my partners at my home. It's a very quiet place where we can totally keep our mind on discussion and achieve high efficiency.

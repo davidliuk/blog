@@ -2,6 +2,8 @@
 
 06-23年，从来没有变过；改革，口语没有任何变化
 
+## 概述
+
 ### 题型划分
 
 - 独立题
@@ -35,9 +37,40 @@
 
 #### 速记符号
 
-![截屏2023-08-06 19.12.44](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/%E6%88%AA%E5%B1%8F2023-08-06%2019.12.44.png)
+<img src="https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/%E6%88%AA%E5%B1%8F2023-08-06%2019.12.44.png" alt="截屏2023-08-06 19.12.44" style="zoom:50%;" />
+
+## 评分
+
+### 评分维度
+
+Delivery
+
+Language use
+
+- 词汇：accumulation 积累一些词汇、范式
+- 语法：合适的句式、词能达意
+
+Topic development
+
+- 内容要完整，体现逻辑，上下文过渡自然
+- Evidence-center design
 
 
+### 分数层次
+
+25-30，Advanced
+
+- 语音语调，清晰
+
+- 语法词汇，四级词汇就够，连词成句
+
+  > 前两块本来就有基础，很容易速成28、29
+
+- 逻辑词，考试技巧方法
+
+20-24，High Intermediate，这个准备20天很好考到
+
+## 练习
 
 ### 复习计划
 
@@ -71,45 +104,3 @@
 - 再次完整做题：分段计时不录音(比如 task2 就按照 15’’阅读，5’’观点，20’’第一个
 
   原因，20’’第二个原因)。说的过程中遇到连词成句问题时，直接参考和背诵原文表 达，或 Fancy 的录音答案;整体计时录音(最多 5 遍，中间不可以按暂停)，保存精 练笔记和录音。
-
-## 评分
-
-### 评分维度
-
-Delivery
-
-Language use
-
-- 词汇：accumulation 积累一些词汇、范式
-- 语法：合适的句式、词能达意
-
-Topic development
-
-- 内容要完整，体现逻辑，上下文过渡自然
-- Evidence-center design
-
-
-### 分数层次
-
-25-30，Advanced
-
-- 语音语调，清晰
-
-- 语法词汇，四级词汇就够，连词成句
-
-  > 前两块本来就有基础，很容易速成28、29
-
-- 逻辑词，考试技巧方法
-
-20-24，High Intermediate，这个准备20天很好考到
-
-
-
-![截屏2022-08-25 20.58.55](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/3978/%E6%88%AA%E5%B1%8F2022-08-25%2020.58.55.png)
-
-
-
-![截屏2022-08-25 21.00.00](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/3978/%E6%88%AA%E5%B1%8F2022-08-25%2021.00.00.png)
-
-
-

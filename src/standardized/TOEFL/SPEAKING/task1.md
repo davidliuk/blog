@@ -32,7 +32,7 @@ I agree/disagree + 态度
 1. 选择题：需要否定反观点
 2. 回答要有例子和细节
 
-### 做题流程
+## 做题流程
 
 - 准备 15s
 - 回答 45s
@@ -51,86 +51,58 @@ I agree/disagree + 态度
 - 30 论点一
 - 05 论点二/总结
 
-1. Topic sentence + Reason 15s
+1. Topic sentence + Reason [10, 15]s
 
-   - TS：
+   - TS
 
-     - From my perspective/ For me/ Personally speaking/ In my opinion,
-     - Personally speaking, I prefer ... for several reasons.
-     - Personally speaking, I think + 态度
-     - Well, in my opinion, I would definitely agree/disagree with the point that ...
-     - I agree/disagree + 态度
+     发语词
+
+     - From my perspective/
+     - For me/
+     - Personally speaking/
+     - Well, in my opinion,
+
+     观点
+
+     - I (would definitely) prefer [A],
+     - I (would definitely) agree/disagree with the point that ...,
+     - I think + 态度,
 
    - Reason
 
-     原因 = 好处 = 意义
+     > 原因 = 好处 = 意义
+     >
+     > 直接跟在 TS 后面
 
-     because
+     because [Reason 1].
 
-   - 排除句：
+   - 排除句
 
-     > 选择题，排除其他选项：选 A，however，选 B 会怎么不好。
+     > 选择题，排除其他选项：选 [A]，however，选 [B] 会怎么不好。
 
      - However, xxx is xxx, so we may xxx.
      - However, if we xxx, we may xxx. / 虚拟语气
 
 2. Examples and details 30s
 
-   > The first reason I wanna say is that…
+   > ~~The first reason I wanna say is that…~~
+   >
+   > 直接是 [Reason 1] 的解释，用逻辑展开
 
-   语料相当于例子和细节
+   语料相当于例子和细节，注意使用合适的语料
 
-   （说否定时：没钱、没时间是万能原因）
+   - （说否定时：没钱、没时间是万能原因）
+   - （说小孩时：不成熟、没有自控力、浪费时间）
 
-   （说小孩时：不成熟、没有自控力、浪费时间）
+3. [Reason 2]
 
-3. Reason 2 如果有时间，则 reason2 和 conclusion，没时间就不说
+   > 如果有时间，则 reason2 和 conclusion，没时间就不说
 
    More importantly, ...
 
 4. Conclusion
 
    So, that's why I choose/agree ...
-
-Topic sentence
-
-> 主题句：
->
-> - From my perspective/ For me,
-> - Well, in my opinion, I would definitely agree with the point that ...
-> - Personally speaking, I prefer ... for several reasons.
-> - Personally speaking + 态度 I think + 态度
-> - I agree/disagree + 态度
->
-> 如果是 A or B，主旨句说：选 A，however，选 B 会怎么不好。
->
-> 选择题，排除其他选项：
->
-> However, xxx is xxx, so we may xxx.
-
-Reason
-
-> The first reason I wanna say is that…
->
-> TS + Reason 15s
-
-Examples and details 30s
-
-> 语料相当于例子和细节
->
-> （说否定原因时：穷、没钱是万能原因）
->
-> （说小孩时：不成熟、没有自控力、浪费时间）
-
-Reason 2 如果有时间，则 reason2 和 conclusion，没时间就不说
-
-> More importantly, ...
-
-conclusion
-
-> So, that's why I choose ...
-
-> So, that's why I choose/agree ...
 
 ---
 

@@ -6,6 +6,8 @@
 
 理解，记录，转述
 
+## 做题步骤
+
 ### 听力 90-120s
 
 lecture 90-120s
@@ -46,33 +48,35 @@ lecture 90-120s
 
 主题 | 例子 | 结果
 
+<img src="https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/TPO50-6%20Fancy%E7%AD%94%E6%A1%88%E7%AC%94%E8%AE%B0%E6%96%B0.jpeg" alt="TPO50-6 Fancy答案笔记新" style="zoom:25%;" />
+
 ### 准备 20+30s
 
 整理笔记
 
 ### 答题 60s
 
-文章中心说明 10s
+- 文章中心说明 10s
 
-In the lecture, the professor is tallking about ...
+  In the lecture, the professor is tallking about [主题句]
 
-> 99%的情况下可以直接读屏幕上的内容，即这个的主题
+  > 99%的情况下可以直接读屏幕上的内容，即这个的主题
 
-主题 1: 25s
+- 主题 1: 25s
 
-The first .… is... (because /which means...)
+  The first ... is... (because /which means...)
 
-For example ...
+  For example ...
 
-As a result ...
+  As a result ...
 
-主题 2: 25s
+- 主题 2: 25s
 
-The second ... is... (because/ which means...)
+  The second ... is... (because/ which means...)
 
-For instance ...
+  For instance ...
 
-As a result ...
+  As a result ...
 
 ---
 
