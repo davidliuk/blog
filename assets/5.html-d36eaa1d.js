@@ -1,1 +1,0 @@
-import{_ as t,V as a,W as s,X as e,Y as c}from"./framework-e5d7a6b2.js";const o={},_=e("h1",{id:"对话",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#对话","aria-hidden":"true"},"#"),c(" 对话")],-1),n=e("p",null,"三篇，当天做",-1),r=[_,n];function d(i,l){return a(),s("div",null,r)}const f=t(o,[["render",d],["__file","5.html.vue"]]);export{f as default};
