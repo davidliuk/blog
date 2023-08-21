@@ -75,21 +75,21 @@ Time is very precious for students, because
 
 1. 时间宝贵
 
-- 需要提高效率
+   - 需要提高效率
 
-  Therefore, it's very necessary for me to maximize the time efficiency.
+     Therefore, it's very necessary for me to maximize the time efficiency.
 
-- 需要节省时间
+   - 需要节省时间
 
-  Therefore, it's very important for me to save time. However, learning international news is very time-consuming.
+     Therefore, it's very important for me to save time. However, learning international news is very time-consuming.
 
-  However, doing an experiment costs a lot of time, I mean, you need to go to the lab, prepare some materials, and do the experiment step by step by yourself.
+     However, doing an experiment costs a lot of time, I mean, you need to go to the lab, prepare some materials, and do the experiment step by step by yourself.
 
-- 没有时间
+   - 没有时间
 
-  They have no time to
+     They have no time to
 
-  However, secondary school kids are very busy with academic subjects, so they have no time to learn computer systematically.
+     However, secondary school kids are very busy with academic subjects, so they have no time to learn computer systematically.
 
 2. 身心疲惫
 
@@ -273,7 +273,7 @@ I can spare free time to make friends with new people,so it can expand my social
 
 ### 思维碰撞
 
-people can gain new ideas from others'different ideas. For example.I often discuss with my classmates on some controversial issues, and during the process, we can echange our different ideas and thoughts.This process gives each of us a lot of inspiration.It can broaden our horizons and enrich our knowledge.
+people can gain new ideas from others' different ideas. For example.I often discuss with my classmates on some controversial issues, and during the process, we can echange our different ideas and thoughts.This process gives each of us a lot of inspiration. It can broaden our horizons and enrich our knowledge.
 
 it's also beneficial for students'study if they need to complete some projects, because during the process,students can have some group discussions, which can help them learn from each other's different ideas.
 
