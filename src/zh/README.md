@@ -1,11 +1,11 @@
 ---
 home: true
-layout: BlogHome
+layout: Blog
 icon: home
 title: 主页
 heroImage: /favicon.ico
 heroText: David的博客
-heroFullScreen: true
+heroFullScreen: false
 tagline: 你可以在这里放置你的口号与标语
 projects:
   - icon: project

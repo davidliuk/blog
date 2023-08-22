@@ -24,7 +24,7 @@ export default hopeTheme({
     medias: {
       GitHub: "https://github.com/davidliuk",
       Gitee: "https://gitee.com/da-wei-liu",
-      Linkedin: "https://www.linkedin.cn/incareer/in/ACoAAChiGB8BoHZIY3GXEyeAxfCUVmL5EpXQY6c",
+      Linkedin: "https://www.linkedin.com/in/大维-刘-967a9516a/",
       Email: "l729641074@163.com",
       // BiliBili: "https://example.com",
       // Baidu: "https://example.com",
