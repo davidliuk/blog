@@ -1,14 +1,24 @@
 ---
 home: true
-layout: Blog
+layout: BlogHome
 icon: home
 title: Home
 heroImage: /favicon.ico
 heroText: David's blog
 bgImage: /bg.png
 tagline: Life is real, life is earnest.
-heroFullScreen: true
+heroFullScreen: false
 projects:
+  - icon: book
+    name: TOEFL
+    desc: A summary of TOEFL
+    link: /standardized/TOEFL/
+
+  - icon: article
+    name: GRE
+    desc: A summary of GRE
+    link: /standardized/GRE/
+
   - icon: project
     name: Algo Summary
     desc: A summary of algorithms and data structures
