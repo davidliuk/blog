@@ -65,6 +65,8 @@
 
 ### 学生繁忙
 
+As a university student, I constantly feel the pressure of taking classes, writing papers, juggling part time job and so on.
+
 I am a university student who is busy with a lot of things, like taking classes, writing papers, preparing for exams and so on. Therefore, it's very necessary for me to do sth
 
 For students, study is always the top priority.
@@ -236,6 +238,10 @@ kids are not mature and self-controlled, so they need this kind of external rewa
 kids are not mature enough to tell the right from the wrong, so they may imitate some negative behaviors in video games, like bad language or violence.
 
 kids are not very mature and independent. I don't think they have the ability to take good care of a pet.
+
+### 童年快乐
+
+During childhood, we don't have to worry about the responsibilities and pressures that come with adulthood. We are free to play, explore, and enjoy life without any major concerns. As a university student, ... However, if I were a child, I wouldn't have to worry about these things. Childhood is a time of innocence, joy, and carefree happiness. It is a time when we can fully embrace our curiosity and imagination.
 
 ## 生活类
 
