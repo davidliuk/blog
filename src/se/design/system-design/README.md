@@ -1,5 +1,11 @@
 # 系统设计
 
+::: details 参考文档
+
+[koala bear 博客](http://wsfdl.com/categories.html)
+
+:::
+
 系统设计中常说的 Tradeoff 是什么：权衡，面试官最看重的
 
 什么叫 SOA
