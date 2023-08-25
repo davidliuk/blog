@@ -55,7 +55,6 @@ Topic development
 - 内容要完整，体现逻辑，上下文过渡自然
 - Evidence-center design
 
-
 ### 分数层次
 
 25-30，Advanced
@@ -64,11 +63,11 @@ Topic development
 
 - 语法词汇，四级词汇就够，连词成句
 
-  > 前两块本来就有基础，很容易速成28、29
+  > 前两块本来就有基础，很容易速成 28、29
 
 - 逻辑词，考试技巧方法
 
-20-24，High Intermediate，这个准备20天很好考到
+20-24，High Intermediate，这个准备 20 天很好考到
 
 ## 练习
 

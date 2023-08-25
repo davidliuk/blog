@@ -95,7 +95,7 @@ conversation，有一个主讲人（1min Conversation Between a Man & a Woman）
 
        The university is going to + 动词/
 
-       announces that + 句子... Because it can help...and...
+       announces that + 句子... Because it can help... and...
 
      - 个人建议
 
@@ -103,7 +103,7 @@ conversation，有一个主讲人（1min Conversation Between a Man & a Woman）
 
        A student suggests/proposes school should+ 动词/
 
-       suggests that +句子... Because students can ...and...
+       suggests that +句子... Because students can ... and...
 
    - Reason / aproach
 
