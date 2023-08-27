@@ -128,10 +128,10 @@ export default hopeTheme({
        * Using Giscus
        */
       provider: "Giscus",
-      repo: "vuepress-theme-hope/giscus-discussions",
-      repoId: "R_kgDOG_Pt2A",
+      repo: "davidliuk/blog",
+      repoId: "R_kgDOIgJd8g",
       category: "Announcements",
-      categoryId: "DIC_kwDOG_Pt2M4COD69",
+      categoryId: "DIC_kwDOIgJd8s4CY4CF",
 
       /**
        * Using Twikoo
@@ -157,11 +157,11 @@ export default hopeTheme({
       echarts: true,
       flowchart: true,
       gfm: true,
-      imgLazyload: true,
-      // imageLazyload: true,
+      // imgLazyload: true,
+      imageLazyload: true,
       // imageTitle: true,
-      // imageSize: true,
-      imgSize: true,
+      imageSize: true,
+      // imgSize: true,
       include: true,
       katex: true,
       mark: true,
@@ -169,10 +169,10 @@ export default hopeTheme({
       playground: {
         presets: ["ts", "vue"],
       },
-      // presentation: {
-      //   plugins: ["highlight", "math", "search", "notes", "zoom"],
-      // },
-      presentation: ["highlight", "math", "search", "notes", "zoom"],
+      presentation: {
+        plugins: ["highlight", "math", "search", "notes", "zoom"],
+      },
+      // presentation: ["highlight", "math", "search", "notes", "zoom"],
       stylize: [
         {
           matcher: "Recommended",
