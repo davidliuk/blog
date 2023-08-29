@@ -1,0 +1,47 @@
+# SoP
+
+Please upload a statement of 500-1,000 words explaining why you are applying to Yale for graduate study. Describe your research interests and preparation for your intended field(s) of study, including prior research and other relevant experiences. Explain how the faculty, research, and resources at Yale would contribute to your future goals.
+
+---
+
+My experiences in computer science, marked by curiosity and a relentless drive for discovery, has led me to explore various facets of this dynamic field. From the intricate world of of AI-driven application development to the innovative realm of AI for catalysts, my project and research experiences have shaped my desire to delve deeper into computer science, and I am excited to dive deeper into this field with the Master of Science in Computer Science program at Yale University
+
+My decision to pursue further education in software development comes from my strong academic background established during my undergraduate studies at Northeastern University. There, I achieved a GPA of 3.955 and ranked top 1% in the Software College. My efforts were recognized with awards like the National Scholarship, Merit Student Scholarship, and Outstanding Student Pacesetter. Among various courses I have completed, Big Data Technology, Introduction to Recommendation System, and Fundamentals of Virtual Reality Technology were particularly influential for me. These classes sparked my interest in advanced software applications and its potential to enhance technology and solve complex problems.
+
+During my internship at JD.com, one of the largest Fortune 500 technology giants in China, I contributed to the Yanxi AI Development and Computing Platform and the AI Pilot Marketing Platform. For the Yanxi platform, I refactored the resource management service to improve efficiency and scalability. By using the Observer Pattern and asynchronous computing, I enhanced the peak performance of resource recalculation speed by 20 times. Moreover, I refactored the activity page AI auto-generation service for the AI Pilot Marketing platform. I organized the functions with the Strategy Pattern to generate each content floor with AIGC and LLM services effectively. Collaborating with machine learning engineers, UI/UX designers, and marketers, I helped design service options and workflows, sharpening my AI software skills and deepening my grasp of user-centered design. This experience allows me to see the transformative impact of AIGC in the real technology industry.
+
+Additionally, at the ByteDance Camp, I developed an intelligent knowledge-sharing platform named 'Juejin', using the Trust SVD social recommendation system and was awarded the first prize. I also participated in the Mobile Application Innovation Contest, where my AR social app 'Trace Note' received the second prize, ranking fourth in the AR track among 2,287 teams. These experiences allowed me to put my skills into practice, lead teams, and see my innovative ideas come to life.
+
+I have actively pursued research opportunities that span across various domains of computer science and intersect with other disciplines. At the City University of Hong Kong, I contributed to the TIMEDB bioinformatics data visualization project, by creating more than 10 interactive visualization plots and developing user-friendly responsive website. This experience honed my skills in data analysis and visualization, key components in understanding complex biological data sets. This project laid the groundwork for my interest in applying computational methods to real-world problems.
+
+Currently, at Shanghai Jiao Tong University, I am part of a research team working on AI for catalysts. We utilize Graph Neural Networks (GNN) to aid in the discovery of new photocatalysts. My role involves not only applying deep learning techniques but also collaborating closely with experts from different fields. This interdisciplinary project has not only strengthened my skills in AI and deep learning but also taught me the value of collaborative problem-solving across different scientific fields.
+
+Looking ahead, I aim to start my career at a pioneering company like Google or Meta, renowned for their cutting-edge AI products. I want to be actively engaged in the lifecycle of AI-driven products and gain essential industry insights. In the long term, I aspire to establish my own AI-focused startup, dedicating myself to redefining daily workflows and improving life quality with innovative AI solutions.
+
+Yale's MSCS program is an ideal match for me, providing the perfect platform to realize these ambitions. With its distinguished faculty, advanced research, and comprehensive curriculum, it offers an unparalleled opportunity for me to expand my knowledge and contribute to the AI application field. I am particularly drawn to the work being done in the areas of Artificial Intelligence and Machine Learning at Yale, which aligns closely with my research interests and career aspirations.
+
+In short, my experience, backed by solid academics and real-world practice, fits well with my plans. I'm eager to join the MSCS program at Yale, where I can grow my passion for AI, work on innovative applications, and keep learning. I am confident that this program will play a pivotal role in helping me achieve my aspiration of making a meaningful impact through AI applications.
+
+---
+
+Dear Admissions Committee,
+
+I am writing to express my earnest desire to join Yale University's Master of Science in Computer Science program. My academic journey, underpinned by a profound passion for software engineering and data science, has been a testament to my dedication and potential in these fields. The pursuit of this program at Yale is not only a continuation of this journey but a crucial step towards realizing my aspirations.
+
+My undergraduate studies at Northeastern University were marked by an unwavering commitment to excellence. As demonstrated by my high GPA of 4.2779, I thrived in a challenging environment, mastering complex concepts in software engineering, computer networks, artificial intelligence, big data technology, and machine learning. This solid academic foundation has equipped me with the essential tools and knowledge to delve deeper into the intricacies of computer science.
+
+Beyond the classroom, my professional experiences have been instrumental in shaping my practical skills and understanding of real-world applications. My internship at JD.com was particularly transformative. Here, I played a pivotal role in optimizing CI/CD processes and managing software deployment projects, gaining invaluable insights into the complexities of large-scale software development. This experience was not just about honing technical skills but also about developing leadership qualities and the ability to work collaboratively in high-stakes environments.
+
+My research interests lie at the intersection of software engineering and data science, with a specific focus on leveraging big data for innovative solutions in various sectors. The project at the City University of Hong Kong, where I contributed to a bioinformatics data visualization platform, was a significant step in this direction. This project allowed me to explore the potential of data science in transforming biological data into meaningful insights, an area ripe with possibilities for groundbreaking research.
+
+Yale University, with its stellar reputation in the field of computer science, offers the ideal environment for me to expand my knowledge and skills. The faculty at Yale are renowned for their research and expertise, particularly in areas such as artificial intelligence, machine learning, and big data – fields that align closely with my interests and past experiences. I am especially eager to engage with the works of [specific professors or research groups at Yale], whose contributions to [specific areas of research] are both inspiring and closely related to my academic ambitions.
+
+At Yale, I look forward to not only learning from but also contributing to the rich academic culture. I am excited about the prospect of collaborating with peers and faculty, bringing my unique perspectives and experiences to the table. The resources and opportunities at Yale are unparalleled, and I am confident that they will play a crucial role in my development as a computer scientist.
+
+Furthermore, my career aspirations involve leading innovative projects in the tech industry, particularly in areas that intertwine software development and data science to address complex real-world challenges. Yale's emphasis on research that has tangible impacts aligns perfectly with my vision. I am keen to leverage the knowledge and experience I will gain at Yale to make significant contributions to the field.
+
+In conclusion, my academic background, professional experiences, and research interests make me a strong candidate for the Master of Science in Computer Science program at Yale University. I am enthusiastic about the prospect of being part of Yale's vibrant academic community and am confident that this program will be instrumental in shaping my future as a leader in the field of computer science.
+
+Thank you for considering my application.
+
+Sincerely, Dawei Liu
