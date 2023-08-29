@@ -1,6 +1,8 @@
 # 企业级服务器系统导论
 
-## 课程章程
+::: detail 课程介绍
+
+## 课程介绍
 
 1. Linux、Unix 用法
 
@@ -15,7 +17,7 @@
 
 4. Kubernetes
 
-Linux
+### Linux
 
 讲生产环节下的 Linux 环境下的东西
 
@@ -25,7 +27,7 @@ Linux
 
 理论性和思维性，掌握 Linux 的思维、计算机的思想
 
-Devops、Kubernetes
+### Devops、Kubernetes
 
 prefork 多线程怎么选择模式
 
@@ -33,13 +35,15 @@ prefork 多线程怎么选择模式
 
 Unix-base 或 VM player
 
-## 分数构成
+### 分数构成
 
 平时作业 50%
 
 > 非常简单的，一次作业，平时上课学的东西，上课做的东西截图截一截
 
 大作业： 50% 报告
+
+:::
 
 mainframe，追求极高的 availablility，最强的机器
 
@@ -79,7 +83,7 @@ SuSe：华晨宝马用的（德国的）
 
 企业级就用 CentOS
 
-人工智能深度学习主要用的 Ubuntu
+人工智能、深度学习主要用的 Ubuntu
 
 涉及到 UNIX 的电影
 
@@ -87,7 +91,7 @@ bladerunner：cyberpunk 鼻祖
 
 gods in the shell：
 
-UNIX 指令哲学
+### UNIX 指令哲学
 
 单一职责原则：任何一个 UNIX 命令都叫做一个软件工具，都是标准输入输出，所以可以串联，需要用到“管道”：`|`用来连接两个命令，eg
 
@@ -97,9 +101,10 @@ cat /usr/include/stdio.h | grep "#endif" | wc -l
 
 标准输出重定向指令：后面+`> 文件名`
 
-标准输入重定向指令：后面+`< 文件名`（sort 有点 bug）
+标准输入重定向指令：后面+`< 文件名`
 
 命令集合：command1 && command2
+
 该形式将两个命令连接起来，只有当 command1 执行成功时，才会执行 command2。这样可以实现条件执行。
 
 例如，make && make install 表示只有在 make 命令执行成功后，才会执行 make install 命令。
