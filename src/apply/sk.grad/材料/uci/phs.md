@@ -1,0 +1,1 @@
+Please describe any circumstances that have contributed to your successes and/or challenges encountered during your academic and/or professional career and how these have impacted your pursuit of the MCS degree.

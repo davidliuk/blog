@@ -1,0 +1,5 @@
+# PS
+
+A core part of the Harvard Griffin GSAS mission is to identify and attract the most promising students to form a dynamic and diverse community. We are committed to educating individuals who reflect the growing diversity of perspectives and life experiences represented in society today and who will contribute to our commitment to sustain a welcoming, supportive, and inclusive environment. Please share how your experiences or activities will advance our mission and commitment. (No longer than 500 words)
+
+Upload your personal statement as a Microsoft Word document or a PDF file. Please note that any website addresses included in your document will be passed along to the admissions committee as plain text. If you would like the committee to review the content of those websites, you may use the Digital Portfolio section of this application to upload website hyperlinks.
