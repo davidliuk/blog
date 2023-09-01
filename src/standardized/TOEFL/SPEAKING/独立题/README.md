@@ -233,11 +233,29 @@ I love my parents and they are the people who understand me the most in the worl
 
 ### 童不成熟
 
+Young adults may be easily influenced and may not be able to distinguish right from wrong, which is not suitable for xxx.
+
+To illustrate, many young people tend to follow popular trends without critically analyzing the consequences.
+
 kids are not mature and self-controlled, so they need this kind of external rewards. Otherwise, it' s easy for them to lose interest in study.
 
 kids are not mature enough to tell the right from the wrong, so they may imitate some negative behaviors in video games, like bad language or violence.
 
 kids are not very mature and independent. I don' t think they have the ability to take good care of a pet.
+
+论点：
+
+- 不做决定：
+
+  Therefore, it is highly unlikely for them to make informed decisions.
+
+- 不能做事：
+
+  which is not suitable for xxx
+
+- 需要鼓励
+
+  
 
 ### 童年快乐
 
@@ -256,6 +274,12 @@ For example, last summer, I worked in a company as an intern. My boss Fancy was 
 you will make fewer mistakes by listening to others first, for you can listen to others' opinions and think about them carefully.
 
 doing a lot of tasks at the same time makes me nervous and stressed out. Therefore, I may make a lot of minor mistakes and get lower grade.
+
+### 艺术陶冶
+
+it is vital for individuals to have access to art exhibitions as a means to unwind and alleviate stress. Art provides a much-needed escape and can serve as a source of relaxation and rejuvenation.
+
+government support enables artists to create more art pieces for the public, significantly enhancing the cultural landscape. Art has the power to inspire, challenge societal norms, and foster social cohesion.
 
 ### 参观展馆
 
