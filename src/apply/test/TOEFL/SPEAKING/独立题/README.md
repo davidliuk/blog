@@ -239,7 +239,11 @@ Every time when I need to make some important decisions, I often ask them for ad
 
 ### 童不成熟
 
-kids are not mature and self-controlled, so they need this kind of external rewards. Otherwise, it's easy for them to lose interest in study.
+Young adults may be easily influenced and may not be able to distinguish right from wrong, which is not suitable for xxx.
+
+To illustrate, many young people tend to follow popular trends without critically analyzing the consequences.
+
+kids are not mature and self-controlled, so they need this kind of external rewards. Otherwise, it' s easy for them to lose interest in study.
 
 kids are not mature enough to tell the right from the wrong, so they may imitate some negative behaviors in video games, like bad language or violence.
 
