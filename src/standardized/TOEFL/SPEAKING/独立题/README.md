@@ -1,4 +1,4 @@
-# 独立题语料
+# 独立题
 
 论点
 
@@ -351,6 +351,8 @@ Having a good manner plays a very important role in our life, because it enables
 ## 工作类
 
 ## 科技类
+
+With the widespread of computer, we can't help marveling at the phenomenon that internet has covered all kinds of integrated information of all fields. Hence, students are able to search for relevant content at a click of mouse.
 
 ### 科技便利
 

@@ -69,6 +69,10 @@ Topic development
 
 20-24，High Intermediate，这个准备 20 天很好考到
 
+![截屏2023-09-02 20.25.37](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/%E6%88%AA%E5%B1%8F2023-09-02%2020.25.37.png)
+
+每道题考官给一个 0-4 的整数分，最后取平均数
+
 ## 练习
 
 ### 复习计划
