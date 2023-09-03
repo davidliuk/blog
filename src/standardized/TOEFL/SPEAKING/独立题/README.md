@@ -1,4 +1,4 @@
-# 独立题语料
+# 独立题
 
 论点
 
@@ -379,6 +379,8 @@ For example, you should always be a good listener, and listen to others' opinion
 ## 工作类
 
 ## 科技类
+
+With the widespread of computer, we can't help marveling at the phenomenon that internet has covered all kinds of integrated information of all fields. Hence, students are able to search for relevant content at a click of mouse.
 
 ### 科技便利
 
