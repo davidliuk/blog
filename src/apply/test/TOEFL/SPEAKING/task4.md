@@ -77,7 +77,7 @@ lecture 90-120s
 
   For instance ...
 
-  As a 
-  
+  As a
+
   result ...
 
