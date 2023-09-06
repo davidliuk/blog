@@ -58,7 +58,7 @@ lecture 90-120s
 
 - 文章中心说明 10s
 
-  In the lecture, the profezssor is tallking about [主题句]
+  In the lecture, the profezssor is tallking about [主题句] (which means...)
 
   > 99%的情况下可以直接读屏幕上的内容，即这个的主题
 
@@ -76,8 +76,8 @@ lecture 90-120s
 
   For instance ...
 
-  As a 
-  
+  As a
+
   result ...
 
 ---
