@@ -68,7 +68,7 @@ I agree/disagree + 态度
      - I (would definitely) agree/disagree with the point that ...,
      - I think + 态度,
 
-   - Reason
+   - Reason [5, 10]s
 
      > 原因 = 好处 = 意义
      >
@@ -76,7 +76,7 @@ I agree/disagree + 态度
 
      because [Reason 1].
 
-   - 排除句
+   - 排除句 [5, 10]s
 
      > 选择题，排除其他选项：选 [A]，however，选 [B] 会怎么不好。
 
@@ -98,7 +98,7 @@ I agree/disagree + 态度
 
    > 如果有时间，则 reason2 和 conclusion，没时间就不说
 
-   More importantly, ...
+   Beside/More importantly, ...
 
 4. Conclusion
 

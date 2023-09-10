@@ -11,8 +11,6 @@
 | 20   | 27-29 |
 | 19   | 26    |
 
-
-
 ### 分数换算
 
 <img src="https://pic4.zhimg.com/80/v2-c93b4212f1507f35511f374d2b363e27_1440w.jpg" alt="img" style="zoom:33%;" />
