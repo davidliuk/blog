@@ -69,9 +69,21 @@ Topic development
 
 20-24，High Intermediate，这个准备 20 天很好考到
 
+::: tabs
+
+@tab:active 新版分数转换表
+
+每道题考官给一个 0-4 的分（以0.5为间隔的分数），最后取平均数
+
+![image-20230910153452126](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/image-20230910153452126.png)
+
+@tab  旧版分数转换表
+
+每道题考官给一个 0-4 的整数分，最后取6道题的平均数
+
 ![截屏2023-09-02 20.25.37](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/%E6%88%AA%E5%B1%8F2023-09-02%2020.25.37.png)
 
-每道题考官给一个 0-4 的整数分，最后取平均数
+:::
 
 ## 练习
 
