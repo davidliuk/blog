@@ -1,0 +1,5 @@
+# DNS
+
+`/etc/hosts`
+
+unbound
