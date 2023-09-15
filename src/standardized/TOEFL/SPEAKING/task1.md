@@ -12,6 +12,12 @@
 Personally speaking + 态度 I think + 态度
 I agree/disagree + 态度
 
+MTEAC结构
+
+- M一定要点出来你的观点。
+- T可以简短一些，如果答题的时候想不到，可以直接用万能理由，比如good to me，good to health 等。
+- E是最重要的！一定要用1-2句话去解释，M和T之间的衔接逻辑，并且为后面的例子做铺垫。这句话可以让判卷人带入到你的逻辑中。
+
 ### 题型辨析
 
 两类题型：
