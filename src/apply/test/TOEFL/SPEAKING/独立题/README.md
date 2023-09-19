@@ -318,6 +318,7 @@ I can spare free time to make friends with new people, so it can expand my socia
 ### 思维碰撞
 
 论点：
+people can gain new ideas from others' different ideas. For example. I often discuss with my classmates on some controversial issues, and during the process, we can exchange our different ideas and thoughts. This process gives each of us a lot of inspiration. It can broaden our horizons and enrich our knowledge.
 
 people can gain new ideas from others' different ideas.
 
