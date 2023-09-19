@@ -219,11 +219,11 @@ if I want to learn something, I can read books or attend lectures in school. The
 
 ### 强迫致怨
 
-Therefore, forcing students to take this class will cause ** resentment**. Take myself as an example. I hate writing, and I think taking writing course is very boring. If I am forced to take this class, it must be very easy for me to get distracted.
+Therefore, forcing students to take this class will cause **resentment**. Take myself as an example. I hate writing, and I think taking writing course is very boring. If I am forced to take this class, it must be very easy for me to get distracted.
 
 ### 父母帮助
 
-What' s more, when kids need to deal with negative consequences of their mistakes, they usually turn to their parents for help. In return, this can build their mutual trust and strengthen their relationship.
+What's more, when kids need to deal with negative consequences of their mistakes, they usually turn to their parents for help. In return, this can build their mutual trust and strengthen their relationship.
 
 ### 热爱父母
 
@@ -303,7 +303,7 @@ I can spare free time to make friends with new people, so it can expand my socia
 
 ### 思维碰撞
 
-people can gain new ideas from others' different ideas. For example. I often discuss with my classmates on some controversial issues, and during the process, we can echange our different ideas and thoughts. This process gives each of us a lot of inspiration. It can broaden our horizons and enrich our knowledge.
+people can gain new ideas from others' different ideas. For example. I often discuss with my classmates on some controversial issues, and during the process, we can exchange our different ideas and thoughts. This process gives each of us a lot of inspiration. It can broaden our horizons and enrich our knowledge.
 
 it' s also beneficial for students' study if they need to complete some projects, because during the process, students can have some group discussions, which can help them learn from each other' s different ideas.
 
