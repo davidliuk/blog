@@ -7,6 +7,11 @@ R + L + S + W
 - 100: 28 + 26 + 23 + 24
 - 105: 28 + 26 + 25 + 26
 
+考试记录
+
+- 98: 27 + 24 + 23 + 24
+- 88: 27 + 20 + 18 + 23
+
 ## 模板
 
 ### 写作
@@ -34,11 +39,11 @@ In my perspective, [观点], and the reasons behind this stance can be substanti
 
   正着改写、反着改写
 
-For one thing, 
+For one thing,
 
-For another, 
+For another,
 
-Moreover, 
+Moreover,
 
 Consequently, there is every reason to believe that
 
@@ -133,7 +138,7 @@ Consequently, there is every reason to believe that
 
      观点：The woman/man in the conversation argrees/disagrees with proposal/plan. (5s)
 
-     - Firstly/ First of all, ... (20s) She/he thinks 
+     - Firstly/ First of all, ... (20s) She/he thinks
 
        论点 1:
        解释 1:
@@ -190,7 +195,7 @@ Consequently, there is every reason to believe that
 
 - 文章中心说明 10s
 
-  In the lecture, the professor is tallking about [主题句] 
+  In the lecture, the professor is tallking about [主题句]
 
   - 概念：A which means...
   - 句子：直接一个句子（how xxx; why xxx）

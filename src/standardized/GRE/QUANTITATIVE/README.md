@@ -9,6 +9,10 @@
 
 ## 题型
 
+图表题只出现在第一个 section，第二个 section 不再考查图表题，利好读题能力差的同学。
+
+![img](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/6c67944d93164606b57fc556327dc9a7.jpeg)
+
 ### 数值比较题
 
 1-7/8 都是数值比较题：a 大 b 大 c 大 d 不确定
@@ -39,7 +43,7 @@
 
 因数：factor, divisor
 
-质数：prime number，只有
+质数：prime number
 
 合数，conposite number
 
@@ -70,6 +74,6 @@ A is a multiple of B = B is a factor of A = A is divisible by B
 
 #### 质因数和因数的个数
 
-质因数个数，分解后看底
+质因数个数，分解后看底（底数的个数）
 
 因数个数，分解后看指（指数+1 再相乘）
