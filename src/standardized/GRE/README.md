@@ -42,10 +42,14 @@
 
 ![verbal](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/40e45e93a8ec4e9b89c6d20749a38645.jpeg)
 
+等价题共计 8 个
+
+有的时候没有逻辑单题
+
 ### Q
 
 **比较大小题共 9 道，图表题 3 道，填空题 2 道，选择题 13 道（包括单选和可多选）。**
 
-图表题只出现在第一个 section，第二个 section 不再考查图表题，利好读题能力差的同学。
+图表题只出现在第一个 medium，第二个 section 不再考查图表题，利好读题能力差的同学。
 
 ![img](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/6c67944d93164606b57fc556327dc9a7.jpeg)
