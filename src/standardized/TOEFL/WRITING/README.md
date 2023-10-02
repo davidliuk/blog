@@ -82,3 +82,15 @@ pose a threat to 威胁
 having a glimpse of the current situation in education,
 
 the preferred option
+
+### 改革
+
+独立写作取消，换成 discussion board
+
+1. 时间：20+10min
+2. 综合写作保留
+3. 独立写作变成新题型，类似独立写作主体段
+
+30 分钟 -> 10 分钟
+
+讨论版就是在写一个主体段
