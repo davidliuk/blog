@@ -6,12 +6,10 @@
 
 ### 时间划分
 
-无加试 2 个 section
+无加试 2 个 section，有加试 3 个 section
 
-> 有加试 3 个 section
+> 新托福无加试
 >
-> 新托福无加时
-
 > 在 Direction 里面第一句说是 2 section 还是 3 section，如果说 3 则遇到加试
 
 答题时间
@@ -35,9 +33,9 @@
 ### 讲座难度划分
 
 - 1.0 版本，TPO 靠前的文章（前 20），真题里面没有
-- 2.0 版本，TPO 靠前的文章（前 20）文章简单，但是题可能简单，可能复杂
-- 3.0 逻辑复杂，理科性文章，大量真题
-- 4.0 时间长，主要是艺术类的文章，很多时候不说人话（难听懂），只出现在新政的
+- 2.0 版本，TPO 靠前的文章（前 20），文章简单，但是题可能简单、可能复杂
+- 3.0 逻辑复杂，主要是理科类文章，大量真题
+- 4.0 时间较长，主要是艺术类文章，很多时候不说人话（难听懂），只出现在新政
 
 重听题基本上是送分题，但是现在已经比较少了
 
@@ -54,26 +52,34 @@ Basic Comprehension Questions
 2. Gist-Purpose 主旨目的题
 3. Detail 细节题
 
-Pragmatic Understanding Questions 4. Understanding the Function of What ls Said 5. Understanding the Speakers Attitude
+Pragmatic Understanding Questions (务实理解)
 
-Connecting Information Questions 6. Understanding Organization 7. Connecting Content 8. Making Inferencos
+4. Understanding the Function of What ls Said 
+5. Understanding the Speakers Attitude
+
+Connecting Information Questions 
+
+6. Understanding Organization 
+7. Connecting Content 
+8. Making Inferencos
 
 做笔记：思维导图
 
 ### 主旨句型
 
-对话中
+Conversation
 
 - I want to
 - I need to
 - I am wondering
 - 疑问句：
-- What can I do for you
+  - What can I do for you
+
 
 Lecture
 
-- Today,
-- 疑问句：
+- Today
+- 疑问句
 
 https://www.xiaohongshu.com/discovery/item/62a97c70000000001401915a
 
