@@ -66,6 +66,8 @@ jhu cornell 是 1 年的（找工作比较紧张），别的大多数是 1.25+
 
 jhu、umich 录取概率很大
 
+[ucb ieor面经](https://www.1point3acres.com/bbs/thread-714479-1-1.html)
+
 ### uw
 
 商和信息学院下面都有 IM/IS，
