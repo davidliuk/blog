@@ -38,21 +38,21 @@ workflow template 的定义文件中，可以定义 workflow 的参数，参数�
 
 1. git checkout develop 切到 develop 分支
 
-1. git pull origin develop 获取最新代码
+2. git pull origin develop 获取最新代码
 
-1. git checkout feature/addButton 切回开发分支
+3. git checkout feature/addButton 切回开发分支
 
-1. git merge develop 合并最新 develop 代码
+4. git merge develop 合并最新 develop 代码
 
-1. **解决冲突，并再次自测，确保自己的功能不被影响**
+5. **解决冲突，并再次自测，确保自己的功能不被影响**
 
-1. git commit -m "Merge latest develop code"
+6. git commit -m "Merge latest develop code"
 
-1. git push origin feature/addButton
+7. git push origin feature/addButton
 
-1. 在 coding 中提交合并请求（feature/addButton -> develop），并找人进行 code review
+8. 在 coding 中提交合并请求（feature/addButton -> develop），并找人进行 code review
 
-1. 完成 code review，代码合入 develop 分支
+9. 完成 code review，代码合入 develop 分支
 
 CI 流程
 
@@ -79,14 +79,13 @@ GitOps 部署配置
 1. deployment.yaml
 2. kustomization.yaml
 3. Makefile
-
 4. 各个代码仓负责人需要做的是：
 
    1. 各个代码仓，按照第五章的分支管理规范，创建 develop、r\*和 master 分支
 
-   1. 将代码仓通过 submodule 的方式，加入到 AIPlatformDeploy 中
+   2. 将代码仓通过 submodule 的方式，加入到 AIPlatformDeploy 中
 
-   1. 将代码仓的部署相关 yaml 放到 AIPlatformDeploy 代码仓中，根据示例微调 yaml 中字段
+   3. 将代码仓的部署相关 yaml 放到 AIPlatformDeploy 代码仓中，根据示例微调 yaml 中字段
 
 注：为保障 CD 接入不出问题，步骤 b、c、d 由[@赵本光](<javascript:void(0)>)、[@俞凯](<javascript:void(0)>)协助各个代码仓负责人进行。
 
@@ -102,7 +101,7 @@ GitOps 部署配置
 
 版本号构成:
 
-格式:` v<大版本号>.<小版本号>-<count>-<commitid>,` 例如: v1.0-12-e6e5d98
+格式:`v<大版本号>.<小版本号>-<count>-<commitid>`, 例如: v1.0-12-e6e5d98
 
 1. 1. 功能和版本匹配原则
 
@@ -182,8 +181,6 @@ GitOps 部署配置
   - 上线过程为**手动触发**同步或回滚.
 
 1. 1. 后续实施步骤
-
-[@赵本光](<javascript:void(0)>)[@俞凯](<javascript:void(0)>)[@高峰斌](<javascript:void(0)>)[@张俊峰](<javascript:void(0)>)
 
 1、所有组件统一到代码仓 AIPlatform,除非必要申请新代码仓需说明理由，经 leader 同意。
 
