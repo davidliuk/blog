@@ -1,5 +1,7 @@
 # BEAT
 
+核心语料准备20套左右即可覆盖95%，30套->27分
+
 ## 时间表
 
 | 日程   | 任务         | 内容             |
@@ -100,3 +102,39 @@
 5. 应试技巧：如果怕现场答题不好掌控时间，可以备考时在句型结尾设计 “which 引导的非限制性定语从句” 补充说明，考场随机应变：有时间就说，没时间不说也不影响细节拿分。
 
 which is essential in study, work, and life.
+
+## 解题步骤
+
+### Task 1
+
+#### 步骤
+
+1. 审题选择
+
+   1. 抓住主题
+   2. 确认选项
+
+2. 答题要点
+
+   两点理由
+
+3. 补充细节
+
+   记叙文法、提供例子
+
+4. 组织句子
+
+   扩充语料：赞一个、贬一个（不选的作为一个论点说为什么不好）
+
+   1. 表明立场
+   2. 提供理由1
+   3. 补充细节1
+   4. 提供理由2
+   5. 补充细节2
+   6. 逻辑信号
+
+5. 结论平衡时间
+
+   In contrast, working alone can't offer the benefits above for a student to grow.
+
+![Screenshot 2023-10-07 at 11.31.17 PM](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/Screenshot%202023-10-07%20at%2011.31.17%E2%80%AFPM.png)
