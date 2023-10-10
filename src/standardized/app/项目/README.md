@@ -12,6 +12,10 @@ size小，竞争少
 
 [csrankings](https://csrankings.org)
 
+## 定位贴
+
+[北大低GPA转码定位](https://www.1point3acres.com/bbs/thread-1001954-1-1.html)
+
 ## 对比贴
 
 [cmu aie vs jhu cs](https://www.1point3acres.com/bbs/thread-989661-1-1.html)
@@ -27,3 +31,4 @@ size小，竞争少
 [uiuc ece meng](https://www.1point3acres.com/bbs/thread-934690-1-1.html)
 
 [ucsd ece](https://www.1point3acres.com/bbs/thread-981628-1-1.html)
+

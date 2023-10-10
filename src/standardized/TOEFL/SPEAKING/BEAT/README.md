@@ -35,7 +35,29 @@
 
 ### 综合口语
 
-托福口语 Task 2，3，4 题属于综合任务；除了考口语，更考听力笔记复述。今天的任务是 Task 4。
+托福口语 Task 2，3，4 题属于综合任务；除了考口语，更考听力笔记复述。
+
+#### Task 2
+
+打开Part 2，完成 Task 2 答题。先读一篇校园短文，主题涉及：校园服务、课程安排、课外活动等（约45秒内读完）；再听一段对话：两位同学就短文展开讨论。对话结束，题目要求概述对话的观点。
+
+打开Part 3，跟着解析再练10-15遍，重点关注3方面：
+
+（1）短文：抓核心观点。短文只是背景，不用什么都记，优先抓“对比因果”。 
+
+（2）听力：练听力笔记。先记对话主角的立场：支持或反对短文；再全力记录主角的论证细节，优先抓“对比因果”。 
+
+（3）回答：先用15-20秒：概括短文主题；再用3-5秒：阐明对话主角对短文支持或反对；最后不少于30秒：复述对话主角的论证细节，尽快进入细节。
+
+再完整答一遍，并总结3个反面：
+
+（1）笔记：多用缩写、箭头、星号、数字等简写符号；反复出现的术语，要记发音，以便答题转述。 
+
+（2）逻辑：时刻提醒自己，优先抓和 “对比因果” 相关的例证细节；不要因为记笔记而耽误理解。
+
+（3）心态：从来不练笔记的同学，答题无话可说，压力很大。但不用担心，笔记起步训练——“不求多但求精”——每次一道题，彻底练透。
+
+####  Task 4
 
 **Task 4 考察方式**
 
@@ -105,6 +127,8 @@ which is essential in study, work, and life.
 
 ## 解题步骤
 
+![Screenshot 2023-10-09 at 10.57.19 PM](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/Screenshot%202023-10-09%20at%2010.57.19%E2%80%AFPM.png)
+
 ### Task 1
 
 #### 步骤
@@ -132,9 +156,25 @@ which is essential in study, work, and life.
    4. 提供理由2
    5. 补充细节2
    6. 逻辑信号
+      - 观点：I prefer../l'd like to../I agree/disagree
+      - 列举：first,also,in addition,moreover,for one thing
+      - 因果：because(of,since,for the reason that,due to
+      - 举例：for example,for instance
+      - 转折：yet,but,however,although,whereas,instead
+      - 对比：in contrast,rather than,on the other hand
+      - 强调：indeed,in fact,literally,surely,particularly
+      - 总结：therefore,so,in brief,as a result,in summary
 
 5. 结论平衡时间
 
    In contrast, working alone can't offer the benefits above for a student to grow.
 
 ![Screenshot 2023-10-07 at 11.31.17 PM](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/Screenshot%202023-10-07%20at%2011.31.17%E2%80%AFPM.png)
+
+### Task 2
+
+![Screenshot 2023-10-09 at 11.01.55 PM](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/Screenshot%202023-10-09%20at%2011.01.55%E2%80%AFPM.png)
+
+### Task 4
+
+![Screenshot 2023-10-09 at 11.05.41 PM](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/Screenshot%202023-10-09%20at%2011.05.41%E2%80%AFPM.png)
