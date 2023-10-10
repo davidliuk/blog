@@ -1,9 +1,26 @@
 # 文书
 
+### 清单
+
+- sop
+- cv/resume
+- 3 rl
+- essay
+
 ### 工具
 
-chatGPT, bard, claude
+#### GPT 相关
+
+chatGPT, bard, claude, bing
+
+检测AI：originality.ai
+
+#### 语法相关
+
+grammarly
+
+#### native 相关
 
 fiverr
 
-40-200 🔪，sop + 3 rl
+sop + 3 rl: $40-200

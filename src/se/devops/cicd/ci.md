@@ -24,13 +24,13 @@ workflow template 的定义文件中，可以定义 workflow 的参数，参数�
 
 1. 开发、自测
 
-功能开发、自测在自己的 feature 分支中完成，如 feature/addButton，提交到远程代码仓。
+   功能开发、自测在自己的 feature 分支中完成，如 feature/addButton，提交到远程代码仓。
 
-1. `git commit -m "AddFeature:add button"`
+2. `git commit -m "AddFeature:add button"`
 
-2. `git push origin feature/addButton`
+3. `git push origin feature/addButton`
 
-3. 集成测试
+4. 集成测试
 
 合并 feature 到 develop 分支
 
