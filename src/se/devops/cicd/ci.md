@@ -126,7 +126,7 @@ GitOps 部署配置
 
 - - 由版本管理员, 在 develop 分支中对应首个新功能 commit id, 创建 vX.Y 的版本 tag. 例如: 描述新功能规划的 README.md 文件的代码提交.
 
-  - 开发分支功能通过开发联调自测后, 在发版时, 由版本管理员, 基于当前 develop 分支创建 Release 分支 rX.Y, .
+  - 开发分支功能通过开发联调自测后, 在版时, 由版本管理员, 基于当前 develop 分支创建 Release 分支 rX.Y, .
 
   - rX.Y 发版后, 进入测试阶段.
 

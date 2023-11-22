@@ -79,7 +79,7 @@ export const enSidebar = sidebar({
       children: "structure",
     },
   ],
-  "/standardized/": [
+  "/apply/test/": [
     "",
     {
       text: "GRE",

@@ -84,3 +84,6 @@ HTTP**S** 在 HTTP 与 TCP 层之间加入了 `SSL/TLS` 协议，可以很好的
 至此，整个 TLS 的握手阶段全部结束。接下来，客户端与服务器进入加密通信，就完全是使用普通的 HTTP 协议，只不过用「会话秘钥」加密内容。
 
 ## [Let’s Encrypt](https://letsencrypt.org/)
+
+## HSTP
+

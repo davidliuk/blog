@@ -12,12 +12,12 @@ projects:
   - icon: book
     name: TOEFL
     desc: A summary of TOEFL
-    link: /standardized/TOEFL/
+    link: /apply/test/TOEFL/
 
   - icon: article
     name: GRE
     desc: A summary of GRE
-    link: /standardized/GRE/
+    link: /apply/test/GRE/
 
   - icon: project
     name: Algo Summary

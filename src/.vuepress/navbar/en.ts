@@ -188,7 +188,7 @@ export const enNavbar = navbar([
   {
     text: "Standardized",
     icon: "edit",
-    prefix: "/standardized/",
+    prefix: "/apply/test/",
     children: [
       {
         text: "GRE",

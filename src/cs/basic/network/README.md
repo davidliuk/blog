@@ -1,13 +1,11 @@
 # Computer Network
 
-
-
-
-
 应用层
 
-- HTTP/HTTPS
+- HTTP/HTTPS/HSTP
 - DNS
+- FTP/SFTP
+- SMTP
 - ICMP
 
 传输层
@@ -23,8 +21,6 @@
 链路层
 
 - 以太网
-
-
 
 ## 通信方式
 
