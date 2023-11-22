@@ -25,3 +25,13 @@
 ### 多环境配置
 
 spring.profile.active
+
+### 环境变量
+
+在 application.yaml 中，使用 shell 中的变量引用表达式`${VAR}`
+
+举例：`${MYSQL_HOST}`，将会读取环境变量中的 MYSQL_HOST 的值
+
+可以进行字符串拼接
+
+可以有默认值，`${MYSQL_HOST:localhost}`

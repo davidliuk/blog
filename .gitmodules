@@ -1,0 +1,3 @@
+[submodule "submodules/codebase"]
+	path = submodules/codebase
+	url = git@github.com:davidliuk/codebase.git

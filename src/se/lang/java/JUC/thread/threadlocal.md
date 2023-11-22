@@ -92,3 +92,9 @@ public class InheritableThreadLocalDemo {
 但`InheritableThreadLocal`仍然有缺陷，一般我们做异步化处理都是使用的线程池，而`InheritableThreadLocal`是在`new Thread`中的`init()`方法给赋值的，而线程池是线程复用的逻辑，所以这里会存在问题。
 
 解决问题方案：阿里巴巴的`TransmittableThreadLocal`组件就可以解决这个问题。
+
+## MDC
+
+MDC（Mapped Diagnostic Context，映射调试上下文）是 Slf4J, log4j 和 logback 提供的一种方便在多线程条件下记录日志的功能，也可以说是一种轻量级的日志跟踪工具。
+
+canal

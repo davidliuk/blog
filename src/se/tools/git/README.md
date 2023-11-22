@@ -23,3 +23,21 @@ $ git config --global user.name <用户名>
 $ git config --global user.password <密码>
 $ git config --global user.password <邮箱>
 ```
+
+### 设置 git alias
+
+使用 git alias 可以极大地提高效率，我常用的有
+
+```text
+git config --global alias.co checkout
+git config --global alias.br branch
+git config --global alias.ci commit
+git config --global alias.st status
+git config --global alias.unstage 'reset HEAD --'
+git config --global alias.last 'log -1 HEAD'
+git config --global alias.logl 'log --oneline'
+```
+
+跑完上面的指令，查看 ~/.gitconfig 是否包含以下内容
+
+https://www.zhihu.com/people/freewheel-lee
