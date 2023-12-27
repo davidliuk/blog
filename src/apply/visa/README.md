@@ -135,3 +135,37 @@ STEM, add 24m
 SSN
 
 A Social Security Number (SSN) is a unique, permanent identification number used for income tax reporting. F-1 students are **not eligible for a social security number** unless they have received a job offer and will be participating in authorized employment on-campus, CPT, or OPT.
+
+---
+
+- F-1签证
+- I-20表格
+- I-94表格（入境记录）
+
+---
+
+准备
+
+手机卡
+
+- T-Mobile
+
+银行卡
+
+- 实体卡
+  - MasterCard
+  - Visa
+  - amex(American Express)
+
+- 虚拟卡
+  - [OneKey](https://card.onekey.so)
+  - Wise
+
+
+网络
+
+节点
+
+- [jsss](http://jsss-50.top)
+- [2y](https://两元店.com/)
+

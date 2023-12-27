@@ -28,6 +28,11 @@ interview
 
 OC(Offer Call) 口头Offer
 
+### 开源项目
+
+- [GSoC](https://summerofcode.withgoogle.com)
+- [LFX](https://lfx.linuxfoundation.org/tools/mentorship)
+
 ### 项目类型
 
 intern 实习

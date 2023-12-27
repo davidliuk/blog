@@ -112,13 +112,26 @@ class Student {
 
 红黑树是一种特化的 AVL 树（平衡二叉树），都是在进行插入和删除操作时通过特定操作保持二叉查找树的平衡，从而保证较高的查找性能。
 
-它虽然是复杂的，但它的最坏情况运行时间也是非常良好的，并且在实践中是高效的： 它可以在 O(log n)时间内做查找，插入和删除
+它虽然是复杂的，但它的最坏情况运行时间也是非常良好的，并且在实践中是高效的： 它可以在 O(log n) 时间内做查找，插入和删除
 
 - 性质 1. 结点是红色或黑色。
 - 性质 2. 根结点是黑色。
 - 性质 3. 所有叶子都是黑色。（叶子是 NIL 结点）
 - 性质 4. 每个红色结点的两个子结点都是黑色。（从每个叶子到根的所有路径上不能有两个连续的红色结点）
 - 性质 5. 从任一结点到其每个叶子的所有路径都包含相同数目的黑色结点。
+
+### 使用技巧
+
+巧用 computeIfAbsent，来简化value为数组类型的情况下的一些操作
+
+```java
+idToEmails.computeIfAbsent(id, k -> new ArrayList<>()).add(email);
+
+// 三行代码版本
+List<String> account = indexToEmails.getOrDefault(index, new ArrayList<String>());
+account.add(email);
+indexToEmails.put(index, account);
+```
 
 ## HashTable
 

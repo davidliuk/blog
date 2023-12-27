@@ -11,6 +11,13 @@
 
 ## 寄送
 
+- CMU
+- DUKE
+- UCSD
+- GaTech
+
+现在GRE、TOEFL送分都是电子送分，很快就到，但是小蜜匹配分数需要大约一周
+
 cmu虽然多个学院gre的code不同，但是也只需要寄送一份，INI的秘书的回复
 
 “If you’re applying to two programs at CMU you only need to use the institution code 2074 and the test results will be reported to the university and will be posted to the central information system which can be accessed by all departments. So you only need to report the test results once.“
