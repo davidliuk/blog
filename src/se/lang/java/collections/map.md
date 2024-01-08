@@ -122,7 +122,16 @@ class Student {
 
 ### 使用技巧
 
-巧用 computeIfAbsent，来简化value为数组类型的情况下的一些操作
+用 merge，来简化统计频率
+
+```java
+occurrences1.merge(word, 1, Integer::sum);
+
+// 旧的版本
+occurrences1.put(word, 1 + occurrences1.getOrDefault(word, 0));
+```
+
+用 computeIfAbsent，来简化value为集合类型的情况下的一些操作
 
 ```java
 idToEmails.computeIfAbsent(id, k -> new ArrayList<>()).add(email);
@@ -132,6 +141,10 @@ List<String> account = indexToEmails.getOrDefault(index, new ArrayList<String>()
 account.add(email);
 indexToEmails.put(index, account);
 ```
+
+putIfAbsent
+
+getOrDefault
 
 ## HashTable
 

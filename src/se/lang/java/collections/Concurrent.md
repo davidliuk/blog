@@ -64,11 +64,21 @@ ConcurrentHashMap 是 Java 中线程安全的哈希表实现，常用于以下�
 
 实现比较粗暴，就是在每个方法前加 synchronized
 
-## List
+## Collection
 
-### CopyOnWriteArrayList
+### Set
+
+**`CopyOnWriteArraySet`**
+
+### List
+
+#### CopyOnWriteArrayList
 
 ### BlockingQueue
+
+- `ArrayBlockingQueue`、
+- `LinkedBlockingQueue`、
+- `PriorityBlockingQueue`
 
 blocked queue 双向链表
 
@@ -80,7 +90,7 @@ tryLock(时间)这种会尊从创建锁的时候的公平非公平
 
 无参的 tryLock，不管创建的锁是什么样，他都是非公平执行
 
-### 条件变量 Condition
+#### 条件变量 Condition
 
 然后就会进入等待队列
 

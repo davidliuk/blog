@@ -110,6 +110,7 @@ export default hopeTheme({
 
   encrypt: {
     config: {
+      "/apply/program": ["dawei.app"],
       "/demo/encrypt.html": ["1234"],
       "/zh/demo/encrypt.html": ["1234"],
     },
