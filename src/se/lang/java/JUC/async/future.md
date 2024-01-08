@@ -49,3 +49,5 @@ Java 8 才被引入`CompletableFuture` 类可以解决`Future` 的这些缺陷�
 `CompletionStage` 接口描述了一个异步计算的阶段。很多计算可以分成多个阶段或步骤，此时可以通过它将所有步骤组合起来，形成异步计算的流水线。
 
 `CompletionStage` 接口中的方法比较多，`CompletableFuture` 的函数式能力就是这个接口赋予的。从这个接口的方法参数你就可以发现其大量使用了 Java8 引入的函数式编程。
+
+[教程](https://juejin.cn/post/7296058491289157632?utm_source=gold_browser_extension#heading-5)

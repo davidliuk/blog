@@ -2,6 +2,8 @@
 
 Java 集合的架构如下
 
+![Java 集合框架概览](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/java-collection-hierarchy.png)
+
 ![截屏2023-03-16 21.15.43](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/%E6%88%AA%E5%B1%8F2023-03-16%2021.15.43.png)
 
 内容大概分为如下三个部分：
@@ -45,3 +47,38 @@ Java 集合的架构如下
 什么是安全失败(fail-safe)呢? 明白了快速失败(fail-fast)之后，安全失败(fail-safe)我们就很好理解了。
 
 采用安全失败机制的集合容器，在遍历时不是直接在集合内容上访问的，而是先复制原有集合内容，在拷⻉的集合上进行遍历。所以，在遍历过程中对原集合所作的修改并不能被迭代器检测到，故不会抛 ConcurrentModificationException 异常。
+
+## null
+
+不允许加入null的集合
+
+- 排序集合：TreeMap、TreeSet
+
+  这些集合在默认的排序行为下不接受`null`键或元素，因为它们需要对元素进行比较，而`null`通常无法与其他对象进行比较。
+
+  但是，如果提供了自定义的比较器，并且该比较器能够处理`null`，则`TreeSet`和`TreeMap`可能会接受`null`。
+
+- 集合工厂：**Java 9及更高版本中的方法创建的集合**：
+
+  - `List.of()`
+  - `Set.of()`
+  - `Map.of()` 和 `Map.ofEntries()`
+  - 这些工厂方法创建的集合是不可变的，并且不接受`null`元素。
+
+- **`ConcurrentHashMap`**：
+
+  - 不接受`null`作为键（key）或值（value）。
+  - 在并发环境中使用时，以防止某些操作的歧义。
+
+- **`CopyOnWriteArrayList`和`CopyOnWriteArraySet`**：
+
+  - 这些线程安全的集合类不接受`null`元素。
+  - 主要用于替代`ArrayList`和`HashSet`，以避免并发修改异常。
+
+- **`PriorityQueue`, `ArrayDeque`**
+
+  `ArrayDeque` 实现了 `Deque` 接口，而 `Deque` 的 API 使用 `null` 来表示特殊的返回值（例如，当队列为空时，`poll` 方法返回 `null`）。
+
+  因此，为了避免歧义，`ArrayDeque` 和其他一些 `Deque` 实现不允许插入 `null`。
+
+  PriorityQueue 同理，但是 LinkedList 继承的 Queue 可以

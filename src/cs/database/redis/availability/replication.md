@@ -2,13 +2,11 @@
 
 架构图
 
-![截屏2023-02-21 20.18.31](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/3978/%E6%88%AA%E5%B1%8F2023-02-21%2020.18.31.png)
-
 ## 是什么
 
 主负责写，从负责读
 
-redis读多写少，所以这样比较有效
+redis 读多写少，所以这样比较有效
 
 就是主从复制，master以写为主，Slave以读为主
 
