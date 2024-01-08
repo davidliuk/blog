@@ -1,0 +1,1 @@
+import{_ as t}from"./plugin-vue_export-helper-c27b6911.js";import{o as _,c as o,a as e}from"./app-9107e99b.js";const c={},s=e("p",null,"等价词在宏观上可能有语义区别",-1),n=e("p",null,"在原题的语义环境中进行等价词的理解",-1),r=[s,n];function l(a,i){return _(),o("div",null,r)}const m=t(c,[["render",l],["__file","六选二.html.vue"]]);export{m as default};

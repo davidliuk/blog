@@ -1,1 +1,0 @@
-import{_ as c,V as r,W as o,X as e,Y as t}from"./framework-e5d7a6b2.js";const a={},s=e("h1",{id:"dockerfile",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#dockerfile","aria-hidden":"true"},"#"),t(" DockerFile")],-1),d=[s];function i(n,_){return r(),o("div",null,d)}const f=c(a,[["render",i],["__file","docker-file.html.vue"]]);export{f as default};

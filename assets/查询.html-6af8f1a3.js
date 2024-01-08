@@ -1,1 +1,0 @@
-import{_ as t,V as a,W as c,X as e,Y as r}from"./framework-e5d7a6b2.js";const s={},_=e("h1",{id:"查询",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#查询","aria-hidden":"true"},"#"),r(" 查询")],-1),o=[_];function n(d,i){return a(),c("div",null,o)}const l=t(s,[["render",n],["__file","查询.html.vue"]]);export{l as default};

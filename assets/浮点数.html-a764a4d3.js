@@ -1,1 +1,0 @@
-import{_ as t,V as a,W as _,X as e,Y as c}from"./framework-e5d7a6b2.js";const r={},s=e("h1",{id:"浮点搜索",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#浮点搜索","aria-hidden":"true"},"#"),c(" 浮点搜索")],-1),o=[s];function n(d,i){return a(),_("div",null,o)}const l=t(r,[["render",n],["__file","浮点数.html.vue"]]);export{l as default};

@@ -1,1 +1,0 @@
-import{_ as t,V as o,W as _,X as e}from"./framework-e5d7a6b2.js";const n={},s=e("p",null,"耶鲁、斯坦福",-1),c=e("p",null,"Yale",-1),l=e("p",null,"Stanford",-1),a=[s,c,l];function r(d,i){return o(),_("div",null,a)}const u=t(n,[["render",r],["__file","BL.html.vue"]]);export{u as default};

@@ -1,1 +1,0 @@
-import{_ as t,V as a,W as r,X as e,Y as o}from"./framework-e5d7a6b2.js";const c={},n=e("h1",{id:"orm",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#orm","aria-hidden":"true"},"#"),o(" ORM")],-1),s=[n];function _(d,i){return a(),r("div",null,s)}const l=t(c,[["render",_],["__file","index.html.vue"]]);export{l as default};

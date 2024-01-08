@@ -1,1 +1,0 @@
-import{_ as o,V as r,W as t,X as e,Y as a}from"./framework-e5d7a6b2.js";const c={},f=e("h1",{id:"buffer-pool",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#buffer-pool","aria-hidden":"true"},"#"),a(" Buffer pool")],-1),s=[f];function _(n,l){return r(),t("div",null,s)}const i=o(c,[["render",_],["__file","Buffer Pool.html.vue"]]);export{i as default};

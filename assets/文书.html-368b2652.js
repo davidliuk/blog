@@ -1,1 +1,0 @@
-import{_ as t,V as _,W as o,X as e}from"./framework-e5d7a6b2.js";const s={},c=e("p",null,"fiverr",-1),n=e("p",null,"40 刀-200 刀，sop+3rl",-1),r=[c,n];function l(a,i){return _(),o("div",null,r)}const f=t(s,[["render",l],["__file","文书.html.vue"]]);export{f as default};

@@ -1,0 +1,1 @@
+import{_ as e}from"./plugin-vue_export-helper-c27b6911.js";import{o,c as t,a as _}from"./app-9107e99b.js";const c={},s=_("p",null,"熔断，降级",-1),n=[s];function r(l,a){return o(),t("div",null,n)}const i=e(c,[["render",r],["__file","13. Cloud.html.vue"]]);export{i as default};

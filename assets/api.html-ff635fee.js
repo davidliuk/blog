@@ -1,1 +1,0 @@
-import{_ as a,V as t,W as c,X as e,Y as r}from"./framework-e5d7a6b2.js";const s={},o=e("h1",{id:"接口设计",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#接口设计","aria-hidden":"true"},"#"),r(" 接口设计")],-1),n=[o];function _(d,i){return t(),c("div",null,n)}const l=a(s,[["render",_],["__file","api.html.vue"]]);export{l as default};
