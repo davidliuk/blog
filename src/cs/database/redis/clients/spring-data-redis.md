@@ -1,9 +1,5 @@
 # Spring Data Redis
 
-
-
-
-
 操作API分组
 
 - opsForValue
@@ -12,17 +8,12 @@
 - opsForSet
 - opsForZSet
 
-
-
 ### 引入依赖
 
 ```xml
 spring-data-redis
-
 common-pool2
 ```
-
-
 
 ### 配置文件
 
@@ -40,13 +31,9 @@ spring:
 				max-wait: 100 # 连接等待时间
 ```
 
-
-
 ## Redis Serializer
 
 默认会当做Object去存
-
-
 
 key一般用StringRedisSerializer
 

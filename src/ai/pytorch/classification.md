@@ -8,8 +8,6 @@ nn.Sequential(
 )
 ```
 
-
-
 梯度爆炸、梯度消失
 
 ## non-linearity

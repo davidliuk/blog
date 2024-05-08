@@ -4,7 +4,7 @@
 
 ## Optimize memory use
 
-## MySQL Replicayion (同步)
+## MySQL Replication (同步)
 
 ### Reasons Cause Database stopped
 

@@ -1,12 +1,19 @@
 # Computer Network
 
+TCP/IP 协议栈
+
 应用层
 
-- HTTP/HTTPS/HSTP
-- DNS
-- FTP/SFTP
-- SMTP
-- ICMP
+- 会话层
+- 表示层
+- 应用层
+
+- HTTP/HTTPS/HSTP, RPC
+- DNS/DoT/DoH
+- FTP/SFTP, SCP
+- SMTP, POP3/IMAP
+- RTP
+- SSH
 
 传输层
 
@@ -15,12 +22,28 @@
 
 网络层
 
+- IP/IPv6
+- NAT
+- ICMP
+- IGMP
 - ARP
-- ASPF
+- Router 路由
+  - OSPF
+  - IGRP
+  - RIP
+
 
 链路层
 
-- 以太网
+- Ethernet 以太网
+- FDDI
+- ARCNET
+- P2P
+- Frame Relay
+- CSMA/CD
+- MAC
+
+![img](https://oss.javaguide.cn/github/javaguide/cs-basics/network/osi-model-detail.png)
 
 ## 通信方式
 
@@ -46,6 +69,8 @@
 
 实现原理：**全双工传输模式可以用于点到点以太网连接和快速以太网连接**，同时不会发生冲突，因为他们使用双绞线中两条不同线路，类似于双车道桥梁。
 
+总结：
 
+传输层TCP是全双工的，但是其上层应用层可能是半双工的。
 
-总结：传输层TCP是全双工的，但是其上层应用层可能是半双工的。每一个层次都有自己的双工模式，传输层有传输层的双工模式，应用层有应用层的双工模式。下层的双工模式是支持上层双工模式的上限。比如下层支持半双工，上层顶多支持半双工，不可能支持全双工。tcp是全双工的，但它的上层可能支持半双工，比如http1.1，也有可能支持全双工，比如http2.0。
+每一个层次都有自己的双工模式，传输层有传输层的双工模式，应用层有应用层的双工模式。下层的双工模式是支持上层双工模式的上限。比如下层支持半双工，上层顶多支持半双工，不可能支持全双工。tcp是全双工的，但它的上层可能支持半双工，比如http1.1，也有可能支持全双工，比如http2.0。

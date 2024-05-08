@@ -73,8 +73,6 @@ rollback;
   指事务的参与者,事务所在的服务器,涉及到资源服务器以及事务管理器等分别位于不同的服务或数据库节点上.
 
 
-
-
 ### Java 角度
 
 根据规范分为JDBC事务和JTA事务
@@ -82,8 +80,6 @@ rollback;
 JDBC事务：普通事务，即数据库事务中的本地事务，通过connection对象控制管理。
 
 JTA事务：JTA指Java事务API(Java Transaction API)，是Java EE数据库事务规范， JTA只提供了事务管理接口，由应用程序服务器厂商（如WebSphere Application Server）提供实现，JTA事务比JDBC更强大，支持分布式事务（当然也支持本地事务）。
-
- 
 
 ### 编程角度（Spring层面）
 

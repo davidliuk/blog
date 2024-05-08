@@ -22,7 +22,7 @@ Servlet 是 Java Web 应用程序中的一种 Java 类，用于处理 HTTP 请�
 
 总之，Servlet 中的这些方法都是非常重要的，它们可以帮助我们处理 HTTP 请求和响应，并进行一些初始化和清理操作。在编写 Servlet 时，需要根据实际情况重写这些方法，以实现自己的业务逻辑。
 
-## 什么情况下调用 doGet()和 doPost()
+## 什么情况下调用 doGet() 和 doPost()
 
 Form 标签里的 method 的属性为 get 时调用 doGet()，为 post 时调用 doPost()。
 
@@ -40,7 +40,7 @@ request.getRequestDispatcher("login_success.jsp").forward(request, response);
 
 1. **从地址栏显示来说**
 
-forward 是服务器请求资源,服务器直接访问目标地址的 URL,把那个 URL 的响应内容读取过来,然后把这些内容再发给浏览器.浏览器根本不知道服务器发送的内容从哪里来的,所以它的地址栏还是原来的地址. redirect 是服务端根据逻辑,发送一个状态码,告诉浏览器重新去请求那个地址.所以地址栏显示的是新的 URL.
+forward 是服务器请求资源,服务器直接访问目标地址的 URL,把那个 URL 的响应内容读取过来，然后把这些内容再发给浏览器。浏览器根本不知道服务器发送的内容从哪里来的，所以它的地址栏还是原来的地址。redirect 是服务端根据逻辑，发送一个状态码,告诉浏览器重新去请求那个地址.所以地址栏显示的是新的 URL.
 
 1. **从数据共享来说**
 
@@ -67,3 +67,6 @@ Response.setHeader("Refresh","5;URL=http://localhost:8080/servlet/example.htm");
 ## Servlet 与线程安全
 
 **Servlet 不是线程安全的，多线程并发的读写会导致数据不同步的问题。** 解决的办法是尽量不要定义 name 属性，而是要把 name 变量分别定义在 doGet()和 doPost()方法内。虽然使用 synchronized(name){}语句块可以解决问题，但是会造成线程的等待，不是很科学的办法。 注意：多线程的并发的读写 Servlet 类属性会导致数据不同步。但是如果只是并发地读取属性而不写入，则不存在数据不同步的问题。因此 Servlet 里的只读属性最好定义为 final 类型的。
+
+## Filter 过滤器
+

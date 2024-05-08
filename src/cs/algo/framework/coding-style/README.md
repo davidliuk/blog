@@ -5,8 +5,6 @@
 1. 先想暴力的方法
 2. 看哪里有地方是浪费的
 
-
-
 #### 优秀的Coding Quality
 
 1. bug free
@@ -36,12 +34,6 @@
 
 写Python能大概减少10分钟的时间，如果是面试不限制语言的话，可以写Python
 
-![](https://xingqiu-tuchuang-1256524210.cos.ap-shanghai.myqcloud.com/3978/%E6%88%AA%E5%B1%8F2022-07-09%2013.26.10.png)
-
-
-
-
-
 ### 独孤九剑 - 总决式
 
 想做到bug free最重要的是优化code Quality
@@ -54,8 +46,8 @@
 
 多用continue少用if：减少大段代码的缩进
 
-也可以尽量减少else，如果前面的if里面执行了return或者continue、break等，后面就不需要else if，直接普通的if，最后不需要else，直接普通的xxx
+减少else，如果前面的if里面执行了return或者continue、break等，后面就不需要else if，直接普通的if，最后不需要else，直接普通的xxx
 
 最好把嵌套式的改成并列的：好懂得多
 
-typo：拼写错误
+减少typo：拼写错误

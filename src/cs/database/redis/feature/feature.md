@@ -6,6 +6,8 @@
 
 - Redis Function
 
+  用来部分取代 lua 脚本
+
 - Client-eviction
 
 - Multi-part AOF
@@ -14,6 +16,6 @@
 
 - ACL
 
-- listpack替代ziplist
+- listpack 替代 ziplist
 
 - 底层性能优化

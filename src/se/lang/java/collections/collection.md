@@ -2,11 +2,13 @@
 
 ## List 接口
 
-- Vector，List 接口旧的实现，是线程安全的，方法前都
-- ArrayList
-- LinkedList
+- Vector，List 接口旧的实现，是线程安全的，方法前都加了 synchronized
 
-（Stack 是继承自 Vector 的类，但是一般不推荐使用，ArrayDeque 更快）
+  Stack 是继承自 Vector 的类，但是一般不推荐使用，ArrayDeque 更快
+
+- ArrayList
+
+- LinkedList
 
 ### ArrayList
 
@@ -18,15 +20,40 @@
 
 当装满的时候，会扩容数组大小为 1.5 倍。
 
+**`int newCapacity = oldCapacity + (oldCapacity >> 1)`,所以 ArrayList 每次扩容之后容量都会变为原来的 1.5 倍（oldCapacity 为 1.5 倍向下取整）**
+
+比如：10+10/2 = 15, 33+33/2=49。如果是奇数的话会丢掉小数。
+
 ### Vector
 
 `Vector` 是 `List` 的古老实现类，底层使用`Object[]` 存储，线程安全的。
 
+`Stack` 是 `Vector` 的子类，线程安全的。但是现在更多用 `ArrayDeque` 来实现 Stack
+
 ## Queue/Deque 接口
+
+PriorityQueue
+
+LinkedList
+
+### ArrayDeque
+
+底层基于可变长的数组和双指针实现双端队列。
 
 ## Set 接口
 
-### 比较 HashSet、LinkedHashSet 和 TreeSet 三者的异同
+- HashSet
+- LinkedHashSet
+- TreeSet
+
+都是用对应的 HashMap 实现的，val 都是 null
+
+### TreeSet
+
+1. **范围操作：** 提供了一些范围操作方法，如 `subSet()`, `headSet()`, `tailSet()` 等，用于获取集合的子集。
+2. **第一个和最后一个元素：** 可以通过 `first()` 和 `last()` 方法访问集合中的最小和最大元素。
+
+### 比较 HashSet、LinkedHashSet 和 TreeSet 异同
 
 - HashSet 是 Set 接口的主要实现类 ，HashSet 的底层是 HashMap，线程不安全的，可以存储 null 值;
 - LinkedHashSet 是 HashSet 的子类，能够按照添加的顺序遍历;

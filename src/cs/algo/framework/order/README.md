@@ -1,7 +1,5 @@
 # 顺序
 
-
-
 这四种顺序是针对值传递而言的，因为每一种顺序都是传递一个具体值的
 
 第一对顺序
@@ -13,8 +11,6 @@
 
 1. 访问
 2. 邻接
-
-
 
 ## 先序/后序
 
@@ -28,8 +24,6 @@
 
 实现：（对于DFS，通过参数列表）
 
-
-
 ### 后序
 
 定义：未知点到已知点，即出发点和边界点相反
@@ -37,8 +31,6 @@
 方式：DFS
 
 实现：（对于DFS，通过返回值传递）
-
-
 
 ## 邻接/访问
 
@@ -52,7 +44,7 @@
 
 实现：局部变量，参数 + 返回值（参数：父传子，返回值：子传父）
 
-如dp[i]=dp[i-1]+dp[i-2]
+如：`dp[i]=dp[i-1]+dp[i-2]`
 
 
 
@@ -62,7 +54,7 @@
 
 实现：全局变量
 
-如：index（或叫时间戳，二叉树里面一个节点唯一标识（根据访问的先后顺序递增））
+如：`index`, `dfn`（或时间戳，二叉树里面一个节点唯一标识（根据访问的先后顺序递增））
 
 
 
@@ -70,50 +62,42 @@
 
 四种组合
 
-
-
 DFS四种顺序的组合在同一个代码块里面都可以出现，所以代码复杂性可能会很高
-
-
 
 ### 邻接 + 先序
 
-实现：
+实现：DFS，方式：
 
-- DFS，通过：
+- 参数列表：
 
-  - 参数列表：
+  ```java
+  void dfs(TreeNode root, int depth) {
+      if (root == null) return;
+      dfs(root.left, depth + 1);
+      dfs(root.right, depth + 1);
+  }
+  ```
 
-    ```java
-    void dfs(TreeNode root, int depth) {
-        if (root == null) return;
-        dfs(root.left, depth + 1);
-        dfs(root.right, depth + 1);
-    }
-    ```
+  简单变量可以父子传递，基本数据类型可以这样写，比较简单
 
-    简单变量可以父子传递，基本数据类型可以这样写，比较简单
+- 全局变量：回溯
 
-  - 全局变量：回溯
+  ```java
+  int depth = 0;
+  void dfs(TreeNode root) {
+      if (root == null) return;
+      depth++;
+      dfs(root.left);
+      dfs(root.right);
+      depth--;
+  }
+  ```
 
-    ```java
-    int depth = 0;
-    void dfs(TreeNode root) {
-        if (root == null) return;
-        depth++;
-        dfs(root.left);
-        dfs(root.right);
-        depth--;
-    }
-    ```
-
-    这样写可以节省开销
-
-
+  这样写可以节省开销
 
 ### 访问 + 先序
 
-实现：通过：全局变量
+实现：DFS，通过：全局变量
 
 ```java
 int prev = 0;
@@ -126,10 +110,6 @@ void dfs(TreeNode root) {
 }
 ```
 
-
-
-
-
 ### 邻接 + 后序
 
 实现：DFS，通过：返回值传递
@@ -141,10 +121,6 @@ int dfs(TreeNode root) {
     return 1 + Math.max(dfs(root.left), dfs(root.right));
 }
 ```
-
-
-
-
 
 ### 访问 + 后序
 
@@ -160,8 +136,6 @@ void dfs(TreeNode root) {
     post++;
 }
 ```
-
-
 
 ### 四种混合
 
