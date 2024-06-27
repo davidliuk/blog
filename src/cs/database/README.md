@@ -34,7 +34,7 @@ Relational DB, Document DB, Key-Value DB, Graph DB
   
   - Wide-Column
   
-    宽列：HBase、Cassandra，
+    宽列：HBase、Cassandra
   
   - Graph
   
@@ -42,7 +42,7 @@ Relational DB, Document DB, Key-Value DB, Graph DB
 
 ---
 
-nosql最早就是处理写多读少，google big table处理log的（分布式k-v数据库）
+nosql最早就是处理写多读少，google big table处理log的（分布式k-v数据库）(big table用的是skip list，因为方便序列化成有序表)
 
 ---
 

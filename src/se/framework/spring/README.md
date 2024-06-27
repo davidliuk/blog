@@ -12,7 +12,7 @@
 
 ![Spring 各个模块的依赖关系](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/20200902100038.png)
 
-### Spring,Spring MVC,Spring Boot 之间什么关系?
+### Spring, Spring MVC, Spring Boot 之间什么关系?
 
 Spring 包含了多个功能模块（上面刚刚提到过），其中最重要的是 Spring-Core（主要提供 IoC 依赖注入功能的支持） 模块， Spring 中的其他模块（比如 Spring MVC）的功能实现基本都需要依赖于该模块。
 

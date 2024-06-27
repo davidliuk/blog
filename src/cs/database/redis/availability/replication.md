@@ -105,7 +105,7 @@ master通过一个环形的复制积压缓冲区(repl_backlog_buffer)来记录�
 
 复制延迟，信号衰减
 
-matser挂了怎么办
+matser 挂了怎么办
 
 - 默认情况下，不会在slave节点中自动重选一个master
 - 那每次都要人工干预？希望可以无人值守自动更换

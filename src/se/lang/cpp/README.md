@@ -22,6 +22,14 @@ vcpkg
 
 Bazel/blade
 
+（google、tencent）
+
 clangd
 
 [cppref](https://en.cppreference.com/w/)
+
+conan
+
+buckaroo
+
+clib

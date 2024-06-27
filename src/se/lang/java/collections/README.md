@@ -46,11 +46,13 @@ Java 集合的架构如下
 2. 在单线程下，如果在遍历过程中对集合对象的内容进行了修改的话也会触发 fail-fast 机制。
 
 > 注：增强 for 循环也是借助迭代器进行遍历。
+>
+> list是不能简单的用 for() 来删除数据的，因为每次删除一个位，该位后面的数据便会往前移一位。如果非要用 for() 可以考虑逆序删除。
 
 举个例子：
 
 1. 多线程下，如果线程 1 正在对集合进行遍历，此时线程 2 对集合进行修改(增加、删除、 修改)
-2. 线程 1 在遍历过程中对集合进行修改，
+2. 线程 1 在遍历过程中对集合进行修改
 
 都会导致线程 1 抛出 ConcurrentModificationException 异常。
 
@@ -80,7 +82,7 @@ while (iterator.hasNext()) {
 
 **Collection#removeIf()**
 
-可以使用 `Collection#removeIf()`方法删除满足特定条件的元素，如
+Java8 可以使用 `Collection#removeIf()`方法删除满足特定条件的元素
 
 ```java
 list.removeIf(filter -> filter % 2 == 0);
@@ -128,7 +130,10 @@ for (String str : strList) {
 - **`ConcurrentHashMap`**：
 
   - 不接受`null`作为键（key）或值（value）。
+
   - 在并发环境中使用时，以防止某些操作的歧义。
+
+    get返回null说明不存在
 
 - **`CopyOnWriteArrayList`和`CopyOnWriteArraySet`**：
 
@@ -139,8 +144,10 @@ for (String str : strList) {
 
   `ArrayDeque` 实现了 `Deque` 接口，而 `Deque` 的 API 使用 `null` 来表示特殊的返回值（例如，当队列为空时，`poll` 方法返回 `null`）。
 
-  因此，为了避免歧义，`ArrayDeque` 和其他一些 `Deque` 实现不允许插入 `null`。
+  为了避免歧义，`ArrayDeque` 和其他一些 `Deque` 实现不允许插入 `null`。PriorityQueue 同理，但是 LinkedList 继承的 Queue 可以。
 
-  PriorityQueue 同理，但是 LinkedList 继承的 Queue 可以
+- `Hashtable`
 
 `HashMap` 可以存储 null 的 key 和 value，但 null 作为键只能有一个，null 作为值可以有多个
+
+list、set、vector 等集合类型都是可以存放null的。

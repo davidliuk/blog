@@ -78,6 +78,8 @@ graph LR
 
        - NIW
 
+         不与雇主挂钩
+
      - EB-3 技术类移民
 
      - EB-5 投资移民
@@ -171,3 +173,23 @@ A Social Security Number (SSN) is a unique, permanent identification number used
 
 - [jsss](http://jsss-50.top)
 - [2y](https://两元店.com/)
+
+---
+
+F-1
+
+i20
+
+[DS160](https://ceac.state.gov/genniv/)
+
+servis
+
+https://portal.ustraveldocs.com/
+
+[预约面签中文站](https://cgifederal.secure.force.com/)
+
+[预约面签英文站](https://portal.ustraveldocs.com/)
+
+https://mp.weixin.qq.com/s?__biz=MzIyMjA5NjE0NA==&mid=2651524363&idx=1&sn=7d4827d9277c5dad07169dc9c702da45&chksm=f240f01845ef035676b854a12a417a362167c12ab0fe2e10bc2a9e98f00c62184c31aed3193a&scene=27
+
+https://mp.weixin.qq.com/s?__biz=MzkzNzI0OTc3NA==&mid=2247507921&idx=1&sn=56501f9accd91faf8221ad21bfbc7710&chksm=c290c150f5e748461c32bad72ec4679b307e012606d0b53a4c236caedeba9d085fcf7d86498b&scene=27

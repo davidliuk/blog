@@ -1,6 +1,6 @@
 # Sorted Set
 
-类似 Java TreeSet，都排序了，不过 Java 是红黑树实现的，这里的是跳表+Hash
+有序，类似 Java TreeSet ，不过 Java 是红黑树实现，这里的是跳表+Hash
 
 每一个元素带有一个 score
 

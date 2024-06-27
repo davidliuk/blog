@@ -40,6 +40,8 @@ LinkedList
 
 底层基于可变长的数组和双指针实现双端队列。
 
+不支持null值，因为poll出null意味着空队列，如果允许存null则产生歧义。
+
 ## Set 接口
 
 - HashSet
@@ -53,7 +55,7 @@ LinkedList
 1. **范围操作：** 提供了一些范围操作方法，如 `subSet()`, `headSet()`, `tailSet()` 等，用于获取集合的子集。
 2. **第一个和最后一个元素：** 可以通过 `first()` 和 `last()` 方法访问集合中的最小和最大元素。
 
-### 比较 HashSet、LinkedHashSet 和 TreeSet 异同
+### 比较 HashSet、LinkedHashSet 和 TreeSet
 
 - HashSet 是 Set 接口的主要实现类 ，HashSet 的底层是 HashMap，线程不安全的，可以存储 null 值;
 - LinkedHashSet 是 HashSet 的子类，能够按照添加的顺序遍历;
@@ -65,13 +67,13 @@ LinkedList
 
 在Java中，将`int[]`数组和`ArrayList<Integer>`之间进行转换是一种常见的操作。以下是这两种数据结构之间转换的一些优雅的方法：
 
-#### `int[]` 转 `ArrayList<Integer>`
+#### `int[]` 转 `List<Integer>`
 
 由于`int[]`是基本类型数组，你不能直接使用`Arrays.asList()`，因为它会将整个数组作为一个元素。你需要手动遍历数组并逐个添加元素：
 
 ```java
 int[] array = { 1, 2, 3, 4, 5 };
-ArrayList<Integer> arrayList = new ArrayList<>();
+List<Integer> arrayList = new ArrayList<>();
 for (int i : array) {
     arrayList.add(i);
 }
@@ -81,7 +83,7 @@ for (int i : array) {
 
 ```java
 int[] array = { 1, 2, 3, 4, 5 };
-ArrayList<Integer> arrayList = Arrays.stream(array).boxed().collect(Collectors.toCollection(ArrayList::new));
+List<Integer> list = Arrays.stream(array).boxed().collect(Collectors.toCollection(ArrayList::new));
 ```
 
 #### `ArrayList<Integer>` 转 `int[]`
@@ -118,8 +120,6 @@ String[] array = {"Apple", "Banana", "Cherry"};
 List<String> arrayList = new ArrayList<>(Arrays.asList(array));
 ```
 
-这种方法简洁且直接。
-
 ####  `ArrayList<String>` 转 `String[]`
 
 要将`ArrayList<String>`转换为`String[]`，你可以使用`ArrayList`的`toArray()`方法：
@@ -130,3 +130,9 @@ String[] array = arrayList.toArray(new String[0]);
 ```
 
 在这里，`new String[0]`是作为数组类型的模板，确保`toArray()`方法返回`String[]`类型的数组。Java 8及以上版本中，使用`new String[0]`比指定确切大小的数组更高效，因为内部实现会自动调整数组的大小。
+
+sort 方法稳定性：
+
+- `Arrays.sort(T[],Comparator<? super T> c)`内部采用的归并排序，因此是稳定的。
+- `Arrays.sort(int[] a)`内部采用的快速排序，因此是不稳定的。
+- `Collections.sort(List<T> list)`、和``Collections.sort(List<T> list，Comparator<？super T> c)`采用的都是稳定的排序，采用的何种排序方式，需要核实。

@@ -1,19 +1,22 @@
 # ThreadLocal
 
+> https://www.nowcoder.com/discuss/609547710588309504?sourceSSR=search
+
 解决线程安全问题的另一种思路，之前是共享资源加锁或 CAS 重试，现在是线程隔离各用各的。
 
 作用：
 
 - 实现资源对象的线程隔离，让每个线程各用各的资源对象，避免争用引发的线程安全问题
 - 实现了线程内的资源共享
+- A方法调用B方法，B方法调用C方法，如果想要传值，可以通过方法传参或者包装的对象属性进行传参，那如果这个调用链路很长呢？A->B->C->....->Z方法，但是我们发现程序的执行流顺序是自上而下的，那如果我在A点把值存到当前线程上，再在Z方法把值从当前线程上取出来用，那就不需要通过传参的方式去传，因此在 一些框架上通常可以看到XXXContext，其实就是应用了threadlocal。
 
-局部变量：可以线程隔离，但是不能跨方法。ThreadLocal 主要解决的就是这个跨方法的问题
+局部变量：可以线程隔离，但是不能跨方法。ThreadLocal 主要解决的就是这个跨方法的问题。
 
 ## 线程关联的原理
 
-ThreadLocal 并不是一个独立的存在, 它与 Thread 类是存在耦合的, java.lang.Thread 类针对 ThreadLocal 提供了如下支持：
+ThreadLocal 并不是一个独立的存在，它与 Thread 类是存在耦合的, java.lang.Thread 类针对 ThreadLocal 提供了如下支持：
 
-```go
+```java
 ThreadLocal.ThreadLocalMap threadLocals = null;
 ```
 
@@ -23,9 +26,9 @@ ThreadLocal.ThreadLocalMap threadLocals = null;
 
 每个线程在往`ThreadLocal`里放值的时候，都会往自己的`ThreadLocalMap`里存，读也是以`ThreadLocal`作为引用，在自己的`map`里找对应的`key`，从而实现了**线程隔离**。
 
-`ThreadLocalMap`有点类似`HashMap`的结构，只是`HashMap`是由**数组+链表**实现的，而`ThreadLocalMap`中并没有**链表**结构，采用线性探测法解决hash冲突。
+`ThreadLocalMap`类似`HashMap`的结构，只是`HashMap`是由**数组+链表**实现的，而`ThreadLocalMap`中并没有**链表**结构，采用**线性探测法**解决hash冲突。
 
-我们还要注意`Entry`， 它的`key`是`ThreadLocal<?> k` ，继承自`WeakReference`， 也就是我们常说的弱引用类型。
+我们还要注意，`Entry`的`key`是`ThreadLocal<?> k` ，继承自`WeakReference`， 也就是我们常说的弱引用类型。
 
 ## ThreadLocalMap
 
@@ -82,13 +85,13 @@ public class ThreadLocal<T> {
 
 `HashMap`中解决冲突的方法是在数组上构造一个**链表**结构，冲突的数据挂载到链表上，如果链表长度超过一定数量则会转化成**红黑树**。
 
-而 `ThreadLocalMap` 中并没有链表结构，所以这里不能使用 `HashMap` 解决冲突的方式了。
+而 `ThreadLocalMap` 没有链表结构，所以这里不能使用 `HashMap` 解决冲突的方式了。而是采用**线性探测法**解决hash冲突。
 
 ![img](https://javaguide.cn/assets/7-FQtSgoo3.png)
 
 ## 为什么 Map 的 key 要设置成弱引用呢？
 
-因为如果我们 ThreadLocalMap 中的 ThreadLocal 不设置成弱引用，设置成强引用的话，如果外界已经将所有引用 ThreadLocal 的地方设置为了 null(也就是不再使用了)，但是我们的 Map 里的 key 还指向堆内存里的 ThreadLocal 呢，而我们又不能直接操控 Map。
+因为如果我们 ThreadLocalMap 中的 ThreadLocal 不设置成弱引用，设置成强引用的话，如果外界已经将所有引用 ThreadLocal 的地方设置为了 null (也就是不再使用了)，但是我们的 Map 里的 key 还指向堆内存里的 ThreadLocal 呢，而我们又不能直接操控 Map。
 
 并且这个线程始终在运行(比如说线程池复用连接)，那么久而久之，堆内存里的 ThreadLocal 就无法被回收，造成**内存泄露**。
 
@@ -100,64 +103,74 @@ public class ThreadLocal<T> {
 
 让没有引用的尽快被回收，而不用等到内存不够再回收
 
-## 内存泄漏
+## 线程复用问题
 
-**ThreadLocal** 在 **ThreadLocalMap** 中是被 Entry 中的 Key 弱引用的，因此如果 ThreadLocal 没有外部强引用来引用它，那么 ThreadLocal 会在下次 JVM 垃圾收集时被回收。这个时候就会出现 Entry 中 Key 已经被回收，出现一个 null Key 的情况，这样称为key过期。
+### 内存泄漏
+
+根源：Thread 重复利用，导致 value 强引用链一直存在，从而导致内存泄漏。
+
+**ThreadLocal** 在 **ThreadLocalMap** 中是被 Entry 中的 Key 弱引用的，因此如果 ThreadLocal 没有外部强引用来引用它，那么 ThreadLocal 会在下次 JVM 垃圾收集时被回收。这个时候就会出现 Entry 中 Key 已经被回收，出现一个 null Key 的情况，这样称为 key 过期。
 
 外部读取 ThreadLocalMap 中的元素是无法通过 null Key 来找到 Value 的。因此如果当前线程的生命周期很长，一直存在，那么其内部的 ThreadLocalMap 对象也一直生存下来，这些 null key 就存在一条强引用链的关系一直存在：Thread --> ThreadLocalMap-->Entry-->Value，这条强引用链会导致 Entry 不会回收，Value 也不会回收，但 Entry 中的 Key 却已经被回收的情况，造成内存泄漏。
 
-JDK 中存在一些措施来保证 ThreadLocal 尽量不会内存泄漏：在 ThreadLocal 的 get()、set()、remove()方法调用的时候会清除掉线程 ThreadLocalMap 中所有 Entry 中 Key 为 null 的 Value，并将整个 Entry 设置为 null，利于下次内存
+JDK 中存在一些措施来保证 ThreadLocal 尽量不会内存泄漏：
 
-由于**ThreadLocalMap**的 key 是弱引用，而 Value 是强引用。这就导致了一个问题，ThreadLocal 在没有外部对象强引用时，发生 GC 时弱引用 Key 会被回收，而 Value 不会回收，如果创建 ThreadLocal 的线程一直持续运行，那么这个 Entry 对象中的 value 就有可能一直得不到回收，发生内存泄露。
+在 ThreadLocal 的 get()、set()、remove()方法调用的时候会清除掉线程 ThreadLocalMap 中所有 Entry 中 Key 为 null 的 Value，并将整个 Entry 设置为 null。
 
-## 线程池脏读问题
+### 线程池脏读
 
-ThreadLocal 是利用独占资源的方式，来解决线程安全问题，那如果我们确实需要有资源在线程之间共享，应该怎么办呢？这时，我们可能就需要用到线程安全的容器了。
+线程复用会产生**脏数据**。由于线程池会重用 Thread 对象，那么与 Thread 绑定的类的静态属性 ThreadLocal 变量也会被重用。如果在实现的线程 run() 方法体中不显式地调用于线程相关的 ThreadLocal 信息，那么倘若下一个线程不调用 set() 设置初始值，就可能 get 到重用的线程信息，包括 ThreadLocal 所关联的线程对象的 value 值。
 
-上个例子说明，**ThreadLocal 用不好也会产生副作用**，线程复用会产生**脏数据**。由于线程池会重用 Thread 对象，那么与 Thread 绑定的类的静态属性 ThreadLocal 变量也会被重用。如果在实现的线程 run() 方法体中不显式地调用于线程相关的 ThreadLocal 信息，那么倘若下一个线程不调用 set() 设置初始值，就可能 get 到重用的线程信息，包括 ThreadLocal 所关联的线程对象的 value 值。tomcat底层用的线程池。
+> 很多web框架底层采用线程池，如tomcat底层用的线程池。
 
-### 解决方案
+#### 解决方案
 
-> Threadlocal与线程池一起使用，如何避免脏读问题，就是说因为线程池里面的线程重复使用，上一个任务set到threadlocal里面的值下一个任务用这同一个线程可能错误的读到。如何避免这样的情况发生
->
 > 在使用ThreadLocal和线程池一起时，为了避免脏读问题，可以在每次任务执行完毕后，显式地调用ThreadLocal的remove方法来清除ThreadLocal中的数据。这样可以确保下一个任务使用的线程不会读取到上一个任务设置的值。
 >
 > 以下是一个示例代码，演示如何在Java中使用ThreadLocal和线程池，并在任务执行完毕后清除ThreadLocal中的数据：
 >
 > ```java
-> import java.util.concurrent.ExecutorService;
+>import java.util.concurrent.ExecutorService;
 > import java.util.concurrent.Executors;
 > 
 > public class ThreadLocalExample {
->     private static ThreadLocal<String> threadLocal = new ThreadLocal<>();
+>  private static ThreadLocal<String> threadLocal = new ThreadLocal<>();
 > 
 >     public static void main(String[] args) {
->         ExecutorService executor = Executors.newFixedThreadPool(5);
-> 
+>      ExecutorService executor = Executors.newFixedThreadPool(5);
+>    
 >         for (int i = 0; i < 10; i++) {
->             int taskId = i;
+>          int taskId = i;
 >             executor.submit(() -> {
 >                 threadLocal.set("Value for task " + taskId);
 >                 System.out.println("Task " + taskId + " - ThreadLocal value: " + threadLocal.get());
-> 
+>    
 >                 // 清除ThreadLocal中的数据
->                 threadLocal.remove();
+>              threadLocal.remove();
 >             });
 >         }
-> 
+>    
 >         executor.shutdown();
->     }
-> }
-> ```
->
+>  }
+>    }
+>    ```
+> 
 > 在上面的示例中，每个任务执行完毕后都会调用`threadLocal.remove()`来清除ThreadLocal中的数据，以确保下一个任务不会读取到错误的值。
 
 1. 在每个线程执行中，往 ThreadLocal 对象设置值后，执行完核心逻辑代码，最后对 ThreadLocal 对象进行清理（remove方法）。
 2. 或者任务执行之前先remove thread local值，再执行内容。
 
-优化后的代码如下：  ThreadLocal 线程内共享变量，要注意每次set后，在不需要使用到该key的时候，一定要remove清理掉，否则不仅是造成内存泄露，还可能导致脏数据的产生，从而出现一些奇怪的错误。
+优化后的代码如下：  ThreadLocal 线程内共享变量，要注意每次set后，在不需要使用到该key的时候，一定要remove清理掉，否则不仅造成内存泄露，还可能导致脏数据的产生。
+
+必须通过finally块去调用remove方法清理对象
+
+问题5说过当我们static修饰后，保证了ThreadLocal不会被回收
+
+问题4最后说的问题吗，key部分不为null就保证一定不是泄露对象吗？很显然不一定，如果我们没有手动清除，更为准确的说是不在finally块里面调用remove方法清理对象，都有可能产生内存泄露问题，你只set值，不remove或者不在finally块调用remove，之前抛出异常了。这两种情况都会产生内存泄露而且没有办法解决，因为ThreadLocal不会被回收，不能依靠软引用机制去清理了，此时内存泄露对象和非内存泄露对象key部分都是非null，泄露对象和正常的对象“如出一辙”，因此在内部机制是没有办法解决的，这也是为什么官方必须提供一个remove方法让大家强制调用，所以在使用ThreadLocal过程中，在一次请求的生命周期内，必须要做到用完就清理的好习惯！
 
 ## 线程间变量传递
+
+ThreadLocal 是利用独占资源的方式，来解决线程安全问题，那如果我们确实需要有资源在线程之间共享，应该怎么办呢？这时，我们可能就需要用到线程安全的容器了。
 
 ### 变量传递
 
@@ -176,11 +189,11 @@ InheritableThreadLocal 是在父子线程中自动传递参数，在线程池场
 
 在提交任务前把 ThreadLocal 中的值取出来，在线程池执行时再 set 到线程池中线程的 ThreadLocal 中，并且在 finally 中清理数据。
 
-缺点是每个线程池都要处理一遍，如果对上下文不熟悉，有漏传的风险。
+缺点：每个线程池都要处理一遍，如果对上下文不熟悉，有漏传的风险。
 
 #### TransmittableThreadLocal
 
-原理是通过 javaagent 自动处理 ThreadLocal 跨线程池传参，对业务开发者无感知，也是推荐的方案。
+原理是通过 java agent 自动处理 ThreadLocal 跨线程池传参，对业务开发者无感知，也是推荐的方案。
 
 ### 问题描述
 
@@ -196,11 +209,9 @@ void testThreadLocal(){
 }
 ```
 
-java中的 threadlocal，是绑定在线程上的。你在一个线程中set的值，在另外一个线程是拿不到的。
+java 中的 threadlocal，是绑定在线程上的。你在一个线程中set的值，在另外一个线程是拿不到的。上面的输出是：
 
-上面的输出是:
-
-```
+```java
 null
 ```
 

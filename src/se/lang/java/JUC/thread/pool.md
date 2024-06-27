@@ -45,9 +45,11 @@
 
    阻塞队列，`ArrayBlockingQueue(100)`
 
-6. threadFactory 线程工厂，如可以用来设置线程命名规则
+6. threadFactory 线程工厂（optional）
 
-7. handler 拒绝策略
+   如可以用来设置线程命名规则、注册统一异常处理器
+
+7. handler 拒绝策略（optional）
 
    四种，线程池、等待队列、救急线程都满的时候，如何处理
 
@@ -296,7 +298,7 @@ RejectedExecutionHandler executionHandler = (r, executor) -> {
 
 使用默认的 ThreadPoolExecutor.AbortPolicy 策略，如果抛出 RejectedExecutionException 异常则返回给 MQ 消费失败，MQ 会保证自动重试。
 
-### 保证队列、未执行完成的任务不丢失
+### 保证未执行完成的任务不丢失
 
 当服务停止的时候，线程池中队列和活跃线程中未执行完成的任务可能会造成数据丢失，首先说下结论：无论采取任何策略，在 Java 层都不能 100%保证不丢，比如机器突然断电的情况。我们还是可以采取一定的措施尽量避免任务丢失。
 
@@ -315,9 +317,9 @@ RejectedExecutionHandler executionHandler = (r, executor) -> {
 Runtime.getRuntime().addShutdownHook()
 ```
 
-> 需要：钩子方法在使用 kill -9 杀死进程时不会执行，一般的杀进程的方式是先执行 kill，等待一段时间，如果进程还没杀死，再执行 kill -9。
+> 钩子方法在使用 kill -9 杀死进程时不会执行，一般的杀进程的方式是先执行 kill，等待一段时间，如果进程还没杀死，再执行 kill -9。
 
-要保证队列中的任务不丢失，需要消费队列中的数据，发送到外部 MQ 中；
+要保证队列中的任务不丢失，需要将消费队列中的数据，发送到外部 MQ 中；
 
 保证未执行完成的任务不丢失，需要在抛出 InterruptedException 异常后，将任务参数保证到 MQ 中；
 
@@ -333,14 +335,14 @@ Runtime.getRuntime().addShutdownHook()
 
 方案是：使用线程池的 submit 方法提交任务，通过 future 获取到任务执行完成再返回给 MQ 消费完成。在 MQ 中如何保证数据不丢失是另外一个复杂的话题了，这里不再深入探讨。
 
-需要注意的是，如果采用这种方案，需要保证处理任务的幂等性，在操作步骤比较多的时候，复杂性也会很高。
+注意：如果采用这种方案，需要保证处理任务的**幂等性**，在操作步骤比较多的时候，复杂性也会很高。
 
 ### 异常处理
 
 异常感知的方式
 
 - `execute()`：抛异常会被提交任务线程感知；
-- `submit()`：抛异常不会被提交任务线程感知，在 `Future.get()` 执行时会被感知；
+- `submit()`：抛异常不会被提交任务线程感知，在 `Future.get()` 执行时被感知；
 
 #### 统一处理方案 1：异步任务里统一 catch
 
@@ -349,7 +351,7 @@ Runtime.getRuntime().addShutdownHook()
 缺点是：
 
 1) 所有的不同任务都要 try catch，增加了代码量。
-2) 不存在 checked exception 的地方也需要都 trycatch 起来，代码丑陋。
+2) 不存在 checked exception 的地方也需要都 try catch 起来，代码丑陋。
 
 #### 统一处理方案 2：覆写统一异常处理方法
 
