@@ -1,0 +1,13 @@
+height 2.6 inch
+
+top 1 + 0.5 * 7/8 inch
+
+middle 1inch
+
+middle 2：1.75
+
+bottom 1.2
+
+height 2: 1 3/8
+
+height 3: 1inch

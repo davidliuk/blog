@@ -1,0 +1,131 @@
+{
+    "owner": "observatory_gamma_fe",
+    "outputs": {},
+    "next": [],
+    "parent": null,
+    "metadata": {},
+    "previous": [
+      {
+        "owner": "observatory_gamma_fe",
+        "id": "[XbtShipmentAuthorityService]ns1q-hkir-rtvm-1x30@2"
+      }
+    ],
+    "inputs": {},
+    "end_time": "2024-08-03T01:10:56.243893854Z",
+    "type": "PROCESS",
+    "version": null,
+    "tags": [
+      "shipmentId:@ns1q-hkir-rtvm-1x30@2",
+      "shipmentId:@ns1q-hkir-rtvm-1x30"
+    ],
+    "start_time": "2024-08-03T01:10:55.581907170Z",
+    "jarvis_metadata": {},
+    "name": "XbtShipmentExecutionWorkflow",
+    "namespace": "XbtShipmentExecutionWorkflow",
+    "correlation_id": "[XbtShipmentExecutionWorkflow]ns1q-hkir-rtvm-1x30@2",
+    "iteration": null,
+    "links": [
+      {
+        "label": "View Shipment Payload ns1q-hkir-rtvm-1x30@2",
+        "url": "https://gamma.console.harmony.a2z.com/gm-demand-oe/shipment-mgt?id=ns1q-hkir-rtvm-1x30&version=2"
+      }
+    ],
+    "id": "[XbtShipmentExecutionWorkflow]ns1q-hkir-rtvm-1x30@2",
+    "errors": [],
+    "secondary_ids": [],
+    "status": "SUCCESS",
+    "entities": {
+      "PaymentActivities.checkCriteria": [
+        {
+          "owner": null,
+          "outputs": {
+            "isCriteriaMet": false
+          },
+          "next": [
+            {
+              "name": "PaymentActivities.createOrUpdatePaymentRequest"
+            }
+          ],
+          "parent": "[XbtShipmentExecutionWorkflow]ns1q-hkir-rtvm-1x30@2",
+          "metadata": {},
+          "previous": [],
+          "inputs": {},
+          "end_time": "2024-08-03T01:10:55.597149673Z",
+          "type": "ACTIVITY",
+          "version": null,
+          "tags": [],
+          "start_time": "2024-08-03T01:10:55.596997958Z",
+          "jarvis_metadata": {},
+          "name": "PaymentActivities.checkCriteria",
+          "namespace": "XbtShipmentExecutionWorkflow",
+          "correlation_id": "[XbtShipmentExecutionWorkflow]ns1q-hkir-rtvm-1x30@2",
+          "iteration": null,
+          "links": [],
+          "id": "PaymentActivities.checkCriteria",
+          "errors": [],
+          "secondary_ids": [],
+          "status": "SUCCESS",
+          "attempt": 1
+        }
+      ],
+      "[XbtShipmentExecutionWorkflow]ns1q-hkir-rtvm-1x30@2:DocumentFilingActivities.documentValidation": [
+        {
+          "owner": null,
+          "outputs": {},
+          "next": [],
+          "parent": "[XbtShipmentExecutionWorkflow]ns1q-hkir-rtvm-1x30@2",
+          "metadata": {},
+          "previous": [],
+          "inputs": {},
+          "end_time": "2024-08-03T01:10:55.663606116Z",
+          "type": "ACTIVITY",
+          "version": null,
+          "tags": [],
+          "start_time": "2024-08-03T01:10:55.663525657Z",
+          "jarvis_metadata": {},
+          "name": "DocumentFilingActivities.documentValidation",
+          "namespace": null,
+          "correlation_id": "[XbtShipmentExecutionWorkflow]ns1q-hkir-rtvm-1x30@2",
+          "iteration": null,
+          "links": [],
+          "id": "[XbtShipmentExecutionWorkflow]ns1q-hkir-rtvm-1x30@2:DocumentFilingActivities.documentValidation",
+          "errors": [],
+          "secondary_ids": [],
+          "status": "SUCCESS",
+          "attempt": 1
+        }
+      ],
+      "[XbtShipmentExecutionWorkflow]ns1q-hkir-rtvm-1x30@2:DocumentFilingActivities.getDocumentTypesToFile": [
+        {
+          "owner": null,
+          "outputs": {},
+          "next": [
+            {
+              "name": "DocumentFilingActivities.documentValidation"
+            }
+          ],
+          "parent": "[XbtShipmentExecutionWorkflow]ns1q-hkir-rtvm-1x30@2",
+          "metadata": {},
+          "previous": [],
+          "inputs": {},
+          "end_time": "2024-08-03T01:10:55.552068527Z",
+          "type": "ACTIVITY",
+          "version": null,
+          "tags": [],
+          "start_time": "2024-08-03T01:10:55.551936504Z",
+          "jarvis_metadata": {},
+          "name": "DocumentFilingActivities.getDocumentTypesToFile",
+          "namespace": null,
+          "correlation_id": "[XbtShipmentExecutionWorkflow]ns1q-hkir-rtvm-1x30@2",
+          "iteration": null,
+          "links": [],
+          "id": "[XbtShipmentExecutionWorkflow]ns1q-hkir-rtvm-1x30@2:DocumentFilingActivities.getDocumentTypesToFile",
+          "errors": [],
+          "secondary_ids": [],
+          "status": "SUCCESS",
+          "attempt": 1
+        }
+      ]
+    },
+    "attempt": 1
+  }

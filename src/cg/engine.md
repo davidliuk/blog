@@ -1,3 +1,5 @@
+# Engine
+
 首先，Bevy 是一个基于 ECS 架构的游戏引擎，这个 ECS 是一种架构模式，类似于 MVC 那种，将程序整体分为若干个部分，或若干层。譬如 MVC 就是 Model（模型）、View（视图）和 Controller（控制器），他们各有分工，分别有相应的职责，最后共同构成了一个完整的程序。
 
 而 ECS 则是 Entity（实体）、Component（组件）和 System（系统）。对游戏开发比较熟悉的读者应该对此非常了解，而如果你不熟悉游戏开发，或许这种架构模式你是第一次听说。
@@ -11,12 +13,3 @@ Component 可以理解为数据，譬如玩家的名字、血量、拥有哪些�
 如有一张玩家表，它的每行都有个行号，然后这张表由名字、血量、等级等列组成，这些就是 Component，也就是这个玩家的数据。
 
 Bevy 中的 Entity 是 Bevy 自己的内部类型，我们能且仅能拿到某个 Entity 的 ID。Component 就可以由开发者自定义了，在 Bevy 中 Component 可以用 struct 或 enum 来表示，只要一个 `struct` 派生了 Bevy prelude 中的 `Component` 特性，它就会被当作是一个 Component：
-
-
-
-| 搜索 | 搜索 | 搜索 |
-| ---- | ---- | ---- |
-| 搜索 | 搜索 | 搜索 |
-| ss   |      |      |
-|      | s是  |      |
-

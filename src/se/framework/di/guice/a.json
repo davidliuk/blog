@@ -1,0 +1,1050 @@
+{
+    "took": 6,
+    "timed_out": false,
+    "_shards": {
+        "total": 6,
+        "successful": 6,
+        "skipped": 0,
+        "failed": 0
+    },
+    "hits": {
+        "total": 5635,
+        "max_score": null,
+        "hits": [
+            {
+                "_index": "processes_2",
+                "_type": "jarvis_process",
+                "_id": "0d69fd470c70ce17834b8e15b182cf5db354651fe1b8bb26899106317cf5ceeb830672d86b6e3c946c8821ecdab0500c1e69049438736a6c88fa0f9ef6d1cbd0",
+                "_score": null,
+                "_source": {
+                    "owner": "observatory_fe",
+                    "next": [
+                        {
+                            "process_id": "XBT_WORK_ORDER--ns1t-8f6x-estt-e0p0--25",
+                            "account": "observatory_fe"
+                        }
+                    ],
+                    "process_id": "[XbtShipmentExecutionWorkflow]ns1t-8f6x-estt-e0p0@25",
+                    "previous": [
+                        {
+                            "process_id": "[XbtShipmentAuthorityService]ns1t-8f6x-estt-e0p0@25",
+                            "account": "observatory_fe"
+                        }
+                    ],
+                    "end_time": null,
+                    "has_parent": false,
+                    "version": null,
+                    "tags": [
+                        "shipmentId:@ns1t-8f6x-estt-e0p0",
+                        "shipmentId:@ns1t-8f6x-estt-e0p0@25"
+                    ],
+                    "start_time": "2024-07-25T03:35:01.304873659Z",
+                    "exception_classes": [],
+                    "name": "XbtShipmentExecutionWorkflow",
+                    "namespace": "XbtShipmentExecutionWorkflow",
+                    "elapsed_time": null,
+                    "correlation_id": "[XbtShipmentExecutionWorkflow]ns1t-8f6x-estt-e0p0@25",
+                    "process_type": "PROCESS",
+                    "error_codes": [],
+                    "status": "IN_PROGRESS"
+                },
+                "sort": [
+                    1721878501304
+                ]
+            },
+            {
+                "_index": "processes_2",
+                "_type": "jarvis_process",
+                "_id": "4479a68d305c7286f8e78bcc666ab551148f113fe25cf3f5925bbacdeecd155ff6a525e3ecfc648d970ab76a4c4836fe20f92eb8d0ca12ba71a28569474e3092",
+                "_score": null,
+                "_source": {
+                    "owner": "observatory_fe",
+                    "process_id": "6f569ff397bcedb6b7d35f34d5df1bdf771be797bd69f6bd",
+                    "end_time": "2024-07-25T03:35:00.135Z",
+                    "has_parent": false,
+                    "version": null,
+                    "tags": [],
+                    "start_time": "2024-07-25T03:34:59.997Z",
+                    "exception_classes": [],
+                    "name": "[SRL]ShipmentUpdateEventHandler.handle",
+                    "namespace": "XBTMS-Demand",
+                    "elapsed_time": null,
+                    "correlation_id": "6f569ff397bcedb6b7d35f34d5df1bdf771be797bd69f6bd",
+                    "process_type": "PROCESS",
+                    "error_codes": [],
+                    "status": "SUCCESS"
+                },
+                "sort": [
+                    1721878499997
+                ]
+            },
+            {
+                "_index": "processes_2",
+                "_type": "jarvis_process",
+                "_id": "4e3963b1b29f56ab4899d1ff8c15d5281905e288cdc9df76426bc4ccb895a113f4adeedc60f3e0def5f9b0b8014d1348421f10c4a312bd12a57de8c470300c36",
+                "_score": null,
+                "_source": {
+                    "owner": "observatory_fe",
+                    "process_id": "[XbtShipmentExecutionWorkflow]100u-8569-a08t-wdv0@16",
+                    "previous": [
+                        {
+                            "process_id": "[XbtShipmentAuthorityService]100u-8569-a08t-wdv0@16",
+                            "account": "observatory_fe"
+                        }
+                    ],
+                    "end_time": "2024-07-25T03:34:56.021799165Z",
+                    "has_parent": false,
+                    "version": null,
+                    "tags": [
+                        "shipmentId:@100u-8569-a08t-wdv0",
+                        "shipmentId:@100u-8569-a08t-wdv0@16"
+                    ],
+                    "start_time": "2024-07-25T03:34:56.021269901Z",
+                    "exception_classes": [],
+                    "name": "XbtShipmentExecutionWorkflow",
+                    "namespace": "XbtShipmentExecutionWorkflow",
+                    "elapsed_time": 0,
+                    "correlation_id": "[XbtShipmentExecutionWorkflow]100u-8569-a08t-wdv0@16",
+                    "process_type": "PROCESS",
+                    "error_codes": [],
+                    "status": "SUCCESS"
+                },
+                "sort": [
+                    1721878496021
+                ]
+            },
+            {
+                "_index": "processes_2",
+                "_type": "jarvis_process",
+                "_id": "4cdf3102727a90943ace64b9a2356a22d0e755173b05b8cf3a506c4e2ca9b1e958adf7d2ae0d0b9019eb964f1ec6381d95e5072d5a4e10e51c19345bf97d0536",
+                "_score": null,
+                "_source": {
+                    "owner": "observatory_fe",
+                    "process_id": "[XbtShipmentExecutionWorkflow]ns11-jy25-8czh-d3za@8",
+                    "previous": [
+                        {
+                            "process_id": "[XbtShipmentAuthorityService]ns11-jy25-8czh-d3za@8",
+                            "account": "observatory_fe"
+                        }
+                    ],
+                    "end_time": "2024-07-25T03:34:55.283389859Z",
+                    "has_parent": false,
+                    "version": null,
+                    "tags": [
+                        "shipmentId:@ns11-jy25-8czh-d3za",
+                        "shipmentId:@ns11-jy25-8czh-d3za@8"
+                    ],
+                    "start_time": "2024-07-25T03:34:55.283046259Z",
+                    "exception_classes": [],
+                    "name": "XbtShipmentExecutionWorkflow",
+                    "namespace": "XbtShipmentExecutionWorkflow",
+                    "elapsed_time": 0,
+                    "correlation_id": "[XbtShipmentExecutionWorkflow]ns11-jy25-8czh-d3za@8",
+                    "process_type": "PROCESS",
+                    "error_codes": [],
+                    "status": "SUCCESS"
+                },
+                "sort": [
+                    1721878495283
+                ]
+            },
+            {
+                "_index": "processes_2",
+                "_type": "jarvis_process",
+                "_id": "b7561d9ef320cf568d66319b994eff11e6bbad6c4f1515e4dd7da54c1982c75d8ad921bfbcc9defc1e06ad9f9d20c1483b7bb15dfb94cade3fd058c448e15cb6",
+                "_score": null,
+                "_source": {
+                    "owner": "observatory_fe",
+                    "process_id": "CUSTOMS_WORK_ORDER--ns1s-ksdm-k24u-fxx0--12",
+                    "previous": [
+                        {
+                            "process_id": "[XbtShipmentExecutionWorkflow]ns1s-ksdm-k24u-fxx0@12",
+                            "account": "observatory_fe"
+                        }
+                    ],
+                    "end_time": "2024-07-25T03:35:02.625836645Z",
+                    "has_parent": false,
+                    "version": null,
+                    "tags": [
+                        "shipmentId:@ns1s-ksdm-k24u-fxx0",
+                        "shippingRequestId:@1001-ibjt-qls8-4u2c",
+                        "shippingPlanId:@220s-oppc-qk18-vnb0",
+                        "shipmentId:@ns1s-ksdm-k24u-fxx0@12"
+                    ],
+                    "start_time": "2024-07-25T03:34:52.147561713Z",
+                    "exception_classes": [],
+                    "name": "Xbt3PAdapterService-herd-workflow",
+                    "namespace": "Xbt3PAdapterService",
+                    "elapsed_time": 10478,
+                    "correlation_id": "CUSTOMS_WORK_ORDER--ns1s-ksdm-k24u-fxx0--12",
+                    "process_type": "PROCESS",
+                    "error_codes": [],
+                    "status": "SUCCESS"
+                },
+                "sort": [
+                    1721878492147
+                ]
+            },
+            {
+                "_index": "processes_2",
+                "_type": "jarvis_process",
+                "_id": "79a3f592e55fb772022b7cad549b12508a373c614eaa5d237783b97cfa70ccabeacb57be194b0bbc96386967b775ed11f3aa1d1c24dd1111f8eadf8107fd04b6",
+                "_score": null,
+                "_source": {
+                    "owner": "observatory_fe",
+                    "process_id": "[XbtShipmentExecutionWorkflow]100s-omvm-hnwc-cip0@4",
+                    "previous": [
+                        {
+                            "process_id": "[XbtShipmentAuthorityService]100s-omvm-hnwc-cip0@4",
+                            "account": "observatory_fe"
+                        }
+                    ],
+                    "end_time": "2024-07-25T03:34:51.955051539Z",
+                    "has_parent": false,
+                    "version": null,
+                    "tags": [
+                        "shipmentId:@100s-omvm-hnwc-cip0",
+                        "shipmentId:@100s-omvm-hnwc-cip0@4"
+                    ],
+                    "start_time": "2024-07-25T03:34:51.954423613Z",
+                    "exception_classes": [],
+                    "name": "XbtShipmentExecutionWorkflow",
+                    "namespace": "XbtShipmentExecutionWorkflow",
+                    "elapsed_time": 0,
+                    "correlation_id": "[XbtShipmentExecutionWorkflow]100s-omvm-hnwc-cip0@4",
+                    "process_type": "PROCESS",
+                    "error_codes": [],
+                    "status": "SUCCESS"
+                },
+                "sort": [
+                    1721878491954
+                ]
+            },
+            {
+                "_index": "processes_2",
+                "_type": "jarvis_process",
+                "_id": "7b245a88a5dd243ad84dd85e4ba682fdc245fa5a0787755d4fa039888be1875ce0022a7260ae2d94c5eefbbdff33043b66a73739b25ec81b6c61f1a2dae54215",
+                "_score": null,
+                "_source": {
+                    "owner": "observatory_fe",
+                    "next": [
+                        {
+                            "process_id": "CUSTOMS_WORK_ORDER--ns1s-ksdm-k24u-fxx0--12",
+                            "account": "observatory_fe"
+                        }
+                    ],
+                    "process_id": "[XbtShipmentExecutionWorkflow]ns1s-ksdm-k24u-fxx0@12",
+                    "previous": [
+                        {
+                            "process_id": "[XbtShipmentAuthorityService]ns1s-ksdm-k24u-fxx0@12",
+                            "account": "observatory_fe"
+                        }
+                    ],
+                    "end_time": null,
+                    "has_parent": false,
+                    "version": null,
+                    "tags": [
+                        "shipmentId:@ns1s-ksdm-k24u-fxx0",
+                        "shipmentId:@ns1s-ksdm-k24u-fxx0@12"
+                    ],
+                    "start_time": "2024-07-25T03:34:51.736193874Z",
+                    "exception_classes": [],
+                    "name": "XbtShipmentExecutionWorkflow",
+                    "namespace": "XbtShipmentExecutionWorkflow",
+                    "elapsed_time": null,
+                    "correlation_id": "[XbtShipmentExecutionWorkflow]ns1s-ksdm-k24u-fxx0@12",
+                    "process_type": "PROCESS",
+                    "error_codes": [],
+                    "status": "IN_PROGRESS"
+                },
+                "sort": [
+                    1721878491736
+                ]
+            },
+            {
+                "_index": "processes_2",
+                "_type": "jarvis_process",
+                "_id": "80135465d145f11b2f0e08ed0d84c00fa8f3f0fe64fa00a675e3f3d2e563f2a1c2cf13ff64bde7914cc1396baee8ca2153a9183779b556c80f42631a4da02dfa",
+                "_score": null,
+                "_source": {
+                    "owner": "observatory_fe",
+                    "process_id": "779ebb6fbf7471d6b7ddad37e3c6de6f4db8d78f1cf3c6f7",
+                    "end_time": "2024-07-25T03:34:51.842Z",
+                    "has_parent": false,
+                    "version": null,
+                    "tags": [
+                        "shipmentId:@100s-omvm-hnwc-cip0",
+                        "shipmentId:@100s-omvm-hnwc-cip0@4",
+                        "srId:@100s-omvm-hnwc-cip0"
+                    ],
+                    "start_time": "2024-07-25T03:34:51.644Z",
+                    "exception_classes": [],
+                    "name": "[SRL]ShipmentUpdateEventHandler.handle",
+                    "namespace": "XBTMS-Demand",
+                    "elapsed_time": 198,
+                    "correlation_id": "779ebb6fbf7471d6b7ddad37e3c6de6f4db8d78f1cf3c6f7",
+                    "process_type": "PROCESS",
+                    "error_codes": [],
+                    "status": "SUCCESS"
+                },
+                "sort": [
+                    1721878491644
+                ]
+            },
+            {
+                "_index": "processes_2",
+                "_type": "jarvis_process",
+                "_id": "d62f56a5cd1d629fabce5c205afc28dd2d45e6d00f8484f5b7843c22718efb514f22755baea3c1b3ea57b5e8a355644b19f3a10605b2cf1a12a735791bc9bebc",
+                "_score": null,
+                "_source": {
+                    "owner": "observatory_fe",
+                    "process_id": "684190fb-2a9d-4cb6-a8e5-9ad54e35f62e",
+                    "previous": [
+                        {
+                            "process_id": "[XbtShipmentExecutionWorkflow]100s-ok3x-kcwy-ywi0@3",
+                            "account": "observatory_fe"
+                        }
+                    ],
+                    "end_time": "2024-07-25T03:34:54.424568228Z",
+                    "has_parent": false,
+                    "version": null,
+                    "tags": [],
+                    "start_time": "2024-07-25T03:34:51.543468558Z",
+                    "exception_classes": [],
+                    "name": "Xbt3PAdapterService-herd-workflow",
+                    "namespace": "Xbt3PAdapterService",
+                    "elapsed_time": 2881,
+                    "correlation_id": "684190fb-2a9d-4cb6-a8e5-9ad54e35f62e",
+                    "process_type": "PROCESS",
+                    "error_codes": [],
+                    "status": "SUCCESS"
+                },
+                "sort": [
+                    1721878491543
+                ]
+            },
+            {
+                "_index": "processes_2",
+                "_type": "jarvis_process",
+                "_id": "ae60ab24d9b71240ce3c4acad968f0a2dac44a39460359a60c8decb3b9ad0dd5bc94041eae7e8582dc43c9cd18ae8c3352fb8a5d8f3fc81b71a8918ea2b3dbe7",
+                "_score": null,
+                "_source": {
+                    "owner": "observatory_fe",
+                    "process_id": "XBT_WORK_ORDER--1001-hr5b-zwbi-fl2e--6_FBA",
+                    "previous": [
+                        {
+                            "process_id": "[XbtShipmentExecutionWorkflow]1001-hr5b-zwbi-fl2e@6",
+                            "account": "observatory_fe"
+                        }
+                    ],
+                    "end_time": "2024-07-25T03:34:57.734151102Z",
+                    "has_parent": false,
+                    "version": null,
+                    "tags": [
+                        "shipmentId:@1001-hr5b-zwbi-fl2e",
+                        "shippingRequestId:@1001-hr5b-zwbi-fl2e",
+                        "shippingPlanId:@2201-h7lg-p33t-dilh",
+                        "shipmentId:@1001-hr5b-zwbi-fl2e@6"
+                    ],
+                    "start_time": "2024-07-25T03:34:51.529289067Z",
+                    "exception_classes": [],
+                    "name": "Xbt3PAdapterService-herd-workflow",
+                    "namespace": "Xbt3PAdapterService",
+                    "elapsed_time": 6204,
+                    "correlation_id": "XBT_WORK_ORDER--1001-hr5b-zwbi-fl2e--6_FBA",
+                    "process_type": "PROCESS",
+                    "error_codes": [],
+                    "status": "SUCCESS"
+                },
+                "sort": [
+                    1721878491529
+                ]
+            },
+            {
+                "_index": "processes_2",
+                "_type": "jarvis_process",
+                "_id": "ac006f56f7e7a0f6ee992b1fc3699d24b0afcc3e7969c6343aeb9718b41a24a45d341c8514c1ba3af8f5261e2f055be27ddb10c0fc8fe1fa2ca199fa90b82eea",
+                "_score": null,
+                "_source": {
+                    "owner": "observatory_fe",
+                    "process_id": "d35db67b5dfd77d75cdf7d3a7dee1fe39df673a77b69def9",
+                    "end_time": "2024-07-25T03:34:51.499Z",
+                    "has_parent": false,
+                    "version": null,
+                    "tags": [],
+                    "start_time": "2024-07-25T03:34:51.474Z",
+                    "exception_classes": [],
+                    "name": "[SRL]ShipmentUpdateEventHandler.handle",
+                    "namespace": "XBTMS-Demand",
+                    "elapsed_time": null,
+                    "correlation_id": "d35db67b5dfd77d75cdf7d3a7dee1fe39df673a77b69def9",
+                    "process_type": "PROCESS",
+                    "error_codes": [],
+                    "status": "SUCCESS"
+                },
+                "sort": [
+                    1721878491474
+                ]
+            },
+            {
+                "_index": "processes_2",
+                "_type": "jarvis_process",
+                "_id": "daba0d8ff613c9a264e5d70d4c85a036874b67210e98d4bc134fdb87e5279ac72f0f98454b25f45a3b0e28da40386e4268c0aa893eaece7d04fc32a5f7fd4daa",
+                "_score": null,
+                "_source": {
+                    "owner": "observatory_fe",
+                    "process_id": "XBT_WORK_ORDER--100s-ok3x-kcwy-ywi0--3_FBA",
+                    "previous": [
+                        {
+                            "process_id": "[XbtShipmentExecutionWorkflow]100s-ok3x-kcwy-ywi0@3",
+                            "account": "observatory_fe"
+                        }
+                    ],
+                    "end_time": "2024-07-25T03:34:57.334369431Z",
+                    "has_parent": false,
+                    "version": null,
+                    "tags": [
+                        "shipmentId:@100s-ok3x-kcwy-ywi0",
+                        "shippingRequestId:@100s-ok3x-kcwy-ywi0",
+                        "shippingPlanId:@2201-jeqi-7nr9-v8dx",
+                        "shipmentId:@100s-ok3x-kcwy-ywi0@3"
+                    ],
+                    "start_time": "2024-07-25T03:34:51.224221584Z",
+                    "exception_classes": [],
+                    "name": "Xbt3PAdapterService-herd-workflow",
+                    "namespace": "Xbt3PAdapterService",
+                    "elapsed_time": 6110,
+                    "correlation_id": "XBT_WORK_ORDER--100s-ok3x-kcwy-ywi0--3_FBA",
+                    "process_type": "PROCESS",
+                    "error_codes": [],
+                    "status": "SUCCESS"
+                },
+                "sort": [
+                    1721878491224
+                ]
+            },
+            {
+                "_index": "processes_2",
+                "_type": "jarvis_process",
+                "_id": "c60a001df74310bf003f8dd8d697c394aacd4d02d5e85674545bce91669f265fba68ac0a4094883edb2c75ff62f5d720b6125d9d990743076984946aef3c6386",
+                "_score": null,
+                "_source": {
+                    "owner": "observatory_fe",
+                    "process_id": "c12837c3-5141-4d6a-a919-51c6bd8fbd99",
+                    "previous": [
+                        {
+                            "process_id": "[XbtShipmentExecutionWorkflow]1001-hr5b-zwbi-fl2e@6",
+                            "account": "observatory_fe"
+                        }
+                    ],
+                    "end_time": "2024-07-25T03:34:53.871375733Z",
+                    "has_parent": false,
+                    "version": null,
+                    "tags": [],
+                    "start_time": "2024-07-25T03:34:50.982448309Z",
+                    "exception_classes": [],
+                    "name": "Xbt3PAdapterService-herd-workflow",
+                    "namespace": "Xbt3PAdapterService",
+                    "elapsed_time": 2888,
+                    "correlation_id": "c12837c3-5141-4d6a-a919-51c6bd8fbd99",
+                    "process_type": "PROCESS",
+                    "error_codes": [],
+                    "status": "SUCCESS"
+                },
+                "sort": [
+                    1721878490982
+                ]
+            },
+            {
+                "_index": "processes_2",
+                "_type": "jarvis_process",
+                "_id": "889eb9df76f95c6ceae5876d1998103a8614a16eae138e2527ab744a74e0a149493949708a79a11fbf6b51b88943d6e66f9c48d30dbfaa865efbdcff90586338",
+                "_score": null,
+                "_source": {
+                    "owner": "observatory_fe",
+                    "next": [
+                        {
+                            "process_id": "684190fb-2a9d-4cb6-a8e5-9ad54e35f62e",
+                            "account": "observatory_fe"
+                        },
+                        {
+                            "process_id": "XBT_WORK_ORDER--100s-ok3x-kcwy-ywi0--3_FBA",
+                            "account": "observatory_fe"
+                        }
+                    ],
+                    "process_id": "[XbtShipmentExecutionWorkflow]100s-ok3x-kcwy-ywi0@3",
+                    "previous": [
+                        {
+                            "process_id": "[XbtShipmentAuthorityService]100s-ok3x-kcwy-ywi0@3",
+                            "account": "observatory_fe"
+                        }
+                    ],
+                    "end_time": null,
+                    "has_parent": false,
+                    "version": null,
+                    "tags": [
+                        "shipmentId:@100s-ok3x-kcwy-ywi0",
+                        "shipmentId:@100s-ok3x-kcwy-ywi0@3"
+                    ],
+                    "start_time": "2024-07-25T03:34:50.673545459Z",
+                    "exception_classes": [],
+                    "name": "XbtShipmentExecutionWorkflow",
+                    "namespace": "XbtShipmentExecutionWorkflow",
+                    "elapsed_time": null,
+                    "correlation_id": "[XbtShipmentExecutionWorkflow]100s-ok3x-kcwy-ywi0@3",
+                    "process_type": "PROCESS",
+                    "error_codes": [],
+                    "status": "IN_PROGRESS"
+                },
+                "sort": [
+                    1721878490673
+                ]
+            },
+            {
+                "_index": "processes_2",
+                "_type": "jarvis_process",
+                "_id": "63b40c01fb86efb561500ceb8c1c4bc822f2ca91bd2803630471aba986936d68d41486b942bba99ee8c2d879fdcaab5afcec340c8377209dc4df6c83545f9bc8",
+                "_score": null,
+                "_source": {
+                    "owner": "observatory_fe",
+                    "process_id": "7baf76df9f38ef5d3ae1ff1eddef3975a779e1aefbddff3b",
+                    "end_time": "2024-07-25T03:34:50.636Z",
+                    "has_parent": false,
+                    "version": null,
+                    "tags": [
+                        "srId:@100s-ok3x-kcwy-ywi0",
+                        "shipmentId:@100s-ok3x-kcwy-ywi0",
+                        "shipmentId:@100s-ok3x-kcwy-ywi0@3"
+                    ],
+                    "start_time": "2024-07-25T03:34:50.470Z",
+                    "exception_classes": [],
+                    "name": "[SRL]ShipmentUpdateEventHandler.handle",
+                    "namespace": "XBTMS-Demand",
+                    "elapsed_time": 166,
+                    "correlation_id": "7baf76df9f38ef5d3ae1ff1eddef3975a779e1aefbddff3b",
+                    "process_type": "PROCESS",
+                    "error_codes": [],
+                    "status": "SUCCESS"
+                },
+                "sort": [
+                    1721878490470
+                ]
+            },
+            {
+                "_index": "processes_2",
+                "_type": "jarvis_process",
+                "_id": "4d89ab33580507dbddd64ff8c62c82f01bfc650b96956128b5b69c81c8582d6b30375601f6925986712a695f6a7d84c97a266a555362b36c1a0331f148f9b38a",
+                "_score": null,
+                "_source": {
+                    "owner": "observatory_fe",
+                    "next": [
+                        {
+                            "process_id": "c12837c3-5141-4d6a-a919-51c6bd8fbd99",
+                            "account": "observatory_fe"
+                        },
+                        {
+                            "process_id": "XBT_WORK_ORDER--1001-hr5b-zwbi-fl2e--6_FBA",
+                            "account": "observatory_fe"
+                        }
+                    ],
+                    "process_id": "[XbtShipmentExecutionWorkflow]1001-hr5b-zwbi-fl2e@6",
+                    "previous": [
+                        {
+                            "process_id": "[XbtShipmentAuthorityService]1001-hr5b-zwbi-fl2e@6",
+                            "account": "observatory_fe"
+                        }
+                    ],
+                    "end_time": null,
+                    "has_parent": false,
+                    "version": null,
+                    "tags": [
+                        "shipmentId:@1001-hr5b-zwbi-fl2e",
+                        "shipmentId:@1001-hr5b-zwbi-fl2e@6"
+                    ],
+                    "start_time": "2024-07-25T03:34:50.425199013Z",
+                    "exception_classes": [],
+                    "name": "XbtShipmentExecutionWorkflow",
+                    "namespace": "XbtShipmentExecutionWorkflow",
+                    "elapsed_time": null,
+                    "correlation_id": "[XbtShipmentExecutionWorkflow]1001-hr5b-zwbi-fl2e@6",
+                    "process_type": "PROCESS",
+                    "error_codes": [],
+                    "status": "IN_PROGRESS"
+                },
+                "sort": [
+                    1721878490425
+                ]
+            },
+            {
+                "_index": "processes_2",
+                "_type": "jarvis_process",
+                "_id": "3cbd9ee2477ac0a58031731618e0197ea9634b872316aee9db769bcfef04e1e1c4e51673c016d45055204dae2a02f306b9fbf725d82eb4cec9611171b89f89b7",
+                "_score": null,
+                "_source": {
+                    "owner": "observatory_fe",
+                    "process_id": "79e69be9be9d73b73ce7aebbeb7dbb6ba7b975ad796db7f6",
+                    "end_time": "2024-07-25T03:34:50.339Z",
+                    "has_parent": false,
+                    "version": null,
+                    "tags": [
+                        "srId:@1001-hr5b-zwbi-fl2e",
+                        "shipmentId:@1001-hr5b-zwbi-fl2e",
+                        "shipmentId:@1001-hr5b-zwbi-fl2e@6"
+                    ],
+                    "start_time": "2024-07-25T03:34:50.184Z",
+                    "exception_classes": [],
+                    "name": "[SRL]ShipmentUpdateEventHandler.handle",
+                    "namespace": "XBTMS-Demand",
+                    "elapsed_time": 155,
+                    "correlation_id": "79e69be9be9d73b73ce7aebbeb7dbb6ba7b975ad796db7f6",
+                    "process_type": "PROCESS",
+                    "error_codes": [],
+                    "status": "SUCCESS"
+                },
+                "sort": [
+                    1721878490184
+                ]
+            },
+            {
+                "_index": "processes_2",
+                "_type": "jarvis_process",
+                "_id": "abf0b6acc59daa9d901df8da69915f935303e4b88a49398c25faf57098c7b7b915a161f362771b5537983462b9ec0c2c95f52aee90bccd2e6aaa630259d3a61f",
+                "_score": null,
+                "_source": {
+                    "owner": "observatory_fe",
+                    "process_id": "[XbtShipmentExecutionWorkflow]100r-1lmv-41nj-sc60@4",
+                    "previous": [
+                        {
+                            "process_id": "[XbtShipmentAuthorityService]100r-1lmv-41nj-sc60@4",
+                            "account": "observatory_fe"
+                        }
+                    ],
+                    "end_time": "2024-07-25T03:34:46.671167946Z",
+                    "has_parent": false,
+                    "version": null,
+                    "tags": [
+                        "shipmentId:@100r-1lmv-41nj-sc60",
+                        "shipmentId:@100r-1lmv-41nj-sc60@4"
+                    ],
+                    "start_time": "2024-07-25T03:34:46.670821464Z",
+                    "exception_classes": [],
+                    "name": "XbtShipmentExecutionWorkflow",
+                    "namespace": "XbtShipmentExecutionWorkflow",
+                    "elapsed_time": 0,
+                    "correlation_id": "[XbtShipmentExecutionWorkflow]100r-1lmv-41nj-sc60@4",
+                    "process_type": "PROCESS",
+                    "error_codes": [],
+                    "status": "SUCCESS"
+                },
+                "sort": [
+                    1721878486670
+                ]
+            },
+            {
+                "_index": "processes_2",
+                "_type": "jarvis_process",
+                "_id": "f0f5b446e29d2fbbcf0410c3d047edb58e46a273b5f09ac52eafef430de2e310200d69d392c91474d7be32554fccf3a91f7263e04d88b51df4f02738a0959e88",
+                "_score": null,
+                "_source": {
+                    "owner": "observatory_fe",
+                    "process_id": "71ce9f7b6d78e9f738f5edf87badb9f35f5bf37eb8ebbd3d",
+                    "end_time": "2024-07-25T03:34:46.661Z",
+                    "has_parent": false,
+                    "version": null,
+                    "tags": [
+                        "shipmentId:@100r-1lmv-41nj-sc60",
+                        "shipmentId:@100r-1lmv-41nj-sc60@4",
+                        "srId:@100r-1lmv-41nj-sc60"
+                    ],
+                    "start_time": "2024-07-25T03:34:46.476Z",
+                    "exception_classes": [],
+                    "name": "[SRL]ShipmentUpdateEventHandler.handle",
+                    "namespace": "XBTMS-Demand",
+                    "elapsed_time": 185,
+                    "correlation_id": "71ce9f7b6d78e9f738f5edf87badb9f35f5bf37eb8ebbd3d",
+                    "process_type": "PROCESS",
+                    "error_codes": [],
+                    "status": "SUCCESS"
+                },
+                "sort": [
+                    1721878486476
+                ]
+            },
+            {
+                "_index": "processes_2",
+                "_type": "jarvis_process",
+                "_id": "832bd3b610cfb638f3b58a734a17ad5bf15c4ca1e0eb28d5f48ed7a91f35e285f1e5f7575ae346e6147e39d323a4c4cab40a5cee7bbecb98c73ca9e18c8ed1e0",
+                "_score": null,
+                "_source": {
+                    "owner": "observatory_fe",
+                    "process_id": "[XbtShipmentExecutionWorkflow]1001-jyd9-3l1d-62jm@4",
+                    "previous": [
+                        {
+                            "process_id": "[XbtShipmentAuthorityService]1001-jyd9-3l1d-62jm@4",
+                            "account": "observatory_fe"
+                        }
+                    ],
+                    "end_time": "2024-07-25T03:34:44.476325003Z",
+                    "has_parent": false,
+                    "version": null,
+                    "tags": [
+                        "shipmentId:@1001-jyd9-3l1d-62jm",
+                        "shipmentId:@1001-jyd9-3l1d-62jm@4"
+                    ],
+                    "start_time": "2024-07-25T03:34:44.475966959Z",
+                    "exception_classes": [],
+                    "name": "XbtShipmentExecutionWorkflow",
+                    "namespace": "XbtShipmentExecutionWorkflow",
+                    "elapsed_time": 0,
+                    "correlation_id": "[XbtShipmentExecutionWorkflow]1001-jyd9-3l1d-62jm@4",
+                    "process_type": "PROCESS",
+                    "error_codes": [],
+                    "status": "SUCCESS"
+                },
+                "sort": [
+                    1721878484475
+                ]
+            },
+            {
+                "_index": "processes_2",
+                "_type": "jarvis_process",
+                "_id": "3f318fad8a5c648d1fbde57eecab05d049185e857788ec0e2e3f3c1918e8f9d81a7bd858119c20613c2021496e6558ed62fc753327a9c968c39a6030dd4df964",
+                "_score": null,
+                "_source": {
+                    "owner": "observatory_fe",
+                    "process_id": "d5d71b6f76b7d7477b7fbd3df1c6f76f975a7dfeda6b46de",
+                    "end_time": "2024-07-25T03:34:44.465Z",
+                    "has_parent": false,
+                    "version": null,
+                    "tags": [
+                        "srId:@1001-jyd9-3l1d-62jm",
+                        "shipmentId:@1001-jyd9-3l1d-62jm",
+                        "shipmentId:@1001-jyd9-3l1d-62jm@4"
+                    ],
+                    "start_time": "2024-07-25T03:34:44.241Z",
+                    "exception_classes": [],
+                    "name": "[SRL]ShipmentUpdateEventHandler.handle",
+                    "namespace": "XBTMS-Demand",
+                    "elapsed_time": 224,
+                    "correlation_id": "d5d71b6f76b7d7477b7fbd3df1c6f76f975a7dfeda6b46de",
+                    "process_type": "PROCESS",
+                    "error_codes": [],
+                    "status": "SUCCESS"
+                },
+                "sort": [
+                    1721878484241
+                ]
+            },
+            {
+                "_index": "processes_2",
+                "_type": "jarvis_process",
+                "_id": "dd196dec374b16912651790918851a1e226d7a52edae2e70b9694397b1842bee75beb7e6ea5b516c05647f76f2fe83a91ad574375b7ff467f1e6a69439858ee8",
+                "_score": null,
+                "_source": {
+                    "owner": "observatory_fe",
+                    "process_id": "[XbtShipmentExecutionWorkflow]1001-jidb-3mec-827o@4",
+                    "previous": [
+                        {
+                            "process_id": "[XbtShipmentAuthorityService]1001-jidb-3mec-827o@4",
+                            "account": "observatory_fe"
+                        }
+                    ],
+                    "end_time": "2024-07-25T03:34:40.049400772Z",
+                    "has_parent": false,
+                    "version": null,
+                    "tags": [
+                        "shipmentId:@1001-jidb-3mec-827o",
+                        "shipmentId:@1001-jidb-3mec-827o@4"
+                    ],
+                    "start_time": "2024-07-25T03:34:40.049032380Z",
+                    "exception_classes": [],
+                    "name": "XbtShipmentExecutionWorkflow",
+                    "namespace": "XbtShipmentExecutionWorkflow",
+                    "elapsed_time": 0,
+                    "correlation_id": "[XbtShipmentExecutionWorkflow]1001-jidb-3mec-827o@4",
+                    "process_type": "PROCESS",
+                    "error_codes": [],
+                    "status": "SUCCESS"
+                },
+                "sort": [
+                    1721878480049
+                ]
+            },
+            {
+                "_index": "processes_2",
+                "_type": "jarvis_process",
+                "_id": "fd6f6fcfc7af8150a338d10e0d8b0086dac279841f71561f4ce67c6e19d4d97a9771fc978ff2f3518956c4577cbb480d30745d20d7fffc3e1a7fe21408c283fb",
+                "_score": null,
+                "_source": {
+                    "owner": "observatory_fe",
+                    "process_id": "f5d7f5d1bdb5e766db6b7e75d9cd34f376deef577ddf7dbc",
+                    "end_time": "2024-07-25T03:34:40.093Z",
+                    "has_parent": false,
+                    "version": null,
+                    "tags": [
+                        "shipmentId:@1001-jidb-3mec-827o",
+                        "shipmentId:@1001-jidb-3mec-827o@4",
+                        "srId:@1001-jidb-3mec-827o"
+                    ],
+                    "start_time": "2024-07-25T03:34:39.846Z",
+                    "exception_classes": [],
+                    "name": "[SRL]ShipmentUpdateEventHandler.handle",
+                    "namespace": "XBTMS-Demand",
+                    "elapsed_time": 247,
+                    "correlation_id": "f5d7f5d1bdb5e766db6b7e75d9cd34f376deef577ddf7dbc",
+                    "process_type": "PROCESS",
+                    "error_codes": [],
+                    "status": "SUCCESS"
+                },
+                "sort": [
+                    1721878479846
+                ]
+            },
+            {
+                "_index": "processes_2",
+                "_type": "jarvis_process",
+                "_id": "25cb31fcd5c7aeb8e4b5c9e3b7152290180e771bc484327669cadce59ad79f319566c3dc781d46c982968a83713785b638c144d95dfe691a1cdc071bc2a86d35",
+                "_score": null,
+                "_source": {
+                    "owner": "observatory_fe",
+                    "process_id": "[XbtShipmentExecutionWorkflow]ns11-hrdo-vnv7-5jl0@8",
+                    "previous": [
+                        {
+                            "process_id": "[XbtShipmentAuthorityService]ns11-hrdo-vnv7-5jl0@8",
+                            "account": "observatory_fe"
+                        }
+                    ],
+                    "end_time": "2024-07-25T03:34:36.100491872Z",
+                    "has_parent": false,
+                    "version": null,
+                    "tags": [
+                        "shipmentId:@ns11-hrdo-vnv7-5jl0",
+                        "shipmentId:@ns11-hrdo-vnv7-5jl0@8"
+                    ],
+                    "start_time": "2024-07-25T03:34:36.100145470Z",
+                    "exception_classes": [],
+                    "name": "XbtShipmentExecutionWorkflow",
+                    "namespace": "XbtShipmentExecutionWorkflow",
+                    "elapsed_time": 0,
+                    "correlation_id": "[XbtShipmentExecutionWorkflow]ns11-hrdo-vnv7-5jl0@8",
+                    "process_type": "PROCESS",
+                    "error_codes": [],
+                    "status": "SUCCESS"
+                },
+                "sort": [
+                    1721878476100
+                ]
+            },
+            {
+                "_index": "processes_2",
+                "_type": "jarvis_process",
+                "_id": "930bcd32a119e0b2515eedc676b5c72f152b20ebea6893eb2d5913518889b43913ff394bf178fa48680b7b7394b0706d79cd9bd5b7eb423aaf88f84a47598124",
+                "_score": null,
+                "_source": {
+                    "owner": "observatory_fe",
+                    "process_id": "[XbtShipmentExecutionWorkflow]1001-ji1p-o9l7-vzn4@5",
+                    "previous": [
+                        {
+                            "process_id": "[XbtShipmentAuthorityService]1001-ji1p-o9l7-vzn4@5",
+                            "account": "observatory_fe"
+                        }
+                    ],
+                    "end_time": "2024-07-25T03:34:33.112127354Z",
+                    "has_parent": false,
+                    "version": null,
+                    "tags": [
+                        "shipmentId:@1001-ji1p-o9l7-vzn4",
+                        "shipmentId:@1001-ji1p-o9l7-vzn4@5"
+                    ],
+                    "start_time": "2024-07-25T03:34:33.111753642Z",
+                    "exception_classes": [],
+                    "name": "XbtShipmentExecutionWorkflow",
+                    "namespace": "XbtShipmentExecutionWorkflow",
+                    "elapsed_time": 0,
+                    "correlation_id": "[XbtShipmentExecutionWorkflow]1001-ji1p-o9l7-vzn4@5",
+                    "process_type": "PROCESS",
+                    "error_codes": [],
+                    "status": "SUCCESS"
+                },
+                "sort": [
+                    1721878473111
+                ]
+            },
+            {
+                "_index": "processes_2",
+                "_type": "jarvis_process",
+                "_id": "8c71f8d556ea9788d89dccc74426b1faf9ee61d96f46987b31012012e15b27d9dbb88a75c1429b0bef1ffc22b55eeaa2e8cbfc19d7d3fb97dd9c5efa9d71e685",
+                "_score": null,
+                "_source": {
+                    "owner": "observatory_fe",
+                    "process_id": "d9ad1dd1fdf76b575debdef6efddba6db6bcf3af7de7573c",
+                    "end_time": "2024-07-25T03:34:33.144Z",
+                    "has_parent": false,
+                    "version": null,
+                    "tags": [
+                        "shipmentId:@1001-ji1p-o9l7-vzn4",
+                        "shipmentId:@1001-ji1p-o9l7-vzn4@5",
+                        "srId:@1001-ji1p-o9l7-vzn4"
+                    ],
+                    "start_time": "2024-07-25T03:34:32.936Z",
+                    "exception_classes": [],
+                    "name": "[SRL]ShipmentUpdateEventHandler.handle",
+                    "namespace": "XBTMS-Demand",
+                    "elapsed_time": 208,
+                    "correlation_id": "d9ad1dd1fdf76b575debdef6efddba6db6bcf3af7de7573c",
+                    "process_type": "PROCESS",
+                    "error_codes": [],
+                    "status": "SUCCESS"
+                },
+                "sort": [
+                    1721878472936
+                ]
+            },
+            {
+                "_index": "processes_2",
+                "_type": "jarvis_process",
+                "_id": "56228546921a0bbd8219c481efc611cd5f78cc2ea6143dfd19dd7b88f7fd1d4b168fe500252fbc4cd209dd68170a3df5a4248d821fdf7237c77e8b420802ac76",
+                "_score": null,
+                "_source": {
+                    "owner": "observatory_fe",
+                    "process_id": "[XbtShipmentExecutionWorkflow]ns11-hr8n-yun6-vcc7@7",
+                    "previous": [
+                        {
+                            "process_id": "[XbtShipmentAuthorityService]ns11-hr8n-yun6-vcc7@7",
+                            "account": "observatory_fe"
+                        }
+                    ],
+                    "end_time": "2024-07-25T03:34:32.174310869Z",
+                    "has_parent": false,
+                    "version": null,
+                    "tags": [
+                        "shipmentId:@ns11-hr8n-yun6-vcc7",
+                        "shipmentId:@ns11-hr8n-yun6-vcc7@7"
+                    ],
+                    "start_time": "2024-07-25T03:34:32.173969872Z",
+                    "exception_classes": [],
+                    "name": "XbtShipmentExecutionWorkflow",
+                    "namespace": "XbtShipmentExecutionWorkflow",
+                    "elapsed_time": 0,
+                    "correlation_id": "[XbtShipmentExecutionWorkflow]ns11-hr8n-yun6-vcc7@7",
+                    "process_type": "PROCESS",
+                    "error_codes": [],
+                    "status": "SUCCESS"
+                },
+                "sort": [
+                    1721878472173
+                ]
+            },
+            {
+                "_index": "processes_2",
+                "_type": "jarvis_process",
+                "_id": "49b333e506400ce67daccb075101aafde19eacac66cad4d9ed1f5eaef897b7c53702eba3013166753726c5d07b0f881b9b7eccc0fdf1984240df08063da93ad2",
+                "_score": null,
+                "_source": {
+                    "owner": "observatory_fe",
+                    "process_id": "f7dd1bf5ee9edf7d5ef1ee7ad9adbdedfd5e6f479d71f73d",
+                    "end_time": "2024-07-25T03:34:32.202Z",
+                    "has_parent": false,
+                    "version": null,
+                    "tags": [
+                        "shipmentId:@ns11-hr8n-yun6-vcc7",
+                        "shipmentId:@ns11-hr8n-yun6-vcc7@7",
+                        "srId:@1001-ibbg-um0t-k21u",
+                        "srId:@1001-hrud-2zn0-3w37",
+                        "srId:@1001-k1zi-430l-5dmf"
+                    ],
+                    "start_time": "2024-07-25T03:34:31.895Z",
+                    "exception_classes": [],
+                    "name": "[SRL]ShipmentUpdateEventHandler.handle",
+                    "namespace": "XBTMS-Demand",
+                    "elapsed_time": 307,
+                    "correlation_id": "f7dd1bf5ee9edf7d5ef1ee7ad9adbdedfd5e6f479d71f73d",
+                    "process_type": "PROCESS",
+                    "error_codes": [],
+                    "status": "SUCCESS"
+                },
+                "sort": [
+                    1721878471895
+                ]
+            },
+            {
+                "_index": "processes_2",
+                "_type": "jarvis_process",
+                "_id": "885c35dd2112bb8c319f4dfb98011d24a5dfb2e0c08edcbaf14c418eb54499cab5089ff0f61d8ca39bcff97dd6d95c52a8625be6d8fdd58dbf307d4c9a808d90",
+                "_score": null,
+                "_source": {
+                    "owner": "observatory_fe",
+                    "process_id": "CUSTOMS_WORK_ORDER--ns1s-ksdp-f0u1-vle0--16",
+                    "previous": [
+                        {
+                            "process_id": "[XbtShipmentExecutionWorkflow]ns1s-ksdp-f0u1-vle0@16",
+                            "account": "observatory_fe"
+                        }
+                    ],
+                    "end_time": "2024-07-25T03:34:40.813884413Z",
+                    "has_parent": false,
+                    "version": null,
+                    "tags": [
+                        "shipmentId:@ns1s-ksdp-f0u1-vle0",
+                        "shippingRequestId:@100q-e9x7-1h0x-9v50",
+                        "shippingPlanId:@220r-hg3o-30oz-9kp0",
+                        "shipmentId:@ns1s-ksdp-f0u1-vle0@16"
+                    ],
+                    "start_time": "2024-07-25T03:34:29.518227811Z",
+                    "exception_classes": [],
+                    "name": "Xbt3PAdapterService-herd-workflow",
+                    "namespace": "Xbt3PAdapterService",
+                    "elapsed_time": 11295,
+                    "correlation_id": "CUSTOMS_WORK_ORDER--ns1s-ksdp-f0u1-vle0--16",
+                    "process_type": "PROCESS",
+                    "error_codes": [],
+                    "status": "SUCCESS"
+                },
+                "sort": [
+                    1721878469518
+                ]
+            },
+            {
+                "_index": "processes_2",
+                "_type": "jarvis_process",
+                "_id": "d9ae5757165ea41619d651007bbbdad6e2976ed64a0a286a558b40e300d8ea4245bb779274574ede05c9bd109e8425ccd4ca85e78a57d51fcedb38eaef5a26dc",
+                "_score": null,
+                "_source": {
+                    "owner": "observatory_fe",
+                    "next": [
+                        {
+                            "process_id": "CUSTOMS_WORK_ORDER--ns1s-ksdp-f0u1-vle0--16",
+                            "account": "observatory_fe"
+                        }
+                    ],
+                    "process_id": "[XbtShipmentExecutionWorkflow]ns1s-ksdp-f0u1-vle0@16",
+                    "previous": [
+                        {
+                            "process_id": "[XbtShipmentAuthorityService]ns1s-ksdp-f0u1-vle0@16",
+                            "account": "observatory_fe"
+                        }
+                    ],
+                    "end_time": null,
+                    "has_parent": false,
+                    "version": null,
+                    "tags": [
+                        "shipmentId:@ns1s-ksdp-f0u1-vle0",
+                        "shipmentId:@ns1s-ksdp-f0u1-vle0@16"
+                    ],
+                    "start_time": "2024-07-25T03:34:29.165124479Z",
+                    "exception_classes": [],
+                    "name": "XbtShipmentExecutionWorkflow",
+                    "namespace": "XbtShipmentExecutionWorkflow",
+                    "elapsed_time": null,
+                    "correlation_id": "[XbtShipmentExecutionWorkflow]ns1s-ksdp-f0u1-vle0@16",
+                    "process_type": "PROCESS",
+                    "error_codes": [],
+                    "status": "IN_PROGRESS"
+                },
+                "sort": [
+                    1721878469165
+                ]
+            }
+        ]
+    }
+}
