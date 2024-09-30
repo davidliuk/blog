@@ -10,9 +10,9 @@
 
   它不要求逻辑上相邻的元素在物理位置上也相邻.因此它没有[顺序存储结构](https://baike.baidu.com/item/顺序存储结构/0?fromModule=lemma_inlink)所具有的弱点,但也同时失去了[顺序表](https://baike.baidu.com/item/顺序表/9664274?fromModule=lemma_inlink)可[随机存取](https://baike.baidu.com/item/随机存取/4610937?fromModule=lemma_inlink)的优点。
 
-- 散列存储
+- 散列存储 Hash
 
-- 索引存储
+- 索引存储 Indexed
 
 逻辑结构
 
@@ -21,7 +21,7 @@
 - 图
 - 集
 
-
+### Traversal
 
 顺序存储遍历
 

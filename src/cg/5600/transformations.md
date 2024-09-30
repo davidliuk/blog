@@ -1,18 +1,32 @@
 # Transformations
 
-point
+[slides](https://www.cis.upenn.edu/~cis4600/19fa/lectures/460transforms3d.html#slide-0)
 
-vector
+## Basics
+
+### vector
+
+vs point
+
+- point: position
+- Vector: direction
+
+Arithmetic
 
 - addition
 - Substraction
 
-matrix
+Norm (length): $|p|=\sqrt{x^2+y^2+z^2}$
+
+Dot Product
+
+Cross Product
+
+### matrix
 
 - Transpose
-- norm
 - Determinat
-- multiplication
+- Multiplication
 
 Dot product: 
 

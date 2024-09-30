@@ -1,11 +1,24 @@
 # Computer Animation
 
+No late submissions or extensions for this homework.
+
 Levine 154
 
 - 50 作业
-- 25 期中
-- 20 期末
-- 05 出勤，五次quiz
+
+  - CQ
+  - HW
+
+- 20 期中
+
+- 25 期末
+
+- 05 出勤，5+次随堂 quiz
+
+  drop 2 lowest grade
+
+  - 9.12 transformation, 7/10
+  - 9.26 splines
 
 
 ## text books
@@ -25,7 +38,7 @@ Software
 
 1. MS VS 2022 (C++)
 
-   mac 不能run c++，换个软件
+   mac VS 不能run c++，换个软件（clion）
 
    建议使用debugger来调试
 
@@ -82,19 +95,19 @@ controller
 
 ## Course Topics
 
-Coordinate systems
+Coordinate systems ✅
 
 - Vector - Matrux Representations
 - Coordinate Transformations
 - Euler Angles
 - Quaternions
 
-Interpolation
+Interpolation  
 
-- Curve
-- Linear
-- Bebier
-- B-Splines
+- Curve  ✅
+- Linear  ✅
+- Bebier  ✅
+- B-Splines  ✅
 - 2D
 - Spherical Interpolation
 
@@ -175,3 +188,7 @@ quiz下周,basic concept
 Exam: Given F1, F2, what H12
 
 不需要计算
+
+---
+
+15min quiz，close book test

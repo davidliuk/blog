@@ -1,5 +1,14 @@
 # JD.com
 
+- Refactored the resource management service with ConfigMap for automated and configurable resource-splitting solutions.
+- Utilized the Kubernetes Informer mechanism, observer pattern, asynchronous processing, row locking, and discard policies, to
+- improve the efficiency of platform resource recalculation and achieve a 20x faster service startup speed.
+- Optimized the CI/CD toolchain with cloud-native CI workflows using Argo Workflows and GitOps to trigger Argo CD.
+- Built Helm charts to enable robust platform privatization deployment capabilities tailored to specific client requirements.
+- Refactored the activity page generation service, improving code structure and reusability with the strategy pattern. Designed generation pipelines with AIGC services to generate activity content floors effectively.
+
+---
+
 参与言犀AI开发计算平台的基础架构开发、重构与部署，为京东集团的算法开发、AIGC、大语言模型等服务提供基础架构支持。
 
 - 负责重构资源管理服务，使用 ConfigMap 提供自动化和配置化的机器资源拆分方案。
@@ -15,3 +24,4 @@
 - Optimized the CI/CD toolchain with cloud-native CI workflows using Argo Workflows and GitOps to trigger Argo CD.
 - Participated in the privatization deployment project for China Construction Bank (CCB) by building Helm charts to enable platform privatization deployment capabilities. 
 - Refactored the activity page generation service for the AI-pilot Marketing platform, enhancing code structure and improving reusability by implementing the strategy pattern. Designed generation pipelines with AIGC services to generate activity content floors effectively.
+

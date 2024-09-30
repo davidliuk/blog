@@ -60,37 +60,7 @@ assigned ISSC:
 
 Your assigned ISSC listed above is your go-to person prior to your arrival at Penn and the activation of your SEVIS record. For questions not easily answered from our website, you can schedule a brief appointment with Aaron DeBruin. 
 
-```
-Your PennKey username is: liudawei
+---
 
-If you forgot your password, you must reset it yourself using one of the methods described here. No one can retrieve your password or reset it for you.
-	- If you previously enrolled in Self-Service Password Reset (SSPR), use the Reset Forgotten Password function at https://accounts.pennkey.upenn.edu/pwm/public/forgottenpassword to reset your password.
-	- If you're not enrolled in SSPR, you must obtain a new Setup Code to reset your PennKey password. 
-	- ON-CAMPUS: Visit the correct PennKey administration station with the necessary photo IDs. See https://pennkeysupport.upenn.edu/pennkey-stations.
-	- OFF-CAMPUS: Request a setup code using the Setup Code Service at https://medley.isc-seo.upenn.edu/pennKeyRequest/jsp/fast.do. The code will be sent to your address of record via postal mail. You will need to know your Penn ID to complete the request for mailing. Your Penn ID number is: 58125452.
-
-*NEED ADDITIONAL HELP?*
-If you need further assistance or information, see the following resources:
-
-	- Incoming Students: https://srfs.upenn.edu/pennkey-support
-	- Incoming University employees: https://pennsolutioncenter.freshdesk.com/support/home; phone 215-898-7372
-	- Incoming UPHS employees: https://www.uphs.upenn.edu/employeeselfservice/strategiclearning/kl/pennkey.html
-	- All others: https://www.upenn.edu/pennkey 
-```
-
-Waiver Application Status
-
-You completed the waiver application on 08/20/2024. Your unique confirmation number is W24DBE25D.
-
-Waiver Process - Status and Next Steps
-You requested to waive PSIP coverage for the annual 2024-2025 period of 8/1/2024-7/31/2025.
-
-Your current waiver status is: Pending.
-
-The following process will occur.
-
-    The University will verify your coverage with your insurance company.
-    You will receive an email providing the status of the verification when completed.
-    Completion of the insurance verification form by the insurance company will be requested via email, if necessary.
-
-After you complete the online waiver, you will receive a confirmation approval within 48 hours. Your school does a random audit and may send you an email requiring PSI to complete and sign an insurance verification form (make sure your Penn ID is on the form). Should you receive this, please forward the email to Geoffrey@psiservice.com so we can fill it out and fax it back to your school.  Thank you for choosing PSI!
+- hermite
+- Rotation

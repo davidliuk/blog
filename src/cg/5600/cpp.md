@@ -117,6 +117,19 @@ Ref
 - Functions
   - string getName() const;
 
+```c++
+const Node *n;
+Node const *n;
+
+//
+const * Node n;
+
+// 
+Node * const * n;
+```
+
+
+
 ## Class
 
 **member**
@@ -166,6 +179,8 @@ Friend function
   - std::shared_ptr
 - Store the address of the heap memory they manage
 
+## Pointers
+
 **Smart Pointers**
 
 - Smart pointers “own” the memory to which they point
@@ -179,10 +194,23 @@ Friend function
 - std::move is shorthand for “Move the ownership of this heap memory to a new object”
 - The new smart pointer **acquires** the heap **resource** and thus becomes the object that should free that memory
 
-**Function pointers**
+### **std::unique_ptr**
+
+### **std::shared_ptr**
+
+
+
+**Function Pointers**
 
 - Like variables, functions are stored at addresses in your computer’s memory
 - If they have locations, we can make pointers to them!
 - Why use them?
   - Say you’re trying to make a GUI editor and need to write a Button class
   - Rather than making a subclass for every possible button functionality, give the Button a function pointer as a member variable, and invoke that function when the button is clicked!
+
+
+
+Virtual function
+
+---
+
