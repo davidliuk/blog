@@ -157,3 +157,19 @@ $\dot{\vec\Theta}=J^T(JJ^T)^{-1}\dot{\vec x_d}$
 choose $\vec b=\dot{\vec x_d}=\vec v_d$
 
 $\dot{\vec x_d}=\frac{\vec x_d(t_k)-\vec x(t_k)}{\Delta t}$
+
+
+
+###  Limb-Based Approach
+
+1. Compute only q2 to get desired length of rd
+2. Compute quaternion q1 at joint 1 to rotate rd so it points at pd
+3. Joint 3 Orientation
+
+### Coordinate Cyclic Descent (CCD)
+
+Main Concept: If rotate joint 1 by angle get end joint 2 as close as possible to  pd
+
+
+
+motion capture

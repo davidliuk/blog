@@ -11,6 +11,8 @@ Levine 154
 
 - 20 期中
 
+  review Monday 4:00 PM
+
 - 25 期末
 
   开放问题
