@@ -8,71 +8,113 @@
 
 ## Linear Algebra Review
 
+### Handed
+
 Coordinate System
+
+**Thumb is x, Index finger is y, middle finger is z**
 
 - left handed
 
+  unity
+
 - right handed
 
-### Notations and Definitions
+  unreal
 
-**Scalar**
+### Notations
 
-**Vector**
+#### **Scalar**
 
-- Column vector
-- Row vector
+$p_x,p_y,p_z$
 
-Unit Vector
+#### **Vector**
 
-Vector **magnitude**(length)
+- Column vector, dim=n*1
+- Row vector, dim=1*n
 
-$||\bar{\phi}||=\sqrt{}$
+Unit Vectors:
 
-Matrix 
+$(\hat i,\hat j,\hat k)$
+
+$(\hat u_x,\hat u_y,\hat u_z)$
+
+Vector **magnitude** (length)
+
+$||\bar{p}||=\sqrt{p_x^2+p_y^2+p_z^2}=(p^Tp)^{\frac{1}{2}}$
+
+#### Matrix 
 
 Matrix transpose
 
-**Dot product**
+#### **Dot product**
 
-$\bar{\phi} \cdot \bar{r}$
+$\bar{p} \cdot \bar{r}=\|p\| \|r\|\cos\theta$
 
 **angel** between 2 vec
 
-$\theta=cos^{-1}(\frac{\bar{\phi} \cdot \bar{r}}{||\bar{\phi}|| ||\bar{r}||})$
+$\theta=cos^{-1}(\frac{\bar{\phi} \cdot \bar{r}}{\|\bar{\phi}\| \|\bar{r}\|})$
 
 **Projection**
 
 $\hat{u}=\frac{\bar u}{||\bar{u}||}$
 
-$||\phi||\cos \theta\hat u$
+$\vec p\cdot\frac{u}{\|u\|}=||\vec p||\cos \theta\hat u$
+
+#### Cross product
+
+$\vec p=\vec q\times\vec r$
+
+$\vec q\times\vec r=\|q\|\|r\|\sin\theta\hat n$
+
+Where $\hat n$ is 右手法则测出来的方向，食指是q，中指是r=》拇指是n
+$$
+\hat{i} \times \hat{j} = \hat{k}\\
+\hat{j} \times \hat{k} = \hat{i}\\
+\hat{k} \times \hat{i} = \hat{j}
+$$
+cross product equivalent matrix
+$$
+[\mathbf{a}]_{\times} =
+\begin{pmatrix}
+0 & -a_z & a_y \\
+a_z & 0 & -a_x \\
+-a_y & a_x & 0
+\end{pmatrix}
+$$
 
 ### Alignment to target
 
-angle
+Given $\vec v, \vec t$, v -> t
 
-axis (两个向量形成平面的法向量)
+- angle: $\theta=\arccos\frac{\vec v\cdot\vec t}{\|v\|\|t\|}$
 
-Cross product
+- axis: $\vec r=\vec v\times\vec t$
+
+  (两个向量形成平面的法向量)
 
 ## Coordinate Transformations
 
 Frames of Reference 参考系
 
-- translate
 - rotate
+- translate
 - Scale
 
 ### Pure Rotation
 
+Rotation of coordinate system about the x-axis by angle, is **counterclockwise**
+
 > v1 in Frame 1 to the Frame 0
 >
 
-$\bar\phi=\phi_x^1\bar i_1+\phi_y^1\bar j_1+\phi_z^1\bar k_1$
+$\bar p=p_x^1\hat i_1+p_y^1\hat j_1+p_z^1\hat k_1$
 
-$\bar\phi^0=R_1^0\bar \phi^1$
+$\bar p^0=R_1^0\bar p^1$
 
 Rotation Matrix: $R_1^0$
+
+$R_1^0=[\hat i_1|\hat j_1|\hat k_1]$
 
 $R_0^1R_1^0=I$
 
@@ -104,13 +146,15 @@ R(z,\psi)=R_Z = \begin{pmatrix}
 $$
 #### Euler Angles
 
-roll, pitch, yaw
+- roll, pitch, yaw
 
-Phi, theta, Psi
+- Phi, theta, Psi
 
 **Order of 3 rotations about local axis**
 
-y -> z -> x
+> y -> z -> x
+
+z->y->x
 
 $R_E=R_{zyx}(\phi, \theta,\psi)=R_ZR_YR_X$
 $$
@@ -139,7 +183,9 @@ R_E
 \end{aligned}
 $$
 
-### Fixed Angles
+#### Fixed Angles
+
+??
 
 **Order of 3 rotations about world axis**
 
@@ -182,11 +228,13 @@ R_1^0 && \vec d_1^0 \\
 1
 \end{pmatrix}
 $$
-homogeneous vector 齐次坐标
+- homogeneous vector 齐次坐标
 
-homogeneous transform matrix: $H_1^0$
+- homogeneous transform matrix: $H_1^0$
 
-Pure Transformation: 
+
+#### Transformation
+
 $$
 H_{rot}=H_{rotate}=\begin{pmatrix} R && 0 \\ 0 && 1\end{pmatrix}\\
 
@@ -195,16 +243,11 @@ H_{rot}(axis, angle)=\begin{pmatrix} R_{axis}(angle) && 0 \\ 0 && 1\end{pmatrix}
 H_{trans}=\begin{pmatrix} I && \vec d \\ 0 && 1\end{pmatrix}\\
 
 H_{scale}=\begin{pmatrix} S && 0 \\ 0 && 1\end{pmatrix}\\
-
-S = \begin{pmatrix}
-S_x & 0 & 0 \\
-0 & S_y & 0 \\
-0 & 0 & S_z
-\end{pmatrix}
 $$
 #### Operations
 
-H matrix multiplication
+#### multiplication
+
 $$
 H_1H_2=\begin{pmatrix}
 R_1R_2 && R_1\vec d_2+\vec d_1\\
@@ -212,7 +255,8 @@ R_1R_2 && R_1\vec d_2+\vec d_1\\
 \end{pmatrix}
 $$
 
-H matrix inverse
+#### inverse
+
 $$
 \begin{align}
 H^{-1}&=\begin{pmatrix}
@@ -240,7 +284,25 @@ $$
 
 Frame of Reference: $F$
 
-Global(World) Frame: $F_0=I$
+Global (World) Frame: $F_0=I$
+
+### Convert
+
+- rotated frame to unrotated frame
+
+  $p^0=R_1^0p^1$
+
+  Rotation matrix transform vectors from the rotated frame to the unrotated(F0)
+
+- Local to global
+
+  $p^0=R_1^0p^1$
+
+- body to world
+
+  $p^0=R_1^0p^1$
+
+- child to parent
 
 $F_1=F_1^0=H_1F_0$
 
@@ -248,12 +310,7 @@ $\vec p^0=F_3^0 \vec p^3$
 
 ---
 
-- rotated frame to unrotated frame
-- Local to global
-- body to world
-- child to parent
-
----
+### Local & Global
 
 sequences of transforms => order of 
 
@@ -264,9 +321,13 @@ $H=H_3(H_1H_2)H_4$
 
 ---
 
-Given p0, compute  p3
+Example questions:
 
-Given F1, F2, compute H12
+Given p0, compute  p3: 
+$$
+\vec p^0=F_3^0 \vec p^3\Rightarrow \vec p^3=(F_3^0)^{-1} \vec p^0
+$$
+Given F1, F2, compute H12:
 $$
 F_2^0=HF_1^0\Rightarrow H=F_2^0(F_1^0)^{-1}\\
 F_2^0=F_1^0H\Rightarrow H=(F_1^0)^{-1}F_2^0
@@ -275,14 +336,21 @@ $$
 ### Convert handed
 
 Converting form left handed to right handed Coord System
+
+Position: 
 $$
-x^L,y^L,z^L\\
-x^R,y^R,z^R\\
-x^R=x^L,
-y^R=y^L,
-z^R=-z^L
+\begin{align*}
+\text{Left-handed coordinates:} \quad & (x^L, y^L, z^L) \\
+\text{Right-handed coordinates:} \quad & (x^R, y^R, z^R) \\
+\text{Conversion:} \quad & 
+\begin{cases}
+x^R = x^L \\
+y^R = y^L \\
+z^R = -z^L
+\end{cases}
+\end{align*}
 $$
-Euler Angles
+Euler Angles: 
 $$
 [\phi^L,\theta^L,\psi^L]\\
 [-\phi^R,-\theta^R,\psi^R]
@@ -306,18 +374,33 @@ $$
 
 Problems of Euler Angles representing rotations
 
-#### axes colinear => "Gimbal lock"
+**axes colinear => "Gimbal lock"**
 
 ![img](https://upload.wikimedia.org/wikipedia/commons/4/49/Gimbal_Lock_Plane.gif)
 
-Gimbal locked airplane. When the pitch (green) and yaw (magenta) gimbals become aligned, changes to roll (blue) and yaw apply the same rotation to the airplane.
+Gimbal locked airplane. 
+
+When the pitch (green) and yaw (magenta) gimbals become aligned, changes to roll (blue) and yaw apply the same rotation to the airplane.
 
 ### Operations
 
 - Add: $\vec q_1+\vec q_2=[s_1+s_2, v_1+v_2]^T$
+
 - Mul: $\vec q_1\cdot\vec q_2=[s_1s_2-\vec v_1\vec v_2, s_1\vec v_2+s_2\vec v_1+\vec v_1\times\vec c_2]^T$
-- Mag: $||\vec q||=w^2+x^2+y^2+z^2=1$
+
+  if $\Delta q$ w.r.t world:
+
+  $\vec q_2=\Delta q\cdot\vec q_1=\vec q_{1,2}^0\vec q_1$
+
+  if $\Delta q$ w.r.t local
+
+  $\vec q_2=\vec q_1\cdot\Delta q=\vec q_1\cdot q^1_{1,2}$
+
+- Mag: $||\vec q||=\sqrt{w^2+x^2+y^2+z^2}=1$
+
 - Inv: ${\vec q}^{-1}=(\frac{1}{||\vec q||})^2[s, -\vec v]^T=[s, -\vec v]^T$
+
+  几何意义，角度不变，轴取反
 
 ### Usage
 
@@ -325,7 +408,25 @@ $$
 \vec p_{rot}=\vec q\cdot\vec p\cdot\vec q^{-1}\\
 $$
 
-Rotate axis by quaternion q
+> Rotate axis by quaternion q
+>
+> Post dot product
+
+Rotate axis by angle (of q)
+
+$\vec q_2=\Delta q\cdot\vec q_1=\vec q_1^2\vec q_1$
+
+### Computation
+
+Given vector v1, v2
+
+- Angle: dot prodcut, law of cosine
+
+  $\theta=\arccos\frac{\vec v_1\cdot\vec v_2}{\|\vec v_1\|\|\vec v_2\|}$
+
+- Axis: cross product
+
+  $\hat u=\frac{\vec u}{\|u\|}=\frac{\vec v_1\times\vec v_2}{\|\vec v_1\|\|\vec v_2\|}$
 
 ## Orientation Representation Conversion
 
@@ -394,6 +495,7 @@ $$
 
 ### E => R
 
+related to sequence, detail see reference
 $$
 R_{ZYX}=R_ZR_YR_X
 $$

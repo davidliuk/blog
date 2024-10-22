@@ -1,19 +1,21 @@
 # Computer Animation
 
-No late submissions or extensions for this homework.
-
 Levine 154
 
 - 50 作业
 
+  No late submissions or extensions for this homework.
+
   - CQ
   - HW
 
-- 20 期中
+- 20 期中 Oct 23, 90min
 
-  review Monday 4:00 PM
+  review session Monday 4:00 PM, online zoom
 
-- 25 期末
+  开卷考试，可以电子设备，但是不能搜索，不会有太多计算
+
+- 25 期末 Dec 13
 
   开放问题
 
@@ -24,7 +26,12 @@ Levine 154
   drop 2 lowest grade
 
   - 9.12 transformation, 7/10
+  
   - 9.26 splines
+  
+  - 10.15
+  
+    last 20 min, easy, kinematics
 
 
 ## text books
