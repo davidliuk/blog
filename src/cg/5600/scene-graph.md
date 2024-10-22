@@ -16,8 +16,6 @@ Node& Node::addChild(uPtr<Node> n) {
 
 sPtr比uPtr慢，有引用计数，比较慢；如果非sPtr场景就用uPtr
 
-
-
 Examples Scene
 
 1. TRS

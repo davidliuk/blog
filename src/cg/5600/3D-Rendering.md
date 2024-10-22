@@ -12,13 +12,13 @@ Problem: The texture’s pixels must be mapped to points on the object’s surfa
 
 Interpolating triangle UVs
 
----
+### Texture space
 
 RGB 0 -> XYZ -1
 
 RGB 0.5 -> XYZ 0
 
-RGB 1 -> XYZ z
+RGB 1 -> XYZ 1
 
 ### Normal maps
 
