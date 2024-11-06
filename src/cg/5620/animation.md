@@ -89,3 +89,21 @@ $\alpha(t)=\frac{t-t_1}{t_2-t_1}$
 
 
 
+Animation Guide
+
+
+
+### Foot IK
+
+Allow characters walk over uneven terrain
+
+IK target
+
+Root position
+
+- determine which foot is lower
+- Update vertical position of root joint
+
+Foot Position
+
+- use Limb IK with Lfoot_target and Rfoot_target to position feet

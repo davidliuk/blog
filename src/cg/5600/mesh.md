@@ -159,9 +159,24 @@ Fixed size of data structure elements
 
 Insert a new vertex between V1 and V2
 
+![Screenshot 2024-10-25 at 2.00.57 PM](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/Screenshot%202024-10-25%20at%202.00.57%E2%80%AFPM.png)
+
+Steps:
+
+1. Create the new vertex V3
+2. Create the two new half-edges HE1B and HE2B needed to surround V3
+   1. Make sure that HE1B points to V1 and that HE2B points to V2
+   2. Also set the correct face pointers for HE1B and HE2B
+3. Adjust the sym, next, and vert pointers of HE1, HE2, HE1B, and HE2B so the data structure flows as it did before
+
+```
+```
+
 
 
 ### Triangulate
+
+
 
 
 
@@ -179,7 +194,6 @@ class Face {
 class HalfFace {
     HalfFace *sym;
     HalfFace *nxt;
-    
 }
 ```
 
