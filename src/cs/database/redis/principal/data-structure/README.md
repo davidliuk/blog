@@ -10,8 +10,6 @@ Redis 是 key-value 的数据库，key 一般是 String 类型，不过 value �
 
 - List
 
-  底层是链表
-
 - Set
 
 - Sorted Set（即 ZSet）

@@ -67,6 +67,11 @@
 
 论点：
 
+As a university student, I constantly feel the pressure of taking classes, writing papers, juggling part time job and so on.
+
+I am a university student who is busy with a lot of things, like taking classes, writing papers, preparing for exams and so on. Therefore, it' s very necessary for me to do sth
+
+For students, study is always the top priority.
 - For students, study is always the top priority.
 - Time is very precious for students.
 Personally speaking, I prefer XXX, just because XXX saves me a lot of time/is a waste of time. You know, I'm a senior student and I major in Software Engineer. I have tons of work to do everyday like taking class, writing paper, tracing and dealing with my data, and preparing for the courses for the next day. I spent most of my time in classrooms and library everyday, and also I have to do some internships in my spare time. So I don't have any time to waste.

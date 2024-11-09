@@ -54,7 +54,7 @@ AutoConfigurationImportSelector 类中 getCandidateConfigurations 方法会将�
 10. 报告启动异常，即若启动过程中抛出异常，此时用 FailureAnalyzers 来报告异常;
 11. 最终返回容器对象，这里调用方法没有声明对象来接收。
 
-[spring boot 启动流程分析 - 掘金 (juejin.cn)](https://juejin.cn/post/7035910505810100255)
+[spring boot 启动流程分析](https://juejin.cn/post/7035910505810100255)
 
 - 准备 Environment
 - 发布事件

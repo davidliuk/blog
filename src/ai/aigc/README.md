@@ -5,3 +5,5 @@
 Stable Diffusion
 
 Control Net
+
+lora

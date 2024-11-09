@@ -19,11 +19,21 @@ static String formatterPatternSwitch(Object o) {
 }
 ```
 
+### Instanceof 模式匹配
 
+> JDK 14
 
-Instanceof 模式匹配
+新的instanceof模式匹配 ，新的模式匹配的用法如下所示，在`instanceof`的类型之后添加了变量`str`。如果`instanceof`对`obj`的类型检查通过，`obj`会被转换成`str`表示的`String`类型。在新的用法中，`String`类型仅出现一次。
 
+如果obj是String的实例，则将其强制转换为String并分配给绑定变量s。绑定变量在if语句的true块中，而不在if语句的false块中。
 
+```java
+if (obj instanceof String s) {
+    // 使用s
+} else {
+    // 不能使用s
+}
+```
 
 ## GC
 

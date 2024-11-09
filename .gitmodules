@@ -1,3 +1,6 @@
-[submodule "submodules/codebase"]
-	path = submodules/codebase
-	url = git@github.com:davidliuk/codebase.git
+[submodule "src/algo"]
+	path = src/algo
+	url = ../algo.git
+[submodule "codebase"]
+	path = codebase
+	url = ../codebase.git

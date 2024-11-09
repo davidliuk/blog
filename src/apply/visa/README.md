@@ -12,9 +12,11 @@ H1b
 
 NIW
 
-EB1
+EB1/2
 
 F1 → 申请 OPT → 拿到 EAD → 入职 → 申请 H1b 或继续读书 → H1b 转绿卡
+
+US Green Card Holder (US Lawful Permanent Resident)
 
 ```mermaid
 graph LR
@@ -23,72 +25,73 @@ graph LR
     EAD -->|入职| 入职[入职]
     入职 -->|抽签| H1b[H1b]
     入职 -->|继续读书| F1
-    H1b -->|转绿卡| 绿卡[绿卡]
+    H1b -->|PERM| PR[PR]
+    入职 -->|PERM| PR
 ```
-
-
-
-```mermaid
-graph LR
-    F1[F1签证] --> OPT[申请OPT]
-    OPT --> EAD[拿到EAD]
-    EAD --> JOB[入职]
-    JOB --> H1B[申请H1b]
-    JOB -->|继续读书| F1
-    H1B --> GC[H1b转绿卡]
-```
-
-
 
 1. **非移民签证**：临时访问美国的人员，包括旅游、商务、工作和学习等目的。
 
-   - **B-1/B-2签证**：用于商务（B-1）和旅游、探亲或医疗治疗（B-2）。
+   - **B-1/B-2 签证**：
 
-   - **F-1和M-1签证**：分别用于学术学生和职业学生。
+     - B-1 商务。
+     - B-2 旅游、探亲或医疗治疗。
+
+   - **F-1 和 M-1 签证**：分别用于学术学生和职业学生。
 
      - CPT
      - OPT
        - pre-OPT
 
-   - **H-1B签证**：用于在特定专业职位工作的专业人士。
+   - **H-1B 签证**：用于在特定专业职位工作的专业人士。
 
-     Sponsor，抽签
+     雇主 Sponsor，抽签，只能获得雇主的主动收入
 
-     - **名额限制**：H-1B签证每财政年度有名额上限。目前，常规名额限制为65,000，另外对拥有美国高等教育机构学位的申请人有20,000个额外名额。
+     - **名额限制**：H-1B 签证每财政年度有名额上限。
+       - 常规名额：65,000
+       - 额外名额：20,000 拥有美国高等教育机构学位的申请人。
 
-   - **J-1签证**：用于交换访问学者、学生、实习生等。
+   - **J-1 签证**：用于交换访问学者、学生、实习生等。
 
-   - **L-1签证**：用于跨国公司内部调动的员工。
+   - **L-1 签证**：用于跨国公司内部调动的员工。
 
-   - **O-1签证**：用于具有杰出能力的个人，如艺术家、科学家、商业领袖等。
+   - **O-1 签证**：用于具有杰出能力的个人，如艺术家、科学家、商业领袖等。
 
 2. **移民签证**：打算永久居住在美国的人员。
 
    - **亲属移民签证**：美国公民和合法永久居民可以为亲属申请。
 
-   - **就业移民签证**(Employment-Based)：基于雇佣的各类别，包括优先工人、专业人士等。
+   - **就业移民签证**(Employment-Based)：
+
+     基于雇佣的各类别，包括优先工人、专业人士等。
 
      - EB-1
 
        - EB-1A
 
-     - EB-2 雇主担保移民
+     - **EB-2** 雇主担保移民
+
+       - PERM
+
+         如果发生裁员，则短期内不能办理 perm
+
+         普通 PERM 和 day 1 PERM 类公司就是这一类，如 flag
 
        - NIW
 
-     - **EB-3** 技术类移民
+         不与雇主挂钩
 
-       day 1 perm类公司就是这一类，如flag
-
-       但如果发生裁员，则短期内不能办理 perm
+     - EB-3 技术类移民
 
      - EB-5 投资移民
 
    - **多样性签证（DV）**：通过随机抽签方式，提供给低移民率国家的人民。
 
-3. **特殊类别签证**：如外交签证（A、G类）、特定国际组织的员工签证等。
+3. **特殊类别签证**：如外交签证（A、G 类）、特定国际组织的员工签证等。
 
-4. **过境/机组人员签证**：如C-1过境签证和D-1/D-2机组人员签证。
+4. **过境/机组人员签证**：
+
+   - C-1 过境签证
+   - D-1/D-2 机组人员签证
 
 ### F-1
 
@@ -110,7 +113,7 @@ STEM, add 24m
 
 [签证科普](https://www.1point3acres.com/bbs/forum-99-1.html)
 
-
+---
 
 银行卡
 
@@ -136,11 +139,13 @@ SSN
 
 A Social Security Number (SSN) is a unique, permanent identification number used for income tax reporting. F-1 students are **not eligible for a social security number** unless they have received a job offer and will be participating in authorized employment on-campus, CPT, or OPT.
 
+需要有 offer 才可以办，比如校内的兼职工作
+
 ---
 
-- F-1签证
-- I-20表格
-- I-94表格（入境记录）
+- F-1 签证
+- I-20 表格
+- I-94 表格（入境记录）
 
 ---
 
@@ -153,6 +158,7 @@ A Social Security Number (SSN) is a unique, permanent identification number used
 银行卡
 
 - 实体卡
+
   - MasterCard
   - Visa
   - amex(American Express)
@@ -161,7 +167,6 @@ A Social Security Number (SSN) is a unique, permanent identification number used
   - [OneKey](https://card.onekey.so)
   - Wise
 
-
 网络
 
 节点
@@ -169,3 +174,22 @@ A Social Security Number (SSN) is a unique, permanent identification number used
 - [jsss](http://jsss-50.top)
 - [2y](https://两元店.com/)
 
+---
+
+F-1
+
+i20
+
+[DS160](https://ceac.state.gov/genniv/)
+
+servis
+
+https://portal.ustraveldocs.com/
+
+[预约面签中文站](https://cgifederal.secure.force.com/)
+
+[预约面签英文站](https://portal.ustraveldocs.com/)
+
+https://mp.weixin.qq.com/s?__biz=MzIyMjA5NjE0NA==&mid=2651524363&idx=1&sn=7d4827d9277c5dad07169dc9c702da45&chksm=f240f01845ef035676b854a12a417a362167c12ab0fe2e10bc2a9e98f00c62184c31aed3193a&scene=27
+
+https://mp.weixin.qq.com/s?__biz=MzkzNzI0OTc3NA==&mid=2247507921&idx=1&sn=56501f9accd91faf8221ad21bfbc7710&chksm=c290c150f5e748461c32bad72ec4679b307e012606d0b53a4c236caedeba9d085fcf7d86498b&scene=27

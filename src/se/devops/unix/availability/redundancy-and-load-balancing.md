@@ -3,7 +3,6 @@
 Possible failures
 
 - Web server failure 服务器失败
--
 
 stand by
 
@@ -23,7 +22,6 @@ failover.sh
 #!/bin/sh
 VIP="10.0.0.1"
 DEV="eth0"
-
 ```
 
 ## Health Check
@@ -34,9 +32,9 @@ DEV="eth0"
 2. Monitor，监视进程发起的
 3. Heartbeat，被监视方发的，自己说我没事
 
-round robin
-
 ## Load Balancer
+
+round robin
 
 ## IPVS (IP Virtual Server): Linux's load balancer
 

@@ -34,7 +34,7 @@
 
 ### 饿汉式
 
-`线程安全`, ``
+`线程安全`
 
 饿汉式的实现方式，在类加载期间，就已经将 instance 静态实例初始化好了，所以 instance 实例的创建是线程安全的。不过这样的实现不支持延迟加载实例。
 
@@ -56,7 +56,25 @@ public class IdGenerator {
 
 `延迟加载`
 
-懒汉式相对于饿汉式的优势是支持延迟加载。这种实现方式会导致频繁加锁、释放锁，以及并发度低等问题，频繁的调用会产生性能瓶颈。
+```java
+public class IdGenerator {
+    private AtomicLong id = new AtomicLong(0);
+    private static volatile IdGenerator instance;
+    private IdGenerator() {}
+    public static synchronized IdGenerator getInstance() {
+        if (localRef == null) {
+            instance = localRef = new IdGenerator();
+        }
+
+        return localRef;
+    }
+    public long getId() {
+        return id.incrementAndGet();
+    }
+}
+```
+
+懒汉式相对于饿汉式的优势是支持延迟加载。这种实现方式会导致**频繁加锁、释放锁**，以及并发度低等问题，频繁的调用会产生性能瓶颈。
 
 ### DCL
 
@@ -64,8 +82,16 @@ public class IdGenerator {
 
 双重检测实现方式既支持延迟加载、又支持高并发的单例实现方式。只要 instance 被创建之后，再调用 getInstance() 函数都不会进入到加锁逻辑中。所以这种方式解决了懒汉式并发度低的问题。
 
+双重检测
+
+- 外层if：实例只被创建一次，当实例已经被创建好就不要后续的加锁操作，直接返回
+
+- 内层if：实例未被创建时，多个线程同时竞争锁，只有一个线程竞争成功并创建实例，其他竞争失败的线程就会阻塞等待，当第一线程释放锁后，这些竞争失败的线程就会继续竞争，但是实例已经创建好了，所以需要再次进行if判断
+
+volatile
+
 - 解决指令重排序，给 instance 成员变量加上 volatile 关键字
-- `localRef`的作用是在已经初始化的情况下（即绝大多数情况下），减少读取 volatile 变量的次数为 1 词，这样大概可以提升 40%的性能。
+- `localRef`的作用是在已经初始化的情况下（即绝大多数情况下），减少读取 volatile 变量的次数（减少了一次），这样大概可以提升 40%的性能。
 
 ```java
 public class IdGenerator {

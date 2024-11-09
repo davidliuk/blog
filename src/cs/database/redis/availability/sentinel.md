@@ -1,16 +1,18 @@
-# Sentinel：故障转移
+# Sentinel 故障转移
 
 哨兵：自动故障转移 Failover
 
+主从+哨兵现在少用了，一般就是直接上集群
+
 ## 是什么
 
-吹哨人巡查监控后台 master.主机是否故障，如果故障了根据投票数自动将某一个从库转换为新主库，继续对外服务
+吹哨人巡查监控后台 master 主机是否故障，如果故障了根据投票数自动将某一个从库转换为新主库，继续对外服务
 
 无人值守的运维机制
 
 ## 干什么
 
-- 主从监控：监控主从 redis)库运行是否正常
+- 主从监控：监控主从 redis 库运行是否正常
 - 消息通知：哨兵可以将故障转移的结果发送给客户端
 - 故障转移：如果 Master 异常，则会进行主从切换，将其中一个 Slave 作为新 Master
 - 配置中心：客户端通过连接哨兵来获得当前 Redis 服务的主节点地址
@@ -19,24 +21,29 @@
 
 三个哨兵监控一主二从，正常运行中
 
-- SDOWN 主管下线，
-- ODOWN 客观下线，需要一定数量的 sentinel,.多个哨兵达成一致意见才能认为一个 master 客观上已经宕掉
+- `SDOWN` 主观下线，
+
+- `ODOWN` 客观下线，需要一定数量的 sentinel, 多个哨兵达成一致意见才能认为一个 master 客观上已经宕掉
+
 - 选举出领导者哨兵
   - 当主节点被判断客观下线以后，各个哨兵节点会进行协商先选举出一个领导者哨兵节点（兵王）并由该领导者节点，也即被选举出的兵王进行 failover(故障迁移)
   - 哨兵领导者，兵王如何选出来的？Raft 算法
+  
 - 由兵王选出来新的 master
-  - 步骤：
-    - 新主登基：
-      - redis,conf 文件中，优先级 slave-priority:或者 replica-priority 最高的从节点（数字越小优先级越高）
-      - 复制偏移位置 offset?最大的从节点
-      - 最小 Run ID 的从节点，字典顺序，ASCII 码
-    - **群臣臣服**
-      - 执行 slaveof no one 命令让选出来的从节点成为新的主节点，并通过 slaveoft 命令让其他节点成为其从节点
-      - Sentinel leader 会对选举出的新 master 执行 slaveof no one 操作，将其提升为 master 节点
-      - Sentinel leader 向其它 slave 发送命令，让剩余的 slave 成为新的 master 节点的 slave
-    - 旧主拜服
-      - 将之前已下线的老 masteri 设置为新选出的新 master 的从节点，当老 masteri 重新上线后，它会成为新 master 的 slave
-      - Sentinel leader?会让原来的 master 降级为 slave 并恢复正常工作。
+
+  步骤：
+
+  1. 新主登基：
+    - redis.conf 文件中，优先级 slave-priority:或者 replica-priority 最高的从节点（数字越小优先级越高）
+    - 复制偏移位置 offset?最大的从节点
+    - 最小 Run ID 的从节点，字典顺序，ASCII 码
+  2. **群臣臣服**
+    - 执行 slaveof no one 命令让选出来的从节点成为新的主节点，并通过 slaveoft 命令让其他节点成为其从节点
+    - Sentinel leader 会对选举出的新 master 执行 slaveof no one 操作，将其提升为 master 节点
+    - Sentinel leader 向其它 slave 发送命令，让剩余的 slave 成为新的 master 节点的 slave
+  3. 旧主拜服
+    - 将之前已下线的老 masteri 设置为新选出的新 master 的从节点，当老 masteri 重新上线后，它会成为新 master 的 slave
+    - Sentinel leader?会让原来的 master 降级为 slave 并恢复正常工作。
 
 完全由 sentinel 自己独立完成，无需人工干预
 
@@ -56,4 +63,22 @@
 
   选举切换流程至少 5-10 秒钟，造成数据丢失
 
-主从+哨兵少用了，一般就是直接上集群
+## 脑裂问题
+
+在 Redis 哨兵模式或集群模式中，由于网络原因，导致主节点（Master）与哨兵（Sentinel）和从节点（Slave）的通讯中断，此时哨兵就会误以为主节点已宕机，就会在从节点中选举出一个新的主节点，此时 Redis 的集群中就出现了两个主节点的问题，就是 Redis 脑裂问题。
+
+https://juejin.cn/post/7358670107901886501?utm_source=gold_browser_extension
+
+设置了参数之后，Redis 脑裂问题能完全被解决吗？为什么？Zookeeper 有脑裂问题吗？它是如何解决脑裂问题的？
+
+脑裂问题只需要在旧 Master 恢复网络之后，切换身份为 Slave 期间，不接收客户端的数据写入即可，那怎么解决这个问题呢？
+
+Redis 为我们提供了以下两个配置，通过以下两个配置可以尽可能的避免数据丢失的问题：
+
+- **min-slaves-to-write**：与主节点通信的从节点数量必须大于等于该值主节点，否则主节点拒绝写入。
+- **min-slaves-max-lag**：主节点与从节点通信的 ACK 消息延迟必须小于该值，否则主节点拒绝写入。
+
+这两个配置项必须同时满足，不然主节点拒绝写入。
+
+在假故障期间满足 min-slaves-to-write 和 min-slaves-max-lag 的要求，那么主节点就会被禁止写入，脑裂造成的数据丢失情况自然也就解决了。
+

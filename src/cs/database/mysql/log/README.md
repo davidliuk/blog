@@ -1,6 +1,22 @@
 # 日志
 
-`MySQL` 日志 主要包括错误日志、查询日志、慢查询日志、事务日志、二进制日志几大类。其中，比较重要的还要属二进制日志 `binlog`（归档日志）和事务日志 `redo log`（重做日志）和 `undo log`（回滚日志）。
+`MySQL` 日志主要包括：
+
+- 事务日志
+  - 回滚 undo log
+  - 重做 redo log
+
+- 归档日志 bin log
+- 中继日志 relay log
+- 错误日志、
+- 查询日志、
+- 慢查询日志、
+
+其中，比较重要的还要属二进制日志 `binlog`（归档日志）和事务日志 `redo log`（重做日志）和 `undo log`（回滚日志）。
+
+- **undo log（回滚日志）**：是 Innodb 存储引擎层生成的日志，实现了事务中的**原子性**，主要**用于事务回滚和 MVCC**。
+- **redo log（重做日志）**：是 Innodb 存储引擎层生成的日志，实现了事务中的**持久性**，主要**用于掉电等故障恢复**；
+- **binlog （归档日志）**：是 Server 层生成的日志，主要**用于数据备份和主从复制**；
 
 <img src="https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/01.png" alt="img" style="zoom: 50%;" />
 
@@ -26,12 +42,12 @@
 
 #### 刷盘时机
 
-缓存在 redo log buffer 里的 redo log 还是在内存中，它刷新到磁盘主要有下面几个时机：
+缓存在 redo log buffer 的 redo log 还是在内存中，它刷新到磁盘主要有下面时机：
 
 - MySQL 正常关闭时；
-- 当 redo log buffer 中记录的写入量大于 redo log buffer 内存空间的一半时，会触发落盘；
-- InnoDB 的后台线程每隔 1 秒，将 redo log buffer 持久化到磁盘。
-- 每次事务提交时都将缓存在 redo log buffer 里的 redo log 直接持久化到磁盘（这个策略可由 innodb_flush_log_at_trx_commit 参数控制，下面会说）。
+- 当 redo log buffer 中记录的写入量大于 redo log buffer 内存空间的**一半**时，会触发落盘；
+- InnoDB 的**后台线程**每隔 1 秒，将 redo log buffer 持久化到磁盘。
+- 每次事务提交时都可以将缓存在 redo log buffer 里的 redo log 直接持久化到磁盘（这个策略可由 innodb_flush_log_at_trx_commit 参数控制）。
 
 > 由于后台线程每隔 1 秒一次刷盘，redo log 在事物执行的过程中是在不断更新的
 
@@ -40,8 +56,8 @@
 `InnoDB` 存储引擎为 `redo log` 的刷盘策略提供了 `innodb_flush_log_at_trx_commit` 参数，它支持三种策略：
 
 - **0** ：设置为 0 的时候，表示每次事务提交时不进行刷盘操作
-- **1** ：设置为 1 的时候，表示每次事务提交时都将进行刷盘操作（默认值）
-- **2** ：设置为 2 的时候，表示每次事务提交时都只把 redo log buffer 内容写入 page cache
+- **1** ：设置为 1 的时候，表示每次事务提交时将进行刷盘操作（默认值）
+- **2** ：设置为 2 的时候，表示每次事务提交时只把 redo log buffer 写入 page cache
 
 `innodb_flush_log_at_trx_commit` 参数默认为 1 ，也就是说当事务提交时会调用 `fsync` 对 redo log 进行刷盘
 
@@ -60,8 +76,8 @@
 图中的：
 
 - write pos 和 checkpoint 的移动都是顺时针方向；
-- write pos ～ checkpoint 之间的部分（图中的红色部分），用来记录新的更新操作；
-- check point ～ write pos 之间的部分（图中蓝色部分）：待落盘的脏数据页记录；
+- write pos - checkpoint 之间的部分（图中红色部分）：记录新的更新操作；
+- check point - write pos 之间的部分（图中蓝色部分）：待落盘的脏数据页记录；
 
 如果 write pos 追上了 checkpoint，就意味着 **redo log 文件满了，这时 MySQL 不能再执行新的更新操作，也就是说 MySQL 会被阻塞**（_因此所以针对并发量大的系统，适当设置 redo log 的文件大小非常重要_），此时**会停下来将 Buffer Pool 中的脏页刷新到磁盘中，然后标记 redo log 哪些记录可以被擦除，接着对旧的 redo log 记录进行擦除，等擦除完旧记录腾出了空间，checkpoint 就会往后移动（图中顺时针）**，然后 MySQL 恢复正常运行，继续执行新的更新操作。
 
@@ -69,11 +85,11 @@
 
 ## binlog
 
-`redo log` 它是物理日志，记录内容是“在某个数据页上做了什么修改”，属于 `InnoDB` 存储引擎。
+是Server层生成的日志。不管用什么存储引擎，只要发生了表数据更新，都会产生 `binlog` 日志。
 
-而 `binlog` 是逻辑日志，记录内容是语句的原始逻辑，类似于“给 ID=2 这一行的 c 字段加 1”，属于`MySQL Server`层。
+- `redo log` 它是物理日志，记录内容是“在某个数据页上做了什么修改”，属于 `InnoDB` 存储引擎。
+-  `binlog` 是逻辑日志，记录内容是语句的原始逻辑，类似于“给 ID=2 这一行的 c 字段加 1”，属于`MySQL Server`层。
 
-不管用什么存储引擎，只要发生了表数据更新，都会产生 `binlog` 日志。
 
 那 `binlog` 到底是用来干嘛的？
 
@@ -117,7 +133,7 @@
 
 可以看到，在持久化 redo log 和 binlog 这两份日志的时候，如果出现半成功的状态，就会造成主从环境的数据不一致性。这是因为 redo log 影响主库的数据，binlog 影响从库的数据，所以 redo log 和 binlog 必须保持一致才能保证主从数据一致。
 
-**MySQL 为了避免出现两份日志之间的逻辑不一致的问题，使用了「两阶段提交」来解决**，两阶段提交其实是分布式事务一致性协议，它可以保证多个逻辑操作要不全部成功，要不全部失败，不会出现半成功的状态。
+**MySQL 为了避免出现两份日志之间的逻辑不一致的问题，使用了「两阶段提交」来解决**，两阶段提交其实是分布式事务一致性协议(CAP)，它可以保证多个逻辑操作要不全部成功，要不全部失败，不会出现半成功的状态。
 
 原理很简单，将`redo log`的写入拆成了两个步骤`prepare`和`commit`，这就是**两阶段提交**。
 
@@ -185,7 +201,7 @@ binlog 已经写入了，之后就会被从库（或者用这个 binlog 恢复�
 
 ### 写入机制
 
-很多人疑问 undo log 是如何刷盘（持久化到磁盘）的？
+undo log 是如何刷盘（持久化到磁盘）的？
 
 undo log 和数据页的刷盘策略是一样的，都需要通过 redo log 保证持久化。
 
@@ -193,10 +209,74 @@ buffer pool 中有 undo 页，对 undo 页的修改也都会记录到 redo log�
 
 其实在逻辑层和物理层都能回滚。而 undo log 帮你做的是逻辑上的数据回滚，而不是物理（数据页）上是数据回滚。
 
-那，你有没有想过为什么 undo 回滚的层面要设置在逻辑层而不是物理层的数据页级别？
+为什么 undo 回滚的层面要设置在逻辑层而不是物理层的数据页级别？
 
 原因你可以这样想：假如一个数据页中存了 300 行数据，而你的 update 语句其实可能仅仅是更新了这个数据页中的一行。但是数据库可不一定是你自己在用！很可能有其他的用户也在使用并且修改了该数据页中的另外 200 行。那这时如果你基于数据页层面回滚，岂不是会将别人的不想回滚的数据给改错？
 
-
-
 ## 慢查询日志
+
+---
+
+六大日志
+
+错误日志，记录了 mysqld 启动和停止时，以及服务器在运行程序时产生的 error 记录在这里，主要是启动失败之类的严重错误
+
+二进制日志(BINLOG)记录了所有的 DDL(数据定义语言)语句和 DML 语句，但是不包括数据查询(select, show)
+
+作用
+
+- 灾难时的数据恢复
+- MySQL 的主从复制
+
+在 Mysql8 中，二进制日志是默认开启的
+
+```sql
+show variables like %bin_log%
+```
+
+- Statement
+- row
+- mixed
+
+指令
+含义
+reset master
+删除全部 binlog 日志，删除之后，日志编号，将从 binlog.000001 重新开始
+purge master logs to 'binlog.**\*\***
+删除\*\*幸编号之前的所有日志
+purge master logs before 'yyyy-mm-dd hh24:mi:ss'
+删除日志为"yyyy-mm-ddhh24:mi:ss"之前产生的所有日志
+
+## 二进制日志（binlog）
+
+- 记录所有引起数据变化的操作，用于备份和还原，使用主从复制时也需要开启binlog
+- 默认存放在datadir目录下，在刷新和重启数据库是会滚动二进制文件，产生新的binlog；
+
+## 事务日志（redo log / undo log ）
+
+- innodb的事务日志包括redo log重做日志，提供前滚操作，undo log回滚日志，提供回滚操作；
+- 保证事务一致性；其中innodb_flush_log_at_trx_commit的配置可控制commit是否刷新log buffer是否刷新到磁盘
+
+> 当设置为1的时候，事务每次提交都会将log buffer中的日志写入os buffer并调用fsync()刷到log file on disk中。这种方式即使系统崩溃也不会丢失任何数据，但是因为每次提交都写入磁盘，IO的性能较差。 当设置为0的时候，事务提交时不会将log buffer中日志写入到os buffer，而是每秒写入os buffer并调用fsync()写入到log file on disk中。也就是说设置为0时是(大约)每秒刷新写入到磁盘中的，当系统崩溃，会丢失1秒钟的数据。 当设置为2的时候，每次提交都仅写入到os buffer，然后是每秒调用fsync()将os buffer中的日志写入到log file on disk。
+
+## 中继日志（relay-log）
+
+- 从服务器I/O线程将主服务器的二进制日志读取过来记录到从服务器本地文件；
+- SQL 线程读取 relay-log 日志的内容并应用到从服务器，从而使从服务器和主服务器的数据保持一致；
+
+## 错误日志（mysql_error）
+
+- MySQL服务启动和关闭过程中的信息以及其它运行中的错误和警告信息
+- log_error_verbosity：1 错误信息；2 错误信息、告警信息； 3：错误信息、告警信息、通知信息； 修改[mysqld]下的配置
+
+## 一般日志（general_log）
+
+- 记录SQL操作的 DDL / DML 日志，记录信息非常简单，但包括完整的SQL语句；
+- 开启general_log会产生非常庞大的日质量，一般不建议开启；
+
+## 慢查询日志（slow_query_log）
+
+- 记录所有执行超过long_query_time设置的SQL语句；
+- 可以通过slow_query_log分析出系统中SQL语句的存在的问题，方便我们进行优化；
+
+登录服务器查询相关日志还是比较麻烦的，所以可以使用ELK+Filebeat对一般日志、错误日志、慢查询日志进行收集，从而进行分析。后续我会更新ELK7+Beat的分布式日志收集方案的搭建教程。
