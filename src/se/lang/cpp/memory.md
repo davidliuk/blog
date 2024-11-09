@@ -8,10 +8,10 @@ New/malloc/delete/free
 
 ### 智能指针
 
-- std::auto_ptr
-- std::unique_ptr
-- std::share_ptr
-- std::weak_ptr
+- `std::auto_ptr`
+- `std::unique_ptr`
+- `std::share_ptr`
+- `std::weak_ptr`
 
 传统的指针（裸指针）在使用时需要手动分配和释放内存，容易出现内存泄漏和悬挂指针等问题。智能指针通过封装裸指针，并提供自动内存管理功能，使得内存资源可以更安全、高效地管理。
 

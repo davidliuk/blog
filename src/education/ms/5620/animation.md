@@ -113,7 +113,7 @@ $s$ controls the speed of motion
 - To slow down motion adjust time and/or spline knots
   - $t=h(\tau)=s\cdot\tau$ where 0 < s < 1 
 
-![image-20241107144808313](C:\Users\david\AppData\Roaming\Typora\typora-user-images\image-20241107144808313.png)
+![image-20241107144808313](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/image-20241107144808313.png)
 
 ### Blending
 
@@ -123,11 +123,11 @@ Allows two motion curves m1(t) and m2(t) to be interpolated
 
 $m(t_k)=(1-\alpha)m_1(t_k)+\alpha m_2(t_k),\alpha\in[0,1]$
 
-![image-20241107144923215](C:\Users\david\AppData\Roaming\Typora\typora-user-images\image-20241107144923215.png)
+![image-20241107144923215](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/image-20241107144923215.png)
 
 ### Layering (compositing)
 
-![image-20241107145323987](C:\Users\david\AppData\Roaming\Typora\typora-user-images\image-20241107145323987.png)
+![image-20241107145323987](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/image-20241107145323987.png)
 
 ### Cross Dissolve
 
@@ -141,7 +141,7 @@ $\alpha\in[0,1],t\in[t_1,t_2]$
 
 $\alpha(t)=\frac{t-t_1}{t_2-t_1}$
 
-![image-20241107145555875](C:\Users\david\AppData\Roaming\Typora\typora-user-images\image-20241107145555875.png)
+![image-20241107145555875](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/image-20241107145555875.png)
 
 
 
@@ -210,7 +210,7 @@ else  q=slerp(-q1,q2,u);
 
 Consider a situation where we want a character to blend from a stand animation to a walk animation
 
-![image-20241107150933378](C:\Users\david\AppData\Roaming\Typora\typora-user-images\image-20241107150933378.png)
+![image-20241107150933378](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/image-20241107150933378.png)
 
 
 

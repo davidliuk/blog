@@ -101,7 +101,7 @@ outputNormal = combinedTransform.Rotate(vertex.getNormal()).Normalize();
 
 Determine weight of joint i and joint j.
 
-![image-20241108212945256](C:\Users\david\AppData\Roaming\Typora\typora-user-images\image-20241108212945256.png)
+![image-20241108212945256](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/image-20241108212945256.png)
 
 1. finding the nearest joint (J1) for a vertex V (V1 or V2)
 2. create a vector from the nearest joint to the vertex, and another vector from the nearest joint to its parent.
