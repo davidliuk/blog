@@ -142,15 +142,22 @@ $\dot{\vec\theta}\ne\vec \omega$
 
 > only if axis is one of the x-y-z axis, they are the same
 
-### **Euler Angle rates to angular velocity conversion**
+### $\dot\theta\rightarrow\dot\omega$
+
+> Euler Angle rates to angular velocity conversion
 
 $\vec \omega^j=L_j(\theta_x,\theta_y,\theta_z)\dot{\vec\theta}$
 
 $R_1=R_z R_yR_x$
 
 $R_0^1=R_1^T=R_x^TR_y^TR_z^T$
-
-MIDTERM
+$$
+L_j(\theta_x,\theta_y,\theta_z)=\begin{bmatrix}
+1&0&-\sin\theta_y\\
+0&\cos\theta_x&\sin\theta_x\cos\theta_y\\
+0&-\sin\theta_x&\cos\theta_x\cos\theta_y
+\end{bmatrix}
+$$
 
 ## Inverse Kinematic (IK)
 
@@ -193,19 +200,37 @@ $$
 &=\vec\omega_1^0\times\vec r_{14}^0\\
 &=-\vec r_{14}^0\times\vec\omega_1^0\\
 &=-\vec r_{14}^0\times R_1^0\vec\omega_1^1\\
-&=-\vec r_{14}^0\times [\hat a_x,\hat a_y,\hat a_z]\vec\omega_1^1\\
+&=-\vec r_{14}^0\times [\begin{array}{c:c}\hat a_x&\hat a_y&\hat a_z\end{array}]\vec\omega_1^1\\
 &=B_1\vec{\omega}_1^1
 \end{aligned}
 $$
-where $R_1^0=[\hat a_x,\hat a_y,\hat a_z]$
+where $R_1^0=[\begin{array}{c:c}\hat a_x&\hat a_y&\hat a_z\end{array}]$
 $$
 \begin{align}
 \vec v_4^0
-&=[B_1|B_2|B_3]\begin{bmatrix}\vec\omega_1^1\\\vec\omega_2^2\\\vec\omega_3^3\end{bmatrix}\\
-&=[BL|BL|BL][\theta]
+&=[\begin{array}{c:c}B_1&B_2&\dots &B_n\end{array}]
+\begin{bmatrix}\vec\omega_1^1\\\vec\omega_2^2\\\vec\omega_3^3\end{bmatrix}\\
+&=[\begin{array}{c:c}B_1L_1&B_2L_2&\dots &B_nL_n\end{array}]\dot\Theta
 \end{align}
 $$
 > Euler Angle rates to angular velocity conversion
+
+### Jacobian Matrix (J) Calculation
+
+N is the number of joint
+$$
+\begin{align}
+J
+&=[\begin{array}{c:c}J_1&J_2&\dots &J_N\end{array}]\\
+&=[\begin{array}{c:c}B_1L_1&B_2L_2&\dots &B_NL_N\end{array}]
+\end{align}
+$$
+
+where
+$$
+B_i=
+$$
+
 
 ### Pseudo Inverse
 
@@ -302,7 +327,7 @@ often interested in values of $\dot{\vec\Theta}$ that produce $\dot{\vec x}=0$
 
 trivial  case: $\dot{\vec\Theta}=0$
 
-When n>m, it is possible that $0=J\Theta$ When $\dot{\vec \Theta}\neq 0$
+When $n>m$, it is possible that $0=J\Theta$ When $\dot{\vec \Theta}\neq 0$
 
 ### null space
 
@@ -312,11 +337,11 @@ $\Theta_{null}=J^T(JJ^T)^{-1}\vec b-\vec c$
 
 $x=J\Theta=JJ^T(JJ^T)^{-1}\vec b-J\vec c=0$
 
-choose b=Jc, null space
+choose $b=J\vec c$, null space
 
 $\dot{\vec{\Theta}}_{null}=[J^T(JJ^T)^{-1}J\vec c-\vec c]=[J^T(JJ^T)^{-1}J-I]\vec c=[J^{-1}J-I]\vec c$
 
-c is arbitrary vector at dim n*1 same dim as $\theta$
+c is arbitrary vector at dim $n\times1$ same dim as $\theta$
 
 spring-like behavior for joints
 
@@ -377,14 +402,26 @@ $\dot{\vec x_d}=\frac{\vec x_d(t_k)-\vec x(t_k)}{\Delta t}$
 
 2. Compute quaternion $q_1$ at joint 1 to rotate $r_d$ so it points at $p_d$
 
-3. Joint 3 Orientation
+   $\Delta\theta_1=\arccos\frac{\vec d\cdot \vec r_d}{\|\vec d\|\|\vec r_d\|}$
 
-   这个步骤是干嘛的
+3. Joint 3 Orientation (optional)
+
+   if indicate
 
 ### Coordinate Cyclic Descent (CCD)
 
 Main Concept: If rotate joint 1 by angle get end joint 2 as close as possible to  pd
 
-
-
 motion capture
+
+Create a kinematic chain of joints of length n ( j = 1 to n ) 
+
+1. Start with the second to last joint in the chain (i.e. j = n-1) 
+2. Compute error between end joint ( $p_n$ ) and goal ( $p_d$ )
+3. Compute $r_{jn}$ and $r_{dj}$ for joint $j$
+4. Compute $\Delta \theta_j$ and $\hat a_j^j$ for joint $j$
+5. Scale joint rotation $\Delta \theta_j=c\Delta\theta_j$
+6. Compute $q_j=q_j\cdot\Delta q_j$
+7. Update $p_n$ after setting joint j rotation to $q_j$
+8. Update $j=j-1$
+

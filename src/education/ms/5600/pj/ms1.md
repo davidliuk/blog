@@ -16,8 +16,6 @@ the lower freq the flatter
 
 different freq and 
 
-
-
 ```c++
 vec4 offsetPos = vs_Pos + vec4(vs_offset);
 float dessertH = dessertHeight(xz);
@@ -38,9 +36,11 @@ write
 
 noise and distribution 
 
+water生成
 
+y<128&&empty->water
 
-## Chunck
+## Chunk
 
 chunk rendering
 
@@ -73,7 +73,9 @@ Const store `array<vec3,12>`
 
 every tick check distance between ground and
 
----
+
+
+
 
 ```
 Mini Minecraft

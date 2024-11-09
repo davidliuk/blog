@@ -2,39 +2,60 @@
 
 Levine 154
 
+### Compisition
+
 - 50 作业
 
-  No late submissions or extensions for this homework.
+  No late submissions or extensions for homework.
 
-  - CQ
+  - CQ, participation-based
   - HW
+    - homework
+      - HW1 Coor Sys
+      - HW3 Kinematics
     - coding
-      - IKFK
-      - Skinning
+      - HW2 Curve Editor
+      - HW4 IKFK
+      - HW5 Skinning
+      - HW6 Motion Capture
 
 - 20 期中 Oct 23, 90min
 
-  review session Monday 4:00 PM, online zoom
+  review session Oct 22, Monday 4:00 PM, online zoom
 
   开卷考试，可以电子设备，但是不能搜索，不会有太多计算
 
 - 25 期末 Dec 13
 
-  开放问题
-
   开卷考试，可以电子设备，但是不能搜索，不会有太多计算
 
-- 05 出勤，5+次随堂 quiz
+  开放问题
+
+- 05 出勤，7次随堂 quiz
+
+  15min quiz, close book test
 
   drop 2 lowest grade
-
-  - 9.12 transformation, 7/10
   
-  - 9.26 splines
+  - 09.12 transformation, 7/10
   
-  - 10.15
+    basic concept
+  
+    Exam: Given F1, F2, what H12
+  
+  - 09.26 splines 9/10
+  
+  - 10.15 
   
     last 20 min, easy, kinematics
+    
+  - 11.07 Thurs
+  
+    body animation: keyframe, walk cycle, cross dissolve
+  
+  - 1
+  
+  - 2
 
 
 ## text books
@@ -122,10 +143,10 @@ Interpolation
 
 - Curve  ✅
 - Linear  ✅
-- Bebier  ✅
+- Bezier  ✅
 - B-Splines  ✅
 - 2D
-- Spherical Interpolation
+- Spherical Interpolation (Quaternion) (Slerp)
 
 Body Kinematics
 
@@ -137,14 +158,14 @@ Body Kinematics
 Body Animation
 
 - Animation Tech
-  - Keyfram
+  - Key frame
   - Motion Capture
 - Walk and Run Cycle
 - Skinning and Mesh Deformation
 - Facial Animation
-  - Blendshapes
+  - Blend shapes
   - Muscle-based approaches
-  - Elgenfaces(Principal Components Analysis)
+  - Elgen faces(Principal Components Analysis)
   - Lipynching
 - Animation tools
 
@@ -164,9 +185,8 @@ Feedback Controller
 
 Behavioral Animation
 
-- individual
-
-- group
+- individual &group
+- Layering and blending behaviors. Arbitration and coordination schemes.  Collision avoidance, hierarchical behaviors and formations.
 
 Path finding
 
@@ -187,7 +207,7 @@ Character and Object Animation
 
 - Key Framing
   - Creative drives production
-    - eg. Frozen
+    - Frozen
 
 Uncanny Valley
 
@@ -197,14 +217,3 @@ Character and Object Animation
 
 Deep fake
 
----
-
-quiz下周,basic concept
-
-Exam: Given F1, F2, what H12
-
-不需要计算
-
----
-
-15min quiz，close book test

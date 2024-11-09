@@ -1,5 +1,9 @@
 # Midterm Exam
 
+ave 82, mid 83, max 98, de 10
+
+---
+
 5 questions, don't leave anything blank, 90 mins
 
 > 4/5 questions, 多少写点有的没的就有分
