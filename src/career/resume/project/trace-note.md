@@ -1,7 +1,0 @@
-- Developed an AR social app that allows users to place notes in nearby scenes to share notes and earn tokens through daily check-ins for personalized items. The iOS app was developed with SwiftUI, ARKit, and ARWorldMap.
-- Utilized AOP to validate user login status and permissions using annotations. Utilized Redis for distributed session management.
-- Utilized the Template Pattern to create a versatile cache tool class, effectively addressing cache-related issues such as cache avalanche, cache penetration, and cache breakdown.
-- Employed Redis Geo to store nearby traces and utilized Geo Search commands for high-speed trace queries and distance-based sorting.
-- Implemented user following and mutual following features using Redis Set data structure, ensuring data persistence with Redis AOF. 
-- Used Lua scripts to perform inventory pre-checks for accessories, preventing overselling and enabling one order per person.
-- Employed RabbitMQ for asynchronous order creation and timeout-based order cancellation. 

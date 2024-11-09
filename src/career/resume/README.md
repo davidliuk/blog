@@ -1,7 +1,0 @@
-# Resume
-
-Skill
-
-project
-
-Intern
