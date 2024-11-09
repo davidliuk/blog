@@ -10,7 +10,7 @@ export default hopeTheme({
     url: "https://github.com/davidliuk",
   },
 
-  iconAssets: "iconfont",
+  // iconAssets: "iconfont",
 
   logo: "/favicon.ico",
 
@@ -24,8 +24,8 @@ export default hopeTheme({
     medias: {
       GitHub: "https://github.com/davidliuk",
       Gitee: "https://gitee.com/da-wei-liu",
-      Linkedin: "https://www.linkedin.com/in/大维-刘-967a9516a/",
-      Email: "l729641074@163.com",
+      Linkedin: "https://www.linkedin.com/in/davidliuk/",
+      Email: "david.liu.penn@outlook.com",
       // BiliBili: "https://example.com",
       // Baidu: "https://example.com",
       // Bitbucket: "https://example.com",
@@ -73,7 +73,7 @@ export default hopeTheme({
       displayFooter: true,
 
       blog: {
-        description: "A Junior Student of Northeastern University",
+        description: "CS@Penn, SE@NEU, former SDE intern@Amazon and JD.com",
         intro: "/intro.html",
       },
 
@@ -97,7 +97,7 @@ export default hopeTheme({
       displayFooter: true,
 
       blog: {
-        description: "一个名东大学子",
+        description: "UPenn CS, NEU SE, 软件工程师@亚马逊和京东",
         intro: "/zh/intro.html",
       },
 
@@ -147,32 +147,51 @@ export default hopeTheme({
       // serverURL: "https://vuepress-theme-hope-comment.vercel.app",
     },
 
+    markdownTab: {
+      tabs: true,
+      codeTabs: true,
+    },
+    markdownHint: {
+      // this is the default option, so you can use this feature directly
+      hint: true,
+    },
+    markdownImage: {
+      lazyload: true,
+      size: true,
+      mark: true,
+    },
+    markdownMath: {
+      type: "katex",
+    },
+
     // Disable features you don’t want here
     mdEnhance: {
       align: true,
       attrs: true,
-      chart: true,
-      codetabs: true,
-      container: true,
+      // chart: true,
+      // codetabs: true,
+      // container: true,
       demo: true,
       echarts: true,
-      flowchart: true,
+      // flowchart: true,
       gfm: true,
       // imgLazyload: true,
-      imageLazyload: true,
+      // imageLazyload: true,
       // imageTitle: true,
-      imageSize: true,
+      // imageSize: true,
       // imgSize: true,
       include: true,
-      katex: true,
+      // katex: true,
       mark: true,
       mermaid: true,
+      markmap: true,
+      plantuml: true,
       playground: {
         presets: ["ts", "vue"],
       },
-      presentation: {
-        plugins: ["highlight", "math", "search", "notes", "zoom"],
-      },
+      // presentation: {
+      //   plugins: ["highlight", "math", "search", "notes", "zoom"],
+      // },
       // presentation: ["highlight", "math", "search", "notes", "zoom"],
       stylize: [
         {
@@ -189,7 +208,7 @@ export default hopeTheme({
       ],
       sub: true,
       sup: true,
-      tabs: true,
+      // tabs: true,
       vPre: true,
       vuePlayground: true,
     },
@@ -197,7 +216,7 @@ export default hopeTheme({
     pwa: {
       favicon: "/favicon.ico",
       cacheHTML: true,
-      cachePic: true,
+      // cachePic: true,
       appendBase: true,
       apple: {
         icon: "/assets/icon/152.png",

@@ -135,4 +135,4 @@ sort 方法稳定性：
 
 - `Arrays.sort(T[],Comparator<? super T> c)`内部采用的归并排序，因此是稳定的。
 - `Arrays.sort(int[] a)`内部采用的快速排序，因此是不稳定的。
-- `Collections.sort(List<T> list)`、和``Collections.sort(List<T> list，Comparator<？super T> c)`采用的都是稳定的排序，采用的何种排序方式，需要核实。
+- `Collections.sort(List<T> list)`、和`Collections.sort(List<T> list，Comparator<？super T> c)`采用的都是稳定的排序，采用的何种排序方式，需要核实。

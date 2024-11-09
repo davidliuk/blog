@@ -1,7 +1,0 @@
-# Video Essay
-
-**METALS Applicants (optional, but strongly recommended):** Prepare a 1-2 minute video that lets the admission committee know who you are, what you do well, and what you are looking to achieve in your graduate study. Please note that the video (and audio) must be of the applicant (not a proxy). If there is more than one person in the video, please clarify which person is the applicant. What you do or say is totally up to you as long as you provide the information requested. If all else is equal, an applicant with a video essay will have an advantage over an otherwise identical applicant without a video essay. 
-
-Upload the video to an easily accessible website (such as YouTube) and give us the URL and any required access codes in the appropriate fields within the application for admission. It is the applicant's responsibility to correctly configure the security and access settings for the video. We recommend that the applicant use the strongest privacy settings available while still allowing access for reviewers. If using YouTube, we suggest using the "Unlisted Video" setting so that only individuals who have the URL can view it. The applicant is also responsible for adhering to the terms and conditions of the website used to share the video essay. Following evaluation of the video essay, we will retain a short excerpt or screen shot of the video as a part of the official student record. 
-
-We are unable to watch videos that come in any form other than a URL link. We will not accept videos sent by email or on DVD through the mail.

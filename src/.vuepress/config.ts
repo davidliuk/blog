@@ -1,5 +1,6 @@
 import { defineUserConfig } from "vuepress";
 import theme from "./theme.js";
+import viteBundler from "@vuepress/bundler-vite";
 
 export default defineUserConfig({
   base: "/blog/",
@@ -16,6 +17,11 @@ export default defineUserConfig({
       description: "一名涉猎广泛的开发者😊",
     },
   },
+
+  bundler: viteBundler({
+    viteOptions: {},
+    vuePluginOptions: {},
+  }),
 
   theme,
 
