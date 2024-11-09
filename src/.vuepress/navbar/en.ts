@@ -3,6 +3,28 @@ import { navbar } from "vuepress-theme-hope";
 export const enNavbar = navbar([
   "/",
   {
+    text: "Algorithm",
+    icon: "edit",
+    prefix: "/algo",
+    children: [
+      {
+        text: "Framework",
+        icon: "edit",
+        link: "framework/",
+      },
+      {
+        text: "Summary",
+        icon: "edit",
+        link: "summary/",
+      },
+      {
+        text: "FAQ",
+        icon: "edit",
+        link: "faq/",
+      },
+    ],
+  },
+  {
     text: "Computer Science",
     icon: "edit",
     prefix: "/cs/",
@@ -54,29 +76,6 @@ export const enNavbar = navbar([
           },
         ],
       },
-      {
-        text: "Algorithm",
-        icon: "edit",
-        prefix: "algo/",
-        children: [
-          {
-            text: "Framework",
-            icon: "edit",
-            link: "framework/",
-          },
-          {
-            text: "Summary",
-            icon: "edit",
-            link: "summary/",
-          },
-          {
-            text: "FAQ",
-            icon: "edit",
-            link: "faq/",
-          },
-        ],
-      },
-      
     ],
   },
   {
@@ -93,23 +92,6 @@ export const enNavbar = navbar([
             text: "Java",
             icon: "edit",
             link: "java/",
-          },
-        ],
-      },
-      {
-        text: "Framework",
-        icon: "edit",
-        prefix: "framework/",
-        children: [
-          {
-            text: "Spring",
-            icon: "edit",
-            link: "spring/",
-          },
-          {
-            text: "ORM",
-            icon: "edit",
-            link: "orm/",
           },
         ],
       },
@@ -132,26 +114,20 @@ export const enNavbar = navbar([
         icon: "note",
         prefix: "design/",
         children: [
-          // "system-design/",
-          {
-            text: "Design Principal",
-            icon: "edit",
-            link: "principal/",
-          },
           {
             text: "Design Pattern",
             icon: "edit",
             link: "pattern/",
           },
           {
-            text: "OOD",
+            text: "Object-Oriented Design",
             icon: "edit",
             link: "ood/",
           },
           {
             text: "System Design",
             icon: "edit",
-            link: "system-design/",
+            link: "system/",
           },
         ],
       },
