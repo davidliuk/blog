@@ -1,6 +1,6 @@
 # Git
 
-## 配置信息
+## 配置
 
 git config 命令的–global 参数，用了这个参数，表示你这台机器上所有的 Git 仓库都会使用这个配置，当然也可以对某个仓库指定不同的用户名和 Email 地址。
 
@@ -38,6 +38,6 @@ git config --global alias.last 'log -1 HEAD'
 git config --global alias.logl 'log --oneline'
 ```
 
-跑完上面的指令，查看 ~/.gitconfig 是否包含以下内容
+跑完上面的指令，查看 `~/.gitconfig` 是否包含以下内容
 
 https://www.zhihu.com/people/freewheel-lee

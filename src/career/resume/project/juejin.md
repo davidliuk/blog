@@ -1,6 +1,0 @@
-- Utilized TrustSVD to create an intelligent recommendation system combined with a Timeline Feed, effectively mitigating information overload and addressing the cold start problem in recommendation systems.
-- Employed Spring Scheduler for daily recalculations of TrustSVD recommendation data, ensuring precise recommendations, enhancing user experiences, and employing Redisson distributed locks for a single execution of scheduled tasks in the cluster.
-- Centralized user picture storage with Tencent Cloud Object Storage (COS) and implemented validation measures such as size limits and suffix verification to prevent file upload vulnerabilities.
-- Managed recommender configuration objects using the Double-Check Locking singleton pattern for resource optimization, reducing the overhead of object creation, and facilitating centralized maintenance.
-- Utilized Json Web Token and Sa-token framework to implemented Role-based access control model.
-- Established standardized data return classes and global exception handling for consistent data transmission and exception management.
