@@ -1,1 +1,0 @@
-import{_ as a}from"./plugin-vue_export-helper-c27b6911.js";import{o as t,c as o,a as e,b as r}from"./app-9107e99b.js";const c={},s=e("h1",{id:"接口设计",tabindex:"-1"},[e("a",{class:"header-anchor",href:"#接口设计","aria-hidden":"true"},"#"),r(" 接口设计")],-1),n=[s];function _(i,d){return t(),o("div",null,n)}const f=a(c,[["render",_],["__file","api.html.vue"]]);export{f as default};

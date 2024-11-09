@@ -1,1 +1,0 @@
-import{_ as t}from"./plugin-vue_export-helper-c27b6911.js";import{o,c as _,a as e}from"./app-9107e99b.js";const n={},s=e("p",null,"耶鲁、斯坦福",-1),c=e("p",null,"Yale",-1),l=e("p",null,"Stanford",-1),r=[s,c,l];function a(d,i){return o(),_("div",null,r)}const p=t(n,[["render",a],["__file","BL.html.vue"]]);export{p as default};

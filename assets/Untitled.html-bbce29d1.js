@@ -1,1 +1,0 @@
-import{_ as e}from"./plugin-vue_export-helper-c27b6911.js";import{o,c as n,a as t}from"./app-9107e99b.js";const _={},s=t("p",null,"反向代理",-1),c=t("p",null,"负载均衡",-1),l=t("p",null,"动静分离",-1),r=[s,c,l];function a(i,d){return o(),n("div",null,r)}const p=e(_,[["render",a],["__file","Untitled.html.vue"]]);export{p as default};
