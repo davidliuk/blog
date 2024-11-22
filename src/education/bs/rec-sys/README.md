@@ -2,26 +2,25 @@
 
 推荐系统
 
-经典算法
+- 经典算法
 
-- User-based
+  - User-based
+  - Item-based
+  - Context-based
 
-- Item-based
+    - Social rec
 
-- Context-based
+      TrustSVD
 
-  - Social rec
-
-    TrustSVD
-
-深度学习
+- 深度学习
 
 ## 算法库
 
-Librec
+Librec 使用
 
-librec 使用
-
+```sh
 librec rec -exec -conf ../core/src/main/resources/rec/context/rating/trustsvd-test.properties
 
 mvn install:install-file -Dfile=librec-core-3.0.0.jar -DgroupId=net.librec -DartifactId=librec-core -Dversion=3.1.0 -Dpackaging=jar
+```
+
