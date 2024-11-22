@@ -1,12 +1,75 @@
-# 高频题
+# Frequently Asked Questions
 
-回顾一下经典算法的简称
+算法面试高频知识点与技巧
 
-LIS, LCS, LCA, TSP, MST
+连续、非连续
 
-1. LIS：最长递增子序列（Longest Increasing Subsequence）
-2. LCS：最长公共子序列（Longest Common Subsequence）
-3. LCA：最近公共祖先（Lowest Common Ancestor）
-4. TSP：旅行商问题（Traveling Salesman Problem）
-5. MST：最小生成树（Minimum Spanning Tree）
+- 连续 On2：substring, subarray
+
+- 非连续 O2n：subsequence O2n
+
+
+On：双指针、单调栈、快速选择、树上各类遍历与分治、n次并查集操作、n次哈希表
+
+## 拓展知识
+
+暴力：想到的最简单的方法
+
+贪心：与别的算法结合去考90%，那种一眼看上去就知道怎么贪心的那种
+
+模拟：（捡胡萝卜）他让你干什么就干什么，非常简单，没有什么算法
+
+
+
+暴力：你能想到的最naive的算法
+
+贪心：可以解决题目问题的某种思路（处理）
+
+模拟：题目让你做一些很复杂的事
+
+
+
+### 通过数据范围降低题目难度
+
+
+
+面试给数据范围 = 放水
+
+一般来说，评测机1s能运算10^7-10^9
+
+
+
+- n = 10^4
+
+  O(n)\==>双指针？前缀和？遍历? DP?
+
+  O(nlogn)\==>排序？二分？
+
+- n = 10^3
+
+  O(n^2)==> 二维数组?双重循环？二维dp?
+
+- n = 10^2
+
+  O(n3) ==> 三重循环? 区间dp
+
+- n = 10
+
+  O(2n), O(n!) ==> dfs暴力?
+
+- n = 10^9
+
+  别打算开数组存或O(n)复杂度 ==> log
+
+
+
+二分答案：
+
+如果所求的是xx的最大或最小时，可能是二分答案
+
+求最小的花费、最小的人数的问题
+
+
+
+木材加工
 

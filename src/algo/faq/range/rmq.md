@@ -1,6 +1,4 @@
-# RMQ
-
-RMQ(Range Maximum Query)
+# Range Maximum Query (RMQ)
 
 - ST
 - Binary Indexed Tree
