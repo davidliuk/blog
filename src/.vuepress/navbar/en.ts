@@ -137,7 +137,7 @@ export const enNavbar = navbar([
   {
     text: "Course",
     icon: "note",
-    prefix: "/course/",
+    prefix: "/education/bs/",
     children: [
       {
         text: "Rec Sys",
@@ -164,7 +164,7 @@ export const enNavbar = navbar([
   {
     text: "Standardized",
     icon: "edit",
-    prefix: "/apply/test/",
+    prefix: "/test/",
     children: [
       {
         text: "GRE",
