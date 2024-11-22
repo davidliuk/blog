@@ -1,7 +1,9 @@
 # Stack
 
+js 全栈
+
 mern: mongodb, express, react, node
 
-js全栈
+mean: mongodb, express, angular, node
 
 ssm

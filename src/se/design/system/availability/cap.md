@@ -13,8 +13,8 @@
   模型：
 
   - Paxos
-  - Raft（muti-paxos）
-  - ZAB（muti-paxos）
+  - Raft（multi-paxos）
+  - ZAB（multi-paxos）
 
 - 弱一致性
 
@@ -22,8 +22,8 @@
 
   模型：
 
-  - DNS 系统
   - Gossip 协议
+  - DNS 系统
 
 > **业界比较推崇是最终一致性级别，但是某些对数据一致要求十分严格的场景比如银行转账还是要保证强一致性。**
 
@@ -31,7 +31,9 @@
 
 CAP 理论/定理起源于 2000 年，由加州大学伯克利分校的 Eric Brewer 教授在分布式计算原理研讨会（PODC）上提出，因此 CAP 定理又被称作 布鲁尔定理（Brewer’s theorem）2 年后，麻省理工学院的 Seth Gilbert 和 Nancy Lynch 发表了布鲁尔猜想的证明，CAP 理论正式成为分布式领域的定理。
 
-简介
+### 简介
+
+Any distributed data store can provide only two of the following three guarantees:
 
 CAP 定理（CAP theorem）指出对于一个分布式系统来说，当涉及读写操作时，只能同时满足以下三点中的两个：
 
@@ -40,6 +42,9 @@ CAP 定理（CAP theorem）指出对于一个分布式系统来说，当涉及�
 - **分区容错性（Partition Tolerance）**：分布式系统出现网络分区的时候，仍然能够对外提供服务。
 
 **网络分区**：分布式系统中，多个节点之间的网络本来是连通的，但是因为某些故障（比如部分节点宕机或网络出问题）某些节点之间不连通了，整个网络就分成了几块区域。
+
+- 取消操作，从而降低可用性，但确保一致性
+- 继续操作，从而提供可用性，但存在不一致的风险。请注意，这并不一定意味着系统对用户具有高可用性。
 
 ### 不是“3 选 2”
 

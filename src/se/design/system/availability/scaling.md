@@ -1,4 +1,4 @@
-# 扩展
+# 扩展 Scaling
 
 Interviewer: How to scale?
 
@@ -48,7 +48,7 @@ User Table 放一台数据库 Friendship Table 放一台数据库 Message Table 
 
 新机器的数据只从两台老机器上获取 导致这两台老机器负载过大
 
-虚拟节点 Virtual Node
+解决方案：虚拟节点 Virtual Node
 
 ### ID
 

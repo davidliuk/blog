@@ -81,6 +81,7 @@ SD 是高屋建瓴宏观的设计：Backend design，数据库如何设计、xxx
   - Schema/ Data/ SQL/ NoSQL/ File System
 
 - Scale 升级
+  
   解决缺陷，处理可能遇到的问题
   
   - Sharding/ Optimize/ Special Case
@@ -127,39 +128,11 @@ pull 模型、慢，用的时候现查
 
 ---
 
-## 阅读清单
-
-[Spring Cloud 迁移至 K8s](https://juejin.cn/post/7282363816021000253)
-
-项目是一个一个微服务组织起来的，大概业务类的服务有5个，公共服务有4个。设计到的改造主要集中在gateway, auth中，公共包的一些改造比较少，主要是将open-feign的访问改为通过url进行调用，而不是之前通过服务名来。
-
-而在kubernetes中，我们使用Traefik2来代替gateway的功能，不知道traefik2的，可以去翻翻之前的文章。
-
-同时对于授权,需要提供一个授权接口，配合traefik2使用，这样每一个请求都会进行授权的验证。
-
-分布式锁：https://juejin.cn/post/7279346413915668535
-
-幂等性：https://juejin.cn/post/7273024681631776829
-
-Optional：https://juejin.cn/post/7267919941525585977
-
-Spring Event坑：https://juejin.cn/post/7281159113882468371
-
-CompletableFuture优化：https://juejin.cn/post/7280746526820679732
-
-Arthas Trace优化接口：https://juejin.cn/post/7259320326898876477
-
-OCR：Tess4J，https://juejin.cn/post/7288964017351573545
-
-WebClient：https://juejin.cn/post/7294150742113304602
-
----
-
 非常肝的人，一周1000行
 
 一般的人一天50行代码
 
-80%服用以前的代码，没有提升；20%新的有提升的
+80%复用以前的代码，没有提升；20%新的有提升的
 
 junior->senior: 3-5yoe
 
