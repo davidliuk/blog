@@ -1,7 +1,6 @@
 # 多级缓存
 
-1. 
-   一级缓存：Caffeine是一个一个高性能的 Java 缓存库；使用 Window TinyLfu 回收策略，提供了一个近乎最佳的命中率。
+1. 一级缓存：Caffeine是一个一个高性能的 Java 缓存库；使用 Window TinyLfu 回收策略，提供了一个近乎最佳的命中率。
 2. 二级缓存：Redis 是一高性能、高可用的 key-value 数据库，支持多种数据类型，支持集群，和应用服务器分开部署易于横向扩展。
 
 in-memory cache

@@ -1,5 +1,20 @@
 # 零拷贝
 
+零拷贝是提升 IO 操作性能的一个常用手段，像 ActiveMQ、Kafka 、RocketMQ、QMQ、Netty 等顶级开源项目都用到了零拷贝。
+
+零拷贝是指计算机执行 IO 操作时，CPU 不需要将数据从一个存储区域复制到另一个存储区域，从而可以减少上下文切换以及 CPU 的拷贝时间。也就是说，零拷贝主要解决操作系统在处理 I/O 操作时频繁复制数据的问题。零拷贝的常见实现技术有： `mmap+write`、`sendfile`和 `sendfile + DMA gather copy` 。
+
+下图展示了各种零拷贝技术的对比图：
+
+|                            | CPU 拷贝 | DMA 拷贝 | 系统调用   | 上下文切换 |
+| -------------------------- | -------- | -------- | ---------- | ---------- |
+| 传统方法                   | 2        | 2        | read+write | 4          |
+| mmap+write                 | 1        | 2        | mmap+write | 4          |
+| sendfile                   | 1        | 2        | sendfile   | 2          |
+| sendfile + DMA gather copy | 0        | 2        | sendfile   | 2          |
+
+可以看出，无论是传统的 I/O 方式，还是引入了零拷贝之后，2 次 DMA(Direct Memory Access) 拷贝是都少不了的。因为两次 DMA 都是依赖硬件完成的。零拷贝主要是减少了 CPU 拷贝及上下文的切换。
+
 **「Buffer 和 Cache」**
 
 buffer 和 cache 是两个不同的概念：

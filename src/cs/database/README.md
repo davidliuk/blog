@@ -26,7 +26,7 @@ Relational DB, Document DB, Key-Value DB, Graph DB
 - NoSQL
   - Document
   
-    文档：MongoDB、CouchDB，
+    文档：MongoDB、CouchDB
   
   - Key-Value
   

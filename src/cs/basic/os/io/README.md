@@ -1,4 +1,4 @@
-# IO
+# I/O
 
 > [参考](https://blog.csdn.net/lixinkuan328/article/details/114198739)
 
@@ -10,7 +10,7 @@ UNIX 系统下， IO 模型一共有 5 种：
 - 信号驱动 I/O 
 - 异步 I/O
 
-![img](https://img-blog.csdnimg.cn/img_convert/83871b6390d8c993af4c9b02b8dccf31.png)
+![img](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/83871b6390d8c993af4c9b02b8dccf31.png)
 
 为了保证操作系统的稳定性和安全性，一个进程的地址空间划分为 **用户空间（User space）** 和 **内核空间（Kernel space ）** 。
 
