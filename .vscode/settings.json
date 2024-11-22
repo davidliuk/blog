@@ -1,9 +1,0 @@
-{
-    "files.associations": {
-        "*.rmd": "markdown",
-        "a.h": "c"
-    },
-    "[python]": {
-        "editor.defaultFormatter": "ms-python.autopep8"
-    },
-}

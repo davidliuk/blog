@@ -1,6 +1,7 @@
 node_modules
 .temp
 .idea
+.vscode
 .cache
 .DS_Store
 dist

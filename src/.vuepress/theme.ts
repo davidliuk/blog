@@ -23,9 +23,9 @@ export default hopeTheme({
   blog: {
     medias: {
       GitHub: "https://github.com/davidliuk",
-      Gitee: "https://gitee.com/da-wei-liu",
       Linkedin: "https://www.linkedin.com/in/davidliuk/",
       Email: "david.liu.penn@outlook.com",
+      // Gitee: "https://gitee.com/da-wei-liu",
       // BiliBili: "https://example.com",
       // Baidu: "https://example.com",
       // Bitbucket: "https://example.com",
