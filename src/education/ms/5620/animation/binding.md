@@ -13,10 +13,6 @@ Bind Pos
 - T Pose
 - A Pose
 
----
-
-
-
 ## Binding
 
 However, since each vertex has only one influencer, the deformation will exhibit sharp transitions around rotating joints.

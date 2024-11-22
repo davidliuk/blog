@@ -19,12 +19,12 @@ sphere
 
 Better marching for SDF: Sphere-Marching
 
-Paralell 是 edge case
+Parallel 是 edge case
 
-## raycasting
+## Ray Casting
 
 Creating a line that passes through the viewing frustum and travels from the eye to some endpoint on a slice of the frustum (e.g. the far clip plane)
 
-The line’s endpoint is determined by the pixel on our screen from which we want to raycast
+The line’s endpoint is determined by the pixel on our screen from which we want to ray cast
 
 Find their intersections with geometry in the scene

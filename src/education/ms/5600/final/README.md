@@ -1,8 +1,19 @@
 # Mini Minecraft
 
+- Milestone 1: procedural terrain
+- Milestone 2: 
+  - 3D noise
+  - texture
+  - Multithreaded terrain generation
+- Milestone 3: 
+  - 50
+  - extra 50
+
+---
+
 Noise
 
-Berlin, worley noise
+Berlin, Worley noise
 
 **Summed Perlin noise terrain**
 
@@ -13,8 +24,6 @@ Increase number of grid lines
 the lower freq the flatter
 
 different freq and 
-
-
 
 ```c++
 float dessertH = dessertHeight(xz);
@@ -32,24 +41,9 @@ write
 - grass
 - mountain
 
-noise and distribution 
-
-
-
-- Milestone 1: procedural terrain
-- Milestone 2: 
-  - 3D noise
-  - texture
-  - Multithreaded terrain generation
-- Milestone 3: 
-  - 50
-  - extra 50
-
-
+noise and distribution
 
 chunk rendering
-
-
 
 ```c++
 class Chunk {

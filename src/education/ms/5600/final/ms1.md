@@ -1,10 +1,12 @@
 # Milestone 1
 
+> 11.11
+
 ## Terrain
 
 Noise
 
-Berlin, worley noise
+Berlin, Worley noise
 
 **Summed Perlin noise terrain**
 
@@ -27,8 +29,6 @@ float h = mix(dessertH, grassH, t);
 offsetPos.y *= h;
 ```
 
-
-
 write 
 
 - grass
@@ -36,15 +36,13 @@ write
 
 noise and distribution 
 
-water生成
+water 生成
 
 y<128&&empty->water
 
 ## Chunk
 
 chunk rendering
-
-
 
 ```c++
 class Chunk {
@@ -73,10 +71,6 @@ Const store `array<vec3,12>`
 
 every tick check distance between ground and
 
-
-
-
-
 ```
 Mini Minecraft
 template<class T>
@@ -92,8 +86,6 @@ Main Thread
         2. check to see if we need to make more terrain based on where the player is when we send info to our parallel threads to be processed "worker threads"
         3. 
 }
-
-
 ```
 
 ---
@@ -105,5 +97,8 @@ Transparent Blocks
 1. Draw all chunks' opaque VBO data
 2. Draw all chunks' transparent VBO data
 
+---
 
+I implemented Efficient Terrain Rendering and Chunking by creating create() function for chunk to make it  draws the terrain on a per-Chunk basis. To achieve this, I find the neighbor of every block in this chunk, and only draw faces that lie on the boundary between a transparent block and a filled block.
 
+I implemented Procedural Terrain by creating GenerateTerrain() function for Terrain to generate and instantiate all chunk in the given range, and generate grassland, dessert and mountain terrains. To achieve this, I use Perlin noise to generate the height of grassland and dessert, then use biomeBlender to blend their height.

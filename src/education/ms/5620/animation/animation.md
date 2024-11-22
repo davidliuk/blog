@@ -49,8 +49,6 @@ Procedural
 - Physically-based (Ragdoll)
   - Motions generated based on the law of physics
 
----
-
 ### Pose Space
 
 ### Channels

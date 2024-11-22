@@ -2,17 +2,19 @@
 
 This course focuses on programming the essential mathematical and geometric concepts underlying modern computer graphics. Using 3D interactive implementations, it covers fundamental topics such as mesh data structures, transformation sequences, rendering algorithms, and curve interpolation for animation. Students are also introduced to two programming languages widely used in the computer graphics industry: C++ and GLSL. The curriculum is heavily project-based, and culminates in a group project focused on building an interactive first-person world exploration application using the various real-time interaction and rendering algorithms learned throughout the semester.
 
-Quiz: 5
+- Quiz: 5 * 5 (25)
 
-每个5分，开放24h，打开以后40分钟
+  每个5分，开放24h，打开以后40分钟
 
-没有final exam
+- HW 100 * 7 (70)
 
----
+- Final Project 75 * 2 + 50 (25)
 
-Extra credit （没法vote，但是去independence hall即可
+  没有 final exam
 
-0.5*2
+- Extra credit 0.5*2
+
+  （没法vote，但是去independence hall即可）
 
 ---
 

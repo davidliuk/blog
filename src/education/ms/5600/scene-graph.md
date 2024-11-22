@@ -1,8 +1,10 @@
 # Scene Graph
 
-Defination
+> like Kinematics Chain
 
-A set of nodes that hold transformation matrix data and pointers to other nodes and geometryTraverse a directed tree of transformations to render shapesThe basis of most scene data structures, from game engines to mesh editor applications to scenes in animated films
+Definition
+
+A set of nodes that hold transformation matrix data and pointers to other nodes and geometry. Traverse a directed tree of transformations to render shapes. The basis of most scene data structures, from game engines to mesh editor applications to scenes in animated films
 
 ```c++
 Node& Node::addChild(uPtr<Node> n) {
@@ -14,7 +16,7 @@ Node& Node::addChild(uPtr<Node> n) {
 
 
 
-sPtr比uPtr慢，有引用计数，比较慢；如果非sPtr场景就用uPtr
+sPtr 比 uPtr 慢，有引用计数，比较慢；如果非 sPtr 场景就用 uPtr
 
 Examples Scene
 

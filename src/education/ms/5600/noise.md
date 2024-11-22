@@ -14,7 +14,7 @@ Bilinear interpolation
 
 Optimizing
 
-Min distance of nerghbor 9 point
+Min distance of neighbor 9 point
 
 ## Perlin Noise
 

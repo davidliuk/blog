@@ -13,11 +13,13 @@ Levine 154
     - homework
       - HW1 Coor Sys
       - HW3 Kinematics
+      - HW6 Motion Capture
     - coding
       - HW2 Curve Editor
       - HW4 IKFK
       - HW5 Skinning
-      - HW6 Motion Capture
+      - HW7 Particle System
+      - HW8 Feedback Control
 
 - 20 期中 Oct 23, 90min
 
@@ -45,15 +47,15 @@ Levine 154
   
   - 09.26 splines 9/10
   
-  - 10.15 
+  - 10.15 8/10
   
     last 20 min, easy, kinematics
     
-  - 11.07 Thurs
+  - 11.07 Thurs 8/10
   
     body animation: keyframe, walk cycle, cross dissolve
   
-  - 1
+  - 11.19 Tues
   
   - 2
 
@@ -181,14 +183,14 @@ Dynamic System Simulation
 - Numerical Integration methods
 - Sense, Control
 
-Feedback Controller
+**Feedback Controller**
 
 Behavioral Animation
 
 - individual &group
 - Layering and blending behaviors. Arbitration and coordination schemes.  Collision avoidance, hierarchical behaviors and formations.
 
-Path finding
+**Path finding**
 
 - Navigation Meshes
 - Search Methods
