@@ -1,4 +1,6 @@
-# 单词
+# Vocabulary
+
+单词
 
 **合成（Compounding）**
 
@@ -132,7 +134,7 @@ B
 
 英语中的后缀是一种构词方式，通过在单词的词根或词干后加上特定的字母组合来形成新词。后缀不仅可以改变原词的含义，还经常改变词性。以下是一些常见的英语后缀，按照它们通常转换的词性分类：
 
-### 形成名词的后缀
+### 名词后缀
 
 - **-ance, -ence**：如 importance (重要性), dependence (依赖)。
 - **-tion, -sion, -xion**：如 creation (创造), expression (表达), complexion (肤色)。
@@ -148,7 +150,7 @@ B
 - **-hood**：如 childhood (童年), neighborhood (邻域) - 表示状态或期间。
 - **-ing**：如 reading (阅读), painting (绘画) - 形成名词或现在分词。
 
-### 形成形容词的后缀
+### 形容词后缀
 
 - **-able, -ible**：如 enjoyable (令人愉快的), visible (可见的)。
 - **-al, -ial**：如 national (国家的), special (特别的)。
@@ -158,13 +160,13 @@ B
 - **-less**：如 homeless (无家可归的), fearless (无畏的)。
 - **-ous, -eous, -ious**：如 dangerous (危险的), courteous (有礼貌的), ambitious (有抱负的)。
 
-### 形成副词的后缀
+### 副词后缀
 
 - **-ly**：如 quickly (快速地), easily (容易地)。
 - **-ward, -wards**：如 backward (向后地), upwards (向上地)。
 - **-wise**：如 clockwise (顺时针地), likewise (同样地)。
 
-### 形成动词的后缀
+### 动词后缀
 
 - **-ate**：如 activate (激活), demonstrate (证明)。
 - **-en**：如 shorten (缩短), strengthen (加强)。
