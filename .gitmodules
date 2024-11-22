@@ -1,6 +1,6 @@
 [submodule "src/algo"]
 	path = src/algo
-	url = ../algo.git
+	url = https://github.com/davidliuk/algo.git
 [submodule "codebase"]
 	path = codebase
-	url = ../codebase.git
+	url = https://github.com/davidliuk/codebase.git
