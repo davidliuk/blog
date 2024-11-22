@@ -1,12 +1,22 @@
 # IO
 
-BIO (Blocking I/O)
+- BIO (Blocking I/O)
 
-NIO (Non-blocking I/O)
+  **同步阻塞 IO 模型**
 
-AIO (Asynchronous I/O)
+- NIO (Non-blocking I/O)
+
+  **I/O 多路复用模型**
+
+- AIO (Asynchronous I/O)
+
+  AIO 也就是 NIO 2。Java 7 中引入了 NIO 的改进版 NIO 2,它是异步 IO 模型。
+
+  
 
 ## 设计模式
+
+### 装饰器模式
 
 **装饰器（Decorator）模式** 可以在不改变原有对象的情况下拓展其功能。
 
