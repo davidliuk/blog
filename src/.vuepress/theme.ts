@@ -97,7 +97,7 @@ export default hopeTheme({
       displayFooter: true,
 
       blog: {
-        description: "UPenn CS, NEU SE, 软件工程师@亚马逊和京东",
+        description: "CS@Penn, SE@NEU, former SDE intern@Amazon and JD.com",
         intro: "/zh/intro.html",
       },
 

@@ -1,5 +1,10 @@
-# 版本特性
+# Feature
 
-Alpha Beta RC(Release Candidate) GA Release Stable
+版本特性
 
-LTS
+- Alpha 
+- Beta 
+- RC(Release Candidate) 
+- GA 
+- Stable Release 
+- LTS

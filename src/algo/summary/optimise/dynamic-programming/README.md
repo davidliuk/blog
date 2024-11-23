@@ -1,4 +1,6 @@
-# 动态规划
+# Dynamic Programming
+
+动态规划
 
 避免重复计算
 
