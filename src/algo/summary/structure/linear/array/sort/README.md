@@ -1,4 +1,6 @@
-# 排序
+# Sort 
+
+排序
 
 快速排序、归并排序
 
@@ -30,7 +32,7 @@
 
 - 非交换类
 
-  上限可以是On
+  效率的上限可以是On
 
 按稳定性分类
 
@@ -42,29 +44,24 @@
 
   如，快速排序、堆排序
 
-## 术语
+## 分类
 
 - **稳定**：如果 A 原本在 B 前面，而 A=B，排序之后 A 仍然在 B 的前面。
+  - On2: Bubble Sort, Insertion Sort
+  - Onlogn: Merge Sort
+  - On: Counting Sort, Radix Sort, Bucket Sort
+
 - **不稳定**：如果 A 原本在 B 的前面，而 A=B，排序之后 A 可能会出现在 B 的后面。
+  - On2: Selection Sort, Shell Sort
+  - Onlogn: Quick Sort, Heap Sort
+
+
+
+
 - **内排序**：所有排序操作都在内存中完成。
 - **外排序**：由于数据太大，因此把数据放在磁盘中，而排序通过磁盘和内存的数据传输才能进行。
-- **时间复杂度**： 定性描述一个算法执行所耗费的时间。
-- **空间复杂度**：定性描述一个算法执行所需内存的大小。
 
 
 
 
-
-
-三种partition
-
-https://wenku.baidu.com/view/2cc7720e4873f242336c1eb91a37f111f1850db1.html?_wkts_=1675070336179&bdQuery=快速排序Lomoto
-
-
-
-https://blog.csdn.net/qq_42902997/article/details/115773598
-
-三路快排：
-
-<, =, > 三路，优化重复元素多的情况
 

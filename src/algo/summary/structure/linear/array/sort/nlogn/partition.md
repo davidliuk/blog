@@ -1,6 +1,13 @@
-# 划分方法
+# 快速排序
 
-## 分类
+先序遍历
+
+应用
+
+1. partition
+2. quick select
+
+## Partition
 
 - 划分型
   
@@ -19,6 +26,10 @@
 - 多枢划分
   
   如，Java快排源码，使用了两个Pivot进行划分
+
+[三种partition参考](https://wenku.baidu.com/view/2cc7720e4873f242336c1eb91a37f111f1850db1.htm)
+
+[Lomuto Partition](https://blog.csdn.net/qq_42902997/article/details/115773598)
 
 ### lomato划分
 
