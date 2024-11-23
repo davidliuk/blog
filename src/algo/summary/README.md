@@ -1,5 +1,12 @@
 # 算法总结
 
+算法类型主要分为如下四种
+
+- 结构
+- 搜索
+- 优化
+- 数学
+
 ## 复杂度
 
 ### 时间复杂度
@@ -117,12 +124,16 @@ Coding(Algorithm) Interview 的评价体系主要有如下一些方面
 - Code Quality
 - Communication
 
-Logicality 逻辑思维能力
+### Logicality
+
+逻辑思维能力
 
 - 是否能很快的想到一个 Working Solution
 - 是否能够在面试官点出问题后优化自己的 Solution
 
-Code Quality 代码质量
+### Code Quality
+
+代码质量
 
 - 代码到底写完没有
 

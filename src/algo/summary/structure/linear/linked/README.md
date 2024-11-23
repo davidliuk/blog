@@ -1,10 +1,15 @@
-# 链表算法
+# Linked List
 
+链表
 
+- Singly Linked List
+- Doubly Linked List
+  - 原地删除
+  - 反向遍历
 
 ### 主要技巧
 
-- 虚拟头节点
+- Dummy 虚拟头节点
 
   使用场景：
 
@@ -35,8 +40,6 @@
     - 合并链表：merge，结合后序遍历可拓展为mergeSort
     - 划分链表：partition，结合前序遍历可拓展为quickSort
     - 链表交点
-
-
 
 ### 边界条件
 
