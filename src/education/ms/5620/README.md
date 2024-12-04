@@ -9,17 +9,25 @@ Levine 154
   No late submissions or extensions for homework.
 
   - CQ, participation-based
+
   - HW
     - homework
-      - HW1 Coor Sys
+      - HW1 Coor Transformation
       - HW3 Kinematics
       - HW6 Motion Capture
+      
     - coding
       - HW2 Curve Editor
+      
       - HW4 IKFK
+      
       - HW5 Skinning
+      
       - HW7 Particle System
+      
       - HW8 Feedback Control
+      
+        Monday, last day of class
 
 - 20 期中 Oct 23, 90min
 
@@ -28,6 +36,8 @@ Levine 154
   开卷考试，可以电子设备，但是不能搜索，不会有太多计算
 
 - 25 期末 Dec 13
+
+  review session Dec 11
 
   开卷考试，可以电子设备，但是不能搜索，不会有太多计算
 
@@ -187,7 +197,7 @@ Dynamic System Simulation
 
 Behavioral Animation
 
-- individual &group
+- individual & group
 - Layering and blending behaviors. Arbitration and coordination schemes.  Collision avoidance, hierarchical behaviors and formations.
 
 **Path finding**

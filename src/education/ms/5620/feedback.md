@@ -70,7 +70,7 @@ Want $e=(z-z_d)\Rightarrow0;\dot e=1;\ddot e=0$
 
 With desired Dynamics
 
-Steering Behaviors
+## Steering Behaviors
 
 Agent/Vehicle Dynamics
 
@@ -95,7 +95,7 @@ graph TD
 	e-->a
 ```
 
-Seek/Flee Behavior
+### Seek/Flee Behavior
 
 Pursuit/Evasion Behavior
 
