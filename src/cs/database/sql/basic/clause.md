@@ -5,7 +5,7 @@
 1. `WITH`
 1. `SELECT`, `DISTINCT`
 1. `FROM`
-2. `JOIN`,  `ON`
+2. `JOIN`,  `ON`, `USING`
 3. `WHERE`
 4. `GROUP BY`
 5. `HAVING`
@@ -65,7 +65,7 @@ https://blog.csdn.net/siaok/article/details/129762384
 
 ### GROUP BY
 
-WITHROLLUP：加在 group by 后面，在 group 分组字段的基础上再进行统计数据。
+`WITHROLLUP`：加在 group by 后面，在 group 分组字段的基础上再进行统计数据。
 
 **HAVING 与 WHERE**
 
@@ -91,19 +91,21 @@ m = (page-1)×n, page表示第几页
 select 参数 from 表格 where 条件 limit N offset M
 
 1. `Limit N`
-  查询table_A中前50条数据（按gen_key倒序排列）
-  select * from table_A order by gen_key desc limit 50
+  
+  查询table_A中前 50 条数据（按gen_key倒序排列）
 
-2. `Limit N,M`, `Limit N offest M`
+  `select * from table_A order by gen_key desc limit 50`
+  
+2. `Limit N,M`, `Limit M offest N`
 
-  跳过前 M 条也就是说从 M+1 开始的前 N 条
+  跳过前 N 条也就是说从 N+1 开始的前 M 条
 
   offset N：跳过N条记录（必须组合使用，单独没有用）
 
-  查询table_A 中第11条到20条数据
+  查询 table_A 中第 11 条到 13 条数据
 
   ```sql
-  select * from table_A order by gen_key desc limit 10,20
+  select * from table_A order by gen_key desc limit 3, 10
   select * from table_A order by gen_key desc limit 10 OFFSET 3
   ```
 

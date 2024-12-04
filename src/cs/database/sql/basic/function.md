@@ -13,6 +13,7 @@
 - MAX()
 - MIN()
 - COUNT()
+- VARIANCE() 和 STDDEV()
 - GROUP_CONCAT()
 
 ### AVG()
@@ -62,7 +63,13 @@ GROUP_CONCAT(
 )
 ```
 
+### JSON_ARRAYAGG()
 
+用于将分组中的数据以 JSON 格式返回。**`JSON_ARRAYAGG(column_name)`**：生成 JSON 数组。
+
+###  JSON_OBJECTAGG()
+
+**`JSON_OBJECTAGG(key_column, value_column)`**：生成 JSON 对象。
 
 ## 窗口函数
 
@@ -217,7 +224,7 @@ Lead向下（后)，Lag向上（前)
 
 ### 数学函数
 
-abs、cos、floor、power等
+abs、cos、floor、power 等
 
 ### 浮点数处理函数
 

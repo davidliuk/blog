@@ -18,7 +18,7 @@
 
 利用`field()`函数，来指定排序顺序
 
-`order by field(id, 5, 2, 3)`
+`order by field(column, 5, 2, 3)`
 
 下面是一段示例，SQL语句与对应的Mybatis映射。
 

@@ -2,13 +2,15 @@
 
 [select子查询](https://blog.csdn.net/qq_38643434/article/details/81490053)
 
-子查询放在select里面，如果返回值
+子查询放在 select 里面，如果返回值
 
 子查询的特质：子查询数据出虚表嵌套查询虚表，如果查询不到会返回null
 
-WITH语句通常被称为通用表表达式（Common Table Expressions）即CTEs。
+## CTE
 
-WITH语句作为一个辅助语句依附于主语句，WITH语句和主语句都可以是SELECT，INSERT，UPDATE，DELETE中的任何一种语句。
+WITH 语句通常被称为通用表表达式（Common Table Expressions）即 CTEs。
+
+WITH 语句作为一个辅助语句依附于主语句，WITH语句和主语句都可以是SELECT，INSERT，UPDATE，DELETE中的任何一种语句。
 
 - A special type of subquery that is declared ahead of your main query.（在主查询之前声明。）
 - Named and referenced later in FROM statement.（在FROM语句中按名称引用它，就像它是数据库中的任何其他表一样。）
@@ -34,9 +36,9 @@ Main query
 
 `AS` 关键字之后是子查询，用于定义临时表的内容。在你的例子中，使用 `UNION ALL` 连接了多个 `SELECT` 查询，每个查询返回一个不同的字符串值。
 
-## CTE 优点
+### 优点
 
-- Exceted once （仅执行一次，然后存储在内存中，可以提高执行效率）
+- Exceted once（仅执行一次，然后存储在内存中，可以提高执行效率）
 
   - CTE is then stored in memory
   - Improves query performance
