@@ -1,4 +1,6 @@
-# 减治
+# Decrease Conquer
+
+减治
 
 减少问题规模
 
