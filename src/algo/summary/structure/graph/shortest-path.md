@@ -1,4 +1,6 @@
-# 最短路
+# Shortest Path
+
+最短路
 
 简单图：BFS
 
@@ -20,7 +22,7 @@ BFS 是否可以做? 应该用什么算法呢?
 
 Java: HashMap / HashSet
 
-Java 队列建议 new ArrayDeque 不建议 new LinkedList (链表比数组慢)
+Java 队列建议 new ArrayDeque (链表比数组慢)
 
 ## 简单图
 

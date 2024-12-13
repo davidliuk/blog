@@ -22,8 +22,6 @@ public int[] twoSum(int[] nums, int target) {
 }
 ```
 
-
-
 ### Closest 类
 
 需要`TreeMap`/`TreeSet`，

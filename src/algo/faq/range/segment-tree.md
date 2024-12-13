@@ -1,5 +1,7 @@
 # Segment Tree
 
+https://leetcode.cn/problems/longest-increasing-subsequence-ii/solutions/1816920/by-lfool-f6vs/
+
 线段树
 
 区间求和：前缀和/线段树

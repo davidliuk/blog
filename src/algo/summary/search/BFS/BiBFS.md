@@ -40,7 +40,7 @@ Bi-directional BFS
 
 - 简单图：BFS
 - 复杂图
-  - SPFA版本BFS
+  - SPFA 版本 BFS
   - 也可以进一步用heapq/PriorityQueue代替deque/ArrayDeque
 - 求路径的具体值
   - 可以将具体的路径同时放在queue或者distance里

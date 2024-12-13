@@ -1,8 +1,8 @@
 # 单调栈
 
+可以用模板，也可以不用，有的时候需要存额外信息，就不用用这个模板
 
-
-单调栈
+单调栈模板
 
 ```java
 class MonoticStack<Integer> {
@@ -15,11 +15,11 @@ class MonoticStack<Integer> {
         stack.push(-1);
     }
 
-    public void push(int n) {
-        while (stack.peek() != -1 && !isValid.test(stack.peek(), n)) {
-            next.ifPresent(f -> f.accept(stack.pop(), n));
+    public void push(int i) {
+        while (stack.peek() != -1 && !isValid.test(stack.peek(), i)) {
+            next.ifPresent(f -> f.accept(stack.pop(), i));
         }
-        prev.ifPresent(f -> f.accept(stack.peek(), n));
+        prev.ifPresent(f -> f.accept(stack.peek(), i));
         stack.push(n);
     }
     
@@ -28,8 +28,6 @@ class MonoticStack<Integer> {
     }
 }
 ```
-
-可以用模板，也可以不用，有的时候需要存额外信息，就不用用这个模板
 
 [例题四合一](https://leetcode.cn/problems/create-maximum-number/solutions/297892/yi-zhao-chi-bian-li-kou-si-dao-ti-ma-ma-zai-ye-b-7/)
 
@@ -44,7 +42,7 @@ class MonoticStack<Integer> {
 public int largestRectangleArea(int[] heights) {
     int n = heights.length;
 
-    Deque<Integer> stack = new ArrayDeque<>();
+    var stack = new ArrayDeque<Integer>();
     stack.push(-1);
 
     int maxArea = 0;
@@ -67,11 +65,11 @@ public int largestRectangleArea(int[] heights) {
 ### 每日温度
 
 ```java
-public int[] dailyTemperatures(int[] temperatures) {
+int[] dailyTemperatures(int[] temperatures) {
     int n = temperatures.length;
 
     int[] ans = new int[n];
-    Deque<Integer> stack = new ArrayDeque<>();
+    var stack = new ArrayDeque<Integer>();
     for (int i = 0; i < n; i++) {
         while (!stack.isEmpty() && temperatures[stack.peek()] < temperatures[i]) {
             ans[stack.peek()] = i - stack.pop();
@@ -88,11 +86,11 @@ public int[] dailyTemperatures(int[] temperatures) {
 ### 最大二叉树
 
 ```java
-public TreeNode constructMaximumBinaryTree(int[] nums) {
+TreeNode constructMaximumBinaryTree(int[] nums) {
     int n = nums.length;
     TreeNode[] nodes = new TreeNode[n];
 
-    Deque<Integer> stack = new ArrayDeque<>();
+    var stack = new ArrayDeque<Integer>();
     for (int i = 0; i < n; i++) {
         nodes[i] = new TreeNode(nums[i]);
         while (!stack.isEmpty() && nums[stack.peek()] < nums[i]) {
