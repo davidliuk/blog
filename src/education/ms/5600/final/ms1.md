@@ -6,7 +6,7 @@
 
 Noise
 
-Berlin, Worley noise
+Perlin, Worley noise
 
 **Summed Perlin noise terrain**
 

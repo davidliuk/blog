@@ -1,4 +1,4 @@
-# Procedure Noise
+# Procedural Noise
 
 ## Fractal Brownian Motion
 

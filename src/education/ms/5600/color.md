@@ -1,4 +1,4 @@
-# Color
+# Procedural Color
 
 RGB
 
