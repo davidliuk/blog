@@ -39,9 +39,23 @@ Levine 154
 
   review session Dec 11
 
-  开卷考试，可以电子设备，但是不能搜索，不会有太多计算
+  Final Exam Date/Time: Friday, Dec. 13th from 3:00 - 5:00pm
+
+  Room: MEYH B3 (Meyerson Hall - 210 South 34th Street)
+
+  开卷考试，可以电子设备，但是不能搜索，不会有太多计算，tablet，turn off wifi/internet
 
   开放问题
+
+  Similar style like mid term
+
+  apply knowledge to real world problem
+
+  not just copying notes
+
+  if you understand basic concepts, you should be able to apply them
+
+  don't blank, do not long describe
 
 - 05 出勤，7次随堂 quiz
 
@@ -55,7 +69,7 @@ Levine 154
   
     Exam: Given F1, F2, what H12
   
-  - 09.26 splines 9/10
+  - 09.26 splines 9/10, 30min
   
   - 10.15 8/10
   
@@ -65,9 +79,13 @@ Levine 154
   
     body animation: keyframe, walk cycle, cross dissolve
   
-  - 11.19 Tues
+  - 11.19 Tues 10/10
   
-  - 2
+    Body Dynamics
+  
+  - 12.05 Friday, Feedback Control design, 20min
+  
+    You should be familar with how you would compute the gains of a PD feedback controller given the desired system response.
 
 
 ## text books
@@ -128,7 +146,7 @@ Tech
 
 ---
 
-Robotics
+### Robotics
 
 Physical, sensor from environment
 
@@ -144,61 +162,76 @@ controller
 
 ## Course Topics
 
-Coordinate systems ✅
+### Coordinate systems
 
 - Vector - Matrux Representations
 - Coordinate Transformations
 - Euler Angles
 - Quaternions
 
-Interpolation  
+### Interpolation  
 
 - Curve  ✅
 - Linear  ✅
 - Bezier  ✅
 - B-Splines  ✅
-- 2D
+- Hermite Splines
+- 2D Interpolation
 - Spherical Interpolation (Quaternion) (Slerp)
 
-Body Kinematics
+### Body Kinematics
 
-- Joint Hierarchies
+- Joint Hierarchies Representation
 - Transformation Matrices
 - Forward Kinematics
+- Jacobian matrices
+- Kinematic chains
 - Inverse Kinematics
 
-Body Animation
+### Body Animation
 
 - Animation Tech
-  - Key frame
-  - Motion Capture
-- Walk and Run Cycle
-- Skinning and Mesh Deformation
-- Facial Animation
-  - Blend shapes
-  - Muscle-based approaches
-  - Elgen faces(Principal Components Analysis)
-  - Lipynching
-- Animation tools
+  - Keyframe
+  - Motion Editing
+  - Sequencing and Blending
+  - Arc Length Parameterization
+- Locomotion. Gait. Walk and run cycles. 
+- Animation tool demonstrations (MotionBuilder).
+- Motion Capture
+- **Skinning and Mesh Deformation**
 
-Body Dynamics
+### Body Dynamics
 
 - Equation of motions (F=ma)
-- Particle Systems
+- State space representation. 
+- Rotational vs. translational dynamics
 - Second order (mass-spring-damper) dynamical systems
+- Particle Systems
+
 - Animation and Simulation Tool - Houdini
 
-Dynamic System Simulation
+Physical Simulation (Dynamic System Simulation)
 
-- Numerical Integration methods
-- Sense, Control
+- Numerical integration methods. 
+- Sense, Control, Act processing loop. 
+- Dead reckoning models. 
+- Virtual reality and distributed interactive simulation. 
 
-**Feedback Controller**
+### **Feedback Controller**
 
-Behavioral Animation
+- Openloop vs. closed loop control. 
+- Feedback types (Proportional, Derivative and PD controllers). 
+- Design requirements. 
+- Feedback control law design.
+- Trajectory tracking. 
+- Computed velocity and computed torque methods.
+
+### **Behavioral Animation**
 
 - individual & group
-- Layering and blending behaviors. Arbitration and coordination schemes.  Collision avoidance, hierarchical behaviors and formations.
+- Layering and blending behaviors. 
+- Arbitration and coordination schemes.  
+- Collision avoidance, hierarchical behaviors and formations.
 
 **Path finding**
 
@@ -207,7 +240,27 @@ Behavioral Animation
   - Depth First
   - Breadth First
   - A*
-- Optimization-Based Animation
+
+Optimization-Based Animation
+
+- Least Squares optimization. 
+- Gradient descent. 
+- Lagrange multipliers. 
+- Optimization subject to dynamic constraints. 
+- Space time constraint solution methods. 
+- Covariance Matrix Adaptation. 
+- Principal Component Analysis (PCA), 
+- Eigenfaces, 
+- face recognition
+
+Facial Animation
+
+- Linear Blend shapes
+- parameterized models
+- Muscle-based approaches
+- Elgen faces(Principal Components Analysis)
+- Facial Action Coding, phonemes, visemes
+- Lipynching
 
 ## SOTA
 

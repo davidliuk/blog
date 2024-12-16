@@ -1,6 +1,12 @@
 # Facial Animation
 
-Blend Shape
+> 类比Skining，一起理解
+
+- Blend Shapes
+
+  $\vec v=\vec v_0+\sum w_i\vec v_i$, blend shapes
+
+- Linear Blend Skinning techniques (LBS)
 
 
 

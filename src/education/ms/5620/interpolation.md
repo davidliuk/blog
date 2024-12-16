@@ -67,6 +67,14 @@ f(u)=\vec a_0+\vec a_1u+\vec a_2u^2+...+\vec a_nu^n
 $$
 where n=degree of polynomial curve (highest exponent)
 
+- Linear
+- Quadratic
+- Cubic
+
+$y=a_0+a_1u+a_2u^2+a_3u^3$=>monomial form
+
+$\bar y=\bar a_0+\bar a_1 u+\bar a_2u^2+\bar a_3u^3$
+
 Example
 $$
 x(u)=1+6u-9u^2+4u^3\\
@@ -140,9 +148,9 @@ $$
 
 $\vec b_i$ control points
 
-- b1,b2: slope
+- b1, b2: slope
 
-- b0,b3: point
+- b0, b3: point
 
 
 让两个 curve 连接处平滑
@@ -155,7 +163,7 @@ $\vec b_i$ control points
 
 monomials
 
-$f(u)=$
+$f(u)=c_0+c_1t+c_2t^2+c_3t^3$
 
 ### Constructing Bezier Curves
 
@@ -230,7 +238,7 @@ $$
 
 ## Catmull-Rom Splines
 
-centrol point: **slope between two segment is same**
+Centrol point: **slope between two segment is same**
 
 > C1 continuity
 
@@ -347,7 +355,7 @@ $$
 
 General Case
 $$
-\vec f_j(u)=\vec h_j(u)=\vec p_j+
+\vec f_j(u)=\vec h_j(u)=\vec p_jH_0^3(u)+\vec p_{j+1}H_3^3(u)+\vec p_j'H_1^3(u)+\vec p_{j+1}'H_2^3(u)
 $$
 1st Derivative:
 $$
@@ -361,7 +369,7 @@ To have continuous 2nd derivative between segments
 $$
 h_j''(1)=h_{j+1}''(0)
 $$
-Constrain
+Constraint
 $$
 p_j'+4p_{j+1}'+p_{j+2}'=3(p_{j+2}-p_j)
 $$
@@ -383,27 +391,34 @@ Interpolating Quaternion
 
 $\|\vec p\|=1$
 
-$\vec p=a\vec q_1+b\vec q_2$ linear combination of q1 q2
+$\vec p=a\vec q_1+b\vec q_2$ linear combination of q1, q2
 
 $\vec q_1\cdot\vec q_2=\cos\Omega$
 
-$\vec q_1 \cdot\vec p=\cos\theta=a+b\cos\Omega$
+$\vec q_1 \cdot\vec p=\cos\theta=\vec q_1 \cdot(a\vec q_1+b\vec q_2)=a+b\cos\Omega$
 
 $\vec p\cdot\vec p=(a\vec q_1+b\vec q_2)\cdot(a\vec q_1+b\vec q_2)=a^2+2ab\cos\Omega+b^2=1$
 
 =>
-
 $$
 a=\frac{\sin(\Omega-\theta)}{\sin\Omega}\\
 b=\frac{\sin\theta}{\sin\Omega}\\
 $$
 
-let$\space \theta=u\Omega, u\in[0,1]\\$
+let$\space \theta=u\Omega, u\in[0,1],\theta=\cos^{-1}(q_1\cdot q_2)$
 $$
 \vec p=\frac{\sin((1-u)\Omega)}{\sin\Omega}\vec q_1+\frac{\sin(u\Omega)}{\sin\Omega}\vec q_2=Slerp(q_1,q_2,u)
 $$
 
 ## Quaternion Splines
+
+Cutmal-Rom
+
+- slerp
+- sdouble
+- sbisect
+
+use de Casteljau to evaluate spline at a given u
 
 ### Statement
 
@@ -417,9 +432,9 @@ Introduce 3
 
 ### Operators
 
-- Double(a,b)，2*diff=a+2(b-a)
-- Bisect(a,b)=(a+b)/2
-- lerp(a,b,u)=(1-u)a+ub
+- $Double(a,b)=2*diff=a+2(b-a)$
+- $Bisect(a,b)=\frac{(a+b)}{2}$
+- $lerp(a,b,u)=(1-u)a+ub$
 
 left slope
 $$
@@ -444,13 +459,15 @@ $$
 
 ### Applied to circle
 
-$$
-SBisect(a,b)=\frac{a+b}{||a+b||}\\
-SDouble(a,b)=2(a \cdot b)b-a
-$$
+### Operators
+
+- $SBisect(a,b)=\frac{a+b}{\|a+b\|}$
+- $SDouble(a,b)=2(a \cdot b)b-a$
+- $Slerp(a,b,u)=$
 
 ---
 
+**Cubic Splines**
 $$
 \begin{aligned}
 \vec b_0&=\vec q_j\\
@@ -472,6 +489,8 @@ edge case
 **Cubic Quaternion Catmul-Rom Splines**
 
 de Casteljau algorithm
+
+$b_0^3=slerp(b_0^2,b_1^2,u)$
 
 ## Shape Animation
 

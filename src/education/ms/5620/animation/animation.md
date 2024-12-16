@@ -115,7 +115,7 @@ $s$ controls the speed of motion
 
 ### Blending
 
-**blend two animation (lerp)**
+**blend two or more motion (lerp)**
 
 Allows two motion curves m1(t) and m2(t) to be interpolated
 
@@ -142,6 +142,16 @@ $\alpha(t)=\frac{t-t_1}{t_2-t_1}$
 ![image-20241107145555875](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/image-20241107145555875.png)
 
 
+
+- Walk cycle
+
+- run cycle
+
+- Transition form walk to run
+
+  脚着地
+
+----
 
 ## Arc Length Parameterization
 

@@ -244,6 +244,9 @@ H_{trans}=\begin{pmatrix} I && \vec d \\ 0 && 1\end{pmatrix}\\
 
 H_{scale}=\begin{pmatrix} S && 0 \\ 0 && 1\end{pmatrix}\\
 $$
+- transformation w.r.t. local axes => post multiply
+- transformation w.r.t. world axes => pres multiply
+
 #### Operations
 
 #### multiplication

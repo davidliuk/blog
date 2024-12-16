@@ -1,6 +1,6 @@
 # Midterm Exam
 
-ave 82, mid 83, max 98, de 10
+94/100, ave 82, mid 83, max 98, de 10
 
 ---
 

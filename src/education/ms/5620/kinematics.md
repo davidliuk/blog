@@ -12,9 +12,11 @@ Kinematics motion of the body with respect to time
 - velocity 
 - acceleration 
 
-### skeleton
+### Skeleton
 
 skeleton=tree like data structures representing a hierarchy of joints
+
+joint hierarchy
 
 ### Joints
 
@@ -42,7 +44,23 @@ Each joint node contains data
 - other data
   - moment of in
   - Joint limits
-  - presents(bind pose)
+  - presents (bind pose)
+
+Each joint a Frame of ref
+
+$F_j^i\Rightarrow$ local frame of ref
+
+j is the parent of joint j
+
+$F_j^0\Rightarrow$ global transform, now joint j is positioned and oriented w.s.t. world
+
+To find the position and orientation of any joint in the skeleton wal the kinematic chain from woot to that joint
+
+$F_3^0=F_1^0F_2^1F_3^2F_4^3$
+
+position of joint 4 w.r.t world
+
+$\vec p^0=F_4^0\vec p^4$, $\vec p^4=[0,0,0,1]^T$
 
 ### Body state vector
 
@@ -120,7 +138,9 @@ $\vec v=\vec w\times\vec r$
 
 ### Notations
 
-$\vec p_4^0=\vec x=f(\vec\Theta)=F_4^0\vec p_4^4$
+$\vec x=f(\vec\Theta)$
+
+> $\vec p_4^0=F_4^0\vec p_4^4$
 
 > where $\vec\Theta$ a set of homo trans
 
@@ -146,6 +166,8 @@ $\dot{\vec\theta}\ne\vec \omega$
 
 > Euler Angle rates to angular velocity conversion
 
+$\vec \omega=\dot\phi\hat\alpha$
+
 $\vec \omega^j=L_j(\theta_x,\theta_y,\theta_z)\dot{\vec\theta}$
 
 $R_1=R_z R_yR_x$
@@ -166,6 +188,8 @@ $$
 $\vec\Theta=f^{-1}(\vec x)$
 
 > almost impossible to compute amony
+>
+> Very difficult to compute, analytically
 
 Ideally, $\dot{\vec\Theta}=J^{-1}\dot{\vec x}$
 
