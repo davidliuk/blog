@@ -9,25 +9,20 @@ Levine 154
   No late submissions or extensions for homework.
 
   - CQ, participation-based
-
   - HW
-    - homework
+    - paper-based
       - HW1 Coor Transformation
       - HW3 Kinematics
-      - HW6 Motion Capture
-      
     - coding
       - HW2 Curve Editor
-      
       - HW4 IKFK
-      
       - HW5 Skinning
-      
       - HW7 Particle System
-      
       - HW8 Feedback Control
       
-        Monday, last day of class
+    - software
+      - HW6 Motion Capture
+      - HW8 Feedback Control part 3
 
 - 20 期中 Oct 23, 90min
 

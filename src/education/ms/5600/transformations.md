@@ -52,12 +52,6 @@ TR-T
 
 applying **from right to left**
 
----
-
-
-
-
-
 ## Development
 
 The frontend of the Observatory UI is built using a combination of modern web technologies, providing a responsive and interactive user interface to visualize tracing data from various services. This section outlines the frontend development process, including how to set up a local development environment, interact with backend services, and deploy the application to different environments.
