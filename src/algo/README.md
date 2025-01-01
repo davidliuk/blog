@@ -3,7 +3,9 @@
 题单/路线
 
 - [Grind 75](https://www.techinterviewhandbook.org/grind75/)
-- [NeetCode](https://neetcode.io/roadmap)
+- [Grind 169](https://www.techinterviewhandbook.org/grind75/?weeks=6&hours=25&grouping=topics)
+- [NeetCode](https://neetcode.io/roadmap), Blind 75, NeetCode 150
+- [LeetCode 150](https://leetcode.com/studyplan/top-interview-150/)
 
 公司题库
 
@@ -35,18 +37,33 @@ OJ
 数据结构
 
 - 二叉树
+
+  顺序
+
   - 前序
-  - 中序
   - 后序
+  - 中序
+
+  传值
+
+  - 全局
+    - prev/post，前/中/后序中，前一个遍历的位置
+  - 局部
+    - 从root到当前节点路径上记录下来的性质
+
 - 链表
+
+  - 前序
+  - 后序
+
 - 图（和搜索放在一起）
 
 搜索
 
 - BFS
-  - 可达性/连通性
-  - 拓扑排序
   - 最短路
+  - 拓扑排序
+  - 可达性/连通性
 - DFS
   - 枚举
     - 组合型

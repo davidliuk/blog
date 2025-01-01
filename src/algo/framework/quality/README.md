@@ -19,21 +19,65 @@
 
       如异常判断、主体逻辑、结果返回，这些part之间一个分行
 
-   2. 变量命名：全称，1-2个单词，小驼峰
+   2. 参数列表比较长
 
-   3. 避免重复代码
+      1. 每个参数占一行
 
+         将每个参数放在新的一行，缩进对齐。适合参数较多时，保证代码可读性。
+
+         ```java
+         public void someMethod(
+             String firstName,
+             String lastName,
+             int age,
+             String address,
+             String phoneNumber
+         ) {
+             // method body
+         }
+         ```
+   
+      2. 按逻辑分组
+   
+         如果参数之间有逻辑关系，可以按组换行，组内保持紧凑。
+   
+         ```java
+         public void someMethod(
+             String firstName, String lastName,
+             int age,
+             String address, String phoneNumber
+         ) {
+             // method body
+         }
+         ```
+   
+      3. 保持总行长度符合规范
+   
+         根据团队代码风格（如 Google Java Style Guide 限制每行 ≤ 100 列），在长度合适的地方换行：
+   
+         ```java
+         public void someMethod(String firstName, String lastName, int age,
+                                String address, String phoneNumber) {
+             // method body
+         }
+         
+         ```
+   
+   3. 变量命名：全称，1-2个单词，小驼峰
+   
+   4. 避免重复代码
+   
       泄露没有工程经验
-
-   4. 用不到的变量用_来命名
-
-   5. 尽可能避免全局变量
-
-   6. 缩进
-
+   
+   5. 用不到的变量用_来命名
+   
+   6. 尽可能避免全局变量
+   
+   7. 缩进
+   
       1. java是4个
    
-   7. 空格
+   8. 空格
    
       1. 运算符前后要有
       2. 逗号、分号后面有

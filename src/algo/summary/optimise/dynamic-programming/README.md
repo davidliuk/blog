@@ -76,8 +76,18 @@ Eg. 背包类问题，可以这三种问题都有对应的题目
 
 确定状态
 
-研究最优策略的最后一步
-化为子问题
+研究最优策略的最后一步，化为子问题
+
+- 基本状态
+  - 坐标
+  - 序列
+  - 区间
+  - 状压
+  - 树型
+  - 数位
+- 约束状态
+  - 状态
+  - 背包
 
 ### 转移 Transition
 
@@ -110,7 +120,11 @@ Eg. 背包类问题，可以这三种问题都有对应的题目
 例如
 
 1. 滚动数组的时候，考虑利用之前的计算结果；用了滚动数组之后，01背包的第二维度倒着，完全背包正着
-2. 区间dp的时候，i从末尾开始，j从j+1往后；或者j从1，i从0-i这样枚举，再或者先枚举len，再固定窗口i++，j++
+2. 区间dp的时候，
+   - i从末尾开始，j从j+1往后；
+   - 或者j从1，i从0-i这样枚举
+   - 或者先枚举len，再固定窗口i++，j++
+
 
 ### 答案
 
@@ -227,13 +241,19 @@ Eg. 背包类问题，可以这三种问题都有对应的题目
 
 ### 常见状态
 
+基准
+
 - 坐标型
 
   `dp[i]`：到i的性质，本质上就是从起点到i结尾的一条路径就是子序列
   
-  - 子序列
+  - 子序型
   
     `dp[i]`：以i结尾的子序列
+    
+    - 子串型
+    
+      Kedane
   
 - 序列型
 
@@ -244,7 +264,23 @@ Eg. 背包类问题，可以这三种问题都有对应的题目
   - 后序型
   
     `dp[i]`：从i开头到结尾的性质
+    
+  - 划分型
   
+- 区间型
+
+- 状压型
+
+  排列类问题需要状压dp
+
+  本质是各个位置的元素的离散状态压缩成一个2/n进制数
+
+- 数位型
+
+- 树上型
+
+约束
+
 - 背包型
 
   `dp[i][j]`：前i个元素，费用总和为j
@@ -257,19 +293,13 @@ Eg. 背包类问题，可以这三种问题都有对应的题目
 
   为每个有意义状态编号（无效状态或非法状态无需编号，因为无效状态的值相当于0不会被考虑）
 
-  各个状态可能有各自的转移方程（有的题目可能表现形式类似，可以统一在一起）
+  各个状态可能有各自的转移方程（有的题目可能形式类似，可以统一在一起）
 
   eg. 
 
   - 最大子数组积，`dp[i][j]`其中j为0/1表示最大值/最小值
-- 股票买卖，0/1表示末位是否持有股票
+  - 股票买卖，0/1表示末位是否持有股票
   - 粉刷房子I, II, III，`dp[i][j]`其中j表示末位(i-1)粉刷成什么颜色
-
-- 状压型
-
-  排列类问题需要状压dp
-
-  本质是各个位置的元素的离散状态压缩成一个2/n进制数
 
 ## 转移
 
@@ -520,3 +550,60 @@ dp[大问题]=sum{dp[小问题1]*C(n, i)}
 对于计数问题，![\Omega](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7) 中的元素为要计算元素个数的集合 ![S](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)，它的处理是把所有的 ![S](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7) 中元素变为 ![1](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)，然后将这些 ![1](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7) 通过加法的方式汇总起来，因为每一个 ![S](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7) 中元素都对应一个 ![1](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7)，所以这样得到的值就是 ![S](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7) 中元素个数。
 
 当汇总操作为最大/最小值时，我们可以将 ![\Omega](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7) 分成任意若干个部分，只需这些部分的并为 ![\Omega](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7) 即可，无需无交的条件。而计数问题由于不满足这个条件，所以我们需要将 ![\Omega](data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7) 分成若干个部分，这些部分两两无交，这就是与最优化 DP 的区别。
+
+## 理论
+
+### 多阶段决策
+
+回溯法中，每次决策对应于给一个结点产生新的子树，而解的生成过程对应一颗解答树，结点的层数就是“下一个待填充位置”cur
+
+隐式图：有些问题的图不是事先给的，而是程序动态生成的
+
+eg. 路径寻找问题，可以归结为隐式图的遍历
+
+隐式图搜索、产生式系统
+
+---
+
+多阶段决策问题：每做一次决策就可以得到解的一部分，当所有决策做完之后，完整的解就浮出水面了（之前在回溯法中提过）
+
+多段图：特殊的DAG，其结点可以划分为若干个阶段，每个阶段只由上一个阶段所决定。
+
+单向TSP：阶段是列，每一列是一个阶段，每个阶段三种决策：直行右上、右下
+
+0-1背包问题
+
+完全背包问题：带权DAG（等于硬币兑换）
+
+可以滚动数组第一维度
+
+阶段定义了天然的计算顺序
+
+---
+
+DAG是DP的基础，很多问题都可以转化为DAG上的最长路、最短路或路径计数问题。
+
+二元关系可以用图来建模。
+
+嵌套矩阵问题：可嵌套可以用有向边
+
+DAG最长/短路有两种“对称”的状态定义方式：
+
+1. `f[i]`为从i出发的最长路，则`f[i]=max{f[j]+1|(i,j)in E}`
+2. `f[i]`为以i结束的最短路，则`f[i]=max{f[j]+1|(j,i)in E}`
+
+主要是用状态2，状态1比较麻烦，有的时候会有一些坑，不推荐使用
+
+使用状态2时，有时还会遇到一个问题：状态转移方程可能可能不好计算，因为很多时候可以很方便枚举从i出发的所有边(i,j)，却不方便反着枚举(j,i)。特别是在有些题目中，这些边有明显的实际背景，对应的过程不可逆。
+
+这时候需要用“刷表法”
+
+“填表法”：对于每个状态i，找到f[i]依赖的所有状态
+
+“刷表法”：对于每个状态i，更新f[i]影响的所有状态
+
+对应到DAG中，相当于按照拓扑排序枚举i，对于i枚举出边，更新j
+
+- 记忆化搜索的备忘录往往是状态1的定义方式，因为自底向上
+- 迭代的写法，一般采用状态2
+
