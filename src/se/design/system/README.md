@@ -50,7 +50,10 @@ OOD 是微观设计，手把手 Coding
 
 > 游戏设计、电梯设计就是 OOD
 
-SD 是高屋建瓴宏观的设计：Backend design，数据库如何设计、xxx
+SD 是高屋建瓴宏观的设计：
+
+- Backend design，
+- 数据库如何设计、xxx
 
 ### 评分标准
 
