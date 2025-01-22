@@ -1,5 +1,7 @@
 # Theory of Computation
 
+TR 12pm-1:29pm in [DRLB A8](https://www.facilities.upenn.edu/maps/locations/david-rittenhouse-laboratory) (1/15 to 4/30)
+
 Review of regular and context-free languages and machine models. Turing machines and RAM models, Decidability, Halting problem, Reductions, Recursively enumerable sets, Universal TMs, Church/Turing thesis. Time and space complexity, hierarchy theorems, the complexity classes P, NP, PSPACE, L, NL, and co-NL. Reductions revisited, Cook-Levin Theorem, completeness, NL = co-NL. Advanced topics as time permits: Circuit complexity and parallel computation, randomized complexity, approximability, interaction and cryptography. Discrete Mathematics, Automata theory or Algorithms at the undergraduate level.
 
 ---
@@ -46,3 +48,6 @@ It is *forbidden* to use solutions of problems posted on the internet. If you us
 
 [CIS Common Teaching Assistant Application](https://docs.google.com/forms/d/e/1FAIpQLSf1O-OpO2Od4BscCIgE9XIG_0Io5-DEI7K9f7pkHdWj90ppNw/viewform)
 
+---
+
+resentation
