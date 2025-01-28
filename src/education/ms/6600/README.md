@@ -27,12 +27,19 @@ MW 10:15am-11:44am in [TOWN 311](https://www.facilities.upenn.edu/maps/locations
 
 ## Grading
 
-- 15% Plugin Assignment 4
-- 30% Pre
-- 10% Authoring tool Design Doc
-- 35% Authoring tool Implementation
-- 05% timely submission of progress reports (10w weekly by group)
-- 05% class participation 5min ask question (1 question for 1 point) 
+- 15% Plugin Assignment 2
+- participation 
+  - 30% Presentations 
+    - Primer
+    - SigGraph
+
+  - 05% class participation 5min ask question (1 question for 1 point) 
+
+- tool 
+  - 10% Authoring tool Design Doc
+  - 35% Authoring tool Implementation
+  - 05% timely submission of progress reports (10w weekly by group)
+
 
 ---
 

@@ -1,29 +1,38 @@
 # Theory of Computation
 
-TR 12pm-1:29pm in [DRLB A8](https://www.facilities.upenn.edu/maps/locations/david-rittenhouse-laboratory) (1/15 to 4/30)
+Lecture: TR 12:00-1:30pm, DRL A8
+
+Recitation: R 5:00-6:15pm, zoom session
 
 Review of regular and context-free languages and machine models. Turing machines and RAM models, Decidability, Halting problem, Reductions, Recursively enumerable sets, Universal TMs, Church/Turing thesis. Time and space complexity, hierarchy theorems, the complexity classes P, NP, PSPACE, L, NL, and co-NL. Reductions revisited, Cook-Levin Theorem, completeness, NL = co-NL. Advanced topics as time permits: Circuit complexity and parallel computation, randomized complexity, approximability, interaction and cryptography. Discrete Mathematics, Automata theory or Algorithms at the undergraduate level.
 
 ---
 
-511 is the least amount of work. knowing finite automata and definitions of P and NP is plenty of background
+> 511 is the least amount of work. knowing DFA and P/NP is plenty of background
 
----
+- 80 6HW, group
+- 20 project
 
-- 80 6HW+project, group
-- 20 final exam
-
-[CIS 511 Handout 1](https://www.cis.upenn.edu/~cis5110/)
+[CIS 511](https://www.cis.upenn.edu/~cis5110/)
 
 There will be no midterms, a single final exam, and homework problems (some challenging).
 
 ------
 
-- PART 1: Languages and Automata
+- PART I: Languages and Automata
+  1. Introduction
+
+  2. Basics of language theory
+
+  3. DFA
+
+  4. HMM
 
 - PART II: Models of Computation, Undecidability, Basics of Recursive Function Theory
 
 - PART III: Computational Complexity
+  - N, NP
+
 
 ### A Word of Advice
 

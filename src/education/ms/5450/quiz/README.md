@@ -1,0 +1,11 @@
+# Quiz
+
+In-class quizzes are announced in advance in the day’s assignment. They are closed-book, closed-notes and take about 10- 15 minutes of class time. Quiz questions are typically derived from the study questions provided by the instructor as part of the case assignment. While the quiz question may not exactly duplicate a study question, it usually will relate to the substance of one or more of the study questions. To prepare for a closed-book quiz, be sure you are prepared to address each of the posted study questions. NOTE: We will have EITHER an essay due OR an in-class quiz for any given class.
+
+*NOTE: We will use Respondus Lockdown Browser for our in-class quizzes. Review [Respondus Lockdown Browser - Required for quizzes](https://canvas.upenn.edu/courses/1840993/pages/respondus-lockdown-browser-required-for-quizzes?wrap=1) and be sure to configure your laptop/iPad to use Lockdown Browser **BEFORE** the class.*
+
+There will be a short 15-minute closed-book, closed-notes quiz on one or more of today’s readings **at the beginning of class**. The quiz will be available via Canvas, so be sure to bring a laptop or tablet to class to take the quiz.
+
+Quiz questions are typically derived from the study questions provided above as part of the day’s assignment. While the quiz question may not exactly duplicate a study question, it usually will relate to the substance of one or more of the study questions. To prepare for a closed-book quiz, be sure you are prepared to address each of the posted study questions.
+
+NOTE: Days on which we have quizzes, no essays will be due.

@@ -10,59 +10,50 @@ Engineers and scientists create and lead great companies, hiring managers when a
 
 ---
 
-reading, writing
+Library Resources Workshop: Monday, Feb 3
 
-question for final exam
-
-stricter than TA
-
----
-
-Why Eng Ent
-
-- Eng +-create great companies
-- High-Tech
-- Globalization 4.0
-- start up fail
-
----
-
-Stevenson Entrepreneurial framework
-
-- Vision(Product/strategy)
-- Team
-- Cash
-
-=Leadership>Outcome
-
----
-
-- Readings (a lot)
-- Case Studies and Discussion
-- Breakout groups, 9 groups
-- Mini-lecture
-- Thursday in class quizzes, Essay (Tuesday), VC problem set
-- Final Exam
-
-Grade pretty high
-
-- Respondus
-- slack
+Extra credit (up to 2 points) as one course attendance
 
 ## Grading
 
-- Attendance 30%, show up every class get full, late, miss 扣分
+- Attendance 30%
+
+  show up every class get full, late, miss 扣分
+
 - Essays, quizzes & problem set: 45%
+
 - Final exam: 25%
 
-
+  Date, time, location - TBD
 
 use AI for editing, not generating (long)
 
-data
+assignment
+
+- In-class quizzes are given weekly (usually on Thursdays) or as announced in class. Quizzes are designed to reinforce
+and stimulate discussion on the assigned reading materials. Quizzes will be in-person only, closed notes and
+accessed via Respondus Lockdown Browser (see Canvas).
+- In addition, selected classes (usually on Tuesdays) will have brief essays due and submitted online before class,
+covering the assigned material. Essays must be no more than 2 pages (unless otherwise assigned) and will address a
+specific question or set of questions provided and available on the class web site. Focus on making your essays
+insightful and concise. Refer to the Case Method Overview for more information.
+Assignments may also include problem sets, which require calculations or other quantitative analysis, or questions for
+guest lecturers, which are prepared by researching the guest and their company(ies). Breakout assignments and
+other in-class work reinforce assigned materials and may be worked on in groups.
+- Unless otherwise instructed, submit all assignments via the course web site. Problem sets may be hand-written,
+scanned into PDF files, and submitted electronically via the course web site. Specific instructions are provided for
+each assignment. To obtain full credit, assignments must be submitted prior to the start of the class period on the date
+they are due. Late papers (anything after the start of class) are not accepted (except in the case of documented
+incapacity or emergency). There will be no re-grading of assignments.
 
 ---
 
 in class quiz
 
 given a reading that do not give you previously
+
+---
+
+THE CLASSROOM DISCUSSION 
+
+Depending on the nature of the case, the class is often conducted as a meeting of an advisory team to the decision-maker in the case, where you and your classmates are the advisors. The team’s objective is to recommend the best course of action and how to implement it. This recommendation is decided by healthy debate and discussion of pros and cons among the team members where the faculty member’s role is that of a facilitator. Classroom learning with the case method depends on your active and thoughtful participation in the team discussion. Although this is a group process, it does not imply conformity to group opinion. You should be willing to submit your views to rebuttal in a climate of constructive criticism, and overcome any fears of making and admitting a mistake. Each person will not necessarily have an opportunity to speak every day. Whether you speak or not on a given day, you will benefit by comparing your case analysis to that of others. Participation will be graded not by your amount of “air time” but by the quality and thoughtfulness of your comments. Near the end of the class session, the faculty member will summarize the discussion, highlight the useful lessons learned and, if applicable, provide a brief epilog to the case.
