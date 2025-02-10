@@ -31,7 +31,7 @@ Bi-directional BFS
 
 先问一下可以写单向bfs吗？
 
-- ok的话，先把单项的写完，写完一定过
+- ok的话，先把单向的写完，写完一定过
 - 如果不ok，再写双向bfs
 
 ---
@@ -39,9 +39,10 @@ Bi-directional BFS
 最短路径：
 
 - 简单图：BFS
+- 01图：01BFS
 - 复杂图
   - SPFA 版本 BFS
-  - 也可以进一步用heapq/PriorityQueue代替deque/ArrayDeque
+  - 用heapq/PriorityQueue代替deque/ArrayDeque
 - 求路径的具体值
   - 可以将具体的路径同时放在queue或者distance里
 
