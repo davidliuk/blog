@@ -1,28 +1,129 @@
-# 人工智能
+# Artificial Intelligence
 
-papers with code
+[papers with code](https://paperswithcode.com/)
 
-神经网络 = 深度学习 $\in$ 机器学习 $\in$ 人工智能
+深度学习 $=$ 神经网络 $\in$ 机器学习 $\in$ 人工智能
 
-人工智能（Artificial Intelligence，简称AI）是一门研究如何使计算机能够模拟和执行人类智能行为的学科。它涉及开发和构建能够感知、理解、学习、推理、决策和交互的智能系统。
+## 🔹 一、总体分类
 
-以下是人工智能的一些重要概念和细分领域：
+### 1. 基础层（算法与模型）
 
-1. 机器学习（Machine Learning）：机器学习是人工智能的一个重要分支，它研究如何通过数据和经验来让计算机自动学习和改进性能，而无需明确编程。常见的机器学习算法包括决策树、支持向量机、神经网络等。
+> 研究如何**表示、学习和推理**智能。
 
-2. 深度学习（Deep Learning）：深度学习是机器学习的一个子领域，它模拟人脑神经网络的结构和功能，通过多层次的神经网络进行学习和推理。深度学习在图像识别、语音识别、自然语言处理等领域取得了重大突破。
+#### 💡 1.1 机器学习（Machine Learning）
 
-3. 自然语言处理（Natural Language Processing，简称NLP）：自然语言处理是研究计算机如何理解和处理人类自然语言的领域。它包括文本分析、语义理解、机器翻译、情感分析等技术。
+* 监督学习（Supervised Learning）
+* 无监督学习（Unsupervised Learning）
+* 半监督学习（Semi-supervised Learning）
+* 强化学习（Reinforcement Learning, RL）
+* 自监督学习（Self-supervised Learning）
+* 元学习（Meta-learning）
+* 联邦学习（Federated Learning）
 
-4. 计算机视觉（Computer Vision）：计算机视觉致力于让计算机能够理解和解释图像和视频。它涉及图像识别、目标检测、图像分割、人脸识别等技术。
+#### 💡 1.2 深度学习（Deep Learning）
 
-5. 强化学习（Reinforcement Learning）：强化学习是一种通过试错和奖惩机制来训练智能系统的学习方法。智能系统通过与环境的交互，根据奖励信号来调整自己的行为，以最大化长期累积奖励。
+* 卷积神经网络（CNN）
+* 循环神经网络（RNN, LSTM, GRU）
+* Transformer、注意力机制（Attention Mechanism）
+* 图神经网络（Graph Neural Network, GNN）
+* 多模态学习（Multimodal Learning）
 
-6. 专家系统（Expert Systems）：专家系统是一种基于知识库和推理引擎的人工智能系统，它模拟人类专家的知识和决策过程，用于解决特定领域的问题。
+#### 💡 1.3 生成模型（Generative Models）
 
-7. 自主机器人（Autonomous Robots）：自主机器人是能够感知环境、做出决策并执行任务的智能机器人。它们可以在无人监督的情况下完成复杂的任务，如自动驾驶汽车、无人机等。
+* 生成对抗网络（GAN）
+* 变分自编码器（VAE）
+* 自回归模型（Autoregressive Models）
+* Diffusion Models（扩散模型）
+* NeRF、Neural Fields
 
-这些只是人工智能领域中的一些重要概念和细分领域
+#### 💡 1.4 概率与决策理论
+
+* 贝叶斯方法（Bayesian Methods）
+* 马尔可夫决策过程（MDP）
+* 多臂老虎机、多智能体系统
+
+---
+
+### 2. 感知层（理解世界）
+
+#### 👁️ 2.1 计算机视觉（Computer Vision）
+
+* 图像分类、目标检测、语义分割、实例分割
+* 姿态估计、三维重建（SLAM、NeRF）
+* 视频理解、图像生成
+* 多视图几何与三维感知（3D Vision）
+
+#### 🗣️ 2.2 自然语言处理（Natural Language Processing, NLP）
+
+* 语言模型（GPT、BERT、T5）
+* 文本生成与理解
+* 情感分析、问答系统、对话系统
+* 信息抽取与知识图谱
+
+#### 🔊 2.3 语音与音频（Speech & Audio）
+
+* 自动语音识别（ASR）
+* 文本转语音（TTS）
+* 声纹识别、声音生成、声音事件检测
+
+---
+
+### 3. 决策层（做出行动）
+
+#### 🧠 3.1 强化学习与控制（RL & Planning）
+
+* 深度强化学习（DQN, PPO, A3C）
+* 多智能体系统（MARL）
+* 模型预测控制（MPC）
+* 机器人导航与路径规划
+
+#### 🕹️ 3.2 人工智能游戏（Game AI）
+
+* AlphaGo、AlphaZero、MuZero
+* 游戏中的策略学习、多智能体博弈
+
+---
+
+## 🔹 二、交叉与新兴方向
+
+### 🤝 多模态智能（Multimodal AI）
+
+> 图文、视听、视频+文本的联合学习（如 CLIP、GPT-4V、SAM）
+
+### 🧠 大模型与通用人工智能（Foundation Models & AGI）
+
+> GPT、Gemini、Claude 等，研究模型对齐、提示工程、能力迁移。
+
+### 🧩 解释性与可解释 AI（XAI）
+
+> 为什么模型做出某个决策，如何增强透明度与信任。
+
+### 📚 知识图谱与因果推理
+
+> 结构化知识管理、因果关系建模、科学发现。
+
+### 🌐 联邦学习与隐私保护（FL & Privacy-preserving ML）
+
+> 在保证数据隐私的前提下训练模型。
+
+### 👥 人工智能伦理与社会影响（AI Ethics & Safety）
+
+> 对齐问题、偏见检测、人工智能治理、AIGC 风险。
+
+---
+
+## 🔹 三、应用层分类
+
+* 医疗 AI（Medical AI）
+* 金融 AI（金融风控、智能投顾）
+* 教育 AI（智能辅导、知识追踪）
+* 无人驾驶（Autonomous Driving）
+* 人机交互（Human-AI Interaction）
+* 具身智能/智能机器人（Embodied AI）
+* AIGC（AI Generated Content）
+* 智能制造、工业4.0
+
+## 其他分类
 
 **基于学习策略的分类**:
 
@@ -53,6 +154,9 @@ papers with code
 - 半监督学习
 
 - 强化学习
+- 自监督学习
+- 元学习
+- 联邦学习
 
 基于形式
 
@@ -61,18 +165,17 @@ papers with code
   DNN 深度神经网络 $\in$ ANN 人工神经网络 = DL 深度学习
 
   - CNN 卷积神经网络
-  - RNN 循环神经网络
+  - RNN 循环神经网络 LSTM, GRU
+  - 注意力机制 Transformer, Attention
+  - GNN 土神经网络
+  - 多模态学习 Multimodal Learning
 
 - 传统机器学习
 
-基于应用领域的分类
-
-- **自然语言处理 (Natural Language Processing, NLP)**: 处理和分析人类语言。
-
-- **计算机视觉 (Computer Vision)**: 使计算机能够理解和处理图像和视频。
-
-- **多模态学习 (Multimodal Learning)**
-
-- **推荐系统 (Recommender Systems)**: 根据用户的历史行为和偏好提供推荐。
-
-- **生物信息学 (Bioinformatics)**: 在生物学数据上应用机器学习。
+- 生成模型（Generative Models）
+  
+  - 生成对抗网络（GAN）
+  - 变分自编码器（VAE）
+  - 自回归模型（Autoregressive Models）
+  - Diffusion Models（扩散模型
+  - NeRF、Neural Fields

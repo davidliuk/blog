@@ -33,5 +33,3 @@ projects:
 
 footer: David Liu's blog
 ---
-
-If you have any ideas to share, please contact me at any time in your convenience

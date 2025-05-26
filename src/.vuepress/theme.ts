@@ -73,8 +73,8 @@ export default hopeTheme({
       displayFooter: true,
 
       blog: {
-        description: "CS@Penn, SE@NEU, former SDE intern@Amazon and JD.com",
-        intro: "/intro.html",
+        description: "CS@UPenn 26', SDE Intern@TikTok, Amazon, JD.com",
+        intro: "/me",
       },
 
       metaLocales: {
@@ -97,7 +97,7 @@ export default hopeTheme({
       displayFooter: true,
 
       blog: {
-        description: "CS@Penn, SE@NEU, former SDE intern@Amazon and JD.com",
+        description: "CS@UPenn 26', SDE Intern@TikTok, Amazon, JD.com",
         intro: "/zh/intro.html",
       },
 
