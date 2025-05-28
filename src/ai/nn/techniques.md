@@ -133,5 +133,3 @@ Attention机制是一种广泛应用于深度学习中的技术，最初用于�
 - **Efficient Attention**: 专注于减少长序列中的计算量。
 - **Hierarchical Attention**: 在不同层次上关注局部与全局特征。
 - **Hybrid Models**: 与卷积网络等结合以提高模型性能。
-
-如果你对某种具体Attention机制的细节实现感兴趣，可以深入讨论！

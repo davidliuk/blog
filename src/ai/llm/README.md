@@ -12,3 +12,8 @@ AI 检测
 - [ZeroGPT](https://www.zerogpt.com)
 - [Originality.ai](https://originality.ai)
 
+应用
+
+- functioncalling
+- RAG
+- 落地Agent智能体
