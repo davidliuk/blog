@@ -52,7 +52,7 @@ export const enNavbar = navbar([
         prefix: "database/",
         children: [
           {
-            text: "MySQK",
+            text: "MySQL",
             icon: "edit",
             link: "mysql/",
             // prefix: "mysql/",

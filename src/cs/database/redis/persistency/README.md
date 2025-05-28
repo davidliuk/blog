@@ -1,4 +1,6 @@
-# 持久化策略
+# Persistency
+
+持久化策略
 
 RDB 通过 `bgsvae` 子进程来做。
 

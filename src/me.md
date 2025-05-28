@@ -48,7 +48,7 @@ At JD.com, I worked on platform engineering for internal AI tooling. I redesigne
 - Scalable and low-latency **recommendation infra** at **TikTok Commerce Ads**
 - Exploring **graphics + AI** interaction models
 - Real-time rendering techniques and stylized shading in **OpenGL**
-- Writing about systems, tools, and design patterns
+- Writing about leetcode, systems, tools, and design patterns
 
 ---
 
