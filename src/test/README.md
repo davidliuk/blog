@@ -12,11 +12,6 @@
 
 ## 寄送
 
-- CMU
-- DUKE
-- UCSD
-- GaTech
-
 现在 GRE、TOEFL 送分都是电子送分，很快就到，但是小蜜匹配分数需要大约一周
 
 cmu 虽然多个学院 gre 的 code 不同，但是也只需要寄送一份，INI 的秘书的回复

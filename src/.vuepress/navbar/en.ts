@@ -52,27 +52,27 @@ export const enNavbar = navbar([
         prefix: "database/",
         children: [
           {
-            text: "MySQK",
+            text: "MySQL",
             icon: "edit",
-            prefix: "mysql/",
             link: "mysql/",
-            children: [
-              { text: "Transaction", icon: "edit", link: "transaction" },
-              { text: "Index", icon: "edit", link: "index" },
-              { text: "Lock", icon: "edit", link: "lock" },
-              { text: "Log", icon: "edit", link: "log" },
-            ],
+            // prefix: "mysql/",
+            // children: [
+            //   { text: "Transaction", icon: "edit", link: "transaction" },
+            //   { text: "Index", icon: "edit", link: "index" },
+            //   { text: "Lock", icon: "edit", link: "lock" },
+            //   { text: "Log", icon: "edit", link: "log" },
+            // ],
           },
           {
             text: "Redis",
             icon: "edit",
-            prefix: "redis/",
             link: "redis/",
-            children: [
-              { text: "Clients", icon: "edit", link: "clients" },
-              { text: "Commands", icon: "edit", link: "commands" },
-              { text: "Data structure", icon: "edit", link: "data-structure" },
-            ],
+            // prefix: "redis/",
+            // children: [
+            //   { text: "Clients", icon: "edit", link: "clients" },
+            //   { text: "Commands", icon: "edit", link: "commands" },
+            //   { text: "Data structure", icon: "edit", link: "data-structure" },
+            // ],
           },
         ],
       },
@@ -134,35 +134,35 @@ export const enNavbar = navbar([
       "tools/",
     ],
   },
+  // {
+  //   text: "Course",
+  //   icon: "note",
+  //   prefix: "/education/bs/",
+  //   children: [
+  //     {
+  //       text: "Rec Sys",
+  //       icon: "edit",
+  //       link: "rec-sys/",
+  //     },
+  //     {
+  //       text: "Deep Learning",
+  //       icon: "edit",
+  //       link: "deep-learning/",
+  //     },
+  //     {
+  //       text: "Block Chain",
+  //       icon: "edit",
+  //       link: "block-chain/",
+  //     },
+  //     {
+  //       text: "XR Tech",
+  //       icon: "edit",
+  //       link: "xr-tech/",
+  //     },
+  //   ],
+  // },
   {
-    text: "Course",
-    icon: "note",
-    prefix: "/education/bs/",
-    children: [
-      {
-        text: "Rec Sys",
-        icon: "edit",
-        link: "rec-sys/",
-      },
-      {
-        text: "Deep Learning",
-        icon: "edit",
-        link: "deep-learning/",
-      },
-      {
-        text: "Block Chain",
-        icon: "edit",
-        link: "block-chain/",
-      },
-      {
-        text: "XR Tech",
-        icon: "edit",
-        link: "xr-tech/",
-      },
-    ],
-  },
-  {
-    text: "Standardized",
+    text: "Tests",
     icon: "edit",
     prefix: "/test/",
     children: [
@@ -171,8 +171,8 @@ export const enNavbar = navbar([
         icon: "edit",
         prefix: "GRE/",
         children: [
-          { text: "QUANTITATIVE", icon: "edit", link: "QUANTITATIVE" },
-          { text: "VERBAL", icon: "edit", link: "VERBAL" },
+          { text: "QUANTITATIVE", icon: "edit", link: "QUANTITATIVE/" },
+          { text: "VERBAL", icon: "edit", link: "VERBAL/" },
         ],
       },
       {
@@ -180,12 +180,17 @@ export const enNavbar = navbar([
         icon: "edit",
         prefix: "TOEFL/",
         children: [
-          { text: "LISTENING", icon: "edit", link: "LISTENING" },
-          { text: "READING", icon: "edit", link: "READING" },
-          { text: "SPEAKING", icon: "edit", link: "SPEAKING" },
-          { text: "WRITING", icon: "edit", link: "WRITING" },
+          { text: "LISTENING", icon: "edit", link: "LISTENING/" },
+          { text: "READING", icon: "edit", link: "READING/" },
+          { text: "SPEAKING", icon: "edit", link: "SPEAKING/" },
+          { text: "WRITING", icon: "edit", link: "WRITING/" },
         ],
       },
     ],
+  },
+  {
+    text: "About Me",
+    icon: "edit",
+    link: "/me",
   },
 ]);

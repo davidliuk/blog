@@ -1,4 +1,6 @@
-# 高可用
+# Availability
+
+高可用
 
 ## 单点 Redis 的问题
 

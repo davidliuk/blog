@@ -1,4 +1,4 @@
-# Operating System 操作系统
+# Operating System
 
 - 结构
 - 进程管理
