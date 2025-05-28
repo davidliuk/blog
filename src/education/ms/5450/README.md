@@ -14,6 +14,10 @@ Library Resources Workshop: Monday, Feb 3
 
 Extra credit (up to 2 points) as one course attendance
 
+Time: 6:00-7:00pm
+
+Place: Heilmeier Hall (Towne 100)
+
 ## Grading
 
 - Attendance 30%
@@ -57,3 +61,124 @@ given a reading that do not give you previously
 THE CLASSROOM DISCUSSION 
 
 Depending on the nature of the case, the class is often conducted as a meeting of an advisory team to the decision-maker in the case, where you and your classmates are the advisors. The team’s objective is to recommend the best course of action and how to implement it. This recommendation is decided by healthy debate and discussion of pros and cons among the team members where the faculty member’s role is that of a facilitator. Classroom learning with the case method depends on your active and thoughtful participation in the team discussion. Although this is a group process, it does not imply conformity to group opinion. You should be willing to submit your views to rebuttal in a climate of constructive criticism, and overcome any fears of making and admitting a mistake. Each person will not necessarily have an opportunity to speak every day. Whether you speak or not on a given day, you will benefit by comparing your case analysis to that of others. Participation will be graded not by your amount of “air time” but by the quality and thoughtfulness of your comments. Near the end of the class session, the faculty member will summarize the discussion, highlight the useful lessons learned and, if applicable, provide a brief epilog to the case.
+
+---
+
+5 specific questions for guest talk
+
+slack channel
+
+---
+
+## Final Exam
+
+4 page cheat sheet
+
+2 review session on zoom
+
+1. Submitted Questions
+   - Thursday, May 1
+
+---
+
+Exam Format
+
+1. short answer 80%
+   1. 16 of 20, @ 5 pts, do not skip more and do not write more
+   2. 1-4 sentence for full credit (2 or 4 sentences)
+2. VC Evaluation 20% (take a lot of time)
+   1. 2 term sheet, which one is optimal for u
+   2. 8 questions
+   3. show your work, give a lot of partial credit, put your formulars, error will not cut more than once
+
+----
+
+Read through all questions
+
+Mark those 16 you will answer
+
+Allocate equal time to each question
+
+- 1 hour for section 1
+
+- 1 hour for section 2
+
+
+
+Provide sample questions
+
+---
+
+No curve for final or course
+
+
+
+provide calculator
+
+Review key take-away
+
+---
+
+read the question, 
+
+Response should include:
+
+- Discuss relevance of concept
+- Apply to the high-tech entrepreneur
+- Cite specific example
+
+---
+
+- provide one example
+- provide two examples
+
+you can use same one or two examples for every question of the exam
+
+---
+
+### Section 2
+
+Provided Info
+
+- Company Information
+- Business plan fund-raising objectives
+- Two different investors' term sheets and objectives
+- Liquidity event and valuation info
+
+Questions
+
+- investors acquired, shares
+- Calculate
+
+---
+
+short reading no case for last class
+
+•
+Section 1: Short Answer (80%)
+– Answer 16 of 20 questions (@ 5
+points) requiring brief (1-4)
+sentence response and/or
+calculations
+•
+Recommended Section 1 strategy
+– Read through all questions
+– Mark those 16 you will answer
+– Allocate equal time to each
+question
+(do not write as much as possible)
+•
+Section 2: VC Evaluation (20%)
+– Choose from two term sheet offers
+– Answer all 8 questions
+– Quantitative & qualitative analysis
+•
+Recommended Section 2 strategy
+– Read through entire set and questions
+– Create timeline
+– Determine information given,
+information asked, relevant formulas
+– Calculate & respond to each question
+(qualitative & quantitative)
+We do provide sample questions, but
+we do NOT provide previous exams.

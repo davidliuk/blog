@@ -12,8 +12,6 @@ MW 10:15am-11:44am in [TOWN 311](https://www.facilities.upenn.edu/maps/locations
 
 但更多的人都向我反映，他们没有从这个课中学到太多东西。
 
----
-
 ## Objectives
 
 1. Research
@@ -27,7 +25,12 @@ MW 10:15am-11:44am in [TOWN 311](https://www.facilities.upenn.edu/maps/locations
 
 ## Grading
 
-- 15% Plugin Assignment 2
+- 15% Plugin Assignment 4
+  - HW1 basic C++ enviroment
+  - HW2 c++ L-Systtem
+  - HW3 C++, Swig, Python
+  - HW4
+
 - participation 
   - 30% Presentations 
     - Primer

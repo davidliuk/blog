@@ -11,7 +11,7 @@ Review of regular and context-free languages and machine models. Turing machines
 > 511 is the least amount of work. knowing DFA and P/NP is plenty of background
 
 - 80 6HW, group
-- 20 project
+- 20 Project
 
 [CIS 511](https://www.cis.upenn.edu/~cis5110/)
 
@@ -26,10 +26,8 @@ There will be no midterms, a single final exam, and homework problems (some chal
 
   3. DFA
 
-  4. HMM
-
-- PART II: Models of Computation, Undecidability, Basics of Recursive Function Theory
-
+  4. HMM 
+- cursive Function Theory
 - PART III: Computational Complexity
   - N, NP
 
@@ -59,4 +57,4 @@ It is *forbidden* to use solutions of problems posted on the internet. If you us
 
 ---
 
-resentation
+- 

@@ -1,0 +1,8 @@
+- Feb. 3
+  - Primer4 = Physically Based Rendering – Aaron Tian and Aaron Jiang
+  - Primer5 = Surface Shaders – Ruipeng Wang and Crystal Jin
+  - Primer6 = Machine Learning for Graphics – Yin Tang and Yueyang Li
+- Feb. 5
+  - Primer7 = Clothing Simulation – Constanza De Rienzo and Jacky Park
+  - Primer8 = Deformation and Fracture – Griffin Evans and Harris Kokkinakos
+  - Primer9 = Hair Simulation – Lewis Ghrist and Christina Qiu
