@@ -17,15 +17,7 @@ Use MN
 L'' is a union or 
 
 
-
-u 
-
-
-
-
-
-Here's a revised and improved proof for part (i) using the Myhill-Nerode approach as per the instructor's hint. The key modifications address logical gaps in the original proof and fully align with the required methodology:
-
+```latex
 \subsection*{(i) Proving $ L $ Satisfies Pumping Conclusion but is Not Regular}
 
 \begin{proof}
@@ -81,7 +73,7 @@ By the Myhill-Nerode theorem:
 5. Aligned with instructor's preferred methodology using distinguishability
 
 This proof structure directly addresses the course requirements while maintaining mathematical rigor. The Myhill-Nerode argument is now central to establishing non-regularity, as specified in the instructor's guidance.
-
+```
 
 
 

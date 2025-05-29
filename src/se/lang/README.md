@@ -1,11 +1,9 @@
 # Programming Language
 
-动态语言在**运行时**进行类型检查，而静态语言在**编译时**进行类型检查。
+动/静态语言：动态语言在**运行时**进行类型检查，而静态语言在**编译时**进行类型检查。
 
 - **动态语言**：Python、JavaScript、Ruby、PHP、Lua 等。
 - **静态语言**：C、C++、Java、C#、Go、Rust、Swift、Kotlin、TypeScript、Haskell、Scala 等。
-
----
 
 弱/强类型：会/不会发生隐式类型转换
 

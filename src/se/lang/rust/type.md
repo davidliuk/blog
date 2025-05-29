@@ -34,11 +34,9 @@
 
 
 
-Rust 有两种主要的错误处理方式：**Result<T, E>** 和 **Option<T>**。
+Rust 有两种主要的错误处理方式：`Result<T, E>` 和 `Option<T>`。
 
 # 迭代器
-
-
 
 ### 所有权规则
 
