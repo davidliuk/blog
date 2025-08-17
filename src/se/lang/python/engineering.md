@@ -3,3 +3,11 @@
 密钥、敏感信息放到环境变量里面，代码的话
 
 `os.environ.get('xxx')`即可获取
+
+- venv: `python -m venv .venv`
+- pyproject.toml: `pip install -e .`
+
+
+
+- uv
+- poetry

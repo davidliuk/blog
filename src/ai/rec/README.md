@@ -1,6 +1,12 @@
 # Recommendation System
 
-- 召回、粗排、精排
+- 漏斗
+  - 召回：用多条通道，取回几千篇笔记。
+  - 粗排：用小规模神经网络，给几千篇笔记打分，选出分数最高的几百篇。
+
+- 精排：用大规模神经网络，给几百篇笔记打分。
+- 重排：做多样性抽样、规则打散、插入广告和运营笔记。
+- （混排）
 - LLM for Rec (OneRec)
 
 一些 JD
@@ -37,3 +43,12 @@
 5. 较强的逻辑和数据分析能力，Kaggle、阿里天池大赛、以及相关学术会议组织的权威比赛获奖者优先；
 
 6. 较好的主动性和求知欲，良好的沟通协作。
+
+---
+
+[王树森](https://www.bilibili.com/video/BV14Y411M74v/?spm_id_from=333.1387.collection.video_card.click&vd_source=086ba9e7e990dd00adb3a485b6f48804)
+
+阿里天池
+
+[Deep FM](https://arxiv.org/abs/1703.04247)
+

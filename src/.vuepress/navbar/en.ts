@@ -189,8 +189,8 @@ export const enNavbar = navbar([
     ],
   },
   {
-    text: "About Me",
+    text: "List",
     icon: "edit",
-    link: "/me",
+    link: "/list",
   },
 ]);

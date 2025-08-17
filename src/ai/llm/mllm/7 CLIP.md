@@ -21,3 +21,9 @@ Lecun 世界模型
 拓展：
 
 ImageBind
+
+SigLIP
+
+四亿图文对
+
+ITC架构：图像文本对比学习架构
