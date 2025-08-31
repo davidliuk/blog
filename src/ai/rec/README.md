@@ -52,3 +52,22 @@
 
 [Deep FM](https://arxiv.org/abs/1703.04247)
 
+![image-20250817212326523](https://gcore.jsdelivr.net/gh/davidliuk/images@master/image-20250817212326523.png)
+
+信号
+
+消费指标
+
+北极星指标
+
+- 用户规模：DAU、MAU
+- 消费：人均使用推荐的时长、人均阅读笔记数量
+- 发布：
+
+实验流程
+
+- 离线实验
+- 小流量AB测试
+- 全流量上线
+
+![image-20250818104109899](https://gcore.jsdelivr.net/gh/davidliuk/images@master/image-20250818104109899.png)

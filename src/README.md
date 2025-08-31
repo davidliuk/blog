@@ -25,18 +25,26 @@ I enjoy working at the intersection of **AI infra and systems performance**, and
 
 ## 🎓 Education
 
-- **University of Pennsylvania** – M.S. in Computer and Information Science (Aug 2024 – May 2026)
+### 🔹 University of Pennsylvania – M.S.E in Computer and Information Science 
 
-  - GPA: 3.88 / 4.00
+- Aug 2024 – May 2026
 
-  - Award: **Hagan International Scholarship**
+- GPA: 3.88 / 4.00
+
+- Award: **Hagan International Scholarship**
 
 
-- **Northeastern University** – B.E. in Software Engineering (Sep 2020 – Jul 2024)
+### 🔹 Northeastern University – B.E. in Software Engineering 
 
-  - GPA: 3.95 / 4.00
+- Sep 2020 – Jul 2024
 
-  - Awards: **National Scholarship**, **Merit Student Scholarship**, **Outstanding Student Pacesetter**, **Outstanding Graduate**
+- GPA: 3.95 / 4.00
+
+- Awards: 
+  - **National Scholarship**
+  - **Merit Student Scholarship**
+  - **Outstanding Student Pacesetter**
+  - **Outstanding Graduate**
 
 
 ---
@@ -63,12 +71,12 @@ At JD.com, I worked on platform engineering for internal AI tooling. I redesigne
 
 ## 🛠️ Tech Stack
 
-- **Language**: Java, C/C++, JavaScript/TypeScript, HTML/CSS, Go, Python, Swift, SQL
-- **Backend**: Spring Frameworks, Guice, Coral, MyBatis, MySQL, Redis, RabbitMQ, ElasticSearch, OpenTelemetry
+- **Language**: Java, C/C++, JavaScript/TypeScript, HTML/CSS, Go, Python, Swift, SQL
+- **Backend**: Spring Framework, Guice, Coral, MyBatis, MySQL, Redis, RabbitMQ, ElasticSearch, OpenTelemetry
 - **Frontend**: React, Vue, Vite, ECharts, AWS UI, Arco Design; iOS: Swift, SwiftUI, ARKit
-- **AI/ML**: PyTorch, Transformer, RLHF, Token Pruning, MoE, LoRA, CLIP
+- **AI/ML**: PyTorch, LLM (Transformer, RLHF, Token Pruning, CLIP), RecSys (ItemCF, Two-/Three-tower, MTL)
 - **Graphics**: OpenGL, GLSL, Unity, Qt, Maya API (Plugin Development), Auto-Rigging (RigNet)
-- **Cloud**: Unix/Linux, Docker, Kubernetes, Helm, AWS (DynamoDB, Kinesis, S3, Load Balancer, CodePipeline, CDK)
+- **DevOps**: Unix/Linux, Docker, Kubernetes, Helm, AWS (DynamoDB, Kinesis, S3, Load Balancer, CodePipeline, CDK)
 
 ---
 

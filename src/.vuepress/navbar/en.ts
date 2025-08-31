@@ -190,7 +190,6 @@ export const enNavbar = navbar([
   },
   {
     text: "List",
-    icon: "edit",
     link: "/list",
   },
 ]);
