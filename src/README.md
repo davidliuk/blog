@@ -17,9 +17,9 @@ titles:
 
 I’m **Dawei Liu**, a graduate student in **Computer and Information Science (CIS)** at the **University of Pennsylvania**, expected to graduate in **May 2026**. I hold a **Bachelor’s degree in Software Engineering** from **Northeastern University (NEU)**.
 
-Currently, I’m an **SDE Intern at TikTok**, working on the **Commerce Ads team**, where I focus on **recommendation infrastructure** and **performance optimization** for large-scale ads delivery systems. Previously, I interned at **Amazon** and **JD.com**, where I contributed to the distributed systems observability and AI platforms.
+Currently, I’m an **SDE Intern at TikTok**, working on the **Commerce Ads team**, where I focus on **recommendation infrastructure** and **performance optimization** for large-scale ads delivery systems. Previously, I interned at **Amazon** and **JD.com**, where I contributed to the distributed systems observability and AI platforms. I was honored to receive **2026 full-time return offers** from both **TikTok and Amazon** for my internship performance.
 
-I enjoy working at the intersection of **AI infra and systems performance**, and I’m passionate about solving large-scale engineering problems that demand both **scalability and efficiency**.
+I enjoy working at the intersection of **AI infrastructure and systems performance**, and I’m passionate about solving large-scale engineering problems that demand both **scalability and efficiency**.
 
 ---
 
@@ -45,7 +45,6 @@ I enjoy working at the intersection of **AI infra and systems performance**, and
   - **Merit Student Scholarship**
   - **Outstanding Student Pacesetter**
   - **Outstanding Graduate**
-
 
 ---
 
@@ -74,9 +73,10 @@ At JD.com, I worked on platform engineering for internal AI tooling. I redesigne
 - **Language**: Java, C/C++, JavaScript/TypeScript, HTML/CSS, Go, Python, Swift, SQL
 - **Backend**: Spring Framework, Guice, Coral, MyBatis, MySQL, Redis, RabbitMQ, ElasticSearch, OpenTelemetry
 - **Frontend**: React, Vue, Vite, ECharts, AWS UI, Arco Design; iOS: Swift, SwiftUI, ARKit
-- **AI/ML**: PyTorch, LLM (Transformer, RLHF, Token Pruning, CLIP), RecSys (ItemCF, Two-/Three-tower, MTL)
+- **AI/ML**: PyTorch, LLM (Transformer, RLHF, Token Pruning, CLIP), RecSys (ItemCF, Two-/Three-Tower, MTL)
 - **Graphics**: OpenGL, GLSL, Unity, Qt, Maya API (Plugin Development), Auto-Rigging (RigNet)
 - **DevOps**: Unix/Linux, Docker, Kubernetes, Helm, AWS (DynamoDB, Kinesis, S3, Load Balancer, CodePipeline, CDK)
+- **Tools**: Git, Vim, SSH, CI/CD, Shell, Markdown, LaTeX, Mermaid, VuePress
 
 ---
 

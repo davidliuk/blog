@@ -26,3 +26,11 @@ ItemCF
   - 相似作者召回
 - 缓存召回：复用前n次推荐精排的结果
   - lru
+
+---
+
+- 统计类，热度，LBS；
+- 协同过滤类，UserCF、ItemCF；
+- U2T2I，如基于 user tag 召回；
+- I2I 类，如 Embedding（Word2Vec、FastText），GraphEmbedding（Node2Vec、DeepWalk、EGES）；
+- U2I 类，如 DSSM、YouTube DNN、Sentence Bert
