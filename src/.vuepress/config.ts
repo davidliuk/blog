@@ -11,11 +11,11 @@ export default defineUserConfig({
       title: "David's Blog",
       description: "a developer of multiple interests😊",
     },
-    "/zh/": {
-      lang: "zh-CN",
-      title: "David的博客",
-      description: "一名涉猎广泛的开发者😊",
-    },
+    // "/zh/": {
+    //   lang: "zh-CN",
+    //   title: "David的博客",
+    //   description: "一名涉猎广泛的开发者😊",
+    // },
   },
 
   bundler: viteBundler({

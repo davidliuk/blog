@@ -85,27 +85,27 @@ export default hopeTheme({
     /**
      * Chinese locale config
      */
-    "/zh/": {
-      // navbar
-      navbar: zhNavbar,
+    // "/zh/": {
+    //   // navbar
+    //   navbar: zhNavbar,
 
-      // sidebar
-      sidebar: zhSidebar,
+    //   // sidebar
+    //   sidebar: zhSidebar,
 
-      footer: " David's Blog",
+    //   footer: " David's Blog",
 
-      displayFooter: true,
+    //   displayFooter: true,
 
-      blog: {
-        description: "CS@UPenn 26', SDE Intern@TikTok, Amazon, JD.com",
-        intro: "/zh/intro.html",
-      },
+    //   blog: {
+    //     description: "CS@UPenn 26', SDE Intern@TikTok, Amazon, JD.com",
+    //     intro: "/zh/intro.html",
+    //   },
 
-      // page meta
-      metaLocales: {
-        editLink: "在 GitHub 上编辑此页",
-      },
-    },
+    //   // page meta
+    //   metaLocales: {
+    //     editLink: "在 GitHub 上编辑此页",
+    //   },
+    // },
   },
 
   encrypt: {
