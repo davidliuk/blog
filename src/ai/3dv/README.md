@@ -25,3 +25,28 @@ world model可能单独分一类，也可能不分，因为视频的world model�
 
 txyz
 
+
+
+按时间排序一下
+
+
+
+每个颗粒度一个表
+
+- size 这个是新家的，内容不需要填写
+- Site (如果是HF就写诗HF)
+  - 本来是paper with code现在实效了
+  - HF(如果有就用这个), Github(没有就这个)
+- Paper
+  - 把paper名字
+
+
+
+application: section 3，把related work
+
+每个小的部分不同表
+
+- Data set
+  - 分类：Human 脸手放在一个section
+  - 
+- Related work

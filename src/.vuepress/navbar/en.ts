@@ -188,8 +188,8 @@ export const enNavbar = navbar([
       },
     ],
   },
-  {
-    text: "List",
-    link: "/list",
-  },
+  // {
+  //   text: "List",
+  //   link: "/list",
+  // },
 ]);
