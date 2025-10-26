@@ -1,8 +1,6 @@
 # Techniques
 
-resnet
-
-残差连接
+残差连接 Skip Connection, ResNet
 
 激活函数（Activation Function）
 

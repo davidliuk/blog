@@ -6,8 +6,8 @@
 
 ![image-20250824161651826](https://gcore.jsdelivr.net/gh/davidliuk/images@master/image-20250824161651826.png)
 
-- LastN：用户最近的n次交互（点击、点赞等)的物品ID
-- 对LastN物品ID做embedding，得到n个向量。
+- LastN：用户最近的 n 次交互（点击、点赞等)的物品 ID
+- 对 LastN 物品 ID 做 embedding，得到 n 个向量。
 - 把几个向量取平均，作为用户的一种特征。
 - 适用于召回双塔模型、粗排三塔模型、精排模型。
 

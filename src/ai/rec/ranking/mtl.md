@@ -12,15 +12,15 @@
 
 ![image-20250818104259163](https://gcore.jsdelivr.net/gh/davidliuk/images@master/image-20250818104259163.png)
 
-- 主要代价在Shared Bottom
-- 前期融合：先对所有特征做concatenation，再输入神经网络。
-- 线上推理代价大：如果有篇候选笔记，整个大模型要做n次推理。
+- 主要代价在 Shared Bottom
+- 前期融合：先对所有特征做 concatenation，再输入神经网络。
+- 线上推理代价大：如果有篇候选笔记，整个大模型要做 n 次推理。
 
 $CrossEntropy(y_1,p_1)=-(y_1\cdot\ln p_1+(1-y_1)\cdot\ln(1-p_1))$
 
 - 总的损失函数：$\sum_{i=1}^4\alpha_i\cdot CrossEntropy(y_i,p_i)$
 
-> 加权和损失函数，alpha是根据经验设置的超参
+> 加权和损失函数，alpha 是根据经验设置的超参
 
 对损失函数求梯度，做梯度下降更新参数。
 
@@ -28,8 +28,8 @@ $CrossEntropy(y_1,p_1)=-(y_1\cdot\ln p_1+(1-y_1)\cdot\ln(1-p_1))$
 
 - 困难：类别不平衡。
 
-  - 每100次曝光，约有10次点击、90次无，点击。
-  - 每100次，点击，约有10次收藏、90次无收藏。
+  - 每 100 次曝光，约有 10 次点击、90 次无，点击。
+  - 每 100 次，点击，约有 10 次收藏、90 次无收藏。
 
 - 解决方案：负样本降采样（down-sampling)
 
@@ -37,7 +37,7 @@ $CrossEntropy(y_1,p_1)=-(y_1\cdot\ln p_1+(1-y_1)\cdot\ln(1-p_1))$
 
   - 让正负样本数量平衡，节约计算。
 
-    > eg. 原本需要10h，降采样完只需要3h
+    > eg. 原本需要 10h，降采样完只需要 3h
 
 ## 预估值校准
 

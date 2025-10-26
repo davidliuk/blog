@@ -19,7 +19,7 @@ $x_{i+1}=X_i\circ (W_ix_i b_i)+x_i$
 参考文献
 
 1. Ruoxi Wang et al.**DCN V2**:Improved Deep Cross Network and Practical Lessons for Web-scale Learning to Rank Systems.In WWW,2021.
-2. *Ruoxi Wang et al.Deep Cross Network for Ad Click Predictions.In ADKDD,2017.*
+2. _Ruoxi Wang et al.Deep Cross Network for Ad Click Predictions.In ADKDD,2017._
 
 ## DCN
 

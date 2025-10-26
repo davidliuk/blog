@@ -1,7 +1,5 @@
 # GNN
 
-
-
 MPNN
 
 Random-walk

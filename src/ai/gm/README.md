@@ -11,11 +11,7 @@ Text-to-image
 
 normalizing flow
 
-基于masked掩码方式的离散扩散模型
-
-
-
-
+基于 masked 掩码方式的离散扩散模型
 
 next token prediction: ARM
 
@@ -27,7 +23,5 @@ VAR
 
 损失函数分离
 
-- 基于对抗均衡GAN
+- 基于对抗均衡 GAN
 - 交叉熵：ARM
-
-

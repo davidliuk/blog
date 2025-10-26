@@ -4,9 +4,9 @@
   - $p_{click}+w_1\cdot p_{like}+w_2\cdot p_{collect}+\dots$
 - 点击率乘以其他项的加权和
   - $p_{click}\cdot(1+w_1\cdot p_{like}+w_2\cdot p_{collect}+…)$
-- 海外某短视频APP的融分公式（TikTok）
+- 海外某短视频 APP 的融分公式（TikTok）
   - $(1+w_1\cdot p_{time})^{\alpha_1}\cdot(1+w_2\cdot p_{like})^{\alpha_2}\dots$
-- 国内某短视频APP的融分公式（Kuaishou）
+- 国内某短视频 APP 的融分公式（Kuaishou）
   - 根据预估时长$p_{time}$，对$n$篇候选视频做排序
   - 如果某视频排名第$r_{time}$，则它得分$\frac{1}{r_{time}^\alpha+\beta}$
   - 对点击、点赞、转发、评论等预估分数做类似处理。
