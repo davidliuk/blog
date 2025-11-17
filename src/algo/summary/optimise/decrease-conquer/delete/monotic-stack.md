@@ -1,4 +1,4 @@
-# 单调栈
+# Monotic Stack
 
 可以用模板，也可以不用，有的时候需要存额外信息，就不用用这个模板
 
@@ -60,8 +60,6 @@ public int largestRectangleArea(int[] heights) {
 }
 ```
 
-
-
 ### 每日温度
 
 ```java
@@ -80,8 +78,6 @@ int[] dailyTemperatures(int[] temperatures) {
     return ans;
 }
 ```
-
-
 
 ### 最大二叉树
 
@@ -103,6 +99,29 @@ TreeNode constructMaximumBinaryTree(int[] nums) {
     }
     
     return nodes[stack.peekLast()];
+}
+```
+
+### [1944. Number of Visible People in a Queue](https://leetcode.com/problems/number-of-visible-people-in-a-queue/)
+
+```java
+public int[] canSeePersonsCount(int[] heights) {
+    int n = heights.length;
+
+    int[] res = new int[n];
+    Deque<Integer> stack = new ArrayDeque<>();
+    for (int i = 0; i < n; i++) {
+        int h = heights[i];
+        while (!stack.isEmpty() && heights[stack.peek()] < h) {
+            res[stack.pop()]++;
+        }
+        if (!stack.isEmpty()) {
+            res[stack.peek()]++;
+        }
+        stack.push(i);
+    }
+    
+    return res;
 }
 ```
 

@@ -20,7 +20,7 @@ https://leetcode.cn/problems/longest-increasing-subsequence-ii/solutions/1816920
 
 在线算法：数组会动态变化修改
 
-RMQ(Range Minimum/Maximum Query) 区间最值查询
+RMQ (Range Minimum/Maximum Query) 区间最值查询
 
 - 线段树
 - 树状数组
@@ -143,7 +143,7 @@ class SegmentTree {
 
 ---
 
-## 递推线段树：zkw线段树
+## 递推线段树
 
 2n大小，完全二叉树一个空间都不浪费（出了下标0的位置）
 
@@ -179,3 +179,48 @@ int add[MAXN<<2]; //这个lazy tag表示当前节点已经更新完，需要更�
 https://zhuanlan.zhihu.com/p/656702623
 
 https://www.luogu.com.cn/blog/82152/Introduction-of-zkwSegmentTree
+
+
+
+```java
+class SegmentTree {
+    private final int n;
+    private final int[] tree;
+
+    SegmentTree(int size) {
+        n = size;
+        tree = new int[n * 4];
+    }
+
+    // 单点更新：tree[pos] = max(tree[pos], val)
+    void update(int idx, int val) {
+        update(1, 1, n, idx, val);
+    }
+
+    private void update(int node, int l, int r, int idx, int val) {
+        if (l == r) {
+            tree[node] = Math.max(tree[node], val);
+            return;
+        }
+        int mid = (l + r) >> 1;
+        if (idx <= mid) update(node << 1, l, mid, idx, val);
+        else update(node << 1 | 1, mid + 1, r, idx, val);
+
+        tree[node] = Math.max(tree[node << 1], tree[node << 1 | 1]);
+    }
+
+    // 查询区间最大值
+    int query(int L, int R) {
+        return query(1, 1, n, L, R);
+    }
+
+    private int query(int node, int l, int r, int L, int R) {
+        if (R < l || r < L) return 0;
+        if (L <= l && r <= R) return tree[node];
+        int mid = (l + r) >> 1;
+        return Math.max(query(node << 1, l, mid, L, R),
+                        query(node << 1 | 1, mid + 1, r, L, R));
+    }
+}
+```
+

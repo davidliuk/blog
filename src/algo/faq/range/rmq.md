@@ -1,6 +1,5 @@
 # Range Maximum Query (RMQ)
 
-- ST
-- Binary Indexed Tree
+- ST (Sparse Table)
 - Segment Tree
 
