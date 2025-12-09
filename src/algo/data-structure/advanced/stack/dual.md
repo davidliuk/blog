@@ -176,7 +176,7 @@ String evaluate(char operator, String first, String second) {
 }
 ```
 
-## Other
+## DFS Decode
 
 ### [394. Decode String](https://leetcode.com/problems/decode-string/)
 
@@ -216,6 +216,47 @@ public String decodeString(String s) {
     }
 
     return str.toString();
+}
+```
+
+## Data structure
+
+### [155. Min Stack](https://leetcode.com/problems/min-stack/)
+
+```java
+class MinStack {
+
+    Deque<Integer> minStack;
+    Deque<Integer> numStack;
+
+    public MinStack() {
+        minStack = new ArrayDeque<>();
+        numStack = new ArrayDeque<>();
+    }
+    
+    public void push(int val) {
+        numStack.push(val);
+
+        if (minStack.isEmpty() || val <= minStack.peek()) {
+            minStack.push(val);
+        }
+    }
+    
+    public void pop() {
+        int val = numStack.pop();
+
+        if (val <= minStack.peek()) {
+            minStack.pop();
+        }
+    }
+    
+    public int top() {
+        return numStack.peek();
+    }
+    
+    public int getMin() {
+        return minStack.peek();
+    }
 }
 ```
 
@@ -276,6 +317,8 @@ class MyQueue {
 ```
 
 均摊复杂度O1
+
+
 
 ## 对顶栈
 

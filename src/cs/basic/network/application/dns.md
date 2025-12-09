@@ -28,9 +28,8 @@ How many entities will know what websites you’ve been visiting out there?
 
 域名
 
-[免费freenom教程](https://www.youtube.com/watch?v=0GntFzGe-NE)
+[免费 freenom 教程](https://www.youtube.com/watch?v=0GntFzGe-NE)
 
 [其他免费域名](https://www.youtube.com/watch?v=s5f3Rdl5r5I)
 
 NameSilo
-

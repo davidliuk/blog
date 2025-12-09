@@ -108,11 +108,39 @@ public class Excel {
 }
 ```
 
-## 括号
+## Parentheses
 
-### 最长有效括号
+### [20. Valid Parentheses](https://leetcode.com/problems/valid-parentheses/)
 
+```java
+private static final Map<Character, Character> PAIRS = Map.of(
+        ')', '(',
+        ']', '[',
+        '}', '{');
 
+public boolean isValid(String s) {
+    int n = s.length();
+    if (n % 2 == 1) {
+        return false;
+    }
+
+    Deque<Character> stack = new ArrayDeque<>();
+    for (int i = 0; i < n; i++) {
+        char ch = s.charAt(i);
+        if (PAIRS.containsKey(ch)) {
+            if (stack.isEmpty() || stack.pop() != PAIRS.get(ch)) {
+                return false;
+            }
+        } else {
+            stack.push(ch);
+        }
+    }
+
+    return stack.isEmpty();
+}
+```
+
+### [32. Longest Valid Parentheses](https://leetcode.com/problems/longest-valid-parentheses/)
 
 ```java
 public int longestValidParentheses(String s) {
@@ -125,10 +153,10 @@ public int longestValidParentheses(String s) {
             stack.push(i);
         } else {
             stack.pop();
-            if (stack.isEmpty()) {
-                stack.push(i);
-            } else {
+            if (!stack.isEmpty()) {
                 ans = Math.max(ans, i - stack.peek());
+            } else {
+                stack.push(i);
             }
         }
     }
@@ -136,5 +164,74 @@ public int longestValidParentheses(String s) {
     return ans;
 }
 
+```
+
+### [150. Evaluate Reverse Polish Notation](https://leetcode.com/problems/evaluate-reverse-polish-notation/)
+
+You are given an array of strings `tokens` that represents an arithmetic expression in a [Reverse Polish Notation](http://en.wikipedia.org/wiki/Reverse_Polish_notation).
+
+Evaluate the expression. Return *an integer that represents the value of the expression*.
+
+**Note** that:
+
+- The valid operators are `'+'`, `'-'`, `'*'`, and `'/'`.
+- Each operand may be an integer or another expression.
+- The division between two integers always **truncates toward zero**.
+- There will not be any division by zero.
+- The input represents a valid arithmetic expression in a reverse polish notation.
+- The answer and all the intermediate calculations can be represented in a **32-bit** integer.
+
+```java
+public int evalRPN(String[] tokens) {
+    Deque<Integer> nums = new ArrayDeque<>();
+
+    for (String token : tokens) {
+        switch (token) {
+            case "+":
+                nums.push(nums.pop() + nums.pop());
+                break;
+            case "-":
+                int b = nums.pop(), a = nums.pop();
+                nums.push(a - b);
+                break;
+            case "*":
+                nums.push(nums.pop() * nums.pop());
+                break;
+            case "/":
+                b = nums.pop(); a = nums.pop();
+                nums.push(a / b);
+                break;
+            default:
+                // Token is a number
+                nums.push(Integer.parseInt(token));
+        }
+    }
+
+    return nums.pop();
+}
+```
+
+## Other
+
+### [946. Validate Stack Sequences](https://leetcode.com/problems/validate-stack-sequences/)
+
+Given two integer arrays `pushed` and `popped` each with distinct values, return `true` *if this could have been the result of a sequence of push and pop operations on an initially empty stack, or* `false` *otherwise.*
+
+```java
+public boolean validateStackSequences(int[] pushed, int[] popped) {
+    int n = pushed.length;
+    Stack<Integer> stack = new Stack();
+
+    int j = 0;
+    for (int num : pushed) {
+        stack.push(num);
+        while (!stack.isEmpty() && j < n && stack.peek() == popped[j]) {
+            stack.pop();
+            j++;
+        }
+    }
+
+    return j == n;
+}
 ```
 

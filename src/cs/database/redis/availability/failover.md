@@ -1,8 +1,8 @@
-# Sentinel 故障转移
+# Failove 故障转移
 
-哨兵：自动故障转移 Failover
+> 哨兵：自动故障转移 Failover
 
-主从+哨兵现在少用了，一般就是直接上集群
+主从 + 哨兵现在少用了，一般就是直接上集群
 
 ## 是什么
 
@@ -28,22 +28,34 @@
 - 选举出领导者哨兵
   - 当主节点被判断客观下线以后，各个哨兵节点会进行协商先选举出一个领导者哨兵节点（兵王）并由该领导者节点，也即被选举出的兵王进行 failover(故障迁移)
   - 哨兵领导者，兵王如何选出来的？Raft 算法
-  
 - 由兵王选出来新的 master
 
   步骤：
 
   1. 新主登基：
-    - redis.conf 文件中，优先级 slave-priority:或者 replica-priority 最高的从节点（数字越小优先级越高）
-    - 复制偏移位置 offset?最大的从节点
-    - 最小 Run ID 的从节点，字典顺序，ASCII 码
+
+     - redis.conf 文件中，优先级 slave-priority:或者 replica-priority 最高的从节点（数字越小优先级越高）
+  
+     - 复制偏移位置 offset?最大的从节点
+
+     - 最小 Run ID 的从节点，字典顺序，ASCII 码
+
+  
   2. **群臣臣服**
-    - 执行 slaveof no one 命令让选出来的从节点成为新的主节点，并通过 slaveoft 命令让其他节点成为其从节点
-    - Sentinel leader 会对选举出的新 master 执行 slaveof no one 操作，将其提升为 master 节点
-    - Sentinel leader 向其它 slave 发送命令，让剩余的 slave 成为新的 master 节点的 slave
+  
+     - 执行 `slaveof no one` 命令让选出来的从节点成为新的主节点，并通过 `slaveoft` 命令让其他节点成为其从节点
+  
+     - Sentinel leader 会对选举出的新 master 执行 `slaveof no one` 操作，将其提升为 master 节点
+  
+     - Sentinel leader 向其它 slave 发送命令，让剩余的 slave 成为新的 master 节点的 slave
+  
+  
   3. 旧主拜服
-    - 将之前已下线的老 masteri 设置为新选出的新 master 的从节点，当老 masteri 重新上线后，它会成为新 master 的 slave
-    - Sentinel leader?会让原来的 master 降级为 slave 并恢复正常工作。
+  
+     - 将之前已下线的老 master 设置为新选出的新 master 的从节点，当老 masteri 重新上线后，它会成为新 master 的 slave
+  
+     - Sentinel leader? 会让原来的 master 降级为 slave 并恢复正常工作。
+  
 
 完全由 sentinel 自己独立完成，无需人工干预
 
@@ -81,4 +93,3 @@ Redis 为我们提供了以下两个配置，通过以下两个配置可以尽�
 这两个配置项必须同时满足，不然主节点拒绝写入。
 
 在假故障期间满足 min-slaves-to-write 和 min-slaves-max-lag 的要求，那么主节点就会被禁止写入，脑裂造成的数据丢失情况自然也就解决了。
-

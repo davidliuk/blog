@@ -15,37 +15,38 @@ Relational DB, Document DB, Key-Value DB, Graph DB
 分类
 
 - SQL
+
   - Relational
-  
+
     关系：MySQL、TiDB
-  
+
   - Analytical (OLAP)
-  
+
     分析：ClickHouse
-  
+
 - NoSQL
+
   - Document
-  
+
     文档：MongoDB、CouchDB
-  
+
   - Key-Value
-  
+
     键值：Redis、DynamoDB、RocksDB、Doris
-  
+
   - Wide-Column
-  
+
     宽列：HBase、Cassandra
-  
+
   - Graph
-  
+
     图表：Neo4j、 Amazon Neptune、Giraph
 
 ---
 
-nosql最早就是处理写多读少，google big table处理log的（分布式k-v数据库）(big table用的是skip list，因为方便序列化成有序表)
+nosql 最早就是处理写多读少，google big table 处理 log 的（分布式 k-v 数据库）(big table 用的是 skip list，因为方便序列化成有序表)
 
 ---
-
 
 MPP ( Massively Parallel Processing )，即大规模并行处理，海量数据并发查询。
 
@@ -53,12 +54,12 @@ MPP ( Massively Parallel Processing )，即大规模并行处理，海量数据�
 
 OLAP
 
-数据分析的目标则是探索并挖掘数据价值，作为企业高层进行决策的参考，通常被称为OLAP（On-Line Analytical Processing，联机分析处理）。
+数据分析的目标则是探索并挖掘数据价值，作为企业高层进行决策的参考，通常被称为 OLAP（On-Line Analytical Processing，联机分析处理）。
 
-业务数据积累时所产生的价值信息则被OLAP不断呈现，企业高层通过参考这些信息会不断调整经营方针，也会促进基础业务的不断优化。
+业务数据积累时所产生的价值信息则被 OLAP 不断呈现，企业高层通过参考这些信息会不断调整经营方针，也会促进基础业务的不断优化。
 
-OLAP不应该对OLTP产生任何影响，（理想情况下）OLTP应该完全感觉不到OLAP的存在。
+OLAP 不应该对 OLTP 产生任何影响，（理想情况下）OLTP 应该完全感觉不到 OLAP 的存在。
 
 OLTP
 
-业务类系统主要供基层人员使用，进行一线业务操作，通常被称为OLTP（On-Line Transaction Processing，联机事务处理）。从功能角度来看，OLTP负责基本业务的正常运转。
+业务类系统主要供基层人员使用，进行一线业务操作，通常被称为 OLTP（On-Line Transaction Processing，联机事务处理）。从功能角度来看，OLTP 负责基本业务的正常运转。

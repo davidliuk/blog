@@ -1,6 +1,6 @@
 # Replication 主从复制
 
-又称，读写分离
+> 主从复制、读写分离
 
 ### 什么是读写分离？
 
@@ -62,6 +62,8 @@
 MySQL binlog(binary log 即二进制日志文件) 主要记录了 MySQL 数据库中数据的所有变化(数据库执行的所有 DDL 和 DML 语句)。因此，我们根据主库的 MySQL binlog 日志就能够将主库的数据同步到从库中。
 
 更具体和详细的过程是这个样子的（图片来自于：[《MySQL Master-Slave Replication on the Same Machine》open in new window](https://www.toptal.com/mysql/mysql-master-slave-replication-tutorial)）：
+
+![MySQL 主从复制过程](https://cdn.xiaolincoding.com/gh/xiaolincoder/mysql/how_update/%E4%B8%BB%E4%BB%8E%E5%A4%8D%E5%88%B6%E8%BF%87%E7%A8%8B.drawio.png?image_process=watermark,text_5YWs5LyX5Y-377ya5bCP5p6XY29kaW5n,type_ZnpsdHpoaw,x_10,y_10,g_se,size_20,color_0000CD,t_70,fill_0)
 
 1. 主库将数据库中数据的变化写入到 binlog
 2. 从库连接主库

@@ -12,7 +12,7 @@ spare 方式
 - warm spare
 - hot spare
 
-failover 故障转移（实际上是服务转义）
+failover 故障转移（实际上是服务转移）
 
 虚拟 IP 技术，大家都用同一个虚拟 IP 地址
 

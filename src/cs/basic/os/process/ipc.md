@@ -5,7 +5,7 @@
 ## Types of Process
 
 - Independent process
-- Co-operating process
+- Cooperating process
 
 An independent process is not affected by the execution of other processes while a co-operating process can be affected by other executing processes. Though one can think that those processes, which are running independently, will execute very efficiently, in reality, there are many situations when cooperative nature can be utilized for increasing computational speed, convenience, and modularity. Inter-process communication (IPC) is a mechanism that allows processes to communicate with each other and synchronize their actions. The communication between these processes can be seen as a method of cooperation between them. Processes can communicate with each other through both:
 Methods of IPC
@@ -17,7 +17,7 @@ Methods of IPC
 - Synchronous and Asynchronous Message Passing
 
 
-## 管道 Pipe
+## Pipe 管道
 
 - 匿名管道 `|` Anonymous Pipe
 
@@ -35,7 +35,7 @@ Methods of IPC
 
 不管是匿名管道还是命名管道，进程写入的数据都是缓存在 内核中，另一个进程读取数据时候自然也是从内核中获取， 同时通信数据都遵循先进先出原则，不支持`lseek`之类的文件定位操作。
 
-## 消息队列 Message Queue
+## Message Queue 消息队列
 
 消息队列是消息的链表,具有特定的格式,存放在内存中并由消息队列标识符标识。管道和消息队列的通信数据都是先进先出的原则。与管道（无名管道：只存在于内存中的文件；命名管道：存在于实际的磁盘介质或者文件系统）不同的是消息队列存放在内核中，只有在内核重启(即，操作系统重启)或者显式地删除一个消息队列时，该消息队列才会被真正的删除。消息队列可以实现消息的随机查询,消息不一定要以先进先出的次序读取,也可以按消息的类型读取.比 FIFO 更有优势。**消息队列克服了信号承载信息量少，管道只能承载无格式字节流以及缓冲区大小受限等缺点。**
 
@@ -51,7 +51,7 @@ System calls used for message queues:
 - `msgrcv()`: messages are retrieved from a queue.
 - `msgctl()`: It performs various operations on a queue. Generally it is use to destroy message queue.
 
-## **共享内存** Shared Memory
+## Shared Memory 共享内存
 
 使得多个进程可以访问同一块内存空间，不同进程可以及时看到对方进程中对共享内存中数据的更新。**共享内存**可以解决消息队列通信中用户态与内核态之间数据拷贝过程带来的开销，**它直接分配一个共享空间，每个进程都可以直接访问**，就像访问进程自己的空间一样快捷方便，不需要陷入内核态或者系统调用，大大提高了通信的速度，享有**最快**的进程间通信方式之名。但是便捷高效的共享内存通信，**带来新的问题，多进程竞争同个共享资源会造成数据的错乱。**
 
@@ -70,7 +70,7 @@ System calls used for message queues:
 - POSIX共享内存（`shm_open` 和 `mmap`）。
 - System V共享内存（`shmget` 和 `shmat`）。
 
-## 信号量 **Semaphores**
+## Semaphores 信号量
 
 信号量是一个计数器，用于多进程对共享数据的访问，信号量的意图在于进程间同步。这种通信方式主要用于解决与同步相关的问题并避免竞争条件。
 
@@ -154,7 +154,7 @@ P 操作是用在进入共享资源之前，V 操作是用在离开共享资源�
 
   - 将信号量值加一，表示资源释放。如果有进程在等待信号量，它们会被唤醒。
 
-## 信号 Signal
+## Signal 信号
 
 > also Asynchronous System Trap
 
@@ -192,7 +192,7 @@ $ kill -l
 61) SIGRTMAX-3  62) SIGRTMAX-2  63) SIGRTMAX-1  64) SIGRTMAX
 ```
 
-## 套接字 Socket
+## Socket 套接字
 
 此方法主要用于在客户端和服务器之间通过网络进行通信。套接字是支持 TCP/IP 的网络通信的基本操作单元，可以看做是不同主机之间的进程进行双向通信的端点，简单的说就是通信的两方的一种约定，用套接字中的相关函数来完成通信过程。
 
