@@ -1,4 +1,4 @@
-# Summary
+# Pattern
 
 算法类型主要分为如下四种
 

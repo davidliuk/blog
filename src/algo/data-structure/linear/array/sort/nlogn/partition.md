@@ -1,4 +1,4 @@
-# 快速排序
+# Quick Sort 快速排序
 
 先序遍历
 
@@ -10,24 +10,26 @@
 ## Partition
 
 - 划分型
-  
+
   单纯把数组划分成两段：一半大于等于，一半小于等于 pivot
+
 - 寻找型
-  
-  在划分数组的同时，找到pivot元素最终位置
+
+  在划分数组的同时，找到 pivot 元素最终位置
 
 优化：
 
 - 三路划分
-  
-  将数组划分成：`<, =, >` pivot三段，并找到pivot段的两个端点
-  
-  优势：在重复元素较多时，可以更快的排序完毕，一次可以同时处理掉很多位置
-- 多枢划分
-  
-  如，Java快排源码，使用了两个Pivot进行划分
 
-[三种partition参考](https://wenku.baidu.com/view/2cc7720e4873f242336c1eb91a37f111f1850db1.htm)
+  将数组划分成：`<, =, >` pivot 三段，并找到 pivot 段的两个端点
+
+  优势：在重复元素较多时，可以更快的排序完毕，一次可以同时处理掉很多位置
+
+- 多枢划分
+
+  如，Java 快排源码，使用了两个 Pivot 进行划分
+
+[三种 partition 参考](https://wenku.baidu.com/view/2cc7720e4873f242336c1eb91a37f111f1850db1.htm)
 
 [Lomuto Partition](https://blog.csdn.net/qq_42902997/article/details/115773598)
 
@@ -68,7 +70,9 @@ public int partition(int[] nums, int l, int r) {
 ```
 
 ### 挖坑法
+
 挖坑法
+
 ```java
 int partition(int[] nums, int start, int end) {
     int i = start, j = end;
@@ -86,7 +90,7 @@ int partition(int[] nums, int start, int end) {
 
 ### 三路划分
 
-寻找型，找到了一个等于 pivot 的区间，速度可以快6倍
+寻找型，找到了一个等于 pivot 的区间，速度可以快 6 倍
 
 ```java
 // quick sort three way partition
@@ -118,6 +122,7 @@ public int[] partition(int[] nums, int start, int end) {
 ### 多枢划分
 
 dualPivotQuickSort
+
 ```java
 // write a dualPivotQuickSort partition
 // [l, i) <= pivot1
@@ -162,7 +167,7 @@ public void dualPivotQuickSort(int[] nums, int l, int r) {
 
 ### [215. Kth Largest Element in an Array](https://leetcode.com/problems/kth-largest-element-in-an-array/)
 
-Given an integer array `nums` and an integer `k`, return *the* `kth` *largest element in the array*.
+Given an integer array `nums` and an integer `k`, return _the_ `kth` _largest element in the array_.
 
 Note that it is the `kth` largest element in the sorted order, not the `kth` distinct element.
 
@@ -234,4 +239,4 @@ private void swap(int[] nums, int i, int j) {
 
 ### [347. Top K Frequent Elements](https://leetcode.com/problems/top-k-frequent-elements/)
 
-Given an integer array `nums` and an integer `k`, return *the* `k` *most frequent elements*. You may return the answer in **any order**.
+Given an integer array `nums` and an integer `k`, return _the_ `k` _most frequent elements_. You may return the answer in **any order**.

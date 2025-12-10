@@ -1,4 +1,4 @@
-# Linked List
+# LinkedList
 
 链表
 
@@ -75,5 +75,4 @@
    ```
 
    如，merge
-
 

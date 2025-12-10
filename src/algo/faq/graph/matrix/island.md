@@ -2,7 +2,7 @@
 
 三色法/淹没法：可以节省 seen/visited 数组
 
-优先使用DFS，这样淹没完还可以回溯恢复
+优先使用 DFS，这样淹没完还可以回溯恢复
 
 淹没：
 
@@ -18,7 +18,7 @@ lc417. Pacific Atlantic Water Flow — Med.
 ```java
 public List<List<Integer>> pacificAtlantic(int[][] heights) {
 	int n = height.length, m = height[0].length;
-    
+
 }
 
 final static int[] dirs = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
@@ -28,11 +28,11 @@ void bfs((int[][] heights, Queue<List<Integer>> queue, int[][] seen) {
     while (!queue.isEmpty()) {
         List<Integer> point = queue.poll();
         int i = point.get(0), j = point.get(1);
-        
+
         for (int[] dir : dirs) {
             int ni = i + dir[0], nj = j + dir[1];
             if (ni < 0 || ni >= n ||
-                nj < 0 || nj >= m || 
+                nj < 0 || nj >= m ||
                 seen[ni][nj] ||
                 heights[i][j] > heights[ni][nj]) {
                 continue;
@@ -67,15 +67,15 @@ boolean dfs(char[][] board, int i, int j, String word, int k) {
     if (c != word.charAt(k)) {
         return false;
     }
-    
+
     board[i][j] = '#';
     for (int[] dir : dirs) {
         int ni = i + dir[0], nj = j + dir[1];
-        if (ni < 0 || ni >= n || 
+        if (ni < 0 || ni >= n ||
             nj < 0 || nj >= m) {
             continue;
         }
-        
+
         if (dfs(board, ni, nj, word, k + 1)) {
             board[i][j] = c;
             return true;
@@ -93,7 +93,7 @@ lc200. Number of Islands — Med.
 ```java
 int number(int[][] grid) {
     int n = grid.length, m = grid[0].length;
-    
+
     int cnt = 0;
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < m; j++) {
@@ -103,7 +103,7 @@ int number(int[][] grid) {
             }
         }
     }
-    
+
     return cnt;
 }
 
@@ -111,12 +111,12 @@ int[][] dirs = {{1, 0}, {0, 1}, {-1, 0}, {0, -1}};
 
 void dfs(int[][] grid, int i, int j) {
     int n = grid.length, m = grid[0].length;
-    
+
     grid[i][j] = -1;
     for (int[] dir : dirs) {
         int ni = i + dir[0];
         int nj = j + dir[1];
-        if (ni < 0 || ni >= n || 
+        if (ni < 0 || ni >= n ||
             nj < 0 || nj >= m ||
             grid[ni][nj] != 1) {
             continue;
@@ -125,4 +125,3 @@ void dfs(int[][] grid, int i, int j) {
     }
 }
 ```
-

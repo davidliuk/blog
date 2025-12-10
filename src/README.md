@@ -16,7 +16,9 @@ titles:
 
 I’m **Dawei Liu**, a Master’s student in **Computer and Information Science** (CIS) at the **University of Pennsylvania** (Class of 2026), with a B.E. in **Software Engineering** from **Northeastern University**.
 
-Currently, I’m an **SDE Intern** at **TikTok** (Shop Ads), working on **Ads delivery**, **recommendation infrastructure**, and **performance optimization** for large-scale distributed systems. Previously, I interned at **Amazon** and **JD.com**, contributing to observability frameworks, AI pipelines, and cloud-native deployment platforms. My work has been recognized with **2026 full-time return offers** from both **TikTok** and **Amazon**.
+Recently, I worked at **TikTok** (Shop Ads), where I joined as an SDE Intern and was converted to a **Software Engineer** within 12 weeks. During my **8**-month tenure, I worked on closed-loop Ads delivery, Image Selection with **exploration and exploitation** strategy, **Multimodal LLM-based** image understanding, **GenAI image** integration, and recommendation infrastructure optimization. 
+
+Previously, I contributed to **observability** frameworks as an SDE Intern at **Amazon**. I also optimized **AI** computing platform **infra** and **AIGC marketing** workflows as a Backend SDE Intern at **JD.com**.
 
 I’m passionate about building **scalable, efficient, and intelligent** systems at the intersection of **AI infrastructure** and **engineering excellence**, solving complex problems that push the boundaries of system performance and reliability.
 
@@ -61,10 +63,10 @@ I’m passionate about building **scalable, efficient, and intelligent** systems
 
 At TikTok, I focused on building **scalable and fault-tolerant recommendation infrastructure** for Commerce Ads. I designed and optimized systems to support **high-throughput, low-latency Ads delivery**, including a debugging and verfication framework for new ad formats, cache restructuring that improved stability under heavy traffic, and real-time Flink features for ranking and creative selection. My work directly enhanced the platform’s **resilience, efficiency, and rollout velocity** at global scale.
 
-- Built the Shop Ads **Image Selection** system, modeling image posterior features, applying **exploration–exploitation** ranking, and integrating **multimodal LLM**–based image quality evaluation, to serve high-performing images, driving a **20–30%** **advv** uplift.
-- Built a multi-strategy **AIGC** image generation pipeline, auto-triggering updates for incremental SPUs via delivery stream and running daily scheduling to improve the **top 90%** **cost**-contributing SPUs. Synced results to **TBase** and index service via **Flink**.
-- Built **Modular Preview Flow**, a framework enabling stage-level entity injection (Ad, Creative, SPU, Image) across all delivery funnel stages with **unified filtering log**, improving **debugging** and **verification** efficiency for new ad formats and region rollout.
-- Enhanced **product handler stability** by redesigning **cache mechanism** and applying **async batch fetching** with **Folly Future**, mitigating **80% of failure spikes** in high-traffic scenarios. Migrated online product value call to offline, reducing 13% latency.
+- Built the Shop Ads **Image Selection** system, modeling image posterior features, applying **exploration–exploitation** ranking, and integrating **multimodal LLM**–based image quality evaluation, to serve high-performing images, driving a **20%+** **advv** uplift.
+- Built a multi-strategy **AIGC** image generation pipeline, auto-producing for SPUs via delivery stream and running weekly scheduling to produce the **top 90%** **cost**-contributing SPUs. Synced images to **TBase** and updated index service via **Flink**.
+- Built **Modular Preview Flow**, a framework enabling stage-level entity injection (Ad, Creative, SPU, Image) across the delivery funnel with **unified filtering log**, improving **debugging** and **verification** efficiency for new ad formats and region rollouts.
+- Optimized **product handler stability** and **latency** by redesigning local **cache**, applying **async batch fetching** with **Folly Future**, and migrating online product value call to offline, reducing **43.6**% p99 latency and **80**% of failure spikes in high-traffic scenarios.
 
 ---
 
@@ -100,12 +102,12 @@ At JD.com, I worked on platform engineering for internal AI tooling. I redesigne
 
 ## 🛠️ Tech Stack
 
-- **Language**: Java, C/C++, Go, Python, JavaScript/TypeScript, HTML/CSS, Swift, SQL
-- **Backend**: Spring Framework, Guice, Coral, Thrift, Protobuf, MyBatis, MySQL, Redis, Kafka, RabbitMQ, ElasticSearch, OpenTelemetry
+- **Language**: C/C++, Java, Go, Python, JavaScript/TypeScript, HTML/CSS, SQL
+- **Backend**: Spring Framework, Guice, Coral, Thrift/Protobuf, MySQL, Redis, Kafka, RabbitMQ, ElasticSearch, OpenTelemetry
 - **Frontend**: React, Vue, Vite, ECharts, AWS UI, Arco Design; iOS: Swift, SwiftUI, ARKit
-- **AI/ML**: PyTorch, LLM (Transformer, RLHF, Token Pruning, CLIP), RecSys (ItemCF, Two-/Three-Tower, MTL)
+- **AI/ML**: A/B Testing, PyTorch, RecSys (ItemCF, Two-/Tri-Tower, EE strategy), LLM (Transformer, Token Pruning, CLIP)
 - **Graphics**: OpenGL, GLSL, Unity, Qt, Maya API (Plugin Development), Auto-Rigging (RigNet)
-- **DevOps**: Unix/Linux, Docker, Kubernetes, Helm, AWS (DynamoDB, Kinesis, S3, Load Balancer, CodePipeline, CDK)
+- **DevOps**: Unix/Linux, Docker, Kubernetes, Grafana, Helm, AWS (DynamoDB, Kinesis, SQS, S3, CDK, Lambda)
 - **Tools**: Git, Vim, SSH, CI/CD, Shell, Markdown, LaTeX, Mermaid, VuePress
 
 ---

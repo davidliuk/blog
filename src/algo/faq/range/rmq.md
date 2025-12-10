@@ -2,4 +2,3 @@
 
 - ST (Sparse Table)
 - Segment Tree
-

@@ -1,16 +1,15 @@
 # DFS
 
-局部传值
+- 局部传值：本质上是在传递从根到当前节点的路径（栈）上的信息。
 
-本质上是在传递从根到当前节点的路径（栈）上的信息。
+  - 有的是直接要栈本身或栈中的部分信息（比如祖父是谁）
 
-- 有的是直接要栈本身或栈中的部分信息（比如祖父是谁），
+    如，lc1315 祖父节点值为偶数的节点和
 
-  如，lc1315 祖父节点值为偶数的节点和
 
-- 有的是路径的聚合，比如路径上的最大值/最小值这些
+  - 有的是路径的聚合，比如路径上的最大值/最小值这些
 
-  如，
+- 全局传值：可与遍历顺序相关的，非父子传递的信息
 
 ### [366. Find Leaves of Binary Tree](https://leetcode.com/problems/find-leaves-of-binary-tree/)
 
@@ -21,7 +20,7 @@ Given the `root` of a binary tree, collect a tree's nodes as if you were doing t
 - Repeat until the tree is empty.
 
 ```java
-private int getHeight(TreeNode root, List<List<Integer>> results) {
+int getHeight(TreeNode root, List<List<Integer>> results) {
     // return -1 for null nodes
     if (root == null) {
         return -1;
@@ -42,7 +41,7 @@ private int getHeight(TreeNode root, List<List<Integer>> results) {
     return currHeight;
 }
 
-public List<List<Integer>> findLeaves(TreeNode root) {
+List<List<Integer>> findLeaves(TreeNode root) {
     List<List<Integer>> results = new ArrayList<>();
 
     getHeight(root, results);
@@ -83,5 +82,11 @@ void dfs(TreeNode root, int targetSum, Deque<Integer> path, List<List<Integer>> 
 
     path.pollLast();
 }
+```
+
+
+
+```java
+record TreeInfo(int min, int, max, int count) {}
 ```
 

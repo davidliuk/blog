@@ -331,7 +331,7 @@ int[][] intervalIntersection(int[][] list1, int[][] list2) {
         // 两个区间存在交集
         if (right2 >= left1 && right1 >= left2) {
             result.add(new int[]{
-                Math.max(left1, left2), 
+                Math.max(left1, left2),
                 Math.min(right1, right2)}
             );
         }

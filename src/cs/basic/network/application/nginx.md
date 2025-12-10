@@ -1,4 +1,4 @@
-# nginx
+# Nginx
 
 反向代理
 

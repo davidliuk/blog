@@ -1,7 +1,5 @@
 # LIS
 
-
-
 ### [300. 最长递增子序列](https://leetcode.cn/problems/longest-increasing-subsequence/)
 
 > 一维 LIS
@@ -78,7 +76,7 @@ public int lengthOfLIS(int[] nums, int k) {
     int ans = 0;
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < i; j++) {
-            if (nums[i] > nums[j] && 
+            if (nums[i] > nums[j] &&
                 nums[i] - nums[j] <= k) {
                 f[i] = Math.max(f[i], f[j]);
             }
@@ -144,8 +142,6 @@ int bestTeamScore(int[] scores, int[] ages) {
 }
 ```
 
-
-
 ```java
 int bestTeamScore(int[] scores, int[] ages) {
     int n = scores.length, maxAge = 0, ans = 0;
@@ -203,4 +199,3 @@ public int maxHeight(int[][] cuboids) {
     return ans;
 }
 ```
-

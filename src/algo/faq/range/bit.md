@@ -1,7 +1,7 @@
 # Binary Index Tree
 
 - 动态前缀和
-- 动态前缀Max
+- 动态前缀 Max
 
 ```java
 class FenwickTree {
@@ -49,4 +49,3 @@ class Solution {
 }
 
 ```
-

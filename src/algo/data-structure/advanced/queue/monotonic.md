@@ -1,13 +1,13 @@
-# Monotic Queue
+# Monotonic Queue
 
 单调队列模板
 
 ```java
-class MonoticDeque extends ArrayDeque<Integer> {
+class MonotonicDeque extends ArrayDeque<Integer> {
     BiPredicate<Integer, Integer> isValid;
     Optional<BiConsumer<Integer, Integer>> prev, next;
 
-    public MonoticDeque(BiPredicate<Integer, Integer> isValid) {
+    public MonotonicDeque(BiPredicate<Integer, Integer> isValid) {
         this.isValid = isValid;
     }
 

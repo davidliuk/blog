@@ -28,7 +28,7 @@ You are given an integer array `target`. You have an integer array `initial` of 
 
 In one operation you can choose **any** subarray from `initial` and increment each value by one.
 
-Return *the minimum number of operations to form a* `target` *array from* `initial`.
+Return _the minimum number of operations to form a_ `target` _array from_ `initial`.
 
 The test cases are generated so that the answer fits in a 32-bit integer.
 
@@ -55,7 +55,7 @@ The **power** of a city is the total number of power stations it is being provid
 
 The government has sanctioned building `k` more power stations, each of which can be built in any city, and have the same range as the pre-existing ones.
 
-Given the two integers `r` and `k`, return *the **maximum possible minimum power** of a city, if the additional power stations are built optimally.*
+Given the two integers `r` and `k`, return _the **maximum possible minimum power** of a city, if the additional power stations are built optimally._
 
 **Note** that you can build the `k` power stations in multiple cities.
 
@@ -93,4 +93,3 @@ long maxPower(int[] stations, int r, int k) {
     });
 }
 ```
-

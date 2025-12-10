@@ -4,7 +4,7 @@
 
 ## 1D
 
-`sufSum[i]`表示第i个元素到末尾的和
+`sufSum[i]`表示第 i 个元素到末尾的和
 
 ```java
 int[] sufSum = new int[n + 1];
@@ -25,4 +25,3 @@ for (int i = m - 1; i >= 0; i--) {
     }
 }
 ```
-
