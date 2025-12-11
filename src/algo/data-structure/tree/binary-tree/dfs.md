@@ -6,7 +6,6 @@
 
     如，lc1315 祖父节点值为偶数的节点和
 
-
   - 有的是路径的聚合，比如路径上的最大值/最小值这些
 
 - 全局传值：可与遍历顺序相关的，非父子传递的信息
@@ -52,7 +51,7 @@ List<List<Integer>> findLeaves(TreeNode root) {
 
 ### [113. Path Sum II](https://leetcode.com/problems/path-sum-ii/)
 
-Given the `root` of a binary tree and an integer `targetSum`, return *all **root-to-leaf** paths where the sum of the node values in the path equals* `targetSum`*. Each path should be returned as a list of the node **values**, not node references*.
+Given the `root` of a binary tree and an integer `targetSum`, return _all **root-to-leaf** paths where the sum of the node values in the path equals_ `targetSum`_. Each path should be returned as a list of the node **values**, not node references_.
 
 A **root-to-leaf** path is a path starting from the root and ending at any leaf node. A **leaf** is a node with no children.
 
@@ -84,9 +83,6 @@ void dfs(TreeNode root, int targetSum, Deque<Integer> path, List<List<Integer>> 
 }
 ```
 
-
-
 ```java
 record TreeInfo(int min, int, max, int count) {}
 ```
-
