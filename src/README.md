@@ -37,8 +37,30 @@ I’m passionate about building **scalable, efficient, and intelligent** systems
 
 ## 📚 Publications
 
-- [TIMEDB: tumor immune micro-environment cell composition database with automatic analysis and interactive visualization](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=lrHQxmkAAAAJ&citation_for_view=lrHQxmkAAAAJ:u5HHmVD_uO8C)
-- [A Data-Centric Taxonomy for 3D Vision: Linking Representations, Augmentation, and State-of-the-Art Learning Paradigms](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=lrHQxmkAAAAJ&citation_for_view=lrHQxmkAAAAJ:u-x6o8ySG0sC)
+<PublicationList>
+  <PublicationCard
+    title="TIMEDB: tumor immune micro-environment cell composition database with automatic analysis and interactive visualization"
+    :authors="['Xueying Wang','Lingxi Chen','Wei Liu','Yuanzheng Zhang','Dawei Liu','Chenxin Zhou','Shuai Shi','Jiajie Dong','Zhengtao Lai','Bingran Zhao','Wenjingyu Zhang','Haoyue Cheng','Shuaicheng Li']"
+    image="/publication/timedb.png"
+    venue="Nucleic Acids Research"
+    date="Jan 2023"
+    abstract="Deciphering the cell-type composition in the tumor immune microenvironment (TIME) can significantly increase the efficacy of cancer treatment and improve the prognosis of cancer. Such a task has benefited from microarrays and RNA sequencing technologies, resulting in extensive expression profiles with clinical phenotypes across multiple cancers. Current tools infer cell-type composition from bulk expression profiles, enabling investigation of inter- and intra-heterogeneity of TIME across cancer types. TIMEDB is an online database for human TIME cell-type composition estimated from bulk expression profiles, storing curated expression and composition profiles with clinical information for 39,706 samples from 546 datasets across 43 cancer types, equipped with online tools for automatic analysis and interactive visualization."
+    paper="https://doi.org/10.1093/nar/gkac1006"
+    website="https://timedb.deepomics.org"
+    github="https://github.com/deepomicslab/TIMEDB"
+  />
+
+<PublicationCard
+    title="A Data-Centric Taxonomy for 3D Vision: Linking Representations, Augmentation, and State-of-the-Art Learning Paradigms"
+    :authors="['Hongyang Du*','Runhao Li*','Dawei Liu*','Haoyuan Song','Qingyu Zhang','Yubo Wang','Jingcheng Ni','Shihang Gui','Congchao Dong','Tao Hu','Dang-Quang Tran']"
+    image="/publication/3dv.jpeg"
+    venue="Preprint"
+    date="Oct 2025"
+    abstract="3D vision has rapidly evolved with diverse data modalities, learning paradigms, and modeling strategies, yet remains fragmented across representations and benchmarks. This work provides a data-centric taxonomy connecting geometric representations, datasets, and learning frameworks, analyzing trade-offs among point clouds, meshes, voxels, implicit fields, and 3D Gaussians, and how benchmarks and supervision regimes shape advances like 2D-supervised 3D learning, implicit neural representations, and 4D world modeling. It clarifies relationships between representations and downstream applications in reconstruction, generation, and video modeling, offering a consolidated view toward efficiency–fidelity balance and multimodal geometric grounding."
+    paper="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=lrHQxmkAAAAJ&citation_for_view=lrHQxmkAAAAJ:u-x6o8ySG0sC"
+    github="https://github.com/Hongyang-Du/awesome-3d-datasets"
+  />
+</PublicationList>
 
 ---
 
@@ -48,25 +70,20 @@ I’m passionate about building **scalable, efficient, and intelligent** systems
   school="University of Pennsylvania"
   degree="M.S.E. in Computer and Information Science"
   time="Aug 2024 – May 2026"
-  logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/UPenn_shield_with_banner.svg/2560px-UPenn_shield_with_banner.svg.png">
-
-  <ul>
-    <li><strong>GPA:</strong> 3.88 / 4.00</li>
-    <li><strong>Honors:</strong> Hagan International Scholarship</li>
-  </ul>
-</EducationItem>
+  logo="/UPenn_logo.svg"
+  gpa="3.88 / 4.00"
+  :honors="['Hagan International Scholarship']"
+  major="Computer and Information Science" />
 
 <EducationItem
   school="Northeastern University"
   degree="B.E. in Software Engineering"
-  time="Sep 2020 – Aug 2024"
-  logo="https://upload.wikimedia.org/wikipedia/zh/thumb/f/f4/Northeastern_University_%28China%29_logo.svg/2560px-Northeastern_University_%28China%29_logo.svg.png">
-
-  <ul>
-    <li><strong>GPA:</strong> 3.95 / 4.00, <strong>Rank:</strong> top 1%</li>
-    <li><strong>Honors:</strong> National Scholarship (Top 1%), Outstanding Graduate, Annual Merit-based Scholarship</li>
-  </ul>
-</EducationItem>
+  time="Sep 2020 – Jul 2024"
+  logo="/NEU_logo.svg"
+  gpa="3.95 / 4.00"
+  :honors="['National Scholarship','Outstanding Graduate','Annual Merit-based Scholarship','Annual Outstanding Student']"
+  rank="Top 1%"
+  major="Software Engineering" />
 
 ---
 
@@ -141,31 +158,60 @@ At JD.com, I worked on platform engineering for internal AI tooling. I redesigne
 
 @tab Language
 
-- **Language**: C/C++, Java, Go, Python, JavaScript/TypeScript, SQL, HTML/CSS
+<TechGrid>
+  <TechCard title="General" :items="['C/C++','Java','Go']" badge-type="tip" />
+  <TechCard title="Scripting" :items="['Python','JavaScript','TypeScript']" />
+  <TechCard title="Data & Markup" :items="['SQL','HTML','CSS']" />
+</TechGrid>
 
 @tab Backend
 
-- **Backend**: Spring, Guice, Coral, Thrift/Protobuf, MySQL, Redis, Kafka, RabbitMQ, ElasticSearch, OpenTelemetry
+<TechGrid>
+  <TechCard title="Frameworks" :items="['Spring','Guice','Coral']" badge-type="tip" />
+  <TechCard title="RPC / IDL" :items="['Thrift','Protobuf']" />
+  <TechCard title="Storage" :items="['MySQL','Redis','ElasticSearch']" badge-type="warning" />
+  <TechCard title="Messaging" :items="['Kafka','RabbitMQ']" />
+  <TechCard title="Observability" :items="['OpenTelemetry']" />
+</TechGrid>
 
 @tab Frontend
 
-- **Frontend**: React, Vue, Vite, ECharts, AWS UI, Arco Design; iOS: Swift, SwiftUI, ARKit
+<TechGrid>
+  <TechCard title="Web" :items="['React','Vue','Vite']" badge-type="tip" />
+  <TechCard title="DataViz & UI" :items="['ECharts','AWS UI','Arco Design']" />
+  <TechCard title="iOS" :items="['Swift','SwiftUI','ARKit']" />
+</TechGrid>
 
 @tab AI / ML
 
-- **AI/ML**: PyTorch, RecSys (ItemCF, Two-/Tri-Tower, exploration–exploitation strategy), LLM (Transformer, Token Pruning, CLIP), A/B Testing
+<TechGrid>
+  <TechCard title="Frameworks" :items="['PyTorch']" badge-type="tip" />
+  <TechCard title="RecSys" :items="['ItemCF','Two-Tower','Tri-Tower','Exploration–Exploitation']" />
+  <TechCard title="LLM" :items="['Transformer','Token Pruning','CLIP']" />
+  <TechCard title="Experimentation" :items="['A/B Testing']" />
+</TechGrid>
 
 @tab Graphics
 
-- **Graphics**: OpenGL, GLSL, Unity, Qt, Maya API (Plugin Development), Auto-Rigging (RigNet)
+<TechGrid>
+  <TechCard title="Engine & Shader" :items="['OpenGL','GLSL','Unity']" badge-type="tip" />
+  <TechCard title="Toolkits" :items="['Qt','Maya API','RigNet']" />
+</TechGrid>
 
 @tab DevOps
 
-- **DevOps**: Unix/Linux, Docker, Kubernetes, Grafana, Helm, AWS (DynamoDB, Kinesis, SQS, S3, CDK, Lambda)
+<TechGrid>
+  <TechCard title="Platforms" :items="['Unix/Linux','Docker','Kubernetes']" badge-type="tip" />
+  <TechCard title="Observability & Ops" :items="['Grafana','Helm']" />
+  <TechCard title="AWS" :items="['DynamoDB','Kinesis','SQS','S3','CDK','Lambda']" />
+</TechGrid>
 
 @tab Tools
 
-- **Tools**: Git, Vim, SSH, CI/CD, Shell, Markdown, LaTeX, Mermaid, VuePress
+<TechGrid>
+  <TechCard title="Dev" :items="['Git','Vim','SSH','Shell']" badge-type="tip" />
+  <TechCard title="Docs & Diagrams" :items="['Markdown','LaTeX','Mermaid','VuePress']" />
+</TechGrid>
 
 :::
 

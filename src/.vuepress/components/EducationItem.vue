@@ -1,12 +1,28 @@
 <template>
   <div class="education-item-wrapper">
     <div class="edu-left">
-      <img :src="logo" class="edu-logo" :alt="school" />
-      <span class="edu-time">{{ time }}</span>
+      <img :src="logoSrc" class="edu-logo" :alt="school" />
     </div>
     <div class="edu-right">
-      <h3>{{ school }}</h3>
-      <p class="edu-degree">{{ degree }}</p>
+      <div class="edu-header">
+        <h3>{{ school }}</h3>
+        <span class="edu-time">{{ time }}</span>
+      </div>
+      <p class="edu-degree">
+        <abbr :title="degreeTitle">{{ degreeAbbr }}</abbr
+        ><span v-if="major"> · {{ major }}</span>
+      </p>
+      <div v-if="gpa || honorBadges.length" class="edu-meta">
+        <div v-if="gpa" class="edu-gpa-row">
+          <span>GPA: {{ gpa }}</span>
+          <Badge v-if="rank" :text="rank" type="tip" vertical="top" />
+        </div>
+        <div v-if="honorBadges.length" class="edu-honors-row">
+          <span v-for="(h, i) in honorBadges" :key="i" class="edu-honor"
+            ><Badge :text="h.text" :type="h.type"
+          /></span>
+        </div>
+      </div>
       <div class="edu-details">
         <slot></slot>
       </div>
@@ -15,13 +31,51 @@
 </template>
 
 <script setup lang="ts">
-// 定义组件接收的参数
-defineProps<{
+import { computed } from "vue";
+import { withBase } from "vuepress/client";
+
+const props = defineProps<{
   logo: string;
   school: string;
   time: string;
   degree: string;
+  gpa?: string;
+  honors?: string[];
+  major?: string;
+  rank?: string;
 }>();
+
+const honorBadges = computed(() => {
+  return (props.honors ?? []).map((t) => ({
+    text: t,
+    type: /Scholarship/i.test(t) ? "warning" : "tip",
+  }));
+});
+
+const degreeAbbr = computed(() => {
+  if (/M\.?S\.?E/i.test(props.degree) || /\bMSE\b/i.test(props.degree))
+    return "M.S.E.";
+  if (/B\.?E/i.test(props.degree) || /\bBE\b/i.test(props.degree)) return "B.E.";
+  return props.degree;
+});
+
+const degreeTitle = computed(() => {
+  if (degreeAbbr.value === "M.S.E.") return "Master of Science in Engineering";
+  if (degreeAbbr.value === "B.E.") return "Bachelor of Engineering";
+  return props.degree;
+});
+
+const major = computed(() => {
+  if (props.major) return props.major;
+  const m = props.degree.match(/in\s+(.+)/i);
+  return m ? m[1] : "";
+});
+
+const logoSrc = computed(() => {
+  if (!props.logo) return "";
+  if (/^(https?:)?\/\//.test(props.logo) || props.logo.startsWith("data:")) return props.logo;
+  return withBase(props.logo);
+});
 </script>
 
 <style scoped>
@@ -62,7 +116,7 @@ defineProps<{
   margin-bottom: 0.5rem;
   /* 确保图片在不同主题下显示正常 */
   background-color: transparent;
-  border-radius: 8px; 
+  border-radius: 8px;
 }
 
 .edu-time {
@@ -76,19 +130,53 @@ defineProps<{
   flex: 1;
 }
 
+.edu-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 0.2rem; }
+
 .edu-right h3 {
   margin-top: 0;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0;
   font-size: 1.2rem;
   border: none; /* 去掉可能存在的主题默认下划线 */
 }
 
 .edu-degree {
-  font-size: 1rem;
+  /* font-size: 1rem; */
   /* 使用 Theme Hope 的主题强调色 */
   color: var(--theme-color, #3eaf7c);
-  margin-bottom: 0.8rem;
+  margin-bottom: 0.3rem;
   font-weight: 500;
+}
+.edu-degree abbr { text-decoration: underline dotted; cursor: help; position: relative; }
+.edu-degree abbr:hover::after {
+  content: attr(title);
+  position: absolute;
+  left: 0;
+  top: 120%;
+  background: var(--bg-color, #fff);
+  color: var(--text-color, #333);
+  border: 1px solid var(--border-color, #eaecef);
+  border-radius: 6px;
+  padding: 6px 8px;
+  white-space: nowrap;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  z-index: 10;
+}
+
+.edu-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 0.6rem;
+}
+.edu-gpa-row { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+.edu-honors-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.edu-honor :deep(.badge) {
+  margin-right: 4px;
 }
 
 /* 针对插槽内容的样式优化 */
@@ -128,7 +216,7 @@ defineProps<{
   .edu-right {
     width: 100%;
   }
-  
+
   /* 手机端列表左对齐更好看 */
   .edu-details {
     text-align: left;
