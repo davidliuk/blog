@@ -137,13 +137,37 @@ At JD.com, I worked on platform engineering for internal AI tooling. I redesigne
 
 ## 🛠️ Tech Stack
 
+::: tabs
+
+@tab Language
+
 - **Language**: C/C++, Java, Go, Python, JavaScript/TypeScript, SQL, HTML/CSS
+
+@tab Backend
+
 - **Backend**: Spring, Guice, Coral, Thrift/Protobuf, MySQL, Redis, Kafka, RabbitMQ, ElasticSearch, OpenTelemetry
+
+@tab Frontend
+
 - **Frontend**: React, Vue, Vite, ECharts, AWS UI, Arco Design; iOS: Swift, SwiftUI, ARKit
+
+@tab AI / ML
+
 - **AI/ML**: PyTorch, RecSys (ItemCF, Two-/Tri-Tower, exploration–exploitation strategy), LLM (Transformer, Token Pruning, CLIP), A/B Testing
+
+@tab Graphics
+
 - **Graphics**: OpenGL, GLSL, Unity, Qt, Maya API (Plugin Development), Auto-Rigging (RigNet)
+
+@tab DevOps
+
 - **DevOps**: Unix/Linux, Docker, Kubernetes, Grafana, Helm, AWS (DynamoDB, Kinesis, SQS, S3, CDK, Lambda)
+
+@tab Tools
+
 - **Tools**: Git, Vim, SSH, CI/CD, Shell, Markdown, LaTeX, Mermaid, VuePress
+
+:::
 
 ---
 
