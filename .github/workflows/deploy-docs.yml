@@ -3,7 +3,6 @@ name: Blog Deployment
 on:
   push:
     branches:
-      # 确保这是你正在使用的分支名称
       - main
   workflow_dispatch:
 
@@ -12,46 +11,36 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
-          # 如果你文档需要 Git 子模块，取消注释下一行
-          # submodules: true
+        uses: actions/checkout@v4 # 升级到 v4
 
+      # 1. 安装 pnpm
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9 # 这里建议写 9，或者跟你本地 `pnpm -v` 保持一致的大版本
+
+      # 2. 设置 Node.js 并开启 pnpm 缓存
       - name: Setup Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4 # 升级到 v4
         with:
-          node-version: 18
-          cache: npm
-      
-      # 缓存 node_modules
-      - name: Cache node dependency
-        uses: actions/cache@v4
-        id: node-cache
-        with:
-          path: | # 缓存目录
-            **/node_modules
-            # ~/.npm
-          key: ${{ runner.os }}-cache-node-${{ hashFiles('**/package-lock.json') }} # 缓存的key
-          restore-keys: | # 恢复缓存时要去匹配的key
-            ${{ runner.os }}-cache-node-
-            # ${{ runner.os }}-cache-
+          node-version: 22 # 建议用 20 或 22，保持和你本地一致
+          cache: "pnpm"
 
-      # 如果缓存没有命中，安装依赖
-      - name: install
-        if: steps.node-cache.outputs.cache-hit != 'true'
-        run: npm install
+      # 3. 安装依赖
+      # --frozen-lockfile 表示：如果 lock 文件和 package.json 不匹配，直接报错
+      # 这样能强制保证 CI 环境和本地环境完全一致
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
-      - name: build
+      # 4. 构建
+      - name: Build
         env:
           NODE_OPTIONS: --max_old_space_size=8192
-        run: |-
-          npm run docs:build
-          # > src/.vuepress/dist/.nojekyll
+        run: pnpm run docs:build
 
-      - name: deploy
+      # 5. 部署
+      - name: Deploy
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          # 这是文档部署到的分支名称
           branch: gh-pages
           folder: src/.vuepress/dist
