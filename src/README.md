@@ -48,8 +48,8 @@ I’m passionate about building **scalable, efficient, and intelligent** systems
   school="University of Pennsylvania"
   degree="M.S.E. in Computer and Information Science"
   time="Aug 2024 – May 2026"
-  logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/UPenn_shield_with_banner.svg/2560px-UPenn_shield_with_banner.svg.png"
->
+  logo="https://upload.wikimedia.org/wikipedia/commons/thumb/9/92/UPenn_shield_with_banner.svg/2560px-UPenn_shield_with_banner.svg.png">
+
   <ul>
     <li><strong>GPA:</strong> 3.88 / 4.00</li>
     <li><strong>Honors:</strong> Hagan International Scholarship</li>
@@ -60,8 +60,8 @@ I’m passionate about building **scalable, efficient, and intelligent** systems
   school="Northeastern University"
   degree="B.E. in Software Engineering"
   time="Sep 2020 – Aug 2024"
-  logo="https://upload.wikimedia.org/wikipedia/zh/thumb/f/f4/Northeastern_University_%28China%29_logo.svg/2560px-Northeastern_University_%28China%29_logo.svg.png"
->
+  logo="https://upload.wikimedia.org/wikipedia/zh/thumb/f/f4/Northeastern_University_%28China%29_logo.svg/2560px-Northeastern_University_%28China%29_logo.svg.png">
+
   <ul>
     <li><strong>GPA:</strong> 3.95 / 4.00, <strong>Rank:</strong> top 1%</li>
     <li><strong>Honors:</strong> National Scholarship (Top 1%), Outstanding Graduate, Annual Merit-based Scholarship</li>

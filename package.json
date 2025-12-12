@@ -12,6 +12,7 @@
   "devDependencies": {
     "@vue/repl": "^4.7.1",
     "@vuepress/bundler-vite": "2.0.0-rc.26",
+    "@vuepress/plugin-icon": "2.0.0-rc.68",
     "@vuepress/plugin-pwa": "2.0.0-rc.120",
     "@vuepress/plugin-register-components": "2.0.0-rc.118",
     "echarts": "^6.0.0",

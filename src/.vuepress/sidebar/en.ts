@@ -1,98 +1,132 @@
 import { sidebar } from "vuepress-theme-hope";
 
 export const enSidebar = sidebar({
+  // =========================
+  // Algorithm 算法模块
+  // =========================
   "/algo/": [
-    "",
+    "", // README.md
     {
-      text: "框架",
-      icon: "note",
+      text: "Framework",
+      icon: "cubes", // 对应 Navbar 的 Framework
       prefix: "framework/",
       children: "structure",
     },
     {
-      text: "总结",
-      icon: "note",
-      prefix: "summary/",
+      text: "Data Structure",
+      icon: "layer-group", // 对应 Navbar 的 Data Structure
+      prefix: "data-structure/",
       children: "structure",
     },
     {
-      text: "高频题",
-      icon: "note",
+      text: "Search",
+      icon: "magnifying-glass", // 对应 Navbar 的 Search
+      prefix: "search/",
+      children: "structure",
+    },
+    {
+      text: "Optimization",
+      icon: "gauge-high", // 对应 Navbar 的 Optimization
+      prefix: "optimization/",
+      children: "structure",
+    },
+    {
+      text: "FAQ",
+      icon: "circle-question", // 对应 Navbar 的 FAQ
       prefix: "faq/",
       children: "structure",
     },
   ],
-  "/cs/basic/": "structure",
-  "/cs/database/redis/": "structure",
-  "/cs/database/mysql/": [
+
+  // =========================
+  // CS Core & Design
+  // =========================
+  "/cs/core/": "structure",   // 自动生成 Network 和 OS 的侧边栏
+  "/cs/design/": "structure", // 自动生成 Design Pattern 等侧边栏
+
+  // =========================
+  // SE - Database (MySQL)
+  // =========================
+  // 注意：Navbar 中路径是 /se/database/mysql/，这里必须匹配
+  "/se/database/mysql/": [
     "",
     {
-      text: "事务",
-      icon: "note",
+      text: "Transaction", // 事务
+      icon: "arrow-right-arrow-left", // 交换/事务图标
       prefix: "transaction/",
       children: "structure",
     },
     {
-      text: "索引",
-      icon: "note",
+      text: "Index", // 索引
+      icon: "list-ol", // 列表/索引图标
       prefix: "index/",
       children: "structure",
     },
     {
-      text: "引擎",
-      icon: "note",
+      text: "Engine", // 引擎
+      icon: "gears", // 齿轮/引擎图标
       prefix: "engine/",
       children: "structure",
     },
     {
-      text: "锁",
-      icon: "note",
+      text: "Lock", // 锁
+      icon: "lock", // 锁图标
       prefix: "lock/",
       children: "structure",
     },
     {
-      text: "日志",
-      icon: "note",
+      text: "Log", // 日志
+      icon: "file-lines", // 文件行/日志图标
       prefix: "log/",
       children: "structure",
     },
   ],
+
+  // =========================
+  // SE - Database (Redis)
+  // =========================
+  "/se/database/redis/": "structure",
+
+  // =========================
+  // SE - Other Modules
+  // =========================
   "/se/lang/java/": "structure",
-  "/se/framework/": "structure",
-  "/se/devops/": "structure",
-  "/se/design/": "structure",
   "/se/tools/": "structure",
+  
+  // =========================
+  // SE - DevOps (Unix)
+  // =========================
   "/se/devops/unix/": [
     "",
     {
-      text: "UNIX 基础",
-      icon: "note",
+      text: "Basics", // UNIX 基础
+      icon: "terminal", // 终端图标
       prefix: "basic/",
-      // link: "basic/",
       children: "structure",
     },
     {
-      text: "Availability 可用性",
-      icon: "note",
+      text: "Availability", // 可用性
+      icon: "heart-pulse", // 心跳/高可用图标
       prefix: "availability/",
-      // link: "availability/",
       children: "structure",
     },
   ],
+
+  // =========================
+  // Tests (TOEFL / GRE)
+  // =========================
   "/test/": [
     "",
     {
-      text: "GRE",
-      icon: "note",
-      prefix: "GRE/",
-      link: "GRE/",
+      text: "TOEFL",
+      icon: "language",
+      prefix: "TOEFL/",
       children: "structure",
     },
     {
-      text: "TOEFL",
-      icon: "note",
-      prefix: "TOEFL/",
-      link: "TOEFL/",
+      text: "GRE",
+      icon: "scroll",
+      prefix: "GRE/",
       children: "structure",
     },
   ],
