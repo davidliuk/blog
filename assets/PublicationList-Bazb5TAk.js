@@ -1,0 +1,1 @@
+import{_ as o}from"./plugin-vue_export-helper-DlAUqK2U.js";import{c as t,o as r,r as s}from"./app-BZLta1H5.js";const c={},n={class:"pub-grid"};function a(e,i){return r(),t("div",n,[s(e.$slots,"default")])}const d=o(c,[["render",a]]);export{d as default};
