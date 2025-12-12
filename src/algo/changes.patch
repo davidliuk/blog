@@ -1,0 +1,1520 @@
+diff -r -x .DS_Store -u optimise/decrease-conquer/2ptr/opposite/README.md patterns/optimise/decrease-conquer/2ptr/opposite/README.md
+--- optimise/decrease-conquer/2ptr/opposite/README.md	2025-11-27 15:11:17
++++ patterns/optimise/decrease-conquer/2ptr/opposite/README.md	2025-12-02 15:11:23
+@@ -1,4 +1,4 @@
+-# 逆向双指针
++# 相向双指针
+ 
+ lc1 Two Sum
+ 
+@@ -25,40 +25,6 @@
+     }
+     
+     return new int[0];
+-}
+-```
+-
+-### [349. Intersection of Two Arrays](https://leetcode.com/problems/intersection-of-two-arrays/)
+-
+-Given two integer arrays `nums1` and `nums2`, return *an array of their intersection*. Each element in the result must be **unique** and you may return the result in **any order**.
+-
+-```java
+-int[] intersection(int[] nums1, int[] nums2) {
+-    Arrays.sort(nums1);
+-    Arrays.sort(nums2);
+-
+-    Set<Integer> intersection = new HashSet<>();
+-
+-    int i = 0, j = 0;
+-    while (i < nums1.length && j < nums2.length) {
+-        if (nums1[i] == nums2[j]) {
+-            intersection.add(nums1[i++]);
+-            j++;
+-        } else if (nums1[i] < nums2[j]) {
+-            i++;
+-        } else {
+-            j++;
+-        }
+-    }
+-
+-    int[] result = new int[intersection.size()];
+-    int k = 0;
+-    for (int x: intersection) {
+-        result[k++] = x;
+-    }
+-
+-    // Return the result
+-    return result;
+ }
+ ```
+ 
+Only in optimise/decrease-conquer/2ptr/parallel: operation.md
+Only in optimise/decrease-conquer/2ptr/window: freq.md
+diff -r -x .DS_Store -u optimise/decrease-conquer/README.md patterns/optimise/decrease-conquer/README.md
+--- optimise/decrease-conquer/README.md	2025-11-22 23:40:16
++++ patterns/optimise/decrease-conquer/README.md	2025-12-09 10:11:07
+@@ -22,7 +22,7 @@
+     - 线段树
+     - 分块树
+ 
+-**删除有序**：每次减的不一定
++**删除有序**：每次减的不一定，删除特定元素后有序
+ 
+ - 单调栈
+ - 单调队列
+Only in optimise/decrease-conquer: delete
+diff -r -x .DS_Store -u optimise/decrease-conquer/greedy/区间.md patterns/optimise/decrease-conquer/greedy/区间.md
+--- optimise/decrease-conquer/greedy/区间.md	2025-11-23 20:57:10
++++ patterns/optimise/decrease-conquer/greedy/区间.md	2025-12-02 15:11:23
+@@ -36,42 +36,3 @@
+ 
+ `a ASC`
+ 
+-## 跳跃游戏
+-
+-### [45. Jump Game II](https://leetcode.com/problems/jump-game-ii/)
+-
+-```java
+-public int jump(int[] nums) {
+-    int n = nums.length;
+-    int ans = 0;
+-    int prevIdx = 0, lastIdx = 0;
+-    for (int i = 0; i < n; i++) {
+-        if (i > lastIdx) {
+-            return -1;
+-        }
+-        lastIdx = Math.max(lastIdx, i + nums[i]);
+-        if (i != n - 1 && i == prevIdx) {
+-            ans++;
+-            prevIdx = lastIdx;
+-        }
+-    }
+-    return ans;
+-}
+-```
+-
+-### [55. Jump Game](https://leetcode.com/problems/jump-game/)
+-
+-```java
+-public boolean canJump(int[] nums) {
+-    int n = nums.length;
+-    int lastIdx = 0;
+-    for (int i = 0; i < n; i++) {
+-        if (i > lastIdx) {
+-            return false;
+-        }
+-        lastIdx = Math.max(lastIdx, i + nums[i]);
+-    }
+-    return true;
+-}
+-```
+-
+diff -r -x .DS_Store -u optimise/decrease-conquer/greedy/序列.md patterns/optimise/decrease-conquer/greedy/序列.md
+--- optimise/decrease-conquer/greedy/序列.md	2025-11-27 15:18:07
++++ patterns/optimise/decrease-conquer/greedy/序列.md	2025-12-02 15:11:23
+@@ -1,45 +0,0 @@
+-
+-
+-### [2332. The Latest Time to Catch a Bus](https://leetcode.com/problems/the-latest-time-to-catch-a-bus/)
+-
+-You are given a **0-indexed** integer array `buses` of length `n`, where `buses[i]` represents the departure time of the `ith` bus. You are also given a **0-indexed** integer array `passengers` of length `m`, where `passengers[j]` represents the arrival time of the `jth` passenger. All bus departure times are unique. All passenger arrival times are unique.
+-
+-You are given an integer `capacity`, which represents the **maximum** number of passengers that can get on each bus.
+-
+-When a passenger arrives, they will wait in line for the next available bus. You can get on a bus that departs at `x` minutes if you arrive at `y` minutes where `y <= x`, and the bus is not full. Passengers with the **earliest** arrival times get on the bus first.
+-
+-More formally when a bus arrives, either:
+-
+-- If `capacity` or fewer passengers are waiting for a bus, they will **all** get on the bus, or
+-- The `capacity` passengers with the **earliest** arrival times will get on the bus.
+-
+-Return *the latest time you may arrive at the bus station to catch a bus*. You **cannot** arrive at the same time as another passenger.
+-
+-**Note:** The arrays `buses` and `passengers` are not necessarily sorted.
+-
+-```java
+-int latestTimeCatchTheBus(int[] buses, int[] passengers, int capacity) {
+-    Arrays.sort(buses);
+-    Arrays.sort(passengers);
+-    int pos = 0;
+-    int space = 0;
+-
+-    for (int arrive : buses) {
+-        space = capacity;
+-        while (space > 0 && pos < passengers.length && passengers[pos] <= arrive) {
+-            space--;
+-            pos++;
+-        }
+-    }
+-
+-    pos--;
+-    int lastCatchTime = space > 0 ? buses[buses.length - 1] : passengers[pos];
+-    while (pos >= 0 && passengers[pos] == lastCatchTime) {
+-        pos--;
+-        lastCatchTime--;
+-    }
+-
+-    return lastCatchTime;
+-}
+-```
+-
+Only in optimise/decrease-conquer/greedy: 最大.md
+Only in optimise/decrease-conquer/kptr: 3ptr.md
+diff -r -x .DS_Store -u optimise/decrease-conquer/kptr/README.md patterns/optimise/decrease-conquer/kptr/README.md
+--- optimise/decrease-conquer/kptr/README.md	2025-11-28 02:32:32
++++ patterns/optimise/decrease-conquer/kptr/README.md	2025-12-02 15:11:23
+@@ -73,57 +73,3 @@
+ 每次移动某一个最优的指针，在任意n轮操作时，堆中的元素始终是这k个序列中n轮操作时的最优切面（比较抽象但是可以通过最小区间问题来理解）
+ 
+ 队列中
+-
+-### [373. Find K Pairs with Smallest Sums](https://leetcode.com/problems/find-k-pairs-with-smallest-sums/)
+-
+-You are given two integer arrays `nums1` and `nums2` sorted in **non-decreasing order** and an integer `k`.
+-
+-Define a pair `(u, v)` which consists of one element from the first array and one element from the second array.
+-
+-Return *the* `k` *pairs* `(u1, v1), (u2, v2), ..., (uk, vk)` *with the smallest sums*.
+-
+-```java
+-// 使用 record 定义堆中的元素，包含 sum 以避免重复计算
+-private record Node(int sum, int i, int j) implements Comparable<Node> {
+-    @Override
+-    public int compareTo(Node other) {
+-        return Integer.compare(this.sum, other.sum);
+-    }
+-}
+-
+-public List<List<Integer>> kSmallestPairs(int[] nums1, int[] nums2, int k) {
+-    List<List<Integer>> ans = new ArrayList<>();
+-    int m = nums1.length;
+-    int n = nums2.length;
+-
+-    // 边界检查
+-    if (m == 0 || n == 0 || k == 0) {
+-        return ans;
+-    }
+-
+-    // 优先级队列
+-    PriorityQueue<Node> minHeap = new PriorityQueue<>();
+-
+-    // 优化点 1：只初始化 nums1 的前 k 个元素与 nums2[0] 的组合
+-    // 这样避免了后续复杂的去重逻辑
+-    // 注意：如果 m > k，我们只需要前 k 行，因为第 k+1 行的最小值肯定比前 k 行大
+-    for (int i = 0; i < Math.min(m, k); i++) {
+-        minHeap.offer(new Node(nums1[i] + nums2[0], i, 0));
+-    }
+-
+-    // 主循环
+-    while (k-- > 0 && !minHeap.isEmpty()) {
+-        Node top = minHeap.poll();
+-        ans.add(List.of(nums1[top.i], nums2[top.j]));
+-
+-        // 优化点 2：出队 (i, j) 后，只将 (i, j+1) 入队
+-        // 这种策略保证了每个节点只被访问一次，无需 visited set
+-        if (top.j + 1 < n) {
+-            minHeap.offer(new Node(nums1[top.i] + nums2[top.j + 1], top.i, top.j + 1));
+-        }
+-    }
+-
+-    return ans;
+-}
+-```
+-
+diff -r -x .DS_Store -u optimise/dynamic-programming/区间/区间型.md patterns/optimise/dynamic-programming/区间/区间型.md
+--- optimise/dynamic-programming/区间/区间型.md	2025-12-08 14:52:32
++++ patterns/optimise/dynamic-programming/区间/区间型.md	2025-12-02 15:11:23
+@@ -37,7 +37,7 @@
+ 1. i 倒着循环，j 正着循环
+ 2. 先循环区间长度，加再循环区间起点
+ 
+-## 匹配类/端点
++## 端点类
+ 
+ 判断回文子串
+ 
+@@ -51,10 +51,6 @@
+ 
+ ---
+ 
+-### [5. Longest Palindromic Substring](https://leetcode.com/problems/longest-palindromic-substring/)
+-
+-Given a string `s`, return *the longest* *palindromic* *substring* in `s`.
+-
+ LPS 最长回文子串（substring需要连续）
+ 
+ 状态：`f[i][j]`表示 i,j 这一段是回文串
+@@ -65,48 +61,8 @@
+ 
+ 答案：更新时最长的段
+ 
+-```java
+-public String longestPalindrome(String s) {
+-    if (s == null || s.length() < 2) {
+-        return s;
+-    }
+-
+-    int n = s.length();
+-    int maxLen = 1, begin = 0;
+-
+-    // dp[i][j] 表示 s[i..j] 是否是回文串
+-    boolean[][] dp = new boolean[n][n];
+-
+-    // i 从字符串末尾开始向前遍历
+-    for (int i = n - 1; i >= 0; i--) {
+-        // j 从 i 开始向后遍历
+-        for (int j = i; j < n; j++) {
+-
+-            // 2长度较短(<=3) 或者 内部子串也是回文
+-            if (s.charAt(i) == s.charAt(j)) {
+-                if (j - i < 3 || dp[i + 1][j - 1]) {
+-                    dp[i][j] = true;
+-                    if (j - i + 1 > maxLen) {
+-                        maxLen = j - i + 1;
+-                        begin = i;
+-                    }
+-                }
+-            }
+-        }
+-    }
+-
+-    return s.substring(begin, begin + maxLen);
+-}
+-```
+-
+ ---
+ 
+-### [516. Longest Palindromic Subsequence](https://leetcode.com/problems/longest-palindromic-subsequence/)
+-
+-Given a string `s`, find *the longest palindromic **subsequence**'s length in* `s`.
+-
+-A **subsequence** is a sequence that can be derived from another sequence by deleting some or no elements without changing the order of the remaining elements.
+-
+ LPS 最长回文子序
+ 
+ 状态：`f[i][j]`表示 i,j 这一段的最长回文子序列的长度
+@@ -121,116 +77,29 @@
+ 
+ 加找最优解，加`pi[i][j]`数组，记录这个位置做的选择，0:干嘛，1:干嘛，3:干嘛
+ 
+-```java
+-public int longestPalindromeSubseq(String s) {
+-    int n = s.length();
+-    int[][] dp = new int[n][n];
++## 断点类
+ 
+-    for (int i = n - 1; i >= 0; i--) {
+-        dp[i][i] = 1;
+-        for (int j = i + 1; j < n; j++) {
+-            if (s.charAt(i) == s.charAt(j)) {
+-                dp[i][j] = dp[i + 1][j - 1] + 2;
+-            } else {
+-                dp[i][j] = Math.max(dp[i + 1][j], dp[i][j - 1]);
+-            }
+-        }
+-    }
+-
+-    return dp[0][n - 1];
+-}
+-```
+-
+-### [730. Count Different Palindromic Subsequences](https://leetcode.com/problems/count-different-palindromic-subsequences/)
+-
+-Given a string s, return *the number of different non-empty palindromic subsequences in* `s`. Since the answer may be very large, return it **modulo** `109 + 7`.
+-
+-A subsequence of a string is obtained by deleting zero or more characters from the string.
+-
+-A sequence is palindromic if it is equal to the sequence reversed.
+-
+-Two sequences `a1, a2, ...` and `b1, b2, ...` are different if there is some `i` for which `ai != bi`.
+-
+-```java
+-int MOD = (int) 1e9 + 7;
+-
+-public int countPalindromicSubsequences(String s) {
+-    char[] cs = s.toCharArray();
+-    int n = cs.length;
+-    int[][] f = new int[n][n];
+-
+-    int[] L = new int[4], R = new int[4];
+-    Arrays.fill(L, -1);
+-    for (int i = n - 1; i >= 0; i--) {
+-        L[cs[i] - 'a'] = i;
+-        Arrays.fill(R, -1);
+-
+-        for (int j = i; j < n; j++) {
+-            R[cs[j] - 'a'] = j;
+-            for (int k = 0; k < 4; k++) {
+-                if (L[k] == -1 || R[k] == -1)
+-                    continue;
+-                int l = L[k], r = R[k];
+-                if (l == r)
+-                    f[i][j] = (f[i][j] + 1) % MOD;
+-                else if (l == r - 1)
+-                    f[i][j] = (f[i][j] + 2) % MOD;
+-                else
+-                    f[i][j] = (f[i][j] + f[l + 1][r - 1] + 2) % MOD;
+-            }
+-        }
+-    }
+-
+-    return f[0][n - 1];
+-}
+-```
+-
+-## 分割类/合并/断点
+-
+-Matrix Chain Pattern
+-
+-最典型的区间 DP，复杂度通常为 $O(N^3)$ 。 
+-
+-**核心逻辑**：我想解决区间 $[i, j]$ 的问题，必须在中间切一刀（枚举 $k$），把它分成 $[i, k]$ 和 $[k+1, j]$ 两部分，然后合并。这本质上就是**记忆化的分治**。
+-
+-$$DP[i][j] = \max/\min_k (DP[i][k] + DP[k+1][j] + \text{MergeCost})$$
+-
+ On3 Floyd
+ 
+-### [1039. Minimum Score Triangulation of Polygon](https://leetcode.com/problems/minimum-score-triangulation-of-polygon/)
++石子归并游戏
+ 
+-状态：`f[i][j]`表示剖分ij之间的节点的最小score
++> 每次合并2堆，本次合并的费用是这一堆重量的综合
+ 
+-转移：`f[i][j]=f[i][k]+f[k][j]+a[i]*a[k]*a[j]`
++状态：`f[i][j]`表示合并i到j的最小花费
+ 
+-```java
+-public int minScoreTriangulation(int[] values) {
+-    int n = values.length;
+-    int[][] f = new int[n][n];
++转移：`f[i][j]=min{f[i][k] + f[k+1][j]}+sum(i,j), i<=k<j`
+ 
+-    for (int i = n - 3; i >= 0; i--) {
+-        for (int j = i + 2; j < n; j++) {
+-            f[i][j] = Integer.MAX_VALUE;
+-            for (int k = i + 1; k < j; k++) {
+-                f[i][j] = Math.min(f[i][j], f[i][k] + f[k][j] + values[i] * values[j] * values[k]);
+-            }
+-        }
+-    }
++边界：`f[i][i]=0`
+ 
+-    return f[0][n - 1];
+-}
+-```
++答案：`f[0][n-1]`
+ 
+-### [1000. Minimum Cost to Merge Stones](https://leetcode.com/problems/minimum-cost-to-merge-stones/)
++---
+ 
+-There are `n` piles of `stones` arranged in a row. The `ith` pile has `stones[i]` stones.
++合并石头的最低成本
+ 
+-A move consists of merging exactly `k` **consecutive** piles into one pile, and the cost of this move is equal to the total number of stones in these `k` piles.
++>一条直线上有 N 堆石头，每次可以合并连续的 K 堆石头，代价是 K 堆石头之和，问最终需要合并成一堆的最小代价之和,lc1000
++>
+ 
+-Return *the minimum cost to merge all piles of stones into one pile*. If it is impossible, return `-1`.
+-
+-> 一条直线上有 N 堆石头，每次可以合并连续的 K 堆石头，代价是 K 堆石头之和，问最终需要合并成一堆的最小代价之和
+-
+ 状态：`f[i][j][k]`表示i到j这一段合并为k堆石子的最小代价
+ 
+ 转移：`f[i][j][k]=min{f[i][x][k-1]+f[x][j][1]}+sum(i,j)`
+@@ -247,38 +116,9 @@
+ 
+ > 四边形优化
+ 
+-```java
+-public int mergeStones(int[] stones, int m) {
+-    int n = stones.length;
+-    if ((n - 1) % (m - 1) != 0) {
+-        return -1;
+-    }
+-    int[][] f = new int[n][n];
+-
+-    int[] preSum = new int[n + 1];
+-    for (int i = 0; i < n; i++) {
+-        preSum[i + 1] = preSum[i] + stones[i];
+-    }
+-
+-    for (int i = n - 1; i >= 0; i--) {
+-        for (int j = i + 1; j < n; j++) {
+-            f[i][j] = Integer.MAX_VALUE;
+-            for (int k = i; k < j; k += m - 1) {
+-                f[i][j] = Math.min(f[i][j], f[i][k] + f[k + 1][j]);
+-            }
+-            if ((j - i) % (m - 1) == 0) {
+-                f[i][j] += preSum[j + 1] - preSum[i];
+-            }
+-        }
+-    }
+-
+-    return f[0][n - 1];
+-}
+-```
+-
+ ---
+ 
+-### [312. Burst Balloons](https://leetcode.com/problems/burst-balloons/)
++Burst Balloons 爆气球
+ 
+ > 需要在数组前后各加1
+ 
+@@ -300,48 +140,13 @@
+ 
+ ---
+ 
+-### [1547. Minimum Cost to Cut a Stick](https://leetcode.com/problems/minimum-cost-to-cut-a-stick/)
++切棍子的最小成本
+ 
+-Given a wooden stick of length `n` units. The stick is labelled from `0` to `n`. For example, a stick of length **6** is labelled as follows:
+-
+-![img](https://assets.leetcode.com/uploads/2020/07/21/statement.jpg)
+-
+-Given an integer array `cuts` where `cuts[i]` denotes a position you should perform a cut at.
+-
+-You should perform the cuts in order, you can change the order of the cuts as you wish.
+-
+-The cost of one cut is the length of the stick to be cut, the total cost is the sum of costs of all cuts. When you cut a stick, it will be split into two smaller sticks (i.e. the sum of their lengths is the length of the stick before the cut). Please refer to the first example for a better explanation.
+-
+-Return *the minimum total cost* of the cuts.
+-
+ 状态：`dp[i][j]`表示戳爆 i和j之间所有气球之后(含i,j)的最大积分
+ 
+ 转移：`dp[i][j] = min{dp[i][k-1] + dp[k+1][j]} + nums[j+1] - nums[i-1]} i<k<j`
+ 
+ 边界：
+-
+-```java
+-public int minCost(int n, int[] cuts) {
+-    int len = cuts.length;
+-    Arrays.sort(cuts);
+-    int[] vals = new int[len + 2];
+-    vals[len + 1] = n;
+-    System.arraycopy(cuts, 0, vals, 1, len);
+-
+-    int[][] f = new int[len + 2][len + 2];
+-    for (int i = len; i > 0; i--) {
+-        f[i][i] = vals[i + 1] - vals[i - 1];
+-        for (int j = i + 1; j <= len; j++) {
+-            f[i][j] = Integer.MAX_VALUE;
+-            for (int k = i; k <= j; k++) {
+-                f[i][j] = Math.min(f[i][j], f[i][k - 1] + f[k + 1][j]);
+-            }
+-            f[i][j] += vals[j + 1] - vals[i - 1];
+-        }
+-    }
+-    return f[1][len];
+-}
+-```
+ 
+ ---
+ 
+diff -r -x .DS_Store -u optimise/dynamic-programming/坐标/2d.md patterns/optimise/dynamic-programming/坐标/2d.md
+--- optimise/dynamic-programming/坐标/2d.md	2025-11-30 17:20:33
++++ patterns/optimise/dynamic-programming/坐标/2d.md	2025-12-02 15:11:23
+@@ -101,7 +101,7 @@
+ 
+ 174 地下城游戏
+ 
+-状态：`f[i][j]`表示从 i,j 到 n-1, m-1 的最小HP
++状态：`f[i][j]`表示从i,j到n-1,m-1的最小HP
+ 
+ 转移：`f[i][j]=max{1,max{f[i+1][j],f[i][j+1]}-grid[i][j]}`
+ 
+@@ -127,7 +127,7 @@
+ 
+ 3148 矩阵中的最大得分
+ 
+-状态：`f[i][j]`表示以坐标 i,j 结尾的最大分数
++状态：`f[i][j]`表示以坐标i,j结尾的最大分数
+ 
+ 转移：`f[i][j]=grid[i][j]+Math.max(Math.max(0,f[i-1][j])-grid[i-1][j], Math.max(0,f[i][j-1])-grid[i][j-1])`
+ 
+@@ -152,66 +152,6 @@
+ 转移：`f[i][j][(k + grid[i][j]%k)]=(f[i-1][j][k]+f[i][j-1][k])%mod`
+ 
+ 答案：`f[m-1][n-1][0]`
+-
+-## 多人型
+-
+-摘樱桃
+-
+-`f[t][j][k]` 表示时刻t，第一个人在第j列，第二个人在第k列
+-
+-```java
+-public int cherryPickup(int[][] grid) {
+-    int n = grid.length;
+-    int[][][] f = new int[n * 2 - 1][n + 1][n + 1];
+-    for (int[][] m : f) {
+-        for (int[] r : m) {
+-            Arrays.fill(r, Integer.MIN_VALUE);
+-        }
+-    }
+-    f[0][1][1] = grid[0][0];
+-    for (int t = 1; t < n * 2 - 1; t++) {
+-        for (int j = Math.max(t - n + 1, 0); j <= Math.min(t, n - 1); j++) {
+-            if (grid[t - j][j] < 0) continue;
+-            for (int k = j; k <= Math.min(t, n - 1); k++) {
+-                if (grid[t - k][k] < 0) continue;
+-                f[t][j + 1][k + 1] = Math.max(f[t - 1][j + 1][k + 1], 
+-                    Math.max(f[t - 1][j + 1][k], Math.max(f[t - 1][j][k + 1], f[t - 1][j][k]))
+-                ) + grid[t - j][j] + (k != j ? grid[t - k][k] : 0);
+-            }
+-        }
+-    }
+-    return Math.max(f[n * 2 - 2][n][n], 0);
+-}
+-```
+-
+-摘樱桃 II
+-
+-```java
+-public int cherryPickup(int[][] grid) {
+-    int m = grid.length;
+-    int n = grid[0].length;
+-    int[][][] f = new int[m + 1][n + 2][n + 2];
+-    for (int i = m - 1; i >= 0; i--) {
+-        for (int j = 0; j < Math.min(n, i + 1); j++) {
+-            for (int k = Math.max(j + 1, n - 1 - i); k < n; k++) {
+-                f[i][j + 1][k + 1] = max(
+-                    f[i + 1][j][k], f[i + 1][j][k + 1], f[i + 1][j][k + 2],
+-                    f[i + 1][j + 1][k], f[i + 1][j + 1][k + 1], f[i + 1][j + 1][k + 2],
+-                    f[i + 1][j + 2][k], f[i + 1][j + 2][k + 1], f[i + 1][j + 2][k + 2]
+-                ) + grid[i][j] + grid[i][k];
+-            }
+-        }
+-    }
+-    return f[0][1][n];
+-}
+-
+-private int max(int x, int... y) {
+-    for (int v : y) {
+-        x = Math.max(x, v);
+-    }
+-    return x;
+-}
+-```
+ 
+ 
+ 
+diff -r -x .DS_Store -u optimise/dynamic-programming/坐标/坐标型.md patterns/optimise/dynamic-programming/坐标/坐标型.md
+--- optimise/dynamic-programming/坐标/坐标型.md	2025-11-30 17:08:57
++++ patterns/optimise/dynamic-programming/坐标/坐标型.md	2025-12-02 15:11:23
+@@ -18,7 +18,7 @@
+ - 个数
+ - 是否存在
+ 
+-## 基础
++## 一维型
+ 
+ fibonacci 数列
+ 
+@@ -264,9 +264,9 @@
+ 
+ 答案：`max{f[i][1]}`
+ 
+-#### **32 最长有效括号**
++**32 最长有效括号**
+ 
+-状态：`dp[i]` 表示以i结尾的最长合法括号子串长度
++状态：`dp[i]`表示以i结尾的最长合法括号子串长度
+ 
+ 转移：
+ 
+@@ -274,8 +274,8 @@
+ if (s.charAt(i) == ')') {
+     if (s.charAt(i - 1) == '(') {
+         dp[i] = (i >= 2 ? dp[i - 2] : 0) + 2;
+-    } else if (i - dp[i - 1] - 1 >= 0 && s.charAt(i - dp[i - 1] - 1) == '(') {
+-        dp[i] = dp[i - 1] + 2 + (i - dp[i - 1] >= 2 ? dp[i - dp[i - 1] - 2] : 0);
++    } else if (i - dp[i - 1] >= 1 && s.charAt(i - dp[i - 1] - 1) == '(') {
++        dp[i] = dp[i - 1] + (i - dp[i - 1] >= 2 ? dp[i - dp[i - 1] - 2] : 0) + 2;
+     }
+     ans = Math.max(ans, dp[i]);
+ }
+@@ -303,3 +303,8 @@
+ 
+ 转移：`f[i]=f[i & (i - 1)] + 1`
+ 
++## 多坐标
++
++摘樱桃
++
++摘樱桃 II
+diff -r -x .DS_Store -u optimise/dynamic-programming/序列/双序型.md patterns/optimise/dynamic-programming/序列/双序型.md
+--- optimise/dynamic-programming/序列/双序型.md	2025-12-08 13:20:38
++++ patterns/optimise/dynamic-programming/序列/双序型.md	2025-12-02 15:11:23
+@@ -33,16 +33,8 @@
+ 
+ ---
+ 
+-### [1143. Longest Common Subsequence](https://leetcode.com/problems/longest-common-subsequence/)
++Longest Common Subsequence LCS
+ 
+-Given two strings `text1` and `text2`, return *the length of their longest **common subsequence**.* If there is no **common subsequence**, return `0`.
+-
+-A **subsequence** of a string is a new string generated from the original string with some characters (can be none) deleted without changing the relative order of the remaining characters.
+-
+-- For example, `"ace"` is a subsequence of `"abcde"`.
+-
+-A **common subsequence** of two strings is a subsequence that is common to both strings.
+-
+ 状态：`f[i][j]`表示A前i个字符A[0,i-1]和B前j个字符[0,j-1]的最长公共子串的长度
+ 
+ 转移：`f[i][j]=max{f[i-1][j], f[i][j-1], f[i-1][j-1]+1|A[i-1]==B[j-1]}`
+@@ -51,100 +43,10 @@
+ 
+ 优化：可以滚动数组优化到On
+ 
+-```java
+-public int longestCommonSubsequence(String text1, String text2) {
+-    int m = text1.length(), n = text2.length();
+-    int[][] f = new int[m + 1][n + 1];
+-    for (int i = 1; i <= m; i++) {
+-        for (int j = 1; j <= n; j++) {
+-            f[i][j] = Math.max(f[i - 1][j], f[i][j - 1]);
+-            if (text1.charAt(i - 1) == text2.charAt(j - 1)) {
+-                f[i][j] = Math.max(f[i][j], f[i - 1][j - 1] + 1);
+-            }
+-        }
+-    }
+-    return f[m][n];
+-}
+-```
+-
+-### [1035. Uncrossed Lines](https://leetcode.com/problems/uncrossed-lines/)
+-
+-You are given two integer arrays `nums1` and `nums2`. We write the integers of `nums1` and `nums2` (in the order they are given) on two separate horizontal lines.
+-
+-We may draw connecting lines: a straight line connecting two numbers `nums1[i]` and `nums2[j]` such that:
+-
+-- `nums1[i] == nums2[j]`, and
+-- the line we draw does not intersect any other connecting (non-horizontal) line.
+-
+-Note that a connecting line cannot intersect even at the endpoints (i.e., each number can only belong to one connecting line).
+-
+-Return *the maximum number of connecting lines we can draw in this way*.
+-
+-```java
+-int maxUncrossedLines(int[] nums1, int[] nums2) {
+-    int m = nums1.length, n = nums2.length;
+-    int[][] f = new int[m + 1][n + 1];
+-    for (int i = 1; i <= m; i++) {
+-        for (int j = 1; j <= n; j++) {
+-            f[i][j] = Math.max(f[i - 1][j], f[i][j - 1]);
+-            if (nums1[i - 1] == nums2[j - 1]) {
+-                f[i][j] = Math.max(f[i][j], f[i - 1][j - 1] + 1);
+-            }
+-        }
+-    }
+-    return f[m][n];
+-}
+-```
+-
+-### [1312. Minimum Insertion Steps to Make a String Palindrome](https://leetcode.com/problems/minimum-insertion-steps-to-make-a-string-palindrome/)
+-
+-Given a string `s`. In one step you can insert any character at any index of the string.
+-
+-Return *the minimum number of steps* to make `s` palindrome.
+-
+-A **Palindrome String** is one that reads the same backward as well as forward.
+-
+-```java
+-public int minInsertions(String s) {
+-    int n = s.length();
+-    String sReverse = new StringBuilder(s).reverse().toString();
+-
+-    return n - lcs(s, sReverse);
+-}
+-
+-private int lcs(String s1, String s2) {
+-    int n = s.length();
+-    int[][] dp = new int[n + 1][n + 1];
+-
+-    for (int i = 1; i <= n; i++) {
+-        for (int j = 1; j <= n; j++) {
+-            if (s1.charAt(i - 1) == s2.charAt(j - 1)) {
+-                dp[i][j] = 1 + dp[i - 1][j - 1];
+-            } else {
+-                dp[i][j] = Math.max(dp[i - 1][j], dp[i][j - 1]);
+-            }
+-        }
+-    }
+-
+-    return dp[n][n];
+-}
+-```
+-
+ ---
+ 
+-### [97. Interleaving String](https://leetcode.com/problems/interleaving-string/)
++Interleaving String 交错字符串
+ 
+-Given strings `s1`, `s2`, and `s3`, find whether `s3` is formed by an **interleaving** of `s1` and `s2`.
+-
+-An **interleaving** of two strings `s` and `t` is a configuration where `s` and `t` are divided into `n` and `m` substrings respectively, such that:
+-
+-- `s = s1 + s2 + ... + sn`
+-- `t = t1 + t2 + ... + tm`
+-- `|n - m| <= 1`
+-- The **interleaving** is `s1 + t1 + s2 + t2 + s3 + t3 + ...` or `t1 + s1 + t2 + s2 + t3 + s3 + ...`
+-
+-**Note:** `a + b` is the concatenation of strings `a` and `b`.
+-
+ > 给定三个字符串A, B, X
+ >
+ > 判断X是否是由A, B交错在一起形成
+@@ -159,69 +61,15 @@
+ 
+ 优化：可以滚动数组优化到On
+ 
+-```java
+-boolean isInterleave(String s1, String s2, String s3) {
+-    int n = s1.length(), m = s2.length();
+-    if (n + m != s3.length()) {
+-        return false;
+-    }
+-    boolean[][] f = new boolean[n + 1][m + 1];
+-
+-    f[0][0] = true;
+-    for (int j = 1; j <= m; j++)  {
+-        f[0][j] = f[0][j - 1] && s2.charAt(j - 1) == s3.charAt(j - 1);
+-    }
+-    for (int i = 1; i <= n; i++) {
+-        f[i][0] = f[i - 1][0] && s1.charAt(i - 1) == s3.charAt(i - 1);
+-        for (int j = 1; j <= m; j++) {
+-            int p = i + j;
+-            f[i][j] = f[i - 1][j] && s1.charAt(i - 1) == s3.charAt(p - 1) || 
+-                      f[i][j - 1] && s2.charAt(j - 1) == s3.charAt(p - 1);
+-        }
+-    }
+-    return f[n][m];
+-}
+-```
+-
+ ---
+ 
+-### [72. Edit Distance](https://leetcode.com/problems/edit-distance/)
++Edit Distance
+ 
+-Given two strings `word1` and `word2`, return *the minimum number of operations required to convert `word1` to `word2`*.
+-
+-You have the following three operations permitted on a word:
+-
+-- Insert a character
+-- Delete a character
+-- Replace a character
+-
+ 状态：`f[i][j]`表示A前i个字符A[0,i-1]和B前j个字符[0,j-1]的Edit Distance
+ 
+ 转移：`f[i][j]=min{f[i-1][j]+1, f[i][j-1]+1, f[i-1][j-1]+1, f[i-1][j-1]|A[i-1]==B[j-1]}`
+ 
+ 边界：`f[0][j]=0, f[i][0]=0`
+-
+-```java
+-public int minDistance(String word1, String word2) {
+-    int m = word1.length(), n = word2.length();
+-    int[][] f = new int[m + 1][n + 1];
+-    for (int j = 0; j <= n; j++) {
+-        f[0][j] = j;
+-    }
+-    for (int i = 1; i <= m; i++) {
+-        f[i][0] = i;
+-        for (int j = 1; j <= n; j++) {
+-            f[i][j] = Math.min(f[i - 1][j - 1], Math.min(f[i - 1][j], f[i][j - 1])) + 1;
+-            if (word1.charAt(i - 1) == word2.charAt(j - 1)) {
+-                f[i][j] = Math.min(f[i][j], f[i - 1][j - 1]);
+-            }
+-        }
+-    }
+-    return f[m][n];
+-}
+-```
+-
+-
+ 
+ ---
+ 
+diff -r -x .DS_Store -u optimise/dynamic-programming/序列/序列型.md patterns/optimise/dynamic-programming/序列/序列型.md
+--- optimise/dynamic-programming/序列/序列型.md	2025-12-08 15:17:26
++++ patterns/optimise/dynamic-programming/序列/序列型.md	2025-12-02 15:11:23
+@@ -274,68 +274,3 @@
+ 初始化时，[0]代表前0个元素/前0天的情况
+ 与坐标型动态规划区别
+ 计算时，的代表前i个元素（即元素0~i-)的某种性质
+-
+-### [276. Paint Fence](https://leetcode.com/problems/paint-fence/)
+-
+-You are painting a fence of `n` posts with `k` different colors. You must paint the posts following these rules:
+-
+-- Every post must be painted **exactly one** color.
+-- There **cannot** be three or more **consecutive** posts with the same color.
+-
+-Given the two integers `n` and `k`, return *the **number of ways** you can paint the fence*.
+-
+-```java
+-public int numWays(int n, int k) {
+-    // Base cases for the problem to avoid index out of bound issues
+-    if (n == 1) return k;
+-
+-    int dp[] = new int[n + 1];
+-    dp[1] = k;
+-    dp[2] = k * k;
+-
+-    for (int i = 3; i <= n; i++) {
+-        dp[i] = (k - 1) * (dp[i - 1] + dp[i - 2]);
+-    }
+-
+-    return dp[n];
+-}
+-```
+-
+-### [91. Decode Ways](https://leetcode.com/problems/decode-ways/)
+-
+-Given a string s containing only digits, return the **number of ways** to **decode** it. If the entire string cannot be decoded in any valid way, return `0`.
+-
+-```java
+-public int numDecodings(String s) {
+-    if (s.charAt(0) == '0') {
+-        return 0;
+-    }
+-
+-    int n = s.length();
+-    int[] f = new int[3];
+-    f[0] = 1;
+-    f[1] = 1;
+-    for (int i = 2; i <= n; i++) {
+-        f[i % 3] = f[(i - 1) % 3] * getOne(s.charAt(i - 1))
+-                + f[(i - 2) % 3] * getTwo(s.charAt(i - 2), s.charAt(i - 1));
+-    }
+-    return f[n % 3];
+-}
+-
+-int getOne(char a) {
+-    if (a == '0')
+-        return 0;
+-    return 1;
+-}
+-
+-int getTwo(char a, char b) {
+-    if (a == '0')
+-        return 0;
+-    if (a > '2')
+-        return 0;
+-    if (a == '2' && b > '6')
+-        return 0;
+-    return 1;
+-}
+-```
+-
+diff -r -x .DS_Store -u optimise/dynamic-programming/状压/状压型.md patterns/optimise/dynamic-programming/状压/状压型.md
+--- optimise/dynamic-programming/状压/状压型.md	2025-11-25 13:21:28
++++ patterns/optimise/dynamic-programming/状压/状压型.md	2025-12-02 15:11:23
+@@ -188,84 +188,4 @@
+ 
+ 转化为经典哈密顿通路问题，使用状压DP转移
+ 
+-首先，我们要想到把数列转为一张图去做，对于两个数字，如果满足条件（`nums[i]%nums[j]==0||nums[j]%nums[i]==0`），我们对他们连一条边，那么我们符合条件的一个排列就相当于图上的一个哈密顿通路。
+-
+-### 
+-
+-
+-
+-```java
+-private int mod = 1_000_000_007;
+-int buildWall(int height, int width, int[] bricks) {
+-    // 1. 获取所有合法的单层缝隙掩码 (Bitmasks)
+-    List<Integer> validMasks = new ArrayList<>();
+-    // 从当前长度 0，掩码 0 开始 DFS
+-    dfs(0, 0, width, bricks, validMasks);
+-
+-    int n = validMasks.size();
+-    if (n == 0) return 0; // 无法拼成指定宽度
+-
+-    // 2. 预处理邻接表 (Adjacency List)
+-    // map[i] 存储的是：如果这一层用 validMasks.get(i)，下一层可以用哪些 index 的掩码
+-    List<List<Integer>> adj = new ArrayList<>();
+-    for (int i = 0; i < n; i++) {
+-        adj.add(new ArrayList<>());
+-        for (int j = 0; j < n; j++) {
+-            // 如果两个掩码没有重叠的位，说明没有缝隙对齐
+-            if ((validMasks.get(i) & validMasks.get(j)) == 0) {
+-                adj.get(i).add(j);
+-            }
+-        }
+-    }
+-
+-    // 3. 动态规划
+-    // dp[i] 表示当前高度下，以第 i 种掩码结尾的方案数
+-    int[] dp = new int[n];
+-    Arrays.fill(dp, 1); // 第一层，每种掩码只有 1 种可能
+-
+-    for (int h = 1; h < height; h++) {
+-        int[] nextDp = new int[n];
+-        for (int i = 0; i < n; i++) {
+-            // 如果当前层也是 0 (无法到达)，跳过以节省时间
+-            if (dp[i] == 0) continue; 
+-
+-            // 遍历所有兼容的下一层结构
+-            for (int nextIndex : adj.get(i)) {
+-                nextDp[nextIndex] = (nextDp[nextIndex] + dp[i]) % mod;
+-            }
+-        }
+-        dp = nextDp;
+-    }
+-
+-    // 4. 汇总结果
+-    int result = 0;
+-    for (int count : dp) {
+-        result = (result + count) % mod;
+-    }
+-    return result;
+-}
+-
+-// 优化后的 DFS：直接生成 mask，不需要 Stack
+-void dfs(int currentWidth, int currentMask, int totalWidth, int[] bricks, List<Integer> results) {
+-    if (currentWidth == totalWidth) {
+-        results.add(currentMask);
+-        return;
+-    }
+-
+-    for (int brick : bricks) {
+-        if (currentWidth + brick <= totalWidth) {
+-            int nextWidth = currentWidth + brick;
+-            int nextMask = currentMask;
+-
+-            // 关键点：只有当累加宽度 < totalWidth 时，才标记缝隙。
+-            // 也就是说，墙的最右边缘 (nextWidth == totalWidth) 不算缝隙。
+-            if (nextWidth < totalWidth) {
+-                nextMask |= (1 << nextWidth);
+-            }
+-
+-            dfs(nextWidth, nextMask, totalWidth, bricks, results);
+-        }
+-    }
+-}
+-```
+-
++首先，我们要想到把数列转为一张图去做，对于两个数字，如果满足条件（`nums[i]%nums[j]==0||nums[j]%nums[i]==0`），我们对他们连一条边，那么我们符合条件的一个排列就相当于图上的一个哈密顿通路。
+\ No newline at end of file
+diff -r -x .DS_Store -u optimise/dynamic-programming/约束/状态型.md patterns/optimise/dynamic-programming/约束/状态型.md
+--- optimise/dynamic-programming/约束/状态型.md	2025-11-30 17:10:12
++++ patterns/optimise/dynamic-programming/约束/状态型.md	2025-12-02 15:11:23
+@@ -16,179 +16,4 @@
+ 
+   粉刷哪种颜色
+ 
+-注：某些题目做法不止一种，除了状态机 DP 以外，也有前后缀分解的做法。
+-
+-### [256. Paint House](https://leetcode.com/problems/paint-house/)
+-
+-There is a row of `n` houses, where each house can be painted one of three colors: red, blue, or green. The cost of painting each house with a certain color is different. You have to paint all the houses such that no two adjacent houses have the same color.
+-
+-The cost of painting each house with a certain color is represented by an `n x 3` cost matrix `costs`.
+-
+-- For example, `costs[0][0]` is the cost of painting house `0` with the color red; `costs[1][2]` is the cost of painting house 1 with color green, and so on...
+-
+-Return *the minimum cost to paint all houses*.
+-
+-```java
+-public int minCost(int[][] costs) {
+-    int n = costs.length;
+-    int[][] dp = new int[n + 1][3];
+-    for (int i = 1; i <= n; i++) {
+-        dp[i][0] = Math.min(dp[i - 1][1], dp[i - 1][2]) + costs[i - 1][0];
+-        dp[i][1] = Math.min(dp[i - 1][0], dp[i - 1][2]) + costs[i - 1][1];
+-        dp[i][2] = Math.min(dp[i - 1][1], dp[i - 1][0]) + costs[i - 1][2];
+-    }
+-
+-    return Math.min(dp[n][0], Math.min(dp[n][1], dp[n][2]));
+-}
+-```
+-
+-### [265. Paint House II](https://leetcode.com/problems/paint-house-ii/)
+-
+-There are a row of `n` houses, each house can be painted with one of the `k` colors. The cost of painting each house with a certain color is different. You have to paint all the houses such that no two adjacent houses have the same color.
+-
+-The cost of painting each house with a certain color is represented by an `n x k` cost matrix costs.
+-
+-- For example, `costs[0][0]` is the cost of painting house `0` with color `0`; `costs[1][2]` is the cost of painting house `1` with color `2`, and so on...
+-
+-Return *the minimum cost to paint all houses*.
+-
+-```java
+-public int minCostII(int[][] costs) {
+-    if (costs.length == 0)
+-        return 0;
+-
+-    int n = costs.length, m = costs[0].length; // Fixed: was using costs.length for m
+-    int[][] dp = new int[n + 1][m];
+-
+-    for (int i = 1; i <= n; i++) {
+-        // Precompute minimum and second minimum from previous row
+-        int minCost = Integer.MAX_VALUE, secondMinCost = Integer.MAX_VALUE;
+-        int minColor = -1;
+-
+-        for (int j = 0; j < m; j++) {
+-            if (dp[i - 1][j] < minCost) {
+-                secondMinCost = minCost;
+-                minCost = dp[i - 1][j];
+-                minColor = j;
+-            } else if (dp[i - 1][j] < secondMinCost) {
+-                secondMinCost = dp[i - 1][j];
+-            }
+-        }
+-
+-        // Use precomputed minima to fill current row in O(m)
+-        for (int j = 0; j < m; j++) {
+-            if (j == minColor) {
+-                dp[i][j] = secondMinCost + costs[i - 1][j];
+-            } else {
+-                dp[i][j] = minCost + costs[i - 1][j];
+-            }
+-        }
+-    }
+-
+-    int ans = Integer.MAX_VALUE;
+-    for (int j = 0; j < m; j++) {
+-        ans = Math.min(ans, dp[n][j]);
+-    }
+-
+-    return ans;
+-}
+-```
+-
+-### [3738. Longest Non-Decreasing Subarray After Replacing at Most One Element](https://leetcode.com/problems/longest-non-decreasing-subarray-after-replacing-at-most-one-element/)
+-
+-You are given an integer array `nums`.
+-
+-You are allowed to replace **at most** one element in the array with any other integer value of your choice.
+-
+-Return the length of the **longest non-decreasing subarray** that can be obtained after performing at most one replacement.
+-
+-An array is said to be **non-decreasing** if each element is greater than or equal to its previous one (if it exists).
+-
+-```java
+-public int longestSubarray(int[] nums) {
+-    int n = nums.length;
+-    int[][] f = new int[n][2];
+-    f[0][0] = f[0][1] = 1;
+-
+-    int ans = 1;
+-    for (int i = 1; i < n; i++) {
+-        if (nums[i - 1] <= nums[i]) {
+-            f[i][0] = f[i - 1][0] + 1;
+-            f[i][1] = f[i - 1][1] + 1;
+-        } else {
+-            f[i][0] = 1;
+-            f[i][1] = 1;
+-        }
+-
+-        if (i >= 2 && nums[i - 2] <= nums[i]) {
+-            f[i][1] = Math.max(f[i][1], f[i - 2][0] + 2);
+-        } else {
+-            f[i][1] = Math.max(f[i][1], 2);
+-        }
+-
+-        ans = Math.max(ans, Math.max(f[i - 1][0] + 1, f[i][1]));
+-    }
+-    return ans;
+-}
+-```
+-
+-```java
+-public int longestSubarray(int[] nums) {
+-    int n = nums.length;
+-    int[][] f = new int[3][2];
+-    f[0][0] = f[0][1] = 1;
+-
+-    int ans = 1;
+-    for (int i = 1; i < n; i++) {
+-        if (nums[i - 1] <= nums[i]) {
+-            f[i % 3][0] = f[(i - 1) % 3][0] + 1;
+-            f[i % 3][1] = f[(i - 1) % 3][1] + 1;
+-        } else {
+-            f[i % 3][0] = 1;
+-            f[i % 3][1] = 1;
+-        }
+-
+-        if (i >= 2 && nums[i - 2] <= nums[i]) {
+-            f[i % 3][1] = Math.max(f[i % 3][1], f[(i - 2) % 3][0] + 2);
+-        } else {
+-            f[i % 3][1] = Math.max(f[i % 3][1], 2);
+-        }
+-
+-        ans = Math.max(ans, Math.max(f[(i - 1) % 3][0] + 1, f[i % 3][1]));
+-    }
+-    return ans;
+-}
+-```
+-
+-## 余数
+-
+-### [1262. Greatest Sum Divisible by Three](https://leetcode.com/problems/greatest-sum-divisible-by-three/)
+-
+-Given an integer array `nums`, return *the **maximum possible sum** of elements of the array such that it is divisible by three*.
+-
+-```java
+-public int maxSumDivThree(int[] nums) {
+-    // dp[i] 表示余数为 i 的最大和
+-    int[] dp = new int[3];
+-    Arrays.fill(dp, Integer.MIN_VALUE);
+-    dp[0] = 0;
+-
+-    for (int num : nums) {
+-        int[] nextDp = new int[3];
+-        for (int i = 0; i < 3; i++) {
+-            // 两种选择：不选 num (保持原样) vs 选 num (从对应的余数转移过来)
+-            // 1. 不选 num
+-            nextDp[i] = dp[i]; 
+-
+-            // 2. 选 num。我们需要找到之前的余数 r，使得 (r + num) % 3 == i
+-            // 即 r = (i - num % 3 + 3) % 3
+-            int prevRemainder = (i - num % 3 + 3) % 3;
+-            nextDp[i] = Math.max(nextDp[i], dp[prevRemainder] + num);
+-        }
+-        dp = nextDp;
+-    }
+-
+-    return Math.max(0, dp[0]);
+-}
+-```
+-
++注：某些题目做法不止一种，除了状态机 DP 以外，也有前后缀分解的做法。
+\ No newline at end of file
+diff -r -x .DS_Store -u optimise/dynamic-programming/约束/背包型.md patterns/optimise/dynamic-programming/约束/背包型.md
+--- optimise/dynamic-programming/约束/背包型.md	2025-12-08 19:23:00
++++ patterns/optimise/dynamic-programming/约束/背包型.md	2025-12-02 15:11:23
+@@ -86,10 +86,6 @@
+ 
+ ---
+ 
+-### [416. Partition Equal Subset Sum](https://leetcode.com/problems/partition-equal-subset-sum/)
+-
+-Given an integer array `nums`, return `true` *if you can partition the array into two subsets such that the sum of the elements in both subsets is equal or* `false` *otherwise*.
+-
+ 分割等和子集
+ 
+ 状态：`f[i][j]`表示考虑前i个物品，和为j的可行性
+@@ -98,31 +94,6 @@
+ 
+ 答案：`f % 2 == 0 && f[m / 2]`
+ 
+-```java
+-public boolean canPartition(int[] nums) {
+-    int sum = 0;
+-    for (int num : nums) {
+-        sum += num;
+-    }
+-    if (sum % 2 ==1) {
+-        return false;
+-    }
+-
+-    return backpack(nums, sum / 2) == sum / 2;
+-}
+-
+-private int backpack(int[] nums, int target) {
+-    int[] dp = new int[target + 1];
+-    for (int i = 0; i < nums.length; i++) {
+-        for (int j = target; j >= nums[i]; j--) {
+-            dp[j] = Math.max(dp[j], dp[j - nums[i]] + nums[i]);
+-        }
+-    }
+-
+-    return dp[target];
+-}
+-```
+-
+ ---
+ 
+ 最小划分
+@@ -131,45 +102,14 @@
+ >
+ > = 数组中挑出若干数尽可能的填满一个大小为 SUM/2 的背包
+ 
+-### [1049. Last Stone Weight II](https://leetcode.com/problems/last-stone-weight-ii/)
++---
+ 
+-You are given an array of integers `stones` where `stones[i]` is the weight of the `ith` stone.
++石头碰撞
+ 
+-We are playing a game with the stones. On each turn, we choose any two stones and smash them together. Suppose the stones have weights `x` and `y` with `x <= y`. The result of this smash is:
++> 给出 N 个石头及其大小数组 每次选 2 个石头进行碰撞，大小分别为 x,y 碰撞之后会变成一个石头，大小变为 |x - y| 直到石头个数 < 2为止 问最后剩下来的石头最小是多少?
+ 
+-- If `x == y`, both stones are destroyed, and
+-- If `x != y`, the stone of weight `x` is destroyed, and the stone of weight `y` has new weight `y - x`.
++本质上这个题的答案=最小划分那一题的答案
+ 
+-At the end of the game, there is **at most one** stone left.
+-
+-Return *the smallest possible weight of the left stone*. If there are no stones left, return `0`.
+-
+-```java
+-public int lastStoneWeightII(int[] stones) {
+-    if (stones == null || stones.length == 0) {
+-        return 0;
+-    }
+-
+-    int sum = 0;
+-    for (int stone : stones) {
+-        sum += stone;
+-    }
+-
+-    int n = stones.length, m = sum / 2;
+-
+-    int[] dp = new int[m + 1];
+-    dp[0] = 0;
+-
+-    for (int i = 1; i <= n; i++) {
+-        for (int j = m; j >= stones[i - 1]; j--) {
+-            dp[j] = Math.max(dp[j], dp[j - stones[i - 1]] + stones[i - 1]);
+-        }
+-    }
+-
+-    return sum - 2 * dp[m];
+-}
+-```
+-
+ ---
+ 
+ 外卖优惠券
+@@ -183,8 +123,6 @@
+ 
+ ---
+ 
+-### [629. K Inverse Pairs Array](https://leetcode.com/problems/k-inverse-pairs-array/)
+-
+ K 个逆序对数组 lc629. 
+ 
+ 状态：`f[i][j]`表示前i个数字，恰好构成j个逆序对的方案数
+@@ -201,7 +139,7 @@
+ 
+ ## 完全背包
+ 
+-### [322. Coin Change](https://leetcode.com/problems/coin-change/)
++Coin Change 零钱兑换
+ 
+ > 最小值
+ 
+@@ -211,30 +149,8 @@
+ 
+ 边界：`f[0][j]=max|最小值,f[0][0]=0`
+ 
+-```java
+-public int coinChange(int[] coins, int amount) {
+-    int n = coins.length;
+-    int[] f = new int[amount + 1];
+-
+-    Arrays.fill(f, amount + 1);
+-    f[0] = 0;
+-    for (int coin : coins) {
+-        for (int j = coin; j <= amount; j++) {
+-            f[j] = Math.min(f[j], f[j - coin] + 1);
+-        }
+-    }
+-
+-    if (f[amount] > amount) {
+-        return -1;
+-    }
+-    return f[amount];
+-}
+-```
+-
+ ---
+ 
+-### [518. Coin Change II](https://leetcode.com/problems/coin-change-ii/)
+-
+ Coin Change II 零钱兑换II
+ 
+ > 方案数
+@@ -245,77 +161,8 @@
+ 
+ 边界：`f[0][j]=-1,f[0][0]=0`
+ 
+-```java
+-public int change(int amount, int[] coins) {
+-    int n = coins.length;
+-
+-    int[] f = new int[amount + 1];
+-    f[0] = 1;
+-    for (int coin : coins) {
+-        for (int i = coin; i <= amount; i++) {
+-            f[i] += f[i - coin];
+-        }
+-    }
+-
+-    return f[amount];
+-}
+-```
+-
+-### [279. Perfect Squares](https://leetcode.com/problems/perfect-squares/)
+-
+-Given an integer `n`, return *the least number of perfect square numbers that sum to* `n`.
+-
+-A **perfect square** is an integer that is the square of an integer; in other words, it is the product of some integer with itself. For example, `1`, `4`, `9`, and `16` are perfect squares while `3` and `11` are not.
+-
+-```java
+-// 写法二：物品在外，背包在内（标准完全背包）
+-public int numSquares(int n) {
+-    int[] dp = new int[n + 1];
+-    Arrays.fill(dp, Integer.MAX_VALUE);
+-    dp[0] = 0;
+-
+-    // 1. 外层遍历物品 (平方数)
+-    // 注意：这里 i 代表平方数的根，所以物品实际大小是 i*i
+-    for (int i = 1; i * i <= n; i++) {
+-        // 2. 内层遍历背包 (正序，因为是完全背包)
+-        for (int j = i * i; j <= n; j++) {
+-            dp[j] = Math.min(dp[j], dp[j - i * i] + 1);
+-        }
+-    }
+-    return dp[n];
+-}
+-```
+-
+-### [377. Combination Sum IV](https://leetcode.com/problems/combination-sum-iv/)
+-
+-Given an array of **distinct** integers `nums` and a target integer `target`, return *the number of possible combinations that add up to* `target`.
+-
+-The test cases are generated so that the answer can fit in a **32-bit** integer.
+-
+-> Note that different sequences are counted as different combinations.
+->
+-> 方案数，背包大小在外围是考虑顺序，内维无顺序
+-
+-```java
+-public int combinationSum4(int[] nums, int target) {
+-    int[] dp = new int[target + 1];
+-    dp[0] = 1;
+-    // 方案数，背包大小在外围是考虑顺序，内维无顺序
+-    for (int i = 1; i <= target; i++) {
+-        for (int num : nums) {
+-            if (num <= i) {
+-                dp[i] += dp[i - num];
+-            }
+-        }
+-    }
+-    return dp[target];
+-}
+-```
+-
+ ## 多重背包
+ 
+-多重背包也是 0-1 背包的一个变式。与 0-1 背包的区别在于每种物品有 k[i] 个，而非一个。
+-
+ 状态： `dp[i][j]`，表示前 i 种物品放入容量为 j 的背包中能够获得的最大价值。
+ 
+ 转移：`dp[i][j]=max(dp[i-1][j-k*w[i-1]]) k in [0,n[i-1]]`
+@@ -325,11 +172,6 @@
+ 1. 枚举容量后枚举，后面计算时记得带着k
+ 2. 枚举物品后枚举，本质是将i物品拆成n[i-1]个物品各自计算01背包
+ 
+-优化思路
+-
+-- 二进制优化
+-- 单调队列优化
+-
+ ## 多维费用
+ 
+ 盈利计划
+@@ -370,6 +212,14 @@
+ 
+ ---
+ 
++Ones And Zeroes / 0s and 1s
++
++状态：`f[i][j][k]`为前i个串，最多能有多少个，被j个0和k个1组成
++
++转移：`f[i][j][k]=max{f[i-1][j][k], f[i-1][j-ai][j-bi]}`
++
++---
++
+ K Sum
+ 
+ > 给定数组A，包含n个互不相等的正整数
+@@ -393,45 +243,6 @@
+ ---
+ 
+ 合并石头的最低成本
+-
+-### [474. Ones and Zeroes](https://leetcode.com/problems/ones-and-zeroes/)
+-
+-You are given an array of binary strings `strs` and two integers `m` and `n`.
+-
+-Return *the size of the largest subset of `strs` such that there are **at most*** `m` `0`*'s and* `n` `1`*'s in the subset*.
+-
+-A set `x` is a **subset** of a set `y` if all elements of `x` are also elements of `y`.
+-
+----
+-
+-状态：`f[i][j][k]`为前i个串，最多能有多少个，被j个0和k个1组成
+-
+-转移：`f[i][j][k]=max{f[i-1][j][k], f[i-1][j-ai][j-bi]}`
+-
+-```java
+-public int findMaxForm(String[] strs, int m, int n) {
+-    int[][] dp = new int[m + 1][n + 1];
+-    for (String s : strs) {
+-        int[] count = countZeroesOnes(s);
+-        for (int zeroes = m; zeroes >= count[0]; zeroes--) {
+-            for (int ones = n; ones >= count[1]; ones--) {
+-                dp[zeroes][ones] = Math.max(1 + dp[zeroes - count[0]][ones - count[1]], dp[zeroes][ones]);
+-            }
+-        }
+-    }
+-    return dp[m][n];
+-}
+-
+-public int[] countZeroesOnes(String s) {
+-    int[] c = new int[2];
+-    for (int i = 0; i < s.length(); i++) {
+-        c[s.charAt(i) - '0']++;
+-    }
+-    return c;
+-}
+-```
+-
+-
+ 
+ ## 分组背包
+ 
+diff -r -x .DS_Store -u optimise/dynamic-programming/计数型.md patterns/optimise/dynamic-programming/计数型.md
+--- optimise/dynamic-programming/计数型.md	2025-11-27 15:32:37
++++ patterns/optimise/dynamic-programming/计数型.md	2025-12-02 15:11:23
+@@ -8,25 +8,3 @@
+ 
+ 边界：`f[n][k]`
+ 
+-### [509. Fibonacci Number](https://leetcode.com/problems/fibonacci-number/)
+-
+-The **Fibonacci numbers**, commonly denoted `F(n)` form a sequence, called the **Fibonacci sequence**, such that each number is the sum of the two preceding ones, starting from `0` and `1`. That is,
+-
+-```
+-F(0) = 0, F(1) = 1
+-F(n) = F(n - 1) + F(n - 2), for n > 1.
+-```
+-
+-Given `n`, calculate `F(n)`.
+-
+-```java
+-public int fib(int n) {
+-    int[] f = new int[]{0, 1, 0};
+-    for (int i = 2; i <= n; i++) {
+-        f[i % 3] = f[(i - 1) % 3] + f[(i - 2) % 3];
+-    }
+-
+-    return f[n % 3];
+-}
+-```
+-
+diff -r -x .DS_Store -u optimise/middle.md patterns/optimise/middle.md
+--- optimise/middle.md	2025-11-22 23:40:16
++++ patterns/optimise/middle.md	2025-12-11 19:26:55
+@@ -1,4 +1,4 @@
+-# Meet in the middle
++# Meet in the middle 折半
+ 
+ 
+ 

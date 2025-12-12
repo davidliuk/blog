@@ -13,9 +13,25 @@ export const enNavbar = navbar([
         link: "framework/",
       },
       {
-        text: "Summary",
+        text: "Data Structure",
         icon: "edit",
-        link: "summary/",
+        prefix: "data-structure/",
+        children: [
+          "linear",
+          "tree/",
+          "graph/",
+          "set/",
+        ]
+      },
+      {
+        text: "Patterns",
+        icon: "edit",
+        prefix: "patterns/",
+        children: [
+          "search/",
+          "optimise/",
+          "math/",
+        ]
       },
       {
         text: "FAQ",
@@ -30,9 +46,9 @@ export const enNavbar = navbar([
     prefix: "/cs/",
     children: [
       {
-        text: "Basic",
+        text: "Core",
         icon: "edit",
-        prefix: "basic/",
+        prefix: "core/",
         children: [
           {
             text: "Network",
@@ -46,6 +62,35 @@ export const enNavbar = navbar([
           },
         ],
       },
+      {
+        text: "Design",
+        icon: "note",
+        prefix: "design/",
+        children: [
+          {
+            text: "Design Pattern",
+            icon: "edit",
+            link: "pattern/",
+          },
+          {
+            text: "Object-Oriented Design",
+            icon: "edit",
+            link: "ood/",
+          },
+          {
+            text: "System Design",
+            icon: "edit",
+            link: "system/",
+          },
+        ],
+      },
+    ],
+  },
+  {
+    text: "Engineering",
+    icon: "edit",
+    prefix: "/se/",
+    children: [
       {
         text: "Database",
         icon: "edit",
@@ -76,13 +121,6 @@ export const enNavbar = navbar([
           },
         ],
       },
-    ],
-  },
-  {
-    text: "Software Engineer",
-    icon: "edit",
-    prefix: "/se/",
-    children: [
       {
         text: "Lang",
         icon: "note",
@@ -105,76 +143,16 @@ export const enNavbar = navbar([
             icon: "edit",
             link: "unix/",
           },
-          "docker/",
-          "k8s/",
-        ],
-      },
-      {
-        text: "Design",
-        icon: "note",
-        prefix: "design/",
-        children: [
-          {
-            text: "Design Pattern",
-            icon: "edit",
-            link: "pattern/",
-          },
-          {
-            text: "Object-Oriented Design",
-            icon: "edit",
-            link: "ood/",
-          },
-          {
-            text: "System Design",
-            icon: "edit",
-            link: "system/",
-          },
         ],
       },
       "tools/",
     ],
   },
-  // {
-  //   text: "Course",
-  //   icon: "note",
-  //   prefix: "/education/bs/",
-  //   children: [
-  //     {
-  //       text: "Rec Sys",
-  //       icon: "edit",
-  //       link: "rec-sys/",
-  //     },
-  //     {
-  //       text: "Deep Learning",
-  //       icon: "edit",
-  //       link: "deep-learning/",
-  //     },
-  //     {
-  //       text: "Block Chain",
-  //       icon: "edit",
-  //       link: "block-chain/",
-  //     },
-  //     {
-  //       text: "XR Tech",
-  //       icon: "edit",
-  //       link: "xr-tech/",
-  //     },
-  //   ],
-  // },
   {
     text: "Tests",
     icon: "edit",
     prefix: "/test/",
     children: [
-      {
-        text: "GRE",
-        icon: "edit",
-        prefix: "GRE/",
-        children: [
-          { text: "QUANTITATIVE", icon: "edit", link: "QUANTITATIVE/" },
-          { text: "VERBAL", icon: "edit", link: "VERBAL/" },
-        ],
-      },
       {
         text: "TOEFL",
         icon: "edit",
@@ -186,10 +164,15 @@ export const enNavbar = navbar([
           { text: "WRITING", icon: "edit", link: "WRITING/" },
         ],
       },
+      {
+        text: "GRE",
+        icon: "edit",
+        prefix: "GRE/",
+        children: [
+          { text: "QUANTITATIVE", icon: "edit", link: "QUANTITATIVE/" },
+          { text: "VERBAL", icon: "edit", link: "VERBAL/" },
+        ],
+      },
     ],
   },
-  // {
-  //   text: "List",
-  //   link: "/list",
-  // },
 ]);

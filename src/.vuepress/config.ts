@@ -1,6 +1,10 @@
 import { defineUserConfig } from "vuepress";
 import theme from "./theme.js";
 import viteBundler from "@vuepress/bundler-vite";
+import { getDirname, path } from 'vuepress/utils'
+import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
+
+const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 export default defineUserConfig({
   base: "/blog/",
@@ -26,4 +30,10 @@ export default defineUserConfig({
   theme,
 
   shouldPrefetch: false,
+
+  plugins: [
+    registerComponentsPlugin({
+      componentsDir: path.resolve(__dirname, './components'),
+    }),
+  ],
 });

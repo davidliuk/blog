@@ -1,4 +1,4 @@
-# 包管理器
+# Package Manager 包管理器
 
 ### Node.js
 
