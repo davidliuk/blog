@@ -1,1 +1,0 @@
-import{_ as r}from"./plugin-vue_export-helper-DlAUqK2U.js";import{c as o,o as t,r as c}from"./app-BZLta1H5.js";const s={},n={class:"tech-grid"};function a(e,_){return t(),o("div",n,[c(e.$slots,"default")])}const i=r(s,[["render",a]]);export{i as default};
