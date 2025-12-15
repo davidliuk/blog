@@ -12,7 +12,7 @@ export default hopeTheme({
 
   // iconAssets: "iconfont",
 
-  logo: "/favicon.ico",
+  logo: "/logo.png",
 
   repo: "davidliuk/blog",
 
@@ -219,7 +219,7 @@ export default hopeTheme({
     },
 
     pwa: {
-      favicon: "/favicon.ico",
+      favicon: "/logo.png",
       cacheHTML: true,
       // cachePic: true,
       appendBase: true,

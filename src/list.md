@@ -3,19 +3,18 @@ home: true
 layout: BlogHome
 icon: home
 title: Home
-heroImage: /favicon.ico
+heroImage: /logo.png
 heroText: David's blog
 bgImage: /bg.png
 tagline: Life is real, life is earnest.
 heroFullScreen: false
 projects:
-
   - icon: project
     name: Algorithm Summary
     desc: A summary of algorithms and data structures
     link: /algo/
 
-  - icon: /favicon.ico
+  - icon: /logo.png
     name: Database Summary
     desc: A summary of database including SQL, NoSQL, and so on
     link: /cs/database/

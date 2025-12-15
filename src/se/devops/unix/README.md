@@ -1,6 +1,6 @@
-# 企业级服务器系统导论
+# Unix
 
-::: detail 课程介绍
+::: details Syllabus: Introduction to Enterprise Server Systems
 
 ## 课程介绍
 
@@ -37,29 +37,27 @@ Unix-base 或 VM player
 
 ### 分数构成
 
-平时作业 50%
+- 平时作业 50%
 
-> 非常简单的，一次作业，平时上课学的东西，上课做的东西截图截一截
+  > 非常简单的，一次作业，平时上课学的东西，上课做的东西截图截一截
 
-大作业： 50% 报告
+- 大作业： 50%
+
+  报告，配置一个 Kubernetes 项目
 
 :::
 
-mainframe，追求极高的 availablility，最强的机器
+企业级服务器
 
-1000 多 w 一台，电费、网费也很贵
+- 传统 Mainframe
+  - Mainframe，追求极高的 availablility，最强的机器
+  - 1000 多 w 一台，电费、网费也很贵
+  - 钢厂、银行用 mainframe
 
-钢厂、银行用 mainframe
-
-阿里巴巴民企唯一一个院士：wangjian
-
-互联网在 Unix 上发展的
-
-availablility
-
-平均两个 failure 之间的时间，
-
-shell 编程
+- 现代 Unix
+  - 互联网在 Unix 上发展的
+  - availablility，平均两个 failure 之间的时间
+  - 阿里巴巴民企唯一一个院士：*王坚*
 
 ### UNIX 常见分支
 
@@ -71,7 +69,7 @@ Linux kernel 单核
 
 微核、单核
 
-> 工程上用最简单的
+> 工程上用最简单的单核
 
 GNU ：
 
@@ -87,7 +85,7 @@ SuSe：华晨宝马用的（德国的）
 
 涉及到 UNIX 的电影
 
-bladerunner：cyberpunk 鼻祖
+bladerunner: cyberpunk 鼻祖
 
 gods in the shell：
 

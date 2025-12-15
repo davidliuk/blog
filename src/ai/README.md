@@ -164,6 +164,8 @@
 
 基于形式
 
+- 传统机器学习
+
 - 深度学习
 
   DNN 深度神经网络 $\in$ ANN 人工神经网络 = DL 深度学习
@@ -171,17 +173,15 @@
   - CNN 卷积神经网络
   - RNN 循环神经网络 LSTM, GRU
   - 注意力机制 Transformer, Attention
-  - GNN 土神经网络
+  - GNN 图神经网络
   - 多模态学习 Multimodal Learning
-
-- 传统机器学习
 
 - 生成模型（Generative Models）
 
   - 生成对抗网络（GAN）
   - 变分自编码器（VAE）
   - 自回归模型（Autoregressive Models）
-  - Diffusion Models（扩散模型
+  - 扩散模型 Diffusion Models
   - NeRF、Neural Fields
 
 ---

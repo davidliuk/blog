@@ -129,7 +129,7 @@ Jun 2024 - Sep 2024
 At Amazon, I developed a **custom Java Agent** to extend OpenTelemetry’s tracing, enabling **end-to-end observability** across microservices and Lambda environments. I built full-stack tools for trace visualization and implemented a **Loosely Linked module** that surfaced hidden cross-service relationships, improved on-call tracing clarity, and enabled reliable instrumentation in heterogeneous runtime environments.
 
 - Developed a **Java Agent** that extends **OpenTelemetry**. Leveraged **ByteBuddy** to enhance methods annotated with **@WithSpan, @Input, and @Output**, enabling **automatic** **tracing** and **payload** **collection**.
-- Implemented **Loosely Linked Tracing** module to reconstruct cross-service call chains via business IDs and timestamps, enabling trace **aggregation** even when intermediate services **lack instrumentation**. (e.g., **MQ** or **partial** service onboarding).
+- Implemented **Loosely Linked Tracing** module to reconstruct cross-service call chains via business IDs and timestamps, enabling trace **aggregation** even when intermediate services **lack instrumentation**. (e.g. **MQ** or **partial** service onboarding).
 - Extended the Java Agent to support both AWS **Fargate** and **Lambda**, using **reflection**-based runtime detection to adapt data delivery via **Kinesis** (high-throughput) or **SQS** (event-driven tasks), ensuring reliability and efficiency across environments.
 - Built a **full-stack** telemetry console with React **frontend** and Java **backend**, supporting flexible querying (filters, aggregation, fuzzy search, pagination) and multi-view trace **visualization** (tree, table, timeline, and span **payloads**).
 

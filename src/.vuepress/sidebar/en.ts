@@ -38,6 +38,15 @@ export const enSidebar = sidebar({
     },
   ],
 
+  "/ai/": [
+    {
+      text: "Recommender System",
+      icon: "neural-network", // 对应 Navbar 的 Recommender System
+      prefix: "rec-sys/",
+      children: "structure",
+    },
+  ],
+
   // =========================
   // CS Core & Design
   // =========================

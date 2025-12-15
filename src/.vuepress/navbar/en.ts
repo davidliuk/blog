@@ -17,13 +17,9 @@ export const enNavbar = navbar([
         icon: "layer-group",
         prefix: "data-structure/",
         children: [
-          // 数组/链表通常是线性的，用条形图表示
           { text: "Linear", icon: "bars", link: "linear/" },
-          // 树形结构
           { text: "Tree", icon: "network-wired", link: "tree/" },
-          // 图论，节点连接
           { text: "Graph", icon: "circle-nodes", link: "graph/" },
-          // 集合，包含关系
           { text: "Set", icon: "object-group", link: "set/" },
         ]
       },
@@ -32,11 +28,8 @@ export const enNavbar = navbar([
         icon: "magnifying-glass",
         prefix: "search/",
         children: [
-          // 深度优先：向下箭头
           { text: "DFS", icon: "arrow-down-long", link: "DFS/" },
-          // 广度优先：波纹/层级扩散
           { text: "BFS", icon: "wifi", link: "BFS/" },
-          // 循环/迭代/暴力：循环图标
           { text: "FOR", icon: "rotate", link: "FOR/" },
         ]
       },
@@ -45,11 +38,8 @@ export const enNavbar = navbar([
         icon: "gauge-high",
         prefix: "optimization/",
         children: [
-          // 减治法：剪刀（把问题剪小）或压缩
           { text: "Decrease & Conquer", icon: "scissors", link: "decrease-conquer/" },
-          // 动态规划：通常涉及填表
           { text: "Dynamic Programming", icon: "table", link: "dynamic-programming/" },
-          // 数学：平方根符号或计算器
           { text: "Math", icon: "square-root-variable", link: "math/" },
         ]
       },
@@ -60,6 +50,61 @@ export const enNavbar = navbar([
       },
     ],
   },
+  // ---------------------------------------------------------
+  // 重点修改区域：AI & Generative Models
+  // ---------------------------------------------------------
+  {
+    text: "AI",
+    icon: "brain", // 修改：用 brain 比 robot 更偏向算法/模型内核
+    prefix: "/ai/",
+    children: [
+      {
+        text: "Recommender System",
+        // 修改：thumbs-up 代表“推荐/点赞”，或者用 'share-nodes'
+        icon: "thumbs-up", 
+        prefix: "rec-sys/",
+        children: [
+          {
+            text: "Retrieval",
+            // 修改：漏斗(filter)代表从海量数据中筛选出候选集，比放大镜更准确
+            icon: "filter", 
+            link: "retrieval/",
+          },
+          {
+            text: "Pre-Ranking",
+            // 修改：列表(list-ul)代表粗略的排序列表
+            icon: "list-ul", 
+            link: "pre-ranking/",
+          },
+          {
+            text: "Ranking",
+            // 修改：带有星号的排名(ranking-star)，代表精排、计算分数
+            icon: "ranking-star", 
+            link: "ranking/",
+          },
+          {
+            text: "Re-Ranking",
+            // 修改：滑块(sliders)，代表微调、多样性打散、业务规则干预
+            icon: "sliders", 
+            link: "re-ranking/",
+          },
+          {
+            text: "Metrics",
+            icon: "chart-line",
+            link: "metrics/",
+          },
+        ]
+      },
+      {
+        text: "Generative Models",
+        // 修改：魔术棒(wand-magic-sparkles)是目前 GenAI 最通用的隐喻（生成/魔法）
+        // 备选：'dna' (生成/变异) 或 'pen-nib' (文本生成)
+        icon: "wand-magic-sparkles", 
+        link: "gm/",
+      }
+    ],
+  },
+  // ---------------------------------------------------------
   {
     text: "Computer Science",
     icon: "laptop-code",
@@ -72,12 +117,12 @@ export const enNavbar = navbar([
         children: [
           {
             text: "Network",
-            icon: "network-wired",
+            icon: "globe", // 修改：用 globe 代表互联网/网络更直观
             link: "network/",
           },
           {
             text: "Operating System",
-            icon: "hard-drive",
+            icon: "server", // 修改：用 server 代表底层系统资源管理
             link: "os/",
           },
         ],
@@ -89,17 +134,17 @@ export const enNavbar = navbar([
         children: [
           {
             text: "Design Pattern",
-            icon: "puzzle-piece",
+            icon: "palette", // 修改：调色板代表模式的组合
             link: "pattern/",
           },
           {
             text: "Object-Oriented Design",
-            icon: "object-group",
+            icon: "cubes-stacked", // 修改：堆叠方块代表对象封装与组合
             link: "ood/",
           },
           {
             text: "System Design",
-            icon: "server",
+            icon: "sitemap", // 架构图
             link: "system/",
           },
         ],
@@ -152,7 +197,6 @@ export const enNavbar = navbar([
           },
         ],
       },
-      // 工具：扳手/工具箱
       {
         text: "Tools",
         icon: "screwdriver-wrench",
