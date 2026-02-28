@@ -1,9 +1,14 @@
 # Stack
 
-js 全栈
+JavaScript full stack
 
-mern: mongodb, express, react, node
+- MERN: mongodb, express, react, node
 
-mean: mongodb, express, angular, node
+- MEAN: mongodb, express, angular, node
 
-ssm
+
+SSM
+
+- Spring
+- SpringMVC
+- MyBatis

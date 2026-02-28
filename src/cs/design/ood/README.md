@@ -62,31 +62,26 @@ Enum
 
 ## 解题法 5C
 
-- Clarify
-- Core objects
-- Cases
-- Classes
-- Correctness
+- Clarify 通过和面试官交流，去除题目中的歧义，确定答题范围
 
-Clarify 通过和面试官交流，去除题目中的歧义，确定答题范围
+- Core objects 确定题目所涉及的类，以及类之间的映射关系
 
-Core objects 确定题目所涉及的类，以及类之间的映射关系
+- Cases 确定题目中所需要实现的场景和功能
 
-Cases 确定题目中所需要实现的场景和功能
+- Classes 通过类图的方式，具体填充题目中涉及的类
 
-Classes 通过类图的方式，具体填充题目中涉及的类
+- Correctness 检查自己的设计，是否满足关键点
 
-Correctness 检查自己的设计，是否满足关键点
 
 ### Clarify
 
-What
+#### What
 
 针对题目中的**关键字**来提问，帮助自己更好的确定答题范围。
 
 > 大多数的关键字为名词，通过名词的属性来考虑
 
-How
+#### How
 
 针对问题主题的规则来提问，帮助自己明确解题方向。
 
@@ -128,16 +123,16 @@ How
 
 ### Class
 
-- 什么是类图?
+- What 什么是类图?
 
-- 为什么要画类图? 
+- Why 为什么要画类图? 
 
   - 可交付，Minimal Viable Product
   - 节省时间，不容易在 Coding 上挣扎
   - 建立在Use case上，和之前的步骤层层递进，条例清晰，便于交流和修 改
   - 如果时间允许/面试官要求，便于转化成Code
 
-- 怎么画类图?
+- How 怎么画类图?
 
   - 遍历你所列出的use cases
 
@@ -173,7 +168,7 @@ Use exceptions
 
 ## Good Practice
 
-Access modifier
+### Access modifier
 
 - package
 
@@ -199,13 +194,13 @@ Access modifier
 
   在类图中，用”#”表示一个变量或者函数为protected
 
-Use exceptions
+### Use exceptions
 
 继承
 
 检查你的设计中，是否有重复的类，可以采用继承的方式来表现
 
-Design Pattern
+### Design Pattern
 
 - Strategy
 - Singleton
@@ -233,51 +228,4 @@ Don't talk to strangers
 
 设计停车系统
 
-### 设计电梯系统
-
-Clarity
-
-- What 关键词
-
-   1. Elevator
-
-      所有电梯厢均为相同规格
-
-   2. Building
-
-      每层仅一处能搭乘，所有电梯均可响应
-
-- How 规则
-
-   1. 如何判断电梯是否超重?
-
-      \- Passenger class包含重量
-      \- 电梯能够自动感应当前重量
-
-   2. 当按下按钮时，哪一台电梯会相应?
-
-      \- 同方向>静止>反向
-
-      - 一半负责奇数楼层，一半负责偶数楼层
-
-   3. 当电梯在运行时，哪些按键可以响应?
-
-规则:
-
-对于本题：同向 > 静止 > 反向，当运行时不能按下反向的楼层
-
-信息：电梯至少需要三种状态，并且要知道当前在哪一层
-
-Core Object
-
-- ElevatorSystem
-
-  - Handle request
-- Request
-- Elevator
-  - Take external request
-  - Take internal request 一手微信study322 九章都有
-  - Open gate
-  - Close gate
-  - Check weight
-- ElevatorButton
+- 
