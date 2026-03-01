@@ -26,27 +26,91 @@ Java 队列建议 new ArrayDeque (链表比数组慢)
 
 ## 简单图
 
-Word Ladder
+所有边只有一种固定费用，
 
-简单图最短路径
+在任何情况下，队列中只会含有dist值为d和d+1的点，且 dist 值为d的一定排在值为 d+1 的点前面（即 BFS 的两段性），实现了队列的有序性，而无需使用优先队列
+
+**Word Ladder**
 
 给出两个单词(start和end)和一个字典，找出从start到end的最短转换序列，输出最短序列的长度。
 
-Knight Shortest Path
+**Knight Shortest Path**
 
 简单图最短路径，八个方向坐标变换
+
+## 0/1图
+
+所有边只有两种费用：
+
+- 0: 无费用
+- 1: 固定费用
+
+从一个节点出发，判断所有的邻居，
+
+- 0费用连通的节点放在队列首部
+- 1费用连通的节点放在队列尾部
+
+在任何情况下，队列中只会含有 dist 值为 d 和 d+1 的点，且 dis 值为 d 的点一定排在值为 d+1 的点前面（即 BFS 的两段性），实现了队列的有序性，而无需使用优先队列
+
+**使网格图至少有一条有效路径的最小代价**
+
+给出一个二维图，节点内代表先有方向，问最少改变多少节点原油的方向，使得存在一条从左上角到右下角的路径
+
+```java
+int[][] dirs = {{0, 1}, {0, -1}, {1, 0}, {-1, 0}};
+
+public int minCost(int[][] grid) {
+    int m = grid.length, n = grid[0].length;
+    int[] dist = new int[m * n];
+    boolean[] seen = new boolean[m * n];
+    Arrays.fill(dist, m * n);
+    dist[0] = 0;
+    
+    Deque<Integer> queue = new ArrayDeque<>();
+    queue.offerLast(0);
+    
+    while (!queue.isEmpty()) {
+        int idx = queue.poll();
+        if (seen[idx]) {
+            continue;
+        }
+        seen[idx] = true;
+        int x = idx / n;
+        int y = idx % n;
+        for (int i = 0; i < 4; ++i) {
+            int nx = x + dirs[i][0];
+            int ny = y + dirs[i][1];
+            int nidx = nx * n + ny;
+            int nd = dist[idx] + (grid[x][y] != i + 1? 1: 0);
+            
+            if (nx >= 0 && nx < m && ny >= 0 && ny < n 
+                && nd < dist[nidx]) {
+                dist[nidx] = nd;
+                if (grid[x][y] == i + 1) { // 原方向
+                    queue.offerFirst(nidx);
+                } else {  // 需要改变方向，费用1
+                    queue.offerLast(nidx);
+                }
+            }
+        }
+    }
+
+    return dist[m * n - 1];
+}
+```
 
 ## 复杂图
 
 用 Dijkstra 或者 SPFA
 
-负数边问题：面试不考，且竞赛也很少考，主要是负环怎么解决？是否可以一直遍历
+负数边问题：面试不考，且竞赛也很少考，主要是负环怎么解决？是否可以一直遍历？（一般不能，否则这样费用就可以无限小了）
 
-点不能重复走还是边不能重复走
+限制点不能重复走还是边不能重复走？
 
-点：哈密尔顿路
+- 点：哈密尔顿路
 
-边：欧拉路
+- 边：欧拉路
+
 
 ---
 

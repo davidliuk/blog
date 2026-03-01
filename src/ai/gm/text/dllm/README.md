@@ -1,6 +1,6 @@
 # Diffusion Large Language Model
 
-相比于 LLM AR(Auto-Regression)
+相比于 ARM(Auto-Regression Model)
 
 [Gemini Diffusion](https://deepmind.google/models/gemini-diffusion/#what-is-a-diffusion-model)
 

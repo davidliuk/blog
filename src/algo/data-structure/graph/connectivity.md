@@ -4,7 +4,7 @@
 
 Connected Component 连通分量
 
-- 路径
+- 两两之间有路径
 
 无向图：
 
@@ -35,8 +35,10 @@ public class TarjanSCC {
 
     private boolean[] marked;
     private int[] dfn;
-    private int[] low;               // low[v] = low number of v
-    private int pre;                 // preorder number counter
+    // low[v] = low number of v
+    private int[] low;
+	// preorder number counter
+    private int pre;
     private Stack<Integer> stack;
     private boolean[] onStack;
     private int count;
@@ -87,7 +89,9 @@ public class TarjanSCC {
 }
 ```
 
-《算法 4》的作者将 `low[]` 数组做了简化：`low[v]=min{low[v], low[u]}` ，也没有使用 `dfn[]` 数组。这样得出的 `low[]` 结果：同一个强连通分量中所有顶点的 `low[]` 值相同。本文参考的是 `wiki: Tarjan Algorithms` 的伪代码，网上大部分实现都是基于这份伪代码。
+《算法 4》的作者将 `low[]` 数组做了简化：`low[v]=min{low[v], low[u]}` ，也没有使用 `dfn[]` 数组。这样得出的 `low[]` 结果：同一个强连通分量中所有顶点的 `low[]` 值相同。
+
+本文参考的是 `wiki: Tarjan Algorithms` 的伪代码，网上大部分实现都是基于这份伪代码。
 
 https://blog.csdn.net/csyifanZhang/article/details/105370924
 

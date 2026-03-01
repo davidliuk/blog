@@ -1,10 +1,12 @@
-# 内存管理
+# Memory Management
+
+内存管理
 
 New/malloc/delete/free
 
 **malloc()** 函数在 C 语言中就出现了，在 C++ 中仍然存在，但建议尽量不要使用 malloc() 函数。new 与 malloc() 函数相比，其主要的优点是，new 不只是分配了内存，它还创建了对象。
 
-## 指针
+## Pointer 指针
 
 ### 智能指针
 

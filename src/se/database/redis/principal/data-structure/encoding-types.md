@@ -1,0 +1,479 @@
+# Encoding Types 数据结构
+
+## SDS
+
+SDS 动态字符串，字符串是 Redis 中最常用的一种数据结构。Redis 中保存的 Key 是字符串，value 往往是字符串或者字符串的集合。
+
+### 结构
+
+```c
+struct __attribute__ ((__packed__)) sdshdr16 {
+    uint16_t len;
+    uint16_t alloc;
+    unsigned char flags;
+    char buf[];
+};
+
+struct __attribute__ ((__packed__)) sdshdr32 {
+    uint32_t len;
+    uint32_t alloc;
+    unsigned char flags;
+    char buf[];
+};
+```
+
+- **len，记录了字符串长度**。这样获取字符串长度的时候，只需要返回这个成员变量值就行，时间复杂度只需要 O（1）。
+- **alloc，分配给字符数组的空间长度**。这样在修改字符串的时候，可以通过 `alloc - len` 计算出剩余的空间大小，可以用来判断空间是否满足修改需求，如果不满足的话，就会自动将 SDS 的空间扩展至执行修改所需的大小，然后才执行实际的修改操作，所以使用 SDS 既不需要手动修改 SDS 的空间大小，也不会出现前面所说的缓冲区溢出的问题。
+- **flags，用来表示不同类型的 SDS**。一共设计了 5 种类型，分别是 sdshdr5、sdshdr8、sdshdr16、sdshdr32 和 sdshdr64。**之所以 SDS 设计不同类型的结构体，是为了能灵活保存不同大小的字符串，从而有效节省内存空间**。比如，在保存小字符串时，结构头占用空间也比较少。
+- **buf[]，字符数组，用来保存实际数据**。不仅可以保存字符串，也可以保存二进制数据。
+
+总的来说，Redis 的 SDS 结构在原本字符数组之上，增加了三个元数据：len、alloc、flags，用来解决 C 语言字符串的缺陷。
+
+如果不想编译器使用字节对齐的方式进行分配内存，可以采用了 `__attribute__ ((packed))` 属性定义结构体，这样一来，结构体实际占用多少内存空间，编译器就分配多少空间。
+
+### 扩容
+
+允许的最长的字符长度是 255 个字节
+
+假如我们要给 SDS 追加一段字符串“，Ay”,这里首先会申请新内存空间：
+
+- 如果新字符串小于 1M,则新空间为扩展后字符串长度的两倍+1
+- 如果新字符串大于 1M,则新空间为扩展后字符串长度+1M+1。称为内存预分配。
+
+### 对比 C String
+
+Redis 没有直接使用 C 语言中的 String，因为 C 语言字符串存在很多问题
+
+- 获取字符串长度的需要通过遍历，On
+- 非二进制安全（用特殊标识标志结束`\0`），如果内容有`\0`会导致提早结束
+- 不可修改（本质是定长字符数组，不会动态扩容），可能发生缓冲区溢出
+
+SDS 的优点
+
+- 获取字符串长度的时间复杂度为 0(1)
+- 支持动态扩容
+- 节省内存/减少内存分配次数
+- 二进制安全
+
+## IntSet
+
+当一个 Set 对象只包含整数值元素，并且元素数量不大时，就会使用整数集这个数据结构作为底层实现。
+
+IntSet 是 Redis 中 set 集合的一种实现方式，基于整数数组来实现，并且具备**长度可变、有序**等特征。
+
+### 结构
+
+```c
+typedef struct intset {
+    //编码方式
+    uint32_t encoding;
+    //集合包含的元素数量
+    uint32_t length;
+    //保存元素的数组
+    int8_t contents[];
+} intset;
+```
+
+### 升级
+
+**倒序扩容**
+
+超出编码的时候，升级编码，然后插入
+
+整数集合升级的过程不会重新分配一个新类型的数组，而是在原本的数组上扩展空间，然后在将每个元素按间隔类型大小分割，如果 encoding 属性值为 INTSET_ENC_INT16，则每个元素的间隔就是 16 位。
+
+**不支持降级操作**，一旦对数组进行了升级，就会一直保持升级后的状态。比如前面的升级操作的例子，如果删除了 65535 元素，整数集合的数组还是 int32_t 类型的，并不会因此降级为 int16_t 类型。
+
+### 扩容
+
+有序：插入的时候使用的二分查找
+
+特点：
+
+- Redis 会确保 Intset 中的元素唯一、有序
+- 具备类型升级机制，可以节省内存空间
+- 底层采用二分查找方式来查询
+
+## Dict
+
+Redis 是一个键值型（Key-Value Pair）的数据库，我们可以根据键实现快速的增删改查。而键与值的映射关系正是通过 Dict 来实现的。
+
+### 结构
+
+Dict 由三部分组成，分别是：
+
+- 哈希表(DictHashTable)、
+
+- 哈希节点(DictEntry)、
+
+  通过**链式哈希**来解决哈希冲突
+
+- 字典(Dict)
+
+#### dictht
+
+```c
+typedef struct dictht {
+    //哈希表数组
+    dictEntry **table;
+    //哈希表大小
+    unsigned long size;
+    //哈希表大小掩码，用于计算索引值
+    unsigned long sizemask;
+    //该哈希表已有的节点数量
+    unsigned long used;
+} dictht;
+```
+
+#### dictEntry
+
+```c
+typedef struct dictEntry {
+    //键值对中的键
+    void *key;
+
+    //键值对中的值
+    union {
+        void *val;
+        uint64_t u64;
+        int64_t s64;
+        double d;
+    } v;
+    //指向下一个哈希表节点，形成链表
+    struct dictEntry *next;
+} dictEntry;
+```
+
+dictEntry 结构里不仅包含指向键和值的指针，还包含了指向下一个哈希表节点的指针，这个指针可以将多个哈希值相同的键值对链接起来，以此来解决哈希冲突的问题，这就是**链式哈希**。
+
+#### dict
+
+```c
+typedef struct dict {
+    …
+    //两个Hash表，交替使用，用于rehash操作
+    dictht ht[2];
+    …
+} dict;
+```
+
+### rehash
+
+#### 基本思路
+
+在正常服务请求阶段，插入的数据，都会写入到「哈希表 1」，此时的「哈希表 2 」 并没有被分配空间。
+
+随着数据逐步增多，触发了 rehash 操作，这个过程分为三步：
+
+- 给「哈希表 2」 分配空间，一般会比「哈希表 1」 大 2 倍；
+- 将「哈希表 1 」的数据迁移到「哈希表 2」 中；
+- 迁移完成后，「哈希表 1 」的空间会被释放，并把「哈希表 2」 设置为「哈希表 1」，然后在「哈希表 2」 新创建一个空白的哈希表，为下次 rehash 做准备。
+
+这个过程看起来简单，但是其实第二步很有问题，**如果「哈希表 1 」的数据量非常大，那么在迁移至「哈希表 2 」的时候，因为会涉及大量的数据拷贝，此时可能会对 Redis 造成阻塞，无法服务其他请求**。
+
+为了避免 rehash 在数据迁移过程中，因拷贝数据的耗时，影响 Redis 性能的情况，所以 Redis 采用了**渐进式 rehash**，也就是将数据的迁移的工作不再是一次性迁移完成，而是分多次迁移。
+
+#### 渐进式优化
+
+步骤如下：
+
+- 给「哈希表 2」 分配空间；
+- **在 rehash 进行期间，每次哈希表元素进行新增、删除、查找或者更新操作时，Redis 除了会执行对应的操作之外，还会顺序将「哈希表 1 」中索引位置上的所有 key-value 迁移到「哈希表 2」 上**；
+- 随着处理客户端发起的哈希表操作请求数量越多，最终在某个时间点会把「哈希表 1 」的所有 key-value 迁移到「哈希表 2」，从而完成 rehash 操作。
+
+这样就巧妙地把一次性大量数据迁移工作的开销，分摊到了多次处理请求的过程中，避免了一次性 rehash 的耗时操作。
+
+在进行渐进式 rehash 的过程中，会有两个哈希表，所以在渐进式 rehash 进行期间，哈希表元素的删除、查找、更新等操作都会在这两个哈希表进行。
+
+- 查找一个 key 的值的话，先会在「哈希表 1」 里面进行查找，如果没找到，就会继续到哈希表 2 里面进行找到。
+- 新增一个 key-value 时，会被保存到「哈希表 2 」里面，而「哈希表 1」 则不再进行任何添加操作，这样保证了「哈希表 1 」的 key-value 数量只会减少，随着 rehash 操作的完成，最终「哈希表 1 」就会变成空表。
+
+#### 触发时机
+
+rehash 的触发条件跟 **负载因子（load factor）** 有关系。
+
+负载因子(loadFactor)可以通过下面这个公式计算：
+
+$$
+load\_factor=\frac{ht[0].used}{ht[0].size}
+$$
+
+其中：
+
+- `ht[0].used`: 哈希表保存节点数量
+- `ht[0].size`: 哈希表大小
+
+触发 rehash 操作的条件，主要有两个：
+
+- 当负载因子大于等于 1 时，并且 Redis 没有在执行 bgsave 命令或者 bgrewiteaof 命令，也就是没有执行 RDB 快照或没有进行 AOF 重写的时候，就会进行 rehash 操作。
+- 当负载因子大于等于 5 时，此时说明哈希冲突非常严重了，不管有没有有在执行 RDB 快照或 AOF 重写，都会强制进行 rehash 操作。
+
+## SkipList
+
+跳表
+
+Zset 对象的底层实现用到了跳表，跳表的优势是能支持平均 O(logN) 复杂度的节点查找。
+
+Zset 对象在使用跳表作为数据结构的时候，是使用由「哈希表+跳表」组成的 struct zset，但是我们讨论的时候，都会说跳表是 Zset 对象的底层数据结构，而不会提及哈希表，是因为 struct zset 中的哈希表只是用于以常数复杂度获取元素权重，大部分操作都是跳表实现的。
+
+### 结构
+
+```c
+typedef struct zskiplistNode {
+    //Zset 对象的元素值
+    sds ele;
+    //元素权重值
+    double score;
+    //后向指针
+    struct zskiplistNode *backward;
+  
+    //节点的level数组，保存每层上的前向指针和跨度
+    struct zskiplistLevel {
+        struct zskiplistNode *forward;
+        unsigned long span;
+    } level[];
+} zskiplistNode;
+```
+
+### 查询过程
+
+跳表会**从头节点的最高层**开始，逐一遍历每一层。在遍历某一层的跳表节点时，会用跳表节点中的 SDS 类型的元素和元素的权重来进行判断，共有两个判断条件：
+
+- 如果当前节点的权重「小于」要查找的权重时，跳表就会访问该层上的下一个节点。
+- 如果当前节点的权重「等于」要查找的权重时，并且当前节点的 SDS 类型数据「小于」要查找的数据时，跳表就会访问该层上的下一个节点。
+
+要看下一个位置是否符合如上两个条件，符合才会跳过去，不然就下降
+
+如果上面两个条件都不满足，或者下一个节点为空时，跳表就会使用目前遍历到的节点的 level 数组里的下一层指针，然后沿着下一层指针继续查找，这就相当于跳到了下一层接着查找。
+
+### 层数设置
+
+跳表的相邻两层的节点数量的比例会影响跳表的查询性能。
+
+跳表的相邻两层的节点数量最理想的比例是 2:1，查找复杂度可以降低到 O(logN)
+
+Redis 则采用一种巧妙的方法是，**跳表在创建节点的时候，随机生成每个节点的层数**，并没有严格维持相邻两层的节点数量比例为 2 : 1 的情况。
+
+具体的做法是，**跳表在创建节点时候，会生成范围为[0-1]的一个随机数，如果这个随机数小于 0.25（相当于概率 25%），那么层数就增加 1 层，然后继续生成下一个随机数，直到随机数的结果大于 0.25 结束，最终确定该节点的层数**。
+
+这样的做法，相当于每增加一层的概率不超过 25%，层数越高，概率越低，层高最大限制是 64。
+
+虽然我前面讲解跳表的时候，图中的跳表的「头节点」都是 3 层高，但是其实**如果层高最大限制是 64，那么在创建跳表「头节点」的时候，就会直接创建 64 层高的头节点**。
+
+### 对比红黑树优势
+
+- **从内存占用上来比较，跳表比平衡树更灵活一些**。平衡树每个节点包含 2 个指针（分别指向左右子树），而跳表每个节点包含的指针数目平均为 1/(1-p)，具体取决于参数 p 的大小。如果像 Redis 里的实现一样，取 p=1/4，那么平均每个节点包含 1.33 个指针，比平衡树更有优势。
+- **在做范围查找的时候，跳表比平衡树操作要简单**。在平衡树上，我们找到指定范围的小值之后，还需要以中序遍历的顺序继续寻找其它不超过大值的节点。如果不对平衡树进行一定的改造，这里的中序遍历并不容易实现。而在跳表上进行范围查找就非常简单，只需要在找到小值之后，对第 1 层链表进行若干步的遍历就可以实现。
+- **从算法实现难度上来比较，跳表比平衡树要简单得多**。平衡树的插入和删除操作可能引发子树的调整，逻辑复杂，而跳表的插入和删除只需要修改相邻节点的指针，操作简单又快速。
+
+> skiplist这么多好处，为什么mysql要用B+Tree
+>
+> 因为数据库每次访问结点需要进行IO操作费时，故需要减少访问结点的次数，B+Tree的深度低，可以有效减少IO次数
+
+## List
+
+双向链表
+
+缺点：
+
+1. 内存碎片，
+
+   链表每个节点之间的内存都是不连续的，意味着**无法很好利用 CPU 缓存**。能很好利用 CPU 缓存的数据结构就是数组，因为数组的内存是连续的，这样就可以充分利用 CPU 缓存来加速访问。
+
+2. 内存开销
+
+   每个链表节点的值都需要一个链表节点结构头的分配，**内存开销较大**。
+
+### 结构
+
+#### listNode
+
+双向链表
+
+```c
+typedef struct listNode {
+    //前置节点
+    struct listNode *prev;
+    //后置节点
+    struct listNode *next;
+    //节点的值
+    void *value;
+} listNode;
+```
+
+#### list
+
+list 结构为链表提供了链表头指针 head、链表尾节点 tail、链表节点数量 len、以及可以自定义实现的 dup、free、match 函数。
+
+```c
+typedef struct list {
+    //链表头节点
+    listNode *head;
+    //链表尾节点
+    listNode *tail;
+    //节点值复制函数
+    void *(*dup)(void *ptr);
+    //节点值释放函数
+    void (*free)(void *ptr);
+    //节点值比较函数
+    int (*match)(void *ptr, void *key);
+    //链表节点数量
+    unsigned long len;
+} list;
+```
+
+list 结构为链表提供了链表头指针 head、链表尾节点 tail、链表节点数量 len、以及可以自定义实现的 dup、free、match 函数。
+
+## ZipList
+
+压缩列表
+
+缺点：连锁更新
+
+压缩列表的最大特点，就是它被设计成一种内存紧凑型的数据结构，占用一块连续的内存空间，不仅可以利用 CPU 缓存，而且会针对不同长度的数据，进行相应编码，这种方法可以有效地节省内存开销。
+
+但是，压缩列表的缺陷也是有的：
+
+- 不能保存过多的元素，否则查询效率就会降低；
+- 新增或修改某个元素时，压缩列表占用的内存空间需要**重新分配**，甚至可能引发**连锁更新**的问题。
+
+空间扩展操作也就是重新分配内存，因此**连锁更新一旦发生，就会导致压缩列表占用的内存空间要多次重新分配，这就会直接影响到压缩列表的访问性能**。
+
+**虽然压缩列表紧凑型的内存布局能节省内存开销，**
+
+但是如果保存的元素数量增加了，或是元素变大了，
+
+- 会导致内存重新分配，
+- 最糟糕的是会有「连锁更新」的问题。
+
+因此，**压缩列表只会用于保存的节点数量不多的场景**，只要节点数量足够小，即使发生连锁更新，也是能接受的。
+
+虽说如此，Redis 针对压缩列表在设计上的不足，在后来的版本中，新增设计了两种数据结构：quicklist（Redis 3.2 引入） 和 listpack（Redis 5.0 引入）。这两种数据结构的设计目标，就是尽可能地保持压缩列表节省内存的优势，同时解决压缩列表的「连锁更新」的问题。
+
+## Listpack
+
+紧凑列表
+
+在 Redis 7.0 中，ziplist 数据结构已经废弃了，所有 ziplist 场景均交由 listpack 数据结构来实现了。
+
+quicklist 虽然通过控制 quicklistNode 结构里的压缩列表的大小或者元素个数，来减少连锁更新带来的性能影响，但是并没有完全解决连锁更新的问题。
+
+因为 quicklistNode 还是用了压缩列表来保存元素，压缩列表连锁更新的问题，来源于它的结构设计，所以要想彻底解决这个问题，需要设计一个新的数据结构。
+
+Redis 在 5.0 新设计一个数据结构叫 listpack，目的是替代压缩列表，它最大特点是 listpack 中每个节点不再包含前一个节点的长度了，压缩列表每个节点正因为需要保存前一个节点的长度字段，就会有连锁更新的隐患。
+
+### 结构
+
+listpack 采用了压缩列表的很多优秀的设计，比如还是用一块连续的内存空间来紧凑地保存数据，并且为了节省内存的开销，listpack 节点会采用不同的编码方式保存不同大小的数据。
+
+#### char* lp
+
+listpack 结构：
+
+![img](https://cdn.xiaolincoding.com//mysql/other/4d2dc376b5fd68dae70d9284ae82b73a.png)
+
+```c
+/* Create a new, empty listpack.
+ * On success the new listpack is returned, otherwise an error is returned.
+ * Pre-allocate at least `capacity` bytes of memory,
+ * over-allocated memory can be shrunk by `lpShrinkToFit`.
+ * */
+unsigned char *lpNew(size_t capacity) {
+    unsigned char *lp = lp_malloc(capacity > LP_HDR_SIZE+1 ? capacity : LP_HDR_SIZE+1);
+    if (lp == NULL) return NULL;
+    lpSetTotalBytes(lp,LP_HDR_SIZE+1);
+    lpSetNumElements(lp,0);
+    lp[LP_HDR_SIZE] = LP_EOF;
+    return lp;
+}
+```
+
+- listpack 头包含两个属性，分别记录了 listpack 
+  - 总字节数
+  - 元素数量
+- 末尾结尾标识。0xFF
+- 图中的 listpack entry 就是 listpack 的节点了。
+
+#### listpackEntry
+
+每个 listpack 节点结构如下：
+
+![img](https://cdn.xiaolincoding.com//mysql/other/c5fb0a602d4caaca37ff0357f05b0abf.png)
+
+```c
+typedef struct {
+    /* When string is used, it is provided with the length (slen). */
+    unsigned char *sval;
+    uint32_t slen;
+    /* When integer is used, 'sval' is NULL, and lval holds the value. */
+    long long lval;
+} listpackEntry;
+```
+
+主要包含三个方面内容：
+
+- encoding，定义该元素的编码类型，会对不同长度的整数和字符串进行编码；
+- data，实际存放的数据；是字符串sval或整数lval
+- len，encoding+data的总长度；
+
+**listpack 没有压缩列表中记录前一个节点长度的字段了，listpack 只记录当前节点的长度，当我们向 listpack 加入一个新元素的时候，不会影响其他节点的长度字段的变化，从而避免了压缩列表的连锁更新问题**。
+
+相比 ziplist，listpack 去除了到尾部节点，也就是到 entryN 的偏移量，但保留了其他属性。
+
+**获取最后一个节点**
+
+虽然 listpack 没有了指向尾部节点的偏移量，但是同样可以快速找到 listpack 的尾部节点，方式是通过 总字节长度属性的值，可以直接获取到 listpack 的尾部，然后根据 entry 元素尾部的 length 属性，就可以找到尾部 entry 的起始地址了。
+
+## QuickList
+
+通过控制 quicklistNode 结构里的压缩列表的大小或者元素个数，来减少连锁更新带来的性能影响，但是并没有完全解决连锁更新的问题。
+
+- Redis 3.0, quicklist = list + ziplist
+
+  quicklist 就是一个链表，而链表中的每个元素又是一个 ziplist。
+
+- Redis 7.0, quiclist = list + listpack
+
+压缩列表的不足，虽然压缩列表是通过紧凑型的内存布局节省了内存开销，但是因为它的结构设计，如果保存的元素数量增加，或者元素变大了，压缩列表会有「连锁更新」的风险，一旦发生，会造成性能下降。
+
+quicklist 解决办法，**通过控制每个链表节点中的压缩列表的大小或者元素个数，来规避连锁更新的问题。因为压缩列表元素越少或越小，连锁更新带来的影响就越小，从而提供了更好的访问性能。**
+
+### 结构
+
+![img](https://cdn.xiaolincoding.com//mysql/other/f46cbe347f65ded522f1cc3fd8dba549.png)
+
+quicklist 的结构体跟 list 的结构体类似，都包含了表头和表尾，区别在于 quicklist 的节点是 quicklistNode。
+
+```c
+typedef struct quicklist {
+    //quicklist的链表头
+    quicklistNode *head;      //quicklist的链表头
+    //quicklist的链表尾
+    quicklistNode *tail; 
+    //所有压缩列表中的总元素个数
+    unsigned long count;
+    //quicklistNodes的个数
+    unsigned long len;       
+    ...
+} quicklist;
+```
+
+quicklistNode 的结构定义：
+
+```c
+typedef struct quicklistNode {
+    //前一个quicklistNode
+    struct quicklistNode *prev;     //前一个quicklistNode
+    //下一个quicklistNode
+    struct quicklistNode *next;     //后一个quicklistNode
+    // quicklistNode 指向的压缩列表，
+    // Redis7是entry指向listpack
+    unsigned char *zl;              
+    //压缩列表的的字节大小
+    unsigned int sz;                
+    //压缩列表的元素个数
+    unsigned int count : 16;        //ziplist中的元素个数 
+    ....
+} quicklistNode;
+```
+

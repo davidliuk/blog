@@ -1,9 +1,0 @@
-# Visual Language Model
-
-纯视觉模型
-
-ViT
-
-Moco v3: 基于ViT了
-
-Moco v1, v2: 基于ResNet

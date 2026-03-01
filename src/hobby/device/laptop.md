@@ -1,8 +1,8 @@
 # Laptop
 
-## Gaming Laptop
+## Gaming
 
-R9-7945hx>>>>i9-xxxx
+R9-7945hx >> i9-xxxx
 
 ---
 

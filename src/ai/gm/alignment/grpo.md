@@ -1,5 +1,0 @@
-# GRPO
-
-PPO, DPO
-
-RLHF

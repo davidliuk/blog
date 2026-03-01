@@ -9,7 +9,7 @@
 
 SENet 对离散特征做 field-wise 加权
 
-# Bilinear Cross
+## Bilinear Cross
 
 特征交叉：
 

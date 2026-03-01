@@ -1,5 +1,7 @@
 # For
 
+
+
 ### [277. Find the Celebrity](https://leetcode.com/problems/find-the-celebrity/)
 
 Suppose you are at a party with `n` people labeled from `0` to `n - 1` and among them, there may exist one celebrity. The definition of a celebrity is that all the other `n - 1` people know the celebrity, but the celebrity does not know any of them.
@@ -21,7 +23,7 @@ public class Solution extends Relation {
         for (int i = 1; i < n; i++) {
             if (knows(candidate, i)) {
                 candidate = i;
-            }   
+            }
         }
         
         if (isCelebrity(n, candidate)) {

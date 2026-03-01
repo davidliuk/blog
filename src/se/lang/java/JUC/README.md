@@ -1,4 +1,4 @@
-# JUC
+# Concurrent
 
 Java.util.concurrent
 

@@ -1,4 +1,4 @@
-# 线程状态
+# Thread State 线程状态
 
 IllegalThreadStateException
 

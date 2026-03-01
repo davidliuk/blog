@@ -14,6 +14,6 @@ AI 检测
 
 应用
 
-- tool/function calling
 - RAG
 - Agent
+  - tool/function calling

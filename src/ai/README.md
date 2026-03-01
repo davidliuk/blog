@@ -13,7 +13,97 @@
 - ACL
 - ECCV
 
-## 1. 总体分类
+## Paradigm
+
+### The Big Three + 1
+
+这是所有机器学习的根基，根据**标签（Label）的存在与否**来划分。
+
+1. **Supervised Learning (有监督学习)**
+   - **定义**：有老师教。输入数据 $X$ 和正确答案 $Y$ 都有。
+   - **代表**：猫狗分类、房价预测。
+2. **Unsupervised Learning (无监督学习)**
+   - **定义**：没老师教，自己找规律。只有数据 $X$，没有 $Y$。
+   - **代表**：聚类 (K-Means)、降维 (PCA)。
+3. **Reinforcement Learning (强化学习, RL)**
+   - **定义**：从互动中学习。没有现成答案，但做对了有奖励 (Reward)，做错了有惩罚。
+   - **代表**：AlphaGo 下围棋、机器人走路、王者荣耀 AI。
+4. **Semi-supervised Learning (半监督学习)**
+   - **定义**：一半有老师，一半靠猜。少量数据有标签，大量数据没标签（因为打标签太贵了）。
+   - **核心**：利用没标签的数据来平滑决策边界。
+
+### Data-Efficient
+
+这一类方法旨在解决“数据不够”或“数据质量不高”的问题，**对比学习**就在这里。
+
+1. **Self-Supervised Learning (自监督学习)**
+   - **地位**：**目前最重要的范式之一**（BERT, GPT, MAE, SimCLR 都属于此类）。
+   - **定义**：自己给自己出题。把数据的一部分（如被遮住的词、被裁剪的图片）作为输入，另一部分作为标签。
+   - **包含**：
+     - **Contrastive Learning (对比学习)**：如你所知，拉近相似的，推开不相似的。
+     - **Masked Modeling (掩码建模)**：像 BERT 那样把词挖掉让你填空。
+2. **Transfer Learning (迁移学习)**
+   - **定义**：举一反三。在大任务（如 ImageNet 识别）上学好通用知识，然后微调（Fine-tune）到小任务（如识别某种罕见病）。
+   - **口号**："Don't train from scratch."
+3. **Few-Shot / Zero-Shot Learning (少样本/零样本学习)**
+   - **定义**：看一眼就会。只给模型看 1 个或几个例子（甚至不给例子，只给描述），它就能学会分类。
+   - **现状**：GPT-4 等大模型的强项。
+4. **Active Learning (主动学习)**
+   - **定义**：不懂就问。模型在训练过程中，主动挑选它最“困惑”的样本，请求人类专家打标签。
+   - **目的**：为了省钱，只标注最有价值的数据。
+
+### Task-Centric
+
+你提到的**多任务学习**属于这里。
+
+1. **Multi-Task Learning (多任务学习)**
+   - **定义**：一心多用。一个模型同时学多个目标（例如推荐系统同时预测“点击率”和“完播率”）。
+   - **优势**：不同任务间共享底层特征，互通有无，防止过拟合。
+2. **Ensemble Learning (集成学习)**
+   - **定义**：三个臭皮匠，顶个诸葛亮。训练多个模型（如 XGBoost 里的多棵树），然后投票或取平均。
+   - **地位**：Kaggle 比赛刷分神器。
+3. **Meta-Learning (元学习)**
+   - **定义**：Learning to Learn（学会如何学习）。不是学习具体的分类任务，而是学习“如何快速适应一个新任务”的能力。
+
+------
+
+### Process-Oriented
+
+关注**“怎么学”**效率最高。
+
+1. **Curriculum Learning (课程学习)**
+   - **定义**：循序渐进。先给模型看简单的样本（Easy Samples），学好了再给难的（Hard Samples）。像人类上学一样，先学加减，再学微积分。
+2. **Online Learning (在线学习/增量学习)**
+   - **定义**：活到老学到老。数据像水流一样源源不断进来，模型实时更新，不用每次都把历史数据重新跑一遍。
+   - **场景**：抖音/TikTok 的推荐算法，必须实时捕捉你的兴趣变化。
+3. **Adversarial Learning (对抗学习)**
+   - **定义**：左右互搏。生成器（Generator）造假，判别器（Discriminator）打假，两人博弈中共同进步。
+   - **代表**：GAN (生成对抗网络)。
+
+------
+
+### LLM 时代的“新三样”
+
+随着 ChatGPT 的爆发，这几个词变得极度重要。
+
+1. **In-Context Learning (上下文学习)**
+   - **定义**：不需要更新模型参数（不改权重）。直接在 Prompt 里给几个例子，模型就能照猫画虎地输出结果。
+   - **本质**：这是 LLM 特有的能力，利用 Prompt 激发模型学到的知识。
+2. **Instruction Learning (指令学习 / Instruction Tuning)**
+   - **定义**：听懂人话。让模型学会遵循“把这段话翻译成英文”、“解释这个代码”等指令，而不是单纯地续写文本。
+3. **Preference Learning (偏好学习)**
+   - **定义**：对齐人类价值观。不仅要答对，还要答得让人类满意（有用、无害）。
+   - **代表技术**：**RLHF** (Reinforcement Learning from Human Feedback) 和 **DPO** (Direct Preference Optimization)。
+
+------
+
+### 其他特定领域的 Learning
+
+1. **Metric Learning (度量学习)**：学习计算两个物体的距离（和对比学习很像，人脸识别常用）。
+2. **Federated Learning (联邦学习)**：数据不出本地，保护隐私。大家各自在手机上训练，只把更新的梯度上传到云端。
+3. **Dictionary Learning (字典学习)**：稀疏编码时代的经典，学习一组基向量来表示数据。
+
+## 总体分类
 
 ### 1. 基础层（算法与模型）
 
@@ -90,7 +180,7 @@
 - AlphaGo、AlphaZero、MuZero
 - 游戏中的策略学习、多智能体博弈
 
-## 🔹 二、交叉与新兴方向
+## 交叉与新兴方向
 
 ### 🤝 多模态智能（Multimodal AI）
 
@@ -116,7 +206,7 @@
 
 > 对齐问题、偏见检测、人工智能治理、AIGC 风险。
 
-## 3. 应用层分类
+## 应用层分类
 
 - 医疗 AI（Medical AI）
 - 金融 AI（金融风控、智能投顾）
@@ -290,3 +380,36 @@ Training Set
 
 - Training Set
 - Validation Set
+
+## Optimization
+
+Auto-Regression: KV-Cache
+
+| 优化项                                | 解释                                                         | 带来的好处                                  |
+| ------------------------------------- | ------------------------------------------------------------ | ------------------------------------------- |
+| **Flash Attention**                   | 利用 CUDA kernel 优化 Softmax-attention 的矩阵乘法，减少内存读写 | 更快、更省内存，适用于长序列                |
+| **Rotary Positional Encoding (RoPE)** | 替代传统位置编码，兼容 KV 缓存并支持无限延展                 | 提升泛化能力                                |
+| **Quantization (INT8, FP8, etc.)**    | 用低精度浮点数代替 FP16/FP32                                 | 节省显存，提升吞吐量                        |
+| **LoRA / QLoRA**                      | 微调时只训练小矩阵，冻结大部分参数                           | 更轻量、高效微调                            |
+| **Weight Tying / Sharing**            | Embedding 和输出层共享参数                                   | 降低模型大小                                |
+| **Prefix Caching / Prefill**          | 将一段 prompt 预编码并缓存                                   | Chat 场景中节省大量计算（典型如长系统提示） |
+
+### Inference 推理
+
+- 量化
+- 缓存
+  - KV Cache
+
+- 剪枝
+  - Token Pruning
+  - Model Pruning
+    - To prune, or not to prune, Google
+- 蒸馏
+
+#### Token Pruning
+
+好处，无需训练
+
+dart=https://github.com/ZichenWen1/DART
+
+#### Flash Attention

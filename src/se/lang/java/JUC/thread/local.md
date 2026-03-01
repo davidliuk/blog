@@ -125,37 +125,37 @@ JDK 中存在一些措施来保证 ThreadLocal 尽量不会内存泄漏：
 
 #### 解决方案
 
-> 在使用ThreadLocal和线程池一起时，为了避免脏读问题，可以在每次任务执行完毕后，显式地调用ThreadLocal的remove方法来清除ThreadLocal中的数据。这样可以确保下一个任务使用的线程不会读取到上一个任务设置的值。
->
-> 以下是一个示例代码，演示如何在Java中使用ThreadLocal和线程池，并在任务执行完毕后清除ThreadLocal中的数据：
->
-> ```java
->import java.util.concurrent.ExecutorService;
-> import java.util.concurrent.Executors;
-> 
-> public class ThreadLocalExample {
->  private static ThreadLocal<String> threadLocal = new ThreadLocal<>();
-> 
->     public static void main(String[] args) {
->      ExecutorService executor = Executors.newFixedThreadPool(5);
->    
->         for (int i = 0; i < 10; i++) {
->          int taskId = i;
->             executor.submit(() -> {
->                 threadLocal.set("Value for task " + taskId);
->                 System.out.println("Task " + taskId + " - ThreadLocal value: " + threadLocal.get());
->    
->                 // 清除ThreadLocal中的数据
->              threadLocal.remove();
->             });
->         }
->    
->         executor.shutdown();
->  }
->    }
->    ```
-> 
-> 在上面的示例中，每个任务执行完毕后都会调用`threadLocal.remove()`来清除ThreadLocal中的数据，以确保下一个任务不会读取到错误的值。
+在使用ThreadLocal和线程池一起时，为了避免脏读问题，可以在每次任务执行完毕后，显式地调用ThreadLocal的remove方法来清除ThreadLocal中的数据。这样可以确保下一个任务使用的线程不会读取到上一个任务设置的值。
+
+以下是一个示例代码，演示如何在Java中使用ThreadLocal和线程池，并在任务执行完毕后清除ThreadLocal中的数据：
+
+```java
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+
+public class ThreadLocalExample {
+    private static ThreadLocal<String> threadLocal = new ThreadLocal<>();
+
+    public static void main(String[] args) {
+    ExecutorService executor = Executors.newFixedThreadPool(5);
+
+      for (int i = 0; i < 10; i++) {
+          int taskId = i;
+             executor.submit(() -> {
+                 threadLocal.set("Value for task " + taskId);
+                 System.out.println("Task " + taskId + " - ThreadLocal value: " + threadLocal.get());
+
+                 // 清除ThreadLocal中的数据
+                 threadLocal.remove();
+             });
+         }
+
+         executor.shutdown();
+    }
+}
+```
+
+在上面的示例中，每个任务执行完毕后都会调用`threadLocal.remove()`来清除ThreadLocal中的数据，以确保下一个任务不会读取到错误的值。
 
 1. 在每个线程执行中，往 ThreadLocal 对象设置值后，执行完核心逻辑代码，最后对 ThreadLocal 对象进行清理（remove方法）。
 2. 或者任务执行之前先remove thread local值，再执行内容。

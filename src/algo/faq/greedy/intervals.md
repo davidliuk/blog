@@ -18,12 +18,14 @@
 
 ### [252. Meeting Rooms](https://leetcode.com/problems/meeting-rooms/)
 
+Given an array of meeting time `intervals` where `intervals[i] = [starti, endi]`, determine if a person could attend all meetings.
+
 ```java
 public boolean canAttendMeetings(int[][] intervals) {
     if (intervals.length == 0) {
         return true;
     }
-    Arrays.sort(intervals, (a, b) -> a[0] == b[0]? b[1] - a[1]: a[0] - b[0]);
+    Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
 
     int last = intervals[0][1];
     for (int i = 1; i < intervals.length; ++i) {
@@ -42,6 +44,8 @@ public boolean canAttendMeetings(int[][] intervals) {
 
 ### [253. Meeting Rooms II](https://leetcode.com/problems/meeting-rooms-ii/)
 
+Given an array of meeting time intervals `intervals` where `intervals[i] = [starti, endi]`, return *the minimum number of conference rooms required*.
+
 ```java
 public int minMeetingRooms(int[][] intervals) {
     Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
@@ -56,37 +60,78 @@ public int minMeetingRooms(int[][] intervals) {
 }
 ```
 
-### [56. Merge Intervals](https://leetcode.com/problems/merge-intervals/)
+### 按天循环会议
 
 ```java
-public int[][] merge(int[][] intervals) {
-    Arrays.sort(intervals, (a, b) -> {
-        if (a[0] != b[0]) return a[0] - b[0];
-        return b[1] - a[1];
-    });
-    List<int[]> merged = new ArrayList<>();
-    for (int[] interval : intervals) {
-        int last = merged.size() - 1;
-        if (merged.isEmpty() || merged.get(last)[1] < interval[0]) {
-            merged.add(interval);
+public int minMeetingRooms(int[][] meetings) {
+    // 使用 TreeMap 记录每个时间点的增减量（扫描线）
+    TreeMap<Integer, Integer> diff = new TreeMap<>();
+
+    for (int[] m : meetings) {
+        int start = m[0], end = m[1];
+        if (start < end) {
+            // 普通会议
+            diff.merge(start, 1, Integer::sum);
+            diff.put(end, -1, Integer::sum);
         } else {
-            merged.get(last)[1] = Math.max(merged.get(last)[1], interval[1]);
+            // 跨午夜会议：拆分成两段，或者理解为 0 点初始值 +1
+            // 简化逻辑：[start, 24] 和 [0, end]
+            diff.put(start, 1, Integer::sum);
+            // 24点等同于0点，在循环系统中我们只关心 0-24 内部
+            diff.put(0, 1, Integer::sum);
+            diff.put(end, -1, Integer::sum);
         }
     }
 
-    return merged.toArray(new int[0][]);
+    int maxRooms = 0, currentRooms = 0;
+    for (int count : diff.values()) {
+        currentRooms += count;
+        maxRooms = Math.max(maxRooms, currentRooms);
+    }
+    return maxRooms;
 }
 ```
 
-Eg. 57
+### [56. Merge Intervals](https://leetcode.com/problems/merge-intervals/)
+
+Given an array of `intervals` where `intervals[i] = [starti, endi]`, merge all overlapping intervals, and return *an array of the non-overlapping intervals that cover all the intervals in the input*.
+
+```java
+public int[][] merge(int[][] intervals) {
+    if (intervals.length == 0) {
+        return new int[0][];
+    }
+    Arrays.sort(intervals, (a, b) -> a[0] - b[0]);
+
+    List<int[]> results = new ArrayList<>();
+    results.add(intervals[0]);
+    for (int i = 1; i < intervals.length; i++) {
+        int[] last = results.get(results.size() - 1);
+        if (last[1] < intervals[i][0]) {
+            results.add(intervals[i]);
+        } else {
+            last[1] = Math.max(last[1], intervals[i][1]);
+        }
+    }
+
+    return results.toArray(new int[0][]);
+}
+```
 
 ### [57. Insert Interval](https://leetcode.com/problems/insert-interval/)
+
+You are given an array of non-overlapping intervals `intervals` where `intervals[i] = [starti, endi]` represent the start and the end of the `ith` interval and `intervals` is sorted in ascending order by `starti`. You are also given an interval `newInterval = [start, end]` that represents the start and end of another interval.
+
+Insert `newInterval` into `intervals` such that `intervals` is still sorted in ascending order by `starti` and `intervals` still does not have any overlapping intervals (merge overlapping intervals if necessary).
+
+Return `intervals` *after the insertion*.
 
 ```java
 public int[][] insert(int[][] intervals, int[] newInterval) {
     List<int[]> sorted = new ArrayList<>(Arrays.asList(intervals));
     int i = Collections.binarySearch(sorted, newInterval, (a, b) -> a[0] - b[0]);
-    if (i < 0) i = -i - 1;
+    if (i < 0)
+        i = -i - 1;
     sorted.add(i, newInterval);
 
     List<int[]> merged = new ArrayList<>();
@@ -134,6 +179,8 @@ int[][] insert(int[][] intervals, int[] newInterval) {
 ```
 
 ### Merge 2 Sorted Intervals
+
+
 
 Intervals sorted in ascending order by `start`
 
@@ -271,6 +318,20 @@ int[][] mergeK(int[][][] lists) {
 ```
 
 ### [2402. Meeting Rooms III](https://leetcode.com/problems/meeting-rooms-iii/)
+
+You are given an integer `n`. There are `n` rooms numbered from `0` to `n - 1`.
+
+You are given a 2D integer array `meetings` where `meetings[i] = [starti, endi]` means that a meeting will be held during the **half-closed** time interval `[starti, endi)`. All the values of `starti` are **unique**.
+
+Meetings are allocated to rooms in the following manner:
+
+1. Each meeting will take place in the unused room with the **lowest** number.
+2. If there are no available rooms, the meeting will be delayed until a room becomes free. The delayed meeting should have the **same** duration as the original meeting.
+3. When a room becomes unused, meetings that have an earlier original **start** time should be given the room.
+
+Return *the **number** of the room that held the most meetings.* If there are multiple rooms, return *the room with the **lowest** number.*
+
+A **half-closed interval** `[a, b)` is the interval between `a` and `b` **including** `a` and **not including** `b`.
 
 ```java
 public int mostBooked(int n, int[][] meetings) {

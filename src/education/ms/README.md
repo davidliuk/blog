@@ -1,6 +1,7 @@
 # Master Courses
 
-Computer Graphics
+- Computer and Information Science
+- Computer Graphics
 
 课程
 
@@ -11,6 +12,8 @@ Computer Graphics
 - GAMES 101
 - GAMES 104
 
+## Computer Graphics
+
 Conferences
 
 - SigGraph (Special Interest Group on GRAPHics and Interactive Techniques)
@@ -19,7 +22,7 @@ Conferences
 
 ![image-20241115010341352](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/image-20241115010341352.png)
 
-图形 API
+Graphics API
 
 - OpenGL
 
@@ -37,12 +40,21 @@ Conferences
 
   MacOS
 
-MPS<=>cuda
+MPS <=> CUDA
+
+- MPS (Metal Performance Shaders)
+- CUDA
+
+ARM<=>x86
+
+- Rosetta2
+  - AOT
+  - JIT
 
 Game Porting Toolkit
 
-假定游戏是一个客人，想进 windows 系统做客，就必须要经过 windows 系统的一道门：DirectX API，而 Mac 系统的 GPTK 可以把自己家门“Metal API”模拟成windows家门，这样游戏就可以自动移植在 Mac，让苹果电脑用户玩到windows游戏了。
+假定游戏是一个客人，想进 windows 系统做客，就必须要经过 windows 系统的一道门：DirectX API，而 Mac 系统的 GPTK 可以把自己家门“Metal API”模拟成 windows 家门，这样游戏就可以自动移植在 Mac，让苹果电脑用户玩到 windows 游戏了。
 
-5天速通vulkan把565写了然后顺手把论文的那个collision部分也复现了一下
+5 天速通 vulkan 把 565 写了然后顺手把论文的那个 collision 部分也复现了一下
 
 感觉现代图形 api 真的很好用 反观 OpenGL
