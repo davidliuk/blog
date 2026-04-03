@@ -3,7 +3,7 @@ import { enNavbar, zhNavbar } from "./navbar/index.js";
 import { enSidebar, zhSidebar } from "./sidebar/index.js";
 
 export default hopeTheme({
-  hostname: "https://davidliuk.github.io/blog",
+  hostname: "https://davidliuk.github.io",
 
   author: {
     name: "David Liu",

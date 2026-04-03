@@ -7,7 +7,7 @@ import { registerComponentsPlugin } from '@vuepress/plugin-register-components'
 const __dirname = import.meta.dirname || getDirname(import.meta.url)
 
 export default defineUserConfig({
-  base: "/blog/",
+  base: "/",
 
   locales: {
     "/": {

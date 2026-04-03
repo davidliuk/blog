@@ -1,3 +1,7 @@
+# Site base is `/` (see src/.vuepress/config.ts). For https://davidliuk.github.io/ without /blog,
+# GitHub Pages must serve this build from the user-site repo `davidliuk.github.io`, or use a custom domain
+# on this repo. A project repo alone only gets https://davidliuk.github.io/<repo>/ unless configured otherwise.
+
 name: Blog Deployment
 
 on:
@@ -17,7 +21,7 @@ jobs:
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
-          version: 9 # 这里建议写 9，或者跟你本地 `pnpm -v` 保持一致的大版本
+          version: 10
 
       # 2. 设置 Node.js 并开启 pnpm 缓存
       - name: Setup Node.js
@@ -38,9 +42,14 @@ jobs:
           NODE_OPTIONS: --max_old_space_size=8192
         run: pnpm run docs:build
 
-      # 5. 部署
-      - name: Deploy
+      # 5. 部署到用户站仓库 davidliuk.github.io（根域名 https://davidliuk.github.io/）
+      # 须先在 GitHub → blog 仓库 → Settings → Secrets → 添加 GH_PAGES_TOKEN（见仓库说明或下方注释）
+      - name: Deploy to user site repo
         uses: JamesIves/github-pages-deploy-action@v4
         with:
-          branch: gh-pages
+          token: ${{ secrets.GH_PAGES_TOKEN }}
+          repository-name: davidliuk/davidliuk.github.io
+          branch: main
           folder: src/.vuepress/dist
+          clean: true
+          commit-message: Deploy site from davidliuk/blog
