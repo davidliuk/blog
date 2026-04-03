@@ -1,5 +1,9 @@
 # System Calls
 
+- System calls
+- The file API
+- Kernel entry/exit
+
 User Mode vs Kernel Mode
 
 ### Why system calls

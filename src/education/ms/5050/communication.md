@@ -1,5 +1,9 @@
 # Communication
 
+- Sockets
+- Socket programming
+- Handling multiple connections
+
 ## OSI model
 
 7 layer

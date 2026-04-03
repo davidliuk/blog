@@ -96,8 +96,13 @@ const imgSrc = computed(() => {
   flex: 1;
 }
 .abs-action {
-  color: var(--theme-color, #096dd9);
+  color: var(--vp-c-text-2);
   font-weight: 600;
   cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.abs-action:hover {
+  color: var(--vp-c-accent);
 }
 </style>

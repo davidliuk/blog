@@ -1,5 +1,9 @@
 # Processes and threads
 
+- Basic concepts
+- The UNIX model
+- Implementation in the kernel
+
 ## Process
 
 ### Why process abstraction?

@@ -177,7 +177,7 @@ Some people with luggage near a van that is transporting it.
 
 Context type 2: Boxes
 
-person: [0.681, 0.242, 0.774, 0.694], backpack: [0.384, 0.696, 0.485, 0.914], suitcase: ...<omitted>
+person: [0.681, 0.242, 0.774, 0.694], backpack: [0.384, 0.696, 0.485, 0.914], suitcase: …(omitted)
 
 ### 训练
 

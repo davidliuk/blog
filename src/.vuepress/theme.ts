@@ -116,6 +116,63 @@ export default hopeTheme({
     },
   },
 
+  /**
+   * V2 theme options: markdown features live under `markdown`, not `plugins.mdEnhance` / `plugins.markdown*`.
+   * @see https://theme-hope.vuejs.press/config/markdown/intro.html
+   */
+  markdown: {
+    gfm: true,
+    vPre: true,
+    component: true,
+
+    tabs: true,
+    codeTabs: true,
+
+    hint: true,
+
+    imgLazyload: true,
+    imgSize: true,
+    imgMark: true,
+
+    math: {
+      type: "katex",
+    },
+
+    chartjs: true,
+    echarts: true,
+    mermaid: true,
+    markmap: true,
+    plantuml: true,
+
+    align: true,
+    attrs: true,
+    mark: true,
+    sub: true,
+    sup: true,
+
+    include: true,
+
+    demo: true,
+    playground: {
+      presets: ["ts", "vue"],
+    },
+    vuePlayground: true,
+
+    stylize: [
+      {
+        matcher: "Recommended",
+        replacer: ({ tag }) => {
+          if (tag === "em")
+            return {
+              tag: "Badge",
+              attrs: { type: "tip" },
+              content: "Recommended",
+            };
+        },
+      },
+    ],
+  },
+
   plugins: {
     blog: {
       // autoExcerpt: true,
@@ -150,72 +207,6 @@ export default hopeTheme({
        */
       // provider: "Waline",
       // serverURL: "https://vuepress-theme-hope-comment.vercel.app",
-    },
-
-    markdownTab: {
-      tabs: true,
-      codeTabs: true,
-    },
-    markdownHint: {
-      // this is the default option, so you can use this feature directly
-      hint: true,
-    },
-    markdownImage: {
-      lazyload: true,
-      size: true,
-      mark: true,
-    },
-    markdownMath: {
-      type: "katex",
-    },
-
-    // Disable features you don’t want here
-    mdEnhance: {
-      align: true,
-      attrs: true,
-      chart: true,
-      codetabs: true,
-      container: true,
-      demo: true,
-      echarts: true,
-      // flowchart: true,
-      gfm: true,
-      imgLazyload: true,
-      imageLazyload: true,
-      imageTitle: true,
-      imageSize: true,
-      imgSize: true,
-      include: true,
-      katex: true,
-      mark: true,
-      mermaid: true,
-      markmap: true,
-      plantuml: true,
-      playground: {
-        presets: ["ts", "vue"],
-      },
-      // presentation: {
-      //   plugins: ["highlight", "math", "search", "notes", "zoom"],
-      // },
-      // presentation: ["highlight", "math", "search", "notes", "zoom"],
-      stylize: [
-        {
-          matcher: "Recommended",
-          replacer: ({ tag }) => {
-            if (tag === "em")
-              return {
-                tag: "Badge",
-                attrs: { type: "tip" },
-                content: "Recommended",
-              };
-          },
-        },
-      ],
-      sub: true,
-      sup: true,
-      // tabs: true,
-      vPre: true,
-      vuePlayground: true,
     },
 
     pwa: {

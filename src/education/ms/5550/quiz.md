@@ -84,3 +84,14 @@ Which machine(s) _always_ know the mapping from a domain foo.com to the correspo
 3. **The authoritative name server for foo.com (your response)**
 4. The client's local DNS server
 5. The root name servers
+
+### GFS
+
+True or false? All the data that is read from or written to GFS must pass through the master
+
+You can respond once
+
+**False**
+
+metadata go to master, not all data
+

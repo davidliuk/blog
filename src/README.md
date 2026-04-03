@@ -4,28 +4,31 @@ portfolio: true
 avatar: /avatar.jpg
 heroText: David's blog
 avatarStyle:
-  max-width: 50%
-  border-radius: 50%
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2)
+  object-fit: cover
   display: block
-  margin: auto
 name: Dawei Liu
 titles:
   - MSE CIS@UPenn 26'
   - SWE Intern@TikTok 25'
   - SDE Intern@Amazon 24'
   - SDE Intern@JD.com 23'
-welcome: 👋 Hi there, I am
+welcome: Hello, I'm
 content: portfolio
 ---
 
-:::: center
-[🧑‍💻 About](#about) | [📚 Publications](#📚-publications) | [🎓 Education](#🎓-education) | [💼 Experience](#💼-professional-experience) | [🛠️ Tech Stack](#🛠️-tech-stack)
-::::
+<PortfolioAffiliations />
+
+<nav class="home-page-nav" aria-label="On this page">
+  <a class="home-page-nav__link" href="#about">About</a>
+  <a class="home-page-nav__link" href="#📚-publications">Publications</a>
+  <a class="home-page-nav__link" href="#🎓-education">Education</a>
+  <a class="home-page-nav__link" href="#💼-professional-experience">Experience</a>
+  <a class="home-page-nav__link" href="#🛠️-tech-stack">Tech stack</a>
+</nav>
 
 # About
 
-I’m **Dawei Liu**, a Master’s student in **Computer and Information Science** (CIS) at the **University of Pennsylvania** (Class of 2026), with a B.E. in **Software Engineering** from **Northeastern University**.
+<p class="home-lead">Master’s student in <strong>Computer and Information Science</strong> at the <strong>University of Pennsylvania</strong> (2026), with a B.E. in <strong>Software Engineering</strong> from <strong>Northeastern University</strong>. I work across <strong>large-scale ads systems</strong>, <strong>AI infrastructure</strong>, and <strong>research</strong> on agents and multimodal learning.</p>
 
 Recently, I worked at **TikTok** (Shop Ads), where I joined as an SDE Intern and was converted to a **Software Engineer** within 12 weeks. During my **8**-month tenure, I worked on closed-loop Ads delivery, Image Selection with **exploration and exploitation** strategy, **Multimodal LLM-based** image understanding, **GenAI image** integration, and recommendation infrastructure optimization.
 
@@ -39,8 +42,39 @@ I’m passionate about building **scalable, efficient, and intelligent** systems
 
 <PublicationList>
   <PublicationCard
+    title="Graph of Skills: Dependency-Aware Structural Retrieval for Massive Agent Skills"
+    :authors="['Dawei Liu*','Zongxia Li*','Hongyang Du','Xiyang Wu','Shihang Gui','Yongbei Kuang','Lichao Sun']"
+    image="/publication/gos.png"
+    venue="Preprint"
+    date="Mar 2026"
+    abstract="Skill usage has become a core component of modern agent systems and can substantially improve agents' ability to complete complex tasks. In real-world settings, where agents must monitor and interact with numerous personal applications, web browsers, and other environment interfaces, skill libraries can scale to thousands of reusable skills. Scaling to larger skill sets introduces two key challenges. First, loading the full skill set saturates the context window, driving up token costs, hallucination, and latency. In this paper, we present Graph of Skills (GoS), an inference-time structural retrieval layer for large skill libraries. GoS constructs an executable skill graph offline from skill packages, then at inference time retrieves a bounded, dependency-aware skill bundle through hybrid semantic-lexical seeding, reverse-weighted Personalized PageRank, and context-budgeted hydration. On SkillsBench and ALFWorld, GoS improves average reward by 43.6% over the vanilla full skill-loading baseline while reducing input tokens by 37.8%, and generalizes across three model families: Claude Sonnet, GPT-5.2 Codex, and MiniMax. Additional ablation studies across skill libraries ranging from 200 to 2,000 skills further demonstrate that GoS consistently outperforms both vanilla skills loading and simple vector retrieval in balancing reward, token efficiency, and runtime."
+    github="https://github.com/davidliuk/graph-of-skills"
+  />
+
+  <PublicationCard
+    title="Multimodal Video Generation Models with Audio: Present and Future"
+    :authors="['Zongxia Li','Hongyang Du','Dawei Liu','Xiyang Wu','Lantao Yu','Jingxi Chen','Fuxiao Liu','Xiaomin Wu','Jing Xie','Chengsong Huang','Yicheng He','Guangyao Shi']"
+    image="/publication/vgm.jpeg"
+    venue="Preprint"
+    date="Feb 2026"
+    abstract="Video generation models have advanced rapidly and are now widely used across entertainment, advertising, filmmaking, and robotics applications such as world modeling and simulation. However, visual content alone is often insufficient for realistic and engaging media experiences—audio is also a key component of immersion and semantic coherence. As AI-generated videos become increasingly prevalent in everyday content, demand has grown for systems that can generate synchronized sound alongside visuals. This trend has driven rising interest in multimodal video generation, which jointly models video and audio to produce more complete, coherent, and appealing outputs. Since late 2025, a wave of multimodal video generation models has emerged, with releases including Veo 3.1, Sora 2, Kling 2.6, Wan 2.6, OVI, and LTX 2. As multimodal generation technology advances, its impact expands across both daily consumer and industrial domains—revolutionizing daily entertainment while enabling more sophisticated world simulation for training embodied AI systems. In this paper, we provide a comprehensive overview of the multimodal video generation model literature covering the major topics: evolution and common architectures of multimodal video generation models; common post-training methods and evaluation; applications and active research areas of video generation; limitations and challenges of multimodal video generation."
+    paper="https://www.researchgate.net/publication/401388352_Multimodal_Video_Generation_Models_with_Audio_Present_and_Future"
+    github="https://github.com/zli12321/Multimodal-VIdeo-Generation-Collections-Video-and-Audio"
+  />
+
+  <PublicationCard
+    title="A Cookbook of 3D Vision: Data, Learning Paradigms, and Application"
+    :authors="['Hongyang Du*','Zongxia Li*','Dawei Liu*','Runhao Li*','Haoyuan Song','Qingyu Zhang','Yubo Wang','Jingcheng Ni','Shihang Gui','Congchao Dong','Tao Hu']"
+    image="/publication/3dv.jpeg"
+    venue="CVPR 2026 Workshop (OpenSUN3D)"
+    date="Mar 2026"
+    abstract="3D vision has rapidly evolved, driven by increasingly diverse data representations, learning paradigms, and modeling strategies. Yet the field remains fragmented across representations and benchmarks, making it difficult to develop unified perspectives on efficiency, fidelity, and scalability. This work provides a data-centric taxonomy of 3D vision that connects geometric representations, datasets, learning frameworks, and applications within a single conceptual map. We begin by surveying the principal structural representations of 3D data—point clouds, meshes, voxels, and 3D Gaussians—along with their acquisition pipelines. We then examine how dataset design, benchmark construction, and supervision regimes shape recent advances, spanning 2D-supervised 3D learning, implicit neural representations, and 4D world modeling. Through this integrative lens, we clarify the relationships among representations, learning paradigms, and downstream tasks in reconstruction, generation, and video modeling, offering a consolidated view of emerging trends toward balancing efficiency and fidelity and toward multimodal geometric grounding."
+    github="https://github.com/Hongyang-Du/awesome-3d-datasets"
+  />
+
+  <PublicationCard
     title="TIMEDB: tumor immune micro-environment cell composition database with automatic analysis and interactive visualization"
-    :authors="['Xueying Wang','Lingxi Chen','Wei Liu','Yuanzheng Zhang','Dawei Liu','Chenxin Zhou','Shuai Shi','Jiajie Dong','Zhengtao Lai','Bingran Zhao','Wenjingyu Zhang','Haoyue Cheng','Shuaicheng Li']"
+    :authors="['Xueying Wang*','Lingxi Chen*','Wei Liu','Yuanzheng Zhang','Dawei Liu','Chenxin Zhou','Shuai Shi','Jiajie Dong','Zhengtao Lai','Bingran Zhao','Wenjingyu Zhang','Haoyue Cheng','Shuaicheng Li']"
     image="/publication/timedb.png"
     venue="Nucleic Acids Research"
     date="Jan 2023"
@@ -48,17 +82,6 @@ I’m passionate about building **scalable, efficient, and intelligent** systems
     paper="https://doi.org/10.1093/nar/gkac1006"
     website="https://timedb.deepomics.org"
     github="https://github.com/deepomicslab/TIMEDB"
-  />
-
-<PublicationCard
-    title="A Data-Centric Taxonomy for 3D Vision: Linking Representations, Augmentation, and State-of-the-Art Learning Paradigms"
-    :authors="['Hongyang Du*','Runhao Li*','Dawei Liu*','Haoyuan Song','Qingyu Zhang','Yubo Wang','Jingcheng Ni','Shihang Gui','Congchao Dong','Tao Hu','Dang-Quang Tran']"
-    image="/publication/3dv.jpeg"
-    venue="Preprint"
-    date="Oct 2025"
-    abstract="3D vision has rapidly evolved with diverse data modalities, learning paradigms, and modeling strategies, yet remains fragmented across representations and benchmarks. This work provides a data-centric taxonomy connecting geometric representations, datasets, and learning frameworks, analyzing trade-offs among point clouds, meshes, voxels, implicit fields, and 3D Gaussians, and how benchmarks and supervision regimes shape advances like 2D-supervised 3D learning, implicit neural representations, and 4D world modeling. It clarifies relationships between representations and downstream applications in reconstruction, generation, and video modeling, offering a consolidated view toward efficiency–fidelity balance and multimodal geometric grounding."
-    paper="https://scholar.google.com/citations?view_op=view_citation&hl=en&user=lrHQxmkAAAAJ&citation_for_view=lrHQxmkAAAAJ:u-x6o8ySG0sC"
-    github="https://github.com/Hongyang-Du/awesome-3d-datasets"
   />
 </PublicationList>
 
@@ -219,4 +242,4 @@ At JD.com, I worked on platform engineering for internal AI tooling. I redesigne
 
 ## 💬 Let’s Connect
 
-Whether you're into **Ads Delivery**, **Recommendation Systems**, **AI Infra**, or **Excellent Engineering**, I'd love to connect and chat. Thanks for stopping by!
+<p class="home-connect">Interested in <strong>ads delivery</strong>, <strong>recommendation systems</strong>, <strong>AI infra</strong>, or <strong>engineering at scale</strong>. I’m always happy to connect — reach out via the links above or email.</p>

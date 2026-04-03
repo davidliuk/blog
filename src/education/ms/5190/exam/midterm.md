@@ -16,7 +16,7 @@ Midterm 1 will cover the following topics:
 - linear regression, 
 - logistic regression, 
 - neural network, 
-- KNN, and 
+- KNN, 
 - decision trees.
 
 May we use A4 paper for the cheatsheet, or does it have to be letter size? Yes
@@ -26,3 +26,11 @@ May we use A4 paper for the cheatsheet, or does it have to be letter size? Yes
 Past exams are MCQs and short/long answer questions combined.
 
 There wiil be two midterms and no final.
+
+
+
+
+
+5-10个简单选择题
+
+75分钟，总共50分

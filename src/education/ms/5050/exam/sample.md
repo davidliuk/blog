@@ -10,7 +10,7 @@ To help you with reviewing the concepts studied in the lectures, I have put toge
 
 Alice has just learnt about the fork() system call and is eager to put it to practice. She writes the following program:
 
-```c
+```c++
 int main(void){ 
     int i; 
     int N = 3;
@@ -32,10 +32,24 @@ int main(void){
 Assuming all system calls are successful. 
 
 1. a) How many processes are created in total (including the main process)? Explain why.
+
+   6=3+2+1
+
 2. b) Can you generalize your solution to N child processes (instead of exactly 3)?
+
+   N+N-1+N-2+...+1=(N+1)*N/2
+
 3. c) Does your answer change if we add an exit() between Line 10 and 11? Explain.
+
+   
+
 4. d) Suppose the above program (the original one, without the change in (c)) is run on a machine with 8 cores. What is the maximum number of processes that can run truly concurrently, assuming any given value of N? 
+
+   
+
 5. e) Does your answer in (d) change if we add a wait() between Lines 13 and 14? Explain.
+
+   
 
 ### Q2)
 

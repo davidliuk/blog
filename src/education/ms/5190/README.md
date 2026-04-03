@@ -23,10 +23,18 @@ Types of Machine Learning
   - we will not have presentations for final projects. Historically, we have provided the option of a video presentation of your project for extra credit, but we will not have everyone present to each other.
 
 - Midterms exams: 40%
+  - midterm 1, 33.5 / 50.0
+  - midterm 2
+
 - In-class quizzes: 15%
   - Approx. weekly short quiz: **5-10** mins at the beginning. Best **50%** of scores out of ≈10 quizzes will count.
   - Quizzes will be done on paper
   - Based on last semester’s format, it is not open-book and typically takes up the first five minutes of the lecture, with several questions covering the current or previous week’s topics.
+    - 2/5
+    - 5/5
+    - 3/3
+    - 0/?
+    - 
 - Bonus points up to 5% of course grade for extra-good citizenship, e.g.
   - answering lots of questions on Ed Forum
   - bug / typo reporting (more info on this soon)
