@@ -20,8 +20,7 @@ jobs:
       # 1. 安装 pnpm
       - name: Install pnpm
         uses: pnpm/action-setup@v4
-        with:
-          version: 10
+        # 版本由仓库根目录 package.json 的 packageManager（pnpm@10.33.0）决定，勿在此再写 version
 
       # 2. 设置 Node.js 并开启 pnpm 缓存
       - name: Setup Node.js
