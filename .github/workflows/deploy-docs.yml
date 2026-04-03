@@ -10,12 +10,21 @@ on:
       - main
   workflow_dispatch:
 
+# 避免连续 push 时两次部署抢写同一远端分支
+concurrency:
+  group: deploy-davidliuk-github-io
+  cancel-in-progress: true
+
 jobs:
   deploy-gh-pages:
     runs-on: ubuntu-latest
     steps:
+      # 跨仓库部署必须用 persist-credentials: false，否则会沿用 GITHUB_TOKEN，
+      # 与 GH_PAGES_TOKEN 混用，导致 JamesIves action 里 git 状态错乱 / push 失败。
       - name: Checkout
-        uses: actions/checkout@v4 # 升级到 v4
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false
 
       # 1. 安装 pnpm
       - name: Install pnpm
@@ -42,13 +51,16 @@ jobs:
         run: pnpm run docs:build
 
       # 5. 部署到用户站仓库 davidliuk.github.io（根域名 https://davidliuk.github.io/）
-      # 须先在 GitHub → blog 仓库 → Settings → Secrets → 添加 GH_PAGES_TOKEN（见仓库说明或下方注释）
+      # - Secrets: blog 仓库需配置 GH_PAGES_TOKEN（PAT，对 davidliuk.github.io 有 contents:write）
+      # - Pages: 在 davidliuk.github.io → Settings → Pages → Branch 选 gh-pages，目录 /
+      #   （站点文件在 gh-pages 分支；main 可只保留 README，避免与 action 抢 main）
       - name: Deploy to user site repo
         uses: JamesIves/github-pages-deploy-action@v4
         with:
           token: ${{ secrets.GH_PAGES_TOKEN }}
           repository-name: davidliuk/davidliuk.github.io
-          branch: main
+          branch: gh-pages
           folder: src/.vuepress/dist
           clean: true
+          single-commit: true
           commit-message: Deploy site from davidliuk/blog
