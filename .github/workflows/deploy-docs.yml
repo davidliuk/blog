@@ -63,4 +63,4 @@ jobs:
           folder: src/.vuepress/dist
           clean: true
           single-commit: true
-          commit-message: Deploy site from davidliuk/blog
+          commit-message: Deploy site from davidliuk/davidliuk.github.io

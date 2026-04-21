@@ -14,7 +14,7 @@ export default hopeTheme({
 
   logo: "/logo.png",
 
-  repo: "davidliuk/blog",
+  repo: "davidliuk/davidliuk.github.io",
 
   docsDir: "docs",
 
@@ -73,7 +73,8 @@ export default hopeTheme({
       displayFooter: true,
 
       blog: {
-        description: "CS@UPenn 26', SDE Intern@TikTok, Amazon, JD.com",
+        description:
+          "CS@UPenn 26', Research Intern@Lehigh LAIR, dr claw (OpenLAIR), SDE Intern@TikTok, Amazon, JD.com",
         intro: "/me",
       },
 
@@ -191,7 +192,7 @@ export default hopeTheme({
        * Using Giscus
        */
       provider: "Giscus",
-      repo: "davidliuk/blog",
+      repo: "davidliuk/davidliuk.github.io",
       repoId: "R_kgDOIgJd8g",
       category: "Announcements",
       categoryId: "DIC_kwDOIgJd8s4CY4CF",

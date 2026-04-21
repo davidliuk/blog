@@ -8,6 +8,7 @@ avatarStyle:
   display: block
 name: Dawei Liu
 titles:
+  - Research Intern@Lehigh LAIR
   - MSE CIS@UPenn 26'
   - SWE Intern@TikTok 25'
   - SDE Intern@Amazon 24'
@@ -28,13 +29,11 @@ content: portfolio
 
 # About
 
-<p class="home-lead">Master’s student in <strong>Computer and Information Science</strong> at the <strong>University of Pennsylvania</strong> (2026), with a B.E. in <strong>Software Engineering</strong> from <strong>Northeastern University</strong>. I work across <strong>large-scale ads systems</strong>, <strong>AI infrastructure</strong>, and <strong>research</strong> on agents and multimodal learning.</p>
+<p class="home-lead">Master’s student in <strong>Computer and Information Science</strong> at the <strong>University of Pennsylvania</strong> (2026), with a B.E. in <strong>Software Engineering</strong> from <strong>Northeastern University</strong>. I am an AI researcher driven by the potential of Agentic Systems. I work at the intersection of research and engineering, applying large-scale software discipline to build intelligent, end-to-end autonomous platforms.</p>
 
-Recently, I worked at **TikTok** (Shop Ads), where I joined as an SDE Intern and was converted to a **Software Engineer** within 12 weeks. During my **8**-month tenure, I worked on closed-loop Ads delivery, Image Selection with **exploration and exploitation** strategy, **Multimodal LLM-based** image understanding, **GenAI image** integration, and recommendation infrastructure optimization.
+Recently, I’m a **Research Intern** at **Lehigh University** with [**LAIR**](https://github.com/OpenLAIR), advised by **Prof. Lichao Sun**. As one of the **top three** core contributors, I’ve helped build [**Dr. Claw**](https://github.com/OpenLAIR/dr-claw): a general-purpose **AI Research Assistant** for end-to-end projects across domains, from shaping an idea through experiments to publication-ready outputs, so teams can focus on **research quality** and **iteration speed**. The open-source project has **850+** GitHub stars.
 
-Previously, I contributed to **observability** frameworks as an SDE Intern at **Amazon**. I also optimized **AI** computing platform **infra** and **AIGC marketing** workflows as a Backend SDE Intern at **JD.com**.
-
-I’m passionate about building **scalable, efficient, and intelligent** systems at the intersection of **AI infrastructure** and **engineering excellence**, solving complex problems that push the boundaries of system performance and reliability.
+Previously, I worked at **TikTok** (Shop Ads), where I joined as an SDE Intern and was converted to a **Software Engineer** within 12 weeks. During my **8**-month tenure, I worked on closed-loop Ads delivery, Image Selection with **exploration and exploitation** strategy, **Multimodal LLM-based** image understanding, **GenAI image** integration, and recommendation infrastructure optimization. Before then, I contributed to **observability** frameworks as an SDE Intern at **Amazon**. I also optimized **AI** computing platform **infra** and **AIGC marketing** workflows as a Backend SDE Intern at **JD.com**.
 
 ---
 
@@ -46,9 +45,20 @@ I’m passionate about building **scalable, efficient, and intelligent** systems
     :authors="['Dawei Liu*','Zongxia Li*','Hongyang Du','Xiyang Wu','Shihang Gui','Yongbei Kuang','Lichao Sun']"
     image="/publication/gos.png"
     venue="Preprint"
-    date="Mar 2026"
+    date="Apr 2026"
     abstract="Skill usage has become a core component of modern agent systems and can substantially improve agents' ability to complete complex tasks. In real-world settings, where agents must monitor and interact with numerous personal applications, web browsers, and other environment interfaces, skill libraries can scale to thousands of reusable skills. Scaling to larger skill sets introduces two key challenges. First, loading the full skill set saturates the context window, driving up token costs, hallucination, and latency. In this paper, we present Graph of Skills (GoS), an inference-time structural retrieval layer for large skill libraries. GoS constructs an executable skill graph offline from skill packages, then at inference time retrieves a bounded, dependency-aware skill bundle through hybrid semantic-lexical seeding, reverse-weighted Personalized PageRank, and context-budgeted hydration. On SkillsBench and ALFWorld, GoS improves average reward by 43.6% over the vanilla full skill-loading baseline while reducing input tokens by 37.8%, and generalizes across three model families: Claude Sonnet, GPT-5.2 Codex, and MiniMax. Additional ablation studies across skill libraries ranging from 200 to 2,000 skills further demonstrate that GoS consistently outperforms both vanilla skills loading and simple vector retrieval in balancing reward, token efficiency, and runtime."
+    paper="https://arxiv.org/abs/2604.05333"
     github="https://github.com/davidliuk/graph-of-skills"
+  />
+
+  <PublicationCard
+    title="Dr. Claw: An AI Research Workspace from Idea to Paper"
+    :authors="['Dingjie Song','Hanrong Zhang','Dawei Liu','Yixin Liu','Zongxia Li','Zhengqing Yuan','Siqi Zhang','Lichao Sun']"
+    image="https://raw.githubusercontent.com/OpenLAIR/dr-claw/main/public/screenshots/screenshot_v1_2.png"
+    venue="Software"
+    date="Mar 2026"
+    abstract="Dr. Claw is a general-purpose AI research assistant designed to help researchers and builders execute end-to-end projects across different domains. From shaping an initial idea to running experiments and preparing publication-ready outputs, Dr. Claw keeps the full workflow in one place so teams can focus on research quality and iteration speed."
+    github="https://github.com/OpenLAIR/dr-claw"
   />
 
   <PublicationCard
@@ -66,7 +76,7 @@ I’m passionate about building **scalable, efficient, and intelligent** systems
     title="A Cookbook of 3D Vision: Data, Learning Paradigms, and Application"
     :authors="['Hongyang Du*','Zongxia Li*','Dawei Liu*','Runhao Li*','Haoyuan Song','Qingyu Zhang','Yubo Wang','Jingcheng Ni','Shihang Gui','Congchao Dong','Tao Hu']"
     image="/publication/3dv.jpeg"
-    venue="CVPR 2026 Workshop (OpenSUN3D)"
+    venue="CVPR 2026 Workshop"
     date="Mar 2026"
     abstract="3D vision has rapidly evolved, driven by increasingly diverse data representations, learning paradigms, and modeling strategies. Yet the field remains fragmented across representations and benchmarks, making it difficult to develop unified perspectives on efficiency, fidelity, and scalability. This work provides a data-centric taxonomy of 3D vision that connects geometric representations, datasets, learning frameworks, and applications within a single conceptual map. We begin by surveying the principal structural representations of 3D data—point clouds, meshes, voxels, and 3D Gaussians—along with their acquisition pipelines. We then examine how dataset design, benchmark construction, and supervision regimes shape recent advances, spanning 2D-supervised 3D learning, implicit neural representations, and 4D world modeling. Through this integrative lens, we clarify the relationships among representations, learning paradigms, and downstream tasks in reconstruction, generation, and video modeling, offering a consolidated view of emerging trends toward balancing efficiency and fidelity and toward multimodal geometric grounding."
     github="https://github.com/Hongyang-Du/awesome-3d-datasets"
@@ -242,4 +252,4 @@ At JD.com, I worked on platform engineering for internal AI tooling. I redesigne
 
 ## 💬 Let’s Connect
 
-<p class="home-connect">Interested in <strong>ads delivery</strong>, <strong>recommendation systems</strong>, <strong>AI infra</strong>, or <strong>engineering at scale</strong>. I’m always happy to connect — reach out via the links above or email.</p>
+<p class="home-connect">Interested in <strong>Ads delivery</strong>, <strong>Recommendation Systems</strong>, <strong>Agentic Systems</strong>, or <strong>engineering at scale</strong>. I’m always happy to connect, reach out via the links above.</p>

@@ -1,4 +1,4 @@
-# Midterm1
+# Midterm 1
 
 As stated in the course website (and our first lecture), the first midterm is on March 3. I would like send a quick note on the logistics and what you might expect in the exam. 
 

@@ -1,6 +1,6 @@
 # Applied Machine Learning
 
-[webstie](https://www.seas.upenn.edu/~cis5190/spring2026/)
+[website](https://www.seas.upenn.edu/~cis5190/spring2026/)
 
 Types of Machine Learning
 
@@ -34,7 +34,8 @@ Types of Machine Learning
     - 5/5
     - 3/3
     - 0/?
-    - 
+    - 0/0
+    - 2/4
 - Bonus points up to 5% of course grade for extra-good citizenship, e.g.
   - answering lots of questions on Ed Forum
   - bug / typo reporting (more info on this soon)
