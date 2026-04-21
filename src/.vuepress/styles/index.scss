@@ -875,6 +875,44 @@
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 14px;
 }
+
+.vp-portfolio-home .tech-stack-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 0.8rem;
+  margin: 0 0 1rem;
+}
+
+.vp-portfolio-home .tech-stack-summary__item {
+  display: grid;
+  gap: 0.32rem;
+  padding: 0.95rem 1rem;
+  border-radius: 18px;
+  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--vp-c-bg) 92%, transparent) 0%,
+      color-mix(in srgb, var(--vp-c-bg-soft) 96%, transparent) 100%
+    );
+  box-shadow:
+    0 12px 26px rgba(15, 23, 42, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+.vp-portfolio-home .tech-stack-summary__label {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--vp-c-text-3);
+}
+
+.vp-portfolio-home .tech-stack-summary__item strong {
+  color: var(--vp-c-text-1);
+  line-height: 1.45;
+}
+
 .tech-card {
   position: relative;
   overflow: hidden;
@@ -912,6 +950,14 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.18);
 }
 
+.tech-card__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin: 0 0 10px 0;
+}
+
 .tech-card h4 {
   margin: 0 0 10px 0;
   font-size: 0.88rem;
@@ -920,13 +966,41 @@
   text-transform: uppercase;
   color: var(--vp-c-text-2);
 }
+
+.tech-card__count {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 1.7rem;
+  height: 1.7rem;
+  padding: 0 0.45rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
+  background: color-mix(in srgb, var(--vp-c-bg) 94%, transparent);
+  color: var(--vp-c-text-2);
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.tech-card__header h4 {
+  margin: 0;
+}
+
+.tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.32rem 0.36rem;
+}
+
 .tech-tags > * {
-  margin: 2px 4px 2px 0;
+  margin: 0;
 }
 
 .tech-card .badge {
   border-radius: 999px;
   font-weight: 600;
+  padding-inline: 0.58rem;
 }
 
 .pub-grid {
@@ -1431,6 +1505,10 @@
 
   .vp-portfolio-home .home-story-meta,
   .vp-portfolio-home .home-focus-list {
+    grid-template-columns: 1fr;
+  }
+
+  .vp-portfolio-home .tech-stack-summary {
     grid-template-columns: 1fr;
   }
 

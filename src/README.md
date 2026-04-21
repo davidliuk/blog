@@ -230,63 +230,78 @@ At JD.com, I worked on platform engineering for internal AI tooling. I redesigne
 
 <p class="home-section-intro">A practical toolkit shaped by backend engineering, ML experimentation, and product-facing system design.</p>
 
+<div class="tech-stack-summary">
+  <div class="tech-stack-summary__item">
+    <span class="tech-stack-summary__label">Build</span>
+    <strong>Backend systems, ML tooling, and production-facing infra</strong>
+  </div>
+  <div class="tech-stack-summary__item">
+    <span class="tech-stack-summary__label">Bias</span>
+    <strong>Reliability, latency, observability, and scalable delivery</strong>
+  </div>
+  <div class="tech-stack-summary__item">
+    <span class="tech-stack-summary__label">Context</span>
+    <strong>Applied AI, recommender systems, and research platforms</strong>
+  </div>
+</div>
+
 :::: tabs
 
 @tab Language
 
 <TechGrid>
-  <TechCard title="General" :items="['C/C++','Java','Go']" badge-type="tip" />
+  <TechCard title="Systems" :items="['C/C++','Java','Go']" badge-type="tip" />
   <TechCard title="Scripting" :items="['Python','JavaScript','TypeScript']" />
-  <TechCard title="Data & Markup" :items="['SQL','HTML','CSS']" />
+  <TechCard title="Query & Markup" :items="['SQL','HTML','CSS']" />
+</TechGrid>
+
+@tab AI / ML
+
+<TechGrid>
+  <TechCard title="Agent Systems" :items="['Skills','Harness','Research Automation','RAG']" badge-type="tip" />
+  <TechCard title="LLM & Multimodal" :items="['Transformer','CLIP','Token Pruning']" />
+  <TechCard title="RecSys & Ranking" :items="['ItemCF','Two-Tower','Tri-Tower','Exploration-Exploitation']" />
+  <TechCard title="Training & Eval" :items="['PyTorch','A/B Testing','Offline Metrics','Error Analysis']" />
 </TechGrid>
 
 @tab Backend
 
 <TechGrid>
   <TechCard title="Frameworks" :items="['Spring','Guice','Coral']" badge-type="tip" />
-  <TechCard title="RPC / IDL" :items="['Thrift','Protobuf']" />
-  <TechCard title="Storage" :items="['MySQL','Redis','ElasticSearch']" badge-type="warning" />
-  <TechCard title="Messaging" :items="['Kafka','RabbitMQ']" />
+  <TechCard title="APIs & Schemas" :items="['Thrift','Protobuf']" />
+  <TechCard title="Data & Search" :items="['MySQL','Redis','ElasticSearch']" badge-type="warning" />
+  <TechCard title="Streaming & MQ" :items="['Kafka','RabbitMQ','Flink']" />
   <TechCard title="Observability" :items="['OpenTelemetry']" />
 </TechGrid>
 
 @tab Frontend
 
 <TechGrid>
-  <TechCard title="Web" :items="['React','Vue','Vite']" badge-type="tip" />
-  <TechCard title="DataViz & UI" :items="['ECharts','AWS UI','Arco Design']" />
-  <TechCard title="iOS" :items="['Swift','SwiftUI','ARKit']" />
-</TechGrid>
-
-@tab AI / ML
-
-<TechGrid>
-  <TechCard title="Frameworks" :items="['PyTorch']" badge-type="tip" />
-  <TechCard title="RecSys" :items="['ItemCF','Two-Tower','Tri-Tower','Exploration-Exploitation']" />
-  <TechCard title="LLM" :items="['Transformer','Token Pruning','CLIP']" />
-  <TechCard title="Experimentation" :items="['A/B Testing']" />
+  <TechCard title="Web Apps" :items="['React','Vue','Vite']" badge-type="tip" />
+  <TechCard title="UI & DataViz" :items="['ECharts','AWS UI','Arco Design']" />
+  <TechCard title="Apple" :items="['Swift','SwiftUI','ARKit']" />
 </TechGrid>
 
 @tab Graphics
 
 <TechGrid>
-  <TechCard title="Engine & Shader" :items="['OpenGL','GLSL','Unity']" badge-type="tip" />
+  <TechCard title="Real-Time & Shader" :items="['OpenGL','GLSL','Unity']" badge-type="tip" />
   <TechCard title="Toolkits" :items="['Qt','Maya API','RigNet']" />
 </TechGrid>
 
 @tab DevOps
 
 <TechGrid>
-  <TechCard title="Platforms" :items="['Unix/Linux','Docker','Kubernetes']" badge-type="tip" />
-  <TechCard title="Observability & Ops" :items="['Grafana','Helm']" />
-  <TechCard title="AWS" :items="['DynamoDB','Kinesis','SQS','S3','CDK','Lambda']" />
+  <TechCard title="Runtime & Containers" :items="['Unix/Linux','Docker','Kubernetes']" badge-type="tip" />
+  <TechCard title="Platform Ops" :items="['Grafana','Helm','CDK']" />
+  <TechCard title="AWS" :items="['DynamoDB','Kinesis','SQS','S3','Lambda']" />
 </TechGrid>
 
 @tab Tools
 
 <TechGrid>
-  <TechCard title="Dev" :items="['Git','Vim','SSH','Shell']" badge-type="tip" />
-  <TechCard title="Docs & Diagrams" :items="['Markdown','LaTeX','Mermaid','VuePress']" />
+  <TechCard title="Developer Workflow" :items="['Git','Vim','SSH','Shell']" badge-type="tip" />
+  <TechCard title="Writing & Docs" :items="['Markdown','LaTeX','Mermaid','VuePress']" />
 </TechGrid>
 
 ::::
