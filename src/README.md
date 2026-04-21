@@ -19,25 +19,78 @@ content: portfolio
 
 <PortfolioAffiliations />
 
-<nav class="home-page-nav" aria-label="On this page">
-  <a class="home-page-nav__link" href="#about">About</a>
-  <a class="home-page-nav__link" href="#📚-publications">Publications</a>
-  <a class="home-page-nav__link" href="#🎓-education">Education</a>
-  <a class="home-page-nav__link" href="#💼-professional-experience">Experience</a>
-  <a class="home-page-nav__link" href="#🛠️-tech-stack">Tech stack</a>
-</nav>
+<HomePageNav />
 
 # About
 
-<p class="home-lead">Master’s student in <strong>Computer and Information Science</strong> at the <strong>University of Pennsylvania</strong> (2026), with a B.E. in <strong>Software Engineering</strong> from <strong>Northeastern University</strong>. I am an AI researcher driven by the potential of Agentic Systems. I work at the intersection of research and engineering, applying large-scale software discipline to build intelligent, end-to-end autonomous platforms.</p>
+<p class="home-lead">I build <strong>agentic systems</strong>, <strong>intelligent infrastructure</strong>, and <strong>production-grade ML platforms</strong>. My work lives at the intersection of AI research and large-scale engineering, with a focus on turning ambitious ideas into systems that are practical, measurable, and deployable.</p>
 
-Recently, I’m a **Research Intern** at **Lehigh University** with [**LAIR**](https://github.com/OpenLAIR), advised by **Prof. Lichao Sun**. As one of the **top three** core contributors, I’ve helped build [**Dr. Claw**](https://github.com/OpenLAIR/dr-claw): a general-purpose **AI Research Assistant** for end-to-end projects across domains, from shaping an idea through experiments to publication-ready outputs, so teams can focus on **research quality** and **iteration speed**. The open-source project has **850+** GitHub stars.
+<div class="home-hero-grid">
+  <section class="home-surface-card home-surface-card--story">
+    <p class="home-card-eyebrow">Research x Engineering</p>
+    <!-- <h2 class="home-card-title">From idea formation to scalable delivery, I care about systems that close the loop.</h2> -->
+    <p class="home-card-copy">I am an M.S.E. student in <strong>Computer and Information Science</strong> at the <strong>University of Pennsylvania</strong> and hold a B.E. in <strong>Software Engineering</strong> from <strong>Northeastern University</strong>. I enjoy designing AI-native workflows, retrieval systems for agents, and backend platforms that remain reliable under real product constraints.</p>
+    <div class="home-tag-row" aria-label="Primary focus areas">
+      <span class="home-tag">Agentic Systems</span>
+      <span class="home-tag">LLM Infrastructure</span>
+      <span class="home-tag">Recommendation</span>
+      <span class="home-tag">Systems Engineering</span>
+    </div>
+    <div class="home-story-meta" aria-label="Current profile highlights">
+      <div class="home-story-meta__item">
+        <span class="home-story-meta__label">Current Role</span>
+        <strong>Research Intern @ LAIR</strong>
+      </div>
+      <div class="home-story-meta__item">
+        <span class="home-story-meta__label">Current Study</span>
+        <strong>M.S.E. in CIS @ UPenn</strong>
+      </div>
+    </div>
+  </section>
 
-Previously, I worked at **TikTok** (Shop Ads), where I joined as an SDE Intern and was converted to a **Software Engineer** within 12 weeks. During my **8**-month tenure, I worked on closed-loop Ads delivery, Image Selection with **exploration and exploitation** strategy, **Multimodal LLM-based** image understanding, **GenAI image** integration, and recommendation infrastructure optimization. Before then, I contributed to **observability** frameworks as an SDE Intern at **Amazon**. I also optimized **AI** computing platform **infra** and **AIGC marketing** workflows as a Backend SDE Intern at **JD.com**.
+  <section class="home-surface-card home-surface-card--focus">
+    <p class="home-card-eyebrow">Current Focus</p>
+    <ul class="home-focus-list">
+      <li>Designing structural retrieval systems for massive agent skill libraries.</li>
+      <li>Building end-to-end research automation workflows with strong UX and execution depth.</li>
+      <li>Bridging research ideas with infrastructure that can survive scale, latency, and product complexity.</li>
+    </ul>
+  </section>
+</div>
+
+Recently, I’m a **Research Intern** at **Lehigh University** with [**LAIR**](https://github.com/OpenLAIR), advised by **Prof. Lichao Sun**. As one of the **top three** core contributors, I help build [**Dr. Claw**](https://github.com/OpenLAIR/dr-claw), a general-purpose **AI Research Assistant** for end-to-end research workflows, from idea formation and experimentation to paper-ready outputs.
+
+Before that, I worked on **TikTok Shop Ads**, where I joined as an SDE Intern and was converted to a **Software Engineer** within 12 weeks. Across **TikTok**, **Amazon**, and **JD.com**, I shipped systems spanning recommendation, observability, AI tooling, backend architecture, and developer infrastructure.
 
 ---
 
-## 📚 Publications
+## Selected Impact
+
+<div class="home-highlight-grid">
+  <section class="home-highlight-card">
+    <p class="home-highlight-kicker">Research Systems</p>
+    <h3>Building AI research workspaces that reduce workflow friction.</h3>
+    <p>At LAIR, I contribute to <strong>Dr. Claw</strong>, an open-source AI research assistant that keeps ideation, experiments, writing, and iteration inside one cohesive workspace.</p>
+  </section>
+
+  <section class="home-highlight-card">
+    <p class="home-highlight-kicker">Product Impact</p>
+    <h3>Shipped ranking and creative intelligence with measurable business lift.</h3>
+    <p>At TikTok Shop Ads, I built image selection, GenAI creative integration, and delivery tooling that contributed to <strong>10%+</strong> revenue uplift on PSA Carousel effectiveness.</p>
+  </section>
+
+  <section class="home-highlight-card">
+    <p class="home-highlight-kicker">Systems Performance</p>
+    <h3>Focused on robust backend design, observability, and latency engineering.</h3>
+    <p>I enjoy turning fragile systems into dependable foundations, from reducing <strong>p99 latency by 43.6%</strong> to extending tracing across heterogeneous microservice and serverless environments.</p>
+  </section>
+</div>
+
+---
+
+## Selected Publications
+
+<p class="home-section-intro">My recent work spans agent skill retrieval, AI research tooling, multimodal generation, 3D vision, and biomedical data systems.</p>
 
 <PublicationList>
   <PublicationCard
@@ -67,7 +120,7 @@ Previously, I worked at **TikTok** (Shop Ads), where I joined as an SDE Intern a
     image="/publication/vgm.jpeg"
     venue="Preprint"
     date="Feb 2026"
-    abstract="Video generation models have advanced rapidly and are now widely used across entertainment, advertising, filmmaking, and robotics applications such as world modeling and simulation. However, visual content alone is often insufficient for realistic and engaging media experiences—audio is also a key component of immersion and semantic coherence. As AI-generated videos become increasingly prevalent in everyday content, demand has grown for systems that can generate synchronized sound alongside visuals. This trend has driven rising interest in multimodal video generation, which jointly models video and audio to produce more complete, coherent, and appealing outputs. Since late 2025, a wave of multimodal video generation models has emerged, with releases including Veo 3.1, Sora 2, Kling 2.6, Wan 2.6, OVI, and LTX 2. As multimodal generation technology advances, its impact expands across both daily consumer and industrial domains—revolutionizing daily entertainment while enabling more sophisticated world simulation for training embodied AI systems. In this paper, we provide a comprehensive overview of the multimodal video generation model literature covering the major topics: evolution and common architectures of multimodal video generation models; common post-training methods and evaluation; applications and active research areas of video generation; limitations and challenges of multimodal video generation."
+    abstract="Video generation models have advanced rapidly and are now widely used across entertainment, advertising, filmmaking, and robotics applications such as world modeling and simulation. However, visual content alone is often insufficient for realistic and engaging media experiences; audio is also a key component of immersion and semantic coherence. As AI-generated videos become increasingly prevalent in everyday content, demand has grown for systems that can generate synchronized sound alongside visuals. This trend has driven rising interest in multimodal video generation, which jointly models video and audio to produce more complete, coherent, and appealing outputs. Since late 2025, a wave of multimodal video generation models has emerged, with releases including Veo 3.1, Sora 2, Kling 2.6, Wan 2.6, OVI, and LTX 2. As multimodal generation technology advances, its impact expands across both consumer and industrial domains, revolutionizing entertainment while enabling more sophisticated world simulation for embodied AI systems. In this paper, we provide a comprehensive overview of the literature covering common architectures, post-training methods, evaluation, applications, and open challenges."
     paper="https://www.researchgate.net/publication/401388352_Multimodal_Video_Generation_Models_with_Audio_Present_and_Future"
     github="https://github.com/zli12321/Multimodal-VIdeo-Generation-Collections-Video-and-Audio"
   />
@@ -78,7 +131,7 @@ Previously, I worked at **TikTok** (Shop Ads), where I joined as an SDE Intern a
     image="/publication/3dv.jpeg"
     venue="CVPR 2026 Workshop"
     date="Mar 2026"
-    abstract="3D vision has rapidly evolved, driven by increasingly diverse data representations, learning paradigms, and modeling strategies. Yet the field remains fragmented across representations and benchmarks, making it difficult to develop unified perspectives on efficiency, fidelity, and scalability. This work provides a data-centric taxonomy of 3D vision that connects geometric representations, datasets, learning frameworks, and applications within a single conceptual map. We begin by surveying the principal structural representations of 3D data—point clouds, meshes, voxels, and 3D Gaussians—along with their acquisition pipelines. We then examine how dataset design, benchmark construction, and supervision regimes shape recent advances, spanning 2D-supervised 3D learning, implicit neural representations, and 4D world modeling. Through this integrative lens, we clarify the relationships among representations, learning paradigms, and downstream tasks in reconstruction, generation, and video modeling, offering a consolidated view of emerging trends toward balancing efficiency and fidelity and toward multimodal geometric grounding."
+    abstract="3D vision has rapidly evolved, driven by increasingly diverse data representations, learning paradigms, and modeling strategies. Yet the field remains fragmented across representations and benchmarks, making it difficult to develop unified perspectives on efficiency, fidelity, and scalability. This work provides a data-centric taxonomy of 3D vision that connects geometric representations, datasets, learning frameworks, and applications within a single conceptual map. We survey principal structural representations of 3D data, then examine how dataset design, benchmark construction, and supervision regimes shape recent advances spanning 2D-supervised 3D learning, implicit neural representations, and 4D world modeling."
     github="https://github.com/Hongyang-Du/awesome-3d-datasets"
   />
 
@@ -88,7 +141,7 @@ Previously, I worked at **TikTok** (Shop Ads), where I joined as an SDE Intern a
     image="/publication/timedb.png"
     venue="Nucleic Acids Research"
     date="Jan 2023"
-    abstract="Deciphering the cell-type composition in the tumor immune microenvironment (TIME) can significantly increase the efficacy of cancer treatment and improve the prognosis of cancer. Such a task has benefited from microarrays and RNA sequencing technologies, resulting in extensive expression profiles with clinical phenotypes across multiple cancers. Current tools infer cell-type composition from bulk expression profiles, enabling investigation of inter- and intra-heterogeneity of TIME across cancer types. TIMEDB is an online database for human TIME cell-type composition estimated from bulk expression profiles, storing curated expression and composition profiles with clinical information for 39,706 samples from 546 datasets across 43 cancer types, equipped with online tools for automatic analysis and interactive visualization."
+    abstract="TIMEDB is an online database for analyzing human tumor immune microenvironment cell-type composition from bulk expression profiles. It curates expression and composition profiles with clinical information for 39,706 samples from 546 datasets across 43 cancer types, and provides automatic analysis with interactive visualization."
     paper="https://doi.org/10.1093/nar/gkac1006"
     website="https://timedb.deepomics.org"
     github="https://github.com/deepomicslab/TIMEDB"
@@ -97,7 +150,9 @@ Previously, I worked at **TikTok** (Shop Ads), where I joined as an SDE Intern a
 
 ---
 
-## 🎓 Education
+## Education
+
+<p class="home-section-intro">A research-oriented training path grounded in both systems engineering and applied AI.</p>
 
 <EducationItem
   school="University of Pennsylvania"
@@ -120,74 +175,62 @@ Previously, I worked at **TikTok** (Shop Ads), where I joined as an SDE Intern a
 
 ---
 
-## 💼 Professional Experience
+## Professional Experience
 
-### <VPIcon icon="/TikTok_logo.svg" size="2rem" verticalAlign="middle"/> - Software Engineer <Badge text="Intern" type="info" vertical="top" /> <Badge text="2026 FTE Return Offer" type="tip" vertical="top"/>
+<p class="home-section-intro">I like roles where modeling, infrastructure, and product rigor intersect. The common thread across these teams has been building reliable systems that move real metrics.</p>
 
-::: right
+### <VPIcon icon="/TikTok_logo.svg" size="2rem" verticalAlign="middle"/> - Software Engineer Intern <Badge text="2026 FTE Return Offer" type="tip" vertical="top"/>
+
+:::: right
 **Shop Ads Team** | _Seattle, WA_
 May 2025 – Dec 2025
-:::
+::::
 
-::: tabs
-
-@tab 📈 Business Impact
-
-I worked on the intelligence layer that powers TikTok Shop Ads’ PSA Carousel effectiveness. By designing the Image Selection system with posterior feature modeling, exploration–exploitation ranking, and multimodal LLM-based quality scoring, I helped the platform consistently surface high-performing creatives—resulting in a **20%+ ad revenue uplift**. I also integrated GenAI enhancement and generation pipelines, enabling automated creative production for the **top 90% of cost-driving products**, significantly expanding high-quality supply for advertisers.
-
-@tab 🧱 Delivery Foundation
-
-Beyond image selection work, I contributed to the core **delivery foundation** that supports global ad serving. I built the **Modular Preview Flow**, a flexible injection and verification framework across the entire delivery funnel (Ad → Creative → SPU → Image). This unified filtering log and stage-level previewing capability **accelerated debugging**, increased **format rollout confidence**, and enabled smoother expansion into new regions and surfaces. I also delivered Flink-based real-time features and end-to-end creative sync workflows (TBase → Forward Index), strengthening the reliability of ads delivery pipelines.
-
-@tab ⚙️ Engineering Excellence
-
-To ensure Shop Ads Carousel could withstand global scale growing traffic (300k+ QPS), I focused on engineering excellence: redesigning the product handler’s caching architecture, introducing async batch fetching with Folly Future, and shifting product-value computations offline. These improvements reduced **p99 latency by 43.6%** and eliminated **80% of failure spikes** during high-traffic surges—directly enhancing the stability and resilience of the ads serving stack.
-
-:::
-
-- Built the Shop Ads **Image Selection** system, modeling image posterior features, applying **exploration–exploitation** ranking, and integrating **multimodal LLM**–based image quality evaluation, to serve high-performing images, driving a **20%+** **Revenue** uplift.
-- Integrated **GenAI** image enhancement and generation ability, producing for all products via delivery stream and running weekly scheduling to produce the **top 90%** cost-coverage products. Persisted assets in **TBase** and synced to **Forward Index** via **Flink**.
-- Built **Modular Preview Flow**, a framework enabling stage-level entity injection (Ad, Creative, SPU, Image) across the delivery funnel with **unified filtering log**, improving **debugging** and **verification** efficiency for new ad formats and region rollouts.
-- Optimized **product handler stability** and **latency** by redesigning local **cache**, applying **async batch fetching** with **Folly Future**, and migrating online product value call to offline, reducing **43.6**% p99 latency and **80**% of failure spikes in high-traffic scenarios.
+- Built the Shop Ads **Image Selection** system, modeling image posterior features, applying **exploration-exploitation** ranking, and integrating **multimodal LLM**-based image quality evaluation to serve high-performing images, driving a **3.4%+ revenue** uplift.
+- Developed a **GenAI** image enhancement and generation pipeline, generating assets for items via the delivery stream and weekly scheduling for high-value products, persisting assets in **TBase** and **Forward Index** via **Flink**, driving a **12%+ revenue** uplift.
+- Built **Modular Preview Flow**, a framework enabling stage-level entity injection (Ad, Creative, SPU, Image) across the delivery funnel with a **unified diagnostic log**, accelerating **debugging** and **verification** for new ad formats and region-specific rollouts.
+- Optimized **Product Handler stability** and **latency** by redesigning local **cache**, applying async batch fetching with **Folly Future**, and migrating online product value calls offline, reducing **43.6%** p99 latency and **80%** of failure spikes during peak traffic.
 
 ---
 
-### <VPIcon icon="/Amazon_logo.svg" size="2rem" verticalAlign="middle"/> – Software Development Engineer <Badge text="Intern" type="info" vertical="top" /> <Badge text="2026 FTE Return Offer" type="tip" vertical="top"/>
+### <VPIcon icon="/Amazon_logo.svg" size="2rem" verticalAlign="middle"/> - Software Development Engineer Intern <Badge text="2026 FTE Return Offer" type="tip" vertical="top"/>
 
-::: right
-**Global Mile Team** | _Beijing, China_
-Jun 2024 - Sep 2024
-:::
+:::: right
+**Global-Mile Team** | _Beijing, China_
+Jun 2024 - Aug 2024
+::::
 
-At Amazon, I developed a **custom Java Agent** to extend OpenTelemetry’s tracing, enabling **end-to-end observability** across microservices and Lambda environments. I built full-stack tools for trace visualization and implemented a **Loosely Linked module** that surfaced hidden cross-service relationships, improved on-call tracing clarity, and enabled reliable instrumentation in heterogeneous runtime environments.
+At Amazon, I developed a **Java Agent** extending **OpenTelemetry** for non-intrusive instrumentation across microservices and Lambda environments. I also built a full-stack telemetry console and a **Loosely Linked Tracing** module to improve distributed observability in heterogeneous runtime environments.
 
-- Developed a **Java Agent** that extends **OpenTelemetry**. Leveraged **ByteBuddy** to enhance methods annotated with **@WithSpan, @Input, and @Output**, enabling **automatic** **tracing** and **payload** **collection**.
-- Implemented **Loosely Linked Tracing** module to reconstruct cross-service call chains via business IDs and timestamps, enabling trace **aggregation** even when intermediate services **lack instrumentation**. (e.g. **MQ** or **partial** service onboarding).
+- Developed a **Java Agent** extending **OpenTelemetry** using **ByteBuddy** for **non-intrusive instrumentation**; enabled automatic payload collection and tracing by intercepting method execution at runtime without code modification.
+- Implemented a **Loosely Linked Tracing** module to reconstruct **distributed call chains** via business IDs, ensuring trace continuity across uninstrumented services such as legacy message queues and partial service onboardings.
 - Extended the Java Agent to support both AWS **Fargate** and **Lambda**, using **reflection**-based runtime detection to adapt data delivery via **Kinesis** (high-throughput) or **SQS** (event-driven tasks), ensuring reliability and efficiency across environments.
 - Built a **full-stack** telemetry console with React **frontend** and Java **backend**, supporting flexible querying (filters, aggregation, fuzzy search, pagination) and multi-view trace **visualization** (tree, table, timeline, and span **payloads**).
 
 ---
 
-### <VPIcon icon="/JD.com_logo.png" size="2rem" verticalAlign="middle"/> – Software Development Engineer <Badge text="Intern" type="info" vertical="top" />
+### <VPIcon icon="/JD.com_logo.png" size="2rem" verticalAlign="middle"/> - Software Development Engineer Intern
 
-::: right
+:::: right
 **Algorithm Tools Team** | _Beijing, China_
 Jul 2023 - Oct 2023
-:::
+::::
 
-At JD.com, I worked on platform engineering for internal AI tooling. I redesigned a **resource management service** using Kubernetes' `Informer` + observer pattern, reducing start-up time by 20x. I introduced **GitOps + Argo Workflows** for cloud-native CI/CD, built Helm charts for privatized deployments, and improved code modularity for activity page generation using **AIGC pipelines**. My work enabled faster and more maintainable delivery of algorithmic components.
+At JD.com, I worked on platform engineering for internal AI tooling. I redesigned the resource management service, improved modularity in campaign page generation, introduced cloud-native GitOps workflows, and built deployment tooling for multi-tenant delivery.
 
-- Redesigned resource management service with **ConfigMap**-based **automation** and Kubernetes **Informers**; introduced async **resource recalculation**, observer pattern, and sharded row locking, cutting service cold-start time by **20×**.
-- Refactored campaign page generation service with the **Strategy pattern**, improving module reusability and maintainability.
-- Designed **AIGC**-integrated generation pipelines for automated creation of campaign page sections, reducing manual workload.
+- Redesigned the resource management service with **ConfigMap**-based automation and Kubernetes **Informers**; introduced async **resource recalculation**, the observer pattern, and sharded row locking, cutting service cold-start time by **20x**.
+- Refactored the campaign page generation service with a modular **Strategy pattern**, decoupling business logic to improve reusability.
+- Designed a **GenAI**-integrated pipeline to automate the creation of campaign page sections, significantly reducing manual workload.
 - Enhanced CI/CD pipelines with cloud-native GitOps workflows built on **Argo Workflows** and **Argo CD**, improving automation.
 - Developed **Helm charts** for **multi-tenant** deployments, enabling client-specific delivery in hybrid-cloud environments.
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
-::: tabs
+<p class="home-section-intro">A practical toolkit shaped by backend engineering, ML experimentation, and product-facing system design.</p>
+
+:::: tabs
 
 @tab Language
 
@@ -219,7 +262,7 @@ At JD.com, I worked on platform engineering for internal AI tooling. I redesigne
 
 <TechGrid>
   <TechCard title="Frameworks" :items="['PyTorch']" badge-type="tip" />
-  <TechCard title="RecSys" :items="['ItemCF','Two-Tower','Tri-Tower','Exploration–Exploitation']" />
+  <TechCard title="RecSys" :items="['ItemCF','Two-Tower','Tri-Tower','Exploration-Exploitation']" />
   <TechCard title="LLM" :items="['Transformer','Token Pruning','CLIP']" />
   <TechCard title="Experimentation" :items="['A/B Testing']" />
 </TechGrid>
@@ -246,10 +289,18 @@ At JD.com, I worked on platform engineering for internal AI tooling. I redesigne
   <TechCard title="Docs & Diagrams" :items="['Markdown','LaTeX','Mermaid','VuePress']" />
 </TechGrid>
 
-:::
+::::
 
 ---
 
-## 💬 Let’s Connect
+## Let's Connect
 
-<p class="home-connect">Interested in <strong>Ads delivery</strong>, <strong>Recommendation Systems</strong>, <strong>Agentic Systems</strong>, or <strong>engineering at scale</strong>. I’m always happy to connect, reach out via the links above.</p>
+<div class="home-connect-panel">
+  <p class="home-connect">Interested in <strong>Ads delivery</strong>, <strong>Recommendation Systems</strong>, <strong>Agentic Systems</strong>, or <strong>engineering at scale</strong>. I'm always happy to connect with researchers, engineers, and teams working on ambitious, high-leverage problems.</p>
+  <div class="home-tag-row" aria-label="Topics to discuss">
+    <span class="home-tag">Research collaboration</span>
+    <span class="home-tag">ML infrastructure</span>
+    <span class="home-tag">Backend systems</span>
+    <span class="home-tag">Applied AI products</span>
+  </div>
+</div>
