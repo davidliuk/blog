@@ -1159,11 +1159,86 @@
   transform: translateY(-1px);
 }
 
+.vp-portfolio-home .home-page-nav__link.is-active {
+  color: #17352f !important;
+  background: color-mix(in srgb, var(--vp-c-accent-soft) 78%, var(--vp-c-bg));
+  border-color: color-mix(in srgb, var(--vp-c-accent) 30%, var(--vp-c-divider));
+  box-shadow:
+    0 10px 22px rgba(15, 23, 42, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.vp-portfolio-home .home-snapshot-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 0.85rem;
+  margin: 0.15rem 0 1.5rem;
+}
+
+.vp-portfolio-home .home-snapshot-card {
+  position: relative;
+  overflow: hidden;
+  display: grid;
+  gap: 0.38rem;
+  padding: 1rem 1rem 1.05rem;
+  border-radius: 18px;
+  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
+  background:
+    radial-gradient(circle at top right, color-mix(in srgb, var(--vp-c-accent-soft) 62%, transparent), transparent 42%),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--vp-c-bg) 92%, transparent) 0%,
+      color-mix(in srgb, var(--vp-c-bg-soft) 96%, transparent) 100%
+    );
+  box-shadow:
+    0 14px 28px rgba(15, 23, 42, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+}
+
+.vp-portfolio-home .home-snapshot-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto auto 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    var(--vp-c-accent),
+    color-mix(in srgb, var(--vp-c-accent) 20%, transparent)
+  );
+}
+
+.vp-portfolio-home .home-snapshot-card__label {
+  margin: 0;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--vp-c-text-3);
+}
+
+.vp-portfolio-home .home-snapshot-card strong {
+  color: var(--vp-c-text-1);
+  line-height: 1.4;
+}
+
+.vp-portfolio-home .home-snapshot-card span {
+  color: var(--vp-c-text-2);
+  line-height: 1.58;
+  font-size: 0.92rem;
+}
+
 .vp-portfolio-home .home-hero-grid,
 .vp-portfolio-home .home-highlight-grid {
   display: grid;
   gap: 1rem;
   margin: 1.25rem 0 1.5rem;
+}
+
+.vp-portfolio-home .experience-grid {
+  display: grid;
+  gap: 1rem;
+  margin-top: 1rem;
 }
 
 .vp-portfolio-home .home-hero-grid {
@@ -1468,6 +1543,7 @@
 }
 
 @media (max-width: 959px) {
+  .vp-portfolio-home .home-snapshot-grid,
   .vp-portfolio-home .home-hero-grid,
   .vp-portfolio-home .home-highlight-grid {
     grid-template-columns: 1fr;
@@ -1488,6 +1564,10 @@
   .vp-portfolio-home .home-hero-grid,
   .vp-portfolio-home .home-highlight-grid {
     gap: 0.85rem;
+  }
+
+  .vp-portfolio-home .home-snapshot-grid {
+    gap: 0.75rem;
   }
 
   .vp-portfolio-home .home-surface-card,

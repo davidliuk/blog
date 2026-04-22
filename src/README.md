@@ -21,6 +21,29 @@ content: portfolio
 
 <HomePageNav />
 
+<div class="home-snapshot-grid">
+  <section class="home-snapshot-card">
+    <p class="home-snapshot-card__label">Current</p>
+    <strong>Research Intern @ LAIR</strong>
+    <span>Building AI research workflows and structural retrieval systems.</span>
+  </section>
+  <section class="home-snapshot-card">
+    <p class="home-snapshot-card__label">Profile</p>
+    <strong>M.S.E. @ UPenn</strong>
+    <span>Research-engineering path across agent systems, ML infra, and backend platforms.</span>
+  </section>
+  <section class="home-snapshot-card">
+    <p class="home-snapshot-card__label">Impact</p>
+    <strong>10%+ revenue, 43.6% p99 latency reduction</strong>
+    <span>Shipped measurable product and systems improvements at scale.</span>
+  </section>
+  <section class="home-snapshot-card">
+    <p class="home-snapshot-card__label">Interested In</p>
+    <strong>Agent infrastructure, RecSys, platform engineering</strong>
+    <span>Especially work that connects ambitious ideas with deployable systems.</span>
+  </section>
+</div>
+
 # About
 
 <p class="home-lead">I build <strong>agentic systems</strong>, <strong>intelligent infrastructure</strong>, and <strong>production-grade ML platforms</strong>. My work lives at the intersection of AI research and large-scale engineering, with a focus on turning ambitious ideas into systems that are practical, measurable, and deployable.</p>
@@ -179,52 +202,59 @@ Before that, I worked on **TikTok Shop Ads**, where I joined as an SDE Intern an
 
 <p class="home-section-intro">I like roles where modeling, infrastructure, and product rigor intersect. The common thread across these teams has been building reliable systems that move real metrics.</p>
 
-### <VPIcon icon="/TikTok_logo.svg" size="2rem" verticalAlign="middle"/> - Software Engineer Intern <Badge text="2026 FTE Return Offer" type="tip" vertical="top"/>
+<div class="experience-grid">
+  <ExperienceCard
+    company="TikTok"
+    role="Software Engineer Intern"
+    team="Shop Ads Team"
+    location="Seattle, WA"
+    time="May 2025 – Dec 2025"
+    logo="/TikTok_logo.svg"
+    summary="Worked on ranking, creative intelligence, and delivery tooling for Shop Ads; received a 2026 full-time return offer after shipping systems tied to real business lift."
+    :focus="['Ads ranking','GenAI creative tooling','Low-latency backend']"
+    :highlights="[
+      'Built the Image Selection system with posterior feature modeling, exploration-exploitation ranking, and multimodal LLM quality evaluation, driving 3.4%+ revenue uplift.',
+      'Developed a GenAI image enhancement and generation pipeline backed by Flink, TBase, and Forward Index, contributing 12%+ revenue uplift on high-value products.',
+      'Designed a modular preview flow with unified diagnostics across Ad, Creative, SPU, and Image entities, making rollout debugging much faster.',
+      'Redesigned cache and offline fetching paths in Product Handler, reducing p99 latency by 43.6% and cutting 80% of failure spikes during peak traffic.'
+    ]"
+  />
 
-:::: right
-**Shop Ads Team** | _Seattle, WA_
-May 2025 – Dec 2025
-::::
+  <ExperienceCard
+    company="Amazon"
+    role="Software Development Engineer Intern"
+    team="Global-Mile Team"
+    location="Beijing, China"
+    time="Jun 2024 – Aug 2024"
+    logo="/Amazon_logo.svg"
+    summary="Focused on distributed observability infrastructure, building tracing and telemetry tools that worked across microservices and serverless environments without invasive code changes."
+    :focus="['OpenTelemetry','Java Agent','Distributed tracing']"
+    :highlights="[
+      'Developed a Java Agent on top of OpenTelemetry and ByteBuddy for non-intrusive runtime instrumentation and payload-aware tracing.',
+      'Implemented a loosely linked tracing module that reconstructed end-to-end call chains with business IDs across partially instrumented systems.',
+      'Added adaptive runtime delivery for Fargate and Lambda using reflection-based environment detection with Kinesis and SQS backends.',
+      'Built a full-stack telemetry console with query, aggregation, pagination, and multiple trace views including tree, table, timeline, and payload inspection.'
+    ]"
+  />
 
-- Built the Shop Ads **Image Selection** system, modeling image posterior features, applying **exploration-exploitation** ranking, and integrating **multimodal LLM**-based image quality evaluation to serve high-performing images, driving a **3.4%+ revenue** uplift.
-- Developed a **GenAI** image enhancement and generation pipeline, generating assets for items via the delivery stream and weekly scheduling for high-value products, persisting assets in **TBase** and **Forward Index** via **Flink**, driving a **12%+ revenue** uplift.
-- Built **Modular Preview Flow**, a framework enabling stage-level entity injection (Ad, Creative, SPU, Image) across the delivery funnel with a **unified diagnostic log**, accelerating **debugging** and **verification** for new ad formats and region-specific rollouts.
-- Optimized **Product Handler stability** and **latency** by redesigning local **cache**, applying async batch fetching with **Folly Future**, and migrating online product value calls offline, reducing **43.6%** p99 latency and **80%** of failure spikes during peak traffic.
+  <ExperienceCard
+    company="JD.com"
+    role="Software Development Engineer Intern"
+    team="Algorithm Tools Team"
+    location="Beijing, China"
+    time="Jul 2023 – Oct 2023"
+    logo="/JD.com_logo.png"
+    summary="Worked on platform engineering for internal AI tooling, with an emphasis on automation, modular system design, and cloud-native delivery workflows."
+    :focus="['Platform engineering','GitOps','Multi-tenant delivery']"
+    :highlights="[
+      'Redesigned the resource management service with ConfigMap automation, Kubernetes Informers, async recalculation, and sharded row locking, cutting cold-start time by 20x.',
+      'Refactored campaign page generation using a modular Strategy pattern to improve maintainability and feature reuse.',
+      'Introduced a GenAI-assisted content pipeline to automate campaign page section creation and reduce manual operations.',
+      'Improved CI/CD with Argo Workflows, Argo CD, and Helm-based multi-tenant deployment tooling for hybrid-cloud delivery.'
+    ]"
+  />
+</div>
 
----
-
-### <VPIcon icon="/Amazon_logo.svg" size="2rem" verticalAlign="middle"/> - Software Development Engineer Intern <Badge text="2026 FTE Return Offer" type="tip" vertical="top"/>
-
-:::: right
-**Global-Mile Team** | _Beijing, China_
-Jun 2024 - Aug 2024
-::::
-
-At Amazon, I developed a **Java Agent** extending **OpenTelemetry** for non-intrusive instrumentation across microservices and Lambda environments. I also built a full-stack telemetry console and a **Loosely Linked Tracing** module to improve distributed observability in heterogeneous runtime environments.
-
-- Developed a **Java Agent** extending **OpenTelemetry** using **ByteBuddy** for **non-intrusive instrumentation**; enabled automatic payload collection and tracing by intercepting method execution at runtime without code modification.
-- Implemented a **Loosely Linked Tracing** module to reconstruct **distributed call chains** via business IDs, ensuring trace continuity across uninstrumented services such as legacy message queues and partial service onboardings.
-- Extended the Java Agent to support both AWS **Fargate** and **Lambda**, using **reflection**-based runtime detection to adapt data delivery via **Kinesis** (high-throughput) or **SQS** (event-driven tasks), ensuring reliability and efficiency across environments.
-- Built a **full-stack** telemetry console with React **frontend** and Java **backend**, supporting flexible querying (filters, aggregation, fuzzy search, pagination) and multi-view trace **visualization** (tree, table, timeline, and span **payloads**).
-
----
-
-### <VPIcon icon="/JD.com_logo.png" size="2rem" verticalAlign="middle"/> - Software Development Engineer Intern
-
-:::: right
-**Algorithm Tools Team** | _Beijing, China_
-Jul 2023 - Oct 2023
-::::
-
-At JD.com, I worked on platform engineering for internal AI tooling. I redesigned the resource management service, improved modularity in campaign page generation, introduced cloud-native GitOps workflows, and built deployment tooling for multi-tenant delivery.
-
-- Redesigned the resource management service with **ConfigMap**-based automation and Kubernetes **Informers**; introduced async **resource recalculation**, the observer pattern, and sharded row locking, cutting service cold-start time by **20x**.
-- Refactored the campaign page generation service with a modular **Strategy pattern**, decoupling business logic to improve reusability.
-- Designed a **GenAI**-integrated pipeline to automate the creation of campaign page sections, significantly reducing manual workload.
-- Enhanced CI/CD pipelines with cloud-native GitOps workflows built on **Argo Workflows** and **Argo CD**, improving automation.
-- Developed **Helm charts** for **multi-tenant** deployments, enabling client-specific delivery in hybrid-cloud environments.
-
----
 
 ## Tech Stack
 
