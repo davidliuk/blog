@@ -1003,6 +1003,174 @@
   padding-inline: 0.58rem;
 }
 
+.ai-hero,
+.section-hero {
+  position: relative;
+  overflow: hidden;
+  margin: 1rem 0 1.5rem;
+  padding: 1.3rem 1.35rem;
+  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
+  border-radius: 22px;
+  background:
+    radial-gradient(circle at top right, color-mix(in srgb, var(--vp-c-accent-soft) 58%, transparent), transparent 34%),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--vp-c-bg) 92%, transparent) 0%,
+      color-mix(in srgb, var(--vp-c-bg-soft) 96%, transparent) 100%
+    );
+  box-shadow:
+    0 16px 34px rgba(15, 23, 42, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+}
+
+.ai-hero::before,
+.section-hero::before,
+.ai-card::before,
+.section-card::before,
+.ai-path-card::before,
+.section-path-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--vp-c-accent), color-mix(in srgb, var(--vp-c-accent) 18%, transparent));
+}
+
+.ai-eyebrow,
+.section-eyebrow,
+.ai-card__eyebrow,
+.section-card__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 0 0.45rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--vp-c-text-3);
+}
+
+.ai-hero h2,
+.section-hero h2 {
+  margin: 0 0 0.55rem;
+}
+
+.ai-hero p,
+.section-hero p {
+  margin: 0;
+  color: var(--vp-c-text-2);
+  line-height: 1.7;
+}
+
+.ai-pill-row,
+.section-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem;
+  margin-top: 1rem;
+}
+
+.ai-pill,
+.section-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.28rem 0.68rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
+  background: color-mix(in srgb, var(--vp-c-bg) 94%, transparent);
+  color: var(--vp-c-text-2);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.ai-card-grid,
+.section-card-grid,
+.ai-path-grid,
+.section-path-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+  margin: 1rem 0 1.4rem;
+}
+
+.ai-card,
+.section-card,
+.ai-path-card,
+.section-path-card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
+  border-radius: 20px;
+  padding: 1rem 1.05rem 1.05rem;
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--vp-c-bg) 92%, transparent) 0%,
+      color-mix(in srgb, var(--vp-c-bg-soft) 96%, transparent) 100%
+    );
+  box-shadow:
+    0 12px 28px rgba(15, 23, 42, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.ai-card,
+.section-card {
+  color: inherit;
+  text-decoration: none;
+}
+
+.ai-card:hover,
+.section-card:hover,
+.ai-path-card:hover,
+.section-path-card:hover {
+  transform: translateY(-2px);
+  border-color: color-mix(in srgb, var(--vp-c-accent) 24%, var(--vp-c-divider));
+  box-shadow:
+    0 18px 34px rgba(15, 23, 42, 0.07),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.ai-card h3,
+.section-card h3,
+.ai-path-card h3,
+.section-path-card h3 {
+  margin: 0 0 0.45rem;
+  color: var(--vp-c-text-1);
+}
+
+.ai-card p,
+.section-card p,
+.ai-path-card p,
+.section-path-card p {
+  margin: 0;
+  color: var(--vp-c-text-2);
+  line-height: 1.65;
+}
+
+.ai-path-card ol,
+.section-path-card ol {
+  margin: 0.7rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.ai-path-card li,
+.section-path-card li {
+  margin: 0.38rem 0;
+  color: var(--vp-c-text-2);
+}
+
+.ai-path-card a,
+.section-path-card a,
+.ai-hero a,
+.section-hero a {
+  font-weight: 600;
+}
+
 .pub-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -1543,6 +1711,32 @@
 }
 
 @media (max-width: 959px) {
+  .ai-card-grid,
+  .section-card-grid,
+  .ai-path-grid,
+  .section-path-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .ai-hero,
+  .section-hero,
+  .ai-card,
+  .section-card,
+  .ai-path-card,
+  .section-path-card {
+    border-radius: 18px;
+  }
+
+  .ai-hero,
+  .section-hero,
+  .ai-card,
+  .section-card,
+  .ai-path-card,
+  .section-path-card {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
   .vp-portfolio-home .home-snapshot-grid,
   .vp-portfolio-home .home-hero-grid,
   .vp-portfolio-home .home-highlight-grid {

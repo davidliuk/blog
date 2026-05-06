@@ -5,12 +5,12 @@ export const enNavbar = navbar([
   {
     text: "Algorithm",
     icon: "sitemap",
-    prefix: "/algo",
+    prefix: "/algo/",
     children: [
       {
-        text: "Framework",
-        icon: "cubes",
-        link: "framework/",
+        text: "Overview",
+        icon: "compass",
+        link: "",
       },
       {
         text: "Data Structure",
@@ -44,6 +44,19 @@ export const enNavbar = navbar([
         ]
       },
       {
+        text: "Course",
+        icon: "graduation-cap",
+        prefix: "course/",
+        children: [
+          { text: "JZ Track", icon: "road", link: "jz/" },
+        ],
+      },
+      {
+        text: "Framework",
+        icon: "cubes",
+        link: "framework/",
+      },
+      {
         text: "FAQ",
         icon: "circle-question",
         link: "faq/",
@@ -55,37 +68,42 @@ export const enNavbar = navbar([
   // ---------------------------------------------------------
   {
     text: "AI",
-    icon: "brain", // 修改：用 brain 比 robot 更偏向算法/模型内核
+    icon: "brain",
     prefix: "/ai/",
     children: [
       {
+        text: "Overview",
+        icon: "compass",
+        link: "",
+      },
+      {
+        text: "Foundation",
+        icon: "layer-group",
+        link: "foundation/",
+      },
+      {
         text: "Recommender System",
-        // 修改：thumbs-up 代表“推荐/点赞”，或者用 'share-nodes'
-        icon: "thumbs-up", 
+        icon: "thumbs-up",
         prefix: "rec-sys/",
         children: [
           {
             text: "Retrieval",
-            // 修改：漏斗(filter)代表从海量数据中筛选出候选集，比放大镜更准确
-            icon: "filter", 
+            icon: "filter",
             link: "retrieval/",
           },
           {
             text: "Pre-Ranking",
-            // 修改：列表(list-ul)代表粗略的排序列表
-            icon: "list-ul", 
+            icon: "list-ul",
             link: "pre-ranking/",
           },
           {
             text: "Ranking",
-            // 修改：带有星号的排名(ranking-star)，代表精排、计算分数
-            icon: "ranking-star", 
+            icon: "ranking-star",
             link: "ranking/",
           },
           {
             text: "Re-Ranking",
-            // 修改：滑块(sliders)，代表微调、多样性打散、业务规则干预
-            icon: "sliders", 
+            icon: "sliders",
             link: "re-ranking/",
           },
           {
@@ -93,15 +111,60 @@ export const enNavbar = navbar([
             icon: "chart-line",
             link: "metrics/",
           },
+          {
+            text: "Cold Start",
+            icon: "seedling",
+            link: "cold-start/",
+          },
         ]
       },
       {
         text: "Generative Models",
-        // 修改：魔术棒(wand-magic-sparkles)是目前 GenAI 最通用的隐喻（生成/魔法）
-        // 备选：'dna' (生成/变异) 或 'pen-nib' (文本生成)
-        icon: "wand-magic-sparkles", 
-        link: "gm/",
-      }
+        icon: "wand-magic-sparkles",
+        prefix: "gm/",
+        children: [
+          {
+            text: "Overview",
+            icon: "map",
+            link: "",
+          },
+          {
+            text: "Fine-Tuning",
+            icon: "graduation-cap",
+            link: "training/fine-tuning/",
+          },
+          {
+            text: "Alignment",
+            icon: "scale-balanced",
+            link: "training/alignment/",
+          },
+          {
+            text: "Inference",
+            icon: "bolt",
+            link: "inference/",
+          },
+          {
+            text: "Multimodal",
+            icon: "images",
+            link: "multimodal/",
+          },
+          {
+            text: "Application",
+            icon: "screwdriver-wrench",
+            link: "application/",
+          },
+        ],
+      },
+      {
+        text: "PyTorch",
+        icon: "cube",
+        link: "pytorch/",
+      },
+      {
+        text: "Search",
+        icon: "magnifying-glass",
+        link: "search/",
+      },
     ],
   },
   // ---------------------------------------------------------

@@ -301,7 +301,7 @@ Proportional-Derivative (PD) Control
 
 Computing the error.
 
-Before the feedback controller can do anything, it must first find the difference between the current and desired system states ($e = x_d –x)$. This difference is called the error, and the goal of the controller is usually to minimize that error in the steady state (e.g. when the system is no longer moving).
+Before the feedback controller can do anything, it must first find the difference between the current and desired system states ($e = x_d - x$). This difference is called the error, and the goal of the controller is usually to minimize that error in the steady state (e.g. when the system is no longer moving).
 
 Proportional Control terms
 

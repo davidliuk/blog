@@ -7,12 +7,6 @@ export const enSidebar = sidebar({
   "/algo/": [
     "", // README.md
     {
-      text: "Framework",
-      icon: "cubes", // 对应 Navbar 的 Framework
-      prefix: "framework/",
-      children: "structure",
-    },
-    {
       text: "Data Structure",
       icon: "layer-group", // 对应 Navbar 的 Data Structure
       prefix: "data-structure/",
@@ -31,6 +25,18 @@ export const enSidebar = sidebar({
       children: "structure",
     },
     {
+      text: "Course",
+      icon: "graduation-cap",
+      prefix: "course/",
+      children: "structure",
+    },
+    {
+      text: "Framework",
+      icon: "cubes", // 对应 Navbar 的 Framework
+      prefix: "framework/",
+      children: "structure",
+    },
+    {
       text: "FAQ",
       icon: "circle-question", // 对应 Navbar 的 FAQ
       prefix: "faq/",
@@ -39,10 +45,35 @@ export const enSidebar = sidebar({
   ],
 
   "/ai/": [
+    "",
+    {
+      text: "Foundation",
+      icon: "layer-group",
+      prefix: "foundation/",
+      children: "structure",
+    },
+    {
+      text: "Generative Models",
+      icon: "wand-magic-sparkles",
+      prefix: "gm/",
+      children: "structure",
+    },
     {
       text: "Recommender System",
-      icon: "neural-network", // 对应 Navbar 的 Recommender System
+      icon: "neural-network",
       prefix: "rec-sys/",
+      children: "structure",
+    },
+    {
+      text: "PyTorch",
+      icon: "cube",
+      prefix: "pytorch/",
+      children: "structure",
+    },
+    {
+      text: "Search",
+      icon: "magnifying-glass",
+      prefix: "search/",
       children: "structure",
     },
   ],

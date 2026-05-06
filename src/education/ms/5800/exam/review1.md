@@ -1,5 +1,0 @@
-
-
-Cross Ratio
-
-Geometric Approach

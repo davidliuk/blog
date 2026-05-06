@@ -1,12 +1,18 @@
 # Machine Perception
 
 - 4x Homeworks: 36%
-  - HW1 10%
-  - HW2 10%
-  - HW3 8%
-  - HW4 8%
+  - HW1 10%, 94.5/100, 0.55
+  - HW2 10%, 144/150, 0.4
+  - HW3 8%, 100/100
+  - HW4 8%, 60/60
+  - Extra Bonus HW5 6%
   - This semester we are using the **Penalty-free 5 late days** policies which students can choose how to allocate their time. In the case that students have already used all their penalty free late days, they will take fractional penalty based on how late they submitted. For example: 5 hours = total scores * (1 - 5/24 * 20%)
-- Midterm: 20%
+- Midterm: 20%, 30/50, 4
+  - Median 30.0
+  - Mean 30.5
+  - Std Dev 8.02
+  - Minimum 11.0
+  - Maximum 48.0
 - Final Exam: 20%
 - Small Projects: 24%
 - Possible bonus for extensive in-class participation (up to 5%) 
@@ -18,6 +24,8 @@ I need your interaction and questions. Do not let the communication become one-w
 Lenient letter grades. The only way to fail this class is to violate the honor code (cheat, plagiarize) 
 
 Zero Tolerance. Think before you act: One homework or one question in a midterm is unlikely to affect your final letter grade.
+
+![image-20260503142752342](https://gcore.jsdelivr.net/gh/davidliuk/images@master/blog/image-20260503142752342.png)
 
 ---
 

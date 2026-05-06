@@ -1,46 +1,17 @@
 # BFS
 
-状态
+BFS 最核心的判断信号不是“会不会写队列”，而是**问题是否天然按层推进**。
 
-### BFS 基础
+## When BFS Is the Right Lens
 
-队列搜索
+- 最短步数 / 最少操作数
+- 分层遍历
+- 连通块扩展
+- 拓扑排序
 
-等待队列：队列里面的是已经结束，等待扩展的
+## Canonical Docs
 
-入队：节点进入等待
-
-出队：节点开始运行
-
-### BFS 步骤
-
-1. 出队
-
-2. 捕捉：全局变量捕捉 target 值
-
-   出队的时候进行目标点的捕捉，如果是目标点就返回，不再继续扩展
-
-3. 扩展
-
-4. 入队
-
-### BFS 扩展
-
-- 递推公式：即这个边的语义，只需要改变递推公式就可以改变边的语义
-
-  如求和、求Max、求Min等
-
-- 判断环路：拓扑排序
-
-- 队列类型
-
-  - 普通队列：先进先出
-  
-  - 优先队列：可以根据优先级插队
-  
-    拓展，形成A*算法，包含Dijkstra等
-  
-  - 双端队列
-
-
-
+- [BFS Overview](../../search/BFS/)
+- [Shortest Path](../../search/BFS/shortest-path.md)
+- [Topological Sort](../../search/BFS/topo.md)
+- [BiBFS](../../search/BFS/BiBFS.md)

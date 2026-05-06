@@ -224,17 +224,17 @@ $$
 &=\vec\omega_1^0\times\vec r_{14}^0\\
 &=-\vec r_{14}^0\times\vec\omega_1^0\\
 &=-\vec r_{14}^0\times R_1^0\vec\omega_1^1\\
-&=-\vec r_{14}^0\times [\begin{array}{c:c}\hat a_x&\hat a_y&\hat a_z\end{array}]\vec\omega_1^1\\
+&=-\vec r_{14}^0\times [\begin{array}{c:c:c}\hat a_x&\hat a_y&\hat a_z\end{array}]\vec\omega_1^1\\
 &=B_1\vec{\omega}_1^1
 \end{aligned}
 $$
-where $R_1^0=[\begin{array}{c:c}\hat a_x&\hat a_y&\hat a_z\end{array}]$
+where $R_1^0=[\begin{array}{c:c:c}\hat a_x&\hat a_y&\hat a_z\end{array}]$
 $$
 \begin{align}
 \vec v_4^0
-&=[\begin{array}{c:c}B_1&B_2&\dots &B_n\end{array}]
+&=[\begin{array}{c:c:c:c}B_1&B_2&\dots &B_n\end{array}]
 \begin{bmatrix}\vec\omega_1^1\\\vec\omega_2^2\\\vec\omega_3^3\end{bmatrix}\\
-&=[\begin{array}{c:c}B_1L_1&B_2L_2&\dots &B_nL_n\end{array}]\dot\Theta
+&=[\begin{array}{c:c:c:c}B_1L_1&B_2L_2&\dots &B_nL_n\end{array}]\dot\Theta
 \end{align}
 $$
 > Euler Angle rates to angular velocity conversion
@@ -245,8 +245,8 @@ N is the number of joint
 $$
 \begin{align}
 J
-&=[\begin{array}{c:c}J_1&J_2&\dots &J_N\end{array}]\\
-&=[\begin{array}{c:c}B_1L_1&B_2L_2&\dots &B_NL_N\end{array}]
+&=[\begin{array}{c:c:c:c}J_1&J_2&\dots &J_N\end{array}]\\
+&=[\begin{array}{c:c:c:c}B_1L_1&B_2L_2&\dots &B_NL_N\end{array}]
 \end{align}
 $$
 

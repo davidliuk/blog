@@ -14,7 +14,7 @@ bgsave # 子进程执行RDB，避免主进程受到影响
 
 在redis.conf中可以找到
 
-```conf
+```ini
 # 保存触发事件和门槛
 save 900 1
 save 300 10

@@ -1,10 +1,16 @@
 # Trace Note 系统设计
 
-- 用户系统
-- 秒杀系统
-- 评论系统
-- 地理系统
-- 上传系统
+这页保留为零散专题与工程补充笔记，不再承担“模块总索引”的职责。
+
+## 相关模块
+
+- `../module/user.md`
+- `../module/flash-sale.md`
+- `../module/comment.md`
+- `../module/nearby.md`
+- `../module/distributed-file.md`
+
+上面的模块页负责系统拆分与主方案，这一页更偏向消息、延迟任务和工程细节补充。
 
 ### Redisson 分布式延迟队列 RDelayedQueue
 

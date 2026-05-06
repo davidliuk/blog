@@ -1,6 +1,8 @@
 # Twitter
 
-sns
+这页是 `../module/feed.md` 的案例化补充，重点看技术栈、工程拆分和实际取舍。
+
+SNS / 信息流案例
 
 - Tech Stack: Python,Django,MySQL,HBase,Redis, Memcached, RabbitMQ, Amazon S3
 - Used push model to fanout news feeds.

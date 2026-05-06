@@ -1,12 +1,15 @@
 # Domain Driven Design
 
+DDD 关注的是如何让代码模型真正贴合业务领域，而不是只做数据库表的映射。
+
 [教程](https://juejin.cn/post/7275222603886788620?utm_source=gold_browser_extension)
 
 > 参考文献：[JD 云方案](https://juejin.cn/post/7316202778790625290)
 
-贫血/失血模型
+## 核心对比
 
-充血模型
+- 贫血模型 / 失血模型
+- 充血模型
 
 由于过去 ER 模型以及主流 ORM 框架的发展，让很多开发者对实体的概念还停留在与关系形数据库映射这个层面。从而导致实体只有空洞的属性，而实体的业务逻辑散落各个 service、util、helper、handler 等各种角落中。这种现象就被称为贫血模型现象。
 

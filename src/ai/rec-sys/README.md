@@ -1,72 +1,68 @@
 # Recommender System
 
-- 漏斗
+推荐系统这部分按照工业链路来组织，而不是按算法名堆页面。核心问题始终是同一个: 在有限曝光位里，把“对用户有价值、对平台有收益、对系统可控”的内容排出来。
 
-  - 召回：用多条通道，取回几千篇笔记。
-  - 粗排：用小规模神经网络，给几千篇笔记打分，选出分数最高的几百篇。
+## Pipeline View
 
-- 精排：用大规模神经网络，给几百篇笔记打分。
-- 重排：做多样性抽样、规则打散、插入广告和运营笔记。
-- （混排）
-- LLM for Rec (OneRec)
+<div class="ai-card-grid">
+  <a class="ai-card" href="./retrieval/">
+    <span class="ai-card__eyebrow">Candidate generation</span>
+    <h3>Retrieval</h3>
+    <p>从海量内容里快速捞出一小撮候选，重点在召回通道和覆盖率。</p>
+  </a>
+  <a class="ai-card" href="./pre-ranking/">
+    <span class="ai-card__eyebrow">Fast filtering</span>
+    <h3>Pre-Ranking</h3>
+    <p>用更轻的模型做候选压缩，为精排节省算力预算。</p>
+  </a>
+  <a class="ai-card" href="./ranking/">
+    <span class="ai-card__eyebrow">Utility estimation</span>
+    <h3>Ranking</h3>
+    <p>用更强的模型预测点击、时长、转化等目标，并完成多目标融合。</p>
+  </a>
+  <a class="ai-card" href="./re-ranking/">
+    <span class="ai-card__eyebrow">Page construction</span>
+    <h3>Re-Ranking</h3>
+    <p>控制多样性、规则约束、广告插入与整页体验，是离业务最近的一层。</p>
+  </a>
+  <a class="ai-card" href="./metrics/">
+    <span class="ai-card__eyebrow">Measurement</span>
+    <h3>Metrics</h3>
+    <p>把 DAU、留存、时长、CTR 等指标放在同一张北极星图里理解。</p>
+  </a>
+  <a class="ai-card" href="./cold-start/">
+    <span class="ai-card__eyebrow">New users and items</span>
+    <h3>Cold Start</h3>
+    <p>当用户或内容没有历史行为时，系统如何安全起步并尽快学到偏好。</p>
+  </a>
+</div>
 
-一些 JD
+## Suggested Reading Order
 
-小红书推荐算法组招聘实习生参与如下方向的技术研究和落地工作：
+1. 先看 `Retrieval -> Ranking -> Re-Ranking`，建立完整漏斗心智模型。
+2. 再回来看 `Pre-Ranking`，理解为什么线上系统必须做分层计算。
+3. 最后看 `Metrics` 和 `Cold Start`，把建模目标与业务目标接起来。
 
-1. 重排算法：基于序列生成与模型评估的两阶段排序框架，从精排候选集中产生最终的展示序列，在确保推荐多样性的情况下最大化整页效率；
-2. 混排算法：探索如何将业务目标不同的社区笔记（for 时长）、电商笔记（for 成交）、广告笔记（for 营收）进行统一混排，取得多方共赢的结果。
-3. 涉及技术点包括 Listwise 建模、生成模型、强化学习、运筹优化等。由于重排、混排在业界还没有固定范式，有很大创新机会，鼓励实习期间有论文产出。
+## What This Section Focuses On
 
----
+- 工业推荐链路，而不是纯学术 benchmark。
+- 多目标优化和整页效率，而不是单一 CTR。
+- 离线训练、在线实验、AB 测试这一整套闭环。
+- 与搜索、广告、生成式模型的交叉点。
 
-1. 搜索直通车作为阿里巴巴的核心营销业务，致力于帮助广告主匹配最优流量，提高用户体验，同时优化平台收益；
-2. 实习内容主要围绕电商场景下搜索广告相关业务展开，包括 召回、粗排、精排、重排、机制，还包括 LLM、创意优选、全链路一致性建模等方向。
+## High-Value Links
 
----
+- [Retrieval Overview](./retrieval/)
+- [DSSM](./retrieval/dssm/)
+- [Deep Retrieval](./retrieval/path/deep-retrieval.md)
+- [Ranking](./ranking/)
+- [MMOE](./ranking/mmoe.md)
+- [Video Ranking](./ranking/video.md)
+- [Re-Ranking](./re-ranking/)
+- [Metrics](./metrics/)
+- [Cold Start Traffic](./cold-start/traffic.md)
 
-1. 熟练掌握 Python 等至少一门主流编程语言，熟悉深度学习原理并有使用经验；
+## Adjacent Topics
 
-2. 熟悉人工智能领域前沿技术， 对以下至少一个领域有深入理解：
-   1. 互联网搜索、推荐、广告算法；
-   2. 深度学习；
-   3. 自然语言处理；
-   4. 计算机视觉；
-   5. 统计机器学习；
-   6. 强化学习；
-   7. 图学习；
-3. 在互联网广告，搜索，推荐某一领域有工作经验者优先；
-
-4. 良好的科研能力，有成果发表在 KDD、SIGIR、NeurIPS、ICML、AAAI 等国际顶级会议、期刊者优先；
-
-5. 较强的逻辑和数据分析能力，Kaggle、阿里天池大赛、以及相关学术会议组织的权威比赛获奖者优先；
-
-6. 较好的主动性和求知欲，良好的沟通协作。
-
----
-
-[王树森](https://www.bilibili.com/video/BV14Y411M74v/?spm_id_from=333.1387.collection.video_card.click&vd_source=086ba9e7e990dd00adb3a485b6f48804)
-
-阿里天池
-
-[Deep FM](https://arxiv.org/abs/1703.04247)
-
-![image-20250817212326523](https://gcore.jsdelivr.net/gh/davidliuk/images@master/image-20250817212326523.png)
-
-信号
-
-消费指标
-
-北极星指标
-
-- 用户规模：DAU、MAU
-- 消费：人均使用推荐的时长、人均阅读笔记数量
-- 发布：
-
-实验流程
-
-- 离线实验
-- 小流量 AB 测试
-- 全流量上线
-
-![image-20250818104109899](https://gcore.jsdelivr.net/gh/davidliuk/images@master/image-20250818104109899.png)
+- `Search` 和推荐共享 `retrieval + ranking` 的系统骨架，但 query 明确、用户意图表达方式不同。
+- `LLM for Rec` 更像是在已有推荐链路上加入生成式建模，而不是彻底替代漏斗结构。

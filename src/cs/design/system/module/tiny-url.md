@@ -8,7 +8,7 @@
 
 根据 Short URL 还原 Long URL，并跳转
 
-![image-20251229203206902](/Users/david/Library/Application Support/typora-user-images/image-20251229203206902.png)
+> 图示暂缺，后续补充站内可访问的架构图。
 
 确认问题：
 
@@ -104,7 +104,7 @@
 
 随机一个6 位的 ShortURL，如果没有被用过，就绑定到该 LongURL
 
-![image-20251229205848309](/Users/david/Library/Application Support/typora-user-images/image-20251229205848309.png)
+> 图示暂缺，后续补充站内可访问的流程图。
 
 ##### 伪代码
 
@@ -163,7 +163,7 @@ public String longToShort (String url) ｛
   - 6 位：570 亿
   - 7 位：35000 亿
 
-![image-20251229210012414](/Users/david/Library/Application Support/typora-user-images/image-20251229210012414.png)
+> 图示暂缺，后续补充站内可访问的存储示意图。
 
 ##### 伪代码
 
@@ -219,7 +219,7 @@ How to reduce response time?
 - long to short
 - short to long
 
-![image-20251229210235922](/Users/david/Library/Application Support/typora-user-images/image-20251229210235922.png)
+> 图示暂缺，后续补充站内可访问的编码方案示意图。
 
 #### 利用地理位置信息提速
 
@@ -230,7 +230,7 @@ How to reduce response time?
   - 使用Centralized MySQL+Distributed Memcached
   - 一个MySQL配多个Memcached, Memcached跨地区分布
 
-![image-20251229210450454](/Users/david/Library/Application Support/typora-user-images/image-20251229210450454.png)
+> 图示暂缺，后续补充站内可访问的冲突处理示意图。
 
 ### Cluster
 
@@ -323,7 +323,7 @@ how to scale?
     - •那就让中国的服务器访问美国的数据好了, 反正也不会慢多少
     - •中国访问中国是主流需求, 优化系统就是要优化主要的需求
 
-![image-20251229212327026](/Users/david/Library/Application Support/typora-user-images/image-20251229212327026.png)
+> 图示暂缺，后续补充站内可访问的扩展方案示意图。
 
 ## 拓展
 

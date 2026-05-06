@@ -44,7 +44,7 @@ Append Only File (追加文件）。
 
 重写触发时机设置：
 
-```conf
+```ini
 auto-aof-rewrite-percentage
 ```
 

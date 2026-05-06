@@ -1,259 +1,50 @@
-# 算法总结
-
-特殊条件：
-
-- 有序
-
-  - 二分法
-  - 双指针
-
-- 在一个长度为 n 的数组 nums 里的所有数字都在 0 ~ n-1 的范围内
-
-  原地交换（哈希映射）
-
-- 子串/子数组
-
-  - 滑动窗口
-  - 区间型动态规划
-  - 前缀和/差分数组
-
-- 子序列
-
-面试
-
-- 系统设计 System Design/Architechture Design 宏观设计
-- 面向对象设计 OOD 微观设计
-- 行为面试 Behavior Question
-- 简历面试 Experience Interview
-- 算法面试 Coding
-
-面试算法 vs 算法
-
-- 面试算法侧重Coding，而非算法
-- Cracking The Coding Interview > 算法导论
-
-
-## 按时间复杂度区分
-
-a, max
-
-```java
-int max = a[0];
-for(int i = 0; i < a.length; i++) {
-	max = Math.max(max, a[i])
-}
-```
-
-1 2 3 4 5
-
-12[345]678
-
-
-
-3
-
-1 2 3 4 5 6
-
-
-
-2
-
-2 1 3 4 2 3 5 3 6
-
-   |  |     
-
-
-
-
-
-A k
-
-
-
-4
-
-1 2 3 4 5
-
-|     |
-
-
-
-### On
-
-- 打擂台，求max或者min
-
-- 双指针
-
-  - 背向双指针，回文串
-
-    1 2 3 4 3 2 1
-
-    ​          II
-
-  - 同向双指针
-
-    - 快慢指针（一个一步、一个两步）
-
-      链表，求中点、求交点、判求环
-
-    - 滑动窗口
-
-      - 大小恒定的窗口
-
-        连续的k个数中的最值、中位数
-
-      - 大小不定的窗口（待学）
-
-    - 归并排序的merge算法
-
-      合并两个有序数组或链表
-
-  - 相向双指针
-
-    - 快速排序的partition算法
-    - 两数之和
-
-- 快速选择
-
-- 所有链表问题
-
-
-### Onlogn
-
-- 归并、快速排序
-
-- n次logn的运算
-
-  n次二分
-
-  n次插入堆
-
-### <On
-
-
-
-
-
-#### BFS
-
-#### DFS
-
-
-
-
-
-## 按算法类型区分
-
-
-
-### BS二分查找
-
-logn
-
-用途
-
-
-
-- 有序数组中找一个元素
-
-  2
-
-  1 2 3 4 5
-
-- 二分答案
-
-  0 max
-
-- 非排序序数组中找一个元素
-
-
-
-### 遍历
-
-线性的：数组、链表
-
-- 迭代遍历
-- 递归遍历
-
-数组 for
-
-链表 
-
-
-
-
-
-```java
-while(node != null) {
-    访问node;
-    node = node.next;
-}
-
-// 1 -> 2 -> 3
-void traverse(Node node) {
-    if (node != null) {
-        return;
-    }
-    // 先序访问node;
-    traverse(node.next);
-    // 后序访问node;
-}
-```
-
-
-
-树形的：二叉树、多叉树
-
-
-
-```java
-// 1 -> 2 -> 3
-void traverse(TreeNode node) {
-    if (node != null) {
-        return;
-    }
-    // 先序访问node;
-    traverse(node.left);
-    // 中序访问node;
-    traverse(node.right);
-    // 后序访问node;
-}
-```
-
-
-
-```java
-// 1 -> 2 -> 3
-class TreeNode {
-    int val;
-    ArrayList<TreeNode> chilren;
-}
-
-void traverse(TreeNode node) {
-    if (node != null) {
-        return;
-    }
-    // 先序访问node;
-    for (TreeNode child: node.children) {
-        traverse(child);
-    }
-    // 后序访问node;
-}
-```
-
-### DFS
-
-
-
-### BFS
-
-宽度优先搜索
-
----
-
-- 二分法: 传统2分/翻转2分/Sqrt/median of 2 sorted arrays
-- HashTable: 2 sum/isomorphic string/group anagram
-- 动态规划(DP): 漆房子/Coin Change2小ump Ga
-- BFS: Number of Island, BT Level order traversal
-- DFS: Subsets/Combo Sum/Permutation/Phone Combination
-- 其他: Add String Numbers/Multiply String Numbers/Remove Nth node from Linked List/Product of Array Except Self
+# JZ Course
+
+这条课程线更偏面试准备: 不是把算法当成纯理论体系来学，而是把复杂度、数据结构、二分、双指针、DFS、BFS、DP 这些高频模块整理成一套可复习、可刷题的路径。
+
+## Course Structure
+
+<div class="section-card-grid">
+  <a class="section-card" href="./ds/18.%20%E5%93%88%E5%B8%8C%E8%A1%A8.html">
+    <span class="section-card__eyebrow">Data structure</span>
+    <h3>DS</h3>
+    <p>哈希表、堆和数据结构设计，适合补面试最常见的底层组件。</p>
+  </a>
+  <a class="section-card" href="./2ptr/4.%20%E5%8F%8C%E6%8C%87%E9%92%88.html">
+    <span class="section-card__eyebrow">Linear tricks</span>
+    <h3>2 Pointers</h3>
+    <p>回文、滑动窗口、快慢指针和分区问题，属于最常用的一层线性优化。</p>
+  </a>
+  <a class="section-card" href="./bs/7.%20%E4%BA%8C%E5%88%86%E6%B3%95.html">
+    <span class="section-card__eyebrow">Ordered structure</span>
+    <h3>Binary Search</h3>
+    <p>传统二分、二分答案和实战变形，是最典型的减治方法。</p>
+  </a>
+  <a class="section-card" href="./dfs/6.%20%E9%80%92%E5%BD%92.html">
+    <span class="section-card__eyebrow">State enumeration</span>
+    <h3>DFS</h3>
+    <p>递归、分治、组合型与排列型搜索，是搜索问题的核心套路。</p>
+  </a>
+  <a class="section-card" href="./bfs/11.%20BFS.html">
+    <span class="section-card__eyebrow">Shortest path mindset</span>
+    <h3>BFS</h3>
+    <p>层序、最短步数、双向 BFS 和状态扩展问题。</p>
+  </a>
+  <a class="section-card" href="./dp/23.%20%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92.html">
+    <span class="section-card__eyebrow">Reuse subproblems</span>
+    <h3>Dynamic Programming</h3>
+    <p>从使用场景到背包、区间、匹配、划分、接龙等常见类型。</p>
+  </a>
+</div>
+
+## Recommended Order
+
+1. 先看 `1. 真实案例`、`3. 代码质量`、`4. 复杂度理论`，建立面试语境。
+2. 然后按 `DS -> 2ptr -> BS -> DFS -> BFS -> DP` 走主模块。
+3. 最后回到 `31. 低于On的算法`、`39. 外排序算法与数组合并类` 这类专题做补充。
+
+## How This Differs from Main Algo Tree
+
+- 主树负责按知识点分类。
+- 课程线负责按复习顺序组织。
+- 如果你在这里看到一个主题想深入，优先回跳到 `/algo/` 主树下对应模块继续读。

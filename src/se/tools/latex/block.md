@@ -42,7 +42,7 @@ $$
 
 
 $$
-\begin{array}{|c:c}a & a & a & a & a\end{array}
+\begin{array}{|c:c:c:c:c|}a & a & a & a & a\end{array}
 $$
 
 

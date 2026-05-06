@@ -146,7 +146,7 @@ ReturnType bfs(Node startNode, [Node endNode]) {
 
 ### BeFS
 
-```pseudocode
+```text
 Best-First-Search(Graph g, Node start)
     1) Create an empty PriorityQueue
        PriorityQueue pq;

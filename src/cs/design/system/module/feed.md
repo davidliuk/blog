@@ -1,5 +1,7 @@
 # Feed 新鲜事
 
+这页更适合作为通用的 Feed 模块设计笔记；如果想看一个更完整的工程化案例，可以对照 `../projects/twitter.md`。
+
 ## Scenario 场景
 
 - Twitter，朋友圈，微博
@@ -76,7 +78,7 @@ Key Points
 - Denormalise: Created_at 可以用来加索引，加速排序，减少查询
   - owner_id, created_at建立联合索引
 
-![image-20251229183329493](/Users/david/Library/Application Support/typora-user-images/image-20251229183329493.png)
+> 图示暂缺，后续补充站内可访问的示意图资源。
 
 
 

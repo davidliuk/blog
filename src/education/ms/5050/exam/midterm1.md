@@ -34,17 +34,34 @@ As you study for the exam, if you have any doubts on the concepts taught in clas
 
 ---
 
+## Score
+
+Hello everyone,
+
+Thank you all for having come to the exam today! You can now access your score for the first midterm exam via the following link (after logging using your PennKey):
+
+https://alliance.seas.upenn.edu/~cis5050/midterm/index-midterm1.php 
+
+Instructions for viewing your graded exam will be announced after the spring break. 
+
+Below are the statistics on the exam for your reference. The stats show the total points (including extra credit) **out of 80.** 
+
+**Average: 66.95**
+
+**Median: 68.95**
+
+**Max: 84.5**
+
+**Standard deviation: 10.45**
+
+I hope you all have some time to rest after studying hard for the exam, and see you on Thursday!
+
+---
+
 Dear David,
 
-Please find your score for the first midterm below.
-Instructions for viewing your graded exam will be
-posted on Ed Discussion soon.
+Please find your score for the first midterm below. Instructions for viewing your graded exam will be posted on Ed Discussion soon.
 
-Thank you,
-
--Linh
-
-\-----------------------------------------------------
 Question 1: 8 /10
 Question 2: 12 /12
 Question 3: 9 /9
@@ -59,25 +76,3 @@ Extra Credit: 5 /5
 \-----------------------------------------------------
 
 TOTAL: 68.5 /80
-
-
-
-Hello everyone,
-
-Thank you all for having come to the exam today! You can now access your score for the first midterm exam via the following link (after logging using your PennKey):
-
-https://alliance.seas.upenn.edu/~cis5050/midterm/index-midterm1.php 
-
-Instructions for viewing your graded exam will be announced after the spring break. 
-
-Below are the statistics on the exam for your reference. The stats show the total points (including extra credit) **out of 80.** 
-
-**Average: 66.95
-
-Median: 68.95
-
-Max: 84.5
-
-Standard deviation: 10.45**
-
-I hope you all have some time to rest after studying hard for the exam, and see you on Thursday!

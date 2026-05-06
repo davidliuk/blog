@@ -24,8 +24,12 @@ Types of Machine Learning
 
 - Midterms exams: 40%
   - midterm 1, 33.5 / 50.0
+    - **Mean:** 32.62
+    - **Median:** 32.5
+    - **Standard Deviation:** 6.78
+    - **Max Score:** 48.5
   - midterm 2
-
+  
 - In-class quizzes: 15%
   - Approx. weekly short quiz: **5-10** mins at the beginning. Best **50%** of scores out of ≈10 quizzes will count.
   - Quizzes will be done on paper
@@ -33,9 +37,10 @@ Types of Machine Learning
     - 2/5
     - 5/5
     - 3/3
-    - 0/?
+    - 0/0
     - 0/0
     - 2/4
+    - 3/4
 - Bonus points up to 5% of course grade for extra-good citizenship, e.g.
   - answering lots of questions on Ed Forum
   - bug / typo reporting (more info on this soon)

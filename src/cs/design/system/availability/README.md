@@ -1,9 +1,24 @@
 # High Availability
 
-https://blog.csdn.net/eagle89/article/details/129532200
+高可用关注的是：系统在部分组件故障、流量波动或发布变更时，是否还能持续提供服务。
 
-High Availability Cluster，简称 HA Cluster
+## Topics
 
-cap
+- `./cap.md`
+- `./scaling.md`
+- `./problems.md`
+- `../distributed/dtp.md`
 
-Dtp
+## 常见问题
+
+- 单点故障怎么处理
+- 容量扩展怎么做
+- 故障发生后如何降级、限流、熔断
+- 数据一致性和可用性如何权衡
+
+## 阅读顺序
+
+1. `./cap.md`
+2. `./scaling.md`
+3. `./problems.md`
+4. `../distributed/dtp.md`

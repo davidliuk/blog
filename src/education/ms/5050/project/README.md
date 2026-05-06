@@ -1,6 +1,10 @@
-展示要in person
+Wednesday, May 6, 1:45pm-2:15pm
 
-会有handout
+**Demos will take place physically in my office (Levine 576)**
+
+Final demo 要 in person
+
+会有 handout
 
 一个team 4人，会分配2个ta
 

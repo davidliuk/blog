@@ -1,303 +1,122 @@
 # Algorithm
 
-算法类型主要分为如下四种
-
-- 结构
-  - 线
-  - 树
-  - 图
-  - 集
-
-- 搜索：brute force 暴力
-  - `for`：固定的若干层for循环嵌套枚举，例如枚举每一个子数组（起点终点
-  - `DFS`：不定的若干层for循环递归枚举，例如枚举每一个子序列（每个元素
-  - `BFS`
-
-- 优化
-  - 剪枝：为搜索避免无效状态
-  - 动归：避免重复计算
-  - 减治：避免无效状态
-
-- 数学
-
-## 复杂度
-
-### 时间复杂度
-
-- big O
-
-#### 主方法
-
-用来分析递归的时间复杂度
-
-### 数据量推测解法
-
-**基本事实**
-
-- C/C++运行时间1s，java/python/go等其他语言运行时间1-2s
-- 对应的常数指令操作是10^7-10^8
-
-**必要条件**
-
-- 入参的范围最大值，笔试考试会给；面试去问数据规模
-- 算法时间复杂度分析
-
-![Screenshot 2024-12-18 at 5.36.11 PM](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/Screenshot%202024-12-18%20at%205.36.11%E2%80%AFPM.png)
-
-- O(logn): **二分法**、快速幂、快速乘、GCD
-- O(n^0.5): 分块检索、分解质因数、判断质数（极少）
-- O(n)双指针，单调栈，枚举法、埃式筛法
-- O(nlogn)排序，O(nlogn的数据结构上的操作)
-- O(n^1.5), 莫队算法、质数筛选
-- O(n2),O(n3),动态规划等
-- O(2^n)组合类(combination)的搜索问题
-- O(N!)排列类(permutation)的搜索问题
-
-## 正确性
-
-### Loop Invariant
-
-循环不变式，或循环不变量、循环不变性
-
-循环不变式用来帮助理解算法的正确性。关于循环不变式，我们必须证明三条性质:
-
-- 初始化：循环的第一次迭代之前，它为真。
-- 保持：如果循环的某次迭代之前它为真，那么下次迭代之前它仍为真。
-- 终止：在循环终止时，不变式为我们提供一个有用的性质，该性质有助于证明算法是正确的。
-
-当前两条性质成立时，在循环的每次迭代之前循环不变式为真。（当然，为了证明循环不变式在每次迭代之前保持为真，我们完全可以使用不同于循环不变式本身的其他已证实的事实。）注意，这类似于数学归纳法，其中为了证明某条性质成立，需要证明一个基本情况和一个归纳步。这里，证明第一次迭代之前不变式成立对应于基本情况，证明从一次迭代到下一次迭代不变式成立对应于归纳步。
-
-第三条性质也许是最重要的，因为我们将使用循环不变式来证明正确性。通常，我们和导致循环终止的条件一起使用循环不变式。终止性不同于我们通常使用数学归纳法的做法，在归纳法中，归纳步是无限地使用的，这里当循环终止时，停止“归纳”。
-
-eg. 插入排序，`A[1..j-1]`表示前j个元素是有序数组。
-
-### DP
-
-- 最优子结构
-- 重叠子问题
-
-### Greedy
-
-- 最优子结构
-- 贪心选择性
-
-## 代码质量
-
-优化的逻辑：
-
-1. 先想暴力的方法
-2. 看哪里有地方是浪费的
-
-### 优秀的 Coding Quality
-
-1. bug free
-
-2. 边界检测和异常处理
-
-3. 代码风格：命名、空格、空行
-
-   1. 每个逻辑 Part 之间一个空行划分
-
-      如异常判断、主体逻辑、结果返回，这些part之间一个分行
-
-   2. 变量命名采用全称：1-2个单词，小驼峰
-
-   3. 避免重复代码（泄露没有工程经验）
-
-   4. 用不到的变量用_来命名（python、js和go注意）
-
-   5. 尽可能避免全局变量
-
-   6. 缩进：java是4个
-
-   7. 空格
-
-      1. 运算符的前后要有
-      2. 逗号、分号后面有
-
-写 Python 能大概减少10分钟的时间，如果是面试不限制语言的话，可以写Python
-
-### 独孤九剑 - 总决式
-
-想做到 bug free 最重要的是优化code Quality
-
-单元运算符：--, ++, !
-
-多用 continue 少用if：减少大段代码的缩进
-
-尽量减少 else，如果前面的if里面执行了return或者continue、break等，后面就不需要 else if，直接普通的if，最后不需要else，直接普通的xxx
-
-最好把嵌套式的改成并列的：好懂得多
-
-避免 typo：拼写错误
-
-Coding Style 相关:
-
-- 二元运算符两边加空格，单元运算符不加空格
-- 花括号和 for, if 之间要加空格(Java)，圆括号和 if 之间要加空格
-- 用空行分隔开不同的逻辑块
-- 逗号后面加空格
-
-Readability 相关
-
-- 函数名和变量名用1-2个单词作为名称
-- 确保一个函数内部不超过 3 层缩进(indention)
-- 多用子函数来减少入口函数的代码量
-- 多用 continue 少用 if
-
-Bug Free 相关
-
-- 不管有没有可能出问题，都要对入口函数的参数进行异常检测
-- 访问一个下标的时候，一定要确保这个下标不会越界
-- 访问一个对象的属性或者方法时，一定要确保这个对象不是空
-- 不用全局变量
-
-## 面试评价
-
-Coding(Algorithm) Interview 的评价体系主要有如下一些方面 
-
-- Logicality
-- Code Quality
-- Communication
-
-### Logicality
-
-逻辑思维能力
-
-- 是否能很快的想到一个 Working Solution
-- 是否能够在面试官点出问题后优化自己的 Solution
-
-### Code Quality
-
-代码质量
-
-- 代码到底写完没有
-
-- 代码风格好不好
-
-  - 可读性
-  - 变量名、函数名命名
-  - 空格与空行的正确使用
-
-- 特殊情况 / 边界情况 (Edge Cases)
-- Bug Free
-
-### Communication
-
-沟通能力
-
-把面试官当作 Co-worker 而不是考官，让面试官愿意和你一起工作
-
-做一个题之前，先沟通清楚，得到面试官肯定，再开始写代码，写完以后再解释
-
-- 不要闷头写
-
-- 不要一边写一边解释太多(容易写不完) 
-
-可以要提示，经过提示做出来的题，也是可以拿到 Hire 的
-
-- 但是先自己努力想一下，别太容易放弃，容易让人觉得不会主动思考问题
-
-不要和面试官吵架
-
-- 面试官大概率是对的，面试官是带着答案来面试你的
-
-- 不同意见在大部分情况下，很可能是你自己想错了
-
-会就会，不会就不会，不要遮遮掩掩，坦诚自信很重要
-
-- 容易让人觉得和你沟通“不顺畅”
-- 做过的题就说做过，不要故意说没做过
-
-- 因为他既然已经怀疑你做过了，即使你说没有，他也无法打消这个顾虑，还不如让他换题
-
----
-
-九步骤：
-
-1. 理解问题
-2. 复述问题
-3. 澄清问题
-4. 初步想法
-5. 实例分析
-6. 书写代码
-7. 测试检验
-8. 评判性能
-9. 优化解法
-
----
-
-题单/路线
+这部分不只是“题型仓库”，更像一个算法学习和面试准备的知识地图。现在入口改成了先分清主线，再决定从哪条路径开始学: 数据结构负责“存什么”，搜索负责“怎么枚举”，优化负责“怎么更快”，课程和 framework 则负责“怎么形成自己的解题方法”。
+
+<div class="section-hero">
+  <p class="section-eyebrow">Algorithm Knowledge Map</p>
+  <h2>从复杂度与正确性出发，再进入数据结构、搜索与优化</h2>
+  <p>
+    如果你是第一次来这块，建议先看 <a href="./data-structure/">Data Structure</a>、
+    <a href="./search/">Search</a> 和 <a href="./optimization/">Optimization</a> 这三条主线。
+    想系统准备面试，可以再配合 <a href="./course/">Course</a> 和
+    <a href="./framework/">Framework</a> 一起读。
+  </p>
+  <div class="section-pill-row">
+    <span class="section-pill">Complexity</span>
+    <span class="section-pill">Correctness</span>
+    <span class="section-pill">Data Structure</span>
+    <span class="section-pill">DFS / BFS / FOR</span>
+    <span class="section-pill">Dynamic Programming</span>
+    <span class="section-pill">Interview Prep</span>
+  </div>
+</div>
+
+## Topic Map
+
+<div class="section-card-grid">
+  <a class="section-card" href="./data-structure/">
+    <span class="section-card__eyebrow">Core objects</span>
+    <h3>Data Structure</h3>
+    <p>数组、链表、树、图、集合这些“状态长什么样”的问题，决定了后面很多算法写法。</p>
+  </a>
+  <a class="section-card" href="./search/">
+    <span class="section-card__eyebrow">Enumeration</span>
+    <h3>Search</h3>
+    <p>FOR、DFS、BFS 三种主要枚举方式，适合处理组合、路径、连通性和最短路问题。</p>
+  </a>
+  <a class="section-card" href="./optimization/">
+    <span class="section-card__eyebrow">Make it faster</span>
+    <h3>Optimization</h3>
+    <p>从减治、贪心、动态规划到结构优化，关注怎么减少无效状态与重复计算。</p>
+  </a>
+  <a class="section-card" href="./course/">
+    <span class="section-card__eyebrow">Study track</span>
+    <h3>Course</h3>
+    <p>把零散知识点整理成学习路线，更适合系统复习和阶段式刷题。</p>
+  </a>
+  <a class="section-card" href="./framework/">
+    <span class="section-card__eyebrow">How to think</span>
+    <h3>Framework</h3>
+    <p>总结怎么分类题目、怎么传参、怎么写出 bug-free 代码，是辅助方法论层。</p>
+  </a>
+  <a class="section-card" href="./faq/">
+    <span class="section-card__eyebrow">High-frequency patterns</span>
+    <h3>FAQ</h3>
+    <p>高频技巧、面试陷阱和分类速查，适合做查漏补缺和最后一轮巩固。</p>
+  </a>
+</div>
+
+## Recommended Paths
+
+<div class="section-path-grid">
+  <div class="section-path-card">
+    <h3>Path 1: Build the Core Mental Model</h3>
+    <ol>
+      <li>复杂度分析与数据规模估算</li>
+      <li><a href="./data-structure/">Data Structure</a></li>
+      <li><a href="./search/">Search</a></li>
+      <li><a href="./optimization/">Optimization</a></li>
+      <li><a href="./framework/">Framework</a></li>
+    </ol>
+  </div>
+  <div class="section-path-card">
+    <h3>Path 2: Interview Coding Track</h3>
+    <ol>
+      <li>边界情况、代码质量、沟通方式</li>
+      <li><a href="./framework/quality/">Coding Quality</a></li>
+      <li><a href="./faq/">FAQ</a></li>
+      <li><a href="./course/jz/">JZ Course</a></li>
+      <li>结合题单和公司高频题练习</li>
+    </ol>
+  </div>
+  <div class="section-path-card">
+    <h3>Path 3: Topic-driven Review</h3>
+    <ol>
+      <li><a href="./search/DFS/">DFS</a> / <a href="./search/BFS/">BFS</a></li>
+      <li><a href="./optimization/dynamic-programming/">Dynamic Programming</a></li>
+      <li><a href="./optimization/decrease-conquer/binary/">Binary</a></li>
+      <li><a href="./faq/range/">Range Tricks</a></li>
+      <li><a href="./faq/string/">String</a> / <a href="./faq/big-data/">Big Data</a></li>
+    </ol>
+  </div>
+</div>
+
+## What Lives Where
+
+- `Data Structure / Search / Optimization`: 算法区的三条主线，回答“学什么”。
+- `Course`: 把知识点串成学习顺序，回答“先学什么，后学什么”。
+- `Framework`: 总结分类、顺序、传参、代码质量等方法论，回答“做题时怎么想”。
+- `FAQ`: 高频模式与面试坑位速查，回答“遇到题时先想到什么”。
+
+## High-Value Notes
+
+- 复杂度与正确性: 主方法、循环不变式、DP 最优子结构、贪心选择性
+- 搜索基础: [FOR](./search/FOR/), [DFS](./search/DFS/), [BFS](./search/BFS/)
+- 经典优化: [Dynamic Programming](./optimization/dynamic-programming/), [Binary](./optimization/decrease-conquer/binary/), [2 Pointers](./optimization/decrease-conquer/2ptr/)
+- 面试辅助: [Framework](./framework/), [FAQ](./faq/), [JZ Course](./course/jz/)
+
+## Interview Checklist
+
+1. 先问清数据范围和输入约束。
+2. 先给出 working solution，再说明优化点。
+3. 明确边界情况、空输入、越界和重复状态。
+4. 写完后主动验证复杂度、正确性和可读性。
+
+## Practice Resources
 
 - [Grind 75](https://www.techinterviewhandbook.org/grind75/)
-- [Grind 169](https://www.techinterviewhandbook.org/grind75/?weeks=6&hours=25&grouping=topics)
-- [NeetCode](https://neetcode.io/roadmap), Blind 75, NeetCode 150
-- [LeetCode 150](https://leetcode.com/studyplan/top-interview-150/)
-
-公司题库
-
+- [NeetCode Roadmap](https://neetcode.io/roadmap)
+- [LeetCode Top Interview 150](https://leetcode.com/studyplan/top-interview-150/)
 - [CodeTop](https://codetop.cc/)
-- [CSCareers](https://discord.com/channels/698366411864670250/947389742859812884)
-
-知识库
-
-- [geeksforgeeks](https://www.geeksforgeeks.org/)
 - [Hello Algo](https://www.hello-algo.com/)
-- [labuladong](https://labuladong.online/algo/)
-- [Visualalgo](https://visualgo.net/en)
-- [OI-Wiki](https://oi-wiki.org/ds/seg/)
-
-OJ
-
-- Leetcode
-
-  主站防止跳转国区的[插件](https://greasyfork.org/zh-CN/scripts/482242-%E7%A6%81%E6%AD%A2-leetcode-%E8%B7%B3%E8%BD%AC%E4%B8%AD%E6%96%87%E7%AB%99-2024)
-
-- Codeforces
-
-结合[labuladong](https://labuladong.online/algo/home/)和codetop，按labuladong的知识点刷codetop上微软的高频题
-
-先学labuladong学习知识、总结算法模板、刷模板题，这个时候相当于开卷去学习刷题；然后刷codetop上的高配题，这个时候尽量闭卷不看题解用自己总结的方法刷
-
----
-
-数据结构
-
-- 二叉树
-
-  顺序
-
-  - 前序
-  - 后序
-  - 中序
-
-  传值
-
-  - 全局
-    - prev/post，前/中/后序中，前一个遍历的位置
-  - 局部
-    - 从root到当前节点路径上记录下来的性质
-
-- 链表
-
-  - 前序
-  - 后序
-
-- 图（和搜索放在一起）
-
-搜索
-
-- BFS
-  - 最短路
-  - 拓扑排序
-  - 可达性/连通性
-- DFS
-  - 枚举
-    - 组合型
-    - 排列型
-
-优化
-
-- 双指针
-- 单调栈
-- 动态规划
+- [OI-Wiki](https://oi-wiki.org/)

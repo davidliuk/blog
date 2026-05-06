@@ -1,38 +1,22 @@
-# 优化
+# Optimisation Decision Guide
 
-- 减治：无效优化
+这里不再把优化讲成第二棵主树，而是只保留“怎么判断该往哪一类优化走”的心智模型。
 
-  避免无效计算：不可能出现答案的地方直接排除，即优化无效状态空间
+## Quick Choice
 
-  有序（广义上的有序，符合一定的规律）的线性结构
+- `减治`: 问题里存在单调性、有序性、可删除的无效状态
+- `动态规划`: 子问题重叠，重复计算明显，且依赖方向无环
+- `贪心`: 局部选择能稳定导向全局目标
 
-  （四大类型）eg. 二分法，快速选择
+## Typical Signals
 
-- 动归：重叠优化
+- 有序 / 单调 / 二值性: 优先看减治
+- 最优子结构 + 重叠子问题: 优先看动态规划
+- 排序后局部策略天然成立: 优先检查贪心
 
-  避免重复计算：
+## Canonical Docs
 
-  DAG结构
-
-  复杂的动态规划可以把四种算法都串起来，因为临界节点的序列是线性的，且有的时候是“有序”的，就可以减治（如斜率优化等）
-
-
-
-动态规划的优化
-
-- 空间优化：
-
-  先序：
-
-  - FOR：滚动数组
-  - DFS、BFS：把hashmap的节点删除（hashmap.remove）
-
-  后序：
-
-  - 只有被重复计算的点需要被存储下来，没有重复计算的点就不需要存储
-  - lc一道hard里面出现过一次
-
-- 时间优化：通过减治
-
-
-
+- [Optimization Overview](../../optimization/)
+- [Decrease & Conquer](../../optimization/decrease-conquer/)
+- [Dynamic Programming](../../optimization/dynamic-programming/)
+- [Greedy](../../optimization/decrease-conquer/greedy/)
