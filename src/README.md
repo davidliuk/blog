@@ -192,7 +192,7 @@ Before that, I worked on **TikTok Shop Ads**, where I joined as an SDE Intern an
   time="Sep 2020 – Jul 2024"
   logo="/NEU_logo.svg"
   gpa="3.95 / 4.00"
-  :honors="['National Scholarship','Outstanding Graduate','Annual Merit-based Scholarship','Annual Outstanding Student']"
+  :honors="['National Scholarship','Outstanding Graduate','Merit-based Scholarship (awarded annually)','Outstanding Student (awarded annually)']"
   rank="Top 1%"
   major="Software Engineering" />
 

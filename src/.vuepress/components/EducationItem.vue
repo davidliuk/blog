@@ -5,22 +5,35 @@
     </div>
     <div class="edu-right">
       <div class="edu-header">
-        <h3>{{ school }}</h3>
+        <div>
+          <p class="edu-kicker">Education</p>
+          <h3>{{ school }}</h3>
+        </div>
         <span class="edu-time">{{ time }}</span>
       </div>
-      <p class="edu-degree">
-        <abbr :title="degreeTitle">{{ degreeAbbr }}</abbr
-        ><span v-if="major"> · {{ major }}</span>
-      </p>
+      <div class="edu-degree-line" :aria-label="degree">
+        <span class="edu-degree-abbr">{{ degreeAbbr }}</span>
+        <span class="edu-degree-copy">
+          <span class="edu-degree-title">{{ degreeTitle }}</span>
+          <span v-if="major" class="edu-degree-separator" aria-hidden="true">/</span>
+          <span v-if="major" class="edu-degree-major">{{ major }}</span>
+        </span>
+      </div>
       <div v-if="gpa || honorBadges.length" class="edu-meta">
         <div v-if="gpa" class="edu-gpa-row">
-          <span>GPA: {{ gpa }}</span>
+          <span class="edu-gpa-label">GPA</span>
+          <strong>{{ gpa }}</strong>
           <Badge v-if="rank" :text="rank" type="tip" vertical="top" />
         </div>
         <div v-if="honorBadges.length" class="edu-honors-row">
-          <span v-for="(h, i) in honorBadges" :key="i" class="edu-honor"
-            ><Badge :text="h.text" :type="h.type"
-          /></span>
+          <span
+            v-for="(h, i) in honorBadges"
+            :key="i"
+            class="edu-honor"
+            :class="`edu-honor--${h.type}`"
+          >
+            {{ h.text }}
+          </span>
         </div>
       </div>
       <div class="edu-details">
@@ -48,7 +61,7 @@ const props = defineProps<{
 const honorBadges = computed(() => {
   return (props.honors ?? []).map((t) => ({
     text: t,
-    type: /Scholarship/i.test(t) ? "warning" : "tip",
+    type: /annually/i.test(t) ? "annual" : /Scholarship/i.test(t) ? "scholarship" : "honor",
   }));
 });
 
@@ -84,7 +97,7 @@ const logoSrc = computed(() => {
 */
 .education-item-wrapper {
   display: flex;
-  gap: 2rem;
+  gap: 1.35rem;
   align-items: flex-start;
   padding-bottom: 2rem;
   margin-bottom: 2rem; /* 用 margin 代替原来的 gap */
@@ -102,7 +115,7 @@ const logoSrc = computed(() => {
 }
 
 .edu-left {
-  flex: 0 0 150px;
+  flex: 0 0 132px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -110,8 +123,8 @@ const logoSrc = computed(() => {
 }
 
 .edu-logo {
-  width: 120px;
-  height: 120px;
+  width: 108px;
+  height: 108px;
   object-fit: contain;
   margin-bottom: 0.5rem;
   /* 确保图片在不同主题下显示正常 */
@@ -120,63 +133,159 @@ const logoSrc = computed(() => {
 }
 
 .edu-time {
-  font-size: 0.85rem;
-  /* 使用 Theme Hope 的次要文本颜色变量 */
-  color: var(--text-color-light, #666);
-  font-weight: bold;
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  padding: 0.28rem 0.72rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
+  background: color-mix(in srgb, var(--vp-c-bg) 94%, transparent);
+  color: var(--vp-c-text-2);
+  font-size: 0.82rem;
+  font-weight: 700;
+  white-space: nowrap;
 }
 
 .edu-right {
   flex: 1;
 }
 
-.edu-header { display: flex; align-items: baseline; justify-content: space-between; margin-bottom: 0.2rem; }
+.edu-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 0.8rem;
+}
+
+.edu-kicker {
+  margin: 0 0 0.18rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--vp-c-text-3);
+}
 
 .edu-right h3 {
   margin-top: 0;
   margin-bottom: 0;
-  font-size: 1.2rem;
+  font-size: clamp(1.16rem, 2vw, 1.35rem);
+  line-height: 1.22;
+  letter-spacing: -0.025em;
   border: none; /* 去掉可能存在的主题默认下划线 */
 }
 
-.edu-degree {
-  /* font-size: 1rem; */
-  /* 使用 Theme Hope 的主题强调色 */
-  color: var(--theme-color, #3eaf7c);
-  margin-bottom: 0.3rem;
-  font-weight: 500;
+.edu-degree-line {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.48rem 0.62rem;
+  max-width: 100%;
+  margin: 0 0 0.75rem;
+  color: var(--vp-c-text-2);
 }
-.edu-degree abbr { text-decoration: underline dotted; cursor: help; position: relative; }
-.edu-degree abbr:hover::after {
-  content: attr(title);
-  position: absolute;
-  left: 0;
-  top: 120%;
-  background: var(--bg-color, #fff);
-  color: var(--text-color, #333);
-  border: 1px solid var(--border-color, #eaecef);
-  border-radius: 6px;
-  padding: 6px 8px;
-  white-space: nowrap;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-  z-index: 10;
+
+.edu-degree-abbr {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 1.72rem;
+  padding: 0.16rem 0.58rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--vp-c-accent) 22%, var(--vp-c-divider));
+  background: color-mix(in srgb, var(--vp-c-accent-soft) 54%, var(--vp-c-bg));
+  color: var(--vp-c-accent);
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+}
+
+.edu-degree-copy {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+  min-width: 0;
+  font-size: 0.94rem;
+  line-height: 1.5;
+}
+
+.edu-degree-title {
+  color: var(--vp-c-text-1);
+  font-weight: 680;
+}
+
+.edu-degree-separator,
+.edu-degree-major {
+  color: var(--vp-c-text-2);
+}
+
+.edu-degree-separator {
+  opacity: 0.5;
 }
 
 .edu-meta {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  margin-bottom: 0.6rem;
+  gap: 0.7rem;
+  margin-bottom: 0.1rem;
 }
-.edu-gpa-row { display: flex; align-items: center; gap: 8px; font-weight: 600; }
+.edu-gpa-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+}
+.edu-gpa-label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.75rem;
+  padding: 0.18rem 0.55rem;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--vp-c-bg-soft) 90%, transparent);
+  color: var(--vp-c-text-3);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
 .edu-honors-row {
   display: flex;
-  gap: 6px;
+  gap: 0.48rem;
   flex-wrap: wrap;
   align-items: center;
 }
-.edu-honor :deep(.badge) {
-  margin-right: 4px;
+.edu-honor {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.9rem;
+  padding: 0.24rem 0.68rem;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
+  background: color-mix(in srgb, var(--vp-c-bg-soft) 88%, var(--vp-c-bg));
+  color: var(--vp-c-text-2);
+  font-size: 0.8rem;
+  font-weight: 650;
+  line-height: 1.2;
+}
+.edu-honor--scholarship,
+.edu-honor--annual {
+  border-color: color-mix(in srgb, #d29922 32%, var(--vp-c-divider));
+  background: color-mix(in srgb, #f9d66d 16%, var(--vp-c-bg));
+  color: color-mix(in srgb, #8a5f00 80%, var(--vp-c-text-1));
+}
+.edu-honor--annual::after {
+  content: "every year";
+  margin-left: 0.42rem;
+  padding-left: 0.42rem;
+  border-left: 1px solid color-mix(in srgb, #d29922 36%, transparent);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.82;
 }
 
 /* 针对插槽内容的样式优化 */
@@ -215,6 +324,22 @@ const logoSrc = computed(() => {
 
   .edu-right {
     width: 100%;
+  }
+
+  .edu-header,
+  .edu-degree-line,
+  .edu-gpa-row,
+  .edu-honors-row {
+    justify-content: center;
+  }
+
+  .edu-header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .edu-degree-copy {
+    text-align: center;
   }
 
   /* 手机端列表左对齐更好看 */
