@@ -1,7 +1,7 @@
 <template>
-  <div class="pub-card">
-    <div class="pub-head">
-      <img v-if="image" :src="imgSrc" class="pub-img" />
+  <div class="pub-card" :class="{ 'pub-card--no-image': !image }">
+    <div v-if="image" class="pub-head">
+      <img :src="imgSrc" class="pub-img" />
     </div>
     <div class="pub-body">
       <h4 class="pub-title">{{ title }}</h4>

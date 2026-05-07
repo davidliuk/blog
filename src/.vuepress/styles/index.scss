@@ -1254,6 +1254,10 @@
     inset 0 1px 0 rgba(255, 255, 255, 0.18);
 }
 
+.pub-card--no-image {
+  grid-template-columns: 1fr;
+}
+
 .pub-head {
   border-radius: 18px;
   background:

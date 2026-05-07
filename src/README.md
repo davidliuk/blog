@@ -117,6 +117,14 @@ Before that, I worked on **TikTok Shop Ads**, where I joined as an SDE Intern an
 
 <PublicationList>
   <PublicationCard
+    title="An Agentic Harness for Skill-Evolving Image Generation Workflows"
+    :authors="['Zongxia Li*','Dawei Liu*','Jingxi Chen','Xiyang Wu','Fuxiao Liu','Yuhang Zhou','Jing Xie','Xiaomin Wu','Lichao Sun']"
+    venue="Under review"
+    date="May 2026"
+    abstract="Agents are increasingly used to control executable workflows rather than only answer questions. This makes reliability depend on both execution-time scaffolding and the ability to reuse experience from past runs. We study this problem in workflow-based image generation and introduce COMFYCLAW, an agentic harness that controls an unmodified ComfyUI runtime. COMFYCLAW represents workflow construction as typed graph editing, gates tools by construction stage, rolls back invalid edits, and uses a region-level vision-language model (VLM) verifier to turn visual failures into repair suggestions. It also evolves a progressively disclosed skill library, where trajectories, execution errors, and verifier feedback are distilled into reusable Agent Skills after held-out validation. Across four benchmark splits, three agent models, and two image backbones, COMFYCLAW achieves the best average score in all six agent–backbone settings, improving the strongest setting from 61.09 to 76.34 over a verifier-only baseline without skill evolution. Human annotations further show that annotators prefer COMFYCLAW over variants without skill evolution."
+  />
+
+  <PublicationCard
     title="Graph of Skills: Dependency-Aware Structural Retrieval for Massive Agent Skills"
     :authors="['Dawei Liu*','Zongxia Li*','Hongyang Du','Xiyang Wu','Shihang Gui','Yongbei Kuang','Lichao Sun']"
     image="/publication/gos.png"
