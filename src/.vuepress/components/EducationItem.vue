@@ -61,7 +61,7 @@ const props = defineProps<{
 const honorBadges = computed(() => {
   return (props.honors ?? []).map((t) => ({
     text: t,
-    type: /annually/i.test(t) ? "annual" : /Scholarship/i.test(t) ? "scholarship" : "honor",
+    type: /Merit.based Scholarship|Outstanding Student/i.test(t) ? "annual" : /Scholarship/i.test(t) ? "scholarship" : "honor",
   }));
 });
 
@@ -277,7 +277,7 @@ const logoSrc = computed(() => {
   color: color-mix(in srgb, #8a5f00 80%, var(--vp-c-text-1));
 }
 .edu-honor--annual::after {
-  content: "every year";
+  content: "Awarded Annually";
   margin-left: 0.42rem;
   padding-left: 0.42rem;
   border-left: 1px solid color-mix(in srgb, #d29922 36%, transparent);

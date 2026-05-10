@@ -119,7 +119,8 @@ Before that, I worked on **TikTok Shop Ads**, where I joined as an SDE Intern an
   <PublicationCard
     title="An Agentic Harness for Skill-Evolving Image Generation Workflows"
     :authors="['Zongxia Li*','Dawei Liu*','Jingxi Chen','Xiyang Wu','Fuxiao Liu','Yuhang Zhou','Jing Xie','Xiaomin Wu','Lichao Sun']"
-    venue="Under review"
+    image="/publication/comfyclaw.png"
+    venue="Under Review"
     date="May 2026"
     abstract="Agents are increasingly used to control executable workflows rather than only answer questions. This makes reliability depend on both execution-time scaffolding and the ability to reuse experience from past runs. We study this problem in workflow-based image generation and introduce COMFYCLAW, an agentic harness that controls an unmodified ComfyUI runtime. COMFYCLAW represents workflow construction as typed graph editing, gates tools by construction stage, rolls back invalid edits, and uses a region-level vision-language model (VLM) verifier to turn visual failures into repair suggestions. It also evolves a progressively disclosed skill library, where trajectories, execution errors, and verifier feedback are distilled into reusable Agent Skills after held-out validation. Across four benchmark splits, three agent models, and two image backbones, COMFYCLAW achieves the best average score in all six agent–backbone settings, improving the strongest setting from 61.09 to 76.34 over a verifier-only baseline without skill evolution. Human annotations further show that annotators prefer COMFYCLAW over variants without skill evolution."
   />
@@ -146,6 +147,16 @@ Before that, I worked on **TikTok Shop Ads**, where I joined as an SDE Intern an
   />
 
   <PublicationCard
+    title="A Cookbook of 3D Vision: Data, Learning Paradigms, and Application"
+    :authors="['Hongyang Du*','Zongxia Li*','Dawei Liu*','Runhao Li*','Haoyuan Song','Qingyu Zhang','Yubo Wang','Jingcheng Ni','Shihang Gui','Congchao Dong','Tao Hu']"
+    image="/publication/3dv.jpeg"
+    venue="CVPR 2026 Workshop"
+    date="Mar 2026"
+    abstract="3D vision has rapidly evolved, driven by increasingly diverse data representations, learning paradigms, and modeling strategies. Yet the field remains fragmented across representations and benchmarks, making it difficult to develop unified perspectives on efficiency, fidelity, and scalability. This work provides a data-centric taxonomy of 3D vision that connects geometric representations, datasets, learning frameworks, and applications within a single conceptual map. We survey principal structural representations of 3D data, then examine how dataset design, benchmark construction, and supervision regimes shape recent advances spanning 2D-supervised 3D learning, implicit neural representations, and 4D world modeling."
+    github="https://github.com/Hongyang-Du/awesome-3d-datasets"
+  />
+
+  <PublicationCard
     title="Multimodal Video Generation Models with Audio: Present and Future"
     :authors="['Zongxia Li','Hongyang Du','Dawei Liu','Xiyang Wu','Lantao Yu','Jingxi Chen','Fuxiao Liu','Xiaomin Wu','Jing Xie','Chengsong Huang','Yicheng He','Guangyao Shi']"
     image="/publication/vgm.jpeg"
@@ -154,16 +165,6 @@ Before that, I worked on **TikTok Shop Ads**, where I joined as an SDE Intern an
     abstract="Video generation models have advanced rapidly and are now widely used across entertainment, advertising, filmmaking, and robotics applications such as world modeling and simulation. However, visual content alone is often insufficient for realistic and engaging media experiences; audio is also a key component of immersion and semantic coherence. As AI-generated videos become increasingly prevalent in everyday content, demand has grown for systems that can generate synchronized sound alongside visuals. This trend has driven rising interest in multimodal video generation, which jointly models video and audio to produce more complete, coherent, and appealing outputs. Since late 2025, a wave of multimodal video generation models has emerged, with releases including Veo 3.1, Sora 2, Kling 2.6, Wan 2.6, OVI, and LTX 2. As multimodal generation technology advances, its impact expands across both consumer and industrial domains, revolutionizing entertainment while enabling more sophisticated world simulation for embodied AI systems. In this paper, we provide a comprehensive overview of the literature covering common architectures, post-training methods, evaluation, applications, and open challenges."
     paper="https://www.researchgate.net/publication/401388352_Multimodal_Video_Generation_Models_with_Audio_Present_and_Future"
     github="https://github.com/zli12321/Multimodal-VIdeo-Generation-Collections-Video-and-Audio"
-  />
-
-  <PublicationCard
-    title="A Cookbook of 3D Vision: Data, Learning Paradigms, and Application"
-    :authors="['Hongyang Du*','Zongxia Li*','Dawei Liu*','Runhao Li*','Haoyuan Song','Qingyu Zhang','Yubo Wang','Jingcheng Ni','Shihang Gui','Congchao Dong','Tao Hu']"
-    image="/publication/3dv.jpeg"
-    venue="CVPR 2026 Workshop"
-    date="Mar 2026"
-    abstract="3D vision has rapidly evolved, driven by increasingly diverse data representations, learning paradigms, and modeling strategies. Yet the field remains fragmented across representations and benchmarks, making it difficult to develop unified perspectives on efficiency, fidelity, and scalability. This work provides a data-centric taxonomy of 3D vision that connects geometric representations, datasets, learning frameworks, and applications within a single conceptual map. We survey principal structural representations of 3D data, then examine how dataset design, benchmark construction, and supervision regimes shape recent advances spanning 2D-supervised 3D learning, implicit neural representations, and 4D world modeling."
-    github="https://github.com/Hongyang-Du/awesome-3d-datasets"
   />
 
   <PublicationCard
@@ -200,7 +201,7 @@ Before that, I worked on **TikTok Shop Ads**, where I joined as an SDE Intern an
   time="Sep 2020 – Jul 2024"
   logo="/NEU_logo.svg"
   gpa="3.95 / 4.00"
-  :honors="['National Scholarship','Outstanding Graduate','Merit-based Scholarship (awarded annually)','Outstanding Student (awarded annually)']"
+  :honors="['National Scholarship','Outstanding Graduate','Merit-based Scholarship','Outstanding Student']"
   rank="Top 1%"
   major="Software Engineering" />
 

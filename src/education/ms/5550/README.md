@@ -27,6 +27,12 @@ Grading
 - Term project 25%, 25/25
   - In my office (Levine 560). Go to the Levine building, take the elevator up to the 5th floor, walk down the ramp in front of you, go down the first corridor to your right. My office will then be the first one on your right.
 
+  - May8,11:00-11:30am
+  
+  - Each slot takes 30 minutes. You should have your system up and running, so I can try a couple of queries and see how well it works. Then we'll do a deep dive into the system and talk about the various design decisions you've made, what the key challenges were and how you navigated them, how various things are implemented, etc. 
+  
+    The best way to prepare is to make sure that your system works well during the demo. I usually recommend a "feature freeze" at least a few days before the demo, so you'll have some time for careful testing and to fix any remaining bugs. You should have a large corpus crawled and indexed, so the results on typical queries will actually be good and useful, and you should have optimized your system enough that they will actually show up relatively quickly. (See Section 4 of the project handout re: what factors are relevant for grading.) Only features shown during the demo will "count". You shouldn't need to prepare for the discussion part.
+  
 - Participation 5%
   - I have an absolute standard for what you need to do in order to get an A in this class
   - Some adjustments will be made based on how hard I think the class was this year (difficult exams, etc.)
