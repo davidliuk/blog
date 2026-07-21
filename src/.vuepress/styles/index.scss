@@ -1449,6 +1449,13 @@
   margin-top: 1rem;
 }
 
+.vp-portfolio-home .project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
 .vp-portfolio-home .home-hero-grid {
   grid-template-columns: minmax(0, 1.18fr) minmax(0, 0.82fr);
   grid-template-areas: "story focus";
@@ -1784,6 +1791,10 @@
     grid-template-areas:
       "story"
       "focus";
+  }
+
+  .vp-portfolio-home .project-grid {
+    grid-template-columns: 1fr;
   }
 }
 

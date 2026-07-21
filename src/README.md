@@ -8,9 +8,9 @@ avatarStyle:
   display: block
 name: Dawei Liu
 titles:
+  - Software Engineer@TikTok
   - Research Intern@Lehigh LAIR
   - MSE CIS@UPenn 26'
-  - SWE Intern@TikTok 25'
   - SDE Intern@Amazon 24'
   - SDE Intern@JD.com 23'
 welcome: Hello, I'm
@@ -24,13 +24,13 @@ content: portfolio
 <div class="home-snapshot-grid">
   <section class="home-snapshot-card">
     <p class="home-snapshot-card__label">Current</p>
-    <strong>Research Intern @ LAIR</strong>
-    <span>Building AI research workflows and structural retrieval systems.</span>
+    <strong>Software Engineer @ TikTok</strong>
+    <span>Shop Ads ranking, creative intelligence, and low-latency delivery systems.</span>
   </section>
   <section class="home-snapshot-card">
-    <p class="home-snapshot-card__label">Profile</p>
-    <strong>M.S.E. @ UPenn</strong>
-    <span>Research-engineering path across agent systems, ML infra, and backend platforms.</span>
+    <p class="home-snapshot-card__label">Research</p>
+    <strong>Research Intern @ Lehigh LAIR</strong>
+    <span>Agent harnesses, skill retrieval, and AI research workflows.</span>
   </section>
   <section class="home-snapshot-card">
     <p class="home-snapshot-card__label">Impact</p>
@@ -52,7 +52,7 @@ content: portfolio
   <section class="home-surface-card home-surface-card--story">
     <p class="home-card-eyebrow">Research x Engineering</p>
     <!-- <h2 class="home-card-title">From idea formation to scalable delivery, I care about systems that close the loop.</h2> -->
-    <p class="home-card-copy">I am an M.S.E. student in <strong>Computer and Information Science</strong> at the <strong>University of Pennsylvania</strong> and hold a B.E. in <strong>Software Engineering</strong> from <strong>Northeastern University</strong>. I enjoy designing AI-native workflows, retrieval systems for agents, and backend platforms that remain reliable under real product constraints.</p>
+    <p class="home-card-copy">I am a <strong>Software Engineer</strong> at <strong>TikTok</strong>, working on Shop Ads. I hold an M.S.E. in <strong>Computer and Information Science</strong> from the <strong>University of Pennsylvania</strong> and a B.E. in <strong>Software Engineering</strong> from <strong>Northeastern University</strong>. I enjoy designing AI-native workflows, retrieval systems for agents, and backend platforms that remain reliable under real product constraints.</p>
     <div class="home-tag-row" aria-label="Primary focus areas">
       <span class="home-tag">Agentic Systems</span>
       <span class="home-tag">LLM Infrastructure</span>
@@ -62,11 +62,11 @@ content: portfolio
     <div class="home-story-meta" aria-label="Current profile highlights">
       <div class="home-story-meta__item">
         <span class="home-story-meta__label">Current Role</span>
-        <strong>Research Intern @ LAIR</strong>
+        <strong>Software Engineer @ TikTok</strong>
       </div>
       <div class="home-story-meta__item">
-        <span class="home-story-meta__label">Current Study</span>
-        <strong>M.S.E. in CIS @ UPenn</strong>
+        <span class="home-story-meta__label">Research Affiliation</span>
+        <strong>Research Intern @ Lehigh LAIR</strong>
       </div>
     </div>
   </section>
@@ -81,9 +81,11 @@ content: portfolio
   </section>
 </div>
 
-Recently, I’m a **Research Intern** at **Lehigh University** with [**LAIR**](https://github.com/OpenLAIR), advised by **Prof. Lichao Sun**. As one of the **top three** core contributors, I help build [**Dr. Claw**](https://github.com/OpenLAIR/dr-claw), a general-purpose **AI Research Assistant** for end-to-end research workflows, from idea formation and experimentation to paper-ready outputs.
+I’m currently a **Software Engineer** at **TikTok**, working on **Shop Ads**, where I first joined as an SDE Intern and converted to full-time within 12 weeks. My work there spans ads ranking, GenAI creative pipelines, and low-latency backend systems that serve real traffic.
 
-Before that, I worked on **TikTok Shop Ads**, where I joined as an SDE Intern and was converted to a **Software Engineer** within 12 weeks. Across **TikTok**, **Amazon**, and **JD.com**, I shipped systems spanning recommendation, observability, AI tooling, backend architecture, and developer infrastructure.
+In parallel, I’m a **Research Intern** at **Lehigh University** with [**LAIR**](https://github.com/OpenLAIR), advised by **Prof. Lichao Sun**. As one of the **top three** core contributors, I help build [**Dr. Claw**](https://github.com/OpenLAIR/dr-claw), a general-purpose **AI Research Assistant** for end-to-end research workflows, from idea formation and experimentation to paper-ready outputs.
+
+Across **TikTok**, **Amazon**, and **JD.com**, I’ve shipped systems spanning recommendation, observability, AI tooling, backend architecture, and developer infrastructure.
 
 ---
 
@@ -117,11 +119,13 @@ Before that, I worked on **TikTok Shop Ads**, where I joined as an SDE Intern an
 
 <PublicationList>
   <PublicationCard
-    title="An Agentic Harness for Skill-Evolving Image Generation Workflows"
+    title="COMFYCLAW: Self-Evolving Skill Harnesses for Image Generation Workflows"
     :authors="['Zongxia Li*','Dawei Liu*','Jingxi Chen','Xiyang Wu','Fuxiao Liu','Yuhang Zhou','Jing Xie','Xiaomin Wu','Lichao Sun']"
     image="/publication/comfyclaw.png"
     venue="Under Review"
     date="May 2026"
+    paper="https://arxiv.org/abs/2607.01709"
+    github="https://github.com/Moms-Organic-Agent-Lab/comfyclaw"
     abstract="Agents are increasingly used to control executable workflows rather than only answer questions. This makes reliability depend on both execution-time scaffolding and the ability to reuse experience from past runs. We study this problem in workflow-based image generation and introduce COMFYCLAW, an agentic harness that controls an unmodified ComfyUI runtime. COMFYCLAW represents workflow construction as typed graph editing, gates tools by construction stage, rolls back invalid edits, and uses a region-level vision-language model (VLM) verifier to turn visual failures into repair suggestions. It also evolves a progressively disclosed skill library, where trajectories, execution errors, and verifier feedback are distilled into reusable Agent Skills after held-out validation. Across four benchmark splits, three agent models, and two image backbones, COMFYCLAW achieves the best average score in all six agent–backbone settings, improving the strongest setting from 61.09 to 76.34 over a verifier-only baseline without skill evolution. Human annotations further show that annotators prefer COMFYCLAW over variants without skill evolution."
   />
 
@@ -137,21 +141,12 @@ Before that, I worked on **TikTok Shop Ads**, where I joined as an SDE Intern an
   />
 
   <PublicationCard
-    title="Dr. Claw: An AI Research Workspace from Idea to Paper"
-    :authors="['Dingjie Song','Hanrong Zhang','Dawei Liu','Yixin Liu','Zongxia Li','Zhengqing Yuan','Siqi Zhang','Lichao Sun']"
-    image="https://raw.githubusercontent.com/OpenLAIR/dr-claw/main/public/screenshots/screenshot_v1_2.png"
-    venue="Software"
-    date="Mar 2026"
-    abstract="Dr. Claw is a general-purpose AI research assistant designed to help researchers and builders execute end-to-end projects across different domains. From shaping an initial idea to running experiments and preparing publication-ready outputs, Dr. Claw keeps the full workflow in one place so teams can focus on research quality and iteration speed."
-    github="https://github.com/OpenLAIR/dr-claw"
-  />
-
-  <PublicationCard
     title="A Cookbook of 3D Vision: Data, Learning Paradigms, and Application"
     :authors="['Hongyang Du*','Zongxia Li*','Dawei Liu*','Runhao Li*','Haoyuan Song','Qingyu Zhang','Yubo Wang','Jingcheng Ni','Shihang Gui','Congchao Dong','Tao Hu']"
     image="/publication/3dv.jpeg"
     venue="CVPR 2026 Workshop"
     date="Mar 2026"
+    paper="https://openaccess.thecvf.com/content/CVPR2026W/OpenSUN3D/html/Du_A_Cookbook_of_3D_Vision_Data_Learning_Paradigms_and_Application_CVPRW_2026_paper.html"
     abstract="3D vision has rapidly evolved, driven by increasingly diverse data representations, learning paradigms, and modeling strategies. Yet the field remains fragmented across representations and benchmarks, making it difficult to develop unified perspectives on efficiency, fidelity, and scalability. This work provides a data-centric taxonomy of 3D vision that connects geometric representations, datasets, learning frameworks, and applications within a single conceptual map. We survey principal structural representations of 3D data, then examine how dataset design, benchmark construction, and supervision regimes shape recent advances spanning 2D-supervised 3D learning, implicit neural representations, and 4D world modeling."
     github="https://github.com/Hongyang-Du/awesome-3d-datasets"
   />
@@ -182,6 +177,34 @@ Before that, I worked on **TikTok Shop Ads**, where I joined as an SDE Intern an
 
 ---
 
+## Open Source
+
+<p class="home-section-intro">Research tooling and agent benchmarks I build and contribute to, mostly with the LAIR community.</p>
+
+<PublicationList>
+  <PublicationCard
+    title="Dr. Claw: An AI Research Workspace from Idea to Paper"
+    :authors="['Dingjie Song','Hanrong Zhang','Dawei Liu','Yixin Liu','Zongxia Li','Zhengqing Yuan','Siqi Zhang','Lichao Sun']"
+    image="https://raw.githubusercontent.com/OpenLAIR/dr-claw/main/public/screenshots/screenshot_v1_2.png"
+    venue="Core Contributor"
+    date="Mar 2026"
+    abstract="Dr. Claw is a general-purpose AI research assistant designed to help researchers and builders execute end-to-end projects across different domains. From shaping an initial idea to running experiments and preparing publication-ready outputs, Dr. Claw keeps the full workflow in one place so teams can focus on research quality and iteration speed. I am one of the top three core contributors."
+    github="https://github.com/OpenLAIR/dr-claw"
+  />
+
+  <PublicationCard
+    title="Long-Horizon Terminal-Bench (LHTB)"
+    venue="Contributor"
+    date="Jul 2026"
+    abstract="LHTB is a 46-task benchmark measuring how well LLM agents sustain useful work inside a containerized terminal over hundreds of steps. Unlike short-horizon coding benchmarks, it drops agents into a stateful environment and grades them with hidden, rebuild-from-artifact verifiers under a dense reward scheme, so self-reported progress does not count. Tasks span interactive games and puzzles, multimodal analysis, software and reverse engineering, scientific computing, security and performance, and research reproduction. I contribute task design and harness work to the project."
+    paper="https://arxiv.org/abs/2607.08964"
+    github="https://github.com/zli12321/LHTB"
+    website="https://zli12321.github.io/LHTB/leaderboard.html"
+  />
+</PublicationList>
+
+---
+
 ## Education
 
 <p class="home-section-intro">A research-oriented training path grounded in both systems engineering and applied AI.</p>
@@ -191,7 +214,7 @@ Before that, I worked on **TikTok Shop Ads**, where I joined as an SDE Intern an
   degree="M.S.E. in Computer and Information Science"
   time="Aug 2024 – May 2026"
   logo="/UPenn_logo.svg"
-  gpa="3.88 / 4.00"
+  gpa="3.90 / 4.00"
   :honors="['Hagan International Scholarship']"
   major="Computer and Information Science" />
 
@@ -201,7 +224,7 @@ Before that, I worked on **TikTok Shop Ads**, where I joined as an SDE Intern an
   time="Sep 2020 – Jul 2024"
   logo="/NEU_logo.svg"
   gpa="3.95 / 4.00"
-  :honors="['National Scholarship','Outstanding Graduate','Merit-based Scholarship','Outstanding Student']"
+  :honors="['National Scholarship','Outstanding Graduate','Merit-based Scholarship','Outstanding Student ×3','Outstanding Student Leader']"
   rank="Top 1%"
   major="Software Engineering" />
 
@@ -214,12 +237,12 @@ Before that, I worked on **TikTok Shop Ads**, where I joined as an SDE Intern an
 <div class="experience-grid">
   <ExperienceCard
     company="TikTok"
-    role="Software Engineer Intern"
+    role="Software Engineer"
     team="Shop Ads Team"
     location="Seattle, WA"
-    time="May 2025 – Dec 2025"
+    time="Jun 2026 – Present · Intern May 2025 – Dec 2025"
     logo="/TikTok_logo.svg"
-    summary="Worked on ranking, creative intelligence, and delivery tooling for Shop Ads; received a 2026 full-time return offer after shipping systems tied to real business lift."
+    summary="Work on ranking, creative intelligence, and delivery tooling for Shop Ads. Joined as an SDE Intern, converted to a full-time Software Engineer within 12 weeks, and returned full-time after graduation."
     :focus="['Ads ranking','GenAI creative tooling','Low-latency backend']"
     :highlights="[
       'Built the Image Selection system with posterior feature modeling, exploration-exploitation ranking, and multimodal LLM quality evaluation, driving 3.4%+ revenue uplift.',
@@ -264,6 +287,56 @@ Before that, I worked on **TikTok Shop Ads**, where I joined as an SDE Intern an
   />
 </div>
 
+
+## Award-Winning Projects
+
+<p class="home-section-intro">Competition projects where I led the build, from spatial interaction on Apple platforms to recommendation-driven web products.</p>
+
+<div class="project-grid">
+  <ProjectCard
+    name="Aura Chef"
+    role="Solo Developer"
+    award="Winner · Swift Student Challenge 2026"
+    time="2026"
+    summary="A touchless cooking assistant for iPad that removes the “digital friction” of swiping recipes with messy hands, using on-device computer vision so the device fades into the background."
+    :highlights="[
+      'Tracked 21 hand joints with the Vision framework and a custom low-pass filter to separate intentional gestures from sensor noise.',
+      'Designed a Dual Confirmation Ring and large-scale palm gestures for accessibility, with voice control and text-to-speech as fallback modalities.',
+      'Built an AI Visibility Bar that monitors lighting and distance in real time, plus a hand-skeleton PIP so users can see how the model reads their intent.'
+    ]"
+    :tech="['SwiftUI','Vision','Combine','Speech','AVFoundation']"
+  />
+
+  <ProjectCard
+    name="Trace Note"
+    role="Team Leader"
+    award="2nd Prize · Mobile Application Innovation Contest 2022"
+    time="2022"
+    summary="An AR social app, co-hosted by Apple and Zhejiang University, that lets users anchor and share geo-tagged notes in physical space and earn tokens through daily check-ins."
+    :highlights="[
+      'Optimized spatial trace retrieval with Redis Geo for real-time nearby queries and distance-based ranking.',
+      'Used Lua scripts for atomic inventory pre-checks, preventing overselling and enforcing a one-order-per-user policy.',
+      'Handled async order creation and timeout-based cancellation via RabbitMQ delayed message exchange.'
+    ]"
+    :tech="['Swift','ARKit','Redis Geo','RabbitMQ','Lua']"
+  />
+
+  <ProjectCard
+    name="Juejin Clone"
+    role="Team Leader"
+    award="1st Prize · ByteDance Youth Camp 2022"
+    time="2022"
+    summary="A rebuilt developer community web app with a personalized “For You” feed, post interactions, and responsive design."
+    :highlights="[
+      'Built the personalized feed with TrustSVD plus timeline signals to address cold start in recommendation.',
+      'Automated daily data refresh and model retraining with Spring Scheduler to keep recommendations fresh.',
+      'Implemented JWT and RBAC with Sa-Token for fine-grained access control and session management.'
+    ]"
+    :tech="['React','Spring','TrustSVD','Sa-Token']"
+  />
+</div>
+
+---
 
 ## Tech Stack
 

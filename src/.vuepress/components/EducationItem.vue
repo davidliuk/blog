@@ -61,7 +61,15 @@ const props = defineProps<{
 const honorBadges = computed(() => {
   return (props.honors ?? []).map((t) => ({
     text: t,
-    type: /Merit.based Scholarship|Outstanding Student/i.test(t) ? "annual" : /Scholarship/i.test(t) ? "scholarship" : "honor",
+    // "Outstanding Student Leader" was a one-time award, so it must not fall
+    // into the "annual" bucket that appends the "Awarded Annually" suffix.
+    type: /Outstanding Student Leader/i.test(t)
+      ? "honor"
+      : /Merit.based Scholarship|Outstanding Student/i.test(t)
+        ? "annual"
+        : /Scholarship/i.test(t)
+          ? "scholarship"
+          : "honor",
   }));
 });
 

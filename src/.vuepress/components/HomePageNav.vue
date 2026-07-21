@@ -20,8 +20,10 @@ const items = [
   { href: "#about", label: "About" },
   { href: "#selected-impact", label: "Impact" },
   { href: "#selected-publications", label: "Publications" },
+  { href: "#open-source", label: "Open source" },
   { href: "#education", label: "Education" },
   { href: "#professional-experience", label: "Experience" },
+  { href: "#award-winning-projects", label: "Projects" },
   { href: "#tech-stack", label: "Tech stack" },
   { href: "#let-s-connect", label: "Connect" },
 ];
