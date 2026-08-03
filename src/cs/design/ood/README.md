@@ -1,231 +1,93 @@
+---
+title: Object-Oriented Design
+description: A practical 5C framework for clarifying requirements, identifying objects, modeling use cases, designing classes, and validating correctness.
+icon: cubes-stacked
+---
+
 # Object-Oriented Design
 
-面向对象设计
-
-Viability 可行性
-
-### 类型划分
-
-- 管理类
-- 预定类
-- 实物类
-- 游戏类
-
-### 三大特征
-
-OOP
-
-- 封装
-
-  `Class`, `Object`
-
-- 继承
-
-  `extends`, `implements`
-
-- 多态
-
-Exception
-
-- Checked Exception(IO Exception,Compile time exception)
-- Unchecked Exception(Runtime Exception,NPE)
-
-Enum
-
-枚举变量
-
-### 设计原则 SOLID
-
-- S – Single responsibility principle 单一责任原则
-
-  一个类应该有且只有一个去改变他的理由，这意味着一个类应该只有一项工作。
-
-- O – Open close principle 开放封闭原则
-
-  对象或实体应该对扩展开放，对修改封闭
-
-  (Open to extension, close to modification)。
-
-- L – Liskov substitution principle 里氏替换原则
-
-  任何一个子类或派生类应该可以替换它们的基类或父类
-
-- I – Interface segregation principle 接口分离原则
-
-  不应该强迫一个类实现它用不上的接口
-
-- D – Dependency inversion principle 依赖反转原则
-
-  抽象不应该依赖于具体实现，具体实现应该依赖于抽象
-
-  High-level 的实体不应该依赖于 low-level 的实体
-
-## 解题法 5C
-
-- Clarify 通过和面试官交流，去除题目中的歧义，确定答题范围
-
-- Core objects 确定题目所涉及的类，以及类之间的映射关系
-
-- Cases 确定题目中所需要实现的场景和功能
-
-- Classes 通过类图的方式，具体填充题目中涉及的类
-
-- Correctness 检查自己的设计，是否满足关键点
-
-
-### Clarify
-
-#### What
-
-针对题目中的**关键字**来提问，帮助自己更好的确定答题范围。
-
-> 大多数的关键字为名词，通过名词的属性来考虑
-
-#### How
-
-针对问题主题的规则来提问，帮助自己明确解题方向。
-
-> 此类问题没有标准答案，你可以提出一些解决方法，通过面试官的反应， 选择一个你比较有信心(简单)的方案
-
-### Core Object
-
-为了完成设计，需要哪些类?
-
-- 这是和面试官初步的纸面 contract
-- 承上启下，来自于Clarify的结果，成为Use case的依据
-- 为画类图打下基础
-
-如何定义Core Object ?
-
-- 以一个Object作为基础，**线性思考**
-
-  有进有出，从哪来到哪去
-
-- 确定Objects之间的映射关系
-
-### Cases
-
-- 什么是 Use case ?
-
-  在你设计的系统中，需要支持哪些功能?
-
-- 为什么要写 Use cases ?
-
-  - 这是你和面试官白纸黑字达成的第二份共识，把你将要实现的功能列在白板上
-  - 帮助你在解题过程中，理清条例，一个一个Case实现
-  - 作为检查的标准
-
-- 如何写 Use cases ?
-
-  - 利用定义的Core Object, 列举出每个Object对应产生的use case.
-  - 每个use case只需要先用一句简单的话来描述即可
-  
-
-### Class
-
-- What 什么是类图?
-
-- Why 为什么要画类图? 
-
-  - 可交付，Minimal Viable Product
-  - 节省时间，不容易在 Coding 上挣扎
-  - 建立在Use case上，和之前的步骤层层递进，条例清晰，便于交流和修 改
-  - 如果时间允许/面试官要求，便于转化成Code
-
-- How 怎么画类图?
-
-  - 遍历你所列出的use cases
-
-  - 对于每一个use case，更加详细的描述这个use case在做什么事情
-
-    例如：take external request -> ElevatorSystem takes an external request, and decide to push this request to an appropriate elevator
-
-  - 针对这个描述，在已有的Core objects里填充进所需要的信息
-
-
-如何知道一个函数，是否成功完成任务？
-
-地下一层电梯关闭，这时有人在地下一层按了向上的按钮，会发生什么?
-
-Use boolean instead of void
-
-成功的话返回true, 否则返回false
-
-如何知道是什么地方出错?
-
-Use exceptions
-
-并行 VS 串行
-
-单线程 VS 多线程
-
-### Correctness
-
-- Validate use cases (检查是否支持所有的 use case)
-- Follow good practice (面试当中的加分项，展现一个程序员的经验)
-- S.O.L.I.D
-- Design pattern
-
-## Good Practice
-
-### Access modifier
-
-- package
-
-  如果什么都不声明，变量和函数都是package level visible的，在同一个package内的其他类都可以访问
-
-- public
-
-  如果声明为public，变量和函数都是public level visible的，任何其他的类都可以访问；在类图中，用”+”表示一个变量或者函数为public
-
-- private
-
-  如果声明为private，变量和函数都是class level visible的，这是所有access modifier中限制最多的一个。仅有定义这些变量和函数的类自己可以访问。
-
-  private也是OOD当中实现封装的重要手段。
-
-  在类图中，用”-”表示一个变量或者函数为private
-
-- protected
-
-  如果声明为protected，变量和函数在能被定义他们的类访问的基础上，还能够被该类的子类所访问。
-
-  protected也是OOD当中实现继承的重要手段。
-
-  在类图中，用”#”表示一个变量或者函数为protected
-
-### Use exceptions
-
-继承
-
-检查你的设计中，是否有重复的类，可以采用继承的方式来表现
-
-### Design Pattern
-
-- Strategy
-- Singleton
-- ensure a class has only one instance, and provide a global point of access to it
-
----
-
-- Clean and elegant
-- Keep code extendable
-- Safe
-- Show off your skills !
-
----
-
-LoD(Law of Demeter)
-
-"Each unit should have only limited knowledge about other units:only units "closely"related to the current unit.Each unit should only talk to its friends;don't talk to strangers." 
-
-Only talk to you immediate friends 
-Don't talk to strangers
-
-## 经典题
-
-设计电梯系统
-
-设计停车系统
-
-- 
+OOD 把模糊需求转化成对象、职责、接口和协作关系。重点不是画出最多的类，而是让核心用例能够被清楚实现，并让未来变化集中在合理边界内。
+
+## The 5C Framework
+
+<div class="knowledge-flow">
+  <div class="knowledge-flow__item">
+    <span class="knowledge-flow__index">01</span>
+    <strong>Clarify</strong>
+    <p>确认范围、角色、规则、异常场景和不需要支持的能力。</p>
+  </div>
+  <div class="knowledge-flow__item">
+    <span class="knowledge-flow__index">02</span>
+    <strong>Core Objects</strong>
+    <p>从关键名词与状态生命周期中识别必要对象和所有权关系。</p>
+  </div>
+  <div class="knowledge-flow__item">
+    <span class="knowledge-flow__index">03</span>
+    <strong>Cases</strong>
+    <p>把需求写成可验证的 use cases，明确成功和失败语义。</p>
+  </div>
+  <div class="knowledge-flow__item">
+    <span class="knowledge-flow__index">04</span>
+    <strong>Classes</strong>
+    <p>为每个用例分配职责、方法、数据和依赖，形成最小类图。</p>
+  </div>
+  <div class="knowledge-flow__item">
+    <span class="knowledge-flow__index">05</span>
+    <strong>Correctness</strong>
+    <p>逐个回放用例，检查扩展性、并发、异常和 SOLID 风险。</p>
+  </div>
+</div>
+
+## 1. Clarify
+
+围绕题目中的名词和规则提问：
+
+- 谁使用系统？他们分别能做什么？
+- 核心实体有哪些状态，状态如何转换？
+- 并发请求、重复操作、取消和失败如何处理？
+- 需要持久化吗？是否要求线程安全？
+- 面试时间内必须完成哪些 use cases？
+
+## 2. Core Objects
+
+对象不是数据库表的机械映射。一个好对象应拥有明确职责和生命周期。常见关系包括：
+
+- **has-a / composition**：生命周期由拥有者控制；
+- **association**：对象协作但各自独立；
+- **is-a / inheritance**：只有满足可替换语义时才使用；
+- **dependency**：短期使用，通过接口注入更容易测试。
+
+## 3. Use Cases
+
+用一句话描述每个用例的参与者、操作和结果，例如：
+
+> Passenger submits an external request; ElevatorSystem selects an eligible elevator and records whether the request was accepted.
+
+返回值和异常应表达业务语义。`boolean` 只能区分成功失败；当调用者需要采取不同恢复动作时，应使用结果类型或有意义的异常。
+
+## 4. Classes and Interfaces
+
+对每个用例逐步分配职责：
+
+1. 谁接收请求？
+2. 谁拥有完成决策所需的数据？
+3. 哪些策略可能变化，应该抽象为可替换接口？
+4. 哪些状态必须封装，避免外部绕过不变量？
+5. 并发访问由谁串行化或保护？
+
+## 5. Correctness Review
+
+- 所有核心用例是否都能从入口走到结果？
+- 对象职责是否出现循环或“万能管理类”？
+- 失败后状态是否仍然有效？
+- 继承是否满足 Liskov substitution？
+- 是否为了展示模式而增加了无意义抽象？
+
+## Practice Categories
+
+- [管理类](./管理类.md)
+- [预定类](./预定类.md)
+- [实物类](./实物类.md)
+- [游戏类](./游戏类.md)
+
+完成对象级设计后，可进入 [Design Patterns](../pattern/) 和 [System Design](../system/)。

@@ -1,4 +1,10 @@
-# Recommender System
+---
+title: Recommender Systems
+description: Industrial recommendation systems from retrieval and ranking to metrics, experimentation, and cold start.
+icon: thumbs-up
+---
+
+# Recommender Systems
 
 推荐系统这部分按照工业链路来组织，而不是按算法名堆页面。核心问题始终是同一个: 在有限曝光位里，把“对用户有价值、对平台有收益、对系统可控”的内容排出来。
 
@@ -66,3 +72,38 @@
 
 - `Search` 和推荐共享 `retrieval + ranking` 的系统骨架，但 query 明确、用户意图表达方式不同。
 - `LLM for Rec` 更像是在已有推荐链路上加入生成式建模，而不是彻底替代漏斗结构。
+
+## The Feedback Loop
+
+<div class="knowledge-flow knowledge-flow--ai">
+  <div class="knowledge-flow__item">
+    <span class="knowledge-flow__index">01</span>
+    <strong>Observe</strong>
+    <p>从曝光、点击、停留、转化和负反馈中构造学习信号。</p>
+  </div>
+  <div class="knowledge-flow__item">
+    <span class="knowledge-flow__index">02</span>
+    <strong>Predict</strong>
+    <p>估计相关性、价值和风险，并处理多目标之间的冲突。</p>
+  </div>
+  <div class="knowledge-flow__item">
+    <span class="knowledge-flow__index">03</span>
+    <strong>Compose</strong>
+    <p>在规则、多样性、预算和页面体验约束下生成最终结果。</p>
+  </div>
+  <div class="knowledge-flow__item">
+    <span class="knowledge-flow__index">04</span>
+    <strong>Experiment</strong>
+    <p>通过离线诊断和在线实验验证长期用户与平台价值。</p>
+  </div>
+</div>
+
+## Evaluate Each Stage
+
+| 阶段 | 主要目标 | 常见指标 |
+| --- | --- | --- |
+| Retrieval | 覆盖潜在相关内容 | recall、coverage、freshness |
+| Pre-Ranking | 低成本保留高价值候选 | recall loss、latency、FLOPs |
+| Ranking | 准确估计多目标价值 | AUC、NDCG、calibration |
+| Re-Ranking | 构建整体页面体验 | diversity、constraint satisfaction |
+| Online | 验证真实长期价值 | CTR、CVR、retention、revenue |

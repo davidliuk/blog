@@ -3,7 +3,7 @@ import { navbar } from "vuepress-theme-hope";
 export const enNavbar = navbar([
   "/",
   {
-    text: "Algorithm",
+    text: "Algorithms",
     icon: "sitemap",
     prefix: "/algo/",
     children: [
@@ -13,7 +13,7 @@ export const enNavbar = navbar([
         link: "",
       },
       {
-        text: "Data Structure",
+        text: "Data Structures",
         icon: "layer-group",
         prefix: "data-structure/",
         children: [
@@ -44,7 +44,7 @@ export const enNavbar = navbar([
         ]
       },
       {
-        text: "Course",
+        text: "Study Tracks",
         icon: "graduation-cap",
         prefix: "course/",
         children: [
@@ -52,7 +52,7 @@ export const enNavbar = navbar([
         ],
       },
       {
-        text: "Framework",
+        text: "Problem-Solving Framework",
         icon: "cubes",
         link: "framework/",
       },
@@ -63,11 +63,8 @@ export const enNavbar = navbar([
       },
     ],
   },
-  // ---------------------------------------------------------
-  // 重点修改区域：AI & Generative Models
-  // ---------------------------------------------------------
   {
-    text: "AI",
+    text: "AI Systems",
     icon: "brain",
     prefix: "/ai/",
     children: [
@@ -77,12 +74,39 @@ export const enNavbar = navbar([
         link: "",
       },
       {
-        text: "Foundation",
+        text: "Foundations",
         icon: "layer-group",
-        link: "foundation/",
+        prefix: "foundation/",
+        children: [
+          { text: "Overview", icon: "map", link: "" },
+          { text: "Classical ML", icon: "chart-simple", link: "classical-ml/" },
+          { text: "Deep Learning", icon: "network-wired", link: "dl/" },
+          { text: "Language Models", icon: "font", link: "lm/" },
+          { text: "Reinforcement Learning", icon: "gamepad", link: "rl/" },
+        ],
       },
       {
-        text: "Recommender System",
+        text: "Generative AI",
+        icon: "wand-magic-sparkles",
+        prefix: "gm/",
+        children: [
+          { text: "Overview", icon: "map", link: "" },
+          { text: "Text & Pre-Training", icon: "font", link: "text/" },
+          { text: "Training Systems", icon: "graduation-cap", link: "training/" },
+          { text: "Alignment", icon: "scale-balanced", link: "training/alignment/" },
+          { text: "Inference", icon: "bolt", link: "inference/" },
+          { text: "Multimodal", icon: "images", link: "multimodal/" },
+          { text: "RAG", icon: "book-open", link: "application/rag/" },
+          { text: "Agents", icon: "robot", link: "application/agent/" },
+        ],
+      },
+      {
+        text: "AI Engineering",
+        icon: "gears",
+        link: "engineering/",
+      },
+      {
+        text: "Recommender Systems",
         icon: "thumbs-up",
         prefix: "rec-sys/",
         children: [
@@ -119,95 +143,72 @@ export const enNavbar = navbar([
         ]
       },
       {
-        text: "Generative Models",
-        icon: "wand-magic-sparkles",
-        prefix: "gm/",
-        children: [
-          {
-            text: "Overview",
-            icon: "map",
-            link: "",
-          },
-          {
-            text: "Fine-Tuning",
-            icon: "graduation-cap",
-            link: "training/fine-tuning/",
-          },
-          {
-            text: "Alignment",
-            icon: "scale-balanced",
-            link: "training/alignment/",
-          },
-          {
-            text: "Inference",
-            icon: "bolt",
-            link: "inference/",
-          },
-          {
-            text: "Multimodal",
-            icon: "images",
-            link: "multimodal/",
-          },
-          {
-            text: "Application",
-            icon: "screwdriver-wrench",
-            link: "application/",
-          },
-        ],
-      },
-      {
         text: "PyTorch",
         icon: "cube",
         link: "pytorch/",
       },
       {
-        text: "Search",
+        text: "Search Systems",
         icon: "magnifying-glass",
         link: "search/",
       },
+      {
+        text: "AI Evaluation",
+        icon: "clipboard-check",
+        link: "evaluation/",
+      },
+      {
+        text: "AI Safety",
+        icon: "shield-halved",
+        link: "safety/",
+      },
     ],
   },
-  // ---------------------------------------------------------
   {
-    text: "Computer Science",
+    text: "CS Foundations",
     icon: "laptop-code",
     prefix: "/cs/",
     children: [
       {
-        text: "Core",
+        text: "Overview",
+        icon: "compass",
+        link: "",
+      },
+      {
+        text: "Systems Foundations",
         icon: "microchip",
         prefix: "core/",
         children: [
           {
-            text: "Network",
-            icon: "globe", // 修改：用 globe 代表互联网/网络更直观
+            text: "Computer Networks",
+            icon: "globe",
             link: "network/",
           },
           {
             text: "Operating System",
-            icon: "server", // 修改：用 server 代表底层系统资源管理
+            icon: "server",
             link: "os/",
           },
         ],
       },
       {
-        text: "Design",
+        text: "Software & System Design",
         icon: "pen-ruler",
         prefix: "design/",
         children: [
           {
             text: "Design Pattern",
-            icon: "palette", // 修改：调色板代表模式的组合
+            icon: "palette",
             link: "pattern/",
           },
           {
             text: "Object-Oriented Design",
-            icon: "cubes-stacked", // 修改：堆叠方块代表对象封装与组合
+            icon: "cubes-stacked",
             link: "ood/",
           },
           {
             text: "System Design",
-            icon: "sitemap", // 架构图
+            icon: "sitemap",
             link: "system/",
           },
         ],
@@ -215,82 +216,145 @@ export const enNavbar = navbar([
     ],
   },
   {
-    text: "Engineering",
+    text: "Software Engineering",
     icon: "gears",
     prefix: "/se/",
     children: [
       {
-        text: "Database",
+        text: "Overview",
+        icon: "compass",
+        link: "",
+      },
+      {
+        text: "Languages & Runtimes",
+        icon: "code",
+        prefix: "lang/",
+        children: [
+          { text: "Overview", icon: "map", link: "" },
+          { text: "Java", icon: "mug-hot", link: "java/" },
+          { text: "Python", icon: "code", link: "python/" },
+          { text: "Go", icon: "code", link: "golang/" },
+          { text: "C++", icon: "code", link: "cpp/" },
+        ],
+      },
+      {
+        text: "Data Systems",
         icon: "database",
         prefix: "database/",
         children: [
+          { text: "Overview", icon: "map", link: "" },
           {
             text: "MySQL",
-            icon: "table", 
+            icon: "table",
             link: "mysql/",
           },
           {
             text: "Redis",
-            icon: "memory", 
+            icon: "memory",
             link: "redis/",
           },
+          { text: "MongoDB", icon: "leaf", link: "mongodb/" },
+          { text: "SQL", icon: "terminal", link: "sql/" },
         ],
       },
       {
-        text: "Lang",
-        icon: "code",
-        prefix: "lang/",
+        text: "Middleware",
+        icon: "network-wired",
+        prefix: "middleware/",
         children: [
-          {
-            text: "Java",
-            icon: "mug-hot",
-            link: "java/",
-          },
+          { text: "Overview", icon: "map", link: "" },
+          { text: "Kafka", icon: "envelopes-bulk", link: "mq/kafka/" },
+          { text: "RabbitMQ", icon: "envelope", link: "mq/rabbitmq/" },
+          { text: "Elasticsearch", icon: "magnifying-glass", link: "es/" },
+          { text: "Nginx", icon: "route", link: "nginx/" },
         ],
       },
       {
-        text: "DevOps",
+        text: "Delivery & Operations",
         icon: "infinity",
         prefix: "devops/",
         children: [
-          {
-            text: "Unix",
-            icon: "terminal",
-            link: "unix/",
-          },
+          { text: "Overview", icon: "map", link: "" },
+          { text: "Unix", icon: "terminal", link: "unix/" },
+          { text: "Docker", icon: "box", link: "docker/" },
+          { text: "Kubernetes", icon: "dharmachakra", link: "k8s/" },
+          { text: "CI/CD", icon: "arrows-rotate", link: "cicd/" },
         ],
       },
       {
-        text: "Tools",
-        icon: "screwdriver-wrench",
-        link: "tools/",
+        text: "Quality & Tooling",
+        icon: "toolbox",
+        children: [
+          { text: "Observability", icon: "chart-line", link: "monitor/" },
+          { text: "Software Testing", icon: "vial", link: "test/" },
+          { text: "Engineering Tools", icon: "screwdriver-wrench", link: "tools/" },
+        ],
       },
     ],
   },
   {
-    text: "Tests",
+    text: "Test Prep",
     icon: "graduation-cap",
     prefix: "/test/",
     children: [
       {
-        text: "TOEFL",
+        text: "Overview",
+        icon: "compass",
+        link: "",
+      },
+      {
+        text: "TOEFL iBT",
         icon: "language",
         prefix: "TOEFL/",
         children: [
-          { text: "LISTENING", icon: "headphones", link: "LISTENING/" },
-          { text: "READING", icon: "book-open", link: "READING/" },
-          { text: "SPEAKING", icon: "microphone", link: "SPEAKING/" },
-          { text: "WRITING", icon: "pen-nib", link: "WRITING/" },
+          { text: "Overview", icon: "map", link: "" },
+          { text: "Reading", icon: "book-open", link: "READING/" },
+          { text: "Listening", icon: "headphones", link: "LISTENING/" },
+          { text: "Speaking", icon: "microphone", link: "SPEAKING/" },
+          { text: "Writing", icon: "pen-nib", link: "WRITING/" },
         ],
       },
       {
-        text: "GRE",
+        text: "GRE General Test",
         icon: "scroll",
         prefix: "GRE/",
         children: [
-          { text: "QUANTITATIVE", icon: "calculator", link: "QUANTITATIVE/" },
-          { text: "VERBAL", icon: "font", link: "VERBAL/" },
+          { text: "Overview", icon: "map", link: "" },
+          { text: "Verbal", icon: "font", link: "VERBAL/" },
+          { text: "Quantitative", icon: "calculator", link: "QUANTITATIVE/" },
+          { text: "Analytical Writing", icon: "pen", link: "aw/" },
         ],
+      },
+      {
+        text: "Language Foundations",
+        icon: "spell-check",
+        link: "basics/",
+      },
+    ],
+  },
+  {
+    text: "Archive",
+    icon: "box-archive",
+    children: [
+      {
+        text: "Course Notes",
+        icon: "graduation-cap",
+        link: "/education/",
+      },
+      {
+        text: "Personal Notes",
+        icon: "heart",
+        link: "/hobby/",
+      },
+      {
+        text: "All Articles",
+        icon: "newspaper",
+        link: "/article/",
+      },
+      {
+        text: "Tags",
+        icon: "tags",
+        link: "/tag/",
       },
     ],
   },

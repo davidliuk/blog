@@ -1,121 +1,51 @@
-# Speaking
+---
+title: TOEFL Speaking
+description: A TOEFL Speaking guide for listen-and-repeat accuracy, interview responses, fluency, and recording-based review.
+icon: microphone
+---
 
-06-23 年，从来没有变过；改革，口语没有任何变化
+# TOEFL Speaking
 
-## 概述
+当前 Speaking 包含 **Listen and Repeat** 与 **Take an Interview**。训练目标是快速理解提示、组织语言并稳定输出，而不是背诵旧版 Task 1–4 模板。
 
-### 题型划分
-
-- 独立题
-
-  task 1，主观题
-
-- 综合题
-
-  task 2-4 ，客观题
-
-  理解信息（不是难点）、**记录信息**（关键步骤）、转述信息
-
-  summary 笔记：完整、逻辑
-
-  - 2-3 阅读 + 听力 + 说
-  - 4 讲座：听力 + 说
-
-### 综合题笔记
-
-一张 A4 纸，从中间对折，每 1/4 面一道综合题笔记
-
-#### 笔记方式
-
-- 垂直往下记
-
-- 简写速记符号
-
-- 逻辑连接词
-
-  可以听时记上，也可以在整理的时候补充
-
-#### 速记符号
-
-<img src="https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/%E6%88%AA%E5%B1%8F2023-08-06%2019.12.44.png" alt="截屏2023-08-06 19.12.44" style="zoom:50%;" />
-
-## 评分
-
-### 评分维度
-
-Delivery
-
-Language use
-
-- 词汇：accumulation 积累一些词汇、范式
-- 语法：合适的句式、词能达意
-
-Topic development
-
-- 内容要完整，体现逻辑，上下文过渡自然
-- Evidence-center design
-
-### 分数层次
-
-25-30，Advanced
-
-- 语音语调，清晰
-
-- 语法词汇，四级词汇就够，连词成句
-
-  > 前两块本来就有基础，很容易速成 28、29
-
-- 逻辑词，考试技巧方法
-
-20-24，High Intermediate，这个准备 20 天很好考到
-
-::: tabs
-
-@tab:active 新版分数转换表
-
-每道题考官给一个 0-4 的分（以0.5为间隔的分数），最后取平均数
-
-![image-20230910153452126](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/image-20230910153452126.png)
-
-@tab  旧版分数转换表
-
-每道题考官给一个 0-4 的整数分，最后取6道题的平均数
-
-![截屏2023-09-02 20.25.37](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/%E6%88%AA%E5%B1%8F2023-09-02%2020.25.37.png)
-
+::: tip Legacy practice
+目录中的 task1–task4、综合题和语料笔记来自旧版考试，可继续用于复述、记笔记、限时组织和录音复盘，但不代表当前题型。
 :::
 
-## 练习
+## Capability Map
 
-### 复习计划
+| Capability | Listen and Repeat | Interview |
+| --- | --- | --- |
+| Listening | 保留语义单元、重音与语序 | 快速理解问题和限制 |
+| Retrieval | 立即恢复听到的表达 | 从个人经验与观点中调用内容 |
+| Delivery | 清晰、连贯、节奏稳定 | 有自然停顿，但避免长时间断裂 |
+| Language | 准确复现句法与词形 | 用可控语法表达完整意思 |
+| Development | 保持原句完整性 | 观点、理由与具体细节形成闭环 |
 
-语音语调（每日一个跟读)
+## Recording Loop
 
-1. 每日跟读半小时
-2. 搜集整理 Fancy 课后作业批改中指出的发音错误，反复练习直至无误。
+1. **Cold response**：首次作答不暂停、不重录。
+2. **Transcribe**：只转写问题片段，标出停顿、重复和语法断裂。
+3. **Diagnose**：一次只选一个主要问题，例如结尾吞音或理由空泛。
+4. **Repair**：慢速准确练习，再逐步恢复正式速度。
+5. **Transfer**：换一个新题验证能力，而不是重复背熟同一答案。
 
-独立题（每日 10-20 个题目）
+## A Reliable Interview Response
 
-1. 背诵独立题语料库，如果发音不好的同学，记得跟着语料库录音背诵。
-2. 先听 fancy 答案，再自己做题，反复刷题、快速度、多遍数
-3. 独立题做题顺序：先刷当月机经，再刷 19-18-17-16 年独立题真题。
+- 第一秒直接回答，不用长铺垫。
+- 给出一个主要理由，并用具体经历、观察或假设场景展开。
+- 使用简单但准确的连接方式，让听者知道信息关系。
+- 内容不足时增加细节，不用堆叠抽象形容词。
+- 结束时自然收束，无需机械重复题目。
 
-综合题（每日一套综合题）
+## Archive
 
-1. 复习上课内容，整理做题技巧和方法。
-2. 每天一套综合题，可做 TPO or 真题，严格按照上课讲的四个精练步骤做题。
-3. 综合题做题顺序，先刷 TPO40-54，可以刷 2-3 次，再刷 TPO40-前的题目
+- [Legacy Task 1](./task1.md)
+- [Legacy Task 2](./task2.md)
+- [Legacy Task 3](./task3.md)
+- [Legacy Task 4](./task4.md)
+- [Pronunciation](./发音/)
+- [Practice](./练习/)
+- [Expression Bank](./🌟语料/)
 
-### 精练做题步骤
-
-- 模考：按考试要求一遍过，保存模考笔记和录音；严格要求。
-
-- 再做题，可放松要求，比如加长时间看阅读，分段听听力和做笔记，可不录音。
-
-- 精析(重要环节)：分析阅读和听力原文文本，标记正确的信息取舍；积累原文的好
-
-  词好句；对比参考和学习 Fancy 的答案笔记。
-
-- 再次完整做题：分段计时不录音(比如 task2 就按照 15’’阅读，5’’观点，20’’第一个
-
-  原因，20’’第二个原因)。说的过程中遇到连词成句问题时，直接参考和背诵原文表 达，或 Fancy 的录音答案;整体计时录音(最多 5 遍，中间不可以按暂停)，保存精 练笔记和录音。
+最新题型和时间以 [ETS Test Content and Structure](https://www.ets.org/toefl/test-takers/ibt/about/content.html) 为准。

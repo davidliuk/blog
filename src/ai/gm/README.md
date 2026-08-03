@@ -1,4 +1,10 @@
-# Generative Models
+---
+title: Generative AI
+description: Generative model training, alignment, inference, multimodal systems, RAG, and tool-using agents.
+icon: wand-magic-sparkles
+---
+
+# Generative AI
 
 这里主要整理大模型时代最常见的一条主线: 预训练模型学到通用能力，经过微调和对齐变得可用，再通过推理系统、多模态桥接和应用层封装进入真实产品。
 
@@ -14,6 +20,11 @@
     <span class="ai-card__eyebrow">Adaptation</span>
     <h3>Fine-tuning</h3>
     <p>SFT、FFT、PEFT，关注下游任务适配与训练成本。</p>
+  </a>
+  <a class="ai-card" href="./training/">
+    <span class="ai-card__eyebrow">Capability pipeline</span>
+    <h3>Training Systems</h3>
+    <p>Data、objective、optimization、parallelism、checkpoint 和 experiment lineage。</p>
   </a>
   <a class="ai-card" href="./training/alignment/">
     <span class="ai-card__eyebrow">Preference</span>
@@ -39,10 +50,11 @@
 
 ## Suggested Reading Order
 
-1. `Text -> Fine-tuning -> Alignment`: 先理解模型本体，再看如何适配和对齐。
-2. `Inference`: 明白一个可用的大模型系统为什么瓶颈常出在 serving 而不是训练。
-3. `Multimodal`: 在语言模型基础上扩展到图像、视频、音频。
-4. `Application`: 最后看 RAG / Agent 这类产品形态。
+1. `Text -> Pretraining -> Training`: 先理解模型本体与能力如何获得。
+2. `Fine-tuning -> Alignment`: 再看如何适配任务、偏好与可验证目标。
+3. `Inference`: 理解 decoding、KV Cache、quantization 与 serving。
+4. `Multimodal`: 在序列建模基础上扩展到图像、视频、音频。
+5. `Application`: 最后把能力接入 RAG、Agent、工具与产品 workflow。
 
 ## Core Questions
 
@@ -54,11 +66,49 @@
 ## High-Value Links
 
 - [Text Model Notes](./text/)
+- [Pretraining](./text/pretraining.md)
+- [Mixture of Experts](./text/moe.md)
+- [Long Context](./text/long-context.md)
+- [Reasoning](./text/reasoning.md)
+- [Training Systems](./training/)
 - [Fine-tuning](./training/fine-tuning/)
 - [Alignment](./training/alignment/)
 - [Inference](./inference/)
 - [KV Cache](./inference/kv-cache.md)
+- [Decoding](./inference/decoding.md)
+- [Quantization](./inference/quantization.md)
 - [Multimodal](./multimodal/)
 - [RAG](./application/rag/)
 - [Agent](./application/agent/)
 
+## Capability Delivery Loop
+
+<div class="knowledge-flow knowledge-flow--ai">
+  <div class="knowledge-flow__item">
+    <span class="knowledge-flow__index">01</span>
+    <strong>Pre-train</strong>
+    <p>从大规模数据中学习通用表示和生成能力。</p>
+  </div>
+  <div class="knowledge-flow__item">
+    <span class="knowledge-flow__index">02</span>
+    <strong>Adapt</strong>
+    <p>通过 SFT、PEFT 和偏好优化获得目标任务行为。</p>
+  </div>
+  <div class="knowledge-flow__item">
+    <span class="knowledge-flow__index">03</span>
+    <strong>Serve</strong>
+    <p>在显存、吞吐、延迟和成本约束下交付模型能力。</p>
+  </div>
+  <div class="knowledge-flow__item">
+    <span class="knowledge-flow__index">04</span>
+    <strong>Ground & Act</strong>
+    <p>用 RAG、工具和 agent orchestration 连接外部知识与环境。</p>
+  </div>
+</div>
+
+## Evaluation Must Match the Layer
+
+- 模型层：能力、泛化、校准、幻觉与安全。
+- 推理层：首 token 延迟、生成速度、吞吐、显存和成本。
+- RAG 层：检索召回、上下文相关性、答案忠实度。
+- Agent 层：任务完成率、工具错误、恢复能力、资源消耗和长程稳定性。

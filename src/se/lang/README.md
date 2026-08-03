@@ -1,51 +1,68 @@
-# Programming Language
+---
+title: Languages & Runtimes
+description: A comparative programming-language map focused on type systems, memory, concurrency, runtime, and engineering ecosystems.
+icon: code
+---
 
-动态 Dynamic
+# Languages & Runtimes
 
-**动/静态语言**：动态语言在**运行时**进行类型检查，而静态语言在**编译时**进行类型检查。
+学习一门语言不应止于语法。更稳定的比较框架是：类型何时被检查、值怎样表示、资源由谁管理、并发如何协调、代码如何构建和部署。
 
-- **动态语言**：Python、JavaScript、Ruby、PHP、Lua 等。
-- **静态语言**：C、C++、Java、C#、Go、Rust、Swift、Kotlin、TypeScript、Haskell、Scala 等。
+## Comparison Framework
 
-**弱/强类型** (Strong)：会/不会发生隐式类型转换
+| Dimension | Questions |
+| --- | --- |
+| Type system | 类型在编译期还是运行时检查？是否有推断、泛型、空安全和代数数据类型？ |
+| Execution | 源码经过解释、字节码、JIT 还是原生编译？启动与稳态性能如何？ |
+| Memory | 栈、堆和对象布局怎样工作？由 GC、所有权还是手动管理回收？ |
+| Concurrency | 线程、协程、事件循环、actor 或 async/await 的语义是什么？ |
+| Errors | 异常、错误值和类型化结果怎样传播？资源释放是否结构化？ |
+| Ecosystem | 包管理、构建、测试、格式化、静态分析和发布是否形成闭环？ |
 
-- 强类型：
-- 弱类型：
+## Language Map
 
-### 动态语言
+<div class="section-card-grid">
+  <a class="section-card" href="./java/">
+    <span class="section-card__eyebrow">Managed runtime</span>
+    <h3>Java</h3>
+    <p>JVM、JIT、GC、JUC、I/O 与企业框架生态。</p>
+  </a>
+  <a class="section-card" href="./python/">
+    <span class="section-card__eyebrow">Dynamic productivity</span>
+    <h3>Python</h3>
+    <p>对象模型、迭代器、装饰器、并发、包管理与工程实践。</p>
+  </a>
+  <a class="section-card" href="./golang/">
+    <span class="section-card__eyebrow">Service simplicity</span>
+    <h3>Go</h3>
+    <p>Goroutine、channel、调度器、工具链与服务端工程。</p>
+  </a>
+  <a class="section-card" href="./cpp/">
+    <span class="section-card__eyebrow">Systems control</span>
+    <h3>C++</h3>
+    <p>对象生命周期、引用、内存、构建系统和高性能库。</p>
+  </a>
+  <a class="section-card" href="./rust/">
+    <span class="section-card__eyebrow">Safe systems</span>
+    <h3>Rust</h3>
+    <p>所有权、借用、生命周期和零成本抽象。</p>
+  </a>
+  <a class="section-card" href="./frontend/">
+    <span class="section-card__eyebrow">Web platform</span>
+    <h3>Frontend</h3>
+    <p>HTML、CSS、JavaScript 与浏览器运行时。</p>
+  </a>
+  <a class="section-card" href="./kotlin/">
+    <span class="section-card__eyebrow">JVM evolution</span>
+    <h3>Kotlin</h3>
+    <p>空安全、表达式、协程和 JVM 互操作。</p>
+  </a>
+</div>
 
-动态语言（Dynamic Languages）在运行时确定变量类型，这让它们在某些情况下更灵活。常见的动态语言包括：
+## Learn a Language Through One Service
 
-1. **Python**：支持动态类型，常用于数据科学、人工智能、Web 开发等领域。
-2. **JavaScript**：浏览器和服务器端的常用语言，支持动态类型，是 Web 开发的核心语言。
-3. **Ruby**：专注于开发者友好性，广泛用于 Web 开发，尤其是 Ruby on Rails 框架。
-4. **PHP**：Web 开发的流行语言，特别是在动态网站和服务器端脚本方面。
-5. **Lua**：轻量级、嵌入式的动态语言，常用于游戏脚本和嵌入式开发。
-6. **Perl**：适合文本处理和系统管理任务的语言，具有动态类型。
-7. **Lisp / Clojure**：函数式编程语言，允许动态类型，广泛用于 AI 和符号处理。
-8. **R**：专门用于统计计算和数据分析，具有动态类型。
-9. **Smalltalk**：面向对象编程语言，具有动态类型，是许多现代编程概念的先驱。
-
-### 静态语言
-
-静态语言（Static Languages）在编译时进行类型检查，要求在代码中指定变量类型，从而可以在编译期间发现许多类型错误。这使得它们的运行效率通常更高，常见的静态语言包括：
-
-1. **C / C++**：需要在编译时定义变量类型，主要用于系统编程和高性能应用。
-2. **Java**：面向对象语言，需要指定类型，常用于企业应用和 Android 开发。
-3. **C#**：静态类型语言，基于 .NET 平台，广泛用于企业级应用。
-4. **Go**：现代静态语言，设计用于高并发，适合后端开发和系统编程。
-5. **Rust**：系统级编程语言，强调内存安全和性能。
-6. **Swift**：Apple 推出的静态语言，主要用于 iOS 和 macOS 应用开发。
-7. **Kotlin**：静态类型语言，常用于 Android 开发。
-8. **TypeScript**：JavaScript 的超集，提供静态类型检查，适合大型 JavaScript 项目。
-9. **Haskell**：函数式静态语言，常用于研究和一些复杂的业务逻辑应用。
-10. **Scala**：静态类型语言，结合了面向对象和函数式编程特点，广泛用于分布式系统开发（如 Spark）。
-
-### 中间语言
-
-有些语言既支持动态类型，也支持静态类型，通过提供类型注解或类型推断实现灵活性：
-
-1. **TypeScript**：TypeScript 在编译阶段提供静态类型检查，但编译后生成 JavaScript，因此运行时仍是动态的。
-2. **Python（类型注解）**：Python 3 引入了类型注解，通过工具如 `mypy` 可以实现类似静态类型的检查，但本质上 Python 仍然是动态语言。
-3. **Ruby（类型检查库）**：Ruby 社区也有一些类型检查库（如 Sorbet），提供静态类型检查功能，但运行时仍是动态的。
-4. **PHP（类型提示）**：PHP 7+ 支持类型提示，并支持严格类型模式，接近静态类型检查，但仍然不是完全静态语言。
+1. 实现一个包含配置、日志、测试和持久化的小服务。
+2. 加入并发请求，观察线程、协程或事件循环行为。
+3. 制造 CPU、内存和 I/O 瓶颈，并用 profiler 定位。
+4. 打包为可部署产物，记录依赖、启动和关闭语义。
+5. 再比较另一门语言实现同一任务时的复杂度与取舍。

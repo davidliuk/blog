@@ -1,97 +1,120 @@
+---
+title: System Design
+description: A practical system design framework covering requirements, capacity, APIs, data, reliability, security, and evolution.
+icon: sitemap
+---
+
 # System Design
 
-系统设计关注的是：给定一个业务目标，在约束条件下如何做出一个可工作的方案，并清楚说明 tradeoff。
+系统设计是在明确约束下构造一个可工作的方案，并解释为什么这个方案比替代方案更适合当前阶段。答案的价值来自推理链，而不是关键词数量。
 
-## 目录
+<div class="section-hero">
+  <p class="section-eyebrow">Requirements → Capacity → Interface → Data → Reliability</p>
+  <h2>Start with a working system, then evolve it against evidence.</h2>
+  <p>先形成端到端主路径，再根据真实瓶颈增加缓存、分区、异步、复制和降级。</p>
+</div>
 
-- `./concepts/`：系统设计中的通用概念
-- `./module/`：可复用的功能模块
-- `./projects/`：完整案例
-- `./availability/`：高可用与故障处理
-- `./distributed/`：分布式事务与一致性
-- `./security/`：认证、授权与安全基础
-- `./storage/`：SQL / NoSQL 等存储选型
-- `./realtime/`：实时推送与连接模型
-- `./interview/`：场景题与开放题
-- `./resources/`：延伸阅读
-- `./ddd/`：领域驱动设计
+## The Design Process
 
-## 核心关注点
+<div class="knowledge-flow">
+  <div class="knowledge-flow__item">
+    <span class="knowledge-flow__index">01</span>
+    <strong>Scope</strong>
+    <p>明确核心功能、用户、SLO、约束和不在范围内的需求。</p>
+  </div>
+  <div class="knowledge-flow__item">
+    <span class="knowledge-flow__index">02</span>
+    <strong>Estimate</strong>
+    <p>估算 QPS、存储、读写比、带宽和峰值，找出主导约束。</p>
+  </div>
+  <div class="knowledge-flow__item">
+    <span class="knowledge-flow__index">03</span>
+    <strong>Design</strong>
+    <p>定义 API、数据模型、组件、关键路径和一个可工作的基线方案。</p>
+  </div>
+  <div class="knowledge-flow__item">
+    <span class="knowledge-flow__index">04</span>
+    <strong>Stress</strong>
+    <p>沿容量、热点、故障、安全和一致性逐一寻找方案边界。</p>
+  </div>
+  <div class="knowledge-flow__item">
+    <span class="knowledge-flow__index">05</span>
+    <strong>Evolve</strong>
+    <p>针对最重要瓶颈加入扩展机制，并说明成本、监控和回滚。</p>
+  </div>
+</div>
 
-- Reliability
-- Scalability
-- Maintainability
+## Knowledge Map
 
-## 常见问题形式
+<div class="section-card-grid">
+  <a class="section-card" href="./concepts/">
+    <span class="section-card__eyebrow">Vocabulary</span>
+    <h3>Core Concepts</h3>
+    <p>API、技术栈、定时任务、版本和通用架构语言。</p>
+  </a>
+  <a class="section-card" href="./module/">
+    <span class="section-card__eyebrow">Building blocks</span>
+    <h3>Reusable Modules</h3>
+    <p>限流、Feed、搜索、评论、监控、文件与短链等模块。</p>
+  </a>
+  <a class="section-card" href="./storage/">
+    <span class="section-card__eyebrow">State</span>
+    <h3>Storage</h3>
+    <p>SQL、NoSQL、索引、分区、缓存和数据访问模式。</p>
+  </a>
+  <a class="section-card" href="./availability/">
+    <span class="section-card__eyebrow">Failure</span>
+    <h3>Availability</h3>
+    <p>扩展、CAP、故障检测、隔离、降级与恢复。</p>
+  </a>
+  <a class="section-card" href="./distributed/">
+    <span class="section-card__eyebrow">Coordination</span>
+    <h3>Distributed Systems</h3>
+    <p>事务、一致性、复制与部分失败下的协调问题。</p>
+  </a>
+  <a class="section-card" href="./security/">
+    <span class="section-card__eyebrow">Trust</span>
+    <h3>Security</h3>
+    <p>认证、授权、加密和系统边界中的信任模型。</p>
+  </a>
+  <a class="section-card" href="./realtime/">
+    <span class="section-card__eyebrow">Live delivery</span>
+    <h3>Realtime</h3>
+    <p>长连接、推送、轮询和事件驱动通信。</p>
+  </a>
+  <a class="section-card" href="./projects/">
+    <span class="section-card__eyebrow">End to end</span>
+    <h3>Case Studies</h3>
+    <p>把需求、数据、服务和扩展策略放进完整系统案例。</p>
+  </a>
+</div>
 
-- 设计一个完整系统
-  - Design Twitter
-  - Design Uber
-  - Design WhatsApp
-  - 设计短链系统
-- 设计一个系统中的某个功能
-  - 限流
-  - 评论
-  - 监控
-  - News Feed
+## Baseline Before Scale
 
-## OOD vs SD
+先画出最小端到端路径：
 
-- OOD 更偏微观，关注类、对象、接口与协作关系
-- SD 更偏宏观，关注服务、存储、容量、可用性与演进路线
+`Client → API → Service → Primary Storage`
 
-## 4S 分析法
+只有在明确瓶颈后再加入：
 
-Work solution first, not perfect solution first.
+- cache：减少重复读取，但引入失效与一致性问题；
+- queue：隔离峰值和异步工作，但引入延迟、重复与顺序问题；
+- replica：提升读取和可用性，但引入复制延迟；
+- shard：扩展容量，但引入路由、再平衡和跨分片操作；
+- CDN：靠近用户分发静态或可缓存内容，但引入刷新和边缘一致性。
 
-### 1. Scenario
+## Tradeoff Checklist
 
-先问清楚：
+| 维度 | 必须解释 |
+| --- | --- |
+| Reliability | 失败如何检测、重试、隔离、降级和恢复 |
+| Scalability | 哪个资源先成为瓶颈，如何水平扩展 |
+| Consistency | 哪些不变量必须强一致，哪些允许延迟 |
+| Latency | 主路径上有哪些网络、排队和存储成本 |
+| Security | 信任边界、身份、权限和敏感数据 |
+| Operability | 监控、发布、容量管理和事故响应 |
+| Cost | 复杂度和资源成本是否与当前规模匹配 |
 
-- 需要哪些核心功能
-- 流量规模多大
-- 接口怎么暴露
-- 哪些需求是 must-have，哪些是 nice-to-have
+## Interview Rule
 
-### 2. Service
-
-把系统拆成服务时，核心是：
-
-- 一类逻辑放进一个服务
-- 服务边界清楚
-- 不要过早过度微服务化
-
-### 3. Storage
-
-存储设计通常要回答：
-
-- 数据结构是什么
-- 用 SQL 还是 NoSQL
-- 是否需要缓存
-- 哪些数据适合冗余存储
-
-### 4. Scale
-
-扩展阶段主要看：
-
-- 高并发
-- 高性能
-- 高可用
-- 特殊流量场景
-
-## 评分标准
-
-> 避免只讲关键词
-
-- 可行解 Work Solution
-- 特定问题 Special Case
-- 分析能力 Analysis
-- 权衡 Tradeoff
-- 知识储备 Knowledge Base
-
-## 设计原则
-
-- Ask before design
-- No more, no less
-- Work solution first
-- Analysis is more important than memorizing 答案
+Ask before design. Work solution first. Scale one bottleneck at a time. Every added component should solve a named problem and introduce an acknowledged cost.

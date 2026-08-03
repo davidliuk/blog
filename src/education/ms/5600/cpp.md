@@ -113,7 +113,10 @@ Ref
 - Variable declaration
   - const int x = 10;
 - Return value
-  - const int& operator[](int i);
+
+  ```cpp
+  const int& operator[](int i);
+  ```
 - Functions
   - string getName() const;
 

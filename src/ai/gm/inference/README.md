@@ -1,34 +1,74 @@
-# Inference
+---
+title: LLM Inference
+description: LLM inference from prefill and decoding to KV cache, quantization, speculative decoding, serving, and production SLOs.
+icon: bolt
+---
 
-## 推理过程
+# LLM Inference
 
-- Prefill
+LLM inference 把一个已训练模型转换为持续的 token generation service。优化需要同时考虑输出质量、TTFT、inter-token latency、tail latency、throughput、memory 和 cost。
 
-  - 根据输入Tokens生成第一个输出Token（A），通过一次Forward就可L以完成
+## Inference Map
 
-  - 在Forward中，输入Tokens间可以并行执行，因此执行效率很高
+<div class="ai-card-grid">
+  <a class="ai-card" href="./decoding.md">
+    <span class="ai-card__eyebrow">Output policy</span>
+    <h3>Decoding</h3>
+    <p>Greedy、sampling、temperature、top-k / top-p、beam 与 constrained output。</p>
+  </a>
+  <a class="ai-card" href="./kv-cache.md">
+    <span class="ai-card__eyebrow">Autoregressive state</span>
+    <h3>KV Cache</h3>
+    <p>缓存历史 token 的 key/value，减少 decode 重复计算。</p>
+  </a>
+  <a class="ai-card" href="./quantization.md">
+    <span class="ai-card__eyebrow">Memory efficiency</span>
+    <h3>Quantization</h3>
+    <p>降低 weight、activation 或 cache precision，交换质量与效率。</p>
+  </a>
+  <a class="ai-card" href="./speculative-decoding.md">
+    <span class="ai-card__eyebrow">Decode acceleration</span>
+    <h3>Speculative Decoding</h3>
+    <p>用更便宜的 draft 提议 token，再由 target model 并行验证。</p>
+  </a>
+  <a class="ai-card" href="./sys/">
+    <span class="ai-card__eyebrow">Production runtime</span>
+    <h3>Serving Systems</h3>
+    <p>Continuous batching、cache paging、scheduling、parallelism 和 admission。</p>
+  </a>
+  <a class="ai-card" href="./pruning.md">
+    <span class="ai-card__eyebrow">Sequence reduction</span>
+    <h3>Token Pruning</h3>
+    <p>减少后续层需要处理的 token，但必须保护关键信息。</p>
+  </a>
+</div>
 
-- Decode
-  - 从生成第一个Token后，采用自回归一次生成一个Token，直到生成StopToken结束
-  - 设输出共N x Token，Decode阶段需要执行N-1次Forward，只能串行执行，效率很低
-  - 在生成过程中，需要关注Token越来越多，计算量也会适当增大
+## Prefill and Decode
 
-### KV Cache
+| Phase | Work | Typical pressure |
+| --- | --- | --- |
+| Prefill | 并行处理 prompt，创建 KV cache 并生成首 token | compute、prompt length、TTFT |
+| Decode | 每一步读取历史 cache 和权重，生成一个或少量 token | memory bandwidth、batch、token latency |
 
-- 把每个 token 在过Transformer 时乘以Wk，Wv,这俩参数矩阵的结果缓存下来，训l练的时候不需要保存
-- 推理解码生成时采用自回归auto-regressive方式，即每次生成一个token，都要依赖之前token的结果
-- 如果每生成一个 token 时候乘以 Wk，W, 这俩参数矩阵要对所有 token 都算一遍，代价非常大，所以缓存起来就叫KVCache
+这个区分是近似，不同 model、batch、hardware 和 kernel 会改变瓶颈。
 
-KV Cache: Decode
+## Metrics
 
-从上述过程中，可以发现 KV cache 推理时特点：
+- **TTFT**：请求进入到第一个 token。
+- **ITL / TPOT**：相邻 token 的生成延迟。
+- **End-to-end latency**：完整请求完成时间。
+- **Throughput**：每秒 request 或 token。
+- **Goodput**：满足 SLO 的有效吞吐。
+- **Memory / cost**：每 request、token 和模型副本的资源。
 
-1. 随着prompt数量变多和序列变长，KV cache也变大，对GPU显存造成压力
-2. 由于输出的序列长度无法预先知道，所以很难提前为KV cache量身定制存储空间
+## Quality–System Coupling
 
-## 瓶颈分析
+Context length、output limit、sampling、quantization 和 model routing 同时影响质量与成本。性能测试必须固定 workload distribution，不能只比较单一短 prompt。
 
-LLM推理Prefill&Decode阶段Roofline Model近似如下，其中：
+## Production Checklist
 
-1. 三角Prefill：设Batch size=l,Sequence Length越大计算强度越大，通常属于Compute Bound
-2. 原型Decode：Batch size越大，计算强度越大，理论性能峰值越大，通常属于Memory Bound
+1. Admission、queue、timeout 和 cancellation 怎样工作？
+2. Streaming 中途失败返回什么，客户端能否重试？
+3. Model、tokenizer、template 和 decoding config 是否共同版本化？
+4. OOM、worker loss、slow request 和 overload 怎样隔离？
+5. 指标能否按 prompt length、output length、tenant 和 model 分片？

@@ -1,45 +1,152 @@
+---
+title: Software Engineering
+description: A practical software engineering knowledge base covering languages, data systems, middleware, delivery, observability, and engineering tools.
+icon: gears
+---
+
 # Software Engineering
 
-下面是星球提供的一些专栏（目前放在语雀），如果是备战面试的话，《Java 面试指北》和《后端面试高频系统设计&场景题》是必看的。尤其是《Java 面试指北》的面试准备篇，一定要尽快抽时间看看，基本上你准备面试可能遇到的问题这里都有提到靠谱的解决办法。
+软件工程关心的不是“代码能不能跑”，而是一个系统能否被持续构建、交付、观察和演进。这里把语言、数据库、中间件、DevOps、测试与工具放进同一条工程链路中。
 
-1. 《Java 面试指北》(配合 JavaGuide 使用，会根据每一年的面试情况对内容进行更新完善，故不提供 PDF 版本)：https://www.yuque.com/books/share/04ac99ea-7726-4adb-8e57-bf21e2cc7183（密码：cnk4） 。
+<div class="section-hero knowledge-hero">
+  <p class="section-eyebrow">Engineering Knowledge System</p>
+  <h2>Build the service. Manage the state. Connect the system. Operate it with confidence.</h2>
+  <p>
+    从语言与运行时出发，把业务状态放进合适的数据系统，通过中间件连接服务，
+    再用自动化交付、测试和可观测性建立稳定的生产反馈回路。
+  </p>
+  <div class="section-pill-row">
+    <span class="section-pill">Languages</span>
+    <span class="section-pill">Databases</span>
+    <span class="section-pill">Middleware</span>
+    <span class="section-pill">DevOps</span>
+    <span class="section-pill">Observability</span>
+    <span class="section-pill">Testing</span>
+  </div>
+</div>
 
-   JavaGuide 地址：https://javaguide.cn/ ，《Java 面试指北》的学习建议在这里：https://t.zsxq.com/QNFMFAU 。如果不知道《Java 面试指北》和开源版的关系，可以看看这份建议。
+## The Engineering Loop
 
-2. 《后端面试高频系统设计&场景题》：https://www.yuque.com/snailclimb/tangw3 密码：bonl
+<div class="knowledge-flow" aria-label="Software engineering lifecycle">
+  <div class="knowledge-flow__item">
+    <span class="knowledge-flow__index">01</span>
+    <strong>Build</strong>
+    <p>用合适的语言、运行时和框架表达领域模型，并保持接口和代码边界清晰。</p>
+  </div>
+  <div class="knowledge-flow__item">
+    <span class="knowledge-flow__index">02</span>
+    <strong>Store</strong>
+    <p>围绕一致性、访问模式、延迟和成本选择数据模型、索引与缓存策略。</p>
+  </div>
+  <div class="knowledge-flow__item">
+    <span class="knowledge-flow__index">03</span>
+    <strong>Integrate</strong>
+    <p>通过消息、搜索、代理和服务治理解耦组件，明确失败与恢复语义。</p>
+  </div>
+  <div class="knowledge-flow__item">
+    <span class="knowledge-flow__index">04</span>
+    <strong>Operate</strong>
+    <p>自动化测试和交付，用日志、指标与追踪观察系统，并从事故中持续改进。</p>
+  </div>
+</div>
 
-   这部分内容本身是属于《Java 面试指北》的，后面由于内容篇幅较多，因此被单独提了出来。
+## Knowledge Map
 
-3. 《Java 必读源码系列》（目前已经整理了 Dubbo 2.6.x 、Netty 4.x、SpringBoot2.1 的源码）：https://www.yuque.com/books/share/7f846c65-f32e-4181-bf4e-f2e80d09c98a?#（密码：ihvn）。
+<div class="section-card-grid">
+  <a class="section-card" href="./lang/">
+    <span class="section-card__eyebrow">01 · Build</span>
+    <h3>Languages & Runtimes</h3>
+    <p>Java、Python、Go、C++、Rust 与前端：类型、并发、内存、运行时和工程生态。</p>
+  </a>
+  <a class="section-card" href="./database/">
+    <span class="section-card__eyebrow">02 · State</span>
+    <h3>Data Systems</h3>
+    <p>SQL、MySQL、Redis、MongoDB 与 HBase：事务、索引、持久化、缓存和高可用。</p>
+  </a>
+  <a class="section-card" href="./middleware/">
+    <span class="section-card__eyebrow">03 · Integration</span>
+    <h3>Middleware</h3>
+    <p>Kafka、RabbitMQ、Elasticsearch、Nginx 与 Canal：消息、搜索、流量和数据同步。</p>
+  </a>
+  <a class="section-card" href="./devops/">
+    <span class="section-card__eyebrow">04 · Delivery</span>
+    <h3>DevOps & Infrastructure</h3>
+    <p>Unix、Docker、Kubernetes 与 CI/CD：从开发环境到可重复、可回滚的生产交付。</p>
+  </a>
+  <a class="section-card" href="./monitor/">
+    <span class="section-card__eyebrow">05 · Feedback</span>
+    <h3>Observability</h3>
+    <p>Metrics、logs、traces 与 profiling：从用户症状定位到资源、代码和依赖根因。</p>
+  </a>
+  <a class="section-card" href="./test/">
+    <span class="section-card__eyebrow">06 · Confidence</span>
+    <h3>Software Testing</h3>
+    <p>测试层次、性能测试与质量反馈，让系统变化变得可验证、可重复。</p>
+  </a>
+  <a class="section-card" href="./app/">
+    <span class="section-card__eyebrow">Product surface</span>
+    <h3>Application Engineering</h3>
+    <p>Native、Web 与跨平台技术的边界、共享策略和产品交付取舍。</p>
+  </a>
+  <a class="section-card" href="./tools/">
+    <span class="section-card__eyebrow">Developer leverage</span>
+    <h3>Engineering Tools</h3>
+    <p>Git、UML、文档与站点工具：减少协作摩擦，保留可复用的工程上下文。</p>
+  </a>
+</div>
 
-   欢迎在评论区说出你们想要看的框架/中间件的源码！
+## Choose a Learning Path
 
-4. 《从零开始写一个 RPC 框架》：https://www.yuque.com/books/share/b7a2512c-6f7a-4afe-9d7e-5936b4c4cab0?#（密码：sztd）
+<div class="section-path-grid">
+  <div class="section-path-card">
+    <span class="section-card__eyebrow">Backend engineer</span>
+    <h3>后端工程路线</h3>
+    <ol>
+      <li><a href="./lang/java/">Java & JVM</a></li>
+      <li><a href="./database/mysql/">MySQL</a> 与事务</li>
+      <li><a href="./database/redis/">Redis</a> 与缓存</li>
+      <li><a href="./middleware/">Messaging & Search</a></li>
+      <li><a href="./monitor/">Observability</a></li>
+    </ol>
+  </div>
+  <div class="section-path-card">
+    <span class="section-card__eyebrow">Production systems</span>
+    <h3>生产系统路线</h3>
+    <ol>
+      <li><a href="./devops/unix/">Unix</a> 与进程、文件、网络</li>
+      <li><a href="./devops/docker/">Docker</a></li>
+      <li><a href="./devops/k8s/">Kubernetes</a></li>
+      <li><a href="./devops/cicd/">CI/CD</a></li>
+      <li><a href="./monitor/">Metrics, Logs & Traces</a></li>
+    </ol>
+  </div>
+  <div class="section-path-card">
+    <span class="section-card__eyebrow">Language depth</span>
+    <h3>语言与运行时路线</h3>
+    <ol>
+      <li><a href="./lang/">Language Models</a></li>
+      <li>类型系统、内存模型与错误处理</li>
+      <li>并发原语与 I/O 模型</li>
+      <li>标准库、包管理与构建系统</li>
+      <li>Profiling 与性能诊断</li>
+    </ol>
+  </div>
+</div>
 
-   RPC 框架地址： https://gitee.com/SnailClimb/guide-rpc-framework 。
+## Questions Before Choosing a Technology
 
-5. 《分布式、高并发、Devops 面试扫盲》: 已经并入《Java 面试指北》中。
+| 维度 | 先问什么 | 常见误区 |
+| --- | --- | --- |
+| Workload | 读写比例、数据规模、延迟目标是什么？ | 先选产品，再找问题 |
+| Correctness | 哪些状态必须一致，哪些可以最终一致？ | 把所有数据都设成同一一致性等级 |
+| Failure | 超时、重试、重复、乱序和部分失败怎样处理？ | 只设计成功路径 |
+| Operations | 怎样发布、回滚、扩容和排障？ | 把运维留到上线前 |
+| Evolution | Schema、API 与数据如何兼容演进？ | 把第一次设计当成最终设计 |
 
-6. 《Kafka 常见面试题/知识点总结》：https://www.yuque.com/books/share/dd07d89b-9437-4f5c-b4f8-b294474aa992?#（密码：nqdq）
+## How the Sections Connect
 
-7. 《程序员副业赚钱之路》 https://www.yuque.com/books/share/1bd77211-f7e0-41fd-91bb-094769c978f9?#（密码：ew4f）
-
-8. 《Guide 的读书笔记与文章精选集》（经典书籍精读笔记分享）https://www.yuque.com/books/share/f63faff5-53f9-4163-a059-7be93fc538b0?#（密码：um0g）
-
-   提示：密码会定期修改，内容会不断完善。你可以对上面的专栏进行收藏，方便下次找到。
-
-   ***
-
-   一直想在星球说一下这个问题，刚好你问到了。我就拿八股文必看资料来说吧！
-
-9. 我的 JavaGuide 开源版是必须要看的，如果说你比较赶时间，想着突击面试的话，那就针对性地只看面试题，如果你时间比较多的话，我还是建议你尽量把上面的文章都看一遍。建议在线版阅读，地址：Java 面试指南 | JavaGuide(Java 面试 学习指南) 。另外，这个更新比较频繁，因此，没有提供 PDF 版本。
-
-10. 《Java 面试指北》属于是 JavaGuide 开源版的完善，两者内容互补，无重复内容，完全可以结合一起看。由于这个更新也非常频繁，同时也是为了避免外泄，所以也没有提供 PDF 版本。
-
-11. 《Java 面试指北》的面试准备篇一定一定一定要认真看！会让你准备面试的效率高很多，事半功倍。像如何准备面试、如何编写一份不错的程序员简历、具体哪些知识点是重点、源码面试怎么问等等常见问题都有详细且靠谱的解答。由于《Java 面试指北》会根据每一年的面试情况对内容进行更新完善，故不提供 PDF 版本，目前只支持在线阅读。
-
-12. 看我的这两个资料基本就差不多，知识点都涵盖到了。但是，我不可能每个知识点都研究的非常深入（正在往这个方向努力），针对你面试的公司来说（比如你要面试阿里巴巴的话，就提前找一些阿里巴巴的面经针对性复习），部分知识点还需要你自己深入研究学习。
-
-13. 如果你还是想看 PDF 版资料的话，置顶主题里就有哈：https://t.zsxq.com/iiiAqf6 。虽然这些 PDF 资料的质量没有我上面提到的在线版质量高，但是，绝对算的上是市面上流传的最优质的的 PDF 面试资料了。
-
-
+<div class="knowledge-crosslinks">
+  <a href="../cs/">CS Foundations explains the runtime and distributed-system principles underneath these tools →</a>
+  <a href="../ai/">AI Systems shows where data, serving, evaluation, and observability meet model behavior →</a>
+  <a href="../algo/">Algorithms supplies the data structures and complexity reasoning used inside every system →</a>
+</div>

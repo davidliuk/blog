@@ -30,6 +30,16 @@
     <h3>Classification</h3>
     <p>用一个最典型的监督学习任务把模型训练过程串起来。</p>
   </a>
+  <a class="ai-card" href="./distributed.md">
+    <span class="ai-card__eyebrow">Scale</span>
+    <h3>Distributed Training</h3>
+    <p>Data parallel、collective communication、sharding、checkpoint 和 failure。</p>
+  </a>
+  <a class="ai-card" href="./debugging.md">
+    <span class="ai-card__eyebrow">Reliability</span>
+    <h3>Debugging & Performance</h3>
+    <p>Shape、device、gradient、memory、data loader 和 profiler 的系统排查。</p>
+  </a>
 </div>
 
 ## Suggested Reading Order
@@ -38,6 +48,8 @@
 2. [Graph](./graph.md)
 3. [Workflow](./workflow.md)
 4. [Classification](./classification.md)
+5. [Distributed Training](./distributed.md)
+6. [Debugging & Performance](./debugging.md)
 
 ## External Reference
 

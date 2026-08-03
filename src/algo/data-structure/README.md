@@ -1,4 +1,10 @@
-# Data Structure
+---
+title: Data Structures
+description: Choose data structures by state shape, required operations, invariants, and complexity.
+icon: layer-group
+---
+
+# Data Structures
 
 数据结构回答的是“状态长什么样”。很多题目表面上是算法题，本质上先要判断数据是线性的、树形的、图形的还是集合式的，后面的遍历方式和优化方法才会自然出现。
 
@@ -42,3 +48,24 @@
 
 - 结构确定后，通常要去 [Search](../search/) 选择遍历方式。
 - 如果结构上有单调性、有序性或重复子问题，再去 [Optimization](../optimization/) 找优化手段。
+
+## Choose by Operations
+
+| 需求 | 优先考虑 | 需要确认 |
+| --- | --- | --- |
+| 随机访问、连续区间、原地修改 | Array / String | 插入删除是否频繁 |
+| 频繁插入删除、节点关系重要 | Linked List | 是否真的无法使用数组 |
+| 层级关系、递归定义 | Tree | 是否需要父指针、顺序或平衡性 |
+| 任意连接、路径和可达性 | Graph | 有向/无向、权重、存储方式 |
+| 存在性、去重、计数 | Hash Set / Map | 键是否稳定、碰撞与空间 |
+| 最值、优先处理 | Heap | 需要全排序还是只需要 Top-K |
+| 窗口极值、最近更大/更小 | Monotonic Queue / Stack | 淘汰条件是否单调 |
+
+## Invariant First
+
+实现复杂结构前，先写出必须始终成立的不变量。例如：
+
+- 二叉搜索树左子树小于当前节点、右子树大于当前节点；
+- 单调队列中的元素按值保持单调，同时按下标保持时间顺序；
+- 并查集的 parent 链最终指向集合代表；
+- 哈希表中一个逻辑键只能对应一个有效位置。

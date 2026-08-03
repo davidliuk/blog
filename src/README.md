@@ -2,17 +2,17 @@
 home: true
 portfolio: true
 avatar: /avatar.jpg
-heroText: David's blog
+heroText: David Liu
+description: David Liu builds reliable, resource-efficient infrastructure for tool-using AI agents and writes structured notes on algorithms, AI systems, and computer science.
 avatarStyle:
   object-fit: cover
   display: block
-name: Dawei Liu
+name: David Liu
 titles:
+  - AI Systems Researcher & Builder
   - Software Engineer@TikTok
-  - Research Intern@Lehigh LAIR
-  - MSE CIS@UPenn 26'
-  - SDE Intern@Amazon 24'
-  - SDE Intern@JD.com 23'
+  - Core Contributor@OpenLAIR
+  - MSE CIS@UPenn
 welcome: Hello, I'm
 content: portfolio
 ---
@@ -21,93 +21,104 @@ content: portfolio
 
 <HomePageNav />
 
-<div class="home-snapshot-grid">
-  <section class="home-snapshot-card">
-    <p class="home-snapshot-card__label">Current</p>
-    <strong>Software Engineer @ TikTok</strong>
-    <span>Shop Ads ranking, creative intelligence, and low-latency delivery systems.</span>
-  </section>
-  <section class="home-snapshot-card">
-    <p class="home-snapshot-card__label">Research</p>
-    <strong>Research Intern @ Lehigh LAIR</strong>
-    <span>Agent harnesses, skill retrieval, and AI research workflows.</span>
-  </section>
-  <section class="home-snapshot-card">
-    <p class="home-snapshot-card__label">Impact</p>
-    <strong>10%+ revenue, 43.6% p99 latency reduction</strong>
-    <span>Shipped measurable product and systems improvements at scale.</span>
-  </section>
-  <section class="home-snapshot-card">
-    <p class="home-snapshot-card__label">Interested In</p>
-    <strong>Agent infrastructure, RecSys, platform engineering</strong>
-    <span>Especially work that connects ambitious ideas with deployable systems.</span>
-  </section>
-</div>
+<section class="home-mission" aria-labelledby="home-mission-title">
+  <div class="home-mission__copy">
+    <p class="home-mission__eyebrow">AI systems · research & engineering</p>
+    <h1 id="home-mission-title">I build infrastructure that helps AI agents work reliably beyond the demo.</h1>
+    <p class="home-mission__lede">Most agents look capable when everything goes right. I care about the harder cases: thousands of available skills, long-running tool use, partial failures, and tight context or latency budgets. My work connects <strong>dependency-aware retrieval</strong>, <strong>execution validation</strong>, and <strong>failure recovery</strong>—then turns those ideas into open systems others can inspect, test, and extend.</p>
+    <div class="home-mission__actions" aria-label="Primary links">
+      <a class="home-mission__button home-mission__button--primary" href="#research-program">Explore my work</a>
+      <a class="home-mission__button" href="#academic-profiles">Academic profiles</a>
+      <a class="home-mission__button" href="https://github.com/davidliuk" target="_blank" rel="noopener noreferrer">View GitHub <span aria-hidden="true">↗</span></a>
+    </div>
+  </div>
+  <aside class="home-mission__loop" aria-label="My research loop">
+    <p class="home-mission__loop-label">My research loop</p>
+    <ol>
+      <li>
+        <span class="home-mission__step">01</span>
+        <div><strong>Retrieve</strong><p>Find a small, complete set of capabilities—dependencies included.</p></div>
+      </li>
+      <li>
+        <span class="home-mission__step">02</span>
+        <div><strong>Execute</strong><p>Make tool use observable, bounded, and verifiable as work unfolds.</p></div>
+      </li>
+      <li>
+        <span class="home-mission__step">03</span>
+        <div><strong>Recover</strong><p>Turn errors and feedback into repairs and reusable experience.</p></div>
+      </li>
+    </ol>
+  </aside>
+</section>
 
-# About
+## About
 
-<p class="home-lead">I build <strong>agentic systems</strong>, <strong>intelligent infrastructure</strong>, and <strong>production-grade ML platforms</strong>. My work lives at the intersection of AI research and large-scale engineering, with a focus on turning ambitious ideas into systems that are practical, measurable, and deployable.</p>
+<p class="home-lead">I am an AI systems researcher and software engineer. The thread through my work—from scientific visualization and distributed tracing to recommendation and agent infrastructure—is a desire to make complex technology <strong>useful, inspectable, and dependable</strong>.</p>
 
 <div class="home-hero-grid">
   <section class="home-surface-card home-surface-card--story">
-    <p class="home-card-eyebrow">Research x Engineering</p>
-    <!-- <h2 class="home-card-title">From idea formation to scalable delivery, I care about systems that close the loop.</h2> -->
-    <p class="home-card-copy">I am a <strong>Software Engineer</strong> at <strong>TikTok</strong>, working on Shop Ads. I hold an M.S.E. in <strong>Computer and Information Science</strong> from the <strong>University of Pennsylvania</strong> and a B.E. in <strong>Software Engineering</strong> from <strong>Northeastern University</strong>. I enjoy designing AI-native workflows, retrieval systems for agents, and backend platforms that remain reliable under real product constraints.</p>
+    <p class="home-card-eyebrow">The throughline</p>
+    <h2 class="home-card-title">Research ideas become valuable when people can actually use and improve them.</h2>
+    <p class="home-card-copy">I enjoy the unglamorous middle between a promising prototype and a dependable system: evaluation, interfaces, observability, latency, failure handling, and the thousand small decisions that make software hold together. That mindset now shapes my work on agent skill retrieval, reliable execution, and AI-native research workflows.</p>
     <div class="home-tag-row" aria-label="Primary focus areas">
-      <span class="home-tag">Agentic Systems</span>
-      <span class="home-tag">LLM Infrastructure</span>
-      <span class="home-tag">Recommendation</span>
-      <span class="home-tag">Systems Engineering</span>
+      <span class="home-tag">Tool-using Agents</span>
+      <span class="home-tag">Skill Retrieval</span>
+      <span class="home-tag">Execution Reliability</span>
+      <span class="home-tag">Open Infrastructure</span>
     </div>
     <div class="home-story-meta" aria-label="Current profile highlights">
       <div class="home-story-meta__item">
-        <span class="home-story-meta__label">Current Role</span>
-        <strong>Software Engineer @ TikTok</strong>
+        <span class="home-story-meta__label">Based in</span>
+        <strong>Seattle, Washington</strong>
       </div>
       <div class="home-story-meta__item">
-        <span class="home-story-meta__label">Research Affiliation</span>
-        <strong>Research Intern @ Lehigh LAIR</strong>
+        <span class="home-story-meta__label">Current chapter</span>
+        <strong>TikTok + OpenLAIR</strong>
       </div>
     </div>
   </section>
 
   <section class="home-surface-card home-surface-card--focus">
-    <p class="home-card-eyebrow">Current Focus</p>
+    <p class="home-card-eyebrow">What I’m pursuing</p>
     <ul class="home-focus-list">
-      <li>Designing structural retrieval systems for massive agent skill libraries.</li>
-      <li>Building end-to-end research automation workflows with strong UX and execution depth.</li>
-      <li>Bridging research ideas with infrastructure that can survive scale, latency, and product complexity.</li>
+      <li>Help agents select the right skills without loading an entire library into context.</li>
+      <li>Make tool execution easier to validate, diagnose, and recover when something goes wrong.</li>
+      <li>Release reproducible code, evaluations, and research artifacts that others can adapt.</li>
     </ul>
   </section>
 </div>
 
-I’m currently a **Software Engineer** at **TikTok**, working on **Shop Ads**, where I first joined as an SDE Intern and converted to full-time within 12 weeks. My work there spans ads ranking, GenAI creative pipelines, and low-latency backend systems that serve real traffic.
+I’m currently a **Software Engineer at TikTok** in Seattle, working on Shop Ads ranking, creative intelligence, and delivery systems. Production engineering keeps my research honest: useful ideas still have to survive scale, latency, noisy inputs, incomplete observability, and real users.
 
-In parallel, I’m a **Research Intern** at **Lehigh University** with [**LAIR**](https://github.com/OpenLAIR), advised by **Prof. Lichao Sun**. As one of the **top three** core contributors, I help build [**Dr. Claw**](https://github.com/OpenLAIR/dr-claw), a general-purpose **AI Research Assistant** for end-to-end research workflows, from idea formation and experimentation to paper-ready outputs.
-
-Across **TikTok**, **Amazon**, and **JD.com**, I’ve shipped systems spanning recommendation, observability, AI tooling, backend architecture, and developer infrastructure.
+In parallel, I collaborate with [**LAIR**](https://github.com/OpenLAIR), advised by **Prof. Lichao Sun**, and contribute to [**Dr. Claw**](https://github.com/OpenLAIR/dr-claw), an open-source AI research workspace spanning idea formation, experiments, writing, and iteration. I hold an M.S.E. in **Computer and Information Science** from the **University of Pennsylvania** and a B.E. in **Software Engineering** from **Northeastern University**.
 
 ---
 
-## Selected Impact
+## Research Program
 
 <div class="home-highlight-grid">
   <section class="home-highlight-card">
-    <p class="home-highlight-kicker">Research Systems</p>
-    <h3>Building AI research workspaces that reduce workflow friction.</h3>
-    <p>At LAIR, I contribute to <strong>Dr. Claw</strong>, an open-source AI research assistant that keeps ideation, experiments, writing, and iteration inside one cohesive workspace.</p>
+    <p class="home-highlight-kicker">01 · Retrieve</p>
+    <h3>Load less context without losing the dependencies that make a skill usable.</h3>
+    <p><strong>Graph of Skills</strong> explores structural retrieval for massive skill libraries. In our evaluation, it improved average reward by <strong>43.6%</strong> while reducing input tokens by <strong>37.8%</strong> against full skill loading.</p>
   </section>
 
   <section class="home-highlight-card">
-    <p class="home-highlight-kicker">Product Impact</p>
-    <h3>Shipped ranking and creative intelligence with measurable business lift.</h3>
-    <p>At TikTok Shop Ads, I built image selection, GenAI creative integration, and delivery tooling that contributed to <strong>10%+</strong> revenue uplift on PSA Carousel effectiveness.</p>
+    <p class="home-highlight-kicker">02 · Execute & recover</p>
+    <h3>Give agents structure for acting, checking their work, and repairing failures.</h3>
+    <p><strong>COMFYCLAW</strong> combines typed workflow editing, stage-aware tools, rollback, visual verification, and skill evolution to make executable image-generation workflows more reliable.</p>
   </section>
 
   <section class="home-highlight-card">
-    <p class="home-highlight-kicker">Systems Performance</p>
-    <h3>Focused on robust backend design, observability, and latency engineering.</h3>
-    <p>I enjoy turning fragile systems into dependable foundations, from reducing <strong>p99 latency by 43.6%</strong> to extending tracing across heterogeneous microservice and serverless environments.</p>
+    <p class="home-highlight-kicker">03 · Build in the open</p>
+    <h3>Turn agent research into workspaces that researchers can use every day.</h3>
+    <p>As a core contributor to <strong>Dr. Claw</strong>, I work across provider integrations, multi-session workflows, desktop distribution, project isolation, and the reliability details behind long-running research tasks.</p>
+  </section>
+
+  <section class="home-highlight-card">
+    <p class="home-highlight-kicker">04 · Test against reality</p>
+    <h3>Let production constraints sharpen the questions research needs to answer.</h3>
+    <p>Work across <strong>TikTok, Amazon, and JD.com</strong> taught me to treat latency, observability, experimentation, and failure handling as design inputs—not cleanup after a prototype succeeds.</p>
   </section>
 </div>
 
@@ -115,7 +126,7 @@ Across **TikTok**, **Amazon**, and **JD.com**, I’ve shipped systems spanning r
 
 ## Selected Publications
 
-<p class="home-section-intro">My recent work spans agent skill retrieval, AI research tooling, multimodal generation, 3D vision, and biomedical data systems.</p>
+<p class="home-section-intro">These publications mark a path from research platforms and multimodal systems toward my current focus: reliable, resource-efficient infrastructure for tool-using agents.</p>
 
 <PublicationList>
   <PublicationCard
@@ -179,7 +190,7 @@ Across **TikTok**, **Amazon**, and **JD.com**, I’ve shipped systems spanning r
 
 ## Open Source
 
-<p class="home-section-intro">Research tooling and agent benchmarks I build and contribute to, mostly with the LAIR community.</p>
+<p class="home-section-intro">I prefer research that leaves behind something people can run. These are the workspaces, benchmarks, and distribution paths I help build with the LAIR community.</p>
 
 <PublicationList>
   <PublicationCard
@@ -232,7 +243,7 @@ Across **TikTok**, **Amazon**, and **JD.com**, I’ve shipped systems spanning r
 
 ## Professional Experience
 
-<p class="home-section-intro">I like roles where modeling, infrastructure, and product rigor intersect. The common thread across these teams has been building reliable systems that move real metrics.</p>
+<p class="home-section-intro">I like roles where modeling, infrastructure, and product rigor meet. Across these teams, I have learned how ranking, observability, platform engineering, and backend reliability behave under real constraints.</p>
 
 <div class="experience-grid">
   <ExperienceCard
@@ -338,9 +349,61 @@ Across **TikTok**, **Amazon**, and **JD.com**, I’ve shipped systems spanning r
 
 ---
 
+## Knowledge Base
+
+<p class="home-section-intro">I keep a long-running technical knowledge base alongside my research and engineering work. The goal is not to collect definitions, but to connect first principles, problem-solving methods, and production tradeoffs.</p>
+
+<div class="knowledge-atlas-grid">
+  <a class="knowledge-atlas-card knowledge-atlas-card--algo" href="/algo/">
+    <span class="knowledge-atlas-card__index">01</span>
+    <p class="knowledge-atlas-card__eyebrow">Model · Explore · Optimize · Verify</p>
+    <h3>Algorithms</h3>
+    <p>Data structures, search, dynamic programming, optimization, correctness, and interview problem solving.</p>
+    <span class="knowledge-atlas-card__link">Open algorithm map →</span>
+  </a>
+  <a class="knowledge-atlas-card knowledge-atlas-card--ai" href="/ai/">
+    <span class="knowledge-atlas-card__index">02</span>
+    <p class="knowledge-atlas-card__eyebrow">Foundation · Model · System · Product</p>
+    <h3>AI Systems</h3>
+    <p>Deep learning, language models, inference, agents, recommendation, search, and evaluation.</p>
+    <span class="knowledge-atlas-card__link">Open AI map →</span>
+  </a>
+  <a class="knowledge-atlas-card knowledge-atlas-card--cs" href="/cs/">
+    <span class="knowledge-atlas-card__index">03</span>
+    <p class="knowledge-atlas-card__eyebrow">Runtime · Network · Design · Distributed</p>
+    <h3>CS Foundations</h3>
+    <p>Operating systems, computer networks, OOD, design patterns, and scalable system design.</p>
+    <span class="knowledge-atlas-card__link">Open CS map →</span>
+  </a>
+  <a class="knowledge-atlas-card knowledge-atlas-card--se" href="/se/">
+    <span class="knowledge-atlas-card__index">04</span>
+    <p class="knowledge-atlas-card__eyebrow">Build · Store · Integrate · Operate</p>
+    <h3>Software Engineering</h3>
+    <p>Languages, data systems, middleware, delivery, observability, testing, and production practice.</p>
+    <span class="knowledge-atlas-card__link">Open engineering map →</span>
+  </a>
+  <a class="knowledge-atlas-card knowledge-atlas-card--test" href="/test/">
+    <span class="knowledge-atlas-card__index">05</span>
+    <p class="knowledge-atlas-card__eyebrow">Diagnose · Drill · Simulate · Review</p>
+    <h3>Test Preparation</h3>
+    <p>A personal TOEFL and GRE study system built around skills, evidence, deliberate practice, and review.</p>
+    <span class="knowledge-atlas-card__link">Open study map →</span>
+  </a>
+</div>
+
+<div class="knowledge-atlas-note">
+  <strong>How I write these notes</strong>
+  <div>
+    <p>Directory pages build the map. Topic pages explain one complete idea. Case studies connect concepts under realistic constraints. When the same subject appears in multiple areas, I prefer cross-links over duplicated definitions.</p>
+    <p class="knowledge-atlas-note__links"><a href="/education/">Course archive →</a><a href="/hobby/">Personal notes →</a><a href="/article/">All articles →</a></p>
+  </div>
+</div>
+
+---
+
 ## Tech Stack
 
-<p class="home-section-intro">A practical toolkit shaped by backend engineering, ML experimentation, and product-facing system design.</p>
+<p class="home-section-intro">Tools follow the problem. This is the practical toolkit I reach for across agent research, ML experimentation, backend systems, and product-facing engineering.</p>
 
 <div class="tech-stack-summary">
   <div class="tech-stack-summary__item">
@@ -423,11 +486,19 @@ Across **TikTok**, **Amazon**, and **JD.com**, I’ve shipped systems spanning r
 ## Let's Connect
 
 <div class="home-connect-panel">
-  <p class="home-connect">Interested in <strong>Ads delivery</strong>, <strong>Recommendation Systems</strong>, <strong>Agentic Systems</strong>, or <strong>engineering at scale</strong>. I'm always happy to connect with researchers, engineers, and teams working on ambitious, high-leverage problems.</p>
+  <p class="home-connect">I’m always glad to meet researchers and engineers thinking seriously about <strong>agent reliability</strong>, <strong>skill retrieval</strong>, <strong>research automation</strong>, or <strong>AI systems at production scale</strong>. If you are building something where the demo is the easy part, we will probably have a useful conversation.</p>
   <div class="home-tag-row" aria-label="Topics to discuss">
     <span class="home-tag">Research collaboration</span>
     <span class="home-tag">ML infrastructure</span>
     <span class="home-tag">Backend systems</span>
     <span class="home-tag">Applied AI products</span>
   </div>
+  <nav id="academic-profiles" class="home-profile-row" aria-label="Academic profiles">
+    <span class="home-profile-row__label">Research profiles</span>
+    <div class="home-tag-row">
+      <a class="home-tag home-tag--link" href="https://scholar.google.com/citations?user=RzdCL4AAAAAJ&amp;hl=en" target="_blank" rel="me noopener noreferrer">Google Scholar <span aria-hidden="true">↗</span></a>
+      <a class="home-tag home-tag--link" href="https://www.semanticscholar.org/author/Dawei-Liu/50439123" target="_blank" rel="me noopener noreferrer">Semantic Scholar <span aria-hidden="true">↗</span></a>
+      <a class="home-tag home-tag--link" href="https://openreview.net/profile?id=%7EDawei_Liu6" target="_blank" rel="me noopener noreferrer">OpenReview <span aria-hidden="true">↗</span></a>
+    </div>
+  </nav>
 </div>

@@ -1,88 +1,60 @@
-# GRE
+---
+title: GRE General Test
+description: A structured GRE preparation map for Verbal Reasoning, Quantitative Reasoning, and Analytical Writing.
+icon: scroll
+---
 
-## Overview
+# GRE General Test
 
-目标分数
+GRE 不是知识量竞赛，而是限时条件下的推理测试。准备过程需要分别训练语言理解、定量建模和论证表达，再通过完整模拟把三者组合起来。
 
-- 320=153+167
-- 325=155+170
-- 330=160+170
+## Current Structure
 
-考试频率：365 天内最多５次，每次 GRE 考试间隔 21 天。转考须考试日 10 天前
+| Measure | Structure | Time |
+| --- | --- | ---: |
+| [Analytical Writing](./aw/) | 1 Analyze an Issue task | 30 min |
+| [Verbal Reasoning](./VERBAL/) | 2 sections: 12 + 15 questions | 18 + 23 min |
+| [Quantitative Reasoning](./QUANTITATIVE/) | 2 sections: 12 + 15 questions | 21 + 26 min |
 
-出分时间：8-10 日
+总测试时间约 1 小时 58 分钟。Analytical Writing 固定最先出现，之后 Verbal 和 Quantitative 的顺序可能变化。最新结构以 [ETS GRE Test Structure](https://www.ets.org/gre/test-takers/general-test/prepare/test-structure.html) 为准。
 
-### 分数构成
+## Knowledge Map
 
-- Verbal 170
+<div class="section-card-grid">
+  <a class="section-card" href="./VERBAL/">
+    <span class="section-card__eyebrow">Language reasoning</span>
+    <h3>Verbal Reasoning</h3>
+    <p>Text Completion、Sentence Equivalence 与 Reading Comprehension：用逻辑约束词义和选项。</p>
+  </a>
+  <a class="section-card" href="./QUANTITATIVE/">
+    <span class="section-card__eyebrow">Mathematical reasoning</span>
+    <h3>Quantitative Reasoning</h3>
+    <p>算术、代数、几何和数据分析：把文字条件转换为可验证的数学关系。</p>
+  </a>
+  <a class="section-card" href="./aw/">
+    <span class="section-card__eyebrow">Argumentation</span>
+    <h3>Analytical Writing</h3>
+    <p>识别议题边界，提出立场，用理由、证据、限定条件和反方回应构造论证。</p>
+  </a>
+</div>
 
-  - Blank 填空题
-  - Reading 阅读题
-    - 逻辑单题
-    - 短阅读
-    - 中阅读
-- Quantitative 170
+## Preparation Loop
 
-  - Blank 填空题
+1. 用官方模考建立 Verbal、Quant 和 AW 的独立基线。
+2. 给每道错题标注 **knowledge / translation / reasoning / execution / timing**。
+3. 以两周为周期选择一个主要瓶颈，不同时修复所有问题。
+4. 先做 untimed accuracy，再缩短到正式时间。
+5. 每周用 mixed set 检查迁移，考前用完整模考检查节奏和耐力。
 
-  - Select 选择题
+## Score Targets
 
-    - 图表题
+目标分数应该从申请项目反推，而不是套用统一门槛：
 
-    - 比较题
+- 收集每个项目的 required、recommended 和 historical range。
+- 区分总分要求与 Quant、Verbal、Writing 单项偏好。
+- 把目标设为“满足申请策略的分数”，再给波动留出安全边际。
+- 当继续备考的收益低于研究、申请文书或项目经历时，及时停止。
 
-    - 其他题
-- Analytical Writing 6
-  - issue
+## Registration and Retakes
 
-
-过线分数：无明面 minimal，GT 卡 153 155 3，一般是实际卡Q167，O320/325
-
-### 优惠券
-
-- 初考 60：GRE602023
-- 重考 50：GRE502023
-- 重考 40：CNRetest2023
-
-### 自适应机制
-
-考试时间大幅度变短，但是随着题量变少，**整场考试的容错率反而变得更低**。
-
-| 学科 | Section | 问题/个 | 时间/min |
-| ---- | ------- | ------- | -------- |
-| 数学 | 2       | 12 + 15 | 47       |
-| 语文 | 2       | 12 + 15 | 41       |
-| 写作 | 1       | 1 issue | 30       |
-
-错 3 个进入 hard
-
-| Section                          | Questions    | Time            |
-| -------------------------------- | ------------ | --------------- |
-| Analytical Writing               | 1 essay      | 30 mins         |
-| Quantitative Reasoning Section 1 | 12 questions | 21 mins         |
-| Quantitative Reasoning Section 2 | 15 questions | 26 mins         |
-| Verbal Reasoning Section 1       | 12 questions | 18 mins         |
-| Verbal Reasoning Section 2       | 15 questions | 23 mins         |
-| Total                            |              | 1 hour, 58 mins |
-
-## Verbal
-
-等价题 8 个
-
-有的时候没有逻辑单题
-
-- Verbal section 1=填空 7 题+阅读 5 题
-- Verbal section 2=填空 7 题+阅读 8 题
-
-![verbal](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/40e45e93a8ec4e9b89c6d20749a38645.jpeg)
-
-## Quantitative
-
-- 比较题 9 道，
-- 图表题 3 道，
-- 填空题 2 道，
-- 选择题 13 道（包括单选和可多选）。
-
-图表题只出现在第一个 medium，第二个 section 不再考查图表题，利好读题能力差的同学。
-
-![img](https://cdn.jsdelivr.net/gh/davidliuk/images@master/blog/6c67944d93164606b57fc556327dc9a7.jpeg)
+ETS 当前规则允许每 21 天参加一次 GRE General Test，在连续 12 个月内最多 5 次。费用、考位、转考和送分政策可能变化，执行前请检查 [GRE registration](https://www.ets.org/gre/test-takers/general-test/register.html)。

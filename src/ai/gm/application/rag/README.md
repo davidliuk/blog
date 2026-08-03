@@ -1,22 +1,79 @@
-# RAG
+---
+title: Retrieval-Augmented Generation
+description: RAG systems from ingestion and indexing to retrieval, reranking, context construction, generation, citation, and evaluation.
+icon: book-open
+---
 
-1. Break down the knowledge base (the “corpus” of documents) into smaller chunks of text, usually no more than a few hundred tokens;
-2. Use an embedding model to convert these chunks into vector embeddings that encode meaning;
-3. Store these embeddings in a vector database that allows for searching by semantic similarity.
+# Retrieval-Augmented Generation
 
-While embedding models excel at capturing semantic relationships, they can miss crucial exact matches. Fortunately, there’s an older technique that can assist in these situations. BM25 (Best Matching 25) is a ranking function that uses lexical matching to find precise word or phrase matches. It's particularly effective for queries that include unique identifiers or technical terms.
+RAG 把 parametric model 与可更新、可引用的外部知识连接起来。它不是“向量库 + prompt”，而是一条需要独立评估每个阶段的数据与检索系统。
 
-BM25 works by building upon the TF-IDF (Term Frequency-Inverse Document Frequency) concept. TF-IDF measures how important a word is to a document in a collection. BM25 refines this by considering document length and applying a saturation function to term frequency, which helps prevent common words from dominating the results.
+## Pipeline
 
-Here’s how BM25 can succeed where semantic embeddings fail: Suppose a user queries "Error code TS-999" in a technical support database. An embedding model might find content about error codes in general, but could miss the exact "TS-999" match. BM25 looks for this specific text string to identify the relevant documentation.
+<div class="knowledge-flow" aria-label="RAG pipeline">
+  <div class="knowledge-flow__item">
+    <span class="knowledge-flow__index">01</span>
+    <strong>Index</strong>
+    <p>解析、切分、清洗、去重、metadata、embedding 和更新。</p>
+  </div>
+  <div class="knowledge-flow__item">
+    <span class="knowledge-flow__index">02</span>
+    <strong>Retrieve</strong>
+    <p>Query understanding、lexical / dense / hybrid recall 和 filter。</p>
+  </div>
+  <div class="knowledge-flow__item">
+    <span class="knowledge-flow__index">03</span>
+    <strong>Rerank</strong>
+    <p>用更强相关性模型压缩 candidate，并处理 diversity 与 authority。</p>
+  </div>
+  <div class="knowledge-flow__item">
+    <span class="knowledge-flow__index">04</span>
+    <strong>Generate</strong>
+    <p>组织证据、处理冲突、生成答案并建立 citation attribution。</p>
+  </div>
+</div>
 
-RAG solutions can more accurately retrieve the most applicable chunks by combining the embeddings and BM25 techniques using the following steps:
+## Knowledge Map
 
-1. Break down the knowledge base (the "corpus" of documents) into smaller chunks of text, usually no more than a few hundred tokens;
-2. Create TF-IDF encodings and semantic embeddings for these chunks;
-3. Use BM25 to find top chunks based on exact matches;
-4. Use embeddings to find top chunks based on semantic similarity;
-5. Combine and deduplicate results from (3) and (4) using rank fusion techniques;
-6. Add the top-K chunks to the prompt to generate the response.
+- [Indexing & Chunking](./indexing.md)
+- [Retrieval & Reranking](./retrieval.md)
+- [RAG Evaluation](./evaluation.md)
 
-By leveraging both BM25 and embedding models, traditional RAG systems can provide more comprehensive and accurate results, balancing precise term matching with broader semantic understanding.
+## Lexical and Dense Retrieval
+
+| Method | Strength | Weakness |
+| --- | --- | --- |
+| BM25 / lexical | exact term、ID、rare word、可解释 | 同义表达与语义泛化有限 |
+| Dense embedding | semantic similarity、paraphrase | exact constraint、更新和 domain shift |
+| Hybrid | 同时覆盖 exact 与 semantic | fusion、latency 和调参更复杂 |
+| Reranker | 更细粒度 query–document relevance | candidate 数与 online cost |
+
+## Context Construction
+
+- 保留 document title、section、timestamp、authority 和 access scope。
+- 去重近似内容，避免相同证据占满 context。
+- 多文档冲突时显式呈现来源与时间，不自动拼成单一事实。
+- 按 answer need 排序，不只按 embedding score。
+- Citation 绑定具体 claim 与 passage，而不是在答案末尾列文档。
+
+## Failure Taxonomy
+
+```text
+source missing
+  → indexing failure
+  → retrieval miss
+  → reranking drop
+  → context loss
+  → generation misuse
+  → citation mismatch
+```
+
+只有先定位 failure stage，才能决定改 chunk、embedding、query rewrite、reranker 还是 prompt。
+
+## Security
+
+Retrieved content 是不可信数据，不拥有指令 authority。应用需要 document ACL、tenant isolation、prompt-injection defense、PII control 和 citation audit。
+
+## Reference
+
+- [Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks](https://arxiv.org/abs/2005.11401)

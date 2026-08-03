@@ -17,14 +17,14 @@
 import { onBeforeUnmount, onMounted, ref } from "vue";
 
 const items = [
-  { href: "#about", label: "About" },
-  { href: "#selected-impact", label: "Impact" },
-  { href: "#selected-publications", label: "Publications" },
+  { href: "#about", label: "Story" },
+  { href: "#research-program", label: "Research" },
+  { href: "#selected-publications", label: "Papers" },
   { href: "#open-source", label: "Open source" },
-  { href: "#education", label: "Education" },
   { href: "#professional-experience", label: "Experience" },
   { href: "#award-winning-projects", label: "Projects" },
-  { href: "#tech-stack", label: "Tech stack" },
+  { href: "#knowledge-base", label: "Notes" },
+  { href: "#tech-stack", label: "Toolkit" },
   { href: "#let-s-connect", label: "Connect" },
 ];
 

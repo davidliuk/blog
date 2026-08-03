@@ -1,11 +1,25 @@
 # Transparency
 
-Interpretable 思维是透明的：eg. 决策树
+透明度回答的是：人们能否理解系统为什么产生某个结果、依据了什么信息、有哪些已知限制，以及能否追责和纠错。它不等同于模型把一段自然语言解释附在答案后面。
 
-Explainable 没有标准，取决于听众
+## Interpretability 与 Explainability
 
-观察每一个输入的改变对nice的影响
+- **interpretability** 常指机制本身较易理解，如稀疏线性模型或浅决策树；
+- **explainability** 使用事后方法解释复杂模型，答案依赖受众和任务；
+- **transparency** 范围更广，还包括数据来源、训练过程、评测、部署与治理。
 
-分析 Attention weight
+## 方法层次
 
-In-context learning
+- 输入归因：扰动、梯度或 Shapley 风格方法估计输入影响；
+- 表示分析：probe、activation patching、concept vectors；
+- 机制分析：研究 attention head、MLP 与计算回路；
+- 行为解释：反事实测试、最小对比样例与失败切片；
+- 系统披露：model card、data card、已知限制与版本记录。
+
+Attention weight 可以帮助提出假设，但通常不足以单独证明因果解释。模型生成的 chain-of-thought 也可能是不忠实的事后叙述，不能直接视为内部推理的透明窗口。
+
+## 好解释的标准
+
+解释应与真实模型行为一致，对小扰动稳定，能区分相似输入，并能帮助具体受众采取行动。面向研究者、审核人员和普通用户的解释深度不同，但都不应夸大因果性。
+
+实际系统可结合引用证据、工具轨迹、版本信息、置信与不确定性提示，以及可申诉/纠错入口。透明度的价值在于支持验证，而不是制造“模型看起来很有理由”的感觉。
