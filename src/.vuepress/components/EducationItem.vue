@@ -1,7 +1,13 @@
 <template>
-  <div class="education-item-wrapper">
+  <article class="education-item-wrapper home-card-shell">
     <div class="edu-left">
-      <img :src="logoSrc" class="edu-logo" :alt="school" />
+      <img
+        :src="logoSrc"
+        class="edu-logo"
+        :alt="school"
+        loading="lazy"
+        decoding="async"
+      />
     </div>
     <div class="edu-right">
       <div class="edu-header">
@@ -9,7 +15,7 @@
           <p class="edu-kicker">Education</p>
           <h3>{{ school }}</h3>
         </div>
-        <span class="edu-time">{{ time }}</span>
+        <span class="edu-time home-card-time">{{ time }}</span>
       </div>
       <div class="edu-degree-line" :aria-label="degree">
         <span class="edu-degree-abbr">{{ degreeAbbr }}</span>
@@ -40,7 +46,7 @@
         <slot></slot>
       </div>
     </div>
-  </div>
+  </article>
 </template>
 
 <script setup lang="ts">
@@ -100,88 +106,71 @@ const logoSrc = computed(() => {
 </script>
 
 <style scoped>
-/* 我们将原来的 .edu-item 改名为 .education-item-wrapper
-  并加上了 scoped 属性，确保样式只在这个组件内生效，不污染全局
-*/
 .education-item-wrapper {
-  display: flex;
-  gap: 1.35rem;
-  align-items: flex-start;
-  padding-bottom: 2rem;
-  margin-bottom: 2rem; /* 用 margin 代替原来的 gap */
-  /* 使用 Theme Hope 自带的边框变量，自动适配深色模式 */
-  border-bottom: 1px solid var(--border-color, #eaecef);
+  display: grid;
+  grid-template-columns: 7rem minmax(0, 1fr);
+  gap: var(--dl-space-5);
+  align-items: start;
+  padding: 1.3rem 1.35rem;
+  margin-bottom: var(--dl-space-4);
 }
 
-/* 巧妙的 CSS 选择器：
-  当多个 EducationItem 连续出现时，
-  这一条规则会去掉最后一个组件底部的边框和外边距 
-*/
 .education-item-wrapper:last-of-type {
-  border-bottom: none;
   margin-bottom: 0;
 }
 
 .edu-left {
-  flex: 0 0 132px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  text-align: center;
+  justify-content: center;
+  min-height: 7rem;
+  padding: 0.65rem;
+  box-sizing: border-box;
+  border: 1px solid var(--dl-border);
+  border-radius: var(--dl-radius-md);
+  background: var(--dl-chip);
 }
 
 .edu-logo {
-  width: 108px;
-  height: 108px;
+  width: 100%;
+  height: 5.5rem;
   object-fit: contain;
-  margin-bottom: 0.5rem;
-  /* 确保图片在不同主题下显示正常 */
   background-color: transparent;
-  border-radius: 8px;
+  border-radius: var(--dl-radius-sm);
 }
 
 .edu-time {
-  display: inline-flex;
-  align-items: center;
-  min-height: 2rem;
-  padding: 0.28rem 0.72rem;
-  border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
-  background: color-mix(in srgb, var(--vp-c-bg) 94%, transparent);
-  color: var(--vp-c-text-2);
-  font-size: 0.82rem;
-  font-weight: 700;
+  flex-shrink: 0;
   white-space: nowrap;
 }
 
 .edu-right {
-  flex: 1;
+  min-width: 0;
 }
 
 .edu-header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 1rem;
+  gap: var(--dl-space-4);
   margin-bottom: 0.8rem;
 }
 
 .edu-kicker {
   margin: 0 0 0.18rem;
-  font-size: 0.68rem;
+  font-size: 0.72rem;
   font-weight: 800;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--vp-c-text-3);
 }
 
 .edu-right h3 {
-  margin-top: 0;
-  margin-bottom: 0;
-  font-size: clamp(1.16rem, 2vw, 1.35rem);
-  line-height: 1.22;
-  letter-spacing: -0.025em;
-  border: none; /* 去掉可能存在的主题默认下划线 */
+  margin: 0;
+  font-size: clamp(1.08rem, 1.4vw, 1.18rem);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+  border: none;
 }
 
 .edu-degree-line {
@@ -202,8 +191,8 @@ const logoSrc = computed(() => {
   min-height: 1.72rem;
   padding: 0.16rem 0.58rem;
   border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--vp-c-accent) 22%, var(--vp-c-divider));
-  background: color-mix(in srgb, var(--vp-c-accent-soft) 54%, var(--vp-c-bg));
+  border: 1px solid var(--dl-accent-line);
+  background: var(--dl-accent-soft);
   color: var(--vp-c-accent);
   font-size: 0.82rem;
   font-weight: 800;
@@ -214,7 +203,7 @@ const logoSrc = computed(() => {
   display: inline-flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0.3rem;
+  gap: var(--dl-space-1);
   min-width: 0;
   font-size: 0.94rem;
   line-height: 1.5;
@@ -237,13 +226,13 @@ const logoSrc = computed(() => {
 .edu-meta {
   display: flex;
   flex-direction: column;
-  gap: 0.7rem;
+  gap: var(--dl-space-3);
   margin-bottom: 0.1rem;
 }
 .edu-gpa-row {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: var(--dl-space-2);
   font-weight: 600;
 }
 .edu-gpa-label {
@@ -252,7 +241,7 @@ const logoSrc = computed(() => {
   min-height: 1.75rem;
   padding: 0.18rem 0.55rem;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--vp-c-bg-soft) 90%, transparent);
+  background: var(--dl-chip);
   color: var(--vp-c-text-3);
   font-size: 0.7rem;
   font-weight: 800;
@@ -261,7 +250,7 @@ const logoSrc = computed(() => {
 }
 .edu-honors-row {
   display: flex;
-  gap: 0.48rem;
+  gap: var(--dl-space-2);
   flex-wrap: wrap;
   align-items: center;
 }
@@ -271,8 +260,8 @@ const logoSrc = computed(() => {
   min-height: 1.9rem;
   padding: 0.24rem 0.68rem;
   border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
-  background: color-mix(in srgb, var(--vp-c-bg-soft) 88%, var(--vp-c-bg));
+  border: 1px solid var(--dl-border);
+  background: var(--dl-chip);
   color: var(--vp-c-text-2);
   font-size: 0.8rem;
   font-weight: 650;
@@ -296,7 +285,6 @@ const logoSrc = computed(() => {
   opacity: 0.82;
 }
 
-/* 针对插槽内容的样式优化 */
 .edu-details :deep(ul) {
   margin: 0;
   padding-left: 1.2rem;
@@ -307,53 +295,35 @@ const logoSrc = computed(() => {
   line-height: 1.6;
 }
 
-/* 手机端适配 */
-@media (max-width: 768px) {
+@media (max-width: 719px) {
   .education-item-wrapper {
-    flex-direction: column;
-    gap: 1rem;
-    align-items: center;
-    text-align: center;
+    grid-template-columns: 1fr;
+    gap: var(--dl-space-4);
+    padding: 1.05rem 1rem;
   }
 
   .edu-left {
     width: 100%;
-    flex-direction: row;
-    justify-content: center;
-    gap: 1rem;
-    align-items: center;
+    min-height: 5.5rem;
   }
 
   .edu-logo {
-    width: 60px; /* 手机端缩小 Logo */
-    height: 60px;
-    margin-bottom: 0;
+    width: 6rem;
+    height: 4.25rem;
   }
 
   .edu-right {
     width: 100%;
   }
 
-  .edu-header,
-  .edu-degree-line,
-  .edu-gpa-row,
-  .edu-honors-row {
-    justify-content: center;
-  }
-
   .edu-header {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    gap: var(--dl-space-2);
   }
 
-  .edu-degree-copy {
-    text-align: center;
-  }
-
-  /* 手机端列表左对齐更好看 */
   .edu-details {
     text-align: left;
-    display: inline-block;
   }
 }
 </style>

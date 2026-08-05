@@ -8,6 +8,7 @@
           :key="item.name"
           role="listitem"
           class="home-affiliation-strip__link"
+          :data-mark="item.shape"
           :href="item.href"
           :title="item.name"
           target="_blank"
@@ -40,32 +41,40 @@ onMounted(() => {
   requestAnimationFrame(tick);
 });
 
+// `shape` drives optical sizing in the stylesheet. Capping every mark at the
+// same height makes the square university crests look half the size of the
+// wide wordmarks next to them, because the eye compares area, not height.
 const items = computed(() =>
   [
     {
       name: "University of Pennsylvania",
       href: "https://www.cis.upenn.edu/",
       logo: "/UPenn_logo.svg",
+      shape: "crest",
     },
     {
       name: "Northeastern University",
       href: "https://www.northeastern.edu/",
       logo: "/NEU_logo.svg",
+      shape: "crest",
     },
     {
       name: "TikTok",
       href: "https://www.tiktok.com/",
       logo: "/TikTok_logo.svg",
+      shape: "wordmark",
     },
     {
       name: "Amazon",
       href: "https://www.aboutamazon.com/",
       logo: "/Amazon_logo.svg",
+      shape: "wordmark",
     },
     {
       name: "JD.com",
       href: "https://www.jd.com/",
       logo: "/JD.com_logo.png",
+      shape: "wordmark",
     },
   ].map((item) => ({ ...item, logoSrc: withBase(item.logo) })),
 );

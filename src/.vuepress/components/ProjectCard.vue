@@ -1,5 +1,5 @@
 <template>
-  <article class="project-card">
+  <article class="project-card home-card-shell">
     <div class="project-card__header">
       <div class="project-card__title-group">
         <p class="project-card__eyebrow">{{ role || "Project" }}</p>
@@ -8,7 +8,7 @@
           <template v-else>{{ name }}</template>
         </h3>
       </div>
-      <span v-if="time" class="project-card__time">{{ time }}</span>
+      <span v-if="time" class="project-card__time home-card-time">{{ time }}</span>
     </div>
 
     <p v-if="award" class="project-card__award">
@@ -53,41 +53,18 @@ const highlights = computed(() => props.highlights ?? []);
 
 <style scoped>
 .project-card {
-  position: relative;
-  overflow: hidden;
   display: grid;
-  gap: 0.85rem;
+  gap: var(--dl-space-4);
   align-content: start;
-  padding: 1.25rem 1.3rem;
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
-  border-radius: 20px;
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--vp-c-bg) 90%, var(--vp-c-bg-soft)) 0%,
-    color-mix(in srgb, var(--vp-c-bg-soft) 94%, transparent) 100%
-  );
-  box-shadow:
-    0 18px 38px rgba(15, 23, 42, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 0.16);
-  transition:
-    transform 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.project-card:hover {
-  transform: translateY(-2px);
-  border-color: color-mix(in srgb, var(--vp-c-accent) 24%, var(--vp-c-divider));
-  box-shadow:
-    0 24px 46px rgba(15, 23, 42, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  padding: 1.3rem 1.35rem;
+  background: var(--dl-surface);
 }
 
 .project-card__header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 0.75rem;
+  gap: var(--dl-space-3);
 }
 
 .project-card__title-group {
@@ -97,7 +74,7 @@ const highlights = computed(() => props.highlights ?? []);
 .project-card__eyebrow {
   margin: 0 0 0.2rem;
   font-size: 0.72rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--vp-c-text-3);
@@ -105,8 +82,9 @@ const highlights = computed(() => props.highlights ?? []);
 
 .project-card__title-group h3 {
   margin: 0;
-  font-size: 1.08rem;
+  font-size: clamp(1.08rem, 1.4vw, 1.18rem);
   line-height: 1.3;
+  letter-spacing: -0.02em;
   color: var(--vp-c-text-1);
 }
 
@@ -116,23 +94,13 @@ const highlights = computed(() => props.highlights ?? []);
 
 .project-card__time {
   flex-shrink: 0;
-  display: inline-flex;
-  align-items: center;
-  min-height: 1.8rem;
-  padding: 0.22rem 0.62rem;
-  border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
-  background: color-mix(in srgb, var(--vp-c-bg) 94%, transparent);
-  color: var(--vp-c-text-2);
-  font-size: 0.78rem;
-  font-weight: 600;
   white-space: nowrap;
 }
 
 .project-card__award {
   display: inline-flex;
   align-items: center;
-  gap: 0.4rem;
+  gap: var(--dl-space-1);
   width: fit-content;
   margin: 0;
   padding: 0.24rem 0.68rem;
@@ -159,7 +127,7 @@ const highlights = computed(() => props.highlights ?? []);
   margin: 0;
   padding-left: 1.1rem;
   display: grid;
-  gap: 0.4rem;
+  gap: var(--dl-space-1);
   color: var(--vp-c-text-2);
   line-height: 1.65;
   font-size: 0.94rem;
@@ -168,7 +136,7 @@ const highlights = computed(() => props.highlights ?? []);
 .project-card__tech {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.4rem;
+  gap: var(--dl-space-1);
 }
 
 .project-card__tech-tag {
@@ -177,8 +145,8 @@ const highlights = computed(() => props.highlights ?? []);
   min-height: 1.8rem;
   padding: 0.22rem 0.62rem;
   border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--vp-c-accent) 20%, var(--vp-c-divider));
-  background: color-mix(in srgb, var(--vp-c-accent-soft) 62%, var(--vp-c-bg));
+  border: 1px solid var(--dl-accent-line);
+  background: var(--dl-accent-soft);
   color: var(--vp-c-text-1);
   font-size: 0.78rem;
   font-weight: 600;
@@ -191,12 +159,11 @@ const highlights = computed(() => props.highlights ?? []);
 @media (max-width: 719px) {
   .project-card {
     padding: 1.05rem 1rem;
-    border-radius: 18px;
   }
 
   .project-card__header {
     flex-direction: column;
-    gap: 0.5rem;
+    gap: var(--dl-space-2);
   }
 }
 </style>

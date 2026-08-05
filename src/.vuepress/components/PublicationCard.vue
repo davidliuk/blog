@@ -1,13 +1,21 @@
 <template>
-  <div class="pub-card" :class="{ 'pub-card--no-image': !image }">
+  <article class="pub-card home-card-shell" :class="{ 'pub-card--no-image': !image }">
     <div v-if="image" class="pub-head">
-      <img :src="imgSrc" class="pub-img" />
+      <img
+        :src="imgSrc"
+        :alt="`${title} preview`"
+        class="pub-img"
+        loading="lazy"
+        decoding="async"
+      />
     </div>
     <div class="pub-body">
       <h4 class="pub-title">{{ title }}</h4>
       <div class="pub-meta">
-        <Badge v-if="venue" :text="venue" type="info" />
-        <span v-if="date" class="pub-date">{{ date }}</span>
+        <div v-if="venue || date" class="pub-meta-tags">
+          <span v-if="venue" class="pub-meta-pill pub-venue">{{ venue }}</span>
+          <span v-if="date" class="pub-meta-pill pub-date">{{ date }}</span>
+        </div>
         <span v-if="formattedAuthors.length" class="pub-authors">
           <template v-for="(a, i) in formattedAuthors" :key="i">
             <span :class="a.isMe ? 'me' : ''">{{ a.text }}</span
@@ -20,15 +28,24 @@
       </div>
       <div class="pub-links">
         <div class="pub-links-left">
-          <a v-if="paper" :href="paper" target="_blank" rel="noopener">Paper</a>
+          <a
+            v-if="paper"
+            :href="paper"
+            target="_blank"
+            rel="noopener"
+            class="pub-action pub-action--paper"
+          >
+            <span>Paper</span>
+            <span class="pub-link-arrow" aria-hidden="true">↗</span>
+          </a>
           <a
             v-if="github"
             :href="github"
             target="_blank"
             rel="noopener"
-            class="pub-link-github"
+            class="pub-action pub-link-github"
           >
-            <span class="pub-link-github-main" aria-label="Open GitHub repository">
+            <span class="pub-link-github-main">
               <svg
                 class="pub-link-icon"
                 viewBox="0 0 16 16"
@@ -62,24 +79,36 @@
               </svg>
               <span>{{ formattedGithubStars }}</span>
             </span>
+            <span class="pub-link-arrow" aria-hidden="true">↗</span>
           </a>
           <a
             v-if="website"
             :href="website"
             target="_blank"
             rel="noopener"
-            >Website</a
+            class="pub-action pub-action--website"
           >
+            <span>Website</span>
+            <span class="pub-link-arrow" aria-hidden="true">↗</span>
+          </a>
         </div>
-        <div class="spacer"></div>
-        <div class="pub-links-right">
-          <span class="abs-action" @click="expanded = !expanded">{{
-            expanded ? "Hide abstract" : "Read more"
-          }}</span>
-        </div>
+        <button
+          v-if="abstract"
+          type="button"
+          class="abs-action"
+          :aria-expanded="expanded"
+          @click="expanded = !expanded"
+        >
+          <span>{{ expanded ? "Show less" : "Read abstract" }}</span>
+          <span
+            class="abs-action__icon"
+            :class="{ 'abs-action__icon--expanded': expanded }"
+            aria-hidden="true"
+          ></span>
+        </button>
       </div>
     </div>
-  </div>
+  </article>
 </template>
 
 <script setup lang="ts">
@@ -222,6 +251,7 @@ function writeCachedGitHubStars(repo: string, stars: number): void {
 <style scoped>
 .pub-abs {
   position: relative;
+  margin: 0.75rem 0 0.9rem;
 }
 .pub-abs p {
   margin: 0 0 6px 0;
@@ -232,55 +262,114 @@ function writeCachedGitHubStars(repo: string, stars: number): void {
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
-.pub-links {
+.pub-meta {
+  display: grid;
+  gap: 0.55rem;
+  margin-bottom: 0;
+}
+.pub-meta-tags {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 0.45rem;
 }
-.pub-meta {
-  margin-bottom: 0.25rem;
+.pub-meta-pill {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 1.75rem;
+  padding: 0.25rem 0.58rem;
+  border: 1px solid var(--dl-border);
+  border-radius: 999px;
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+.pub-venue {
+  border-color: var(--dl-accent-line);
+  background: var(--dl-accent-soft);
+  color: var(--vp-c-accent);
 }
 .pub-date {
-  font-weight: 600;
+  background: var(--dl-chip);
+  color: var(--vp-c-text-2);
 }
 .pub-authors {
+  display: block;
   line-height: 1.5;
+}
+.pub-links {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 0.7rem 1rem;
+  margin-top: 0.15rem;
 }
 .pub-links-left {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 0.55rem;
 }
-.pub-links-left a {
+.pub-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 2.5rem;
+  min-height: 2.5rem;
   margin-right: 0;
+  padding: 0 0.82rem;
+  gap: 0.42rem;
+  border: 1px solid var(--dl-border);
+  border-radius: 999px;
+  background: var(--dl-chip);
+  color: var(--vp-c-text-1);
+  font-size: 0.9rem;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color var(--vp-t-color);
+}
+.pub-action::after {
+  content: none !important;
+}
+.pub-action--paper {
+  border-color: var(--dl-accent-line);
+  background: var(--dl-accent-soft);
+  color: var(--vp-c-accent);
+}
+.pub-action--website {
+  color: var(--vp-c-text-2);
 }
 .pub-link-github {
   gap: 0;
-  padding: 0.2rem 0.28rem 0.2rem 0.7rem !important;
-  border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent) !important;
-  background: color-mix(in srgb, var(--vp-c-bg-soft) 94%, var(--vp-c-bg)) !important;
-  color: #24292f !important;
+  padding: 0 0.42rem 0 0.76rem;
 }
 .pub-link-github-main {
   display: inline-flex;
   align-items: center;
-  gap: 0.48rem;
-  min-height: 1.7rem;
-  padding: 0.08rem 0.58rem 0.08rem 0;
+  gap: 0.38rem;
+  height: 100%;
+  padding-right: 0.58rem;
   color: inherit;
 }
 .pub-link-github-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.34rem;
-  min-height: 1.7rem;
-  margin-left: 0.4rem;
-  padding: 0.08rem 0.36rem 0.08rem 0.72rem;
-  border-left: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
-  font-size: 0.84rem;
+  align-self: stretch;
+  gap: 0.28rem;
+  min-height: 0;
+  padding: 0 0.52rem;
+  border-left: 1px solid var(--dl-border);
+  font-size: 0.78rem;
   font-weight: 700;
   white-space: nowrap;
   color: inherit;
@@ -292,52 +381,125 @@ function writeCachedGitHubStars(repo: string, stars: number): void {
 .pub-link-star-icon {
   color: #8a6914;
 }
-.pub-link-github:hover {
-  border-color: color-mix(in srgb, var(--vp-c-accent) 35%, var(--vp-c-divider));
-  transform: translateY(-1px);
-  color: #111827 !important;
+.pub-link-arrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 0.9rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  line-height: 1;
+  opacity: 0.7;
+  transform: translateY(-0.04rem);
 }
-[data-theme="dark"] .pub-link-github {
-  background: color-mix(in srgb, var(--vp-c-bg-soft) 86%, var(--vp-c-bg));
-  color: #e6edf3;
+.pub-action:hover {
+  border-color: var(--dl-accent-line-strong);
+  transform: translateY(-1px);
+  box-shadow: var(--dl-shadow-1);
+  text-decoration: none;
 }
 [data-theme="dark"] .pub-link-star-icon {
   color: #d29922;
 }
-.spacer {
-  flex: 1;
-}
-.pub-links-right {
-  display: flex;
-  align-items: center;
-  margin-left: auto;
-}
 .abs-action {
   display: inline-flex;
   align-items: center;
-  min-height: 2rem;
-  padding: 0.28rem 0.72rem;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 2.5rem;
+  padding: 0 0.5rem 0 0.72rem;
+  gap: 0.38rem;
   border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
-  background: color-mix(in srgb, var(--vp-c-bg-soft) 88%, var(--vp-c-bg));
-  color: var(--vp-c-text-2);
-  font-weight: 600;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--vp-c-accent);
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
   cursor: pointer;
   transition:
-    color 0.2s ease,
     border-color 0.2s ease,
-    transform 0.2s ease;
+    background-color var(--vp-t-color);
 }
-
 .abs-action:hover {
-  color: var(--vp-c-accent);
-  border-color: color-mix(in srgb, var(--vp-c-accent) 35%, var(--vp-c-divider));
-  transform: translateY(-1px);
+  border-color: var(--dl-accent-line);
+  background: var(--dl-accent-soft);
+}
+.abs-action__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.25rem;
+  height: 1.25rem;
+  border-radius: 50%;
+  background: var(--dl-accent-soft);
+  transition: transform 0.2s ease;
+}
+.abs-action__icon::before {
+  content: "";
+  width: 0.34rem;
+  height: 0.34rem;
+  border-right: 1.5px solid currentColor;
+  border-bottom: 1.5px solid currentColor;
+  transform: translateY(-0.08rem) rotate(45deg);
+}
+.abs-action__icon--expanded {
+  transform: rotate(180deg);
+}
+.pub-action:focus-visible,
+.abs-action:focus-visible {
+  outline: 2px solid var(--vp-c-accent);
+  outline-offset: 2px;
 }
 
 @media (max-width: 719px) {
-  .pub-links-right {
-    margin-left: 0;
+  .pub-meta {
+    gap: 0.6rem;
+  }
+  .pub-links {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.7rem;
+  }
+  .pub-links-left {
+    width: 100%;
+    gap: 0.5rem;
+  }
+  .pub-action {
+    height: 2.45rem;
+    min-height: 2.45rem;
+  }
+  .abs-action {
+    justify-content: flex-start;
+    width: 100%;
+    height: auto;
+    min-height: 2.45rem;
+    padding: 0.7rem 0 0.05rem;
+    border: 0;
+    border-top: 1px solid var(--dl-border);
+    border-radius: 0;
+  }
+  .abs-action:hover {
+    border-color: var(--dl-border);
+    background: transparent;
+  }
+}
+
+@media (max-width: 359px) {
+  .pub-links-left {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+  }
+  .pub-action {
+    justify-content: flex-start;
+    width: 100%;
+  }
+  .pub-link-arrow {
+    margin-left: auto;
+  }
+  .pub-link-github {
+    padding-right: 0.72rem;
   }
 }
 </style>

@@ -1,9 +1,15 @@
 <template>
-  <article class="experience-card">
+  <article class="experience-card home-card-shell">
     <div class="experience-card__header">
       <div class="experience-card__brand">
         <div v-if="logoSrc" class="experience-card__logo-shell">
-          <img :src="logoSrc" :alt="company" class="experience-card__logo" />
+          <img
+            :src="logoSrc"
+            :alt="company"
+            class="experience-card__logo"
+            loading="lazy"
+            decoding="async"
+          />
         </div>
         <div class="experience-card__title-group">
           <p class="experience-card__eyebrow">{{ company }}</p>
@@ -13,8 +19,8 @@
       </div>
 
       <div class="experience-card__meta">
-        <span v-if="time" class="experience-card__meta-pill">{{ time }}</span>
-        <span v-if="location" class="experience-card__meta-pill">{{ location }}</span>
+        <span v-if="time" class="experience-card__meta-item">{{ time }}</span>
+        <span v-if="location" class="experience-card__meta-item">{{ location }}</span>
       </div>
     </div>
 
@@ -69,60 +75,22 @@ const logoSrc = computed(() => {
 
 <style scoped>
 .experience-card {
-  position: relative;
-  overflow: hidden;
   display: grid;
-  gap: 1rem;
+  gap: var(--dl-space-4);
   padding: 1.3rem 1.35rem;
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
-  border-radius: 22px;
-  background:
-    radial-gradient(circle at top right, color-mix(in srgb, var(--vp-c-accent-soft) 68%, transparent), transparent 38%),
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--vp-c-bg) 90%, var(--vp-c-bg-soft)) 0%,
-      color-mix(in srgb, var(--vp-c-bg-soft) 96%, transparent) 100%
-    );
-  box-shadow:
-    0 18px 38px rgba(15, 23, 42, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 0.16);
-  transition:
-    transform 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.experience-card::before {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 4px;
-  background: linear-gradient(
-    180deg,
-    var(--vp-c-accent),
-    color-mix(in srgb, var(--vp-c-accent) 20%, transparent)
-  );
-}
-
-.experience-card:hover {
-  transform: translateY(-2px);
-  border-color: color-mix(in srgb, var(--vp-c-accent) 24%, var(--vp-c-divider));
-  box-shadow:
-    0 24px 46px rgba(15, 23, 42, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 }
 
 .experience-card__header {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 1rem;
+  gap: var(--dl-space-4);
 }
 
 .experience-card__brand {
   display: flex;
   align-items: flex-start;
-  gap: 0.95rem;
+  gap: var(--dl-space-4);
   min-width: 0;
 }
 
@@ -134,14 +102,9 @@ const logoSrc = computed(() => {
   width: 3.3rem;
   height: 3.3rem;
   padding: 0.55rem;
-  border-radius: 16px;
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
-  background:
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--vp-c-bg) 92%, transparent) 0%,
-      color-mix(in srgb, var(--vp-c-bg-soft) 96%, transparent) 100%
-    );
+  border-radius: var(--dl-radius-md);
+  border: 1px solid var(--dl-border);
+  background: var(--dl-surface);
 }
 
 .experience-card__logo {
@@ -157,7 +120,7 @@ const logoSrc = computed(() => {
 .experience-card__eyebrow {
   margin: 0 0 0.2rem;
   font-size: 0.72rem;
-  font-weight: 700;
+  font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--vp-c-text-3);
@@ -165,8 +128,9 @@ const logoSrc = computed(() => {
 
 .experience-card__title-group h3 {
   margin: 0;
-  font-size: 1.12rem;
+  font-size: clamp(1.08rem, 1.4vw, 1.18rem);
   line-height: 1.3;
+  letter-spacing: -0.02em;
   color: var(--vp-c-text-1);
 }
 
@@ -177,24 +141,21 @@ const logoSrc = computed(() => {
 }
 
 .experience-card__meta {
+  flex-shrink: 0;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  gap: 0.45rem;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.15rem;
+  padding-top: 0.15rem;
+  max-width: 40%;
+  text-align: right;
 }
 
-.experience-card__meta-pill {
-  display: inline-flex;
-  align-items: center;
-  min-height: 1.9rem;
-  padding: 0.25rem 0.68rem;
-  border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
-  background: color-mix(in srgb, var(--vp-c-bg) 94%, transparent);
-  color: var(--vp-c-text-2);
+.experience-card__meta-item {
+  color: var(--vp-c-text-3);
   font-size: 0.8rem;
-  font-weight: 600;
-  white-space: nowrap;
+  font-weight: 550;
+  line-height: 1.45;
 }
 
 .experience-card__summary {
@@ -205,7 +166,7 @@ const logoSrc = computed(() => {
 
 .experience-card__focus {
   display: grid;
-  gap: 0.55rem;
+  gap: var(--dl-space-2);
 }
 
 .experience-card__focus-label {
@@ -219,7 +180,7 @@ const logoSrc = computed(() => {
 .experience-card__focus-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
+  gap: var(--dl-space-1);
 }
 
 .experience-card__focus-tag {
@@ -228,8 +189,8 @@ const logoSrc = computed(() => {
   min-height: 1.9rem;
   padding: 0.26rem 0.68rem;
   border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--vp-c-accent) 20%, var(--vp-c-divider));
-  background: color-mix(in srgb, var(--vp-c-accent-soft) 62%, var(--vp-c-bg));
+  border: 1px solid var(--dl-accent-line);
+  background: var(--dl-accent-soft);
   color: var(--vp-c-text-1);
   font-size: 0.8rem;
   font-weight: 600;
@@ -240,7 +201,7 @@ const logoSrc = computed(() => {
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 0.8rem;
+  gap: var(--dl-space-3);
 }
 
 .experience-card__highlights li {
@@ -263,17 +224,9 @@ const logoSrc = computed(() => {
   box-shadow: 0 0 0 5px color-mix(in srgb, var(--vp-c-accent-soft) 80%, transparent);
 }
 
-[data-theme="dark"] .experience-card,
-[data-theme="dark"] .experience-card__logo-shell {
-  box-shadow:
-    0 16px 34px rgba(0, 0, 0, 0.28),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
-}
-
 @media (max-width: 719px) {
   .experience-card {
-    padding: 1.1rem 1rem;
-    border-radius: 20px;
+    padding: 1.05rem 1rem;
   }
 
   .experience-card__header {
@@ -281,7 +234,12 @@ const logoSrc = computed(() => {
   }
 
   .experience-card__meta {
-    justify-content: flex-start;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.15rem 0.5rem;
+    max-width: 100%;
+    text-align: start;
   }
 
   .experience-card__logo-shell {

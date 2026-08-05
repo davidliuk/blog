@@ -1,6 +1,6 @@
 import { hopeTheme } from "vuepress-theme-hope";
-import { enNavbar, zhNavbar } from "./navbar/index.js";
-import { enSidebar, zhSidebar } from "./sidebar/index.js";
+import { enNavbar } from "./navbar/index.js";
+import { enSidebar } from "./sidebar/index.js";
 
 export default hopeTheme({
   hostname: "https://davidliuk.github.io",
@@ -38,35 +38,15 @@ export default hopeTheme({
         link: "https://openreview.net/profile?id=%7EDawei_Liu6",
         icon: '<svg xmlns="http://www.w3.org/2000/svg" class="vp-social-media-icon openreview-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#8c1b13"/><path fill="#fff" d="M6 5.75c0-.69.56-1.25 1.25-1.25h6.62L18 8.63v9.62c0 .69-.56 1.25-1.25 1.25h-9.5C6.56 19.5 6 18.94 6 18.25V5.75Zm2 1v10.5h8V9.5h-3V6.75H8Zm1.5 5.25h5v1.5h-5V12Zm0 3h5v1.5h-5V15Z"/></svg>',
       },
-      Email: "davidliu02k@gmail.com",
-      // Gitee: "https://gitee.com/da-wei-liu",
-      // BiliBili: "https://example.com",
-      // Baidu: "https://example.com",
-      // Bitbucket: "https://example.com",
-      // Dingding: "https://example.com",
-      // Discord: "https://example.com",
-      // Dribbble: "https://example.com",
-      // Evernote: "https://example.com",
-      // Facebook: "https://example.com",
-      // Flipboard: "https://example.com",
-      // Gitlab: "https://example.com",
-      // Gmail: "https://example.com",
-      // Instagram: "https://example.com",
-      // Lark: "https://example.com",
-      // Lines: "https://example.com",
-      // Pinterest: "https://example.com",
-      // Pocket: "https://example.com",
-      // QQ: "https://example.com",
-      // Qzone: "https://example.com",
-      // Reddit: "https://example.com",
-      // Rss: "https://example.com",
-      // Steam: "https://example.com",
-      // Twitter: "https://example.com",
-      // Wechat: "https://example.com",
-      // Weibo: "https://example.com",
-      // Whatsapp: "https://example.com",
-      // Youtube: "https://example.com",
-      // Zhihu: "https://example.com",
+      // A lettermark badge rather than a copy of dblp's own logo: the icon row
+      // is desaturated at rest, so what has to survive is the four letters.
+      DBLP: {
+        link: "https://dblp.org/pid/57/1575-5.html",
+        icon: '<svg xmlns="http://www.w3.org/2000/svg" class="vp-social-media-icon dblp-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#12457a"/><text x="12" y="15.6" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="9.2" font-weight="700" letter-spacing="-0.5" fill="#fff">dblp</text></svg>',
+      },
+      // Needs the scheme: a bare address is treated as a relative path, so the
+      // hero's mail icon linked to /davidliu02k@gmail.com on the site root.
+      Email: "mailto:davidliu02k@gmail.com",
     },
   },
 
@@ -85,45 +65,12 @@ export default hopeTheme({
       blog: {
         description:
           "AI systems researcher and software engineer building reliable agents and maintaining structured notes on algorithms, AI, computer science, and production engineering.",
-        intro: "/me",
+        intro: "/",
       },
 
       metaLocales: {
         editLink: "Edit this page on GitHub",
       },
-    },
-
-    /**
-     * Chinese locale config
-     */
-    // "/zh/": {
-    //   // navbar
-    //   navbar: zhNavbar,
-
-    //   // sidebar
-    //   sidebar: zhSidebar,
-
-    //   footer: " David's Blog",
-
-    //   displayFooter: true,
-
-    //   blog: {
-    //     description: "CS@UPenn 26', SDE Intern@TikTok, Amazon, JD.com",
-    //     intro: "/zh/intro.html",
-    //   },
-
-    //   // page meta
-    //   metaLocales: {
-    //     editLink: "在 GitHub 上编辑此页",
-    //   },
-    // },
-  },
-
-  encrypt: {
-    config: {
-      "/apply/program": ["dawei.app"],
-      "/demo/encrypt.html": ["1234"],
-      "/zh/demo/encrypt.html": ["1234"],
     },
   },
 

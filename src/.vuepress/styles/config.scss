@@ -1,3 +1,27 @@
-// you can change config here
-$colors: #c0392b, #d35400, #f39c12, #27ae60, #16a085, #2980b9, #8e44ad, #2c3e50,
-  #7f8c8d !default;
+// Brand color.
+//
+// `$theme-color` must live here, not in `palette.scss`: the theme's palette
+// generator reads it from the *config* module, so a value set in the palette
+// file is silently ignored.
+//
+// The generator pins the accent to lightness 35%, so only hue and saturation
+// are ours to choose. This is a deeper, less minty pine than the theme default
+// (#3eaf7c): it sits at ~4.9:1 against white, where the old accent's 4.0:1 left
+// inline links and "Read more" affordances below AA.
+$theme-color: #3f9c76;
+
+// Badge / code-tab accents. Replaces the stock flat-UI rainbow, which had three
+// competing reds and no relationship to the brand green. This ramp is one hue
+// step apart per entry and holds a similar lightness, so a page using several
+// at once still reads as one palette.
+$colors: #b4553f, #c07a2e, #a58a26, #4f8f45, #2f8f77, #2f7d9c, #4f6bb0, #7a5ea8,
+  #6b7280 !default;
+
+// Code panels. The theme default is #ecf4fa — a cool blue that fought both the
+// warm page canvas and the green accent on every technical page. A warm neutral
+// in light mode, and a panel darker than the card surface in dark mode, so code
+// reads as recessed rather than as another card.
+$code-bg-color: (
+  light: #f7f5f0,
+  dark: #171a1f,
+);

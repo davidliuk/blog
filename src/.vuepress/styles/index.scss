@@ -1,4 +1,235 @@
 // ---------------------------------------------------------------------------
+// Design tokens
+//
+// Two things to know about the theme's variables:
+//
+// 1. It exposes `--vp-c-text`, `--vp-c-text-mute` and `--vp-c-text-subtle`.
+//    The styles below were written against the VitePress names
+//    (`--vp-c-text-1/2/3`), which the theme never defines — every one of those
+//    declarations was dropping out and inheriting the body color, which is why
+//    eyebrows, captions and body copy all rendered at the same weight. The
+//    aliases restore the intended three-step type hierarchy.
+//
+// 2. `--vp-c-bg-soft` is *not* a soft surface color: the palette generator
+//    defines it as the background at 90% alpha, for translucent chrome. On a
+//    white page every "soft" card was therefore white-on-white. Rather than
+//    restate a background on ~20 components, the page canvas is tinted here so
+//    the existing white surfaces read as raised cards.
+// ---------------------------------------------------------------------------
+:root {
+  // Three type levels, mixed toward the background rather than taken from the
+  // theme's own mute/subtle pair. The theme's subtle step is 56% alpha, which
+  // lands at 3.1:1 on white — under AA, and these are 11px uppercase eyebrows
+  // carrying real labels ("Affiliations", "Themes", dates). The steps below are
+  // roughly 11.6 : 7 : 4.8 against a white card, so the hierarchy still reads
+  // but every level stays legible.
+  --vp-c-text-1: var(--vp-c-text);
+  --vp-c-text-2: color-mix(in srgb, var(--vp-c-text) 85%, var(--vp-c-bg));
+  --vp-c-text-3: color-mix(in srgb, var(--vp-c-text) 72%, var(--vp-c-bg));
+
+  // Page canvas behind the content surfaces. Warm rather than neutral grey —
+  // it belongs to the same family as the PWA manifest's #f5f1e8 and makes the
+  // pine accent read richer than it does on a cool grey.
+  --dl-canvas: #f5f4f0;
+
+  // The one card surface. Cards used to stack a corner glow over a
+  // background-to-background linear gradient, which on a white page amounted to
+  // white over white plus noise; now the canvas provides the contrast and the
+  // card is simply a surface.
+  --dl-surface: #ffffff;
+
+  // Neutral chip fill. Every quiet chip on the page (GPA label, one-off honors,
+  // paper dates, tech counts) was filled with `--vp-c-bg-soft`, i.e. the
+  // background at 90% alpha, so on a white card they were white on white and
+  // only their hairline border showed.
+  // Warm rather than the neutral grey a plain text/background mix produces:
+  // a cool chip on a warm canvas is the kind of mismatch that reads as "off"
+  // without being nameable.
+  --dl-chip: #f1efe9;
+
+  // Deep green ink used for display type and active navigation. These flip in
+  // dark mode — they used to be hardcoded, which left the hero name, the site
+  // name and every active nav pill rendering near-black on a dark background.
+  --dl-ink: #17352f;
+  --dl-ink-2: #245347;
+
+  // Accent ramp. Before this, accent tints were mixed inline at roughly thirty
+  // different percentages (6%, 12%, 18%, 20%, 22%, 24%, 26%, …), so no two
+  // chips, borders or hover states shared a value. Four steps cover every use.
+  --dl-accent-wash: color-mix(in srgb, var(--vp-c-accent) 6%, var(--vp-c-bg));
+  --dl-accent-soft: color-mix(in srgb, var(--vp-c-accent) 12%, var(--vp-c-bg));
+  --dl-accent-line: color-mix(in srgb, var(--vp-c-accent) 24%, var(--vp-c-divider));
+  --dl-accent-line-strong: color-mix(in srgb, var(--vp-c-accent) 45%, var(--vp-c-divider));
+
+  // One border color, three elevation steps. Components pick a step instead of
+  // inventing their own shadow stack.
+  --dl-border: color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
+  --dl-border-strong: var(--dl-accent-line);
+  --dl-shadow-1: 0 1px 2px rgba(15, 23, 42, 0.04), 0 6px 16px rgba(15, 23, 42, 0.045);
+  --dl-shadow-2: 0 2px 4px rgba(15, 23, 42, 0.04), 0 14px 30px rgba(15, 23, 42, 0.06);
+  --dl-shadow-3: 0 4px 8px rgba(15, 23, 42, 0.05), 0 24px 50px rgba(15, 23, 42, 0.09);
+
+  // Radius scale.
+  --dl-radius-sm: 12px;
+  --dl-radius-md: 16px;
+  --dl-radius-lg: 20px;
+  --dl-radius-xl: 26px;
+
+  // Spacing scale for card padding and grid gaps.
+  --dl-space-1: 0.35rem;
+  --dl-space-2: 0.55rem;
+  --dl-space-3: 0.8rem;
+  --dl-space-4: 1rem;
+  --dl-space-5: 1.35rem;
+  --dl-space-6: 2rem;
+}
+
+[data-theme="dark"] {
+  --dl-canvas: #14161a;
+  --dl-surface: #1e2127;
+  --dl-chip: #272b31;
+  --dl-ink: #e8f4ee;
+  --dl-ink-2: #a9d2bf;
+  // Tints read against the dark surface, not the near-black canvas.
+  --dl-accent-wash: color-mix(in srgb, var(--vp-c-accent) 10%, var(--vp-c-bg));
+  --dl-accent-soft: color-mix(in srgb, var(--vp-c-accent) 18%, var(--vp-c-bg));
+  --dl-border: color-mix(in srgb, var(--vp-c-divider) 82%, transparent);
+  --dl-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.3), 0 6px 16px rgba(0, 0, 0, 0.22);
+  --dl-shadow-2: 0 2px 4px rgba(0, 0, 0, 0.32), 0 14px 30px rgba(0, 0, 0, 0.26);
+  --dl-shadow-3: 0 4px 8px rgba(0, 0, 0, 0.34), 0 24px 50px rgba(0, 0, 0, 0.34);
+}
+
+html,
+body {
+  background: var(--dl-canvas);
+}
+
+// ---------------------------------------------------------------------------
+// Focus
+//
+// Neither the theme nor these styles defined a focus ring, so keyboard users
+// got whatever the browser's default outline happened to be on top of custom
+// pill and card shapes — often a rectangle around a 999px pill, and nothing at
+// all where a background had been painted over it. One ring, one offset,
+// following each component's own radius.
+// ---------------------------------------------------------------------------
+.vp-portfolio-home a:focus-visible,
+.vp-portfolio-home button:focus-visible,
+.knowledge-atlas-card:focus-visible,
+.knowledge-crosslinks a:focus-visible,
+.ai-card:focus-visible,
+.section-card:focus-visible,
+#navbar.vp-navbar a:focus-visible,
+#navbar.vp-navbar button:focus-visible {
+  outline: 2px solid var(--vp-c-accent);
+  outline-offset: 2px;
+}
+
+// ---------------------------------------------------------------------------
+// Entrance motion
+//
+// The theme drops the hero in piece by piece with its `DropTransition`
+// (translateY(-20px) + fade, 0.25s ease-in-out, staggered 0.04s apart). Two
+// things went wrong with that:
+//
+//   * `PortfolioHero` wraps the avatar in a `DropTransition` **without**
+//     `appear: true`, unlike every one of its siblings. Vue only animates an
+//     initial render when `appear` is set, so the avatar was the single element
+//     in the hero that simply existed while the text around it dropped in.
+//
+//   * `HomePage` wraps the entire markdown body in one `DropTransition` at a
+//     0.32s delay, so a 10,000px document slid up 20px as a single slab after
+//     the hero had finished. At that size the movement reads as a layout glitch
+//     rather than an entrance.
+//
+// The keyframes below reproduce the theme's own curve so the avatar joins the
+// sequence, and the body slab is reduced to a plain fade.
+// ---------------------------------------------------------------------------
+@keyframes dl-drop-in {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Slots into the theme's stagger between the avatar (0.04s) and the welcome
+// line (0.08s) — the frame is what the eye reads, not the photo inside it.
+.vp-portfolio-home #portfolio.vp-portfolio .vp-portfolio-avatar {
+  animation: dl-drop-in 0.25s ease-in-out 0.04s backwards;
+}
+
+// Teleported into the hero after mount, so it had no entrance of its own and
+// popped in against neighbours that were still animating. It sits between the
+// title (0.16s) and the contact icons (0.2s) in the hero, so it takes a delay
+// in that gap — the teleport itself costs about a frame on top.
+.vp-portfolio-home .home-affiliation-strip {
+  animation: dl-drop-in 0.25s ease-in-out 0.17s backwards;
+}
+
+.vp-portfolio-home [vp-content].vp-portfolio-content {
+  // Overrides the inline styles `DropTransition` writes on this element. The
+  // fade is kept (it covers the gap while the hero settles); the 20px slide of
+  // the whole page is not.
+  transform: none !important;
+  transition: opacity 0.45s ease 0.2s !important;
+}
+
+@keyframes dl-caret-blink {
+  0%,
+  50% {
+    opacity: 1;
+  }
+
+  50.01%,
+  100% {
+    opacity: 0;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Reduced motion
+//
+// The theme's entrance animations are driven by inline styles from JavaScript,
+// so they ignored the OS setting entirely: a reader who has asked for less
+// motion still got the hero dropping in and the body sliding up.
+//
+// Durations collapse rather than being switched off, because the hero's opacity
+// is set to 0 inline and only restored when Vue sees the transition finish —
+// removing the transition outright risks leaving the name invisible.
+// ---------------------------------------------------------------------------
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .vp-portfolio-home .vp-portfolio-title::after {
+    animation: none;
+  }
+
+  .vp-portfolio-home #portfolio.vp-portfolio .vp-portfolio-avatar,
+  .vp-portfolio-home .home-affiliation-strip {
+    animation: none;
+  }
+
+  // Nothing should still be mid-lift when transitions are effectively removed.
+  .vp-portfolio-home [vp-content].vp-portfolio-content,
+  .vp-portfolio-home #portfolio.vp-portfolio .vp-portfolio-info > * {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Portfolio homepage: compact hero + square avatar frame
 // ---------------------------------------------------------------------------
 .vp-portfolio-home #portfolio.vp-portfolio {
@@ -7,10 +238,15 @@
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: clamp(1.35rem, 3.2vw, 2.5rem);
   min-height: unset !important;
-  padding: 2.85rem 1.5rem 2.15rem;
+  // Match the gutter of `[vp-content]` (max-width: min(84%, 1200px), centered)
+  // so the avatar starts on the same vertical line as every section below it.
+  // Before this the hero was a centered flex group in a full-bleed band, which
+  // left it visibly indented from the rest of the page.
+  padding-block: 2.85rem 2.15rem;
+  padding-inline: max(1.5rem, calc((100% - min(84%, 1200px)) / 2));
   box-sizing: border-box;
   overflow: hidden;
 
@@ -63,7 +299,7 @@
     flex-shrink: 0;
 
     padding: 12px;
-    border-radius: 26px;
+    border-radius: var(--dl-radius-xl);
     background: var(--vp-c-bg);
     border: 1px solid var(--vp-c-divider);
     box-shadow:
@@ -75,7 +311,9 @@
       content: "";
       position: absolute;
       inset: -1px;
-      border-radius: 27px;
+      // Sits 1px outside the frame, so its radius has to be 1px larger to stay
+      // concentric with it.
+      border-radius: calc(var(--dl-radius-xl) + 1px);
       padding: 1px;
       background: linear-gradient(
         135deg,
@@ -104,7 +342,7 @@
       height: 148px;
       max-width: 148px;
       object-fit: cover;
-      border-radius: 18px;
+      border-radius: var(--dl-radius-md);
       box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
     }
   }
@@ -115,7 +353,7 @@
     padding-bottom: 0 !important;
     flex: 1 1 260px;
     min-width: min(100%, 260px);
-    max-width: 42rem;
+    max-width: none;
     justify-content: flex-start !important;
   }
 
@@ -152,7 +390,7 @@
     font-weight: 800 !important;
     line-height: 1.02;
     letter-spacing: -0.05em;
-    color: #17352f !important;
+    color: var(--dl-ink) !important;
     text-shadow: 0 1px 0 rgba(255, 255, 255, 0.42), 0 10px 24px rgba(27, 84, 68, 0.12);
   }
 
@@ -161,9 +399,9 @@
       background:
         linear-gradient(
           135deg,
-          #17352f 0%,
-          #245347 48%,
-          color-mix(in srgb, var(--vp-c-accent) 68%, #17352f) 100%
+          var(--dl-ink) 0%,
+          var(--dl-ink-2) 48%,
+          color-mix(in srgb, var(--vp-c-accent) 68%, var(--dl-ink)) 100%
         );
       -webkit-background-clip: text;
       background-clip: text;
@@ -177,20 +415,35 @@
     display: inline-flex;
     align-items: center;
     width: fit-content;
+    // The theme types this title one character at a time. Without a reserved
+    // width the pill grew and shrank on every keystroke and dragged the rows
+    // below it along; `min-width` holds the longest title's footprint
+    // ("AI Systems Researcher & Builder" — about 216px of text plus padding).
+    box-sizing: border-box;
+    min-width: min(100%, 16rem);
     max-width: 100%;
     min-height: 1.95rem;
     padding: 0.36rem 0.74rem;
     border-radius: 999px;
-    border: 1px solid color-mix(in srgb, var(--vp-c-accent) 20%, var(--vp-c-divider));
-    background: color-mix(in srgb, var(--vp-c-accent-soft) 50%, var(--vp-c-bg));
+    border: 1px solid var(--dl-accent-line);
+    background: var(--dl-accent-soft);
     font-size: 0.83rem !important;
     font-weight: 700 !important;
     line-height: 1.2;
     color: var(--vp-c-text-2) !important;
-    box-shadow:
-      0 8px 20px rgba(15, 23, 42, 0.05),
-      inset 0 1px 0 rgba(255, 255, 255, 0.14);
+    box-shadow: var(--dl-shadow-1);
     white-space: nowrap;
+  }
+
+  // Caret for the typewriter title, so the reserved width reads as intentional.
+  .vp-portfolio-title::after {
+    content: "";
+    width: 2px;
+    height: 0.95em;
+    margin-inline-start: 0.18rem;
+    border-radius: 1px;
+    background: var(--vp-c-accent);
+    animation: dl-caret-blink 1.1s step-end infinite;
   }
 
   .home-affiliation-strip {
@@ -199,7 +452,7 @@
     margin-top: 0.95rem;
     margin-bottom: 0.1rem;
     padding-top: 0.9rem;
-    border-top: 1px solid color-mix(in srgb, var(--vp-c-divider) 86%, transparent);
+    border-top: 1px solid var(--dl-border);
   }
 
   /* Contact row: cancel theme `margin: 8px auto` so icons line up with affiliation chips */
@@ -223,7 +476,7 @@
     justify-content: flex-start !important;
     align-items: center;
     flex-wrap: wrap;
-    gap: 0.42rem;
+    gap: var(--dl-space-1);
     border-radius: 0;
     background: transparent;
     border: none;
@@ -239,36 +492,71 @@
     width: 2.35rem;
     height: 2.35rem;
     border-radius: 999px;
-    border: 1px solid color-mix(in srgb, var(--vp-c-divider) 85%, transparent);
-    background: color-mix(in srgb, var(--vp-c-bg) 94%, transparent);
-    box-shadow:
-      0 8px 18px rgba(15, 23, 42, 0.07),
-      inset 0 1px 0 rgba(255, 255, 255, 0.14);
+    border: 1px solid var(--dl-border);
+    background: var(--dl-chip);
+    box-shadow: var(--dl-shadow-1);
     transition:
       transform 0.2s ease,
       border-color 0.2s ease,
       box-shadow 0.2s ease,
-      background 0.2s ease;
+      background-color var(--vp-t-color);
   }
 
   .vp-social-media:hover {
     transform: translateY(-1px);
-    border-color: color-mix(in srgb, var(--vp-c-accent) 24%, var(--vp-c-divider));
-    background: color-mix(in srgb, var(--vp-c-accent-soft) 56%, var(--vp-c-bg));
-    box-shadow: 0 12px 24px rgba(15, 23, 42, 0.1);
+    border-color: var(--dl-accent-line);
+    background: var(--dl-accent-soft);
+    box-shadow: var(--dl-shadow-2);
   }
 
+  // These are six third-party marks in six unrelated brand colors (GitHub
+  // black, LinkedIn blue, Scholar blue, Semantic Scholar blue disc, OpenReview
+  // red disc, mail blue), which made the row read as a sticker sheet rather
+  // than one control group. The fills are baked into the inline SVGs, so they
+  // can't take `currentColor` — desaturating at rest and restoring the brand on
+  // hover gives the row a single resting weight while keeping the marks
+  // recognisable on interaction.
   .vp-social-media svg,
   .vp-social-media .vp-social-media-icon {
     width: 1.18rem;
     height: 1.18rem;
     display: block;
+    filter: grayscale(1) opacity(0.72);
+    transition: filter 0.2s ease;
+  }
+
+  .vp-social-media:hover svg,
+  .vp-social-media:hover .vp-social-media-icon,
+  .vp-social-media:focus-visible svg,
+  .vp-social-media:focus-visible .vp-social-media-icon {
+    filter: none;
   }
 
   .vp-social-media img.vp-social-media-icon {
     object-fit: contain;
     border-radius: 0;
   }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vp-portfolio-home .vp-social-media svg,
+  .vp-portfolio-home .vp-social-media .vp-social-media-icon {
+    transition: none;
+  }
+}
+
+// In dark mode the desaturated marks need to be lighter than the surface, not
+// darker, or GitHub's black octocat disappears into the chip.
+[data-theme="dark"] .vp-portfolio-home .vp-social-media svg,
+[data-theme="dark"] .vp-portfolio-home .vp-social-media .vp-social-media-icon {
+  filter: grayscale(1) invert(1) opacity(0.78);
+}
+
+[data-theme="dark"] .vp-portfolio-home .vp-social-media:hover svg,
+[data-theme="dark"] .vp-portfolio-home .vp-social-media:hover .vp-social-media-icon,
+[data-theme="dark"] .vp-portfolio-home .vp-social-media:focus-visible svg,
+[data-theme="dark"] .vp-portfolio-home .vp-social-media:focus-visible .vp-social-media-icon {
+  filter: none;
 }
 
 [data-theme="dark"] .vp-portfolio-home #portfolio.vp-portfolio .vp-portfolio-avatar {
@@ -280,7 +568,7 @@
 @media (max-width: 719px) {
   .vp-portfolio-home #portfolio.vp-portfolio {
     flex-direction: column;
-    padding: 2rem 1rem 1.65rem;
+    padding-block: 2rem 1.65rem;
     text-align: center;
 
     .vp-portfolio-info {
@@ -342,21 +630,20 @@
   min-width: 48px;
   padding: 0 0.62rem;
   text-decoration: none !important;
-  border-radius: 12px;
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 86%, transparent);
-  background: color-mix(in srgb, var(--vp-c-bg) 92%, transparent);
-  box-shadow:
-    0 8px 18px rgba(15, 23, 42, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  border-radius: var(--dl-radius-sm);
+  border: 1px solid var(--dl-border);
+  background: var(--dl-chip);
+  box-shadow: var(--dl-shadow-1);
   transition:
     border-color 0.2s ease,
     box-shadow 0.2s ease,
-    transform 0.15s ease;
+    transform 0.15s ease,
+    background-color var(--vp-t-color);
 }
 
 .vp-portfolio-home .home-affiliation-strip__link:hover {
-  border-color: color-mix(in srgb, var(--vp-c-accent) 32%, var(--vp-c-divider));
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  border-color: var(--dl-accent-line);
+  box-shadow: var(--dl-shadow-2);
   transform: translateY(-1px);
 }
 
@@ -370,13 +657,24 @@
   filter: none;
 }
 
-[data-theme="dark"] .vp-portfolio-home .home-affiliation-strip__link {
-  background: color-mix(in srgb, var(--vp-c-bg-soft) 85%, var(--vp-c-bg));
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+// Optical sizing: a square crest at 20px reads as much smaller than an 80×20
+// wordmark, so the crests get extra height to even out the apparent mass.
+.vp-portfolio-home .home-affiliation-strip__link[data-mark="crest"] .home-affiliation-strip__icon {
+  max-height: 26px;
+  max-width: 30px;
 }
 
-[data-theme="dark"] .vp-portfolio-home .home-affiliation-strip__link:hover {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+.vp-portfolio-home .home-affiliation-strip__link[data-mark="crest"] {
+  min-width: 44px;
+}
+
+// The affiliation marks are third-party wordmarks with black lettering, so on a
+// dark chip they disappear. Filtering them would wreck the brand colors
+// (Amazon's orange, TikTok's cyan/pink), so the chip keeps a light surface in
+// dark mode instead — the same thing press pages do with partner logos.
+[data-theme="dark"] .vp-portfolio-home .home-affiliation-strip__link {
+  background: #eef1ef;
+  border-color: color-mix(in srgb, #eef1ef 70%, transparent);
 }
 
 // ---------------------------------------------------------------------------
@@ -390,8 +688,8 @@
       color-mix(in srgb, var(--vp-c-bg) 84%, transparent) 0%,
       color-mix(in srgb, var(--vp-c-bg) 94%, transparent) 100%
     );
-  border-bottom: 1px solid color-mix(in srgb, var(--vp-c-divider) 86%, transparent);
-  box-shadow: 0 10px 28px rgba(15, 23, 42, 0.05);
+  border-bottom: 1px solid var(--dl-border);
+  box-shadow: var(--dl-shadow-2);
 }
 
 #navbar.vp-navbar::before {
@@ -418,27 +716,24 @@
 #navbar.vp-navbar .vp-brand {
   display: inline-flex;
   align-items: center;
-  gap: 0.72rem;
+  gap: var(--dl-space-3);
   padding: 0.38rem 0.78rem 0.38rem 0.42rem;
   border-radius: 999px;
   text-decoration: none;
-  background: color-mix(in srgb, var(--vp-c-bg-soft) 82%, var(--vp-c-bg));
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 86%, transparent);
-  box-shadow:
-    0 8px 22px rgba(15, 23, 42, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  background: var(--dl-chip);
+  border: 1px solid var(--dl-border);
+  box-shadow: var(--dl-shadow-1);
   transition:
     transform 0.2s ease,
     border-color 0.2s ease,
-    box-shadow 0.2s ease;
+    box-shadow 0.2s ease,
+    background-color var(--vp-t-color);
 }
 
 #navbar.vp-navbar .vp-brand:hover {
   transform: translateY(-1px);
-  border-color: color-mix(in srgb, var(--vp-c-accent) 26%, var(--vp-c-divider));
-  box-shadow:
-    0 14px 30px rgba(15, 23, 42, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  border-color: var(--dl-accent-line);
+  box-shadow: var(--dl-shadow-3);
 }
 
 #navbar.vp-navbar .vp-nav-logo {
@@ -446,15 +741,15 @@
   height: 2rem;
   padding: 0.18rem;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--vp-c-bg) 92%, transparent);
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 84%, transparent);
+  background: var(--dl-chip);
+  border: 1px solid var(--dl-border);
   box-sizing: border-box;
 }
 
 #navbar.vp-navbar .vp-site-name {
   font-weight: 800;
   letter-spacing: -0.02em;
-  color: #17352f;
+  color: var(--dl-ink);
 }
 
 @supports ((-webkit-background-clip: text) or (background-clip: text)) {
@@ -462,9 +757,9 @@
     background:
       linear-gradient(
         135deg,
-        #17352f 0%,
-        #245347 55%,
-        color-mix(in srgb, var(--vp-c-accent) 62%, #17352f) 100%
+        var(--dl-ink) 0%,
+        var(--dl-ink-2) 55%,
+        color-mix(in srgb, var(--vp-c-accent) 62%, var(--dl-ink)) 100%
       );
     -webkit-background-clip: text;
     background-clip: text;
@@ -472,14 +767,33 @@
   }
 }
 
+// The theme lays the navbar out as three equal `flex: 1 1 0` columns. With
+// seven top-level sections the link rail needs far more than a third, so it
+// overflowed its column and pushed `.vp-navbar-end` (GitHub link + appearance
+// toggle) past the right edge of the viewport. Size the brand and the actions
+// to their content and give the rail whatever is left.
+#navbar.vp-navbar .vp-navbar-start,
+#navbar.vp-navbar .vp-navbar-end {
+  flex: 0 0 auto;
+}
+
+#navbar.vp-navbar .vp-navbar-center {
+  flex: 1 1 auto;
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+}
+
 #navbar.vp-navbar .vp-nav-links {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  padding: 0.32rem 0.4rem;
+  flex-wrap: nowrap;
+  max-width: 100%;
+  gap: 0.2rem;
+  padding: 0.3rem 0.35rem;
   border-radius: 999px;
   background: color-mix(in srgb, var(--vp-c-bg) 80%, transparent);
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 84%, transparent);
+  border: 1px solid var(--dl-border);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
 }
 
@@ -493,15 +807,17 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  gap: 0.42rem;
+  gap: var(--dl-space-1);
   min-height: 2.15rem;
-  padding: 0.34rem 0.78rem;
+  padding: 0.34rem 0.55rem;
   border-radius: 999px;
   border: 1px solid transparent;
   background: transparent;
   color: var(--vp-c-text-2);
+  font-size: 0.92rem;
   font-weight: 600;
   line-height: 1;
+  white-space: nowrap;
   transition:
     transform 0.2s ease,
     color 0.2s ease,
@@ -515,16 +831,16 @@
 #navbar.vp-navbar .vp-action-link:hover {
   transform: translateY(-1px);
   color: var(--vp-c-text-1);
-  background: color-mix(in srgb, var(--vp-c-accent-soft) 58%, var(--vp-c-bg));
-  border-color: color-mix(in srgb, var(--vp-c-accent) 24%, var(--vp-c-divider));
-  box-shadow: 0 8px 20px rgba(15, 23, 42, 0.06);
+  background: var(--dl-accent-soft);
+  border-color: var(--dl-accent-line);
+  box-shadow: var(--dl-shadow-1);
 }
 
 #navbar.vp-navbar .vp-nav-item > a.route-link-active,
 #navbar.vp-navbar .vp-dropdown-wrapper.open .vp-dropdown-title {
-  color: #17352f;
-  background: color-mix(in srgb, var(--vp-c-accent-soft) 70%, var(--vp-c-bg));
-  border-color: color-mix(in srgb, var(--vp-c-accent) 28%, var(--vp-c-divider));
+  color: var(--dl-ink);
+  background: var(--dl-accent-soft);
+  border-color: var(--dl-accent-line);
 }
 
 #navbar.vp-navbar .vp-dropdown-title .arrow {
@@ -539,8 +855,8 @@
   width: 2.35rem;
   min-width: 2.35rem;
   padding: 0;
-  border-color: color-mix(in srgb, var(--vp-c-divider) 86%, transparent);
-  background: color-mix(in srgb, var(--vp-c-bg-soft) 90%, var(--vp-c-bg));
+  border-color: var(--dl-border);
+  background: var(--dl-chip);
 }
 
 #navbar.vp-navbar .vp-toggle-navbar-button,
@@ -551,26 +867,23 @@
   width: 2.35rem;
   height: 2.35rem;
   border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 86%, transparent);
-  background: color-mix(in srgb, var(--vp-c-bg-soft) 90%, var(--vp-c-bg));
-  box-shadow:
-    0 6px 18px rgba(15, 23, 42, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  border: 1px solid var(--dl-border);
+  background: var(--dl-chip);
+  box-shadow: var(--dl-shadow-1);
   transition:
     transform 0.2s ease,
     border-color 0.2s ease,
     box-shadow 0.2s ease,
-    background 0.2s ease;
+    background 0.2s ease,
+    background-color var(--vp-t-color);
 }
 
 #navbar.vp-navbar .vp-toggle-navbar-button:hover,
 #navbar.vp-navbar .vp-toggle-sidebar-button:hover {
   transform: translateY(-1px);
-  border-color: color-mix(in srgb, var(--vp-c-accent) 26%, var(--vp-c-divider));
-  background: color-mix(in srgb, var(--vp-c-accent-soft) 60%, var(--vp-c-bg));
-  box-shadow:
-    0 10px 22px rgba(15, 23, 42, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  border-color: var(--dl-accent-line);
+  background: var(--dl-accent-soft);
+  box-shadow: var(--dl-shadow-3);
 }
 
 #navbar.vp-navbar .vp-toggle-sidebar-button {
@@ -583,35 +896,49 @@
 }
 
 #nav-screen .vp-nav-screen-container {
-  border-top: 1px solid color-mix(in srgb, var(--vp-c-divider) 84%, transparent);
+  border-top: 1px solid var(--dl-border);
 }
 
-[data-theme="dark"] #navbar.vp-navbar {
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.24);
-}
-
-[data-theme="dark"] #navbar.vp-navbar .vp-brand,
-[data-theme="dark"] #navbar.vp-navbar .vp-nav-links,
-[data-theme="dark"] #navbar.vp-navbar .vp-action-link,
-[data-theme="dark"] #navbar.vp-navbar .vp-toggle-navbar-button,
-[data-theme="dark"] #navbar.vp-navbar .vp-toggle-sidebar-button {
-  box-shadow:
-    0 10px 22px rgba(0, 0, 0, 0.22),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
-}
-
+// The gradient fill above sets `-webkit-text-fill-color: transparent`, so a
+// plain `color` override cannot recolor the site name — the gradient itself has
+// to change. `--dl-ink` handles that; this rule only keeps the non-`@supports`
+// fallback in sync.
 [data-theme="dark"] #navbar.vp-navbar .vp-site-name {
-  color: #dfeee9;
+  color: var(--dl-ink);
 }
 
-@media (max-width: 959px) {
+// Seven top-level sections with icons need ~1.2k of rail. Below that the
+// hamburger takes over instead of letting the rail overrun the navbar and hide
+// the GitHub / appearance controls.
+@media (max-width: 1199px) {
   #navbar.vp-navbar .vp-nav-links {
     display: none;
   }
 }
 
-@media (min-width: 960px) {
+@media (min-width: 1200px) {
   #navbar.vp-navbar .vp-toggle-navbar-button {
+    display: none;
+  }
+}
+
+// The theme only reveals the drop-down nav screen below its own mobile
+// breakpoint (719px), so the hamburger shown above opened an empty overlay.
+// Match the panel to the breakpoint the button actually uses.
+@media (max-width: 1199px) {
+  #nav-screen.vp-nav-screen {
+    display: block;
+  }
+
+  #nav-screen .nav-screen-links {
+    display: block;
+  }
+}
+
+// Icons are the first thing to go when the rail runs out of room.
+@media (max-width: 1379px) {
+  #navbar.vp-navbar .vp-nav-links .vp-nav-item > a > .vp-icon,
+  #navbar.vp-navbar .vp-nav-links .vp-dropdown-title > .vp-icon {
     display: none;
   }
 }
@@ -630,106 +957,110 @@
 // ---------------------------------------------------------------------------
 // Portfolio body: nav pills, sections, rhythm
 // ---------------------------------------------------------------------------
+// The theme renders page markdown inside `[vp-content] > #markdown-content`,
+// so section rules have to reach through that wrapper — a direct `> h2` on
+// `[vp-content]` matches nothing and the whole section rhythm below (heading
+// rules, anchor offsets, rule dividers, body copy color) silently did nothing.
 .vp-portfolio-home [vp-content].vp-portfolio-content {
   --home-section-gap: 2.5rem;
   --home-anchor-offset: calc(var(--navbar-height, 3.75rem) + 5.25rem);
   align-items: stretch;
   padding-top: 0.25rem;
+  hyphens: none;
 
-  > h2,
-  > h3,
-  > h4,
-  > h5,
-  > h6 {
-    text-align: start;
-    align-self: stretch;
-  }
+  > #markdown-content {
+    > h2,
+    > h3,
+    > h4,
+    > h5,
+    > h6 {
+      text-align: start;
+      align-self: stretch;
+    }
 
-  > h1,
-  > h2,
-  > h3,
-  > h4,
-  > h5,
-  > h6 {
-    scroll-margin-top: var(--home-anchor-offset);
-  }
+    > h1,
+    > h2,
+    > h3,
+    > h4,
+    > h5,
+    > h6 {
+      scroll-margin-top: var(--home-anchor-offset);
+    }
 
-  > h1::before,
-  > h2::before,
-  > h3::before,
-  > h4::before,
-  > h5::before,
-  > h6::before {
-    content: "";
-    display: block;
-    height: var(--home-anchor-offset);
-    margin-top: calc(var(--home-anchor-offset) * -1);
-    visibility: hidden;
-    pointer-events: none;
-  }
+    > h1 {
+      margin-top: 1.75rem;
+      margin-bottom: 1rem;
+      font-size: clamp(1.45rem, 3vw, 1.75rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: var(--vp-c-text-1);
+      border-bottom: none;
+      padding-bottom: 0;
+    }
 
-  > h1 {
-    margin-top: 1.75rem;
-    margin-bottom: 1rem;
-    font-size: clamp(1.45rem, 3vw, 1.75rem);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: var(--vp-c-text-1);
-    border-bottom: none;
-    padding-bottom: 0;
-  }
+    > h1::after {
+      display: none;
+    }
 
-  > h1::after {
-    display: none;
-  }
+    > h2 {
+      margin-top: var(--home-section-gap);
+      margin-bottom: 1rem;
+      padding: 0.35rem 0 0.35rem 0.9rem;
+      border-left: 4px solid var(--vp-c-accent);
+      border-bottom: none;
+      font-size: clamp(1.35rem, 2.4vw, 1.6rem);
+      font-weight: 700;
+      letter-spacing: -0.025em;
+      color: var(--vp-c-text-1);
+      line-height: 1.3;
+    }
 
-  > h2 {
-    margin-top: var(--home-section-gap);
-    margin-bottom: 1rem;
-    padding: 0.35rem 0 0.35rem 0.9rem;
-    border-left: 4px solid var(--vp-c-accent);
-    border-bottom: none;
-    font-size: clamp(1.2rem, 2.2vw, 1.35rem);
-    font-weight: 700;
-    letter-spacing: -0.02em;
-    color: var(--vp-c-text-1);
-    line-height: 1.3;
-  }
+    > h2:first-of-type {
+      margin-top: 1.5rem;
+    }
 
-  > h2:first-of-type {
-    margin-top: 1.5rem;
-  }
+    > h3 {
+      margin-top: 1.6rem;
+      margin-bottom: 0.65rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--vp-c-text-1);
+      border-bottom: none;
+    }
 
-  > h3 {
-    margin-top: 1.6rem;
-    margin-bottom: 0.65rem;
-    font-size: 1.05rem;
-    font-weight: 600;
-    color: var(--vp-c-text-1);
-    border-bottom: none;
-  }
+    > hr {
+      border: none;
+      height: 1px;
+      margin: 2rem 0;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        var(--vp-c-divider) 20%,
+        var(--vp-c-divider) 80%,
+        transparent 100%
+      );
+    }
 
-  > hr {
-    border: none;
-    height: 1px;
-    margin: 2rem 0;
-    background: linear-gradient(
-      90deg,
-      transparent 0%,
-      var(--vp-c-divider) 20%,
-      var(--vp-c-divider) 80%,
-      transparent 100%
-    );
-  }
+    > p {
+      line-height: 1.72;
+      color: var(--vp-c-text-2);
+    }
 
-  > p {
-    line-height: 1.72;
-    color: var(--vp-c-text-2);
-  }
+    // The theme justifies markdown paragraphs (helpful for CJK, rivers of
+    // whitespace in English). The hand-built sections on this page are already
+    // ragged-right, so justified markdown paragraphs sat next to them and made
+    // the page look like two different documents.
+    p,
+    ul p,
+    ol p,
+    li {
+      text-align: start;
+    }
 
-  > p strong {
-    color: var(--vp-c-text-1);
-    font-weight: 600;
+    > p strong {
+      color: var(--vp-c-text-1);
+      font-weight: 600;
+    }
   }
 }
 
@@ -753,20 +1084,25 @@
   letter-spacing: 0.01em;
   text-decoration: none !important;
   color: var(--vp-c-text-2) !important;
-  background: var(--vp-c-bg-soft);
+  background: var(--dl-chip);
   border: 1px solid var(--vp-c-divider);
   border-radius: 999px;
   transition:
     color 0.2s ease,
     background 0.2s ease,
     border-color 0.2s ease,
-    box-shadow 0.2s ease;
+    box-shadow 0.2s ease,
+    // The hover state lifts the pill by 1px, but `transform` was missing from
+    // this list, so the lift snapped while the colors eased — the pill looked
+    // like it flinched.
+    transform 0.2s ease,
+    background-color var(--vp-t-color);
 }
 
 .home-page-nav__link:hover {
   color: var(--vp-c-accent) !important;
   background: var(--vp-c-accent-soft);
-  border-color: color-mix(in srgb, var(--vp-c-accent) 35%, var(--vp-c-divider));
+  border-color: var(--dl-accent-line);
   box-shadow: 0 2px 12px color-mix(in srgb, var(--vp-c-accent) 18%, transparent);
 }
 
@@ -779,11 +1115,11 @@
   background: linear-gradient(
     135deg,
     var(--vp-c-bg-soft) 0%,
-    color-mix(in srgb, var(--vp-c-accent-soft) 65%, var(--vp-c-bg-soft)) 100%
+    var(--dl-accent-soft) 100%
   );
   border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+  border-radius: var(--dl-radius-sm);
+  box-shadow: var(--dl-shadow-1);
 }
 
 .vp-portfolio-home .home-connect {
@@ -792,18 +1128,18 @@
   font-size: 0.98rem;
   line-height: 1.65;
   color: var(--vp-c-text-2);
-  background: var(--vp-c-bg-soft);
+  background: var(--dl-chip);
   border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
+  border-radius: var(--dl-radius-sm);
   border-left: 4px solid var(--vp-c-accent);
 }
 
-.vp-portfolio-home [vp-content].vp-portfolio-content > .home-hero-grid + p,
-.vp-portfolio-home [vp-content].vp-portfolio-content > .home-hero-grid + p + p {
+.vp-portfolio-home [vp-content].vp-portfolio-content > #markdown-content > .home-hero-grid + p,
+.vp-portfolio-home [vp-content].vp-portfolio-content > #markdown-content > .home-hero-grid + p + p {
   max-width: 58rem;
   margin: 0.9rem 0 0;
   padding: 1rem 1.1rem 1rem 1.2rem;
-  border-radius: 0 18px 18px 0;
+  border-radius: 0 var(--dl-radius-md) var(--dl-radius-md) 0;
   border-left: 3px solid color-mix(in srgb, var(--vp-c-accent) 72%, transparent);
   background:
     linear-gradient(
@@ -811,40 +1147,32 @@
       color-mix(in srgb, var(--vp-c-bg-soft) 92%, transparent) 0%,
       color-mix(in srgb, var(--vp-c-bg) 96%, transparent) 100%
     );
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.04);
+  box-shadow: var(--dl-shadow-1);
 }
 
-.vp-portfolio-home [vp-content].vp-portfolio-content > p a {
+.vp-portfolio-home [vp-content].vp-portfolio-content > #markdown-content > p a {
   text-decoration-thickness: 1.5px;
   text-underline-offset: 3px;
 }
 
-// Education cards on homepage
-.vp-portfolio-home .education-item-wrapper {
+// Shared design language for the primary portfolio cards. Components keep
+// their own content layout, while the shell, elevation and metadata rhythm stay
+// consistent across publications, education, experience and projects.
+.vp-portfolio-home .home-card-shell {
   position: relative;
   overflow: hidden;
-  padding: 1.3rem 1.35rem !important;
-  margin-bottom: 1rem !important;
-  background:
-    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--vp-c-accent-soft) 62%, transparent), transparent 38%),
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--vp-c-bg) 92%, var(--vp-c-bg-soft)) 0%,
-      color-mix(in srgb, var(--vp-c-bg-soft) 96%, transparent) 100%
-    ) !important;
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent) !important;
-  border-radius: 20px !important;
-  border-bottom: 1px solid var(--vp-c-divider) !important;
-  box-shadow:
-    0 14px 30px rgba(15, 23, 42, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  border: 1px solid var(--dl-border);
+  border-radius: var(--dl-radius-lg);
+  background: var(--dl-surface);
+  box-shadow: var(--dl-shadow-2);
   transition:
     transform 0.2s ease,
     box-shadow 0.2s ease,
-    border-color 0.2s ease;
+    border-color 0.2s ease,
+    background-color var(--vp-t-color);
 }
 
-.vp-portfolio-home .education-item-wrapper::before {
+.vp-portfolio-home .home-card-shell::before {
   content: "";
   position: absolute;
   inset: 0 auto 0 0;
@@ -852,191 +1180,141 @@
   background: linear-gradient(
     180deg,
     var(--vp-c-accent),
-    color-mix(in srgb, var(--vp-c-accent) 18%, transparent)
+    color-mix(in srgb, var(--vp-c-accent) 22%, transparent)
   );
 }
 
-.vp-portfolio-home .education-item-wrapper:hover {
-  border-color: color-mix(in srgb, var(--vp-c-accent) 22%, var(--vp-c-divider)) !important;
+.vp-portfolio-home .home-card-shell:hover {
+  border-color: var(--dl-accent-line);
   transform: translateY(-2px);
-  box-shadow:
-    0 20px 38px rgba(15, 23, 42, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  box-shadow: var(--dl-shadow-3);
 }
 
-.vp-portfolio-home .education-item-wrapper:last-of-type {
-  margin-bottom: 0 !important;
-}
-
-.vp-portfolio-home .education-item-wrapper .edu-left {
-  position: relative;
-  z-index: 1;
-  padding: 0.6rem;
-  border-radius: 18px;
-  background:
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--vp-c-bg) 90%, transparent) 0%,
-      color-mix(in srgb, var(--vp-c-bg-soft) 96%, transparent) 100%
-    );
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
-}
-
-.vp-portfolio-home .education-item-wrapper .edu-right {
-  position: relative;
-  z-index: 1;
-}
-
-.vp-portfolio-home .education-item-wrapper .edu-logo {
-  margin-bottom: 0;
-}
-
-.vp-portfolio-home .education-item-wrapper .edu-degree-abbr {
-  background:
-    linear-gradient(
-      135deg,
-      color-mix(in srgb, var(--vp-c-accent) 12%, var(--vp-c-bg)) 0%,
-      color-mix(in srgb, var(--vp-c-accent-soft) 64%, var(--vp-c-bg)) 100%
-    );
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.14);
-}
-
-.vp-portfolio-home .education-item-wrapper .edu-honor {
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+.vp-portfolio-home .home-card-time {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 1.75rem;
+  padding: 0.24rem 0.62rem;
+  border: 1px solid var(--dl-border);
+  border-radius: 999px;
+  background: var(--dl-chip);
+  color: var(--vp-c-text-2);
+  font-size: 0.78rem;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
 }
 
 
 .tech-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 14px;
-}
-
-.vp-portfolio-home .tech-stack-summary {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 0.8rem;
-  margin: 0 0 1rem;
-}
-
-.vp-portfolio-home .tech-stack-summary__item {
-  display: grid;
-  gap: 0.32rem;
-  padding: 0.95rem 1rem;
-  border-radius: 18px;
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
-  background:
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--vp-c-bg) 92%, transparent) 0%,
-      color-mix(in srgb, var(--vp-c-bg-soft) 96%, transparent) 100%
-    );
-  box-shadow:
-    0 12px 26px rgba(15, 23, 42, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.14);
-}
-
-.vp-portfolio-home .tech-stack-summary__label {
-  font-size: 0.68rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--vp-c-text-3);
-}
-
-.vp-portfolio-home .tech-stack-summary__item strong {
-  color: var(--vp-c-text-1);
-  line-height: 1.45;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--dl-space-4);
+  align-items: stretch;
+  margin: 1rem 0 0;
 }
 
 .tech-card {
   position: relative;
   overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
-  border-radius: 18px;
-  padding: 14px 15px 15px;
-  background:
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--vp-c-bg) 92%, transparent) 0%,
-      color-mix(in srgb, var(--vp-c-bg-soft) 96%, transparent) 100%
-    );
-  box-shadow:
-    0 12px 28px rgba(15, 23, 42, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 15rem;
+  box-sizing: border-box;
+  border: 1px solid var(--dl-border);
+  border-radius: var(--dl-radius-lg);
+  padding: 1.2rem 1.25rem 1.25rem;
+  background: var(--dl-surface);
+  box-shadow: var(--dl-shadow-2);
   transition:
     transform 0.2s ease,
     border-color 0.2s ease,
-    box-shadow 0.2s ease;
+    box-shadow 0.2s ease,
+    background-color var(--vp-t-color);
 }
 
 .tech-card::before {
   content: "";
   position: absolute;
   inset: 0 0 auto 0;
-  height: 3px;
+  height: 4px;
   background: linear-gradient(90deg, var(--vp-c-accent), color-mix(in srgb, var(--vp-c-accent) 18%, transparent));
 }
 
 .tech-card:hover {
-  border-color: color-mix(in srgb, var(--vp-c-accent) 20%, var(--vp-c-divider));
+  border-color: var(--dl-accent-line);
   transform: translateY(-2px);
-  box-shadow:
-    0 18px 34px rgba(15, 23, 42, 0.07),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  box-shadow: var(--dl-shadow-3);
 }
 
 .tech-card__header {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  margin: 0 0 10px 0;
+  gap: var(--dl-space-2);
+  margin: 0 0 0.8rem;
 }
 
-.tech-card h4 {
-  margin: 0 0 10px 0;
-  font-size: 0.88rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--vp-c-text-2);
-}
-
-.tech-card__count {
+.tech-card__index {
   flex-shrink: 0;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-width: 1.7rem;
-  height: 1.7rem;
-  padding: 0 0.45rem;
+  width: 2rem;
+  height: 2rem;
   border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
-  background: color-mix(in srgb, var(--vp-c-bg) 94%, transparent);
-  color: var(--vp-c-text-2);
-  font-size: 0.76rem;
-  font-weight: 700;
+  background: var(--dl-accent-soft);
+  color: var(--vp-c-accent);
+  font-size: 0.7rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
 }
 
-.tech-card__header h4 {
+.tech-card__eyebrow {
+  color: var(--vp-c-text-3);
+  font-size: 0.68rem;
+  font-weight: 750;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.tech-card h3 {
+  margin: 0 0 0.55rem;
+  color: var(--vp-c-text-1);
+  font-size: 1.2rem;
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.tech-card__description {
   margin: 0;
+  color: var(--vp-c-text-2);
+  font-size: 0.92rem;
+  line-height: 1.65;
 }
 
 .tech-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.32rem 0.36rem;
+  gap: var(--dl-space-1);
+  margin-top: auto;
+  padding-top: 1rem;
 }
 
-.tech-tags > * {
-  margin: 0;
-}
-
-.tech-card .badge {
+.tech-tag {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.9rem;
+  box-sizing: border-box;
   border-radius: 999px;
+  padding: 0.25rem 0.65rem;
+  border: 1px solid var(--dl-border);
+  background: var(--dl-chip);
+  color: var(--vp-c-text-2);
+  font-size: 0.8rem;
   font-weight: 600;
-  padding-inline: 0.58rem;
 }
 
 .ai-hero,
@@ -1045,18 +1323,14 @@
   overflow: hidden;
   margin: 1rem 0 1.5rem;
   padding: 1.3rem 1.35rem;
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
-  border-radius: 22px;
+  border: 1px solid var(--dl-border);
+  border-radius: var(--dl-radius-lg);
+  // Section pages lead with this block, so it keeps the accent wash that the
+  // ordinary content cards below it gave up.
   background:
-    radial-gradient(circle at top right, color-mix(in srgb, var(--vp-c-accent-soft) 58%, transparent), transparent 34%),
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--vp-c-bg) 92%, transparent) 0%,
-      color-mix(in srgb, var(--vp-c-bg-soft) 96%, transparent) 100%
-    );
-  box-shadow:
-    0 16px 34px rgba(15, 23, 42, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+    radial-gradient(circle at 100% 0%, var(--dl-accent-wash), transparent 46%),
+    var(--dl-surface);
+  box-shadow: var(--dl-shadow-2);
 }
 
 .ai-hero::before,
@@ -1102,7 +1376,7 @@
 .section-pill-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.45rem;
+  gap: var(--dl-space-1);
   margin-top: 1rem;
 }
 
@@ -1112,8 +1386,8 @@
   align-items: center;
   padding: 0.28rem 0.68rem;
   border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
-  background: color-mix(in srgb, var(--vp-c-bg) 94%, transparent);
+  border: 1px solid var(--dl-border);
+  background: var(--dl-chip);
   color: var(--vp-c-text-2);
   font-size: 0.82rem;
   font-weight: 600;
@@ -1125,7 +1399,7 @@
 .section-path-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 14px;
+  gap: var(--dl-space-4);
   margin: 1rem 0 1.4rem;
 }
 
@@ -1136,22 +1410,16 @@
   position: relative;
   display: block;
   overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
-  border-radius: 20px;
+  border: 1px solid var(--dl-border);
+  border-radius: var(--dl-radius-lg);
   padding: 1rem 1.05rem 1.05rem;
-  background:
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--vp-c-bg) 92%, transparent) 0%,
-      color-mix(in srgb, var(--vp-c-bg-soft) 96%, transparent) 100%
-    );
-  box-shadow:
-    0 12px 28px rgba(15, 23, 42, 0.04),
-    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  background: var(--dl-surface);
+  box-shadow: var(--dl-shadow-1);
   transition:
     transform 0.2s ease,
     border-color 0.2s ease,
-    box-shadow 0.2s ease;
+    box-shadow 0.2s ease,
+    background-color var(--vp-t-color);
 }
 
 .ai-card,
@@ -1165,10 +1433,8 @@
 .ai-path-card:hover,
 .section-path-card:hover {
   transform: translateY(-2px);
-  border-color: color-mix(in srgb, var(--vp-c-accent) 24%, var(--vp-c-divider));
-  box-shadow:
-    0 18px 34px rgba(15, 23, 42, 0.07),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  border-color: var(--dl-accent-line);
+  box-shadow: var(--dl-shadow-3);
 }
 
 .ai-card h3,
@@ -1210,63 +1476,30 @@
 .pub-grid {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 14px;
+  gap: var(--dl-space-4);
 }
 .pub-card {
-  position: relative;
   display: grid;
   grid-template-columns: 136px 1fr;
-  gap: 18px;
+  gap: var(--dl-space-4);
   align-items: flex-start;
-  overflow: hidden;
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 86%, transparent);
-  border-radius: 22px;
-  padding: 16px;
-  background:
-    radial-gradient(circle at top right, color-mix(in srgb, var(--vp-c-accent-soft) 58%, transparent), transparent 34%),
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--vp-c-bg) 90%, var(--vp-c-bg-soft)) 0%,
-      color-mix(in srgb, var(--vp-c-bg-soft) 95%, transparent) 100%
-    );
-  box-shadow:
-    0 16px 34px rgba(15, 23, 42, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 0.16);
-  transition:
-    transform 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.pub-card::before {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 4px;
-  background: linear-gradient(180deg, var(--vp-c-accent), color-mix(in srgb, var(--vp-c-accent) 25%, transparent));
-}
-
-.pub-card:hover {
-  border-color: color-mix(in srgb, var(--vp-c-accent) 22%, var(--vp-c-divider));
-  transform: translateY(-2px);
-  box-shadow:
-    0 20px 40px rgba(15, 23, 42, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  padding: 1.3rem 1.35rem;
 }
 
 .pub-card--no-image {
   grid-template-columns: 1fr;
 }
 
+.pub-body {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
 .pub-head {
-  border-radius: 18px;
-  background:
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--vp-c-bg) 86%, transparent) 0%,
-      color-mix(in srgb, var(--vp-c-bg-soft) 94%, transparent) 100%
-    );
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
+  border-radius: var(--dl-radius-md);
+  background: var(--dl-surface);
+  border: 1px solid var(--dl-border);
   padding: 10px;
 }
 
@@ -1274,15 +1507,15 @@
   width: 100%;
   height: 116px;
   object-fit: contain;
-  border-radius: 12px;
-  background: color-mix(in srgb, var(--vp-c-bg) 92%, transparent);
+  border-radius: var(--dl-radius-sm);
+  background: var(--dl-chip);
   padding: 6px;
   box-sizing: border-box;
 }
 
 .pub-title {
   margin: 0 0 8px 0;
-  font-size: 1.08rem;
+  font-size: clamp(1.08rem, 1.4vw, 1.18rem);
   font-weight: 700;
   line-height: 1.3;
   letter-spacing: -0.02em;
@@ -1290,22 +1523,8 @@
 }
 
 .pub-meta {
-  display: flex;
-  gap: 8px 10px;
-  flex-wrap: wrap;
   color: var(--vp-c-text-2);
   font-size: 0.88rem;
-}
-
-.pub-date {
-  padding: 0.14rem 0.48rem;
-  border-radius: 999px;
-  background: color-mix(in srgb, var(--vp-c-bg-soft) 92%, transparent);
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
-}
-
-.pub-authors {
-  flex-basis: 100%;
 }
 
 .pub-authors .me {
@@ -1323,25 +1542,6 @@
   line-height: 1.62;
 }
 
-.pub-links a {
-  display: inline-flex;
-  align-items: center;
-  min-height: 2rem;
-  margin-right: 8px;
-  padding: 0.28rem 0.68rem;
-  border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--vp-c-accent) 20%, var(--vp-c-divider));
-  background: color-mix(in srgb, var(--vp-c-accent-soft) 45%, var(--vp-c-bg));
-  font-weight: 600;
-  text-decoration: none;
-  color: var(--vp-c-accent);
-}
-
-.pub-links a:hover {
-  text-decoration: none;
-  border-color: color-mix(in srgb, var(--vp-c-accent) 42%, var(--vp-c-divider));
-}
-
 // ---------------------------------------------------------------------------
 // Enhanced homepage surfaces: bento blocks, highlights, and CTA
 // ---------------------------------------------------------------------------
@@ -1351,16 +1551,16 @@
   z-index: 8;
   margin: 0.35rem 0 1.75rem;
   padding: 0.55rem;
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 85%, transparent);
-  border-radius: 18px;
+  border: 1px solid var(--dl-border);
+  border-radius: var(--dl-radius-md);
   background: color-mix(in srgb, var(--vp-c-bg) 82%, transparent);
   backdrop-filter: blur(14px);
-  box-shadow: 0 14px 34px rgba(15, 23, 42, 0.05);
+  box-shadow: var(--dl-shadow-2);
 }
 
 .vp-portfolio-home .home-page-nav__link {
-  background: color-mix(in srgb, var(--vp-c-bg-soft) 90%, var(--vp-c-bg));
-  border-color: color-mix(in srgb, var(--vp-c-divider) 85%, transparent);
+  background: var(--dl-chip);
+  border-color: var(--dl-border);
 }
 
 .vp-portfolio-home .home-page-nav__link:hover {
@@ -1368,12 +1568,10 @@
 }
 
 .vp-portfolio-home .home-page-nav__link.is-active {
-  color: #17352f !important;
-  background: color-mix(in srgb, var(--vp-c-accent-soft) 78%, var(--vp-c-bg));
-  border-color: color-mix(in srgb, var(--vp-c-accent) 30%, var(--vp-c-divider));
-  box-shadow:
-    0 10px 22px rgba(15, 23, 42, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  color: var(--dl-ink) !important;
+  background: var(--dl-accent-soft);
+  border-color: var(--dl-accent-line);
+  box-shadow: var(--dl-shadow-3);
 }
 
 .vp-portfolio-home .home-mission {
@@ -1386,8 +1584,8 @@
   overflow: hidden;
   margin: 0.15rem 0 1.8rem;
   padding: clamp(1.35rem, 3.2vw, 2.25rem);
-  border-radius: 28px;
-  border: 1px solid color-mix(in srgb, var(--vp-c-accent) 24%, var(--vp-c-divider));
+  border-radius: var(--dl-radius-xl);
+  border: 1px solid var(--dl-accent-line);
   background:
     radial-gradient(circle at 8% 8%, color-mix(in srgb, var(--vp-c-accent-soft) 88%, transparent), transparent 34%),
     radial-gradient(circle at 100% 100%, color-mix(in srgb, var(--vp-c-accent-soft) 52%, transparent), transparent 40%),
@@ -1396,9 +1594,7 @@
       color-mix(in srgb, var(--vp-c-bg) 88%, var(--vp-c-bg-soft)) 0%,
       color-mix(in srgb, var(--vp-c-bg-soft) 94%, transparent) 100%
     );
-  box-shadow:
-    0 24px 54px rgba(15, 23, 42, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: var(--dl-shadow-2);
 }
 
 .vp-portfolio-home .home-mission::before {
@@ -1442,7 +1638,7 @@
   color: var(--vp-c-text-3);
 }
 
-.vp-portfolio-home .home-mission h1 {
+.vp-portfolio-home .home-mission #home-mission-title {
   max-width: 13.5ch;
   margin: 0;
   padding: 0;
@@ -1470,7 +1666,7 @@
 .vp-portfolio-home .home-mission__actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.65rem;
+  gap: var(--dl-space-2);
   margin-top: 1.35rem;
 }
 
@@ -1480,16 +1676,14 @@
   justify-content: center;
   min-height: 2.65rem;
   padding: 0.5rem 1rem;
-  border: 1px solid color-mix(in srgb, var(--vp-c-accent) 22%, var(--vp-c-divider));
+  border: 1px solid var(--dl-accent-line);
   border-radius: 999px;
   background: color-mix(in srgb, var(--vp-c-bg) 88%, transparent);
   color: var(--vp-c-text-1);
   font-size: 0.88rem;
   font-weight: 700;
   text-decoration: none !important;
-  box-shadow:
-    0 10px 24px rgba(15, 23, 42, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  box-shadow: var(--dl-shadow-1);
   transition:
     transform 0.2s ease,
     border-color 0.2s ease,
@@ -1499,36 +1693,27 @@
 
 .vp-portfolio-home .home-mission__button:hover {
   transform: translateY(-2px);
-  border-color: color-mix(in srgb, var(--vp-c-accent) 48%, var(--vp-c-divider));
-  box-shadow:
-    0 16px 30px rgba(15, 23, 42, 0.1),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  border-color: var(--dl-accent-line-strong);
+  box-shadow: var(--dl-shadow-3);
 }
 
 .vp-portfolio-home .home-mission__button--primary {
-  border-color: color-mix(in srgb, var(--vp-c-accent) 72%, var(--vp-c-divider));
+  border-color: var(--dl-accent-line-strong);
   background: var(--vp-c-accent);
-  color: var(--vp-c-white, #fff);
+  color: var(--vp-c-accent-text, #fff);
 }
 
 .vp-portfolio-home .home-mission__button--primary:hover {
   background: var(--vp-c-accent-hover);
-  color: var(--vp-c-white, #fff);
+  color: var(--vp-c-accent-text, #fff);
 }
 
 .vp-portfolio-home .home-mission__loop {
   padding: 1rem 1rem 0.95rem;
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 86%, transparent);
-  border-radius: 22px;
-  background:
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--vp-c-bg) 86%, transparent) 0%,
-      color-mix(in srgb, var(--vp-c-bg-soft) 92%, transparent) 100%
-    );
-  box-shadow:
-    0 18px 40px rgba(15, 23, 42, 0.07),
-    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  border: 1px solid var(--dl-border);
+  border-radius: var(--dl-radius-lg);
+  background: var(--dl-surface);
+  box-shadow: var(--dl-shadow-2);
 }
 
 .vp-portfolio-home .home-mission__loop-label {
@@ -1548,15 +1733,15 @@
   position: relative;
   display: grid;
   grid-template-columns: 2.25rem 1fr;
-  gap: 0.75rem;
+  gap: var(--dl-space-3);
   align-items: start;
   margin: 0;
   padding: 0.75rem 0.65rem;
-  border-radius: 16px;
+  border-radius: var(--dl-radius-md);
 }
 
 .vp-portfolio-home .home-mission__loop li + li {
-  border-top: 1px solid color-mix(in srgb, var(--vp-c-divider) 78%, transparent);
+  border-top: 1px solid var(--dl-border);
 }
 
 .vp-portfolio-home .home-mission__step {
@@ -1566,7 +1751,7 @@
   width: 2.25rem;
   height: 2.25rem;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--vp-c-accent-soft) 76%, var(--vp-c-bg));
+  background: var(--dl-accent-soft);
   color: var(--vp-c-accent);
   font-size: 0.72rem;
   font-weight: 800;
@@ -1590,27 +1775,27 @@
 .vp-portfolio-home .home-hero-grid,
 .vp-portfolio-home .home-highlight-grid {
   display: grid;
-  gap: 1rem;
+  gap: var(--dl-space-4);
   margin: 1.25rem 0 1.5rem;
 }
 
 .vp-portfolio-home .experience-grid {
   display: grid;
-  gap: 1rem;
+  gap: var(--dl-space-4);
   margin-top: 1rem;
 }
 
 .vp-portfolio-home .project-grid {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 1rem;
+  gap: var(--dl-space-4);
   margin-top: 1rem;
 }
 
 .vp-portfolio-home .home-hero-grid {
   grid-template-columns: minmax(0, 1.18fr) minmax(0, 0.82fr);
   grid-template-areas: "story focus";
-  align-items: start;
+  align-items: stretch;
 }
 
 .vp-portfolio-home .home-highlight-grid {
@@ -1622,32 +1807,24 @@
 .vp-portfolio-home .home-connect-panel {
   position: relative;
   overflow: hidden;
-  border-radius: 20px;
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
-  background:
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--vp-c-bg) 88%, var(--vp-c-bg-soft)) 0%,
-      color-mix(in srgb, var(--vp-c-bg-soft) 92%, transparent) 100%
-    );
-  box-shadow:
-    0 18px 40px rgba(15, 23, 42, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  border-radius: var(--dl-radius-lg);
+  border: 1px solid var(--dl-border);
+  background: var(--dl-surface);
+  box-shadow: var(--dl-shadow-2);
+  // These cards lift and change border on hover but had no transition at all,
+  // so they jumped 2px instantly while every neighbouring card eased.
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color var(--vp-t-color);
 }
 
-.vp-portfolio-home .home-surface-card::before,
-.vp-portfolio-home .home-highlight-card::before,
-.vp-portfolio-home .home-connect-panel::before {
-  content: "";
-  position: absolute;
-  inset: 0 auto auto 0;
-  width: 100%;
-  height: 100%;
-  background:
-    radial-gradient(circle at top right, color-mix(in srgb, var(--vp-c-accent-soft) 70%, transparent), transparent 42%),
-    linear-gradient(135deg, rgba(255, 255, 255, 0.07), transparent 38%);
-  pointer-events: none;
-}
+// The corner glow that used to sit on every card is gone. When ten cards in a
+// row all glow, none of them reads as important — the accent wash is now spent
+// on the two surfaces that should lead the page (the mission block and the
+// section heroes), and everything else is a clean white card. The white sheen
+// that went with it was invisible on a white surface anyway.
 
 .vp-portfolio-home .home-surface-card {
   padding: 1.35rem 1.35rem 1.25rem;
@@ -1662,6 +1839,8 @@
 
 .vp-portfolio-home .home-surface-card--focus {
   grid-area: focus;
+  display: flex;
+  flex-direction: column;
 }
 
 .vp-portfolio-home .home-card-eyebrow,
@@ -1701,7 +1880,7 @@
   z-index: 1;
   display: flex;
   flex-wrap: wrap;
-  gap: 0.55rem;
+  gap: var(--dl-space-2);
   margin-top: 1rem;
 }
 
@@ -1710,24 +1889,19 @@
   z-index: 1;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 0.8rem;
+  gap: var(--dl-space-3);
   margin-top: 1rem;
   padding-top: 1rem;
-  border-top: 1px solid color-mix(in srgb, var(--vp-c-divider) 86%, transparent);
+  border-top: 1px solid var(--dl-border);
 }
 
 .vp-portfolio-home .home-story-meta__item {
   display: grid;
   gap: 0.22rem;
   padding: 0.85rem 0.9rem;
-  border-radius: 16px;
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
-  background:
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--vp-c-bg) 88%, transparent) 0%,
-      color-mix(in srgb, var(--vp-c-bg-soft) 94%, transparent) 100%
-    );
+  border-radius: var(--dl-radius-md);
+  border: 1px solid var(--dl-border);
+  background: var(--dl-surface);
 }
 
 .vp-portfolio-home .home-story-meta__label {
@@ -1749,8 +1923,8 @@
   min-height: 2rem;
   padding: 0.35rem 0.8rem;
   border-radius: 999px;
-  border: 1px solid color-mix(in srgb, var(--vp-c-accent) 20%, var(--vp-c-divider));
-  background: color-mix(in srgb, var(--vp-c-accent-soft) 62%, var(--vp-c-bg));
+  border: 1px solid var(--dl-accent-line);
+  background: var(--dl-accent-soft);
   color: var(--vp-c-text-1);
   font-size: 0.82rem;
   font-weight: 600;
@@ -1765,7 +1939,9 @@
   list-style: none;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 0.9rem;
+  gap: var(--dl-space-3);
+  flex: 1;
+  align-content: center;
 }
 
 .vp-portfolio-home .home-focus-list li {
@@ -1800,10 +1976,8 @@
 .vp-portfolio-home .home-connect-panel:hover,
 .vp-portfolio-home .home-surface-card:hover {
   transform: translateY(-2px);
-  border-color: color-mix(in srgb, var(--vp-c-accent) 25%, var(--vp-c-divider));
-  box-shadow:
-    0 22px 44px rgba(15, 23, 42, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  border-color: var(--dl-accent-line);
+  box-shadow: var(--dl-shadow-3);
 }
 
 .vp-portfolio-home .home-highlight-card h3 {
@@ -1820,52 +1994,39 @@
   color: var(--vp-c-text-1);
 }
 
-.vp-portfolio-home [vp-content].vp-portfolio-content > h3 {
+.vp-portfolio-home [vp-content].vp-portfolio-content > #markdown-content > h3 {
   margin-top: 1.9rem;
   margin-bottom: 0.8rem;
   padding: 1rem 1.1rem;
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
-  border-radius: 18px;
-  background:
-    radial-gradient(circle at top right, color-mix(in srgb, var(--vp-c-accent-soft) 54%, transparent), transparent 38%),
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--vp-c-bg) 90%, transparent) 0%,
-      color-mix(in srgb, var(--vp-c-bg-soft) 96%, transparent) 100%
-    );
-  box-shadow:
-    0 14px 28px rgba(15, 23, 42, 0.05),
-    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  border: 1px solid var(--dl-border);
+  border-radius: var(--dl-radius-md);
+  background: var(--dl-surface);
+  box-shadow: var(--dl-shadow-1);
 }
 
-.vp-portfolio-home [vp-content].vp-portfolio-content > h3 strong {
+.vp-portfolio-home [vp-content].vp-portfolio-content > #markdown-content > h3 strong {
   color: inherit;
 }
 
-.vp-portfolio-home [vp-content].vp-portfolio-content > ul {
+.vp-portfolio-home [vp-content].vp-portfolio-content > #markdown-content > ul {
   margin: 0.9rem 0 0;
   padding: 1rem 1.15rem 1rem 2rem;
-  border-radius: 18px;
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 86%, transparent);
-  background: color-mix(in srgb, var(--vp-c-bg-soft) 92%, transparent);
+  border-radius: var(--dl-radius-md);
+  border: 1px solid var(--dl-border);
+  background: var(--dl-chip);
 }
 
-.vp-portfolio-home [vp-content].vp-portfolio-content > ul > li {
+.vp-portfolio-home [vp-content].vp-portfolio-content > #markdown-content > ul > li {
   margin-bottom: 0.55rem;
 }
 
-.vp-portfolio-home [vp-content].vp-portfolio-content > h3 + p {
+.vp-portfolio-home [vp-content].vp-portfolio-content > #markdown-content > h3 + p {
   margin-top: 0.15rem;
   margin-bottom: 0.85rem;
   padding: 0.95rem 1.05rem;
-  border-radius: 16px;
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
-  background:
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--vp-c-bg) 94%, transparent) 0%,
-      color-mix(in srgb, var(--vp-c-bg-soft) 96%, transparent) 100%
-    );
+  border-radius: var(--dl-radius-md);
+  border: 1px solid var(--dl-border);
+  background: var(--dl-surface);
 }
 
 .vp-portfolio-home .home-section-intro {
@@ -1895,7 +2056,7 @@
   z-index: 1;
   margin-top: 1.1rem;
   padding-top: 1rem;
-  border-top: 1px solid color-mix(in srgb, var(--vp-c-divider) 86%, transparent);
+  border-top: 1px solid var(--dl-border);
   scroll-margin-top: 6rem;
 }
 
@@ -1922,33 +2083,14 @@
 
 .vp-portfolio-home .home-tag--link:hover {
   transform: translateY(-1px);
-  border-color: color-mix(in srgb, var(--vp-c-accent) 48%, var(--vp-c-divider));
-  background: color-mix(in srgb, var(--vp-c-accent-soft) 84%, var(--vp-c-bg));
+  border-color: var(--dl-accent-line-strong);
+  background: var(--dl-accent-soft);
 }
 
-[data-theme="dark"] .vp-portfolio-home .home-page-nav {
-  box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
-}
-
-[data-theme="dark"] .vp-portfolio-home .home-mission {
-  box-shadow:
-    0 24px 54px rgba(0, 0, 0, 0.34),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
-}
-
-[data-theme="dark"] .vp-portfolio-home .home-surface-card,
-[data-theme="dark"] .vp-portfolio-home .home-highlight-card,
-[data-theme="dark"] .vp-portfolio-home .home-connect-panel,
-[data-theme="dark"] .vp-portfolio-home .home-metric-card,
-[data-theme="dark"] .vp-portfolio-home .education-item-wrapper,
-[data-theme="dark"] .pub-card,
-[data-theme="dark"] .pub-head,
-[data-theme="dark"] .tech-card,
-[data-theme="dark"] .vp-portfolio-home [vp-content].vp-portfolio-content > h3 {
-  box-shadow:
-    0 16px 34px rgba(0, 0, 0, 0.28),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
-}
+// Dark-mode elevation is handled by `--dl-shadow-*`, so the per-component
+// overrides that used to live here are no longer needed. Components that were
+// never listed (the navbar, the affiliation chips, the crosslink cards) now get
+// correct dark shadows for free instead of keeping their light-mode values.
 
 @media (max-width: 959px) {
   .ai-card-grid,
@@ -1964,7 +2106,7 @@
   .section-card,
   .ai-path-card,
   .section-path-card {
-    border-radius: 18px;
+    border-radius: var(--dl-radius-md);
   }
 
   .ai-hero,
@@ -1999,21 +2141,21 @@
     position: static;
     top: auto;
     padding: 0.5rem;
-    border-radius: 16px;
+    border-radius: var(--dl-radius-md);
   }
 
   .vp-portfolio-home .home-hero-grid,
   .vp-portfolio-home .home-highlight-grid {
-    gap: 0.85rem;
+    gap: var(--dl-space-3);
   }
 
   .vp-portfolio-home .home-mission {
-    gap: 1rem;
+    gap: var(--dl-space-4);
     padding: 1.2rem 1rem 1rem 1.15rem;
-    border-radius: 20px;
+    border-radius: var(--dl-radius-lg);
   }
 
-  .vp-portfolio-home .home-mission h1 {
+  .vp-portfolio-home .home-mission #home-mission-title {
     max-width: 15ch;
     font-size: clamp(1.85rem, 10vw, 2.6rem);
   }
@@ -2030,13 +2172,13 @@
 
   .vp-portfolio-home .home-mission__loop {
     padding: 0.75rem;
-    border-radius: 18px;
+    border-radius: var(--dl-radius-md);
   }
 
   .vp-portfolio-home .home-surface-card,
   .vp-portfolio-home .home-highlight-card,
   .vp-portfolio-home .home-connect-panel {
-    border-radius: 18px;
+    border-radius: var(--dl-radius-md);
   }
 
   .vp-portfolio-home .home-surface-card,
@@ -2051,13 +2193,18 @@
     grid-template-columns: 1fr;
   }
 
-  .vp-portfolio-home .tech-stack-summary {
+  .tech-grid {
     grid-template-columns: 1fr;
+  }
+
+  .tech-card {
+    min-height: 0;
   }
 
   .pub-card {
     grid-template-columns: 1fr;
-    gap: 14px;
+    gap: var(--dl-space-4);
+    padding: 1.05rem 1rem;
   }
 
   .pub-head {
@@ -2092,7 +2239,7 @@
 .knowledge-flow {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-  gap: 0.8rem;
+  gap: var(--dl-space-3);
   margin: 1rem 0 1.5rem;
 }
 
@@ -2101,18 +2248,10 @@
   overflow: hidden;
   min-height: 9rem;
   padding: 1rem 1rem 0.95rem;
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
-  border-radius: 18px;
-  background:
-    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--vp-c-accent-soft) 62%, transparent), transparent 45%),
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--vp-c-bg) 92%, transparent) 0%,
-      color-mix(in srgb, var(--vp-c-bg-soft) 96%, transparent) 100%
-    );
-  box-shadow:
-    0 14px 30px rgba(15, 23, 42, 0.045),
-    inset 0 1px 0 rgba(255, 255, 255, 0.14);
+  border: 1px solid var(--dl-border);
+  border-radius: var(--dl-radius-md);
+  background: var(--dl-surface);
+  box-shadow: var(--dl-shadow-1);
 }
 
 .knowledge-flow__item::before {
@@ -2135,7 +2274,7 @@
   height: 2rem;
   margin-bottom: 0.7rem;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--vp-c-accent-soft) 72%, var(--vp-c-bg));
+  background: var(--dl-accent-soft);
   color: var(--vp-c-accent);
   font-size: 0.7rem;
   font-weight: 800;
@@ -2159,7 +2298,7 @@
 .knowledge-crosslinks {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 0.75rem;
+  gap: var(--dl-space-3);
   margin: 1rem 0 1.5rem;
 }
 
@@ -2168,9 +2307,9 @@
   align-items: center;
   min-height: 4.25rem;
   padding: 0.85rem 1rem;
-  border: 1px solid color-mix(in srgb, var(--vp-c-accent) 18%, var(--vp-c-divider));
-  border-radius: 16px;
-  background: color-mix(in srgb, var(--vp-c-accent-soft) 42%, var(--vp-c-bg));
+  border: 1px solid var(--dl-accent-line);
+  border-radius: var(--dl-radius-md);
+  background: var(--dl-accent-soft);
   color: var(--vp-c-text-1);
   font-size: 0.9rem;
   font-weight: 650;
@@ -2184,14 +2323,14 @@
 
 .knowledge-crosslinks a:hover {
   transform: translateY(-2px);
-  border-color: color-mix(in srgb, var(--vp-c-accent) 42%, var(--vp-c-divider));
-  box-shadow: 0 14px 28px rgba(15, 23, 42, 0.07);
+  border-color: var(--dl-accent-line-strong);
+  box-shadow: var(--dl-shadow-3);
 }
 
 .vp-portfolio-home .knowledge-atlas-grid {
   display: grid;
   grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: 1rem;
+  gap: var(--dl-space-4);
   margin: 1rem 0;
 }
 
@@ -2202,24 +2341,17 @@
   flex-direction: column;
   min-height: 17rem;
   padding: 1.25rem 1.25rem 1.15rem;
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 86%, transparent);
-  border-radius: 22px;
-  background:
-    radial-gradient(circle at 100% 0%, color-mix(in srgb, var(--vp-c-accent-soft) 72%, transparent), transparent 42%),
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--vp-c-bg) 91%, transparent) 0%,
-      color-mix(in srgb, var(--vp-c-bg-soft) 96%, transparent) 100%
-    );
+  border: 1px solid var(--dl-border);
+  border-radius: var(--dl-radius-lg);
+  background: var(--dl-surface);
   color: inherit;
   text-decoration: none;
-  box-shadow:
-    0 18px 38px rgba(15, 23, 42, 0.055),
-    inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  box-shadow: var(--dl-shadow-2);
   transition:
     transform 0.2s ease,
     border-color 0.2s ease,
-    box-shadow 0.2s ease;
+    box-shadow 0.2s ease,
+    background-color var(--vp-t-color);
   grid-column: span 2;
 }
 
@@ -2242,10 +2374,8 @@
 
 .vp-portfolio-home .knowledge-atlas-card:hover {
   transform: translateY(-3px);
-  border-color: color-mix(in srgb, var(--vp-c-accent) 32%, var(--vp-c-divider));
-  box-shadow:
-    0 24px 48px rgba(15, 23, 42, 0.09),
-    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  border-color: var(--dl-accent-line);
+  box-shadow: var(--dl-shadow-3);
 }
 
 .vp-portfolio-home .knowledge-atlas-card__index {
@@ -2256,7 +2386,7 @@
   height: 2.25rem;
   margin-bottom: 1.2rem;
   border-radius: 999px;
-  background: color-mix(in srgb, var(--vp-c-accent-soft) 70%, var(--vp-c-bg));
+  background: var(--dl-accent-soft);
   color: var(--vp-c-accent);
   font-size: 0.72rem;
   font-weight: 800;
@@ -2296,13 +2426,13 @@
 .vp-portfolio-home .knowledge-atlas-note {
   display: grid;
   grid-template-columns: minmax(150px, 0.35fr) minmax(0, 1fr);
-  gap: 1rem;
+  gap: var(--dl-space-4);
   align-items: start;
   margin: 1rem 0 0;
   padding: 1rem 1.1rem;
-  border: 1px solid color-mix(in srgb, var(--vp-c-divider) 86%, transparent);
-  border-radius: 18px;
-  background: color-mix(in srgb, var(--vp-c-bg-soft) 90%, transparent);
+  border: 1px solid var(--dl-border);
+  border-radius: var(--dl-radius-md);
+  background: var(--dl-chip);
 }
 
 .vp-portfolio-home .knowledge-atlas-note strong {
@@ -2327,19 +2457,18 @@
   font-weight: 700;
 }
 
-[data-theme="dark"] .knowledge-flow__item,
-[data-theme="dark"] .vp-portfolio-home .knowledge-atlas-card {
-  box-shadow:
-    0 18px 38px rgba(0, 0, 0, 0.28),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
-}
-
 @media (max-width: 959px) {
   .vp-portfolio-home .knowledge-atlas-grid {
     grid-template-columns: 1fr;
   }
 
-  .vp-portfolio-home .knowledge-atlas-card {
+  // The last two cards carry a `span 3` from a more specific `:nth-child`
+  // rule. Resetting only `.knowledge-atlas-card` left that span in place, so
+  // the "single column" grid still generated three implicit columns and the
+  // first card collapsed to a sliver of vertical text.
+  .vp-portfolio-home .knowledge-atlas-card,
+  .vp-portfolio-home .knowledge-atlas-card:nth-child(4):nth-last-child(2),
+  .vp-portfolio-home .knowledge-atlas-card:nth-child(5):last-child {
     min-height: 13.5rem;
     grid-column: auto;
   }
@@ -2357,10 +2486,301 @@
   .vp-portfolio-home .knowledge-atlas-card {
     min-height: 0;
     padding: 1.1rem 1rem;
-    border-radius: 18px;
+    border-radius: var(--dl-radius-md);
   }
 
   .vp-portfolio-home .knowledge-atlas-note {
     grid-template-columns: 1fr;
   }
+}
+
+// ---------------------------------------------------------------------------
+// Article pages
+//
+// Everything above this line styles the portfolio home and the section landing
+// pages. The ~1,500 note pages were left on the theme defaults, so they read as
+// a different site: bare text on the canvas, blue code panels against a warm
+// page, and a sidebar with no selected state to speak of.
+//
+// `main.vp-page` with no second class is a note page — the theme tags the other
+// layouts as `vp-blog`, `vp-blog-home`, `vp-portfolio-home` or `vp-project-home`.
+// ---------------------------------------------------------------------------
+$doc-page: "main.vp-page:not(.vp-blog):not(.vp-blog-home):not(.vp-portfolio-home):not(.vp-project-home)";
+
+:root {
+  // Modern mono stack. The theme's block-code stack starts at Consolas, which
+  // is not installed on macOS, so blocks fell through to Monaco while inline
+  // code (a different stack) resolved to SF Mono — two monospaced faces on the
+  // same page.
+  --dl-font-mono: ui-monospace, "SF Mono", SFMono-Regular, "JetBrains Mono",
+    "Cascadia Code", Menlo, Consolas, "Liberation Mono", monospace;
+  --code-border-radius: var(--dl-radius-md);
+}
+
+#{$doc-page} {
+  // The note body becomes a sheet on the canvas, matching the card language the
+  // rest of the site now uses.
+  > [vp-content] {
+    padding: 1.75rem 2.5rem 2.5rem;
+    border: 1px solid var(--dl-border);
+    border-radius: var(--dl-radius-lg);
+    background: var(--dl-surface);
+    box-shadow: var(--dl-shadow-1);
+  }
+
+  #markdown-content > h2 {
+    margin-top: 2.75rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--dl-border);
+    letter-spacing: -0.02em;
+  }
+
+  #markdown-content > h3 {
+    letter-spacing: -0.01em;
+  }
+
+  // Blockquotes had no left rule at all — only a color change, which is easy to
+  // miss in a wall of technical prose.
+  #markdown-content blockquote {
+    margin-inline: 0;
+    padding: 0.2rem 0 0.2rem 1.1rem;
+    border-left: 3px solid var(--dl-accent-line-strong);
+    color: var(--vp-c-text-2);
+  }
+
+  #markdown-content table {
+    border-radius: var(--dl-radius-sm);
+    overflow: hidden;
+    border: 1px solid var(--dl-border);
+    border-collapse: separate;
+    border-spacing: 0;
+  }
+
+  #markdown-content table th {
+    background: var(--dl-chip);
+    font-weight: 700;
+  }
+
+  #markdown-content table th,
+  #markdown-content table td {
+    border: none;
+    border-bottom: 1px solid var(--dl-border);
+  }
+
+  #markdown-content table tr:last-child td {
+    border-bottom: none;
+  }
+
+  // The theme renders breadcrumb, title, body, meta and prev/next as five
+  // siblings of `main`, so the sheet above only wraps the body. Rather than
+  // fight that, the title becomes a page header sitting on the canvas and the
+  // footer chrome below the sheet is grouped and quietened, which reads as
+  // deliberate structure instead of a stray box.
+  > .vp-breadcrumb {
+    padding-bottom: 0.15rem;
+    font-size: 0.86rem;
+    color: var(--vp-c-text-3);
+  }
+
+  > .vp-page-title {
+    padding-bottom: 0.9rem;
+  }
+
+  > .vp-page-title h1 {
+    letter-spacing: -0.03em;
+  }
+
+  // These siblings are all `content-box` with `max-width: 780px` and their own
+  // horizontal padding, so their outer edges only line up with the sheet when
+  // that padding matches the sheet's 40px. Left alone, the meta row sat 24px
+  // narrower than the article above it and the prev/next row 8px narrower —
+  // three different left edges down one page.
+  > .vp-page-meta {
+    margin-top: 1.1rem;
+    padding-block: 0.85rem;
+    padding-inline: 40px;
+    border: 1px solid var(--dl-border);
+    border-radius: var(--dl-radius-md);
+    background: var(--dl-surface);
+    font-size: 0.88rem;
+  }
+
+  > .vp-page-nav {
+    padding-inline: 40px;
+  }
+
+  // Prev / next was a pair of bare links under a top rule.
+  .vp-page-nav {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--dl-border);
+  }
+
+  .vp-page-nav a {
+    display: block;
+    padding: 0.85rem 1rem;
+    border: 1px solid var(--dl-border);
+    border-radius: var(--dl-radius-md);
+    background: var(--dl-surface);
+    text-decoration: none;
+    transition:
+      border-color 0.2s ease,
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+    background-color var(--vp-t-color);
+  }
+
+  .vp-page-nav a:hover {
+    transform: translateY(-1px);
+    border-color: var(--dl-accent-line);
+    box-shadow: var(--dl-shadow-1);
+  }
+}
+
+// Code panels, site-wide.
+div[class*="language-"] {
+  border: 1px solid var(--dl-border);
+}
+
+div[class*="language-"] pre,
+div[class*="language-"] code {
+  font-family: var(--dl-font-mono);
+}
+
+// Sidebar: the selected page was distinguishable only by text color.
+.vp-sidebar {
+  background: var(--dl-surface);
+  border-inline-end: 1px solid var(--dl-border);
+}
+
+.vp-sidebar .vp-sidebar-link,
+.vp-sidebar .vp-sidebar-header {
+  border-radius: var(--dl-radius-sm);
+  transition:
+    background 0.15s ease,
+    color 0.15s ease;
+}
+
+.vp-sidebar .vp-sidebar-link:hover,
+.vp-sidebar .vp-sidebar-header.clickable:hover {
+  background: var(--dl-chip);
+}
+
+.vp-sidebar .vp-sidebar-link.active,
+.vp-sidebar .vp-sidebar-header.active {
+  background: var(--dl-accent-soft);
+  color: var(--vp-c-accent);
+  font-weight: 700;
+}
+
+@media (max-width: 959px) {
+  #{$doc-page} > [vp-content] {
+    padding: 1.35rem 1.15rem 1.75rem;
+    border-radius: var(--dl-radius-md);
+  }
+}
+
+@media (max-width: 719px) {
+  // Full-bleed on a phone: a rounded sheet with margins wastes the little
+  // horizontal room a code block has. The meta and prev/next blocks follow the
+  // same edges, otherwise their 40px desktop gutter leaves them indented from
+  // the article they belong to.
+  #{$doc-page} > [vp-content],
+  #{$doc-page} > .vp-page-meta {
+    padding-inline: 1rem;
+    border-inline: none;
+    border-radius: 0;
+  }
+
+  #{$doc-page} > .vp-page-nav {
+    padding-inline: 1rem;
+  }
+}
+
+// The theme cross-fades the page background over `--vp-t-color` when the
+// appearance toggle flips, but the surfaces introduced above had no colour
+// transition, so every card and panel snapped a beat ahead of the page behind
+// it. These are the large ones — small chips inside an already-changing card
+// are not worth the extra property.
+#{$doc-page} > [vp-content],
+#{$doc-page} > .vp-page-meta,
+.vp-sidebar,
+div[class*="language-"],
+.vp-portfolio-home .home-mission,
+.vp-portfolio-home .home-mission__loop {
+  transition:
+    background-color var(--vp-t-color),
+    border-color var(--vp-t-color);
+}
+
+// ---------------------------------------------------------------------------
+// Tab groups used inside the technical notes
+//
+// The theme ships these with a cool grey #ebebef rail, 8px radii and the hard
+// #c2c2c4 border — three values that predate the token scale and are the last
+// obviously "default theme" surface left on the homepage. The active tab was
+// also the same white as the inactive ones, distinguishable only by a sliding
+// underline, which is hard to read at a glance in a seven-tab row.
+// ---------------------------------------------------------------------------
+.vp-tabs {
+  border: 1px solid var(--dl-border);
+  border-radius: var(--dl-radius-md);
+  background: var(--dl-surface);
+  box-shadow: var(--dl-shadow-1);
+  overflow: hidden;
+}
+
+.vp-tabs .vp-tabs-nav {
+  gap: 0.2rem;
+  padding: 0.4rem;
+  border-bottom: 1px solid var(--dl-border);
+  background: var(--dl-chip);
+  border-radius: 0;
+}
+
+.vp-tabs .vp-tab-nav {
+  padding: 0.34rem 0.7rem;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--vp-c-text-2);
+  font-size: 0.88rem;
+  font-weight: 600;
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.vp-tabs .vp-tab-nav:hover {
+  color: var(--vp-c-text-1);
+  background: var(--dl-surface);
+}
+
+.vp-tabs .vp-tab-nav.active {
+  color: var(--dl-ink);
+  background: var(--dl-accent-soft);
+  box-shadow: inset 0 0 0 1px var(--dl-accent-line);
+}
+
+// The sliding underline is redundant once the active tab is a filled pill, and
+// at 8px tall it collided with the pill's own rounding.
+.vp-tabs .vp-tab-nav::after {
+  display: none;
+}
+
+.vp-tabs .vp-tab {
+  padding: 1.1rem 1.15rem 1.2rem;
+}
+
+// Closing note under a section's cards — quieter than body copy, and it should
+// not inherit the card grid's top margin.
+.vp-portfolio-home .home-section-outro {
+  margin: 1.1rem 0 0;
+  color: var(--vp-c-text-3);
+  font-size: 0.9rem;
+  line-height: 1.65;
+}
+
+.vp-portfolio-home .home-section-outro a {
+  font-weight: 650;
 }

@@ -2,7 +2,6 @@
 home: true
 portfolio: true
 avatar: /avatar.jpg
-heroText: David Liu
 description: David Liu builds reliable, resource-efficient infrastructure for tool-using AI agents and writes structured notes on algorithms, AI systems, and computer science.
 avatarStyle:
   object-fit: cover
@@ -24,12 +23,12 @@ content: portfolio
 <section class="home-mission" aria-labelledby="home-mission-title">
   <div class="home-mission__copy">
     <p class="home-mission__eyebrow">AI systems · research & engineering</p>
-    <h1 id="home-mission-title">I build infrastructure that helps AI agents work reliably beyond the demo.</h1>
+    <h2 id="home-mission-title">I build infrastructure that helps AI agents work reliably beyond the demo.</h2>
     <p class="home-mission__lede">Most agents look capable when everything goes right. I care about the harder cases: thousands of available skills, long-running tool use, partial failures, and tight context or latency budgets. My work connects <strong>dependency-aware retrieval</strong>, <strong>execution validation</strong>, and <strong>failure recovery</strong>—then turns those ideas into open systems others can inspect, test, and extend.</p>
     <div class="home-mission__actions" aria-label="Primary links">
       <a class="home-mission__button home-mission__button--primary" href="#research-program">Explore my work</a>
       <a class="home-mission__button" href="#academic-profiles">Academic profiles</a>
-      <a class="home-mission__button" href="https://github.com/davidliuk" target="_blank" rel="noopener noreferrer">View GitHub <span aria-hidden="true">↗</span></a>
+      <a class="home-mission__button" href="https://github.com/davidliuk" target="_blank" rel="noopener noreferrer">View GitHub</a>
     </div>
   </div>
   <aside class="home-mission__loop" aria-label="My research loop">
@@ -58,7 +57,7 @@ content: portfolio
 <div class="home-hero-grid">
   <section class="home-surface-card home-surface-card--story">
     <p class="home-card-eyebrow">The throughline</p>
-    <h2 class="home-card-title">Research ideas become valuable when people can actually use and improve them.</h2>
+    <h3 class="home-card-title">Research ideas become valuable when people can actually use and improve them.</h3>
     <p class="home-card-copy">I enjoy the unglamorous middle between a promising prototype and a dependable system: evaluation, interfaces, observability, latency, failure handling, and the thousand small decisions that make software hold together. That mindset now shapes my work on agent skill retrieval, reliable execution, and AI-native research workflows.</p>
     <div class="home-tag-row" aria-label="Primary focus areas">
       <span class="home-tag">Tool-using Agents</span>
@@ -100,7 +99,7 @@ In parallel, I collaborate with [**LAIR**](https://github.com/OpenLAIR), advised
   <section class="home-highlight-card">
     <p class="home-highlight-kicker">01 · Retrieve</p>
     <h3>Load less context without losing the dependencies that make a skill usable.</h3>
-    <p><strong>Graph of Skills</strong> explores structural retrieval for massive skill libraries. In our evaluation, it improved average reward by <strong>43.6%</strong> while reducing input tokens by <strong>37.8%</strong> against full skill loading.</p>
+    <p><strong>Graph-of-Skills</strong> explores structural retrieval for massive skill libraries. On SkillsBench, its strongest setting improved reward by <strong>25.55%</strong> while reducing total tokens by <strong>56.72%</strong> against full skill loading.</p>
   </section>
 
   <section class="home-highlight-card">
@@ -133,7 +132,7 @@ In parallel, I collaborate with [**LAIR**](https://github.com/OpenLAIR), advised
     title="COMFYCLAW: Self-Evolving Skill Harnesses for Image Generation Workflows"
     :authors="['Zongxia Li*','Dawei Liu*','Jingxi Chen','Xiyang Wu','Fuxiao Liu','Yuhang Zhou','Jing Xie','Xiaomin Wu','Lichao Sun']"
     image="/publication/comfyclaw.png"
-    venue="Under Review"
+    venue="Preprint"
     date="May 2026"
     paper="https://arxiv.org/abs/2607.01709"
     github="https://github.com/Moms-Organic-Agent-Lab/comfyclaw"
@@ -141,12 +140,12 @@ In parallel, I collaborate with [**LAIR**](https://github.com/OpenLAIR), advised
   />
 
   <PublicationCard
-    title="Graph of Skills: Dependency-Aware Structural Retrieval for Massive Agent Skills"
+    title="Graph-of-Skills: Dependency-Aware Structural Retrieval for Massive Agent Skills"
     :authors="['Dawei Liu*','Zongxia Li*','Hongyang Du','Xiyang Wu','Shihang Gui','Yongbei Kuang','Lichao Sun']"
     image="/publication/gos.png"
-    venue="Preprint"
+    venue="ACM CAIS 2026 Agent Skills"
     date="Apr 2026"
-    abstract="Skill usage has become a core component of modern agent systems and can substantially improve agents' ability to complete complex tasks. In real-world settings, where agents must monitor and interact with numerous personal applications, web browsers, and other environment interfaces, skill libraries can scale to thousands of reusable skills. Scaling to larger skill sets introduces two key challenges. First, loading the full skill set saturates the context window, driving up token costs, hallucination, and latency. In this paper, we present Graph of Skills (GoS), an inference-time structural retrieval layer for large skill libraries. GoS constructs an executable skill graph offline from skill packages, then at inference time retrieves a bounded, dependency-aware skill bundle through hybrid semantic-lexical seeding, reverse-weighted Personalized PageRank, and context-budgeted hydration. On SkillsBench and ALFWorld, GoS improves average reward by 43.6% over the vanilla full skill-loading baseline while reducing input tokens by 37.8%, and generalizes across three model families: Claude Sonnet, GPT-5.2 Codex, and MiniMax. Additional ablation studies across skill libraries ranging from 200 to 2,000 skills further demonstrate that GoS consistently outperforms both vanilla skills loading and simple vector retrieval in balancing reward, token efficiency, and runtime."
+    abstract="Modern LLM agents increasingly rely on reusable skills, and as they interact with personal applications, web browsers, and other interfaces, skill libraries can scale to thousands of skills. Scaling to larger skill sets introduces two key challenges. First, loading the full skill set saturates the context window, driving up token costs, hallucination, and latency. Second, semantic retrieval surfaces topically relevant skills but misses their prerequisite chain of upstream and downstream skills, creating a prerequisite gap that leaves the retrieved bundle execution-incomplete. In this paper, we present Graph-of-Skills (GoS), an inference-time structural retrieval layer for large skill libraries. GoS constructs an executable skill graph offline from skill packages, then at inference time retrieves a bounded, dependency-aware skill bundle through hybrid semantic-lexical seeding, reverse-aware Personalized PageRank, and context-budgeted hydration. On SkillsBench and ALFWorld, GoS consistently delivers substantial reward improvements and token savings across three model families (Claude Sonnet 4.5, MiniMax M2.7, and GPT-5.2 Codex). On SkillsBench, GoS achieves a peak reward increase of 25.55% while reducing total tokens by 56.72% over the vanilla full skill-loading baseline using GPT-5.2 Codex. Ablations confirm this pattern across skill libraries from 200 to 2,000 skills."
     paper="https://arxiv.org/abs/2604.05333"
     github="https://github.com/davidliuk/graph-of-skills"
   />
@@ -185,6 +184,8 @@ In parallel, I collaborate with [**LAIR**](https://github.com/OpenLAIR), advised
     github="https://github.com/deepomicslab/TIMEDB"
   />
 </PublicationList>
+
+<p class="home-section-outro">Five selected here. The complete, continuously updated record lives on <a href="https://scholar.google.com/citations?user=RzdCL4AAAAAJ&amp;hl=en" target="_blank" rel="me noopener noreferrer">Google Scholar</a> and <a href="https://dblp.org/pid/57/1575-5.html" target="_blank" rel="me noopener noreferrer">DBLP</a>.</p>
 
 ---
 
@@ -298,6 +299,7 @@ In parallel, I collaborate with [**LAIR**](https://github.com/OpenLAIR), advised
   />
 </div>
 
+---
 
 ## Award-Winning Projects
 
@@ -403,83 +405,36 @@ In parallel, I collaborate with [**LAIR**](https://github.com/OpenLAIR), advised
 
 ## Tech Stack
 
-<p class="home-section-intro">Tools follow the problem. This is the practical toolkit I reach for across agent research, ML experimentation, backend systems, and product-facing engineering.</p>
-
-<div class="tech-stack-summary">
-  <div class="tech-stack-summary__item">
-    <span class="tech-stack-summary__label">Build</span>
-    <strong>Backend systems, ML tooling, and production-facing infra</strong>
-  </div>
-  <div class="tech-stack-summary__item">
-    <span class="tech-stack-summary__label">Bias</span>
-    <strong>Reliability, latency, observability, and scalable delivery</strong>
-  </div>
-  <div class="tech-stack-summary__item">
-    <span class="tech-stack-summary__label">Context</span>
-    <strong>Applied AI, recommender systems, and research platforms</strong>
-  </div>
-</div>
-
-:::: tabs
-
-@tab Language
+<p class="home-section-intro">My toolkit is organized around the systems I build, not a flat inventory of technologies. These four working layers connect research prototypes to observable, production-facing products.</p>
 
 <TechGrid>
-  <TechCard title="Systems" :items="['C/C++','Java','Go']" badge-type="tip" />
-  <TechCard title="Scripting" :items="['Python','JavaScript','TypeScript']" />
-  <TechCard title="Query & Markup" :items="['SQL','HTML','CSS']" />
+  <TechCard
+    index="01"
+    eyebrow="Intelligence layer"
+    title="AI & Agent Systems"
+    description="Model, retrieve, evaluate, and operate tool-using systems under real context and latency constraints."
+    :items="['PyTorch','Transformers','Agent Harnesses','Skill Retrieval','RAG','Evaluation','Recommender Systems']" />
+  <TechCard
+    index="02"
+    eyebrow="Service layer"
+    title="Backend & Distributed Systems"
+    description="Build typed services, ranking paths, streaming jobs, and the interfaces that keep them evolvable."
+    :items="['Java','Python','Go','Spring','Thrift / Protobuf','Kafka / Flink','OpenTelemetry']" />
+  <TechCard
+    index="03"
+    eyebrow="Platform layer"
+    title="Data & Infrastructure"
+    description="Design storage and delivery foundations with explicit tradeoffs around scale, failure, and observability."
+    :items="['MySQL','Redis','Elasticsearch','Docker','Kubernetes','AWS','Grafana']" />
+  <TechCard
+    index="04"
+    eyebrow="Experience layer"
+    title="Product & Interfaces"
+    description="Turn systems into usable research workspaces, web products, visual tools, and spatial experiences."
+    :items="['TypeScript','React','Vue / Vite','Swift / SwiftUI','ARKit','ECharts','C/C++ / OpenGL']" />
 </TechGrid>
 
-@tab AI / ML
-
-<TechGrid>
-  <TechCard title="Agent Systems" :items="['Skills','Harness','Research Automation','RAG']" badge-type="tip" />
-  <TechCard title="LLM & Multimodal" :items="['Transformer','CLIP','Token Pruning']" />
-  <TechCard title="RecSys & Ranking" :items="['ItemCF','Two-Tower','Tri-Tower','Exploration-Exploitation']" />
-  <TechCard title="Training & Eval" :items="['PyTorch','A/B Testing','Offline Metrics','Error Analysis']" />
-</TechGrid>
-
-@tab Backend
-
-<TechGrid>
-  <TechCard title="Frameworks" :items="['Spring','Guice','Coral']" badge-type="tip" />
-  <TechCard title="APIs & Schemas" :items="['Thrift','Protobuf']" />
-  <TechCard title="Data & Search" :items="['MySQL','Redis','ElasticSearch']" badge-type="warning" />
-  <TechCard title="Streaming & MQ" :items="['Kafka','RabbitMQ','Flink']" />
-  <TechCard title="Observability" :items="['OpenTelemetry']" />
-</TechGrid>
-
-@tab Frontend
-
-<TechGrid>
-  <TechCard title="Web Apps" :items="['React','Vue','Vite']" badge-type="tip" />
-  <TechCard title="UI & DataViz" :items="['ECharts','AWS UI','Arco Design']" />
-  <TechCard title="Apple" :items="['Swift','SwiftUI','ARKit']" />
-</TechGrid>
-
-@tab Graphics
-
-<TechGrid>
-  <TechCard title="Real-Time & Shader" :items="['OpenGL','GLSL','Unity']" badge-type="tip" />
-  <TechCard title="Toolkits" :items="['Qt','Maya API','RigNet']" />
-</TechGrid>
-
-@tab DevOps
-
-<TechGrid>
-  <TechCard title="Runtime & Containers" :items="['Unix/Linux','Docker','Kubernetes']" badge-type="tip" />
-  <TechCard title="Platform Ops" :items="['Grafana','Helm','CDK']" />
-  <TechCard title="AWS" :items="['DynamoDB','Kinesis','SQS','S3','Lambda']" />
-</TechGrid>
-
-@tab Tools
-
-<TechGrid>
-  <TechCard title="Developer Workflow" :items="['Git','Vim','SSH','Shell']" badge-type="tip" />
-  <TechCard title="Writing & Docs" :items="['Markdown','LaTeX','Mermaid','VuePress']" />
-</TechGrid>
-
-::::
+<p class="home-section-outro">This is a curated working set rather than a proficiency checklist. I choose tools by the constraints of the system and keep the deeper implementation notes in the <a href="/ai/">AI</a>, <a href="/cs/">CS</a>, and <a href="/se/">software engineering</a> knowledge maps.</p>
 
 ---
 
@@ -496,9 +451,10 @@ In parallel, I collaborate with [**LAIR**](https://github.com/OpenLAIR), advised
   <nav id="academic-profiles" class="home-profile-row" aria-label="Academic profiles">
     <span class="home-profile-row__label">Research profiles</span>
     <div class="home-tag-row">
-      <a class="home-tag home-tag--link" href="https://scholar.google.com/citations?user=RzdCL4AAAAAJ&amp;hl=en" target="_blank" rel="me noopener noreferrer">Google Scholar <span aria-hidden="true">↗</span></a>
-      <a class="home-tag home-tag--link" href="https://www.semanticscholar.org/author/Dawei-Liu/50439123" target="_blank" rel="me noopener noreferrer">Semantic Scholar <span aria-hidden="true">↗</span></a>
-      <a class="home-tag home-tag--link" href="https://openreview.net/profile?id=%7EDawei_Liu6" target="_blank" rel="me noopener noreferrer">OpenReview <span aria-hidden="true">↗</span></a>
+      <a class="home-tag home-tag--link" href="https://scholar.google.com/citations?user=RzdCL4AAAAAJ&amp;hl=en" target="_blank" rel="me noopener noreferrer">Google Scholar</a>
+      <a class="home-tag home-tag--link" href="https://www.semanticscholar.org/author/Dawei-Liu/50439123" target="_blank" rel="me noopener noreferrer">Semantic Scholar</a>
+      <a class="home-tag home-tag--link" href="https://openreview.net/profile?id=%7EDawei_Liu6" target="_blank" rel="me noopener noreferrer">OpenReview</a>
+      <a class="home-tag home-tag--link" href="https://dblp.org/pid/57/1575-5.html" target="_blank" rel="me noopener noreferrer">DBLP</a>
     </div>
   </nav>
 </div>

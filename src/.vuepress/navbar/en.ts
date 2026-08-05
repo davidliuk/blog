@@ -1,7 +1,13 @@
 import { navbar } from "vuepress-theme-hope";
 
 export const enNavbar = navbar([
-  "/",
+  // The home link is the brand on the left. A bare "/" string here rendered a
+  // nav pill literally labelled "/".
+  {
+    text: "Home",
+    icon: "house",
+    link: "/",
+  },
   {
     text: "Algorithms",
     icon: "sitemap",
@@ -185,7 +191,7 @@ export const enNavbar = navbar([
             link: "network/",
           },
           {
-            text: "Operating System",
+            text: "Operating Systems",
             icon: "server",
             link: "os/",
           },
@@ -197,14 +203,14 @@ export const enNavbar = navbar([
         prefix: "design/",
         children: [
           {
-            text: "Design Pattern",
-            icon: "palette",
-            link: "pattern/",
-          },
-          {
             text: "Object-Oriented Design",
             icon: "cubes-stacked",
             link: "ood/",
+          },
+          {
+            text: "Design Patterns",
+            icon: "palette",
+            link: "pattern/",
           },
           {
             text: "System Design",
@@ -280,6 +286,11 @@ export const enNavbar = navbar([
           { text: "Kubernetes", icon: "dharmachakra", link: "k8s/" },
           { text: "CI/CD", icon: "arrows-rotate", link: "cicd/" },
         ],
+      },
+      {
+        text: "Application Engineering",
+        icon: "mobile-screen",
+        link: "app/",
       },
       {
         text: "Quality & Tooling",

@@ -1,2 +1,9 @@
-// you can change colors here
-$theme-color: #096dd9;
+// Palette overrides.
+//
+// The brand color lives in `config.scss` — the palette generator reads
+// `$theme-color` from the config module, so setting it here has no effect.
+//
+// Surfaces are intentionally left at the theme defaults (`--vp-c-bg` is the
+// card/surface white). The page canvas behind those surfaces is tinted in
+// `index.scss` via `--dl-canvas`, so raised cards read as cards without
+// having to restate a background on every component.

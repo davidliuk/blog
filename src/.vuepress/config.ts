@@ -32,6 +32,7 @@ const personStructuredData = JSON.stringify({
     "https://scholar.google.com/citations?user=RzdCL4AAAAAJ&hl=en",
     "https://www.semanticscholar.org/author/Dawei-Liu/50439123",
     "https://openreview.net/profile?id=%7EDawei_Liu6",
+    "https://dblp.org/pid/57/1575-5.html",
   ],
 });
 
