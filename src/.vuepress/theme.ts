@@ -12,7 +12,7 @@ export default hopeTheme({
 
   // iconAssets: "iconfont",
 
-  logo: "/logo.png",
+  logo: "/logo-ai-v4.png",
 
   repo: "davidliuk/blog",
 
@@ -161,18 +161,14 @@ export default hopeTheme({
     },
 
     pwa: {
-      favicon: "/logo.png",
+      favicon: "/assets/icon/favicon-v4.png",
+      themeColor: "#17352f",
       cacheHTML: false,
       maxSize: 4608,
-      // cachePic: true,
       appendBase: true,
       apple: {
-        icon: "/assets/icon/152.png",
+        icon: "/assets/icon/apple-touch-icon-180-v4.png",
         statusBarColor: "black",
-      },
-      msTile: {
-        image: "/assets/icon/144.png",
-        color: "#ffffff",
       },
       manifest: {
         name: "David Liu — AI Systems",
@@ -183,25 +179,27 @@ export default hopeTheme({
         background_color: "#f5f1e8",
         icons: [
           {
-            src: "/assets/icon/512.png",
+            src: "/assets/icon/maskable-512-v4.png",
             sizes: "512x512",
             purpose: "maskable",
             type: "image/png",
           },
           {
-            src: "/assets/icon/196.png",
+            src: "/assets/icon/maskable-192-v4.png",
             sizes: "192x192",
             purpose: "maskable",
             type: "image/png",
           },
           {
-            src: "/assets/icon/512.png",
+            src: "/logo-ai-v4.png",
             sizes: "512x512",
+            purpose: "any",
             type: "image/png",
           },
           {
-            src: "/assets/icon/196.png",
-            sizes: "196x196",
+            src: "/assets/icon/icon-192-v4.png",
+            sizes: "192x192",
+            purpose: "any",
             type: "image/png",
           },
         ],

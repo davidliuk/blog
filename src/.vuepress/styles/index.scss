@@ -232,6 +232,18 @@ body {
 // ---------------------------------------------------------------------------
 // Portfolio homepage: compact hero + square avatar frame
 // ---------------------------------------------------------------------------
+.vp-portfolio-home {
+  // Five semantic sizes cover the whole homepage. Components inherit these
+  // tokens instead of inventing near-duplicate 11–15px variants.
+  --home-type-display: clamp(2rem, 4.5vw, 3.2rem);
+  --home-type-section: clamp(1.35rem, 2.2vw, 1.75rem);
+  --home-type-title: clamp(1.08rem, 1.4vw, 1.18rem);
+  --home-type-body: 1rem;
+  --home-type-meta: 0.9rem;
+  --home-prose-wide: 58rem;
+  --home-prose: 52rem;
+}
+
 .vp-portfolio-home #portfolio.vp-portfolio {
   position: relative;
   display: flex;
@@ -376,9 +388,9 @@ body {
   .vp-portfolio-welcome {
     order: 1;
     margin-bottom: 0.08rem !important;
-    font-size: 0.72rem !important;
+    font-size: var(--home-type-meta) !important;
     font-weight: 700 !important;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.08em;
     color: var(--vp-c-text-2) !important;
     text-transform: uppercase;
   }
@@ -386,7 +398,7 @@ body {
   .vp-portfolio-name {
     order: 2;
     margin-bottom: 0.24rem !important;
-    font-size: clamp(2.05rem, 4.8vw, 3.05rem) !important;
+    font-size: var(--home-type-display) !important;
     font-weight: 800 !important;
     line-height: 1.02;
     letter-spacing: -0.05em;
@@ -427,7 +439,7 @@ body {
     border-radius: 999px;
     border: 1px solid var(--dl-accent-line);
     background: var(--dl-accent-soft);
-    font-size: 0.83rem !important;
+    font-size: var(--home-type-meta) !important;
     font-weight: 700 !important;
     line-height: 1.2;
     color: var(--vp-c-text-2) !important;
@@ -586,7 +598,15 @@ body {
     }
 
     .home-affiliation-strip__logos {
+      width: 100%;
       justify-content: center;
+    }
+
+    .vp-portfolio-medias,
+    .vp-social-medias {
+      width: 100%;
+      max-width: 100%;
+      flex-wrap: wrap;
     }
 
     .vp-portfolio-medias {
@@ -607,9 +627,9 @@ body {
 }
 
 .vp-portfolio-home .home-affiliation-strip__eyebrow {
-  font-size: 0.62rem;
+  font-size: var(--home-type-meta);
   font-weight: 700;
-  letter-spacing: 0.18em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--vp-c-text-3);
   margin-bottom: 0.5rem;
@@ -620,6 +640,15 @@ body {
   flex-wrap: wrap;
   align-items: center;
   gap: 0.5rem 0.42rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.vp-portfolio-home .home-affiliation-strip__item {
+  display: flex;
+  margin: 0;
+  padding: 0;
 }
 
 .vp-portfolio-home .home-affiliation-strip__link {
@@ -737,12 +766,12 @@ body {
 }
 
 #navbar.vp-navbar .vp-nav-logo {
-  width: 2rem;
-  height: 2rem;
-  padding: 0.18rem;
-  border-radius: 999px;
-  background: var(--dl-chip);
-  border: 1px solid var(--dl-border);
+  width: 2.1rem;
+  height: 2.1rem;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
   box-sizing: border-box;
 }
 
@@ -814,7 +843,7 @@ body {
   border: 1px solid transparent;
   background: transparent;
   color: var(--vp-c-text-2);
-  font-size: 0.92rem;
+  font-size: 0.9rem;
   font-weight: 600;
   line-height: 1;
   white-space: nowrap;
@@ -990,7 +1019,7 @@ body {
     > h1 {
       margin-top: 1.75rem;
       margin-bottom: 1rem;
-      font-size: clamp(1.45rem, 3vw, 1.75rem);
+      font-size: var(--home-type-section);
       font-weight: 700;
       letter-spacing: -0.02em;
       color: var(--vp-c-text-1);
@@ -1008,7 +1037,7 @@ body {
       padding: 0.35rem 0 0.35rem 0.9rem;
       border-left: 4px solid var(--vp-c-accent);
       border-bottom: none;
-      font-size: clamp(1.35rem, 2.4vw, 1.6rem);
+      font-size: var(--home-type-section);
       font-weight: 700;
       letter-spacing: -0.025em;
       color: var(--vp-c-text-1);
@@ -1022,7 +1051,7 @@ body {
     > h3 {
       margin-top: 1.6rem;
       margin-bottom: 0.65rem;
-      font-size: 1.05rem;
+      font-size: var(--home-type-title);
       font-weight: 600;
       color: var(--vp-c-text-1);
       border-bottom: none;
@@ -1079,7 +1108,7 @@ body {
   display: inline-flex;
   align-items: center;
   padding: 0.4rem 0.85rem;
-  font-size: 0.82rem;
+  font-size: var(--home-type-meta, 0.9rem);
   font-weight: 600;
   letter-spacing: 0.01em;
   text-decoration: none !important;
@@ -1107,47 +1136,57 @@ body {
 }
 
 .vp-portfolio-home .home-lead {
-  margin: 0 0 1.15rem;
-  padding: 1rem 1.15rem;
-  font-size: 1.05rem;
-  line-height: 1.65;
+  max-width: var(--home-prose-wide);
+  margin: 0 0 1.2rem;
+  padding: 0;
+  font-size: var(--home-type-body);
+  line-height: 1.72;
   color: var(--vp-c-text-1);
-  background: linear-gradient(
-    135deg,
-    var(--vp-c-bg-soft) 0%,
-    var(--dl-accent-soft) 100%
-  );
-  border: 1px solid var(--vp-c-divider);
-  border-radius: var(--dl-radius-sm);
-  box-shadow: var(--dl-shadow-1);
 }
 
-.vp-portfolio-home .home-connect {
-  margin: 0.5rem 0 0;
-  padding: 1.05rem 1.2rem;
-  font-size: 0.98rem;
-  line-height: 1.65;
-  color: var(--vp-c-text-2);
-  background: var(--dl-chip);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: var(--dl-radius-sm);
-  border-left: 4px solid var(--vp-c-accent);
+.vp-portfolio-home :is(
+  .home-page-nav,
+  .home-mission,
+  .home-hero-grid,
+  .home-about-context,
+  .home-highlight-grid,
+  .pub-grid,
+  .experience-grid,
+  .project-grid,
+  .knowledge-atlas-grid,
+  .knowledge-atlas-note,
+  .tech-grid,
+  .home-resume,
+  .home-connect-panel
+) {
+  width: 100%;
+  box-sizing: border-box;
 }
 
-.vp-portfolio-home [vp-content].vp-portfolio-content > #markdown-content > .home-hero-grid + p,
-.vp-portfolio-home [vp-content].vp-portfolio-content > #markdown-content > .home-hero-grid + p + p {
-  max-width: 58rem;
+.vp-portfolio-home .home-about-context {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   margin: 0.9rem 0 0;
-  padding: 1rem 1.1rem 1rem 1.2rem;
-  border-radius: 0 var(--dl-radius-md) var(--dl-radius-md) 0;
-  border-left: 3px solid color-mix(in srgb, var(--vp-c-accent) 72%, transparent);
-  background:
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--vp-c-bg-soft) 92%, transparent) 0%,
-      color-mix(in srgb, var(--vp-c-bg) 96%, transparent) 100%
-    );
-  box-shadow: var(--dl-shadow-1);
+  padding: 1rem 0;
+  border-block: 1px solid var(--dl-border);
+}
+
+.vp-portfolio-home .home-about-context p {
+  margin: 0;
+  padding: 0 1.25rem 0 0;
+  color: var(--vp-c-text-2);
+  font-size: var(--home-type-body);
+  line-height: 1.72;
+}
+
+.vp-portfolio-home .home-about-context p + p {
+  padding: 0 0 0 1.25rem;
+  border-left: 1px solid var(--dl-border);
+}
+
+.vp-portfolio-home .home-about-context strong {
+  color: var(--vp-c-text-1);
+  font-weight: 650;
 }
 
 .vp-portfolio-home [vp-content].vp-portfolio-content > #markdown-content > p a {
@@ -1155,39 +1194,128 @@ body {
   text-underline-offset: 3px;
 }
 
-// Shared design language for the primary portfolio cards. Components keep
-// their own content layout, while the shell, elevation and metadata rhythm stay
-// consistent across publications, education, experience and projects.
+// Shared design language for the primary portfolio cards. Interactive elements
+// carry the stronger elevation; these information surfaces stay quiet.
 .vp-portfolio-home .home-card-shell {
   position: relative;
   overflow: hidden;
   border: 1px solid var(--dl-border);
   border-radius: var(--dl-radius-lg);
   background: var(--dl-surface);
-  box-shadow: var(--dl-shadow-2);
-  transition:
-    transform 0.2s ease,
-    box-shadow 0.2s ease,
-    border-color 0.2s ease,
-    background-color var(--vp-t-color);
+  box-shadow: var(--dl-shadow-1);
+  transition: background-color var(--vp-t-color);
 }
 
 .vp-portfolio-home .home-card-shell::before {
-  content: "";
-  position: absolute;
-  inset: 0 auto 0 0;
-  width: 4px;
-  background: linear-gradient(
-    180deg,
-    var(--vp-c-accent),
-    color-mix(in srgb, var(--vp-c-accent) 22%, transparent)
-  );
+  display: none;
 }
 
-.vp-portfolio-home .home-card-shell:hover {
+// ---------------------------------------------------------------------------
+// Card metadata
+//
+// Education, Experience, Projects and Publications each grew their own set of
+// eyebrow / date / location / label / chip styles. Three of them declared a
+// byte-identical eyebrow rule under three different class names, and a date was
+// a bordered pill in two cards, a plain caption in a third and a differently
+// sized chip in the fourth. These are the shared primitives; the per-component
+// rules that duplicated them are gone.
+// ---------------------------------------------------------------------------
+.vp-portfolio-home .home-card-eyebrow,
+.vp-portfolio-home .home-card-label {
+  font-size: var(--home-type-meta);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--vp-c-text-3);
+}
+
+.vp-portfolio-home .home-card-eyebrow {
+  display: block;
+  margin: 0 0 0.2rem;
+}
+
+// Right-hand metadata cluster in a card header.
+.vp-portfolio-home .home-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--dl-space-1);
+  // Never let metadata outrank the title it annotates.
+  max-width: 46%;
+}
+
+// Icons ride on `currentColor` through a mask, so a single rule covers light
+// mode, dark mode and the muted metadata color without shipping two assets.
+.vp-portfolio-home .home-card-time::before,
+.vp-portfolio-home .home-card-place::before {
+  content: "";
+  flex-shrink: 0;
+  width: 0.82em;
+  height: 0.82em;
+  margin-inline-end: 0.36rem;
+  background: currentColor;
+  opacity: 0.75;
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+}
+
+.vp-portfolio-home .home-card-time::before {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round'%3E%3Cpath d='M5.3 1.6v2.2M10.7 1.6v2.2M2.4 6.6h11.2'/%3E%3Crect x='2.4' y='3.1' width='11.2' height='11' rx='2'/%3E%3C/svg%3E");
+}
+
+.vp-portfolio-home .home-card-place::before {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='1.5'%3E%3Cpath d='M8 14.6s5-4.7 5-8.2a5 5 0 1 0-10 0c0 3.5 5 8.2 5 8.2Z'/%3E%3Ccircle cx='8' cy='6.4' r='1.9'/%3E%3C/svg%3E");
+}
+
+.vp-portfolio-home .home-card-place {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 1.75rem;
+  padding: 0.24rem 0.62rem;
+  border: 1px solid var(--dl-border);
+  border-radius: 999px;
+  background: var(--dl-chip);
+  color: var(--vp-c-text-2);
+  font-size: var(--home-type-meta);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+// One chip, three intents.
+.vp-portfolio-home .home-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.32rem;
+  min-height: 1.85rem;
+  padding: 0.24rem 0.68rem;
+  border: 1px solid var(--dl-border);
+  border-radius: 999px;
+  background: var(--dl-chip);
+  color: var(--vp-c-text-2);
+  font-size: var(--home-type-meta);
+  font-weight: 650;
+  line-height: 1.2;
+}
+
+.vp-portfolio-home .home-chip--accent {
   border-color: var(--dl-accent-line);
-  transform: translateY(-2px);
-  box-shadow: var(--dl-shadow-3);
+  background: var(--dl-accent-soft);
+  color: var(--vp-c-text-1);
+}
+
+.vp-portfolio-home .home-chip--award {
+  border-color: color-mix(in srgb, #d29922 32%, var(--vp-c-divider));
+  background: color-mix(in srgb, #f9d66d 16%, var(--vp-c-bg));
+  color: color-mix(in srgb, #8a5f00 80%, var(--vp-c-text-1));
+}
+
+[data-theme="dark"] .vp-portfolio-home .home-chip--award {
+  color: color-mix(in srgb, #f2cc60 82%, var(--vp-c-text-1));
 }
 
 .vp-portfolio-home .home-card-time {
@@ -1200,7 +1328,7 @@ body {
   border-radius: 999px;
   background: var(--dl-chip);
   color: var(--vp-c-text-2);
-  font-size: 0.78rem;
+  font-size: var(--home-type-meta);
   font-weight: 700;
   line-height: 1;
   letter-spacing: 0.01em;
@@ -1228,26 +1356,12 @@ body {
   border-radius: var(--dl-radius-lg);
   padding: 1.2rem 1.25rem 1.25rem;
   background: var(--dl-surface);
-  box-shadow: var(--dl-shadow-2);
-  transition:
-    transform 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    background-color var(--vp-t-color);
+  box-shadow: var(--dl-shadow-1);
+  transition: background-color var(--vp-t-color);
 }
 
 .tech-card::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 4px;
-  background: linear-gradient(90deg, var(--vp-c-accent), color-mix(in srgb, var(--vp-c-accent) 18%, transparent));
-}
-
-.tech-card:hover {
-  border-color: var(--dl-accent-line);
-  transform: translateY(-2px);
-  box-shadow: var(--dl-shadow-3);
+  display: none;
 }
 
 .tech-card__header {
@@ -1267,23 +1381,23 @@ body {
   border-radius: 999px;
   background: var(--dl-accent-soft);
   color: var(--vp-c-accent);
-  font-size: 0.7rem;
+  font-size: var(--home-type-meta, 0.9rem);
   font-weight: 800;
   letter-spacing: 0.04em;
 }
 
 .tech-card__eyebrow {
   color: var(--vp-c-text-3);
-  font-size: 0.68rem;
+  font-size: var(--home-type-meta, 0.9rem);
   font-weight: 750;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
 .tech-card h3 {
   margin: 0 0 0.55rem;
   color: var(--vp-c-text-1);
-  font-size: 1.2rem;
+  font-size: var(--home-type-title, 1.18rem);
   line-height: 1.3;
   letter-spacing: -0.02em;
 }
@@ -1291,7 +1405,7 @@ body {
 .tech-card__description {
   margin: 0;
   color: var(--vp-c-text-2);
-  font-size: 0.92rem;
+  font-size: var(--home-type-body, 1rem);
   line-height: 1.65;
 }
 
@@ -1313,7 +1427,7 @@ body {
   border: 1px solid var(--dl-border);
   background: var(--dl-chip);
   color: var(--vp-c-text-2);
-  font-size: 0.8rem;
+  font-size: var(--home-type-meta, 0.9rem);
   font-weight: 600;
 }
 
@@ -1497,10 +1611,10 @@ body {
 }
 
 .pub-head {
+  border: 0;
   border-radius: var(--dl-radius-md);
-  background: var(--dl-surface);
-  border: 1px solid var(--dl-border);
-  padding: 10px;
+  background: transparent;
+  padding: 0;
 }
 
 .pub-img {
@@ -1508,6 +1622,7 @@ body {
   height: 116px;
   object-fit: contain;
   border-radius: var(--dl-radius-sm);
+  border: 1px solid var(--dl-border);
   background: var(--dl-chip);
   padding: 6px;
   box-sizing: border-box;
@@ -1515,7 +1630,7 @@ body {
 
 .pub-title {
   margin: 0 0 8px 0;
-  font-size: clamp(1.08rem, 1.4vw, 1.18rem);
+  font-size: var(--home-type-title, 1.18rem);
   font-weight: 700;
   line-height: 1.3;
   letter-spacing: -0.02em;
@@ -1524,7 +1639,7 @@ body {
 
 .pub-meta {
   color: var(--vp-c-text-2);
-  font-size: 0.88rem;
+  font-size: var(--home-type-meta, 0.9rem);
 }
 
 .pub-authors .me {
@@ -1539,6 +1654,7 @@ body {
 
 .pub-abs p {
   color: var(--vp-c-text-2);
+  font-size: var(--home-type-body, 1rem);
   line-height: 1.62;
 }
 
@@ -1549,29 +1665,56 @@ body {
   position: sticky;
   top: calc(var(--navbar-height, 0px) + 0.75rem);
   z-index: 8;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: 0.55rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--dl-accent-line) transparent;
+  -webkit-overflow-scrolling: touch;
   margin: 0.35rem 0 1.75rem;
   padding: 0.55rem;
   border: 1px solid var(--dl-border);
   border-radius: var(--dl-radius-md);
   background: color-mix(in srgb, var(--vp-c-bg) 82%, transparent);
   backdrop-filter: blur(14px);
-  box-shadow: var(--dl-shadow-2);
+  box-shadow: var(--dl-shadow-1);
+}
+
+.vp-portfolio-home .home-page-nav::-webkit-scrollbar {
+  height: 4px;
+}
+
+.vp-portfolio-home .home-page-nav::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: var(--dl-accent-line);
 }
 
 .vp-portfolio-home .home-page-nav__link {
-  background: var(--dl-chip);
-  border-color: var(--dl-border);
+  flex: 0 0 auto;
+  scroll-snap-align: start;
+  background: transparent;
+  border-color: transparent;
 }
 
 .vp-portfolio-home .home-page-nav__link:hover {
-  transform: translateY(-1px);
+  background: var(--dl-accent-soft);
+  border-color: transparent;
+  box-shadow: none;
 }
 
 .vp-portfolio-home .home-page-nav__link.is-active {
   color: var(--dl-ink) !important;
   background: var(--dl-accent-soft);
   border-color: var(--dl-accent-line);
-  box-shadow: var(--dl-shadow-3);
+  box-shadow: inset 0 0 0 1px var(--dl-accent-line);
+}
+
+.vp-portfolio-home .pub-card[id] {
+  scroll-margin-top: var(--home-anchor-offset, 9rem);
 }
 
 .vp-portfolio-home .home-mission {
@@ -1631,9 +1774,9 @@ body {
 .vp-portfolio-home .home-mission__eyebrow,
 .vp-portfolio-home .home-mission__loop-label {
   margin: 0 0 0.75rem;
-  font-size: 0.7rem;
+  font-size: var(--home-type-meta);
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--vp-c-text-3);
 }
@@ -1643,7 +1786,7 @@ body {
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: clamp(2rem, 4.5vw, 3.6rem);
+  font-size: var(--home-type-display);
   font-weight: 800;
   line-height: 1.02;
   letter-spacing: -0.055em;
@@ -1653,7 +1796,7 @@ body {
 .vp-portfolio-home .home-mission__lede {
   max-width: 46rem;
   margin: 1.1rem 0 0;
-  font-size: clamp(0.98rem, 1.4vw, 1.08rem);
+  font-size: var(--home-type-body);
   line-height: 1.72;
   color: var(--vp-c-text-2);
 }
@@ -1680,7 +1823,7 @@ body {
   border-radius: 999px;
   background: color-mix(in srgb, var(--vp-c-bg) 88%, transparent);
   color: var(--vp-c-text-1);
-  font-size: 0.88rem;
+  font-size: var(--home-type-meta);
   font-weight: 700;
   text-decoration: none !important;
   box-shadow: var(--dl-shadow-1);
@@ -1713,7 +1856,7 @@ body {
   border: 1px solid var(--dl-border);
   border-radius: var(--dl-radius-lg);
   background: var(--dl-surface);
-  box-shadow: var(--dl-shadow-2);
+  box-shadow: var(--dl-shadow-1);
 }
 
 .vp-portfolio-home .home-mission__loop-label {
@@ -1753,7 +1896,7 @@ body {
   border-radius: 999px;
   background: var(--dl-accent-soft);
   color: var(--vp-c-accent);
-  font-size: 0.72rem;
+  font-size: var(--home-type-meta);
   font-weight: 800;
   letter-spacing: 0.04em;
 }
@@ -1768,7 +1911,7 @@ body {
 .vp-portfolio-home .home-mission__loop p {
   margin: 0.2rem 0 0;
   color: var(--vp-c-text-2);
-  font-size: 0.88rem;
+  font-size: var(--home-type-meta);
   line-height: 1.55;
 }
 
@@ -1810,21 +1953,9 @@ body {
   border-radius: var(--dl-radius-lg);
   border: 1px solid var(--dl-border);
   background: var(--dl-surface);
-  box-shadow: var(--dl-shadow-2);
-  // These cards lift and change border on hover but had no transition at all,
-  // so they jumped 2px instantly while every neighbouring card eased.
-  transition:
-    transform 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    background-color var(--vp-t-color);
+  box-shadow: var(--dl-shadow-1);
+  transition: background-color var(--vp-t-color);
 }
-
-// The corner glow that used to sit on every card is gone. When ten cards in a
-// row all glow, none of them reads as important — the accent wash is now spent
-// on the two surfaces that should lead the page (the mission block and the
-// section heroes), and everything else is a clean white card. The white sheen
-// that went with it was invisible on a white surface anyway.
 
 .vp-portfolio-home .home-surface-card {
   padding: 1.35rem 1.35rem 1.25rem;
@@ -1843,14 +1974,14 @@ body {
   flex-direction: column;
 }
 
-.vp-portfolio-home .home-card-eyebrow,
+.vp-portfolio-home .home-surface-card .home-card-eyebrow,
 .vp-portfolio-home .home-highlight-kicker {
   position: relative;
   z-index: 1;
   margin: 0 0 0.7rem;
-  font-size: 0.72rem;
+  font-size: var(--home-type-meta);
   font-weight: 700;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--vp-c-text-3);
 }
@@ -1859,7 +1990,7 @@ body {
   position: relative;
   z-index: 1;
   margin: 0 0 0.8rem;
-  font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+  font-size: var(--home-type-section);
   line-height: 1.12;
   letter-spacing: -0.03em;
   color: var(--vp-c-text-1);
@@ -1872,6 +2003,7 @@ body {
   z-index: 1;
   margin: 0;
   color: var(--vp-c-text-2);
+  font-size: var(--home-type-body);
   line-height: 1.72;
 }
 
@@ -1889,7 +2021,7 @@ body {
   z-index: 1;
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--dl-space-3);
+  gap: 0;
   margin-top: 1rem;
   padding-top: 1rem;
   border-top: 1px solid var(--dl-border);
@@ -1898,16 +2030,20 @@ body {
 .vp-portfolio-home .home-story-meta__item {
   display: grid;
   gap: 0.22rem;
-  padding: 0.85rem 0.9rem;
-  border-radius: var(--dl-radius-md);
-  border: 1px solid var(--dl-border);
-  background: var(--dl-surface);
+  padding: 0.15rem 1rem 0.15rem 0;
+  background: transparent;
+}
+
+.vp-portfolio-home .home-story-meta__item + .home-story-meta__item {
+  padding-right: 0;
+  padding-left: 1rem;
+  border-left: 1px solid var(--dl-border);
 }
 
 .vp-portfolio-home .home-story-meta__label {
-  font-size: 0.68rem;
+  font-size: var(--home-type-meta);
   font-weight: 700;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--vp-c-text-3);
 }
@@ -1926,7 +2062,7 @@ body {
   border: 1px solid var(--dl-accent-line);
   background: var(--dl-accent-soft);
   color: var(--vp-c-text-1);
-  font-size: 0.82rem;
+  font-size: var(--home-type-meta);
   font-weight: 600;
   letter-spacing: 0.01em;
 }
@@ -1949,6 +2085,7 @@ body {
   margin: 0;
   padding-left: 1.1rem;
   color: var(--vp-c-text-2);
+  font-size: var(--home-type-body);
   line-height: 1.7;
 }
 
@@ -1966,25 +2103,13 @@ body {
 
 .vp-portfolio-home .home-highlight-card {
   padding: 1.25rem 1.2rem 1.15rem;
-  transition:
-    transform 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
-}
-
-.vp-portfolio-home .home-highlight-card:hover,
-.vp-portfolio-home .home-connect-panel:hover,
-.vp-portfolio-home .home-surface-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--dl-accent-line);
-  box-shadow: var(--dl-shadow-3);
 }
 
 .vp-portfolio-home .home-highlight-card h3 {
   position: relative;
   z-index: 1;
   margin: 0 0 0.55rem;
-  font-size: 1.08rem;
+  font-size: var(--home-type-title);
   line-height: 1.35;
   color: var(--vp-c-text-1);
 }
@@ -2031,7 +2156,20 @@ body {
 
 .vp-portfolio-home .home-section-intro {
   margin: 0 0 1rem;
-  max-width: 52rem;
+  max-width: var(--home-prose);
+}
+
+.vp-portfolio-home .home-publication-legend {
+  margin: -0.3rem 0 1rem;
+  padding: 0;
+  color: var(--vp-c-text-3);
+  font-size: var(--home-type-meta);
+  line-height: 1.45;
+}
+
+.vp-portfolio-home .home-publication-legend strong {
+  color: var(--vp-c-accent);
+  font-size: var(--home-type-meta);
 }
 
 .vp-portfolio-home .home-connect-panel {
@@ -2044,7 +2182,7 @@ body {
   z-index: 1;
   margin: 0;
   padding: 0;
-  font-size: 1rem;
+  font-size: var(--home-type-body);
   line-height: 1.72;
   color: var(--vp-c-text-2);
   background: transparent;
@@ -2063,9 +2201,9 @@ body {
 .vp-portfolio-home .home-profile-row__label {
   display: block;
   color: var(--vp-c-text-3);
-  font-size: 0.7rem;
+  font-size: var(--home-type-meta);
   font-weight: 750;
-  letter-spacing: 0.13em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
 }
 
@@ -2121,8 +2259,20 @@ body {
 
   .vp-portfolio-home .home-mission,
   .vp-portfolio-home .home-hero-grid,
-  .vp-portfolio-home .home-highlight-grid {
+  .vp-portfolio-home .home-highlight-grid,
+  .vp-portfolio-home .home-about-context {
     grid-template-columns: 1fr;
+  }
+
+  .vp-portfolio-home .home-about-context p {
+    padding: 0;
+  }
+
+  .vp-portfolio-home .home-about-context p + p {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--dl-border);
+    border-left: 0;
   }
 
   .vp-portfolio-home .home-hero-grid {
@@ -2131,12 +2281,23 @@ body {
       "focus";
   }
 
+  .vp-portfolio-home .home-card-meta {
+    max-width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+@media (min-width: 720px) and (max-width: 1099px) {
   .vp-portfolio-home .project-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 719px) {
+  .vp-portfolio-home {
+    --home-type-display: clamp(1.85rem, 10vw, 2.6rem);
+  }
+
   .vp-portfolio-home .home-page-nav {
     position: static;
     top: auto;
@@ -2157,7 +2318,6 @@ body {
 
   .vp-portfolio-home .home-mission #home-mission-title {
     max-width: 15ch;
-    font-size: clamp(1.85rem, 10vw, 2.6rem);
   }
 
   .vp-portfolio-home .home-mission__actions {
@@ -2190,6 +2350,18 @@ body {
 
   .vp-portfolio-home .home-story-meta,
   .vp-portfolio-home .home-focus-list {
+    grid-template-columns: 1fr;
+  }
+
+  .vp-portfolio-home .home-story-meta__item + .home-story-meta__item {
+    margin-top: 0.75rem;
+    padding-top: 0.75rem;
+    padding-left: 0;
+    border-top: 1px solid var(--dl-border);
+    border-left: 0;
+  }
+
+  .vp-portfolio-home .project-grid {
     grid-template-columns: 1fr;
   }
 
@@ -2388,16 +2560,16 @@ body {
   border-radius: 999px;
   background: var(--dl-accent-soft);
   color: var(--vp-c-accent);
-  font-size: 0.72rem;
+  font-size: var(--home-type-meta);
   font-weight: 800;
 }
 
 .vp-portfolio-home .knowledge-atlas-card__eyebrow {
   margin: 0 0 0.55rem;
   color: var(--vp-c-text-3);
-  font-size: 0.66rem;
+  font-size: var(--home-type-meta);
   font-weight: 750;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   line-height: 1.5;
   text-transform: uppercase;
 }
@@ -2405,13 +2577,14 @@ body {
 .vp-portfolio-home .knowledge-atlas-card h3 {
   margin: 0 0 0.65rem;
   color: var(--vp-c-text-1);
-  font-size: 1.35rem;
+  font-size: var(--home-type-section);
   letter-spacing: -0.025em;
 }
 
 .vp-portfolio-home .knowledge-atlas-card > p:not(.knowledge-atlas-card__eyebrow) {
   margin: 0;
   color: var(--vp-c-text-2);
+  font-size: var(--home-type-body);
   line-height: 1.65;
 }
 
@@ -2419,7 +2592,7 @@ body {
   margin-top: auto;
   padding-top: 1rem;
   color: var(--vp-c-accent);
-  font-size: 0.86rem;
+  font-size: var(--home-type-meta);
   font-weight: 700;
 }
 
@@ -2442,6 +2615,7 @@ body {
 .vp-portfolio-home .knowledge-atlas-note p {
   margin: 0;
   color: var(--vp-c-text-2);
+  font-size: var(--home-type-body);
   line-height: 1.65;
 }
 
@@ -2453,24 +2627,27 @@ body {
 }
 
 .vp-portfolio-home .knowledge-atlas-note__links a {
-  font-size: 0.86rem;
+  font-size: var(--home-type-meta);
   font-weight: 700;
 }
 
-@media (max-width: 959px) {
+@media (max-width: 1199px) {
   .vp-portfolio-home .knowledge-atlas-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  // The last two cards carry a `span 3` from a more specific `:nth-child`
-  // rule. Resetting only `.knowledge-atlas-card` left that span in place, so
-  // the "single column" grid still generated three implicit columns and the
-  // first card collapsed to a sliver of vertical text.
+  // Reset the desktop spans before applying the simpler two-column rhythm.
   .vp-portfolio-home .knowledge-atlas-card,
   .vp-portfolio-home .knowledge-atlas-card:nth-child(4):nth-last-child(2),
   .vp-portfolio-home .knowledge-atlas-card:nth-child(5):last-child {
-    min-height: 13.5rem;
+    min-height: 15rem;
     grid-column: auto;
+  }
+
+  // With five destinations, let the final card close the row instead of
+  // leaving an empty half-width track.
+  .vp-portfolio-home .knowledge-atlas-card:nth-child(odd):last-child {
+    grid-column: 1 / -1;
   }
 }
 
@@ -2483,10 +2660,18 @@ body {
     min-height: 0;
   }
 
+  .vp-portfolio-home .knowledge-atlas-grid {
+    grid-template-columns: 1fr;
+  }
+
   .vp-portfolio-home .knowledge-atlas-card {
     min-height: 0;
     padding: 1.1rem 1rem;
     border-radius: var(--dl-radius-md);
+  }
+
+  .vp-portfolio-home .knowledge-atlas-card:nth-child(odd):last-child {
+    grid-column: auto;
   }
 
   .vp-portfolio-home .knowledge-atlas-note {
@@ -2776,11 +2961,177 @@ div[class*="language-"],
 // not inherit the card grid's top margin.
 .vp-portfolio-home .home-section-outro {
   margin: 1.1rem 0 0;
+  max-width: var(--home-prose);
   color: var(--vp-c-text-3);
-  font-size: 0.9rem;
+  font-size: var(--home-type-meta);
   line-height: 1.65;
 }
 
 .vp-portfolio-home .home-section-outro a {
   font-weight: 650;
+}
+
+// ---------------------------------------------------------------------------
+// Actions
+//
+// Matches `.pub-action` on the publication cards so a button reads the same
+// wherever it appears on the page.
+// ---------------------------------------------------------------------------
+.vp-portfolio-home .home-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 2.5rem;
+  padding: 0 0.95rem;
+  gap: 0.42rem;
+  border: 1px solid var(--dl-border);
+  border-radius: 999px;
+  background: var(--dl-chip);
+  color: var(--vp-c-text-1);
+  font-size: var(--home-type-meta);
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none !important;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+
+.vp-portfolio-home .home-action:hover {
+  transform: translateY(-1px);
+  border-color: var(--dl-accent-line);
+  box-shadow: var(--dl-shadow-1);
+}
+
+.vp-portfolio-home .home-action--primary {
+  border-color: var(--dl-accent-line-strong);
+  background: var(--vp-c-accent);
+  color: var(--vp-c-accent-text, #fff);
+}
+
+.vp-portfolio-home .home-action--primary:hover {
+  background: var(--vp-c-accent-hover);
+  color: var(--vp-c-accent-text, #fff);
+}
+
+// ---------------------------------------------------------------------------
+// Résumé
+// ---------------------------------------------------------------------------
+.vp-portfolio-home .home-resume {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+  gap: clamp(1.2rem, 3vw, 2rem);
+  align-items: center;
+  padding: clamp(1.2rem, 3vw, 1.75rem);
+  border: 1px solid var(--dl-border);
+  border-radius: var(--dl-radius-lg);
+  background: var(--dl-surface);
+  box-shadow: var(--dl-shadow-2);
+}
+
+// Both pages, side by side. Showing page 1 alone was misleading: it ends
+// two-thirds down because Selected Publications does not fit in the remainder
+// and starts the next page, so on its own the thumbnail looked like a broken
+// render rather than a page break.
+.vp-portfolio-home .home-resume__spread {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--dl-space-2);
+  align-items: start;
+}
+
+.vp-portfolio-home .home-resume__spread::after {
+  // Same reason as the old single preview: the plugin's external-link arrow
+  // has nowhere sensible to sit on a link that wraps images.
+  display: none;
+}
+
+.vp-portfolio-home .home-resume__spread img {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--dl-border);
+  border-radius: var(--dl-radius-sm);
+  background: #fff;
+  box-shadow: var(--dl-shadow-2);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.vp-portfolio-home .home-resume__spread:hover img:first-child {
+  transform: translateY(-3px) rotate(-0.5deg);
+  box-shadow: var(--dl-shadow-3);
+}
+
+.vp-portfolio-home .home-resume__spread:hover img:last-child {
+  transform: translateY(-3px) rotate(0.5deg);
+  box-shadow: var(--dl-shadow-3);
+}
+
+.vp-portfolio-home .home-resume__body {
+  min-width: 0;
+}
+
+.vp-portfolio-home .home-resume__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--dl-space-2);
+  margin-top: var(--dl-space-4);
+}
+
+.vp-portfolio-home .home-resume__note {
+  margin: var(--dl-space-2) 0 0;
+  color: var(--vp-c-text-3);
+  font-size: var(--home-type-meta);
+}
+
+// Stack earlier than the other cards: below this the two pages are narrower
+// than a thumbnail needs to be.
+@media (max-width: 959px) {
+  .vp-portfolio-home .home-resume {
+    grid-template-columns: 1fr;
+  }
+
+  .vp-portfolio-home .home-resume__spread {
+    max-width: 26rem;
+    justify-self: center;
+  }
+}
+
+@media (max-width: 719px) {
+
+  // A full-width spread pushes the copy below the fold on a phone; the pair
+  // only has to say "this is a two-page document".
+  .vp-portfolio-home .home-resume__spread {
+    max-width: 18rem;
+  }
+}
+
+@media (max-width: 719px) {
+  // "Jun 2026 - Present · Intern May 2025 - Dec 2025" is wider than a phone
+  // column, and `nowrap` turns that into the chip's min-content width, which
+  // pushed the whole card header past the viewport where `overflow: hidden`
+  // clipped it. Let the pills wrap instead, and drop them under the title
+  // rather than keeping them ranged right in a single-column layout.
+  .vp-portfolio-home .home-card-meta {
+    max-width: 100%;
+    justify-content: flex-start;
+  }
+
+  .vp-portfolio-home .home-card-time,
+  .vp-portfolio-home .home-card-place {
+    align-items: flex-start;
+    white-space: normal;
+    line-height: 1.35;
+  }
+
+  .vp-portfolio-home .home-card-time::before,
+  .vp-portfolio-home .home-card-place::before {
+    margin-top: 0.16em;
+  }
 }
