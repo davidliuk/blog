@@ -1,22 +1,25 @@
 <template>
   <Teleport v-if="ready" :to="teleportTarget">
-    <div class="home-affiliation-strip" role="list" aria-label="Schools and employers">
-      <span class="home-affiliation-strip__eyebrow">Affiliations</span>
-      <div class="home-affiliation-strip__logos">
-        <a
+    <div class="home-affiliation-strip" aria-labelledby="home-affiliations-label">
+      <span id="home-affiliations-label" class="home-affiliation-strip__eyebrow">Affiliations</span>
+      <ul class="home-affiliation-strip__logos">
+        <li
           v-for="item in items"
           :key="item.name"
-          role="listitem"
-          class="home-affiliation-strip__link"
-          :data-mark="item.shape"
-          :href="item.href"
-          :title="item.name"
-          target="_blank"
-          rel="noopener noreferrer"
+          class="home-affiliation-strip__item"
         >
-          <img class="home-affiliation-strip__icon" :src="item.logoSrc" alt="" />
-        </a>
-      </div>
+          <a
+            class="home-affiliation-strip__link"
+            :data-mark="item.shape"
+            :href="item.href"
+            :aria-label="item.name"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img class="home-affiliation-strip__icon" :src="item.logoSrc" alt="" />
+          </a>
+        </li>
+      </ul>
     </div>
   </Teleport>
 </template>
@@ -54,7 +57,7 @@ const items = computed(() =>
     },
     {
       name: "Northeastern University",
-      href: "https://www.northeastern.edu/",
+      href: "https://neu.edu.cn/",
       logo: "/NEU_logo.svg",
       shape: "crest",
     },

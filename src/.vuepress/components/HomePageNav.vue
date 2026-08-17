@@ -1,12 +1,13 @@
 <template>
-  <nav class="home-page-nav" aria-label="On this page">
+  <nav ref="navElement" class="home-page-nav" aria-label="On this page">
     <a
       v-for="item in items"
       :key="item.href"
       class="home-page-nav__link"
       :class="{ 'is-active': activeHref === item.href }"
+      :aria-current="activeHref === item.href ? 'location' : undefined"
       :href="item.href"
-      @click.prevent="scrollToSection(item.href)"
+      @click.prevent="scrollToSection(item.href, undefined, true)"
     >
       {{ item.label }}
     </a>
@@ -14,26 +15,42 @@
 </template>
 
 <script setup lang="ts">
-import { nextTick, onBeforeUnmount, onMounted, ref } from "vue";
+import { nextTick, onBeforeUnmount, onMounted, ref, watch } from "vue";
 
 const items = [
   { href: "#about", label: "Story" },
   { href: "#research-program", label: "Research" },
   { href: "#selected-publications", label: "Papers" },
-  { href: "#open-source", label: "Open source" },
-  // The page has ten sections; this list had nine. Education was the one you
-  // could not jump to.
-  { href: "#education", label: "Education" },
   { href: "#professional-experience", label: "Experience" },
   { href: "#award-winning-projects", label: "Projects" },
   { href: "#knowledge-base", label: "Notes" },
-  { href: "#tech-stack", label: "Toolkit" },
-  { href: "#let-s-connect", label: "Connect" },
+  { href: "#resume", label: "Résumé" },
+];
+
+// Keep every public section hash addressable even though the visible rail is
+// intentionally grouped into seven major destinations.
+const sections = [
+  { href: "#about", navHref: "#about" },
+  { href: "#research-program", navHref: "#research-program" },
+  { href: "#selected-publications", navHref: "#selected-publications" },
+  { href: "#open-source", navHref: "#selected-publications" },
+  { href: "#education", navHref: "#professional-experience" },
+  { href: "#professional-experience", navHref: "#professional-experience" },
+  { href: "#award-winning-projects", navHref: "#award-winning-projects" },
+  { href: "#knowledge-base", navHref: "#knowledge-base" },
+  { href: "#tech-stack", navHref: "#knowledge-base" },
+  { href: "#resume", navHref: "#resume" },
+  { href: "#let-s-connect", navHref: "#resume" },
 ];
 
 const activeHref = ref(items[0]?.href ?? "");
+const navElement = ref<HTMLElement | null>(null);
 let cleanupActiveSectionListeners: (() => void) | null = null;
 let cleanupInitialHashAlignment: (() => void) | null = null;
+
+watch(activeHref, () => {
+  void nextTick(ensureActiveLinkVisible);
+});
 
 function prefersReducedMotion(): boolean {
   return (
@@ -42,7 +59,11 @@ function prefersReducedMotion(): boolean {
   );
 }
 
-function scrollToSection(hash: string, behavior?: ScrollBehavior): void {
+function scrollToSection(
+  hash: string,
+  behavior?: ScrollBehavior,
+  focusTarget = false,
+): void {
   if (typeof window === "undefined") return;
 
   // A deliberate navigation takes ownership from the cold-load alignment
@@ -59,18 +80,23 @@ function scrollToSection(hash: string, behavior?: ScrollBehavior): void {
     top: Math.max(0, top),
     behavior: behavior ?? (prefersReducedMotion() ? "auto" : "smooth"),
   });
+
+  if (focusTarget) {
+    target.tabIndex = -1;
+    target.focus({ preventScroll: true });
+  }
 }
 
 onMounted(() => {
   if (typeof window === "undefined") return;
 
-  // Resolved once. The previous version ran nine `querySelector` calls and read
-  // `offsetTop` on each of them inside an unthrottled scroll handler, so every
-  // scroll event forced a synchronous layout nine times over — enough to make
+  // Resolve the section elements once. The previous version queried and read
+  // each target inside an unthrottled scroll handler, so every scroll event
+  // forced repeated synchronous layout — enough to make
   // the page feel like it was catching on something as you scrolled.
-  const targets = items
-    .map((item) => ({ href: item.href, el: document.querySelector(item.href) }))
-    .filter((entry): entry is { href: string; el: HTMLElement } =>
+  const targets = sections
+    .map((section) => ({ ...section, el: document.querySelector(section.href) }))
+    .filter((entry): entry is { href: string; navHref: string; el: HTMLElement } =>
       entry.el instanceof HTMLElement,
     );
 
@@ -78,8 +104,8 @@ onMounted(() => {
     const probe = window.scrollY + getSectionOffset() + 8;
 
     let current = items[0]?.href ?? "";
-    for (const { href, el } of targets) {
-      if (el.getBoundingClientRect().top + window.scrollY <= probe) current = href;
+    for (const { navHref, el } of targets) {
+      if (el.getBoundingClientRect().top + window.scrollY <= probe) current = navHref;
     }
 
     // Scroll position wins. This used to read
@@ -100,14 +126,14 @@ onMounted(() => {
 
   const onHashChange = (): void => {
     const hash = normalizeHash(window.location.hash);
-    if (hash) activeHref.value = hash;
+    if (hash) activeHref.value = getNavHref(hash);
     else updateActiveSection();
   };
 
   // On a cold load with a hash, honour it until the reader scrolls.
   const initialHash = normalizeHash(window.location.hash);
   if (initialHash) {
-    activeHref.value = initialHash;
+    activeHref.value = getNavHref(initialHash);
     // Vue renders the portfolio body after the browser's native fragment pass,
     // and its async custom cards continue changing the page height for several
     // frames. A cold load at `/#tech-stack` would otherwise stop thousands of
@@ -154,6 +180,8 @@ onMounted(() => {
       }, 1200);
     });
   } else updateActiveSection();
+
+  void nextTick(ensureActiveLinkVisible);
 
   window.addEventListener("scroll", onScroll, { passive: true });
   window.addEventListener("hashchange", onHashChange);
@@ -205,6 +233,29 @@ function getCssLengthPx(variableName: string, fallback: number): number {
 }
 
 function normalizeHash(hash: string): string {
-  return items.some((item) => item.href === hash) ? hash : "";
+  return sections.some((section) => section.href === hash) ? hash : "";
+}
+
+function getNavHref(hash: string): string {
+  return sections.find((section) => section.href === hash)?.navHref ?? items[0]?.href ?? "";
+}
+
+function ensureActiveLinkVisible(): void {
+  const nav = navElement.value;
+  if (!nav) return;
+
+  const active = Array.from(nav.querySelectorAll<HTMLElement>(".home-page-nav__link")).find(
+    (link) => link.getAttribute("href") === activeHref.value,
+  );
+  if (!active) return;
+
+  const padding = 12;
+  const visibleLeft = nav.scrollLeft + padding;
+  const visibleRight = nav.scrollLeft + nav.clientWidth - padding;
+  const itemLeft = active.offsetLeft;
+  const itemRight = itemLeft + active.offsetWidth;
+
+  if (itemLeft < visibleLeft) nav.scrollLeft = Math.max(0, itemLeft - padding);
+  else if (itemRight > visibleRight) nav.scrollLeft = itemRight - nav.clientWidth + padding;
 }
 </script>

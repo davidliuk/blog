@@ -8,10 +8,7 @@ avatarStyle:
   display: block
 name: David Liu
 titles:
-  - AI Systems Researcher & Builder
-  - Software Engineer@TikTok
-  - Core Contributor@OpenLAIR
-  - MSE CIS@UPenn
+  - AI Systems Researcher & Software Engineer
 welcome: Hello, I'm
 content: portfolio
 ---
@@ -27,8 +24,7 @@ content: portfolio
     <p class="home-mission__lede">Most agents look capable when everything goes right. I care about the harder cases: thousands of available skills, long-running tool use, partial failures, and tight context or latency budgets. My work connects <strong>dependency-aware retrieval</strong>, <strong>execution validation</strong>, and <strong>failure recovery</strong>—then turns those ideas into open systems others can inspect, test, and extend.</p>
     <div class="home-mission__actions" aria-label="Primary links">
       <a class="home-mission__button home-mission__button--primary" href="#research-program">Explore my work</a>
-      <a class="home-mission__button" href="#academic-profiles">Academic profiles</a>
-      <a class="home-mission__button" href="https://github.com/davidliuk" target="_blank" rel="noopener noreferrer">View GitHub</a>
+      <a class="home-mission__button" href="#resume">Résumé</a>
     </div>
   </div>
   <aside class="home-mission__loop" aria-label="My research loop">
@@ -87,11 +83,10 @@ content: portfolio
   </section>
 </div>
 
-I’m currently a **Software Engineer at TikTok** in Seattle, working on Shop Ads ranking, creative intelligence, and delivery systems. Production engineering keeps my research honest: useful ideas still have to survive scale, latency, noisy inputs, incomplete observability, and real users.
-
-In parallel, I collaborate with [**LAIR**](https://github.com/OpenLAIR), advised by **Prof. Lichao Sun**, and contribute to [**Dr. Claw**](https://github.com/OpenLAIR/dr-claw), an open-source AI research workspace spanning idea formation, experiments, writing, and iteration. I hold an M.S.E. in **Computer and Information Science** from the **University of Pennsylvania** and a B.E. in **Software Engineering** from **Northeastern University**.
-
----
+<div class="home-about-context" aria-label="Current work and background">
+  <p>I’m currently a <strong>Software Engineer at TikTok</strong> in Seattle, working on Shop Ads ranking, creative intelligence, and delivery systems. Production engineering keeps my research honest: useful ideas still have to survive scale, latency, noisy inputs, incomplete observability, and real users.</p>
+  <p>In parallel, I collaborate with <a href="https://github.com/OpenLAIR"><strong>LAIR</strong></a>, advised by <strong>Prof. Lichao Sun</strong>, and contribute to <a href="https://github.com/OpenLAIR/dr-claw"><strong>Dr. Claw</strong></a>. I hold an M.S.E. from the <strong>University of Pennsylvania</strong> and a B.E. from <strong>Northeastern University</strong>.</p>
+</div>
 
 ## Research Program
 
@@ -105,7 +100,7 @@ In parallel, I collaborate with [**LAIR**](https://github.com/OpenLAIR), advised
   <section class="home-highlight-card">
     <p class="home-highlight-kicker">02 · Execute & recover</p>
     <h3>Give agents structure for acting, checking their work, and repairing failures.</h3>
-    <p><strong>COMFYCLAW</strong> combines typed workflow editing, stage-aware tools, rollback, visual verification, and skill evolution to make executable image-generation workflows more reliable.</p>
+    <p><strong>COMFYCLAW</strong>, accepted to the 2nd MUCG Workshop at ECCV 2026, combines typed workflow editing, stage-aware tools, rollback, visual verification, and skill evolution to make executable image-generation workflows more reliable.</p>
   </section>
 
   <section class="home-highlight-card">
@@ -121,19 +116,19 @@ In parallel, I collaborate with [**LAIR**](https://github.com/OpenLAIR), advised
   </section>
 </div>
 
----
-
 ## Selected Publications
 
 <p class="home-section-intro">These publications mark a path from research platforms and multimodal systems toward my current focus: reliable, resource-efficient infrastructure for tool-using agents.</p>
+<p class="home-publication-legend"><strong>*</strong> Contribution role follows the cited paper.</p>
 
 <PublicationList>
   <PublicationCard
+    id="paper-comfyclaw"
     title="COMFYCLAW: Self-Evolving Skill Harnesses for Image Generation Workflows"
-    :authors="['Zongxia Li*','Dawei Liu*','Jingxi Chen','Xiyang Wu','Fuxiao Liu','Yuhang Zhou','Jing Xie','Xiaomin Wu','Lichao Sun']"
+    :authors="['Zongxia Li*','Dawei Liu*','Fuxiao Liu','Yuhang Zhou','Xiyang Wu','Jingxi Chen','Jing Xie','Xiaomin Wu','Lichao Sun']"
     image="/publication/comfyclaw.png"
-    venue="Preprint"
-    date="May 2026"
+    venue="2nd MUCG Workshop · ECCV 2026"
+    date="Jul 2026"
     paper="https://arxiv.org/abs/2607.01709"
     github="https://github.com/Moms-Organic-Agent-Lab/comfyclaw"
     abstract="Agents are increasingly used to control executable workflows rather than only answer questions. This makes reliability depend on both execution-time scaffolding and the ability to reuse experience from past runs. We study this problem in workflow-based image generation and introduce COMFYCLAW, an agentic harness that controls an unmodified ComfyUI runtime. COMFYCLAW represents workflow construction as typed graph editing, gates tools by construction stage, rolls back invalid edits, and uses a region-level vision-language model (VLM) verifier to turn visual failures into repair suggestions. It also evolves a progressively disclosed skill library, where trajectories, execution errors, and verifier feedback are distilled into reusable Agent Skills after held-out validation. Across four benchmark splits, three agent models, and two image backbones, COMFYCLAW achieves the best average score in all six agent–backbone settings, improving the strongest setting from 61.09 to 76.34 over a verifier-only baseline without skill evolution. Human annotations further show that annotators prefer COMFYCLAW over variants without skill evolution."
@@ -141,9 +136,9 @@ In parallel, I collaborate with [**LAIR**](https://github.com/OpenLAIR), advised
 
   <PublicationCard
     title="Graph-of-Skills: Dependency-Aware Structural Retrieval for Massive Agent Skills"
-    :authors="['Dawei Liu*','Zongxia Li*','Hongyang Du','Xiyang Wu','Shihang Gui','Yongbei Kuang','Lichao Sun']"
+    :authors="['Dawei Liu','Zongxia Li','Hongyang Du','Xiyang Wu','Shihang Gui','Yongbei Kuang','Lichao Sun']"
     image="/publication/gos.png"
-    venue="ACM CAIS 2026 Agent Skills"
+    venue="Agent Skills Workshop · ACM CAIS 2026"
     date="Apr 2026"
     abstract="Modern LLM agents increasingly rely on reusable skills, and as they interact with personal applications, web browsers, and other interfaces, skill libraries can scale to thousands of skills. Scaling to larger skill sets introduces two key challenges. First, loading the full skill set saturates the context window, driving up token costs, hallucination, and latency. Second, semantic retrieval surfaces topically relevant skills but misses their prerequisite chain of upstream and downstream skills, creating a prerequisite gap that leaves the retrieved bundle execution-incomplete. In this paper, we present Graph-of-Skills (GoS), an inference-time structural retrieval layer for large skill libraries. GoS constructs an executable skill graph offline from skill packages, then at inference time retrieves a bounded, dependency-aware skill bundle through hybrid semantic-lexical seeding, reverse-aware Personalized PageRank, and context-budgeted hydration. On SkillsBench and ALFWorld, GoS consistently delivers substantial reward improvements and token savings across three model families (Claude Sonnet 4.5, MiniMax M2.7, and GPT-5.2 Codex). On SkillsBench, GoS achieves a peak reward increase of 25.55% while reducing total tokens by 56.72% over the vanilla full skill-loading baseline using GPT-5.2 Codex. Ablations confirm this pattern across skill libraries from 200 to 2,000 skills."
     paper="https://arxiv.org/abs/2604.05333"
@@ -154,7 +149,7 @@ In parallel, I collaborate with [**LAIR**](https://github.com/OpenLAIR), advised
     title="A Cookbook of 3D Vision: Data, Learning Paradigms, and Application"
     :authors="['Hongyang Du*','Zongxia Li*','Dawei Liu*','Runhao Li*','Haoyuan Song','Qingyu Zhang','Yubo Wang','Jingcheng Ni','Shihang Gui','Congchao Dong','Tao Hu']"
     image="/publication/3dv.jpeg"
-    venue="CVPR 2026 Workshop"
+    venue="OpenSUN3D Workshop · CVPR 2026"
     date="Mar 2026"
     paper="https://openaccess.thecvf.com/content/CVPR2026W/OpenSUN3D/html/Du_A_Cookbook_of_3D_Vision_Data_Learning_Paradigms_and_Application_CVPRW_2026_paper.html"
     abstract="3D vision has rapidly evolved, driven by increasingly diverse data representations, learning paradigms, and modeling strategies. Yet the field remains fragmented across representations and benchmarks, making it difficult to develop unified perspectives on efficiency, fidelity, and scalability. This work provides a data-centric taxonomy of 3D vision that connects geometric representations, datasets, learning frameworks, and applications within a single conceptual map. We survey principal structural representations of 3D data, then examine how dataset design, benchmark construction, and supervision regimes shape recent advances spanning 2D-supervised 3D learning, implicit neural representations, and 4D world modeling."
@@ -162,11 +157,12 @@ In parallel, I collaborate with [**LAIR**](https://github.com/OpenLAIR), advised
   />
 
   <PublicationCard
+    id="paper-multimodal-video"
     title="Multimodal Video Generation Models with Audio: Present and Future"
     :authors="['Zongxia Li','Hongyang Du','Dawei Liu','Xiyang Wu','Lantao Yu','Jingxi Chen','Fuxiao Liu','Xiaomin Wu','Jing Xie','Chengsong Huang','Yicheng He','Guangyao Shi']"
     image="/publication/vgm.jpeg"
-    venue="Preprint"
-    date="Feb 2026"
+    venue="JAV-CG Workshop · ACM Multimedia 2026"
+    date="Mar 2026"
     abstract="Video generation models have advanced rapidly and are now widely used across entertainment, advertising, filmmaking, and robotics applications such as world modeling and simulation. However, visual content alone is often insufficient for realistic and engaging media experiences; audio is also a key component of immersion and semantic coherence. As AI-generated videos become increasingly prevalent in everyday content, demand has grown for systems that can generate synchronized sound alongside visuals. This trend has driven rising interest in multimodal video generation, which jointly models video and audio to produce more complete, coherent, and appealing outputs. Since late 2025, a wave of multimodal video generation models has emerged, with releases including Veo 3.1, Sora 2, Kling 2.6, Wan 2.6, OVI, and LTX 2. As multimodal generation technology advances, its impact expands across both consumer and industrial domains, revolutionizing entertainment while enabling more sophisticated world simulation for embodied AI systems. In this paper, we provide a comprehensive overview of the literature covering common architectures, post-training methods, evaluation, applications, and open challenges."
     paper="https://www.researchgate.net/publication/401388352_Multimodal_Video_Generation_Models_with_Audio_Present_and_Future"
     github="https://github.com/zli12321/Multimodal-VIdeo-Generation-Collections-Video-and-Audio"
@@ -174,7 +170,7 @@ In parallel, I collaborate with [**LAIR**](https://github.com/OpenLAIR), advised
 
   <PublicationCard
     title="TIMEDB: tumor immune micro-environment cell composition database with automatic analysis and interactive visualization"
-    :authors="['Xueying Wang*','Lingxi Chen*','Wei Liu','Yuanzheng Zhang','Dawei Liu','Chenxin Zhou','Shuai Shi','Jiajie Dong','Zhengtao Lai','Bingran Zhao','Wenjingyu Zhang','Haoyue Cheng','Shuaicheng Li']"
+    :authors="['Xueying Wang*','Lingxi Chen*','Wei Liu*','Yuanzheng Zhang','Dawei Liu','Chenxin Zhou','Shuai Shi','Jiajie Dong','Zhengtao Lai','Bingran Zhao','Wenjingyu Zhang','Haoyue Cheng','Shuaicheng Li']"
     image="/publication/timedb.png"
     venue="Nucleic Acids Research"
     date="Jan 2023"
@@ -187,8 +183,6 @@ In parallel, I collaborate with [**LAIR**](https://github.com/OpenLAIR), advised
 
 <p class="home-section-outro">Five selected here. The complete, continuously updated record lives on <a href="https://scholar.google.com/citations?user=RzdCL4AAAAAJ&amp;hl=en" target="_blank" rel="me noopener noreferrer">Google Scholar</a> and <a href="https://dblp.org/pid/57/1575-5.html" target="_blank" rel="me noopener noreferrer">DBLP</a>.</p>
 
----
-
 ## Open Source
 
 <p class="home-section-intro">I prefer research that leaves behind something people can run. These are the workspaces, benchmarks, and distribution paths I help build with the LAIR community.</p>
@@ -197,7 +191,7 @@ In parallel, I collaborate with [**LAIR**](https://github.com/OpenLAIR), advised
   <PublicationCard
     title="Dr. Claw: An AI Research Workspace from Idea to Paper"
     :authors="['Dingjie Song','Hanrong Zhang','Dawei Liu','Yixin Liu','Zongxia Li','Zhengqing Yuan','Siqi Zhang','Lichao Sun']"
-    image="https://raw.githubusercontent.com/OpenLAIR/dr-claw/main/public/screenshots/screenshot_v1_2.png"
+    image="/publication/drclaw.png"
     venue="Core Contributor"
     date="Mar 2026"
     abstract="Dr. Claw is a general-purpose AI research assistant designed to help researchers and builders execute end-to-end projects across different domains. From shaping an initial idea to running experiments and preparing publication-ready outputs, Dr. Claw keeps the full workflow in one place so teams can focus on research quality and iteration speed. I am one of the top three core contributors."
@@ -208,14 +202,13 @@ In parallel, I collaborate with [**LAIR**](https://github.com/OpenLAIR), advised
     title="Long-Horizon Terminal-Bench (LHTB)"
     venue="Contributor"
     date="Jul 2026"
+    image="/publication/lhtb.png"
     abstract="LHTB is a 46-task benchmark measuring how well LLM agents sustain useful work inside a containerized terminal over hundreds of steps. Unlike short-horizon coding benchmarks, it drops agents into a stateful environment and grades them with hidden, rebuild-from-artifact verifiers under a dense reward scheme, so self-reported progress does not count. Tasks span interactive games and puzzles, multimodal analysis, software and reverse engineering, scientific computing, security and performance, and research reproduction. I contribute task design and harness work to the project."
     paper="https://arxiv.org/abs/2607.08964"
     github="https://github.com/zli12321/LHTB"
     website="https://zli12321.github.io/LHTB/leaderboard.html"
   />
 </PublicationList>
-
----
 
 ## Education
 
@@ -239,8 +232,6 @@ In parallel, I collaborate with [**LAIR**](https://github.com/OpenLAIR), advised
   :honors="['National Scholarship','Outstanding Graduate','Merit-based Scholarship','Outstanding Student ×3','Outstanding Student Leader']"
   rank="Top 1%"
   major="Software Engineering" />
-
----
 
 ## Professional Experience
 
@@ -299,8 +290,6 @@ In parallel, I collaborate with [**LAIR**](https://github.com/OpenLAIR), advised
   />
 </div>
 
----
-
 ## Award-Winning Projects
 
 <p class="home-section-intro">Competition projects where I led the build, from spatial interaction on Apple platforms to recommendation-driven web products.</p>
@@ -348,8 +337,6 @@ In parallel, I collaborate with [**LAIR**](https://github.com/OpenLAIR), advised
     :tech="['React','Spring','TrustSVD','Sa-Token']"
   />
 </div>
-
----
 
 ## Knowledge Base
 
@@ -401,8 +388,6 @@ In parallel, I collaborate with [**LAIR**](https://github.com/OpenLAIR), advised
   </div>
 </div>
 
----
-
 ## Tech Stack
 
 <p class="home-section-intro">My toolkit is organized around the systems I build, not a flat inventory of technologies. These four working layers connect research prototypes to observable, production-facing products.</p>
@@ -436,7 +421,24 @@ In parallel, I collaborate with [**LAIR**](https://github.com/OpenLAIR), advised
 
 <p class="home-section-outro">This is a curated working set rather than a proficiency checklist. I choose tools by the constraints of the system and keep the deeper implementation notes in the <a href="/ai/">AI</a>, <a href="/cs/">CS</a>, and <a href="/se/">software engineering</a> knowledge maps.</p>
 
----
+## Résumé
+
+<div class="home-resume">
+  <a class="home-resume__spread" href="/resume/david-liu-resume.pdf" target="_blank" rel="noopener" aria-label="Open the full résumé PDF">
+    <img src="/resume/david-liu-resume-p1.jpg" alt="Page 1 of David Liu's research résumé: education, research and open-source experience, professional experience" width="773" height="1000" loading="lazy" decoding="async" />
+    <img src="/resume/david-liu-resume-p2.jpg" alt="Page 2 of David Liu's research résumé: selected publications, honors, research impact and service" width="773" height="1000" loading="lazy" decoding="async" />
+  </a>
+  <div class="home-resume__body">
+    <p class="home-card-eyebrow">Two pages</p>
+    <h3 class="home-card-title">A research résumé, kept in sync with this page.</h3>
+    <p class="home-card-copy">Education, agent-infrastructure research and the four engineering roles behind it on the first page; publications, honors, and research impact on the second. The same record as the sections above, in the form people ask for it. Typeset from source, so it is regenerated rather than edited by hand.</p>
+    <div class="home-resume__actions">
+      <a class="home-action home-action--primary" href="/resume/david-liu-resume.pdf" target="_blank" rel="noopener">Open résumé</a>
+      <a class="home-action" href="/resume/david-liu-resume.pdf" download>Download PDF</a>
+    </div>
+    <p class="home-resume__note">PDF · 2 pages · Updated Aug 2026</p>
+  </div>
+</div>
 
 ## Let's Connect
 

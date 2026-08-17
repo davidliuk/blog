@@ -1,20 +1,24 @@
 <template>
-  <article class="pub-card home-card-shell" :class="{ 'pub-card--no-image': !image }">
+  <article
+    :id="id"
+    class="pub-card home-card-shell"
+    :class="{ 'pub-card--no-image': !image }"
+  >
     <div v-if="image" class="pub-head">
       <img
         :src="imgSrc"
-        :alt="`${title} preview`"
+        alt=""
         class="pub-img"
         loading="lazy"
         decoding="async"
       />
     </div>
     <div class="pub-body">
-      <h4 class="pub-title">{{ title }}</h4>
+      <h3 class="pub-title">{{ title }}</h3>
       <div class="pub-meta">
         <div v-if="venue || date" class="pub-meta-tags">
           <span v-if="venue" class="pub-meta-pill pub-venue">{{ venue }}</span>
-          <span v-if="date" class="pub-meta-pill pub-date">{{ date }}</span>
+          <span v-if="date" class="home-card-time pub-date">{{ date }}</span>
         </div>
         <span v-if="formattedAuthors.length" class="pub-authors">
           <template v-for="(a, i) in formattedAuthors" :key="i">
@@ -23,8 +27,14 @@
           </template>
         </span>
       </div>
-      <div v-if="abstract" class="pub-abs">
-        <p :class="{ clamp: !expanded }">{{ abstract }}</p>
+      <div
+        v-if="abstract"
+        :id="abstractId"
+        class="pub-abs"
+        :role="expanded ? 'region' : undefined"
+        :aria-label="expanded ? `Abstract for ${title}` : undefined"
+      >
+        <p :class="{ clamp: !expanded }">{{ expanded ? abstract : abstractPreview }}</p>
       </div>
       <div class="pub-links">
         <div class="pub-links-left">
@@ -97,6 +107,7 @@
           type="button"
           class="abs-action"
           :aria-expanded="expanded"
+          :aria-controls="abstractId"
           @click="expanded = !expanded"
         >
           <span>{{ expanded ? "Show less" : "Read abstract" }}</span>
@@ -119,6 +130,7 @@ const GITHUB_STAR_CACHE_TTL_MS = 1000 * 60 * 60 * 12;
 const githubStarsMemoryCache = new Map<string, { stars: number; expiresAt: number }>();
 
 const props = defineProps<{
+  id?: string;
   title: string;
   image?: string;
   date?: string;
@@ -132,6 +144,23 @@ const props = defineProps<{
 
 const expanded = ref(false);
 const githubStars = ref<number | null>(null);
+const abstractPreview = computed(() => {
+  const text = props.abstract?.trim() ?? "";
+  const limit = 240;
+  if (text.length <= limit) return text;
+
+  const wordBoundary = text.lastIndexOf(" ", limit);
+  const end = wordBoundary >= 180 ? wordBoundary : limit;
+  return `${text.slice(0, end).trimEnd()}…`;
+});
+const abstractId = computed(() => {
+  const base = props.id ?? props.title;
+  const slug = base
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "");
+  return `publication-abstract-${slug || "item"}`;
+});
 
 const formattedAuthors = computed(() => {
   const list = props.authors ?? [];
@@ -258,7 +287,7 @@ function writeCachedGitHubStars(repo: string, stars: number): void {
 }
 .pub-abs p.clamp {
   display: -webkit-box;
-  -webkit-line-clamp: 3;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
@@ -281,7 +310,7 @@ function writeCachedGitHubStars(repo: string, stars: number): void {
   padding: 0.25rem 0.58rem;
   border: 1px solid var(--dl-border);
   border-radius: 999px;
-  font-size: 0.78rem;
+  font-size: var(--home-type-meta, 0.9rem);
   font-weight: 700;
   line-height: 1;
   letter-spacing: 0.01em;
@@ -293,8 +322,7 @@ function writeCachedGitHubStars(repo: string, stars: number): void {
   color: var(--vp-c-accent);
 }
 .pub-date {
-  background: var(--dl-chip);
-  color: var(--vp-c-text-2);
+  flex-shrink: 0;
 }
 .pub-authors {
   display: block;
@@ -327,7 +355,7 @@ function writeCachedGitHubStars(repo: string, stars: number): void {
   border-radius: 999px;
   background: var(--dl-chip);
   color: var(--vp-c-text-1);
-  font-size: 0.9rem;
+  font-size: var(--home-type-meta, 0.9rem);
   font-weight: 700;
   line-height: 1;
   text-decoration: none;
@@ -369,7 +397,7 @@ function writeCachedGitHubStars(repo: string, stars: number): void {
   min-height: 0;
   padding: 0 0.52rem;
   border-left: 1px solid var(--dl-border);
-  font-size: 0.78rem;
+  font-size: var(--home-type-meta, 0.9rem);
   font-weight: 700;
   white-space: nowrap;
   color: inherit;
@@ -386,7 +414,7 @@ function writeCachedGitHubStars(repo: string, stars: number): void {
   align-items: center;
   justify-content: center;
   min-width: 0.9rem;
-  font-size: 0.82rem;
+  font-size: var(--home-type-meta, 0.9rem);
   font-weight: 700;
   line-height: 1;
   opacity: 0.7;
@@ -414,7 +442,7 @@ function writeCachedGitHubStars(repo: string, stars: number): void {
   background: transparent;
   color: var(--vp-c-accent);
   font: inherit;
-  font-size: 0.88rem;
+  font-size: var(--home-type-meta, 0.9rem);
   font-weight: 700;
   line-height: 1;
   white-space: nowrap;

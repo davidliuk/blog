@@ -26,6 +26,30 @@ const personStructuredData = JSON.stringify({
   url: "https://davidliuk.github.io/",
   image: "https://davidliuk.github.io/avatar.jpg",
   jobTitle: "AI Systems Researcher and Software Engineer",
+  worksFor: {
+    "@type": "Organization",
+    name: "TikTok",
+    url: "https://www.tiktok.com/",
+  },
+  alumniOf: [
+    {
+      "@type": "CollegeOrUniversity",
+      name: "University of Pennsylvania",
+      url: "https://www.upenn.edu/",
+    },
+    {
+      "@type": "CollegeOrUniversity",
+      name: "Northeastern University (China)",
+      url: "https://www.neu.edu.cn/",
+    },
+  ],
+  knowsAbout: [
+    "Reliable AI agents",
+    "Agent skill retrieval",
+    "Execution validation and failure recovery",
+    "Multimodal AI systems",
+    "Distributed systems",
+  ],
   sameAs: [
     "https://github.com/davidliuk",
     "https://www.linkedin.com/in/davidliuk/",

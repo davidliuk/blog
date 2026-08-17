@@ -5,34 +5,34 @@
         <div v-if="logoSrc" class="experience-card__logo-shell">
           <img
             :src="logoSrc"
-            :alt="company"
+            alt=""
             class="experience-card__logo"
             loading="lazy"
             decoding="async"
           />
         </div>
         <div class="experience-card__title-group">
-          <p class="experience-card__eyebrow">{{ company }}</p>
+          <p class="home-card-eyebrow">{{ company }}</p>
           <h3>{{ role }}</h3>
           <p v-if="team" class="experience-card__team">{{ team }}</p>
         </div>
       </div>
 
-      <div class="experience-card__meta">
-        <span v-if="time" class="experience-card__meta-item">{{ time }}</span>
-        <span v-if="location" class="experience-card__meta-item">{{ location }}</span>
+      <div class="home-card-meta">
+        <span v-if="time" class="home-card-time">{{ time }}</span>
+        <span v-if="location" class="home-card-place">{{ location }}</span>
       </div>
     </div>
 
     <p class="experience-card__summary">{{ summary }}</p>
 
     <div v-if="focus.length" class="experience-card__focus">
-      <span class="experience-card__focus-label">Themes</span>
+      <span class="home-card-label">Themes</span>
       <div class="experience-card__focus-tags">
         <span
           v-for="item in focus"
           :key="item"
-          class="experience-card__focus-tag"
+          class="home-chip home-chip--accent"
         >
           {{ item }}
         </span>
@@ -82,12 +82,16 @@ const logoSrc = computed(() => {
 
 .experience-card__header {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-between;
   gap: var(--dl-space-4);
 }
 
 .experience-card__brand {
+  /* Below ~20rem of title measure the header wraps and the metadata takes its
+     own row, rather than the brand column collapsing to one word per line. */
+  flex: 1 1 20rem;
   display: flex;
   align-items: flex-start;
   gap: var(--dl-space-4);
@@ -117,18 +121,9 @@ const logoSrc = computed(() => {
   min-width: 0;
 }
 
-.experience-card__eyebrow {
-  margin: 0 0 0.2rem;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--vp-c-text-3);
-}
-
 .experience-card__title-group h3 {
   margin: 0;
-  font-size: clamp(1.08rem, 1.4vw, 1.18rem);
+  font-size: var(--home-type-title, 1.18rem);
   line-height: 1.3;
   letter-spacing: -0.02em;
   color: var(--vp-c-text-1);
@@ -137,30 +132,14 @@ const logoSrc = computed(() => {
 .experience-card__team {
   margin: 0.3rem 0 0;
   color: var(--vp-c-text-2);
+  font-size: var(--home-type-body, 1rem);
   line-height: 1.55;
-}
-
-.experience-card__meta {
-  flex-shrink: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 0.15rem;
-  padding-top: 0.15rem;
-  max-width: 40%;
-  text-align: right;
-}
-
-.experience-card__meta-item {
-  color: var(--vp-c-text-3);
-  font-size: 0.8rem;
-  font-weight: 550;
-  line-height: 1.45;
 }
 
 .experience-card__summary {
   margin: 0;
   color: var(--vp-c-text-2);
+  font-size: var(--home-type-body, 1rem);
   line-height: 1.72;
 }
 
@@ -169,31 +148,10 @@ const logoSrc = computed(() => {
   gap: var(--dl-space-2);
 }
 
-.experience-card__focus-label {
-  font-size: 0.72rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--vp-c-text-3);
-}
-
 .experience-card__focus-tags {
   display: flex;
   flex-wrap: wrap;
   gap: var(--dl-space-1);
-}
-
-.experience-card__focus-tag {
-  display: inline-flex;
-  align-items: center;
-  min-height: 1.9rem;
-  padding: 0.26rem 0.68rem;
-  border-radius: 999px;
-  border: 1px solid var(--dl-accent-line);
-  background: var(--dl-accent-soft);
-  color: var(--vp-c-text-1);
-  font-size: 0.8rem;
-  font-weight: 600;
 }
 
 .experience-card__highlights {
@@ -209,6 +167,7 @@ const logoSrc = computed(() => {
   margin: 0;
   padding-left: 1.1rem;
   color: var(--vp-c-text-2);
+  font-size: var(--home-type-body, 1rem);
   line-height: 1.7;
 }
 
@@ -233,13 +192,8 @@ const logoSrc = computed(() => {
     flex-direction: column;
   }
 
-  .experience-card__meta {
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: baseline;
-    gap: 0.15rem 0.5rem;
-    max-width: 100%;
-    text-align: start;
+  .experience-card__brand {
+    flex: 0 1 auto;
   }
 
   .experience-card__logo-shell {

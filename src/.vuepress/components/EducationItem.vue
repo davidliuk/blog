@@ -4,7 +4,7 @@
       <img
         :src="logoSrc"
         class="edu-logo"
-        :alt="school"
+        alt=""
         loading="lazy"
         decoding="async"
       />
@@ -12,7 +12,7 @@
     <div class="edu-right">
       <div class="edu-header">
         <div>
-          <p class="edu-kicker">Education</p>
+          <p class="home-card-eyebrow">Education</p>
           <h3>{{ school }}</h3>
         </div>
         <span class="edu-time home-card-time">{{ time }}</span>
@@ -27,7 +27,7 @@
       </div>
       <div v-if="gpa || honorBadges.length" class="edu-meta">
         <div v-if="gpa" class="edu-gpa-row">
-          <span class="edu-gpa-label">GPA</span>
+          <span class="home-card-label edu-gpa-label">GPA</span>
           <strong>{{ gpa }}</strong>
           <Badge v-if="rank" :text="rank" type="tip" vertical="top" />
         </div>
@@ -156,18 +156,10 @@ const logoSrc = computed(() => {
   margin-bottom: 0.8rem;
 }
 
-.edu-kicker {
-  margin: 0 0 0.18rem;
-  font-size: 0.72rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--vp-c-text-3);
-}
 
 .edu-right h3 {
   margin: 0;
-  font-size: clamp(1.08rem, 1.4vw, 1.18rem);
+  font-size: var(--home-type-title, 1.18rem);
   line-height: 1.3;
   letter-spacing: -0.02em;
   border: none;
@@ -194,7 +186,7 @@ const logoSrc = computed(() => {
   border: 1px solid var(--dl-accent-line);
   background: var(--dl-accent-soft);
   color: var(--vp-c-accent);
-  font-size: 0.82rem;
+  font-size: var(--home-type-meta, 0.9rem);
   font-weight: 800;
   letter-spacing: 0.02em;
 }
@@ -205,7 +197,7 @@ const logoSrc = computed(() => {
   flex-wrap: wrap;
   gap: var(--dl-space-1);
   min-width: 0;
-  font-size: 0.94rem;
+  font-size: var(--home-type-body, 1rem);
   line-height: 1.5;
 }
 
@@ -242,11 +234,6 @@ const logoSrc = computed(() => {
   padding: 0.18rem 0.55rem;
   border-radius: 999px;
   background: var(--dl-chip);
-  color: var(--vp-c-text-3);
-  font-size: 0.7rem;
-  font-weight: 800;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
 }
 .edu-honors-row {
   display: flex;
@@ -263,7 +250,7 @@ const logoSrc = computed(() => {
   border: 1px solid var(--dl-border);
   background: var(--dl-chip);
   color: var(--vp-c-text-2);
-  font-size: 0.8rem;
+  font-size: var(--home-type-meta, 0.9rem);
   font-weight: 650;
   line-height: 1.2;
 }
@@ -278,7 +265,7 @@ const logoSrc = computed(() => {
   margin-left: 0.42rem;
   padding-left: 0.42rem;
   border-left: 1px solid color-mix(in srgb, #d29922 36%, transparent);
-  font-size: 0.68rem;
+  font-size: var(--home-type-meta, 0.9rem);
   font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
