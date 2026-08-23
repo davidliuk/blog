@@ -448,6 +448,12 @@ body {
   }
 
   // Caret for the typewriter title, so the reserved width reads as intentional.
+  //
+  // Bounded rather than infinite: the frontmatter now carries a single title,
+  // so the theme types it once (~40 chars at 150ms ≈ 6s) and stops. An endless
+  // cursor after a static line is a permanent bit of motion in the corner of
+  // the eye, and it reads as an input box waiting for you. Six blinks cover the
+  // typing, then `forwards` retires it.
   .vp-portfolio-title::after {
     content: "";
     width: 2px;
@@ -455,7 +461,7 @@ body {
     margin-inline-start: 0.18rem;
     border-radius: 1px;
     background: var(--vp-c-accent);
-    animation: dl-caret-blink 1.1s step-end infinite;
+    animation: dl-caret-blink 1.1s step-end 6 forwards;
   }
 
   .home-affiliation-strip {
@@ -3134,4 +3140,58 @@ div[class*="language-"],
   .vp-portfolio-home .home-card-place::before {
     margin-top: 0.16em;
   }
+}
+
+// The closing section was titled "Let's Connect" but offered no way to do it:
+// topic chips and research-profile links only. The contact icons live in the
+// hero, which is a full page-scroll away by the time a reader reaches here.
+.vp-portfolio-home .home-connect-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--dl-space-2);
+  margin-top: var(--dl-space-4);
+}
+
+// ---------------------------------------------------------------------------
+// Block-level anchors: no hover underline
+//
+// The theme underlines any content link on hover:
+//   [vp-content] a:not(.header-anchor):hover { text-decoration: underline }
+// which is specificity (0,3,1). That is the right default for an inline link
+// inside a paragraph, but a number of anchors here wrap an entire card or
+// control — and `text-decoration` inherits — so hovering a knowledge-base card
+// underlined its eyebrow, its heading, its description and its call-to-action
+// simultaneously.
+//
+// Several of these already opted out at (0,2,0), which silently lost to the
+// theme on the :hover state; others (the path cards, the résumé spread) had no
+// rule at all.
+//
+// This is `!important` on purpose. Specificity alone does not settle it: this
+// stylesheet is injected ahead of the theme's, so on an equal-specificity tie
+// the theme wins on order, and `:is()` contributes only its most specific
+// argument. Rather than keep inflating the selector against a rule we do not
+// control, one deliberate `!important` covers every block anchor on the
+// portfolio home and the section pages alike.
+//
+// The affordance is unaffected: these cards already lift, brighten their border
+// and deepen their shadow on hover.
+// ---------------------------------------------------------------------------
+.theme-container [vp-content] a:is(
+    .home-card-shell,
+    .knowledge-atlas-card,
+    .ai-card,
+    .section-card,
+    .ai-path-card,
+    .section-path-card,
+    .home-resume__spread,
+    .home-action,
+    .home-mission__button,
+    .home-tag--link,
+    .home-affiliation-strip__link,
+    .home-page-nav__link,
+    .pub-action
+  ):hover,
+.theme-container [vp-content] .knowledge-crosslinks a:hover {
+  text-decoration: none !important;
 }
