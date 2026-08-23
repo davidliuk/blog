@@ -100,7 +100,7 @@ content: portfolio
   <section class="home-highlight-card">
     <p class="home-highlight-kicker">02 · Execute & recover</p>
     <h3>Give agents structure for acting, checking their work, and repairing failures.</h3>
-    <p><strong>COMFYCLAW</strong>, accepted to the 2nd MUCG Workshop at ECCV 2026, combines typed workflow editing, stage-aware tools, rollback, visual verification, and skill evolution to make executable image-generation workflows more reliable.</p>
+    <p><strong>COMFYCLAW</strong>, accepted to <strong>ECCV 2026 Workshop MUCG</strong>, combines typed workflow editing, stage-aware tools, rollback, visual verification, and skill evolution to make executable image-generation workflows more reliable.</p>
   </section>
 
   <section class="home-highlight-card">
@@ -127,7 +127,7 @@ content: portfolio
     title="COMFYCLAW: Self-Evolving Skill Harnesses for Image Generation Workflows"
     :authors="['Zongxia Li*','Dawei Liu*','Fuxiao Liu','Yuhang Zhou','Xiyang Wu','Jingxi Chen','Jing Xie','Xiaomin Wu','Lichao Sun']"
     image="/publication/comfyclaw.png"
-    venue="MUCG Workshop · ECCV 2026"
+    venue="ECCV 2026 Workshop MUCG"
     date="Jul 2026"
     paper="https://arxiv.org/abs/2607.01709"
     github="https://github.com/Moms-Organic-Agent-Lab/comfyclaw"
@@ -150,7 +150,7 @@ content: portfolio
     :authors="['Dawei Liu','Zongxia Li','Hongyang Du','Xiyang Wu','Shihang Gui','Yongbei Kuang','Lichao Sun']"
     image="/publication/gos.png"
     venue="EMNLP 2026"
-    also="Agent Skills Workshop · ACM CAIS 2026"
+    also="ACM CAIS 2026 Workshop AgentSkills"
     date="Apr 2026"
     abstract="Modern LLM agents increasingly rely on reusable skills, and as they interact with personal applications, web browsers, and other interfaces, skill libraries can scale to thousands of skills. Scaling to larger skill sets introduces two key challenges. First, loading the full skill set saturates the context window, driving up token costs, hallucination, and latency. Second, semantic retrieval surfaces topically relevant skills but misses their prerequisite chain of upstream and downstream skills, creating a prerequisite gap that leaves the retrieved bundle execution-incomplete. In this paper, we present Graph-of-Skills (GoS), an inference-time structural retrieval layer for large skill libraries. GoS constructs an executable skill graph offline from skill packages, then at inference time retrieves a bounded, dependency-aware skill bundle through hybrid semantic-lexical seeding, reverse-aware Personalized PageRank, and context-budgeted hydration. On SkillsBench and ALFWorld, GoS consistently delivers substantial reward improvements and token savings across three model families (Claude Sonnet 4.5, MiniMax M2.7, and GPT-5.2 Codex). On SkillsBench, GoS achieves a peak reward increase of 25.55% while reducing total tokens by 56.72% over the vanilla full skill-loading baseline using GPT-5.2 Codex. Ablations confirm this pattern across skill libraries from 200 to 2,000 skills."
     paper="https://arxiv.org/abs/2604.05333"
@@ -161,7 +161,7 @@ content: portfolio
     title="A Cookbook of 3D Vision: Data, Learning Paradigms, and Application"
     :authors="['Hongyang Du*','Zongxia Li*','Dawei Liu*','Runhao Li*','Haoyuan Song','Qingyu Zhang','Yubo Wang','Jingcheng Ni','Shihang Gui','Congchao Dong','Tao Hu']"
     image="/publication/3dv.jpeg"
-    venue="OpenSUN3D Workshop · CVPR 2026"
+    venue="CVPR 2026 Workshop OpenSUN3D"
     date="Mar 2026"
     paper="https://openaccess.thecvf.com/content/CVPR2026W/OpenSUN3D/html/Du_A_Cookbook_of_3D_Vision_Data_Learning_Paradigms_and_Application_CVPRW_2026_paper.html"
     abstract="3D vision has rapidly evolved, driven by increasingly diverse data representations, learning paradigms, and modeling strategies. Yet the field remains fragmented across representations and benchmarks, making it difficult to develop unified perspectives on efficiency, fidelity, and scalability. This work provides a data-centric taxonomy of 3D vision that connects geometric representations, datasets, learning frameworks, and applications within a single conceptual map. We survey principal structural representations of 3D data, then examine how dataset design, benchmark construction, and supervision regimes shape recent advances spanning 2D-supervised 3D learning, implicit neural representations, and 4D world modeling."
@@ -173,7 +173,7 @@ content: portfolio
     title="Multimodal Video Generation Models with Audio: Present and Future"
     :authors="['Zongxia Li','Hongyang Du','Dawei Liu','Xiyang Wu','Lantao Yu','Jingxi Chen','Fuxiao Liu','Xiaomin Wu','Jing Xie','Chengsong Huang','Yicheng He','Guangyao Shi']"
     image="/publication/vgm.jpeg"
-    venue="JAV-CG Workshop · ACM Multimedia 2026"
+    venue="ACMMM 2026 Workshop JAV-CG"
     date="Mar 2026"
     abstract="Video generation models have advanced rapidly and are now widely used across entertainment, advertising, filmmaking, and robotics applications such as world modeling and simulation. However, visual content alone is often insufficient for realistic and engaging media experiences; audio is also a key component of immersion and semantic coherence. As AI-generated videos become increasingly prevalent in everyday content, demand has grown for systems that can generate synchronized sound alongside visuals. This trend has driven rising interest in multimodal video generation, which jointly models video and audio to produce more complete, coherent, and appealing outputs. Since late 2025, a wave of multimodal video generation models has emerged, with releases including Veo 3.1, Sora 2, Kling 2.6, Wan 2.6, OVI, and LTX 2. As multimodal generation technology advances, its impact expands across both consumer and industrial domains, revolutionizing entertainment while enabling more sophisticated world simulation for embodied AI systems. In this paper, we provide a comprehensive overview of the literature covering common architectures, post-training methods, evaluation, applications, and open challenges."
     paper="https://www.researchgate.net/publication/401388352_Multimodal_Video_Generation_Models_with_Audio_Present_and_Future"
