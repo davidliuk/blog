@@ -18,6 +18,11 @@
       <div class="pub-meta">
         <div v-if="venue || date" class="pub-meta-tags">
           <span v-if="venue" class="pub-meta-pill pub-venue">{{ venue }}</span>
+          <span
+            v-for="item in alsoList"
+            :key="item"
+            class="pub-meta-pill pub-venue-also"
+          >{{ item }}</span>
           <span v-if="date" class="home-card-time pub-date">{{ date }}</span>
         </div>
         <span v-if="formattedAuthors.length" class="pub-authors">
@@ -137,10 +142,19 @@ const props = defineProps<{
   authors?: string[];
   abstract?: string;
   venue?: string;
+  also?: string | string[];
   paper?: string;
   github?: string;
   website?: string;
 }>();
+
+// `also` accepts a single venue or a list, so a paper with one workshop
+// appearance does not need array syntax at the call site.
+const alsoList = computed(() => {
+  const raw = props.also;
+  if (!raw) return [];
+  return Array.isArray(raw) ? raw : [raw];
+});
 
 const expanded = ref(false);
 const githubStars = ref<number | null>(null);
@@ -319,7 +333,18 @@ function writeCachedGitHubStars(repo: string, stars: number): void {
 .pub-venue {
   border-color: var(--dl-accent-line);
   background: var(--dl-accent-soft);
-  color: var(--vp-c-accent);
+  /* `--vp-c-accent` is tuned for text on the page background. On the chip's own
+     accent-soft fill it measured 4.16:1 — the one element on the page under
+     AA. Darkening toward the ink token keeps the chip unmistakably accent while
+     clearing the threshold on both themes. */
+  color: color-mix(in srgb, var(--vp-c-accent) 72%, var(--dl-ink));
+}
+/* Secondary appearances: same pill, neutral fill, so the primary venue keeps
+   the accent and the eye reads a clear first/second. */
+.pub-venue-also {
+  border-color: var(--dl-border);
+  background: var(--dl-chip);
+  color: var(--vp-c-text-2);
 }
 .pub-date {
   flex-shrink: 0;

@@ -44,6 +44,11 @@ const props = defineProps<{
   summary: string;
   tech?: string[];
   highlights?: string[];
+  // Optional. None of the current three projects has a public URL (Aura Chef
+  // and Trace Note were competition submissions; the Juejin clone is
+  // unpublished), so the title renders as plain text. Pass `link` on any
+  // project that gains one and the title becomes an external anchor with no
+  // other change required.
   link?: string;
 }>();
 
