@@ -21,8 +21,10 @@
         <span class="edu-degree-abbr">{{ degreeAbbr }}</span>
         <span class="edu-degree-copy">
           <span class="edu-degree-title">{{ degreeTitle }}</span>
-          <span v-if="major" class="edu-degree-separator" aria-hidden="true">/</span>
-          <span v-if="major" class="edu-degree-major">{{ major }}</span>
+          <span v-if="major" class="edu-degree-tail"
+            ><span class="edu-degree-separator" aria-hidden="true">/</span
+            ><span class="edu-degree-major">{{ major }}</span></span
+          >
         </span>
       </div>
       <div v-if="gpa || honorBadges.length" class="edu-meta">
@@ -213,6 +215,15 @@ const logoSrc = computed(() => {
 
 .edu-degree-separator {
   opacity: 0.5;
+  /* Space belongs to the separator, not the markup, so the pair can be kept
+     together without collapsing the gap. */
+  margin-inline: 0.32rem 0.3rem;
+}
+
+/* The slash travels with the major it introduces; otherwise a wrap strands it
+   at the end of the previous line. */
+.edu-degree-tail {
+  display: inline-block;
 }
 
 .edu-meta {

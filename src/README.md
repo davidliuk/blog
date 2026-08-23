@@ -127,7 +127,7 @@ content: portfolio
     title="COMFYCLAW: Self-Evolving Skill Harnesses for Image Generation Workflows"
     :authors="['Zongxia Li*','Dawei Liu*','Fuxiao Liu','Yuhang Zhou','Xiyang Wu','Jingxi Chen','Jing Xie','Xiaomin Wu','Lichao Sun']"
     image="/publication/comfyclaw.png"
-    venue="2nd MUCG Workshop · ECCV 2026"
+    venue="MUCG Workshop · ECCV 2026"
     date="Jul 2026"
     paper="https://arxiv.org/abs/2607.01709"
     github="https://github.com/Moms-Organic-Agent-Lab/comfyclaw"
@@ -135,10 +135,22 @@ content: portfolio
   />
 
   <PublicationCard
+    id="paper-dr-claw"
+    title="Dr. Claw: A Unified System for the Vibe Research Paradigm"
+    :authors="['Dingjie Song','Hanrong Zhang','Dawei Liu','Yixin Liu','Zongxia Li','Zhengqing Yuan','Siqi Zhang','Henry Peng Zou','Zhiling Yan','Yuxuan Zhang','Yanfang Ye','Philip S. Yu','Lichao Sun']"
+    image="/publication/drclaw.png"
+    venue="EMNLP 2026 System Demonstration"
+    date="Jul 2026"
+    github="https://github.com/OpenLAIR/dr-claw"
+    abstract="Command-line coding agents (e.g., Claude Code, Gemini CLI) can already read and write files and sustain long sessions, yet end-to-end research still fragments across chat tools, IDEs, terminals, and writing environments, and the decisions that make it auditable are rarely preserved. We present Dr. Claw, an open-source workspace that wraps existing coding-agent executors in a controllable and auditable human-in-the-loop workflow rather than introducing another autonomous agent. Persistent state objects, a reusable skill library, and multi-executor coordination link human decisions to AI execution, turning planning, execution, and writing into one traceable, recoverable loop. We demonstrate Dr. Claw through an interactive three-view scenario and a failure-recovery walkthrough, and evaluate it against a bare command-line agent sharing the same backend executor, isolating the orchestration layer&#39;s effect on context-switching, intervention, and auditability. Holding the executor fixed, Dr. Claw outperforms the bare agent on research completeness while persisting an auditable, recoverable process trail."
+  />
+
+  <PublicationCard
     title="Graph-of-Skills: Dependency-Aware Structural Retrieval for Massive Agent Skills"
     :authors="['Dawei Liu','Zongxia Li','Hongyang Du','Xiyang Wu','Shihang Gui','Yongbei Kuang','Lichao Sun']"
     image="/publication/gos.png"
-    venue="Agent Skills Workshop · ACM CAIS 2026"
+    venue="EMNLP 2026"
+    also="Agent Skills Workshop · ACM CAIS 2026"
     date="Apr 2026"
     abstract="Modern LLM agents increasingly rely on reusable skills, and as they interact with personal applications, web browsers, and other interfaces, skill libraries can scale to thousands of skills. Scaling to larger skill sets introduces two key challenges. First, loading the full skill set saturates the context window, driving up token costs, hallucination, and latency. Second, semantic retrieval surfaces topically relevant skills but misses their prerequisite chain of upstream and downstream skills, creating a prerequisite gap that leaves the retrieved bundle execution-incomplete. In this paper, we present Graph-of-Skills (GoS), an inference-time structural retrieval layer for large skill libraries. GoS constructs an executable skill graph offline from skill packages, then at inference time retrieves a bounded, dependency-aware skill bundle through hybrid semantic-lexical seeding, reverse-aware Personalized PageRank, and context-budgeted hydration. On SkillsBench and ALFWorld, GoS consistently delivers substantial reward improvements and token savings across three model families (Claude Sonnet 4.5, MiniMax M2.7, and GPT-5.2 Codex). On SkillsBench, GoS achieves a peak reward increase of 25.55% while reducing total tokens by 56.72% over the vanilla full skill-loading baseline using GPT-5.2 Codex. Ablations confirm this pattern across skill libraries from 200 to 2,000 skills."
     paper="https://arxiv.org/abs/2604.05333"
@@ -181,26 +193,16 @@ content: portfolio
   />
 </PublicationList>
 
-<p class="home-section-outro">Five selected here. The complete, continuously updated record lives on <a href="https://scholar.google.com/citations?user=RzdCL4AAAAAJ&amp;hl=en" target="_blank" rel="me noopener noreferrer">Google Scholar</a> and <a href="https://dblp.org/pid/57/1575-5.html" target="_blank" rel="me noopener noreferrer">DBLP</a>.</p>
+<p class="home-section-outro">Six selected here. The complete, continuously updated record lives on <a href="https://scholar.google.com/citations?user=RzdCL4AAAAAJ&amp;hl=en" target="_blank" rel="me noopener noreferrer">Google Scholar</a> and <a href="https://dblp.org/pid/57/1575-5.html" target="_blank" rel="me noopener noreferrer">DBLP</a>.</p>
 
 ## Open Source
 
-<p class="home-section-intro">I prefer research that leaves behind something people can run. These are the workspaces, benchmarks, and distribution paths I help build with the LAIR community.</p>
+<p class="home-section-intro">I prefer research that leaves behind something people can run. Alongside <a href="#paper-dr-claw">Dr. Claw</a> above, this is the evaluation work I contribute to with the LAIR community.</p>
 
 <PublicationList>
   <PublicationCard
-    title="Dr. Claw: An AI Research Workspace from Idea to Paper"
-    :authors="['Dingjie Song','Hanrong Zhang','Dawei Liu','Yixin Liu','Zongxia Li','Zhengqing Yuan','Siqi Zhang','Lichao Sun']"
-    image="/publication/drclaw.png"
-    venue="Core Contributor"
-    date="Mar 2026"
-    abstract="Dr. Claw is a general-purpose AI research assistant designed to help researchers and builders execute end-to-end projects across different domains. From shaping an initial idea to running experiments and preparing publication-ready outputs, Dr. Claw keeps the full workflow in one place so teams can focus on research quality and iteration speed. I am one of the top three core contributors."
-    github="https://github.com/OpenLAIR/dr-claw"
-  />
-
-  <PublicationCard
     title="Long-Horizon Terminal-Bench (LHTB)"
-    venue="Contributor"
+    also="Contributor"
     date="Jul 2026"
     image="/publication/lhtb.png"
     abstract="LHTB is a 46-task benchmark measuring how well LLM agents sustain useful work inside a containerized terminal over hundreds of steps. Unlike short-horizon coding benchmarks, it drops agents into a stateful environment and grades them with hidden, rebuild-from-artifact verifiers under a dense reward scheme, so self-reported progress does not count. Tasks span interactive games and puzzles, multimodal analysis, software and reverse engineering, scientific computing, security and performance, and research reproduction. I contribute task design and harness work to the project."
@@ -449,6 +451,11 @@ content: portfolio
     <span class="home-tag">ML infrastructure</span>
     <span class="home-tag">Backend systems</span>
     <span class="home-tag">Applied AI products</span>
+  </div>
+  <div class="home-connect-actions">
+    <a class="home-action home-action--primary" href="mailto:davidliu02k@gmail.com">Email me</a>
+    <a class="home-action" href="https://www.linkedin.com/in/davidliuk/" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
+    <a class="home-action" href="https://github.com/davidliuk" target="_blank" rel="me noopener noreferrer">GitHub</a>
   </div>
   <nav id="academic-profiles" class="home-profile-row" aria-label="Academic profiles">
     <span class="home-profile-row__label">Research profiles</span>
