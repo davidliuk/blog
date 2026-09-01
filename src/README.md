@@ -94,7 +94,7 @@ content: portfolio
   <section class="home-highlight-card">
     <p class="home-highlight-kicker">01 · Retrieve</p>
     <h3>Load less context without losing the dependencies that make a skill usable.</h3>
-    <p><strong>Graph-of-Skills</strong> explores structural retrieval for massive skill libraries. On SkillsBench, its strongest setting improved reward by <strong>25.55%</strong> while reducing total tokens by <strong>56.72%</strong> against full skill loading.</p>
+    <p><strong>Graph-of-Skills</strong>, accepted to <strong>EMNLP 2026</strong> (Main Conference), makes retrieval dependency-aware rather than purely semantic. On SkillsBench, its strongest setting improved reward by <strong>25.6%</strong> (+7.0 absolute points) while reducing total tokens by <strong>56.7%</strong> against full skill loading.</p>
   </section>
 
   <section class="home-highlight-card">
@@ -106,22 +106,34 @@ content: portfolio
   <section class="home-highlight-card">
     <p class="home-highlight-kicker">03 · Build in the open</p>
     <h3>Turn agent research into workspaces that researchers can use every day.</h3>
-    <p>As a core contributor to <strong>Dr. Claw</strong>, I work across provider integrations, multi-session workflows, desktop distribution, project isolation, and the reliability details behind long-running research tasks.</p>
+    <p>As a core contributor to <strong>Dr. Claw</strong>, accepted to <strong>EMNLP 2026</strong> (System Demonstrations), I work across provider integrations, multi-session workflows, desktop distribution, project isolation, and the reliability details behind long-running research tasks.</p>
   </section>
 
   <section class="home-highlight-card">
     <p class="home-highlight-kicker">04 · Test against reality</p>
     <h3>Let production constraints sharpen the questions research needs to answer.</h3>
-    <p>Work across <strong>TikTok, Amazon, and JD.com</strong> taught me to treat latency, observability, experimentation, and failure handling as design inputs—not cleanup after a prototype succeeds.</p>
+    <p>Work across <strong>TikTok, Amazon, and JD Technology</strong> taught me to treat latency, observability, experimentation, and failure handling as design inputs—not cleanup after a prototype succeeds.</p>
   </section>
 </div>
 
 ## Selected Publications
 
-<p class="home-section-intro">These publications mark a path from research platforms and multimodal systems toward my current focus: reliable, resource-efficient infrastructure for tool-using agents.</p>
-<p class="home-publication-legend"><strong>*</strong> Contribution role follows the cited paper.</p>
+<p class="home-section-intro">Ordered by how closely each one sits to my current focus rather than by date. The first three follow the same retrieve–execute–recover loop as the section above; the rest are the multimodal and scientific systems work that led there.</p>
+<p class="home-publication-legend"><strong>*</strong> Equal contribution (co-first author). <strong>&dagger;</strong> Core contributor, as designated in the cited paper.</p>
 
 <PublicationList>
+  <PublicationCard
+    title="Graph-of-Skills: Dependency-Aware Structural Retrieval for Massive Agent Skills"
+    :authors="['Dawei Liu†','Zongxia Li†','Hongyang Du','Xiyang Wu','Shihang Gui','Yongbei Kuang','Lichao Sun']"
+    image="/publication/gos.png"
+    venue="EMNLP 2026 Main Conference"
+    also="ACM CAIS 2026 Workshop AgentSkills"
+    date="Apr 2026"
+    abstract="Modern LLM agents increasingly rely on reusable skills, and as they interact with personal applications, web browsers, and other interfaces, skill libraries can scale to thousands of skills. Scaling to larger skill sets introduces two key challenges. First, loading the full skill set saturates the context window, driving up token costs, hallucination, and latency. Second, semantic retrieval surfaces topically relevant skills but misses their prerequisite chain of upstream and downstream skills, creating a prerequisite gap that leaves the retrieved bundle execution-incomplete. In this paper, we present Graph-of-Skills (GoS), an inference-time structural retrieval layer for large skill libraries. GoS constructs an executable skill graph offline from skill packages, then at inference time retrieves a bounded, dependency-aware skill bundle through hybrid semantic-lexical seeding, reverse-aware Personalized PageRank, and context-budgeted hydration. On SkillsBench and ALFWorld, GoS consistently delivers substantial reward improvements and token savings across three model families (Claude Sonnet 4.5, MiniMax M2.7, and GPT-5.2 Codex). On SkillsBench with GPT-5.2 Codex, GoS raises average reward by 7.0 absolute points over full skill loading, a 25.6% relative gain, while cutting total tokens by 56.7%. Ablations confirm this pattern across skill libraries from 200 to 2,000 skills."
+    paper="https://arxiv.org/abs/2604.05333"
+    github="https://github.com/davidliuk/graph-of-skills"
+  />
+
   <PublicationCard
     id="paper-comfyclaw"
     title="COMFYCLAW: Self-Evolving Skill Harnesses for Image Generation Workflows"
@@ -136,25 +148,13 @@ content: portfolio
 
   <PublicationCard
     id="paper-dr-claw"
-    title="Dr. Claw: A Unified System for the Vibe Research Paradigm"
+    title="Dr. Claw: An AI Scientist Workspace for Vibe Research"
     :authors="['Dingjie Song','Hanrong Zhang','Dawei Liu','Yixin Liu','Zongxia Li','Zhengqing Yuan','Siqi Zhang','Henry Peng Zou','Zhiling Yan','Yuxuan Zhang','Yanfang Ye','Philip S. Yu','Lichao Sun']"
     image="/publication/drclaw.png"
     venue="EMNLP 2026 System Demonstration"
     date="Jul 2026"
     github="https://github.com/OpenLAIR/dr-claw"
-    abstract="Command-line coding agents (e.g., Claude Code, Gemini CLI) can already read and write files and sustain long sessions, yet end-to-end research still fragments across chat tools, IDEs, terminals, and writing environments, and the decisions that make it auditable are rarely preserved. We present Dr. Claw, an open-source workspace that wraps existing coding-agent executors in a controllable and auditable human-in-the-loop workflow rather than introducing another autonomous agent. Persistent state objects, a reusable skill library, and multi-executor coordination link human decisions to AI execution, turning planning, execution, and writing into one traceable, recoverable loop. We demonstrate Dr. Claw through an interactive three-view scenario and a failure-recovery walkthrough, and evaluate it against a bare command-line agent sharing the same backend executor, isolating the orchestration layer&#39;s effect on context-switching, intervention, and auditability. Holding the executor fixed, Dr. Claw outperforms the bare agent on research completeness while persisting an auditable, recoverable process trail."
-  />
-
-  <PublicationCard
-    title="Graph-of-Skills: Dependency-Aware Structural Retrieval for Massive Agent Skills"
-    :authors="['Dawei Liu','Zongxia Li','Hongyang Du','Xiyang Wu','Shihang Gui','Yongbei Kuang','Lichao Sun']"
-    image="/publication/gos.png"
-    venue="EMNLP 2026"
-    also="ACM CAIS 2026 Workshop AgentSkills"
-    date="Apr 2026"
-    abstract="Modern LLM agents increasingly rely on reusable skills, and as they interact with personal applications, web browsers, and other interfaces, skill libraries can scale to thousands of skills. Scaling to larger skill sets introduces two key challenges. First, loading the full skill set saturates the context window, driving up token costs, hallucination, and latency. Second, semantic retrieval surfaces topically relevant skills but misses their prerequisite chain of upstream and downstream skills, creating a prerequisite gap that leaves the retrieved bundle execution-incomplete. In this paper, we present Graph-of-Skills (GoS), an inference-time structural retrieval layer for large skill libraries. GoS constructs an executable skill graph offline from skill packages, then at inference time retrieves a bounded, dependency-aware skill bundle through hybrid semantic-lexical seeding, reverse-aware Personalized PageRank, and context-budgeted hydration. On SkillsBench and ALFWorld, GoS consistently delivers substantial reward improvements and token savings across three model families (Claude Sonnet 4.5, MiniMax M2.7, and GPT-5.2 Codex). On SkillsBench, GoS achieves a peak reward increase of 25.55% while reducing total tokens by 56.72% over the vanilla full skill-loading baseline using GPT-5.2 Codex. Ablations confirm this pattern across skill libraries from 200 to 2,000 skills."
-    paper="https://arxiv.org/abs/2604.05333"
-    github="https://github.com/davidliuk/graph-of-skills"
+    abstract="Command-line coding agents (e.g., Claude Code, Gemini CLI) can already read and write files and sustain long sessions, yet end-to-end research still fragments across chat tools, IDEs, terminals, and writing environments, and the decisions that make it auditable are rarely preserved. We present Dr. Claw, an open-source workspace that wraps existing coding-agent executors in a controllable and auditable human-in-the-loop workflow rather than introducing another autonomous agent. Persistent state objects, a reusable skill library, and multi-executor coordination link human decisions to AI execution, turning planning, execution, and writing into one traceable, recoverable loop. We demonstrate Dr. Claw through an interactive three-view scenario and a failure-recovery walkthrough, and evaluate it against a bare command-line agent sharing the same backend executor, so the comparison contrasts the whole orchestration layer (task graph, state objects, and skill library) with the agent it wraps. Holding the executor fixed, Dr. Claw scores higher on research completeness while persisting an auditable, recoverable process trail. Demo access: repository https://github.com/OpenLAIR/dr-claw, released under AGPL-3.0 with GPL-3.0 upstream components."
   />
 
   <PublicationCard
@@ -171,12 +171,12 @@ content: portfolio
   <PublicationCard
     id="paper-multimodal-video"
     title="Multimodal Video Generation Models with Audio: Present and Future"
-    :authors="['Zongxia Li','Hongyang Du','Dawei Liu','Xiyang Wu','Lantao Yu','Jingxi Chen','Fuxiao Liu','Xiaomin Wu','Jing Xie','Chengsong Huang','Yicheng He','Guangyao Shi']"
+    :authors="['Dawei Liu','Hongyang Du','Zongxia Li','Xiyang Wu','Lantao Yu','Jingxi Chen','Fuxiao Liu','Xiaomin Wu','Jing Xie','Chengsong Huang','Yicheng He','Guangyao Shi']"
     image="/publication/vgm.jpeg"
     venue="ACMMM 2026 Workshop JAV-CG"
     date="Mar 2026"
-    abstract="Video generation models have advanced rapidly and are now widely used across entertainment, advertising, filmmaking, and robotics applications such as world modeling and simulation. However, visual content alone is often insufficient for realistic and engaging media experiences; audio is also a key component of immersion and semantic coherence. As AI-generated videos become increasingly prevalent in everyday content, demand has grown for systems that can generate synchronized sound alongside visuals. This trend has driven rising interest in multimodal video generation, which jointly models video and audio to produce more complete, coherent, and appealing outputs. Since late 2025, a wave of multimodal video generation models has emerged, with releases including Veo 3.1, Sora 2, Kling 2.6, Wan 2.6, OVI, and LTX 2. As multimodal generation technology advances, its impact expands across both consumer and industrial domains, revolutionizing entertainment while enabling more sophisticated world simulation for embodied AI systems. In this paper, we provide a comprehensive overview of the literature covering common architectures, post-training methods, evaluation, applications, and open challenges."
-    paper="https://www.researchgate.net/publication/401388352_Multimodal_Video_Generation_Models_with_Audio_Present_and_Future"
+    abstract="Video generation has advanced rapidly, yet visual content alone is insufficient for many realistic and engaging media experiences: sound is central to immersion, semantic coherence, and perceived causality. Growing demand for synchronized dialogue, effects, music, and ambience has therefore accelerated research on multimodal video generation, which coordinates video and audio generation or uses one modality to control the other instead of treating sound as a separate post-production stage. Recent proprietary and open-weight systems, including Veo 3.1, Gemini Omni Flash, Sora 2, Seedance 2.0, Seedance 2.5, Kling 3.0, MiniMax M2.6, Vidu Q3, Wan 2.6, OVI, and LTX-2, illustrate the shift toward native audiovisual capabilities. This paper surveys the foundations and recent advances of multimodal video generation. We organize the literature around four themes: architectural components and cross-modal fusion; post-training and evaluation methods; applications and active research areas; and persistent challenges in synchronization, efficiency, data, safety, and long-horizon consistency. We identify multi-timescale alignment—from local event timing to global narrative and acoustic continuity—as a unifying challenge across current systems. This perspective connects progress in media creation with emerging uses in world modeling, interactive simulation, embodied intelligence, and human–AI communication."
+    paper="https://doi.org/10.1145/3840475.3841440"
     github="https://github.com/zli12321/Multimodal-VIdeo-Generation-Collections-Video-and-Audio"
   />
 
@@ -232,7 +232,7 @@ content: portfolio
   logo="/NEU_logo.svg"
   gpa="3.95 / 4.00"
   :honors="['National Scholarship','Outstanding Graduate','Merit-based Scholarship','Outstanding Student ×3','Outstanding Student Leader']"
-  rank="Top 1%"
+  rank="5 / 396 (top 1.3%)"
   major="Software Engineering" />
 
 ## Professional Experience
@@ -241,9 +241,9 @@ content: portfolio
 
 <div class="experience-grid">
   <ExperienceCard
-    company="TikTok"
+    company="TikTok (ByteDance Inc.)"
     role="Software Engineer"
-    team="Shop Ads Team"
+    team="Commerce Ads Team"
     location="Seattle, WA"
     time="Jun 2026 – Present · Intern May 2025 – Dec 2025"
     logo="/TikTok_logo.svg"
@@ -275,7 +275,7 @@ content: portfolio
   />
 
   <ExperienceCard
-    company="JD.com"
+    company="JD Technology"
     role="Software Development Engineer Intern"
     team="Algorithm Tools Team"
     location="Beijing, China"
