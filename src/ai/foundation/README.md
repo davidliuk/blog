@@ -10,39 +10,39 @@ icon: layer-group
 
 ## Start Here
 
-<div class="ai-card-grid">
-  <a class="ai-card" href="./ml/linear-algebra.md">
-    <span class="ai-card__eyebrow">Prerequisite</span>
+<div class="section-card-grid">
+  <a class="section-card" href="./ml/linear-algebra.md">
+    <span class="section-card__eyebrow">Prerequisite</span>
     <h3>Math for ML</h3>
     <p>线性代数、概率与微积分，负责建立模型表达与优化的公共语言。</p>
   </a>
-  <a class="ai-card" href="./dl/">
-    <span class="ai-card__eyebrow">Representation</span>
+  <a class="section-card" href="./dl/">
+    <span class="section-card__eyebrow">Representation</span>
     <h3>Deep Learning</h3>
     <p>从神经元、反向传播到 CNN / RNN / Transformer，理解表征学习的核心。</p>
   </a>
-  <a class="ai-card" href="./classical-ml/">
-    <span class="ai-card__eyebrow">Problem formulation</span>
+  <a class="section-card" href="./classical-ml/">
+    <span class="section-card__eyebrow">Problem formulation</span>
     <h3>Classical Machine Learning</h3>
     <p>监督、无监督、generalization、metric、leakage 与 model selection。</p>
   </a>
-  <a class="ai-card" href="./lm/">
-    <span class="ai-card__eyebrow">Sequence modeling</span>
+  <a class="section-card" href="./lm/">
+    <span class="section-card__eyebrow">Sequence modeling</span>
     <h3>Language Model</h3>
     <p>从 n-gram 到神经语言模型，再过渡到 Transformer 时代。</p>
   </a>
-  <a class="ai-card" href="./rl/">
-    <span class="ai-card__eyebrow">Decision making</span>
+  <a class="section-card" href="./rl/">
+    <span class="section-card__eyebrow">Decision making</span>
     <h3>Reinforcement Learning</h3>
     <p>奖励、策略、价值函数，以及为什么 RL 在 LLM 对齐里重新变重要。</p>
   </a>
-  <a class="ai-card" href="./peft/">
-    <span class="ai-card__eyebrow">Efficient adaptation</span>
+  <a class="section-card" href="./peft/">
+    <span class="section-card__eyebrow">Efficient adaptation</span>
     <h3>PEFT</h3>
     <p>LoRA 一类方法如何让大模型适配下游任务，同时控制训练成本。</p>
   </a>
-  <a class="ai-card" href="./paper.md">
-    <span class="ai-card__eyebrow">Reading</span>
+  <a class="section-card" href="./paper.md">
+    <span class="section-card__eyebrow">Reading</span>
     <h3>Paper Notes</h3>
     <p>放一些论文阅读与方法整理，适合和主题笔记交叉阅读。</p>
   </a>

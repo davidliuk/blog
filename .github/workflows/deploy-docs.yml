@@ -10,6 +10,11 @@ on:
       - main
   workflow_dispatch:
 
+# The deploy step pushes with GH_PAGES_TOKEN (a PAT); the default GITHUB_TOKEN
+# only needs to read this repository and query the GitHub API.
+permissions:
+  contents: read
+
 # 避免连续 push 时两次部署抢写同一远端分支
 concurrency:
   group: deploy-davidliuk-github-io
@@ -29,13 +34,13 @@ jobs:
       # 1. 安装 pnpm
       - name: Install pnpm
         uses: pnpm/action-setup@v4
-        # 版本由仓库根目录 package.json 的 packageManager（pnpm@10.33.0）决定，勿在此再写 version
+        # 版本由仓库根目录 package.json 的 packageManager（pnpm@10.34.5）决定，勿在此再写 version
 
       # 2. 设置 Node.js 并开启 pnpm 缓存
       - name: Setup Node.js
-        uses: actions/setup-node@v4 # 升级到 v4
+        uses: actions/setup-node@v4
         with:
-          node-version: 22 # 建议用 20 或 22，保持和你本地一致
+          node-version: 22 # 保持和本地一致（package.json engines: >=22.18.0）
           cache: "pnpm"
 
       # 3. 安装依赖
@@ -44,13 +49,32 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
-      # 4. 构建
-      - name: Build
+      # 4. 刷新首页引用仓库的 star 数快照（带 token，避免匿名 60 次/小时的限流）
+      - name: Refresh GitHub star counts
+        run: node scripts/fetch-github-stars.mjs
         env:
-          NODE_OPTIONS: --max_old_space_size=8192
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # 5. 构建（堆内存上限由 package.json 的 docs:build 脚本设置）
+      - name: Build
         run: pnpm run docs:build
 
-      # 5. 部署到用户站仓库 davidliuk.github.io（根域名 https://davidliuk.github.io/）
+      # 6. 资源预算：dist 中任何单张图片超过 300 KB 即失败（dist/blog 只含跳转桩，跳过）
+      - name: Check image asset budget
+        run: |
+          set -euo pipefail
+          dist=src/.vuepress/dist
+          over=$(find "$dist" -type f \
+            \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.webp' -o -iname '*.svg' \) \
+            -not -path "$dist/blog/*" -size +300k -printf '%s\t%p\n' | sort -rn)
+          if [ -n "$over" ]; then
+            echo "::error::Images above the 300 KB budget (bytes, path):"
+            echo "$over"
+            exit 1
+          fi
+          echo "All images under $dist are within the 300 KB budget."
+
+      # 7. 部署到用户站仓库 davidliuk.github.io（根域名 https://davidliuk.github.io/）
       # - Secrets: blog 仓库需配置 GH_PAGES_TOKEN（PAT，对 davidliuk.github.io 有 contents:write）
       # - Pages: 在 davidliuk.github.io → Settings → Pages → Branch 选 gh-pages，目录 /
       #   （站点文件在 gh-pages 分支；main 可只保留 README，避免与 action 抢 main）

@@ -63,19 +63,19 @@ Evaluation 不是发布前跑一次 benchmark，而是把“系统应该做什�
 
 ## Deep Dives
 
-<div class="ai-card-grid">
-  <a class="ai-card" href="./metrics.md">
-    <span class="ai-card__eyebrow">Measurement design</span>
+<div class="section-card-grid">
+  <a class="section-card" href="./metrics.md">
+    <span class="section-card__eyebrow">Measurement design</span>
     <h3>Metrics & Datasets</h3>
     <p>Task contract、sampling、slice、uncertainty、regression 和 contamination。</p>
   </a>
-  <a class="ai-card" href="./llm-as-judge.md">
-    <span class="ai-card__eyebrow">Open-ended scoring</span>
+  <a class="section-card" href="./llm-as-judge.md">
+    <span class="section-card__eyebrow">Open-ended scoring</span>
     <h3>LLM-as-a-Judge</h3>
     <p>Rubric、pairwise comparison、bias calibration 和 adversarial robustness。</p>
   </a>
-  <a class="ai-card" href="./agent-evaluation.md">
-    <span class="ai-card__eyebrow">Interactive systems</span>
+  <a class="section-card" href="./agent-evaluation.md">
+    <span class="section-card__eyebrow">Interactive systems</span>
     <h3>Agent Evaluation</h3>
     <p>Outcome、trajectory、tool use、recovery、side effect 和 efficiency。</p>
   </a>

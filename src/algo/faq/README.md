@@ -1,3 +1,8 @@
+---
+title: FAQ & Patterns
+icon: circle-question
+---
+
 # Frequently Asked Questions
 
 `faq/` 不是第二棵算法主树，而是高频模式、面试陷阱和速查索引。适合在你已经学过主线知识后，用来做查漏补缺和快速联想。

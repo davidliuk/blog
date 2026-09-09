@@ -1,3 +1,8 @@
+---
+dir:
+  order: 5
+---
+
 # PEFT
 
 PEFT (Parameter-Efficient Fine-Tuning) 关注的问题很直接: 当基础模型已经很大时，怎样在不全量更新参数的前提下完成下游适配。

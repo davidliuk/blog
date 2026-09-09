@@ -26,19 +26,19 @@ AI safety 不是模型外的一层过滤器，而是贯穿 specification、data�
 
 ## Knowledge Map
 
-<div class="ai-card-grid">
-  <a class="ai-card" href="./threat-model.md">
-    <span class="ai-card__eyebrow">Risk discovery</span>
+<div class="section-card-grid">
+  <a class="section-card" href="./threat-model.md">
+    <span class="section-card__eyebrow">Risk discovery</span>
     <h3>Threat Modeling</h3>
     <p>资产、行为、攻击者、trust boundary、failure mode 和 impact。</p>
   </a>
-  <a class="ai-card" href="./agent-security.md">
-    <span class="ai-card__eyebrow">Action safety</span>
+  <a class="section-card" href="./agent-security.md">
+    <span class="section-card__eyebrow">Action safety</span>
     <h3>Agent Security</h3>
     <p>Prompt injection、tool authority、data flow、approval 和 sandbox。</p>
   </a>
-  <a class="ai-card" href="./governance.md">
-    <span class="ai-card__eyebrow">Lifecycle control</span>
+  <a class="section-card" href="./governance.md">
+    <span class="section-card__eyebrow">Lifecycle control</span>
     <h3>Governance</h3>
     <p>Ownership、documentation、release gates、monitoring、incident 和 retirement。</p>
   </a>

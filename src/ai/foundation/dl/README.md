@@ -1,3 +1,8 @@
+---
+dir:
+  order: 2
+---
+
 # Deep Learning
 
 - **传统 ML**：重在**特征工程 (Feature Engineering)**。人工提取特征（如边缘、纹理、统计量），模型负责分类/回归。

@@ -1,3 +1,8 @@
+---
+dir:
+  order: 4
+---
+
 # Multimodal
 
 多模态这部分关注的是: 文本模型如何接入视觉、音频甚至视频，让模型既能“看懂”，也能“说出来”。
@@ -12,34 +17,34 @@
 
 ## Topic Map
 
-<div class="ai-card-grid">
-  <a class="ai-card" href="./vision-encoder.md">
-    <span class="ai-card__eyebrow">Backbone</span>
+<div class="section-card-grid">
+  <a class="section-card" href="./vision-encoder.md">
+    <span class="section-card__eyebrow">Backbone</span>
     <h3>Vision Encoder</h3>
     <p>多模态系统的视觉入口，决定图像信息以什么形式进入语言模型。</p>
   </a>
-  <a class="ai-card" href="./vit.md">
-    <span class="ai-card__eyebrow">Representation</span>
+  <a class="section-card" href="./vit.md">
+    <span class="section-card__eyebrow">Representation</span>
     <h3>ViT and Visual Pretraining</h3>
     <p>从 ViT 到视觉预训练，是理解 DINO / MAE / CLIP 的共同底座。</p>
   </a>
-  <a class="ai-card" href="./llava.md">
-    <span class="ai-card__eyebrow">Adapted LLM</span>
+  <a class="section-card" href="./llava.md">
+    <span class="section-card__eyebrow">Adapted LLM</span>
     <h3>Visual Language Models</h3>
     <p>Flamingo、BLIP、LLaVA、Qwen-VL 这类模型怎样把视觉接到 LLM 上。</p>
   </a>
-  <a class="ai-card" href="./diffusion/">
-    <span class="ai-card__eyebrow">Generation</span>
+  <a class="section-card" href="./diffusion/">
+    <span class="section-card__eyebrow">Generation</span>
     <h3>Diffusion</h3>
     <p>图像生成和更广义生成模型在多模态中的角色。</p>
   </a>
-  <a class="ai-card" href="./audio/">
-    <span class="ai-card__eyebrow">Speech and audio</span>
+  <a class="section-card" href="./audio/">
+    <span class="section-card__eyebrow">Speech and audio</span>
     <h3>Audio</h3>
     <p>语音识别、语音生成和音频 foundation model 的入口。</p>
   </a>
-  <a class="ai-card" href="./project.md">
-    <span class="ai-card__eyebrow">Building</span>
+  <a class="section-card" href="./project.md">
+    <span class="section-card__eyebrow">Building</span>
     <h3>Project Notes</h3>
     <p>记录多模态项目实践中更偏系统设计与落地的问题。</p>
   </a>

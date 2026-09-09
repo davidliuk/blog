@@ -1,3 +1,7 @@
+---
+title: Decrease & Conquer
+---
+
 # Decrease Conquer
 
 减治

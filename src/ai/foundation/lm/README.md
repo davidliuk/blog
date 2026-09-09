@@ -1,3 +1,9 @@
+---
+title: Language Models
+dir:
+  order: 3
+---
+
 # Language Model
 
 - 给定文本序列$x_1,\dots,x_T$, 语言模型的目标是估计联合概率 $p(x_1,\dots, x_T) $

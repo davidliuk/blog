@@ -2,6 +2,8 @@
 title: AI Applications
 description: AI application systems that combine models with context, retrieval, tools, state, policy, and user experience.
 icon: screwdriver-wrench
+dir:
+  order: 5
 ---
 
 # AI Applications
@@ -10,24 +12,24 @@ icon: screwdriver-wrench
 
 ## System Map
 
-<div class="ai-card-grid">
-  <a class="ai-card" href="./rag/">
-    <span class="ai-card__eyebrow">External knowledge</span>
+<div class="section-card-grid">
+  <a class="section-card" href="./rag/">
+    <span class="section-card__eyebrow">External knowledge</span>
     <h3>Retrieval-Augmented Generation</h3>
     <p>Indexing、retrieval、reranking、context construction、generation 和 citation。</p>
   </a>
-  <a class="ai-card" href="./agent/">
-    <span class="ai-card__eyebrow">External action</span>
+  <a class="section-card" href="./agent/">
+    <span class="section-card__eyebrow">External action</span>
     <h3>Agents & Tools</h3>
     <p>Goal、state、tool、runtime、recovery、authority 和 long-running workflow。</p>
   </a>
-  <a class="ai-card" href="../training/alignment/prompt/">
-    <span class="ai-card__eyebrow">Behavior interface</span>
+  <a class="section-card" href="../training/alignment/prompt/">
+    <span class="section-card__eyebrow">Behavior interface</span>
     <h3>Context & Prompting</h3>
     <p>Instruction、example、evidence、memory 和 output contract 的组织。</p>
   </a>
-  <a class="ai-card" href="../../evaluation/">
-    <span class="ai-card__eyebrow">Evidence</span>
+  <a class="section-card" href="../../evaluation/">
+    <span class="section-card__eyebrow">Evidence</span>
     <h3>Evaluation</h3>
     <p>Task success、groundedness、tool correctness、safety、latency 和 cost。</p>
   </a>

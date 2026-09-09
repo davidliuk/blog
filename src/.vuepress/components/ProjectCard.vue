@@ -65,14 +65,18 @@ const highlights = computed(() => props.highlights ?? []);
   background: var(--dl-surface);
 }
 
+/* Stays a row at every width; when the title needs the room the date chip
+   wraps under it instead of the whole header stacking. */
 .project-card__header {
   display: flex;
+  flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-between;
-  gap: var(--dl-space-3);
+  gap: var(--dl-space-2) var(--dl-space-3);
 }
 
 .project-card__title-group {
+  flex: 1 1 12rem;
   min-width: 0;
 }
 
@@ -82,6 +86,7 @@ const highlights = computed(() => props.highlights ?? []);
   line-height: 1.3;
   letter-spacing: -0.02em;
   color: var(--vp-c-text-1);
+  text-wrap: balance;
 }
 
 .project-card__title-group h3 a {
@@ -128,11 +133,6 @@ const highlights = computed(() => props.highlights ?? []);
 @media (max-width: 719px) {
   .project-card {
     padding: 1.05rem 1rem;
-  }
-
-  .project-card__header {
-    flex-direction: column;
-    gap: var(--dl-space-2);
   }
 }
 </style>

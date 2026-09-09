@@ -1,3 +1,8 @@
+---
+dir:
+  order: 4
+---
+
 # Re-Ranking
 
 ![image-20250824163851029](https://gcore.jsdelivr.net/gh/davidliuk/images@master/image-20250824163851029.png)

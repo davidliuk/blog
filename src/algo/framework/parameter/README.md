@@ -1,3 +1,7 @@
+---
+shortTitle: Parameter Passing
+---
+
 # 传参
 
 

@@ -1,15 +1,20 @@
+---
+dir:
+  order: 7
+---
+
 # Recommendation Features
 
 特征把用户、内容、上下文和历史行为转化为模型可以消费的信号。
 
-<div class="ai-card-grid">
-  <a class="ai-card" href="./cross/">
-    <span class="ai-card__eyebrow">Interaction</span>
+<div class="section-card-grid">
+  <a class="section-card" href="./cross/">
+    <span class="section-card__eyebrow">Interaction</span>
     <h3>Feature Cross</h3>
     <p>显式或隐式建模用户、物品和上下文之间的高阶交互。</p>
   </a>
-  <a class="ai-card" href="./lastn/">
-    <span class="ai-card__eyebrow">Behavior sequence</span>
+  <a class="section-card" href="./lastn/">
+    <span class="section-card__eyebrow">Behavior sequence</span>
     <h3>Last-N Features</h3>
     <p>从近期行为序列提取兴趣、相似度和注意力信号。</p>
   </a>

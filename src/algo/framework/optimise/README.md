@@ -1,4 +1,4 @@
-# Optimisation Decision Guide
+# Optimization Decision Guide
 
 这里不再把优化讲成第二棵主树，而是只保留“怎么判断该往哪一类优化走”的心智模型。
 

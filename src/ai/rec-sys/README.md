@@ -10,34 +10,34 @@ icon: thumbs-up
 
 ## Pipeline View
 
-<div class="ai-card-grid">
-  <a class="ai-card" href="./retrieval/">
-    <span class="ai-card__eyebrow">Candidate generation</span>
+<div class="section-card-grid">
+  <a class="section-card" href="./retrieval/">
+    <span class="section-card__eyebrow">Candidate generation</span>
     <h3>Retrieval</h3>
     <p>从海量内容里快速捞出一小撮候选，重点在召回通道和覆盖率。</p>
   </a>
-  <a class="ai-card" href="./pre-ranking/">
-    <span class="ai-card__eyebrow">Fast filtering</span>
+  <a class="section-card" href="./pre-ranking/">
+    <span class="section-card__eyebrow">Fast filtering</span>
     <h3>Pre-Ranking</h3>
     <p>用更轻的模型做候选压缩，为精排节省算力预算。</p>
   </a>
-  <a class="ai-card" href="./ranking/">
-    <span class="ai-card__eyebrow">Utility estimation</span>
+  <a class="section-card" href="./ranking/">
+    <span class="section-card__eyebrow">Utility estimation</span>
     <h3>Ranking</h3>
     <p>用更强的模型预测点击、时长、转化等目标，并完成多目标融合。</p>
   </a>
-  <a class="ai-card" href="./re-ranking/">
-    <span class="ai-card__eyebrow">Page construction</span>
+  <a class="section-card" href="./re-ranking/">
+    <span class="section-card__eyebrow">Page construction</span>
     <h3>Re-Ranking</h3>
     <p>控制多样性、规则约束、广告插入与整页体验，是离业务最近的一层。</p>
   </a>
-  <a class="ai-card" href="./metrics/">
-    <span class="ai-card__eyebrow">Measurement</span>
+  <a class="section-card" href="./metrics/">
+    <span class="section-card__eyebrow">Measurement</span>
     <h3>Metrics</h3>
     <p>把 DAU、留存、时长、CTR 等指标放在同一张北极星图里理解。</p>
   </a>
-  <a class="ai-card" href="./cold-start/">
-    <span class="ai-card__eyebrow">New users and items</span>
+  <a class="section-card" href="./cold-start/">
+    <span class="section-card__eyebrow">New users and items</span>
     <h3>Cold Start</h3>
     <p>当用户或内容没有历史行为时，系统如何安全起步并尽快学到偏好。</p>
   </a>
@@ -75,7 +75,7 @@ icon: thumbs-up
 
 ## The Feedback Loop
 
-<div class="knowledge-flow knowledge-flow--ai">
+<div class="knowledge-flow">
   <div class="knowledge-flow__item">
     <span class="knowledge-flow__index">01</span>
     <strong>Observe</strong>

@@ -1,3 +1,8 @@
+---
+dir:
+  order: 2
+---
+
 # Pre-Ranking
 
 > 粗排

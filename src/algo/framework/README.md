@@ -1,3 +1,8 @@
+---
+title: Problem-Solving Framework
+icon: cubes
+---
+
 # Framework
 
 `framework/` 不再作为算法区的主分类，而是作为辅助方法论层存在。主线内容还是 `data-structure/`、`search/`、`optimization/`；这里更关注做题时如何分类、如何传参、如何组织代码。

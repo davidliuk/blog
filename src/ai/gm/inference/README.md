@@ -2,6 +2,8 @@
 title: LLM Inference
 description: LLM inference from prefill and decoding to KV cache, quantization, speculative decoding, serving, and production SLOs.
 icon: bolt
+dir:
+  order: 3
 ---
 
 # LLM Inference
@@ -10,34 +12,34 @@ LLM inference 把一个已训练模型转换为持续的 token generation servic
 
 ## Inference Map
 
-<div class="ai-card-grid">
-  <a class="ai-card" href="./decoding.md">
-    <span class="ai-card__eyebrow">Output policy</span>
+<div class="section-card-grid">
+  <a class="section-card" href="./decoding.md">
+    <span class="section-card__eyebrow">Output policy</span>
     <h3>Decoding</h3>
     <p>Greedy、sampling、temperature、top-k / top-p、beam 与 constrained output。</p>
   </a>
-  <a class="ai-card" href="./kv-cache.md">
-    <span class="ai-card__eyebrow">Autoregressive state</span>
+  <a class="section-card" href="./kv-cache.md">
+    <span class="section-card__eyebrow">Autoregressive state</span>
     <h3>KV Cache</h3>
     <p>缓存历史 token 的 key/value，减少 decode 重复计算。</p>
   </a>
-  <a class="ai-card" href="./quantization.md">
-    <span class="ai-card__eyebrow">Memory efficiency</span>
+  <a class="section-card" href="./quantization.md">
+    <span class="section-card__eyebrow">Memory efficiency</span>
     <h3>Quantization</h3>
     <p>降低 weight、activation 或 cache precision，交换质量与效率。</p>
   </a>
-  <a class="ai-card" href="./speculative-decoding.md">
-    <span class="ai-card__eyebrow">Decode acceleration</span>
+  <a class="section-card" href="./speculative-decoding.md">
+    <span class="section-card__eyebrow">Decode acceleration</span>
     <h3>Speculative Decoding</h3>
     <p>用更便宜的 draft 提议 token，再由 target model 并行验证。</p>
   </a>
-  <a class="ai-card" href="./sys/">
-    <span class="ai-card__eyebrow">Production runtime</span>
+  <a class="section-card" href="./sys/">
+    <span class="section-card__eyebrow">Production runtime</span>
     <h3>Serving Systems</h3>
     <p>Continuous batching、cache paging、scheduling、parallelism 和 admission。</p>
   </a>
-  <a class="ai-card" href="./pruning.md">
-    <span class="ai-card__eyebrow">Sequence reduction</span>
+  <a class="section-card" href="./pruning.md">
+    <span class="section-card__eyebrow">Sequence reduction</span>
     <h3>Token Pruning</h3>
     <p>减少后续层需要处理的 token，但必须保护关键信息。</p>
   </a>

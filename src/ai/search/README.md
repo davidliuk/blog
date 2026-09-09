@@ -8,32 +8,32 @@ icon: magnifying-glass
 
 搜索是一个从显式 query 出发的决策系统。它与推荐共享 retrieval + ranking 的骨架，但需要更强地处理词项匹配、意图理解、相关性和结果可解释性。
 
-<div class="ai-hero">
-  <p class="ai-eyebrow">Intent → Candidates → Relevance → Results</p>
+<div class="section-hero">
+  <p class="section-eyebrow">Intent → Candidates → Relevance → Results</p>
   <h2>Turn a short query into a ranked set of useful results.</h2>
   <p>完整链路包括 query understanding、indexing、retrieval、ranking、result composition 和 evaluation。</p>
 </div>
 
 ## System Map
 
-<div class="ai-card-grid">
-  <div class="ai-card">
-    <span class="ai-card__eyebrow">Intent</span>
+<div class="section-card-grid">
+  <div class="section-card">
+    <span class="section-card__eyebrow">Intent</span>
     <h3>Query Understanding</h3>
     <p>分词、纠错、改写、suggestion 和实体理解，减少用户表达与索引之间的落差。</p>
   </div>
-  <div class="ai-card">
-    <span class="ai-card__eyebrow">Storage</span>
+  <div class="section-card">
+    <span class="section-card__eyebrow">Storage</span>
     <h3>Indexing</h3>
     <p>倒排索引、向量索引和增量更新决定候选能否被快速找到。</p>
   </div>
-  <a class="ai-card" href="../rec-sys/retrieval/">
-    <span class="ai-card__eyebrow">Candidates</span>
+  <a class="section-card" href="../rec-sys/retrieval/">
+    <span class="section-card__eyebrow">Candidates</span>
     <h3>Retrieval</h3>
     <p>词项、语义和规则路径共同保证相关性、覆盖与时效性。</p>
   </a>
-  <a class="ai-card" href="../rec-sys/ranking/">
-    <span class="ai-card__eyebrow">Ordering</span>
+  <a class="section-card" href="../rec-sys/ranking/">
+    <span class="section-card__eyebrow">Ordering</span>
     <h3>Ranking</h3>
     <p>融合文本相关性、质量、时效、个性化和业务约束。</p>
   </a>

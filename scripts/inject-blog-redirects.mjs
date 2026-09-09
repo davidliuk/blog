@@ -23,20 +23,21 @@ function shouldSkipScan(relPosix) {
 }
 
 function htmlRedirect(targetPath) {
-  const canonical = CANONICAL_ORIGIN + targetPath;
-  const esc = JSON.stringify(targetPath);
+  // Note paths contain non-ASCII characters; every URL slot needs the encoded form.
+  const href = encodeURI(targetPath);
+  const canonical = CANONICAL_ORIGIN + href;
+  const esc = JSON.stringify(href);
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="robots" content="noindex">
   <title>Redirecting…</title>
   <link rel="canonical" href="${canonical}">
-  <meta http-equiv="refresh" content="0;url=${targetPath}">
+  <meta http-equiv="refresh" content="0;url=${href}">
   <script>location.replace(${esc});</script>
 </head>
 <body>
-  <p>This page has moved. <a href="${targetPath}">Continue to the new location</a>.</p>
+  <p>This page has moved. <a href="${href}">Continue to the new location</a>.</p>
 </body>
 </html>
 `;

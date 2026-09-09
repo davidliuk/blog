@@ -97,8 +97,8 @@ export const enNavbar = navbar([
         prefix: "gm/",
         children: [
           { text: "Overview", icon: "map", link: "" },
-          { text: "Text & Pre-Training", icon: "font", link: "text/" },
-          { text: "Training Systems", icon: "graduation-cap", link: "training/" },
+          { text: "Large Language Models", icon: "font", link: "text/" },
+          { text: "Foundation Model Training", icon: "graduation-cap", link: "training/" },
           { text: "Alignment", icon: "scale-balanced", link: "training/alignment/" },
           { text: "Inference", icon: "bolt", link: "inference/" },
           { text: "Multimodal", icon: "images", link: "multimodal/" },
@@ -276,7 +276,7 @@ export const enNavbar = navbar([
         ],
       },
       {
-        text: "Delivery & Operations",
+        text: "DevOps & Infrastructure",
         icon: "infinity",
         prefix: "devops/",
         children: [
@@ -358,14 +358,9 @@ export const enNavbar = navbar([
         link: "/hobby/",
       },
       {
-        text: "All Articles",
+        text: "All Notes",
         icon: "newspaper",
         link: "/article/",
-      },
-      {
-        text: "Tags",
-        icon: "tags",
-        link: "/tag/",
       },
     ],
   },

@@ -26,24 +26,24 @@ AI engineering 把模型实验变成可持续运行的产品能力。它同时�
 
 ## Knowledge Map
 
-<div class="ai-card-grid">
-  <a class="ai-card" href="./data.md">
-    <span class="ai-card__eyebrow">Input system</span>
+<div class="section-card-grid">
+  <a class="section-card" href="./data.md">
+    <span class="section-card__eyebrow">Input system</span>
     <h3>Data Engineering</h3>
     <p>来源、Schema、label、quality、lineage、privacy 和 train–serve consistency。</p>
   </a>
-  <a class="ai-card" href="./experimentation.md">
-    <span class="ai-card__eyebrow">Evidence</span>
+  <a class="section-card" href="./experimentation.md">
+    <span class="section-card__eyebrow">Evidence</span>
     <h3>Experimentation</h3>
     <p>Baseline、configuration、artifact、reproducibility 和 decision log。</p>
   </a>
-  <a class="ai-card" href="./deployment.md">
-    <span class="ai-card__eyebrow">Delivery</span>
+  <a class="section-card" href="./deployment.md">
+    <span class="section-card__eyebrow">Delivery</span>
     <h3>Deployment</h3>
     <p>Registry、compatibility、shadow、canary、rollback 和 pipeline promotion。</p>
   </a>
-  <a class="ai-card" href="./monitoring.md">
-    <span class="ai-card__eyebrow">Feedback</span>
+  <a class="section-card" href="./monitoring.md">
+    <span class="section-card__eyebrow">Feedback</span>
     <h3>Monitoring</h3>
     <p>服务、数据、模型、Agent 和产品 outcome 的分层观测。</p>
   </a>

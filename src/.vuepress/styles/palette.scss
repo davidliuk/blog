@@ -3,7 +3,31 @@
 // The brand color lives in `config.scss` — the palette generator reads
 // `$theme-color` from the config module, so setting it here has no effect.
 //
-// Surfaces are intentionally left at the theme defaults (`--vp-c-bg` is the
-// card/surface white). The page canvas behind those surfaces is tinted in
-// `index.scss` via `--dl-canvas`, so raised cards read as cards without
-// having to restate a background on every component.
+// Light surfaces stay at the theme defaults (`--vp-c-bg` is the card white;
+// the page canvas is tinted in `index.scss` via `--dl-canvas`). In dark mode
+// the theme's own greys (#1b1b1f page, #161618 alt, neutral #2e2e32 divider)
+// sat between the custom canvas (#14161a) and surface (#1e2127) as a third,
+// cooler grey — visible wherever the theme paints its own background (hero
+// band, avatar frame, footer, TOC). Aligning them here makes every
+// `color-mix()` toward `--vp-c-bg` land on the surface that is actually
+// behind the element.
+$vp-c-bg: (
+  light: #fff,
+  dark: #1e2127,
+);
+$vp-c-bg-alt: (
+  light: #f5f4f0,
+  dark: #14161a,
+);
+$vp-c-bg-elv: (
+  light: #fff,
+  dark: #1e2127,
+);
+$vp-c-divider: (
+  light: #e2e2e3,
+  dark: #2f343c,
+);
+$vp-c-border: (
+  light: #c2c2c4,
+  dark: #3c434c,
+);

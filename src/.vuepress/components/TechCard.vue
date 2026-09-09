@@ -1,5 +1,5 @@
 <template>
-  <article class="tech-card">
+  <article class="tech-card home-card-shell">
     <div class="tech-card__header">
       <span v-if="index" class="tech-card__index">{{ index }}</span>
       <span v-if="eyebrow" class="tech-card__eyebrow">{{ eyebrow }}</span>
@@ -15,14 +15,13 @@
 </template>
 
 <script setup lang="ts">
+// Layout rules for `.tech-card*` live in styles/index.scss alongside the
+// `.tech-grid` they are laid out in.
 defineProps<{
-  title: string
-  index?: string
-  eyebrow?: string
-  description?: string
-  items?: string[]
-}>()
+  title: string;
+  index?: string;
+  eyebrow?: string;
+  description?: string;
+  items?: string[];
+}>();
 </script>
-
-<style scoped>
-</style>

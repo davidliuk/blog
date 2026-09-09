@@ -1,3 +1,8 @@
+---
+dir:
+  order: 5
+---
+
 # Advanced Data Structures
 
 这些结构通常不是题目的“主角”，而是为了支持特定操作复杂度而出现的工具。

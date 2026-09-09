@@ -2,6 +2,8 @@
 title: Classical Machine Learning
 description: Classical machine learning through problem formulation, supervised and unsupervised learning, generalization, and model selection.
 icon: chart-simple
+dir:
+  order: 6
 ---
 
 # Classical Machine Learning
@@ -10,19 +12,19 @@ icon: chart-simple
 
 ## Learning Paradigms
 
-<div class="ai-card-grid">
-  <a class="ai-card" href="./supervised.md">
-    <span class="ai-card__eyebrow">Labeled outcomes</span>
+<div class="section-card-grid">
+  <a class="section-card" href="./supervised.md">
+    <span class="section-card__eyebrow">Labeled outcomes</span>
     <h3>Supervised Learning</h3>
     <p>分类、回归、排序，以及 linear model、tree、ensemble 和 margin method。</p>
   </a>
-  <a class="ai-card" href="./unsupervised.md">
-    <span class="ai-card__eyebrow">Structure discovery</span>
+  <a class="section-card" href="./unsupervised.md">
+    <span class="section-card__eyebrow">Structure discovery</span>
     <h3>Unsupervised Learning</h3>
     <p>聚类、降维、密度估计和 representation discovery。</p>
   </a>
-  <a class="ai-card" href="./generalization.md">
-    <span class="ai-card__eyebrow">Reliable evidence</span>
+  <a class="section-card" href="./generalization.md">
+    <span class="section-card__eyebrow">Reliable evidence</span>
     <h3>Generalization</h3>
     <p>数据划分、bias–variance、regularization、leakage 和 distribution shift。</p>
   </a>

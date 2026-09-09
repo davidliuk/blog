@@ -2,6 +2,8 @@
 title: Foundation Model Training
 description: A training-system map covering objective, data, optimization, distributed execution, adaptation, alignment, and evaluation.
 icon: graduation-cap
+dir:
+  order: 2
 ---
 
 # Foundation Model Training

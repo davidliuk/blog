@@ -1,68 +1,77 @@
-// ---------------------------------------------------------------------------
-// Design tokens
+// ===========================================================================
+// David Liu — site styles
+//
+// Layout of this file:
+//   1. Design tokens (light + dark)
+//   2. Global behaviour: focus, scroll offsets, motion, reduced motion
+//   3. Navbar
+//   4. Portfolio hero (rendered by layouts/Layout.vue through the theme's slots)
+//   5. Portfolio body: section rhythm, sticky rail, shared card primitives
+//   6. Homepage sections (mission, about, research, publications, open source,
+//      experience, projects, knowledge base, tech stack, résumé, contact)
+//   7. Section landing pages (section-hero / knowledge-flow / section-card)
+//   8. Note pages, blog list, tabs, code, sidebar
+//   9. Footer
 //
 // Two things to know about the theme's variables:
-//
-// 1. It exposes `--vp-c-text`, `--vp-c-text-mute` and `--vp-c-text-subtle`.
-//    The styles below were written against the VitePress names
-//    (`--vp-c-text-1/2/3`), which the theme never defines — every one of those
-//    declarations was dropping out and inheriting the body color, which is why
-//    eyebrows, captions and body copy all rendered at the same weight. The
-//    aliases restore the intended three-step type hierarchy.
-//
-// 2. `--vp-c-bg-soft` is *not* a soft surface color: the palette generator
-//    defines it as the background at 90% alpha, for translucent chrome. On a
-//    white page every "soft" card was therefore white-on-white. Rather than
-//    restate a background on ~20 components, the page canvas is tinted here so
-//    the existing white surfaces read as raised cards.
+//   * It exposes `--vp-c-text`, `--vp-c-text-mute` and `--vp-c-text-subtle`.
+//     These styles use a three-step alias (`--vp-c-text-1/2/3`) defined below.
+//   * `--vp-c-bg-soft` is the background at 90% alpha (translucent chrome), not
+//     a soft surface. The page canvas is tinted instead so white cards read as
+//     raised surfaces without restating a background on every component.
+// ===========================================================================
+
+// ---------------------------------------------------------------------------
+// 1. Design tokens
 // ---------------------------------------------------------------------------
 :root {
-  // Three type levels, mixed toward the background rather than taken from the
-  // theme's own mute/subtle pair. The theme's subtle step is 56% alpha, which
-  // lands at 3.1:1 on white — under AA, and these are 11px uppercase eyebrows
-  // carrying real labels ("Affiliations", "Themes", dates). The steps below are
-  // roughly 11.6 : 7 : 4.8 against a white card, so the hierarchy still reads
-  // but every level stays legible.
+  // Three type levels, mixed toward the background. The subtle step is 78%
+  // (not the theme's 56% alpha): eyebrows and captions are 11–13px uppercase
+  // labels sitting on chips (#f1efe9), the canvas (#f5f4f0) and accent washes,
+  // where 72% measured 4.1–4.3:1; 78% clears 4.5:1 on all of them.
   --vp-c-text-1: var(--vp-c-text);
   --vp-c-text-2: color-mix(in srgb, var(--vp-c-text) 85%, var(--vp-c-bg));
-  --vp-c-text-3: color-mix(in srgb, var(--vp-c-text) 72%, var(--vp-c-bg));
+  --vp-c-text-3: color-mix(in srgb, var(--vp-c-text) 78%, var(--vp-c-bg));
 
-  // Page canvas behind the content surfaces. Warm rather than neutral grey —
-  // it belongs to the same family as the PWA manifest's #f5f1e8 and makes the
-  // pine accent read richer than it does on a cool grey.
+  // Page canvas behind the content surfaces (warm, same family as the PWA
+  // manifest background), the one card surface, and the neutral chip fill.
   --dl-canvas: #f5f4f0;
-
-  // The one card surface. Cards used to stack a corner glow over a
-  // background-to-background linear gradient, which on a white page amounted to
-  // white over white plus noise; now the canvas provides the contrast and the
-  // card is simply a surface.
   --dl-surface: #ffffff;
-
-  // Neutral chip fill. Every quiet chip on the page (GPA label, one-off honors,
-  // paper dates, tech counts) was filled with `--vp-c-bg-soft`, i.e. the
-  // background at 90% alpha, so on a white card they were white on white and
-  // only their hairline border showed.
-  // Warm rather than the neutral grey a plain text/background mix produces:
-  // a cool chip on a warm canvas is the kind of mismatch that reads as "off"
-  // without being nameable.
   --dl-chip: #f1efe9;
 
-  // Deep green ink used for display type and active navigation. These flip in
-  // dark mode — they used to be hardcoded, which left the hero name, the site
-  // name and every active nav pill rendering near-black on a dark background.
+  // Deep green ink for display type and active navigation; flips in dark mode.
   --dl-ink: #17352f;
   --dl-ink-2: #245347;
 
-  // Accent ramp. Before this, accent tints were mixed inline at roughly thirty
-  // different percentages (6%, 12%, 18%, 20%, 22%, 24%, 26%, …), so no two
-  // chips, borders or hover states shared a value. Four steps cover every use.
+  // Accent ramp: four tints cover every chip, border and hover state.
   --dl-accent-wash: color-mix(in srgb, var(--vp-c-accent) 6%, var(--vp-c-bg));
   --dl-accent-soft: color-mix(in srgb, var(--vp-c-accent) 12%, var(--vp-c-bg));
   --dl-accent-line: color-mix(in srgb, var(--vp-c-accent) 24%, var(--vp-c-divider));
   --dl-accent-line-strong: color-mix(in srgb, var(--vp-c-accent) 45%, var(--vp-c-divider));
+  // Accent used as *text* on tinted fills or the canvas. `--vp-c-accent` is
+  // tuned for links on white; on the chip/canvas/accent-soft fills it measured
+  // 4.1–4.4:1, so text darkens toward the ink (≈5.5–5.9:1).
+  --dl-accent-text: color-mix(in srgb, var(--vp-c-accent) 72%, var(--dl-ink));
+  // The theme's own accent-soft is a translucent, more saturated green that
+  // drives its hint boxes and tabs; derive it from the same accent so the two
+  // families agree in both themes.
+  --vp-c-accent-soft: color-mix(in srgb, var(--vp-c-accent) 12%, transparent);
 
-  // One border color, three elevation steps. Components pick a step instead of
-  // inventing their own shadow stack.
+  // Gold ramp for awards and honors, shared by every chip that uses it.
+  --dl-award-line: color-mix(in srgb, #d29922 32%, var(--vp-c-divider));
+  --dl-award-fill: color-mix(in srgb, #f9d66d 16%, var(--dl-surface));
+  --dl-award-text: color-mix(in srgb, #8a5f00 80%, var(--vp-c-text-1));
+  --dl-gold-icon: #8a6914;
+
+  // Third-party logos are black-lettered wordmarks; in dark mode they sit on a
+  // light well instead of being filtered (which would wreck brand colours).
+  --dl-logo-well: var(--dl-surface);
+  --dl-logo-well-line: var(--dl-border);
+  // Social marks are desaturated at rest and restored on hover; the filter
+  // lives in a token so the dark variant cannot lose a specificity fight.
+  --dl-mark-filter: grayscale(1) brightness(0.62);
+
+  // One border colour, three elevation steps.
   --dl-border: color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
   --dl-border-strong: var(--dl-accent-line);
   --dl-shadow-1: 0 1px 2px rgba(15, 23, 42, 0.04), 0 6px 16px rgba(15, 23, 42, 0.045);
@@ -82,6 +91,22 @@
   --dl-space-4: 1rem;
   --dl-space-5: 1.35rem;
   --dl-space-6: 2rem;
+
+  // Chip and button sizes: two chip sizes (label vs. metadata) and one button
+  // height are the whole system.
+  --dl-chip-h: 1.85rem;
+  --dl-chip-px: 0.68rem;
+  --dl-chip-h-sm: 1.75rem;
+  --dl-chip-px-sm: 0.58rem;
+  --dl-button-h: 2.5rem;
+
+  // Modern mono stack, used for code and for every number on the homepage.
+  --dl-font-mono: ui-monospace, "SF Mono", SFMono-Regular, "JetBrains Mono",
+    "Cascadia Code", Menlo, Consolas, "Liberation Mono", monospace;
+  --code-border-radius: var(--dl-radius-md);
+
+  // Keyboard focus and in-page anchors clear the fixed navbar.
+  scroll-padding-top: calc(var(--navbar-height, 3.75rem) + 1rem);
 }
 
 [data-theme="dark"] {
@@ -90,12 +115,23 @@
   --dl-chip: #272b31;
   --dl-ink: #e8f4ee;
   --dl-ink-2: #a9d2bf;
-  // Tints read against the dark surface, not the near-black canvas.
   --dl-accent-wash: color-mix(in srgb, var(--vp-c-accent) 10%, var(--vp-c-bg));
   --dl-accent-soft: color-mix(in srgb, var(--vp-c-accent) 18%, var(--vp-c-bg));
-  --dl-border: color-mix(in srgb, var(--vp-c-divider) 82%, transparent);
-  --dl-shadow-1: 0 1px 2px rgba(0, 0, 0, 0.3), 0 6px 16px rgba(0, 0, 0, 0.22);
-  --dl-shadow-2: 0 2px 4px rgba(0, 0, 0, 0.32), 0 14px 30px rgba(0, 0, 0, 0.26);
+  --dl-accent-text: var(--vp-c-accent);
+  --vp-c-accent-soft: color-mix(in srgb, var(--vp-c-accent) 16%, transparent);
+  --dl-award-line: color-mix(in srgb, #d29922 40%, var(--vp-c-divider));
+  --dl-award-fill: color-mix(in srgb, #f2cc60 12%, var(--dl-surface));
+  --dl-award-text: color-mix(in srgb, #f2cc60 82%, var(--vp-c-text-1));
+  --dl-gold-icon: #d29922;
+  --dl-logo-well: #eef1ef;
+  --dl-logo-well-line: color-mix(in srgb, #eef1ef 70%, transparent);
+  --dl-mark-filter: grayscale(1) invert(1) brightness(1.1);
+  // Explicit, hue-matched border: the divider-derived one measured 1.04:1
+  // against a chip, so cards had no edges at all.
+  --dl-border: #343a44;
+  // A hairline top highlight helps card edges read on a near-black canvas.
+  --dl-shadow-1: inset 0 1px 0 rgba(255, 255, 255, 0.035), 0 1px 2px rgba(0, 0, 0, 0.3), 0 6px 16px rgba(0, 0, 0, 0.22);
+  --dl-shadow-2: inset 0 1px 0 rgba(255, 255, 255, 0.04), 0 2px 4px rgba(0, 0, 0, 0.32), 0 14px 30px rgba(0, 0, 0, 0.26);
   --dl-shadow-3: 0 4px 8px rgba(0, 0, 0, 0.34), 0 24px 50px rgba(0, 0, 0, 0.34);
 }
 
@@ -105,50 +141,70 @@ body {
 }
 
 // ---------------------------------------------------------------------------
-// Focus
-//
-// Neither the theme nor these styles defined a focus ring, so keyboard users
-// got whatever the browser's default outline happened to be on top of custom
-// pill and card shapes — often a rectangle around a 999px pill, and nothing at
-// all where a background had been painted over it. One ring, one offset,
-// following each component's own radius.
+// 2. Global behaviour
 // ---------------------------------------------------------------------------
+
+// One focus ring, one offset, following each component's own radius. The
+// theme defines none, so keyboard users got whatever the browser drew.
 .vp-portfolio-home a:focus-visible,
 .vp-portfolio-home button:focus-visible,
 .knowledge-atlas-card:focus-visible,
 .knowledge-crosslinks a:focus-visible,
-.ai-card:focus-visible,
 .section-card:focus-visible,
+.site-footer a:focus-visible,
 #navbar.vp-navbar a:focus-visible,
 #navbar.vp-navbar button:focus-visible {
   outline: 2px solid var(--vp-c-accent);
   outline-offset: 2px;
 }
 
-// ---------------------------------------------------------------------------
-// Entrance motion
+// Tabular numerals everywhere on the homepage; the mono face marks the
+// numbers that carry meaning (stats, indices, dates, star counts).
+.vp-portfolio-home {
+  font-variant-numeric: tabular-nums;
+}
+
+.home-mono {
+  font-family: var(--dl-font-mono);
+  letter-spacing: -0.01em;
+}
+
+// Wrapping: balanced titles, no orphaned last words in copy. Progressive.
+#home-mission-title,
+.home-card-title,
+.home-highlight-card h3,
+.knowledge-atlas-card h3,
+.tech-card h3,
+.pub-title,
+.edu-right h3,
+.experience-card__title-group h3,
+.project-card__title-group h3,
+.section-card h3,
+.knowledge-hero h2 {
+  text-wrap: balance;
+}
+
+.home-mission__lede,
+.home-section-intro,
+.home-card-copy,
+.home-highlight-card p,
+.home-connect,
+.home-mission__signals dd,
+.home-lead {
+  text-wrap: pretty;
+}
+
+// Entrance motion --------------------------------------------------------
 //
-// The theme drops the hero in piece by piece with its `DropTransition`
-// (translateY(-20px) + fade, 0.25s ease-in-out, staggered 0.04s apart). Two
-// things went wrong with that:
-//
-//   * `PortfolioHero` wraps the avatar in a `DropTransition` **without**
-//     `appear: true`, unlike every one of its siblings. Vue only animates an
-//     initial render when `appear` is set, so the avatar was the single element
-//     in the hero that simply existed while the text around it dropped in.
-//
-//   * `HomePage` wraps the entire markdown body in one `DropTransition` at a
-//     0.32s delay, so a 10,000px document slid up 20px as a single slab after
-//     the hero had finished. At that size the movement reads as a layout glitch
-//     rather than an entrance.
-//
-// The keyframes below reproduce the theme's own curve so the avatar joins the
-// sequence, and the body slab is reduced to a plain fade.
-// ---------------------------------------------------------------------------
+// The hero is rendered by our own layout slot, so its pieces get a CSS
+// stagger (the theme's DropTransition curve) instead of inline styles. The
+// theme still wraps the markdown body in one DropTransition at 0.24s; a
+// 10,000px document sliding 20px as a slab reads as a glitch, so that one is
+// reduced to a plain fade.
 @keyframes dl-drop-in {
   from {
     opacity: 0;
-    transform: translateY(-20px);
+    transform: translateY(-14px);
   }
 
   to {
@@ -157,26 +213,10 @@ body {
   }
 }
 
-// Slots into the theme's stagger between the avatar (0.04s) and the welcome
-// line (0.08s) — the frame is what the eye reads, not the photo inside it.
-.vp-portfolio-home #portfolio.vp-portfolio .vp-portfolio-avatar {
-  animation: dl-drop-in 0.25s ease-in-out 0.04s backwards;
-}
-
-// Teleported into the hero after mount, so it had no entrance of its own and
-// popped in against neighbours that were still animating. It sits between the
-// title (0.16s) and the contact icons (0.2s) in the hero, so it takes a delay
-// in that gap — the teleport itself costs about a frame on top.
-.vp-portfolio-home .home-affiliation-strip {
-  animation: dl-drop-in 0.25s ease-in-out 0.17s backwards;
-}
-
-.vp-portfolio-home [vp-content].vp-portfolio-content {
-  // Overrides the inline styles `DropTransition` writes on this element. The
-  // fade is kept (it covers the gap while the hero settles); the 20px slide of
-  // the whole page is not.
-  transform: none !important;
-  transition: opacity 0.45s ease 0.2s !important;
+@keyframes dl-type {
+  to {
+    clip-path: inset(0 0 0 0);
+  }
 }
 
 @keyframes dl-caret-blink {
@@ -191,17 +231,58 @@ body {
   }
 }
 
-// ---------------------------------------------------------------------------
-// Reduced motion
+.vp-portfolio-home .home-hero__avatar {
+  animation: dl-drop-in 0.3s ease-out 0.02s backwards;
+}
+
+.vp-portfolio-home .home-hero__identity > * {
+  animation: dl-drop-in 0.3s ease-out backwards;
+}
+
+.vp-portfolio-home .home-hero__identity > :nth-child(1) { animation-delay: 0.06s; }
+.vp-portfolio-home .home-hero__identity > :nth-child(2) { animation-delay: 0.1s; }
+.vp-portfolio-home .home-hero__identity > :nth-child(3) { animation-delay: 0.14s; }
+.vp-portfolio-home .home-hero__identity > :nth-child(4) { animation-delay: 0.18s; }
+.vp-portfolio-home .home-hero__identity > :nth-child(5) { animation-delay: 0.22s; }
+
+.vp-portfolio-home .home-hero__now {
+  animation: dl-drop-in 0.35s ease-out 0.24s backwards;
+}
+
+.vp-portfolio-home [vp-content].vp-portfolio-content {
+  // Overrides the inline styles DropTransition writes on this element.
+  transform: none !important;
+  transition: opacity 0.45s ease 0.2s !important;
+}
+
+// Scroll reveal: applied by client.ts only to elements below the fold, so a
+// no-JS render and everything already on screen are untouched.
+.vp-portfolio-home [data-reveal],
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(12px);
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s cubic-bezier(0.2, 0.7, 0.2, 1);
+  transition-delay: calc(var(--reveal-index, 0) * 60ms);
+}
+
+[data-reveal].is-revealed {
+  opacity: 1;
+  transform: none;
+}
+
+// Hover lifts only where a hover exists; on touch the emulated hover sticks.
+@media (hover: hover) and (pointer: fine) {
+  .dl-lift:hover {
+    transform: translateY(-1px);
+  }
+}
+
+// Reduced motion ---------------------------------------------------------
 //
-// The theme's entrance animations are driven by inline styles from JavaScript,
-// so they ignored the OS setting entirely: a reader who has asked for less
-// motion still got the hero dropping in and the body sliding up.
-//
-// Durations collapse rather than being switched off, because the hero's opacity
-// is set to 0 inline and only restored when Vue sees the transition finish —
-// removing the transition outright risks leaving the name invisible.
-// ---------------------------------------------------------------------------
+// Durations collapse rather than being switched off: the theme's body fade is
+// driven by inline styles and only restored when the transition ends.
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -212,508 +293,32 @@ body {
     scroll-behavior: auto !important;
   }
 
+  .vp-portfolio-home .home-hero__avatar,
+  .vp-portfolio-home .home-hero__identity > *,
+  .vp-portfolio-home .home-hero__now,
+  .vp-portfolio-home .home-hero__tagline,
   .vp-portfolio-home .vp-portfolio-title::after {
     animation: none;
   }
 
-  .vp-portfolio-home #portfolio.vp-portfolio .vp-portfolio-avatar,
-  .vp-portfolio-home .home-affiliation-strip {
-    animation: none;
+  .vp-portfolio-home .home-hero__tagline {
+    clip-path: none;
   }
 
-  // Nothing should still be mid-lift when transitions are effectively removed.
-  .vp-portfolio-home [vp-content].vp-portfolio-content,
-  .vp-portfolio-home #portfolio.vp-portfolio .vp-portfolio-info > * {
+  .vp-portfolio-home [vp-content].vp-portfolio-content {
     opacity: 1 !important;
     transform: none !important;
   }
-}
 
-// ---------------------------------------------------------------------------
-// Portfolio homepage: compact hero + square avatar frame
-// ---------------------------------------------------------------------------
-.vp-portfolio-home {
-  // Five semantic sizes cover the whole homepage. Components inherit these
-  // tokens instead of inventing near-duplicate 11–15px variants.
-  --home-type-display: clamp(2rem, 4.5vw, 3.2rem);
-  --home-type-section: clamp(1.35rem, 2.2vw, 1.75rem);
-  --home-type-title: clamp(1.08rem, 1.4vw, 1.18rem);
-  --home-type-body: 1rem;
-  --home-type-meta: 0.9rem;
-  --home-prose-wide: 58rem;
-  --home-prose: 52rem;
-}
-
-.vp-portfolio-home #portfolio.vp-portfolio {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: flex-start;
-  gap: clamp(1.35rem, 3.2vw, 2.5rem);
-  min-height: unset !important;
-  // Match the gutter of `[vp-content]` (max-width: min(84%, 1200px), centered)
-  // so the avatar starts on the same vertical line as every section below it.
-  // Before this the hero was a centered flex group in a full-bleed band, which
-  // left it visibly indented from the rest of the page.
-  padding-block: 2.85rem 2.15rem;
-  padding-inline: max(1.5rem, calc((100% - min(84%, 1200px)) / 2));
-  box-sizing: border-box;
-  overflow: hidden;
-
-  &:not(.bg) {
-    background:
-      radial-gradient(120% 80% at 100% 0%, var(--vp-c-accent-soft), transparent 55%),
-      radial-gradient(90% 60% at 0% 100%, color-mix(in srgb, var(--vp-c-accent-soft) 45%, transparent), transparent 58%),
-      linear-gradient(180deg, var(--vp-c-bg-soft) 0%, var(--vp-c-bg) 100%);
-    border-bottom: 1px solid var(--vp-c-divider);
-  }
-
-  &:not(.bg)::after {
-    display: none;
-  }
-
-  &:not(.bg)::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-      linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px),
-      linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-    background-size: 26px 26px;
-    mask-image: linear-gradient(180deg, rgba(255, 255, 255, 0.4), transparent 72%);
-    opacity: 0.34;
-    pointer-events: none;
-  }
-
-  > .vp-portfolio-mask {
-    position: absolute;
-    inset: 0;
-    z-index: 0;
-  }
-
-  > .vp-portfolio-avatar,
-  > .vp-portfolio-container {
-    position: relative;
-    z-index: 2;
-  }
-
-  .vp-portfolio-avatar {
-    position: relative !important;
-    inset: auto !important;
-    top: auto !important;
-    bottom: auto !important;
-    width: auto !important;
-    height: auto !important;
-    align-items: center !important;
-    justify-content: center !important;
-    flex-shrink: 0;
-
-    padding: 12px;
-    border-radius: var(--dl-radius-xl);
-    background: var(--vp-c-bg);
-    border: 1px solid var(--vp-c-divider);
-    box-shadow:
-      0 0 0 1px rgba(0, 0, 0, 0.03),
-      0 2px 4px rgba(0, 0, 0, 0.04),
-      0 22px 48px rgba(0, 0, 0, 0.11);
-
-    &::before {
-      content: "";
-      position: absolute;
-      inset: -1px;
-      // Sits 1px outside the frame, so its radius has to be 1px larger to stay
-      // concentric with it.
-      border-radius: calc(var(--dl-radius-xl) + 1px);
-      padding: 1px;
-      background: linear-gradient(
-        135deg,
-        color-mix(in srgb, var(--vp-c-accent) 55%, transparent),
-        color-mix(in srgb, var(--vp-c-accent) 18%, transparent) 42%,
-        transparent 70%
-      );
-      -webkit-mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-      mask:
-        linear-gradient(#fff 0 0) content-box,
-        linear-gradient(#fff 0 0);
-      -webkit-mask-composite: xor;
-      mask-composite: exclude;
-      pointer-events: none;
-      opacity: 0.9;
-    }
-
-    img {
-      position: relative;
-      z-index: 1;
-      display: block;
-      max-height: none !important;
-      width: 148px;
-      height: 148px;
-      max-width: 148px;
-      object-fit: cover;
-      border-radius: var(--dl-radius-md);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
-    }
-  }
-
-  .vp-portfolio-container {
-    min-height: 0 !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    flex: 1 1 260px;
-    min-width: min(100%, 260px);
-    max-width: none;
-    justify-content: flex-start !important;
-  }
-
-  .vp-portfolio-info {
-    position: relative !important;
-    inset: auto !important;
-    flex: 1 1 auto !important;
-    max-width: none !important;
-    padding: 0 !important;
-    border-radius: 0 !important;
-    background: transparent !important;
-    text-align: left !important;
-    box-shadow: none !important;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.18rem;
-  }
-
-  .vp-portfolio-welcome {
-    order: 1;
-    margin-bottom: 0.08rem !important;
-    font-size: var(--home-type-meta) !important;
-    font-weight: 700 !important;
-    letter-spacing: 0.08em;
-    color: var(--vp-c-text-2) !important;
-    text-transform: uppercase;
-  }
-
-  .vp-portfolio-name {
-    order: 2;
-    margin-bottom: 0.24rem !important;
-    font-size: var(--home-type-display) !important;
-    font-weight: 800 !important;
-    line-height: 1.02;
-    letter-spacing: -0.05em;
-    color: var(--dl-ink) !important;
-    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.42), 0 10px 24px rgba(27, 84, 68, 0.12);
-  }
-
-  @supports ((-webkit-background-clip: text) or (background-clip: text)) {
-    .vp-portfolio-name {
-      background:
-        linear-gradient(
-          135deg,
-          var(--dl-ink) 0%,
-          var(--dl-ink-2) 48%,
-          color-mix(in srgb, var(--vp-c-accent) 68%, var(--dl-ink)) 100%
-        );
-      -webkit-background-clip: text;
-      background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 10px 24px rgba(27, 84, 68, 0.12);
-    }
-  }
-
-  .vp-portfolio-title {
-    order: 3;
-    display: inline-flex;
-    align-items: center;
-    width: fit-content;
-    // The theme types this title one character at a time. Without a reserved
-    // width the pill grew and shrank on every keystroke and dragged the rows
-    // below it along; `min-width` holds the longest title's footprint
-    // ("AI Systems Researcher & Builder" — about 216px of text plus padding).
-    box-sizing: border-box;
-    min-width: min(100%, 16rem);
-    max-width: 100%;
-    min-height: 1.95rem;
-    padding: 0.36rem 0.74rem;
-    border-radius: 999px;
-    border: 1px solid var(--dl-accent-line);
-    background: var(--dl-accent-soft);
-    font-size: var(--home-type-meta) !important;
-    font-weight: 700 !important;
-    line-height: 1.2;
-    color: var(--vp-c-text-2) !important;
-    box-shadow: var(--dl-shadow-1);
-    white-space: nowrap;
-  }
-
-  // Caret for the typewriter title, so the reserved width reads as intentional.
-  //
-  // Bounded rather than infinite: the frontmatter now carries a single title,
-  // so the theme types it once (~40 chars at 150ms ≈ 6s) and stops. An endless
-  // cursor after a static line is a permanent bit of motion in the corner of
-  // the eye, and it reads as an input box waiting for you. Six blinks cover the
-  // typing, then `forwards` retires it.
-  .vp-portfolio-title::after {
-    content: "";
-    width: 2px;
-    height: 0.95em;
-    margin-inline-start: 0.18rem;
-    border-radius: 1px;
-    background: var(--vp-c-accent);
-    animation: dl-caret-blink 1.1s step-end 6 forwards;
-  }
-
-  .home-affiliation-strip {
-    order: 4;
-    width: 100%;
-    margin-top: 0.95rem;
-    margin-bottom: 0.1rem;
-    padding-top: 0.9rem;
-    border-top: 1px solid var(--dl-border);
-  }
-
-  /* Contact row: cancel theme `margin: 8px auto` so icons line up with affiliation chips */
-  .vp-portfolio-medias {
-    order: 5;
-    align-self: flex-start;
-    width: auto;
-    box-sizing: border-box;
-    margin: 0 !important;
-    padding-top: 0.5rem !important;
-    justify-content: flex-start !important;
-  }
-
-  .vp-social-medias {
-    order: 5;
-    align-self: flex-start;
-    width: auto;
-    box-sizing: border-box;
-    margin: 0 !important;
-    padding: 0.32rem 0 !important;
-    justify-content: flex-start !important;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: var(--dl-space-1);
-    border-radius: 0;
-    background: transparent;
-    border: none;
-    box-shadow: none;
-  }
-
-  .vp-social-media {
-    margin: 0 !important;
-    flex-shrink: 0;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.35rem;
-    height: 2.35rem;
-    border-radius: 999px;
-    border: 1px solid var(--dl-border);
-    background: var(--dl-chip);
-    box-shadow: var(--dl-shadow-1);
-    transition:
-      transform 0.2s ease,
-      border-color 0.2s ease,
-      box-shadow 0.2s ease,
-      background-color var(--vp-t-color);
-  }
-
-  .vp-social-media:hover {
-    transform: translateY(-1px);
-    border-color: var(--dl-accent-line);
-    background: var(--dl-accent-soft);
-    box-shadow: var(--dl-shadow-2);
-  }
-
-  // These are six third-party marks in six unrelated brand colors (GitHub
-  // black, LinkedIn blue, Scholar blue, Semantic Scholar blue disc, OpenReview
-  // red disc, mail blue), which made the row read as a sticker sheet rather
-  // than one control group. The fills are baked into the inline SVGs, so they
-  // can't take `currentColor` — desaturating at rest and restoring the brand on
-  // hover gives the row a single resting weight while keeping the marks
-  // recognisable on interaction.
-  .vp-social-media svg,
-  .vp-social-media .vp-social-media-icon {
-    width: 1.18rem;
-    height: 1.18rem;
-    display: block;
-    filter: grayscale(1) opacity(0.72);
-    transition: filter 0.2s ease;
-  }
-
-  .vp-social-media:hover svg,
-  .vp-social-media:hover .vp-social-media-icon,
-  .vp-social-media:focus-visible svg,
-  .vp-social-media:focus-visible .vp-social-media-icon {
-    filter: none;
-  }
-
-  .vp-social-media img.vp-social-media-icon {
-    object-fit: contain;
-    border-radius: 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .vp-portfolio-home .vp-social-media svg,
-  .vp-portfolio-home .vp-social-media .vp-social-media-icon {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
     transition: none;
   }
 }
 
-// In dark mode the desaturated marks need to be lighter than the surface, not
-// darker, or GitHub's black octocat disappears into the chip.
-[data-theme="dark"] .vp-portfolio-home .vp-social-media svg,
-[data-theme="dark"] .vp-portfolio-home .vp-social-media .vp-social-media-icon {
-  filter: grayscale(1) invert(1) opacity(0.78);
-}
-
-[data-theme="dark"] .vp-portfolio-home .vp-social-media:hover svg,
-[data-theme="dark"] .vp-portfolio-home .vp-social-media:hover .vp-social-media-icon,
-[data-theme="dark"] .vp-portfolio-home .vp-social-media:focus-visible svg,
-[data-theme="dark"] .vp-portfolio-home .vp-social-media:focus-visible .vp-social-media-icon {
-  filter: none;
-}
-
-[data-theme="dark"] .vp-portfolio-home #portfolio.vp-portfolio .vp-portfolio-avatar {
-  box-shadow:
-    0 0 0 1px rgba(255, 255, 255, 0.06),
-    0 8px 28px rgba(0, 0, 0, 0.35);
-}
-
-@media (max-width: 719px) {
-  .vp-portfolio-home #portfolio.vp-portfolio {
-    flex-direction: column;
-    padding-block: 2rem 1.65rem;
-    text-align: center;
-
-    .vp-portfolio-info {
-      text-align: center !important;
-      align-items: center !important;
-    }
-
-    .home-affiliation-strip {
-      align-items: center;
-    }
-
-    .home-affiliation-strip__eyebrow {
-      text-align: center;
-      width: 100%;
-    }
-
-    .home-affiliation-strip__logos {
-      width: 100%;
-      justify-content: center;
-    }
-
-    .vp-portfolio-medias,
-    .vp-social-medias {
-      width: 100%;
-      max-width: 100%;
-      flex-wrap: wrap;
-    }
-
-    .vp-portfolio-medias {
-      justify-content: center !important;
-    }
-
-    .vp-social-medias {
-      justify-content: center !important;
-    }
-  }
-}
-
-// Affiliation logo strip (teleported into hero)
-.vp-portfolio-home .home-affiliation-strip {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.vp-portfolio-home .home-affiliation-strip__eyebrow {
-  font-size: var(--home-type-meta);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--vp-c-text-3);
-  margin-bottom: 0.5rem;
-}
-
-.vp-portfolio-home .home-affiliation-strip__logos {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  gap: 0.5rem 0.42rem;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.vp-portfolio-home .home-affiliation-strip__item {
-  display: flex;
-  margin: 0;
-  padding: 0;
-}
-
-.vp-portfolio-home .home-affiliation-strip__link {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: 38px;
-  min-width: 48px;
-  padding: 0 0.62rem;
-  text-decoration: none !important;
-  border-radius: var(--dl-radius-sm);
-  border: 1px solid var(--dl-border);
-  background: var(--dl-chip);
-  box-shadow: var(--dl-shadow-1);
-  transition:
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    transform 0.15s ease,
-    background-color var(--vp-t-color);
-}
-
-.vp-portfolio-home .home-affiliation-strip__link:hover {
-  border-color: var(--dl-accent-line);
-  box-shadow: var(--dl-shadow-2);
-  transform: translateY(-1px);
-}
-
-.vp-portfolio-home .home-affiliation-strip__icon {
-  display: block;
-  max-height: 20px;
-  max-width: 80px;
-  width: auto;
-  height: auto;
-  object-fit: contain;
-  filter: none;
-}
-
-// Optical sizing: a square crest at 20px reads as much smaller than an 80×20
-// wordmark, so the crests get extra height to even out the apparent mass.
-.vp-portfolio-home .home-affiliation-strip__link[data-mark="crest"] .home-affiliation-strip__icon {
-  max-height: 26px;
-  max-width: 30px;
-}
-
-.vp-portfolio-home .home-affiliation-strip__link[data-mark="crest"] {
-  min-width: 44px;
-}
-
-// The affiliation marks are third-party wordmarks with black lettering, so on a
-// dark chip they disappear. Filtering them would wreck the brand colors
-// (Amazon's orange, TikTok's cyan/pink), so the chip keeps a light surface in
-// dark mode instead — the same thing press pages do with partner logos.
-[data-theme="dark"] .vp-portfolio-home .home-affiliation-strip__link {
-  background: #eef1ef;
-  border-color: color-mix(in srgb, #eef1ef 70%, transparent);
-}
-
 // ---------------------------------------------------------------------------
-// Global header polish
+// 3. Navbar
 // ---------------------------------------------------------------------------
 #navbar.vp-navbar {
   backdrop-filter: blur(18px);
@@ -725,20 +330,6 @@ body {
     );
   border-bottom: 1px solid var(--dl-border);
   box-shadow: var(--dl-shadow-2);
-}
-
-#navbar.vp-navbar::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 100%;
-  pointer-events: none;
-  background:
-    radial-gradient(circle at top left, color-mix(in srgb, var(--vp-c-accent-soft) 38%, transparent), transparent 42%),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-  background-size: auto, 28px 28px;
-  mask-image: linear-gradient(180deg, rgba(255, 255, 255, 0.45), transparent 90%);
-  opacity: 0.55;
 }
 
 #navbar.vp-navbar .vp-navbar-start,
@@ -766,7 +357,6 @@ body {
 }
 
 #navbar.vp-navbar .vp-brand:hover {
-  transform: translateY(-1px);
   border-color: var(--dl-accent-line);
   box-shadow: var(--dl-shadow-3);
 }
@@ -802,11 +392,9 @@ body {
   }
 }
 
-// The theme lays the navbar out as three equal `flex: 1 1 0` columns. With
-// seven top-level sections the link rail needs far more than a third, so it
-// overflowed its column and pushed `.vp-navbar-end` (GitHub link + appearance
-// toggle) past the right edge of the viewport. Size the brand and the actions
-// to their content and give the rail whatever is left.
+// The theme lays the navbar out as three equal columns; seven sections need
+// far more than a third, so size brand and actions to content and give the
+// rail whatever is left.
 #navbar.vp-navbar .vp-navbar-start,
 #navbar.vp-navbar .vp-navbar-end {
   flex: 0 0 auto;
@@ -837,8 +425,7 @@ body {
 }
 
 #navbar.vp-navbar .vp-nav-item > a,
-#navbar.vp-navbar .vp-dropdown-title,
-#navbar.vp-navbar .vp-action-link {
+#navbar.vp-navbar .vp-dropdown-title {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -862,9 +449,7 @@ body {
 }
 
 #navbar.vp-navbar .vp-nav-item > a:hover,
-#navbar.vp-navbar .vp-dropdown-title:hover,
-#navbar.vp-navbar .vp-action-link:hover {
-  transform: translateY(-1px);
+#navbar.vp-navbar .vp-dropdown-title:hover {
   color: var(--vp-c-text-1);
   background: var(--dl-accent-soft);
   border-color: var(--dl-accent-line);
@@ -886,14 +471,10 @@ body {
   margin-inline-start: 0.2rem;
 }
 
-#navbar.vp-navbar .vp-action-link {
-  width: 2.35rem;
-  min-width: 2.35rem;
-  padding: 0;
-  border-color: var(--dl-border);
-  background: var(--dl-chip);
-}
-
+// Repo link and appearance toggle: the same round chip as the hamburger. The
+// selector has to beat `.vp-nav-item > a` above, hence the extra class.
+#navbar.vp-navbar .vp-nav-item.vp-action > a.vp-action-link,
+#navbar.vp-navbar .vp-color-mode-switch,
 #navbar.vp-navbar .vp-toggle-navbar-button,
 #navbar.vp-navbar .vp-toggle-sidebar-button {
   display: inline-flex;
@@ -901,21 +482,27 @@ body {
   justify-content: center;
   width: 2.35rem;
   height: 2.35rem;
+  min-width: 2.35rem;
+  padding: 0;
   border-radius: 999px;
   border: 1px solid var(--dl-border);
   background: var(--dl-chip);
+  color: var(--vp-c-text-2);
   box-shadow: var(--dl-shadow-1);
   transition:
     transform 0.2s ease,
     border-color 0.2s ease,
     box-shadow 0.2s ease,
     background 0.2s ease,
+    color 0.2s ease,
     background-color var(--vp-t-color);
 }
 
+#navbar.vp-navbar .vp-nav-item.vp-action > a.vp-action-link:hover,
+#navbar.vp-navbar .vp-color-mode-switch:hover,
 #navbar.vp-navbar .vp-toggle-navbar-button:hover,
 #navbar.vp-navbar .vp-toggle-sidebar-button:hover {
-  transform: translateY(-1px);
+  color: var(--vp-c-text-1);
   border-color: var(--dl-accent-line);
   background: var(--dl-accent-soft);
   box-shadow: var(--dl-shadow-3);
@@ -923,6 +510,23 @@ body {
 
 #navbar.vp-navbar .vp-toggle-sidebar-button {
   display: none;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  #navbar.vp-navbar .vp-brand:hover,
+  #navbar.vp-navbar .vp-nav-item > a:hover,
+  #navbar.vp-navbar .vp-dropdown-title:hover,
+  #navbar.vp-navbar .vp-nav-item.vp-action > a.vp-action-link:hover,
+  #navbar.vp-navbar .vp-color-mode-switch:hover,
+  #navbar.vp-navbar .vp-toggle-navbar-button:hover {
+    transform: translateY(-1px);
+  }
+}
+
+#navbar.vp-navbar :is(.vp-brand, .vp-nav-item > a, .vp-dropdown-title, .vp-action-link, .vp-color-mode-switch, .vp-toggle-navbar-button):active {
+  transform: translateY(0) scale(0.985);
+  box-shadow: var(--dl-shadow-1);
+  transition-duration: 0.08s;
 }
 
 #nav-screen.vp-nav-screen {
@@ -934,20 +538,21 @@ body {
   border-top: 1px solid var(--dl-border);
 }
 
-// The gradient fill above sets `-webkit-text-fill-color: transparent`, so a
-// plain `color` override cannot recolor the site name — the gradient itself has
-// to change. `--dl-ink` handles that; this rule only keeps the non-`@supports`
-// fallback in sync.
 [data-theme="dark"] #navbar.vp-navbar .vp-site-name {
   color: var(--dl-ink);
 }
 
-// Seven top-level sections with icons need ~1.2k of rail. Below that the
-// hamburger takes over instead of letting the rail overrun the navbar and hide
-// the GitHub / appearance controls.
+// Seven top-level sections with icons need ~1.2k of rail; below that the
+// hamburger takes over instead of overrunning the actions.
 @media (max-width: 1199px) {
   #navbar.vp-navbar .vp-nav-links {
     display: none;
+  }
+
+  // The theme only reveals the nav screen below its own mobile breakpoint.
+  #nav-screen.vp-nav-screen,
+  #nav-screen .nav-screen-links {
+    display: block;
   }
 }
 
@@ -957,20 +562,6 @@ body {
   }
 }
 
-// The theme only reveals the drop-down nav screen below its own mobile
-// breakpoint (719px), so the hamburger shown above opened an empty overlay.
-// Match the panel to the breakpoint the button actually uses.
-@media (max-width: 1199px) {
-  #nav-screen.vp-nav-screen {
-    display: block;
-  }
-
-  #nav-screen .nav-screen-links {
-    display: block;
-  }
-}
-
-// Icons are the first thing to go when the rail runs out of room.
 @media (max-width: 1379px) {
   #navbar.vp-navbar .vp-nav-links .vp-nav-item > a > .vp-icon,
   #navbar.vp-navbar .vp-nav-links .vp-dropdown-title > .vp-icon {
@@ -978,30 +569,716 @@ body {
   }
 }
 
+// The theme hides the site name below 960px; at tablet widths there is room
+// for it, and on phones the logo-only pill needs symmetric padding.
+@media (min-width: 720px) and (max-width: 959px) {
+  #navbar.vp-navbar .vp-site-name.hide-in-pad {
+    display: inline !important;
+  }
+}
+
 @media (max-width: 719px) {
   #navbar.vp-navbar .vp-brand {
-    padding-right: 0.68rem;
+    padding: 0.38rem 0.42rem;
   }
 
   #navbar.vp-navbar .vp-nav-logo {
     width: 1.85rem;
     height: 1.85rem;
+    margin-inline-end: 0;
   }
 }
 
 // ---------------------------------------------------------------------------
-// Portfolio body: nav pills, sections, rhythm
+// 4. Portfolio hero
+//
+// Markup comes from layouts/Layout.vue through the theme's portfolioAvatar /
+// portfolioInfo slots, so these rules style our own elements; only the outer
+// `#portfolio.vp-portfolio` band and the `.vp-portfolio-container` wrapper
+// are the theme's, and their absolute/100vh defaults are undone here.
+// ---------------------------------------------------------------------------
+.vp-portfolio-home {
+  // Six semantic sizes cover the whole homepage; components inherit these.
+  --home-type-display: clamp(2.4rem, 5.2vw, 3.6rem);
+  --home-type-statement: clamp(1.75rem, 3.4vw, 2.6rem);
+  --home-type-section: clamp(1.35rem, 2.2vw, 1.75rem);
+  --home-type-title: clamp(1.08rem, 1.4vw, 1.18rem);
+  --home-type-body: 1rem;
+  --home-type-meta: 0.9rem;
+  --home-type-caption: 0.8rem;
+  --home-type-eyebrow: 0.74rem;
+  --home-prose-wide: 58rem;
+  --home-prose: 52rem;
+}
+
+// Section landing pages and auto-registered components sit outside
+// `.vp-portfolio-home`; give them the same eyebrow size to fall back on.
+:root {
+  --home-type-eyebrow: 0.74rem;
+  --home-type-caption: 0.8rem;
+}
+
+.vp-portfolio-home #portfolio.vp-portfolio {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  gap: clamp(1.35rem, 3.2vw, 2.5rem);
+  min-height: unset;
+  // Match the gutter of `[vp-content]` (max-width: min(84%, 1200px), centered)
+  // so the avatar starts on the same vertical line as every section below it.
+  padding-block: 2.85rem 2.15rem;
+  padding-inline: max(1.5rem, calc((100% - min(84%, 1200px)) / 2));
+  box-sizing: border-box;
+  overflow: hidden;
+  isolation: isolate;
+
+  &:not(.bg) {
+    background:
+      radial-gradient(120% 80% at 100% 0%, var(--vp-c-accent-soft), transparent 55%),
+      radial-gradient(90% 60% at 0% 100%, color-mix(in srgb, var(--vp-c-accent-soft) 45%, transparent), transparent 58%),
+      linear-gradient(180deg, var(--vp-c-bg-soft) 0%, var(--vp-c-bg) 100%);
+    border-bottom: 1px solid var(--vp-c-divider);
+  }
+
+  // Accent-tinted dot field gathered in the right half, plus one thin orbit —
+  // a quiet counterweight to the avatar that reads in both themes. The theme's
+  // own `::after` (a 1000px white disc) is replaced by the orbit.
+  &:not(.bg)::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: radial-gradient(color-mix(in srgb, var(--vp-c-accent) 28%, transparent) 1px, transparent 1.6px);
+    background-size: 22px 22px;
+    -webkit-mask-image: radial-gradient(60% 95% at 82% 45%, #000 15%, transparent 72%);
+    mask-image: radial-gradient(60% 95% at 82% 45%, #000 15%, transparent 72%);
+    pointer-events: none;
+  }
+
+  &:not(.bg)::after {
+    content: "";
+    position: absolute;
+    inset: auto -160px auto auto;
+    top: -230px;
+    z-index: -1;
+    display: block;
+    width: 560px;
+    height: 560px;
+    border-radius: 50%;
+    border: 1px solid var(--dl-accent-line);
+    background: transparent;
+    pointer-events: none;
+  }
+
+  > .vp-portfolio-mask {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  }
+
+  .vp-portfolio-avatar {
+    position: relative;
+    inset: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: auto;
+    height: auto;
+    padding: 12px;
+    border-radius: var(--dl-radius-xl);
+    background: var(--vp-c-bg);
+    border: 1px solid var(--vp-c-divider);
+    box-shadow:
+      0 0 0 1px rgba(0, 0, 0, 0.03),
+      0 2px 4px rgba(0, 0, 0, 0.04),
+      0 22px 48px rgba(0, 0, 0, 0.11);
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -1px;
+      border-radius: calc(var(--dl-radius-xl) + 1px);
+      padding: 1px;
+      background: linear-gradient(
+        135deg,
+        color-mix(in srgb, var(--vp-c-accent) 55%, transparent),
+        color-mix(in srgb, var(--vp-c-accent) 18%, transparent) 42%,
+        transparent 70%
+      );
+      -webkit-mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      mask:
+        linear-gradient(#fff 0 0) content-box,
+        linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+      pointer-events: none;
+      opacity: 0.9;
+    }
+
+    img {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 148px;
+      height: 148px;
+      max-width: 148px;
+      max-height: none;
+      object-fit: cover;
+      border-radius: var(--dl-radius-md);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.12);
+    }
+  }
+
+  .vp-portfolio-container {
+    min-height: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    flex: 1 1 260px;
+    min-width: min(100%, 260px);
+    max-width: none;
+    justify-content: flex-start;
+  }
+
+  // Identity on the left, the "at a glance" panel on the right.
+  .vp-portfolio-info {
+    position: relative;
+    inset: auto;
+    flex: 1 1 auto;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(16rem, 21rem);
+    gap: clamp(1.25rem, 3vw, 2.5rem);
+    align-items: center;
+    max-width: none;
+    padding: 0;
+    border-radius: 0;
+    background: transparent;
+    text-align: left;
+    box-shadow: none;
+  }
+
+  .home-hero__identity {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.18rem;
+    min-width: 0;
+  }
+
+  .vp-portfolio-welcome {
+    order: 1;
+    margin: 0 0 0.08rem;
+    padding: 0;
+    font-size: var(--home-type-eyebrow);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1.4;
+    color: var(--vp-c-text-3);
+    text-transform: uppercase;
+  }
+
+  .vp-portfolio-name {
+    order: 2;
+    margin: 0 0 0.24rem;
+    padding: 0;
+    font-size: var(--home-type-display);
+    font-weight: 800;
+    line-height: 1.02;
+    letter-spacing: -0.045em;
+    color: var(--dl-ink);
+    text-shadow: 0 1px 0 rgba(255, 255, 255, 0.42), 0 10px 24px rgba(27, 84, 68, 0.12);
+  }
+
+  @supports ((-webkit-background-clip: text) or (background-clip: text)) {
+    .vp-portfolio-name {
+      background:
+        linear-gradient(
+          135deg,
+          var(--dl-ink) 0%,
+          var(--dl-ink-2) 48%,
+          color-mix(in srgb, var(--vp-c-accent) 68%, var(--dl-ink)) 100%
+        );
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 10px 24px rgba(27, 84, 68, 0.12);
+    }
+  }
+
+  // The tagline pill. The text is in the DOM (server-rendered); a clip-path
+  // animation types it once per session, and the caret retires with it.
+  .vp-portfolio-title {
+    order: 3;
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    max-width: 100%;
+    min-height: 1.95rem;
+    margin: 0;
+    padding: 0.36rem 0.74rem;
+    border-radius: 999px;
+    border: 1px solid var(--dl-accent-line);
+    background: var(--dl-accent-soft);
+    font-size: var(--home-type-meta);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--dl-accent-text);
+    box-shadow: var(--dl-shadow-1);
+    white-space: nowrap;
+  }
+
+  .home-hero__tagline {
+    display: inline-block;
+    clip-path: inset(0 100% 0 0);
+    animation: dl-type 2.4s steps(var(--tagline-chars, 28), end) 0.45s forwards;
+  }
+
+  .vp-portfolio-title::after {
+    content: "";
+    width: 2px;
+    height: 0.95em;
+    margin-inline-start: 0.18rem;
+    border-radius: 1px;
+    background: var(--vp-c-accent);
+    animation: dl-caret-blink 1.1s step-end 3 forwards;
+    animation-delay: 0.45s;
+  }
+
+  .home-hero--typed .home-hero__tagline {
+    animation: none;
+    clip-path: none;
+  }
+
+  .home-hero--typed .vp-portfolio-title::after {
+    display: none;
+  }
+
+  .home-affiliation-strip {
+    order: 4;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: auto;
+    max-width: 100%;
+    margin-top: 0.95rem;
+    margin-bottom: 0.1rem;
+    padding-top: 0.9rem;
+    border-top: 1px solid var(--dl-border);
+  }
+
+  .home-affiliation-strip__eyebrow {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-size: var(--home-type-eyebrow);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    color: var(--vp-c-text-3);
+  }
+
+  .home-affiliation-strip__logos {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem 0.42rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .home-affiliation-strip__item {
+    display: flex;
+    margin: 0;
+    padding: 0;
+  }
+
+  .home-affiliation-strip__link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    height: 38px;
+    min-width: 48px;
+    padding: 0 0.62rem;
+    text-decoration: none;
+    border-radius: var(--dl-radius-sm);
+    border: 1px solid var(--dl-logo-well-line);
+    background: var(--dl-logo-well);
+    box-shadow: var(--dl-shadow-1);
+    transition:
+      border-color 0.2s ease,
+      box-shadow 0.2s ease,
+      transform 0.15s ease,
+      background-color var(--vp-t-color);
+  }
+
+  .home-affiliation-strip__link:hover {
+    border-color: var(--dl-accent-line);
+    box-shadow: var(--dl-shadow-2);
+  }
+
+  .home-affiliation-strip__icon {
+    display: block;
+    max-height: 20px;
+    max-width: 80px;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+  }
+
+  // Optical sizing: a square crest at 20px reads far smaller than an 80×20
+  // wordmark, so crests get extra height.
+  .home-affiliation-strip__link[data-mark="crest"] {
+    min-width: 44px;
+  }
+
+  .home-affiliation-strip__link[data-mark="crest"] .home-affiliation-strip__icon {
+    max-height: 26px;
+    max-width: 30px;
+  }
+
+  // Contact row (the blog plugin's SocialMedias component).
+  .vp-social-medias {
+    order: 5;
+    align-self: flex-start;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: var(--dl-space-1);
+    width: auto;
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0.32rem 0;
+    border-radius: 0;
+    background: transparent;
+    border: none;
+    box-shadow: none;
+  }
+
+  .vp-social-media {
+    margin: 0;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.35rem;
+    height: 2.35rem;
+    border-radius: 999px;
+    border: 1px solid var(--dl-border);
+    background: var(--dl-chip);
+    box-shadow: var(--dl-shadow-1);
+    transition:
+      transform 0.2s ease,
+      border-color 0.2s ease,
+      box-shadow 0.2s ease,
+      background-color var(--vp-t-color);
+  }
+
+  .vp-social-media:hover,
+  .vp-social-media:focus-visible {
+    border-color: var(--dl-logo-well-line);
+    background: var(--dl-logo-well);
+    box-shadow: var(--dl-shadow-2);
+  }
+
+  // Six third-party marks in six brand colours read as a sticker sheet, so
+  // they rest desaturated and recover their colour on interaction.
+  .vp-social-media svg,
+  .vp-social-media .vp-social-media-icon {
+    width: 1.18rem;
+    height: 1.18rem;
+    display: block;
+    filter: var(--dl-mark-filter);
+    transition: filter 0.2s ease;
+  }
+
+  .vp-social-media:hover svg,
+  .vp-social-media:hover .vp-social-media-icon,
+  .vp-social-media:focus-visible svg,
+  .vp-social-media:focus-visible .vp-social-media-icon {
+    filter: none;
+  }
+
+  .vp-social-media img.vp-social-media-icon {
+    object-fit: contain;
+    border-radius: 0;
+  }
+
+  // "At a glance" panel.
+  .home-hero__now {
+    box-sizing: border-box;
+    padding: 1rem 1.05rem 0.95rem;
+    border: 1px solid var(--dl-border);
+    border-radius: var(--dl-radius-lg);
+    background: color-mix(in srgb, var(--dl-surface) 88%, transparent);
+    backdrop-filter: blur(10px);
+    box-shadow: var(--dl-shadow-2);
+  }
+
+  .home-hero__now-label {
+    margin: 0 0 0.6rem;
+    font-size: var(--home-type-eyebrow);
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    line-height: 1.4;
+    text-transform: uppercase;
+    color: var(--vp-c-text-3);
+  }
+
+  .home-hero__now-list {
+    display: grid;
+    gap: 0;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  .home-hero__now-list li {
+    display: grid;
+    grid-template-columns: 4.4rem minmax(0, 1fr);
+    gap: var(--dl-space-3);
+    align-items: start;
+    margin: 0;
+    padding: 0.5rem 0;
+  }
+
+  .home-hero__now-list li + li {
+    border-top: 1px solid var(--dl-border);
+  }
+
+  .home-hero__now-key {
+    padding-top: 0.14rem;
+    font-family: var(--dl-font-mono);
+    font-size: var(--home-type-caption);
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--dl-accent-text);
+  }
+
+  .home-hero__now-body {
+    display: grid;
+    gap: 0.12rem;
+    min-width: 0;
+  }
+
+  .home-hero__now-text {
+    color: var(--vp-c-text-1);
+    font-size: var(--home-type-meta);
+    font-weight: 650;
+    line-height: 1.4;
+    text-decoration: none;
+  }
+
+  a.home-hero__now-text:hover {
+    color: var(--dl-accent-text);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .home-hero__now-meta {
+    color: var(--vp-c-text-3);
+    font-size: var(--home-type-caption);
+    line-height: 1.4;
+  }
+
+  .home-hero__now-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: 0.7rem;
+    color: var(--dl-accent-text);
+    font-size: var(--home-type-meta);
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .home-hero__now-cta::after {
+    content: "→";
+    transition: transform 0.2s ease;
+  }
+
+  .home-hero__now-cta:hover::after {
+    transform: translateX(3px);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .vp-portfolio-home #portfolio.vp-portfolio .vp-social-media:hover,
+  .vp-portfolio-home #portfolio.vp-portfolio .home-affiliation-strip__link:hover {
+    transform: translateY(-1px);
+  }
+}
+
+.vp-portfolio-home #portfolio.vp-portfolio :is(.vp-social-media, .home-affiliation-strip__link):active {
+  transform: translateY(0) scale(0.97);
+  box-shadow: var(--dl-shadow-1);
+  transition-duration: 0.08s;
+}
+
+[data-theme="dark"] .vp-portfolio-home #portfolio.vp-portfolio .vp-portfolio-avatar {
+  background: var(--dl-chip);
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    0 8px 28px rgba(0, 0, 0, 0.35);
+}
+
+// Below 1100px the panel drops under the identity block; on phones the hero
+// stacks and centres, and the affiliation rail scrolls sideways with a fade
+// instead of clipping. The container is explicitly full width: as a column
+// flex child with `align-items: center` it used to shrink-to-fit the nowrap
+// rail (407px on a 390px phone) and get clipped.
+@media (max-width: 1099px) {
+  // The panel drops under the identity block, so the column grows tall; the
+  // avatar sits with the name instead of floating at the vertical centre.
+  .vp-portfolio-home #portfolio.vp-portfolio {
+    align-items: flex-start;
+  }
+
+  .vp-portfolio-home #portfolio.vp-portfolio .vp-portfolio-avatar {
+    margin-top: 1.6rem;
+  }
+
+  .vp-portfolio-home #portfolio.vp-portfolio .vp-portfolio-info {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+  }
+
+  .vp-portfolio-home #portfolio.vp-portfolio .home-hero__now {
+    max-width: 34rem;
+  }
+
+  .vp-portfolio-home #portfolio.vp-portfolio:not(.bg)::after {
+    display: none;
+  }
+}
+
+@media (max-width: 719px) {
+  .vp-portfolio-home {
+    --home-type-display: clamp(2.1rem, 10vw, 2.8rem);
+    --home-type-statement: clamp(1.7rem, 8.5vw, 2.3rem);
+  }
+
+  .vp-portfolio-home #portfolio.vp-portfolio {
+    flex-direction: column;
+    align-items: stretch;
+    padding-block: 1.5rem 1.3rem;
+    text-align: center;
+
+    &:not(.bg)::before {
+      -webkit-mask-image: radial-gradient(90% 60% at 50% 0%, #000 10%, transparent 70%);
+      mask-image: radial-gradient(90% 60% at 50% 0%, #000 10%, transparent 70%);
+    }
+
+    .vp-portfolio-avatar {
+      align-self: center;
+      margin-top: 0;
+    }
+
+    // In the column layout `flex: 1 1 260px` would make 260px the *height*
+    // basis, and with `min-height: 0` the info block overflowed the container
+    // and slid up over the avatar.
+    .vp-portfolio-container {
+      flex: 0 0 auto;
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+      align-self: stretch;
+    }
+
+    .vp-portfolio-info {
+      width: 100%;
+      text-align: center;
+    }
+
+    .home-hero__identity {
+      align-items: center;
+      width: 100%;
+    }
+
+    .home-affiliation-strip {
+      width: 100%;
+      align-items: center;
+    }
+
+    .home-affiliation-strip__eyebrow {
+      width: 100%;
+      text-align: center;
+    }
+
+    .home-affiliation-strip__logos {
+      width: 100%;
+      box-sizing: border-box;
+      justify-content: flex-start;
+      flex-wrap: nowrap;
+      overflow-x: auto;
+      overscroll-behavior-inline: contain;
+      scrollbar-width: none;
+      padding: 0.1rem 1.5rem 0.35rem;
+      margin-inline: 0;
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 1.25rem, #000 calc(100% - 2rem), transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 1.25rem, #000 calc(100% - 2rem), transparent);
+    }
+
+    .home-affiliation-strip__logos::-webkit-scrollbar {
+      display: none;
+    }
+
+    .home-affiliation-strip__item {
+      flex: 0 0 auto;
+    }
+
+    .vp-social-medias {
+      align-self: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 100%;
+      gap: 0.3rem;
+    }
+
+    // 44px hit area on phones without growing the visual circle.
+    .vp-social-media,
+    .home-affiliation-strip__link {
+      position: relative;
+    }
+
+    .vp-social-media::before,
+    .home-affiliation-strip__link::before {
+      content: "";
+      position: absolute;
+      inset: -4px;
+      border-radius: inherit;
+    }
+
+    .home-hero__now {
+      width: 100%;
+      max-width: none;
+      text-align: left;
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 5. Portfolio body: section rhythm, sticky rail, shared primitives
 // ---------------------------------------------------------------------------
 // The theme renders page markdown inside `[vp-content] > #markdown-content`,
-// so section rules have to reach through that wrapper — a direct `> h2` on
-// `[vp-content]` matches nothing and the whole section rhythm below (heading
-// rules, anchor offsets, rule dividers, body copy color) silently did nothing.
+// so section rules reach through that wrapper.
 .vp-portfolio-home [vp-content].vp-portfolio-content {
-  --home-section-gap: 2.5rem;
+  --home-section-gap: 2.75rem;
+  // navbar + 0.75rem rail gap + rail (~3.25rem) + breathing room. Every hash
+  // target (headings, publication cards) and the rail's own scroll-spy read
+  // this one value through `scroll-margin-top`.
   --home-anchor-offset: calc(var(--navbar-height, 3.75rem) + 5.25rem);
   align-items: stretch;
   padding-top: 0.25rem;
   hyphens: none;
+  counter-reset: home-section;
 
   > #markdown-content {
     > h2,
@@ -1022,32 +1299,32 @@ body {
       scroll-margin-top: var(--home-anchor-offset);
     }
 
-    > h1 {
-      margin-top: 1.75rem;
-      margin-bottom: 1rem;
-      font-size: var(--home-type-section);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      color: var(--vp-c-text-1);
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    > h1::after {
-      display: none;
-    }
-
     > h2 {
+      display: flex;
+      align-items: baseline;
+      gap: 0.75rem;
       margin-top: var(--home-section-gap);
       margin-bottom: 1rem;
-      padding: 0.35rem 0 0.35rem 0.9rem;
-      border-left: 4px solid var(--vp-c-accent);
-      border-bottom: none;
+      padding: 0;
+      border: 0;
       font-size: var(--home-type-section);
       font-weight: 700;
       letter-spacing: -0.025em;
       color: var(--vp-c-text-1);
       line-height: 1.3;
+      counter-increment: home-section;
+    }
+
+    // One accent device per heading: a mono section number. (The theme's
+    // marker highlight under the anchor text and the old left rule are gone.)
+    > h2::before {
+      content: counter(home-section, decimal-leading-zero);
+      flex-shrink: 0;
+      font-family: var(--dl-font-mono);
+      font-size: var(--home-type-caption);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      color: var(--dl-accent-text);
     }
 
     > h2:first-of-type {
@@ -1067,13 +1344,7 @@ body {
       border: none;
       height: 1px;
       margin: 2rem 0;
-      background: linear-gradient(
-        90deg,
-        transparent 0%,
-        var(--vp-c-divider) 20%,
-        var(--vp-c-divider) 80%,
-        transparent 100%
-      );
+      background: linear-gradient(90deg, transparent 0%, var(--vp-c-divider) 20%, var(--vp-c-divider) 80%, transparent 100%);
     }
 
     > p {
@@ -1081,10 +1352,8 @@ body {
       color: var(--vp-c-text-2);
     }
 
-    // The theme justifies markdown paragraphs (helpful for CJK, rivers of
-    // whitespace in English). The hand-built sections on this page are already
-    // ragged-right, so justified markdown paragraphs sat next to them and made
-    // the page look like two different documents.
+    // The theme justifies markdown paragraphs; the hand-built sections are
+    // ragged-right, so plain paragraphs follow them.
     p,
     ul p,
     ol p,
@@ -1096,113 +1365,125 @@ body {
       color: var(--vp-c-text-1);
       font-weight: 600;
     }
+
+    > p a {
+      color: var(--dl-accent-text);
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 3px;
+    }
+  }
+
+  // The theme paints a marker highlight under every portfolio heading
+  // (`.header-anchor > span` background + end caps); with the section number
+  // it would be a second accent device.
+  .header-anchor > span {
+    background: none;
+    text-shadow: none;
+  }
+
+  .header-anchor > span::before,
+  .header-anchor > span::after {
+    display: none;
   }
 }
 
-.home-page-nav {
+// Sticky section rail --------------------------------------------------------
+.vp-portfolio-home .home-page-nav {
+  position: sticky;
+  top: calc(var(--navbar-height, 0px) + 0.75rem);
+  z-index: 8;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   align-items: center;
-  justify-content: center;
-  gap: 0.45rem 0.35rem;
-  margin: 0.5rem 0 1.75rem;
-  padding: 0;
+  justify-content: flex-start;
+  gap: 0.35rem;
+  overflow-x: auto;
+  overflow-y: hidden;
+  overscroll-behavior-inline: contain;
+  scroll-snap-type: x proximity;
+  scroll-padding-inline: 0.55rem;
+  scrollbar-width: thin;
+  scrollbar-color: var(--dl-accent-line) transparent;
+  -webkit-overflow-scrolling: touch;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0.35rem 0 1.75rem;
+  padding: 0.55rem;
   list-style: none;
+  border: 1px solid var(--dl-border);
+  border-radius: var(--dl-radius-md);
+  background: color-mix(in srgb, var(--vp-c-bg) 82%, transparent);
+  backdrop-filter: blur(14px);
+  box-shadow: var(--dl-shadow-1);
+  transition:
+    top var(--vp-t-transform, 0.3s),
+    background-color var(--vp-t-color);
 }
 
-.home-page-nav__link {
+.vp-portfolio-home .home-page-nav::-webkit-scrollbar {
+  height: 4px;
+}
+
+.vp-portfolio-home .home-page-nav::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+  background: var(--dl-accent-line);
+}
+
+.vp-portfolio-home .home-page-nav__link {
+  flex: 0 0 auto;
   display: inline-flex;
   align-items: center;
+  scroll-snap-align: start;
   padding: 0.4rem 0.85rem;
-  font-size: var(--home-type-meta, 0.9rem);
+  font-size: var(--home-type-meta);
   font-weight: 600;
   letter-spacing: 0.01em;
-  text-decoration: none !important;
-  color: var(--vp-c-text-2) !important;
-  background: var(--dl-chip);
-  border: 1px solid var(--vp-c-divider);
+  text-decoration: none;
+  color: var(--vp-c-text-2);
+  background: transparent;
+  border: 1px solid transparent;
   border-radius: 999px;
   transition:
     color 0.2s ease,
     background 0.2s ease,
     border-color 0.2s ease,
     box-shadow 0.2s ease,
-    // The hover state lifts the pill by 1px, but `transform` was missing from
-    // this list, so the lift snapped while the colors eased — the pill looked
-    // like it flinched.
-    transform 0.2s ease,
-    background-color var(--vp-t-color);
+    transform 0.2s ease;
 }
 
-.home-page-nav__link:hover {
-  color: var(--vp-c-accent) !important;
-  background: var(--vp-c-accent-soft);
+.vp-portfolio-home .home-page-nav__link:hover {
+  color: var(--dl-accent-text);
+  background: var(--dl-accent-soft);
+}
+
+.vp-portfolio-home .home-page-nav__link.is-active {
+  color: var(--dl-ink);
+  background: var(--dl-accent-soft);
   border-color: var(--dl-accent-line);
-  box-shadow: 0 2px 12px color-mix(in srgb, var(--vp-c-accent) 18%, transparent);
+  box-shadow: inset 0 0 0 1px var(--dl-accent-line);
 }
 
-.vp-portfolio-home .home-lead {
-  max-width: var(--home-prose-wide);
-  margin: 0 0 1.2rem;
-  padding: 0;
-  font-size: var(--home-type-body);
-  line-height: 1.72;
-  color: var(--vp-c-text-1);
+.vp-portfolio-home .home-page-nav__link:active {
+  transform: scale(0.985);
+  transition-duration: 0.08s;
 }
 
-.vp-portfolio-home :is(
-  .home-page-nav,
-  .home-mission,
-  .home-hero-grid,
-  .home-about-context,
-  .home-highlight-grid,
-  .pub-grid,
-  .experience-grid,
-  .project-grid,
-  .knowledge-atlas-grid,
-  .knowledge-atlas-note,
-  .tech-grid,
-  .home-resume,
-  .home-connect-panel
-) {
-  width: 100%;
-  box-sizing: border-box;
+// When the theme auto-hides the navbar on phones, the rail follows it up and
+// the anchor offset shrinks with it.
+.theme-container.hide-navbar .vp-portfolio-home .home-page-nav {
+  top: 0.5rem;
 }
 
-.vp-portfolio-home .home-about-context {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  margin: 0.9rem 0 0;
-  padding: 1rem 0;
-  border-block: 1px solid var(--dl-border);
+.theme-container.hide-navbar .vp-portfolio-home [vp-content].vp-portfolio-content {
+  --home-anchor-offset: calc(0.5rem + 3.25rem + 1.25rem);
 }
 
-.vp-portfolio-home .home-about-context p {
-  margin: 0;
-  padding: 0 1.25rem 0 0;
-  color: var(--vp-c-text-2);
-  font-size: var(--home-type-body);
-  line-height: 1.72;
-}
-
-.vp-portfolio-home .home-about-context p + p {
-  padding: 0 0 0 1.25rem;
-  border-left: 1px solid var(--dl-border);
-}
-
-.vp-portfolio-home .home-about-context strong {
-  color: var(--vp-c-text-1);
-  font-weight: 650;
-}
-
-.vp-portfolio-home [vp-content].vp-portfolio-content > #markdown-content > p a {
-  text-decoration-thickness: 1.5px;
-  text-underline-offset: 3px;
-}
-
-// Shared design language for the primary portfolio cards. Interactive elements
-// carry the stronger elevation; these information surfaces stay quiet.
-.vp-portfolio-home .home-card-shell {
+// Shared card primitives -----------------------------------------------------
+.vp-portfolio-home .home-card-shell,
+.vp-portfolio-home .tech-card,
+.vp-portfolio-home .home-surface-card,
+.vp-portfolio-home .home-highlight-card,
+.vp-portfolio-home .home-connect-panel {
   position: relative;
   overflow: hidden;
   border: 1px solid var(--dl-border);
@@ -1216,28 +1497,27 @@ body {
   display: none;
 }
 
-// ---------------------------------------------------------------------------
-// Card metadata
-//
-// Education, Experience, Projects and Publications each grew their own set of
-// eyebrow / date / location / label / chip styles. Three of them declared a
-// byte-identical eyebrow rule under three different class names, and a date was
-// a bordered pill in two cards, a plain caption in a third and a differently
-// sized chip in the fourth. These are the shared primitives; the per-component
-// rules that duplicated them are gone.
-// ---------------------------------------------------------------------------
+// Eyebrows and small labels: one spec for the whole site.
 .vp-portfolio-home .home-card-eyebrow,
-.vp-portfolio-home .home-card-label {
-  font-size: var(--home-type-meta);
-  font-weight: 800;
-  letter-spacing: 0.08em;
+.vp-portfolio-home .home-card-label,
+.vp-portfolio-home .home-highlight-kicker,
+.vp-portfolio-home .home-story-meta__label,
+.vp-portfolio-home .home-profile-row__label,
+.vp-portfolio-home .knowledge-atlas-card__eyebrow,
+.vp-portfolio-home .tech-card__eyebrow,
+.vp-portfolio-home .home-mission__eyebrow,
+.vp-portfolio-home .home-mission__loop-label {
+  font-size: var(--home-type-eyebrow);
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
   text-transform: uppercase;
   color: var(--vp-c-text-3);
 }
 
 .vp-portfolio-home .home-card-eyebrow {
   display: block;
-  margin: 0 0 0.2rem;
+  margin: 0 0 0.3rem;
 }
 
 // Right-hand metadata cluster in a card header.
@@ -1247,12 +1527,35 @@ body {
   align-items: center;
   justify-content: flex-end;
   gap: var(--dl-space-1);
-  // Never let metadata outrank the title it annotates.
   max-width: 46%;
 }
 
-// Icons ride on `currentColor` through a mask, so a single rule covers light
-// mode, dark mode and the muted metadata color without shipping two assets.
+// Metadata chips (date, place) share one recipe; the icon rides on
+// currentColor through a mask so one asset serves both themes.
+.vp-portfolio-home .home-card-time,
+.vp-portfolio-home .home-card-place {
+  display: inline-flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: var(--dl-chip-h-sm);
+  padding: 0.22rem var(--dl-chip-px-sm);
+  border: 1px solid var(--dl-border);
+  border-radius: 999px;
+  background: var(--dl-chip);
+  color: var(--vp-c-text-2);
+  font-size: var(--home-type-meta);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+.vp-portfolio-home .home-card-time {
+  font-family: var(--dl-font-mono);
+  font-size: var(--home-type-caption);
+  letter-spacing: 0;
+}
+
 .vp-portfolio-home .home-card-time::before,
 .vp-portfolio-home .home-card-place::before {
   content: "";
@@ -1275,30 +1578,16 @@ body {
   mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none' stroke='%23000' stroke-width='1.5'%3E%3Cpath d='M8 14.6s5-4.7 5-8.2a5 5 0 1 0-10 0c0 3.5 5 8.2 5 8.2Z'/%3E%3Ccircle cx='8' cy='6.4' r='1.9'/%3E%3C/svg%3E");
 }
 
-.vp-portfolio-home .home-card-place {
-  display: inline-flex;
-  align-items: center;
-  box-sizing: border-box;
-  min-height: 1.75rem;
-  padding: 0.24rem 0.62rem;
-  border: 1px solid var(--dl-border);
-  border-radius: 999px;
-  background: var(--dl-chip);
-  color: var(--vp-c-text-2);
-  font-size: var(--home-type-meta);
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: 0.01em;
-  white-space: nowrap;
-}
-
-// One chip, three intents.
-.vp-portfolio-home .home-chip {
+// One chip, four intents: neutral (default), accent, award, and quiet tags.
+.vp-portfolio-home .home-chip,
+.vp-portfolio-home .home-tag,
+.vp-portfolio-home .tech-tag {
   display: inline-flex;
   align-items: center;
   gap: 0.32rem;
-  min-height: 1.85rem;
-  padding: 0.24rem 0.68rem;
+  box-sizing: border-box;
+  min-height: var(--dl-chip-h);
+  padding: 0.24rem var(--dl-chip-px);
   border: 1px solid var(--dl-border);
   border-radius: 999px;
   background: var(--dl-chip);
@@ -1306,6 +1595,7 @@ body {
   font-size: var(--home-type-meta);
   font-weight: 650;
   line-height: 1.2;
+  letter-spacing: 0.01em;
 }
 
 .vp-portfolio-home .home-chip--accent {
@@ -1315,69 +1605,33 @@ body {
 }
 
 .vp-portfolio-home .home-chip--award {
-  border-color: color-mix(in srgb, #d29922 32%, var(--vp-c-divider));
-  background: color-mix(in srgb, #f9d66d 16%, var(--vp-c-bg));
-  color: color-mix(in srgb, #8a5f00 80%, var(--vp-c-text-1));
+  border-color: var(--dl-award-line);
+  background: var(--dl-award-fill);
+  color: var(--dl-award-text);
 }
 
-[data-theme="dark"] .vp-portfolio-home .home-chip--award {
-  color: color-mix(in srgb, #f2cc60 82%, var(--vp-c-text-1));
+// Profile links are chips that act; they keep an accent border so they read
+// as interactive next to the plain tags.
+.vp-portfolio-home .home-tag--link {
+  border-color: var(--dl-accent-line);
+  color: var(--vp-c-text-1);
+  text-decoration: none;
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
 }
 
-.vp-portfolio-home .home-card-time {
-  display: inline-flex;
-  align-items: center;
-  box-sizing: border-box;
-  min-height: 1.75rem;
-  padding: 0.24rem 0.62rem;
-  border: 1px solid var(--dl-border);
-  border-radius: 999px;
-  background: var(--dl-chip);
-  color: var(--vp-c-text-2);
-  font-size: var(--home-type-meta);
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: 0.01em;
-  white-space: nowrap;
+.vp-portfolio-home .home-tag--link:hover {
+  border-color: var(--dl-accent-line-strong);
+  background: var(--dl-accent-soft);
 }
 
-
-.tech-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: var(--dl-space-4);
-  align-items: stretch;
-  margin: 1rem 0 0;
-}
-
-.tech-card {
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  min-height: 15rem;
-  box-sizing: border-box;
-  border: 1px solid var(--dl-border);
-  border-radius: var(--dl-radius-lg);
-  padding: 1.2rem 1.25rem 1.25rem;
-  background: var(--dl-surface);
-  box-shadow: var(--dl-shadow-1);
-  transition: background-color var(--vp-t-color);
-}
-
-.tech-card::before {
-  display: none;
-}
-
-.tech-card__header {
-  display: flex;
-  align-items: center;
-  gap: var(--dl-space-2);
-  margin: 0 0 0.8rem;
-}
-
-.tech-card__index {
+// One numbered disc for every "01" on the page.
+.vp-portfolio-home .home-index,
+.vp-portfolio-home .home-mission__step,
+.vp-portfolio-home .knowledge-atlas-card__index,
+.vp-portfolio-home .tech-card__index {
   flex-shrink: 0;
   display: inline-flex;
   align-items: center;
@@ -1386,343 +1640,193 @@ body {
   height: 2rem;
   border-radius: 999px;
   background: var(--dl-accent-soft);
-  color: var(--vp-c-accent);
-  font-size: var(--home-type-meta, 0.9rem);
+  color: var(--dl-accent-text);
+  font-family: var(--dl-font-mono);
+  font-size: 0.78rem;
   font-weight: 800;
+  line-height: 1;
   letter-spacing: 0.04em;
 }
 
-.tech-card__eyebrow {
-  color: var(--vp-c-text-3);
-  font-size: var(--home-type-meta, 0.9rem);
-  font-weight: 750;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.tech-card h3 {
-  margin: 0 0 0.55rem;
-  color: var(--vp-c-text-1);
-  font-size: var(--home-type-title, 1.18rem);
-  line-height: 1.3;
-  letter-spacing: -0.02em;
-}
-
-.tech-card__description {
-  margin: 0;
-  color: var(--vp-c-text-2);
-  font-size: var(--home-type-body, 1rem);
-  line-height: 1.65;
-}
-
-.tech-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--dl-space-1);
-  margin-top: auto;
-  padding-top: 1rem;
-}
-
-.tech-tag {
+// Buttons: matches `.pub-action` so a button reads the same everywhere.
+.vp-portfolio-home .home-action {
   display: inline-flex;
   align-items: center;
-  min-height: 1.9rem;
+  justify-content: center;
   box-sizing: border-box;
+  height: var(--dl-button-h);
+  padding: 0 0.95rem;
+  gap: 0.42rem;
+  border: 1px solid var(--dl-border);
   border-radius: 999px;
-  padding: 0.25rem 0.65rem;
-  border: 1px solid var(--dl-border);
   background: var(--dl-chip);
-  color: var(--vp-c-text-2);
-  font-size: var(--home-type-meta, 0.9rem);
-  font-weight: 600;
-}
-
-.ai-hero,
-.section-hero {
-  position: relative;
-  overflow: hidden;
-  margin: 1rem 0 1.5rem;
-  padding: 1.3rem 1.35rem;
-  border: 1px solid var(--dl-border);
-  border-radius: var(--dl-radius-lg);
-  // Section pages lead with this block, so it keeps the accent wash that the
-  // ordinary content cards below it gave up.
-  background:
-    radial-gradient(circle at 100% 0%, var(--dl-accent-wash), transparent 46%),
-    var(--dl-surface);
-  box-shadow: var(--dl-shadow-2);
-}
-
-.ai-hero::before,
-.section-hero::before,
-.ai-card::before,
-.section-card::before,
-.ai-path-card::before,
-.section-path-card::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto 0;
-  height: 3px;
-  background: linear-gradient(90deg, var(--vp-c-accent), color-mix(in srgb, var(--vp-c-accent) 18%, transparent));
-}
-
-.ai-eyebrow,
-.section-eyebrow,
-.ai-card__eyebrow,
-.section-card__eyebrow {
-  display: inline-flex;
-  align-items: center;
-  margin: 0 0 0.45rem;
-  font-size: 0.72rem;
+  color: var(--vp-c-text-1);
+  font-size: var(--home-type-meta);
   font-weight: 700;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--vp-c-text-3);
-}
-
-.ai-hero h2,
-.section-hero h2 {
-  margin: 0 0 0.55rem;
-}
-
-.ai-hero p,
-.section-hero p {
-  margin: 0;
-  color: var(--vp-c-text-2);
-  line-height: 1.7;
-}
-
-.ai-pill-row,
-.section-pill-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--dl-space-1);
-  margin-top: 1rem;
-}
-
-.ai-pill,
-.section-pill {
-  display: inline-flex;
-  align-items: center;
-  padding: 0.28rem 0.68rem;
-  border-radius: 999px;
-  border: 1px solid var(--dl-border);
-  background: var(--dl-chip);
-  color: var(--vp-c-text-2);
-  font-size: 0.82rem;
-  font-weight: 600;
-}
-
-.ai-card-grid,
-.section-card-grid,
-.ai-path-grid,
-.section-path-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: var(--dl-space-4);
-  margin: 1rem 0 1.4rem;
-}
-
-.ai-card,
-.section-card,
-.ai-path-card,
-.section-path-card {
-  position: relative;
-  display: block;
-  overflow: hidden;
-  border: 1px solid var(--dl-border);
-  border-radius: var(--dl-radius-lg);
-  padding: 1rem 1.05rem 1.05rem;
-  background: var(--dl-surface);
-  box-shadow: var(--dl-shadow-1);
+  line-height: 1;
+  text-decoration: none;
+  --external-link-c-icon: currentColor;
   transition:
     transform 0.2s ease,
     border-color 0.2s ease,
     box-shadow 0.2s ease,
-    background-color var(--vp-t-color);
+    background-color 0.2s ease;
 }
 
-.ai-card,
-.section-card {
-  color: inherit;
-  text-decoration: none;
-}
-
-.ai-card:hover,
-.section-card:hover,
-.ai-path-card:hover,
-.section-path-card:hover {
-  transform: translateY(-2px);
+.vp-portfolio-home .home-action:hover {
   border-color: var(--dl-accent-line);
-  box-shadow: var(--dl-shadow-3);
-}
-
-.ai-card h3,
-.section-card h3,
-.ai-path-card h3,
-.section-path-card h3 {
-  margin: 0 0 0.45rem;
-  color: var(--vp-c-text-1);
-}
-
-.ai-card p,
-.section-card p,
-.ai-path-card p,
-.section-path-card p {
-  margin: 0;
-  color: var(--vp-c-text-2);
-  line-height: 1.65;
-}
-
-.ai-path-card ol,
-.section-path-card ol {
-  margin: 0.7rem 0 0;
-  padding-left: 1.2rem;
-}
-
-.ai-path-card li,
-.section-path-card li {
-  margin: 0.38rem 0;
-  color: var(--vp-c-text-2);
-}
-
-.ai-path-card a,
-.section-path-card a,
-.ai-hero a,
-.section-hero a {
-  font-weight: 600;
-}
-
-.pub-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--dl-space-4);
-}
-.pub-card {
-  display: grid;
-  grid-template-columns: 136px 1fr;
-  gap: var(--dl-space-4);
-  align-items: flex-start;
-  padding: 1.3rem 1.35rem;
-}
-
-.pub-card--no-image {
-  grid-template-columns: 1fr;
-}
-
-.pub-body {
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-}
-
-.pub-head {
-  border: 0;
-  border-radius: var(--dl-radius-md);
-  background: transparent;
-  padding: 0;
-}
-
-.pub-img {
-  width: 100%;
-  height: 116px;
-  object-fit: contain;
-  border-radius: var(--dl-radius-sm);
-  border: 1px solid var(--dl-border);
-  background: var(--dl-chip);
-  padding: 6px;
-  box-sizing: border-box;
-}
-
-.pub-title {
-  margin: 0 0 8px 0;
-  font-size: var(--home-type-title, 1.18rem);
-  font-weight: 700;
-  line-height: 1.3;
-  letter-spacing: -0.02em;
-  color: var(--vp-c-text-1);
-}
-
-.pub-meta {
-  color: var(--vp-c-text-2);
-  font-size: var(--home-type-meta, 0.9rem);
-}
-
-.pub-authors .me {
-  font-weight: 700;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-
-.pub-abs {
-  margin: 8px 0 10px 0;
-}
-
-.pub-abs p {
-  color: var(--vp-c-text-2);
-  font-size: var(--home-type-body, 1rem);
-  line-height: 1.62;
-}
-
-// ---------------------------------------------------------------------------
-// Enhanced homepage surfaces: bento blocks, highlights, and CTA
-// ---------------------------------------------------------------------------
-.vp-portfolio-home .home-page-nav {
-  position: sticky;
-  top: calc(var(--navbar-height, 0px) + 0.75rem);
-  z-index: 8;
-  flex-wrap: nowrap;
-  justify-content: flex-start;
-  overflow-x: auto;
-  overflow-y: hidden;
-  overscroll-behavior-inline: contain;
-  scroll-snap-type: x proximity;
-  scroll-padding-inline: 0.55rem;
-  scrollbar-width: thin;
-  scrollbar-color: var(--dl-accent-line) transparent;
-  -webkit-overflow-scrolling: touch;
-  margin: 0.35rem 0 1.75rem;
-  padding: 0.55rem;
-  border: 1px solid var(--dl-border);
-  border-radius: var(--dl-radius-md);
-  background: color-mix(in srgb, var(--vp-c-bg) 82%, transparent);
-  backdrop-filter: blur(14px);
   box-shadow: var(--dl-shadow-1);
 }
 
-.vp-portfolio-home .home-page-nav::-webkit-scrollbar {
-  height: 4px;
+.vp-portfolio-home .home-action--primary {
+  border-color: var(--dl-accent-line-strong);
+  background: var(--vp-c-accent);
+  color: var(--vp-c-accent-text, #fff);
 }
 
-.vp-portfolio-home .home-page-nav::-webkit-scrollbar-thumb {
-  border-radius: 999px;
-  background: var(--dl-accent-line);
+.vp-portfolio-home .home-action--primary:hover {
+  background: var(--vp-c-accent-hover);
+  color: var(--vp-c-accent-text, #fff);
 }
 
-.vp-portfolio-home .home-page-nav__link {
-  flex: 0 0 auto;
-  scroll-snap-align: start;
-  background: transparent;
-  border-color: transparent;
+@media (hover: hover) and (pointer: fine) {
+  .vp-portfolio-home .home-action:hover,
+  .vp-portfolio-home .home-tag--link:hover {
+    transform: translateY(-1px);
+  }
 }
 
-.vp-portfolio-home .home-page-nav__link:hover {
-  background: var(--dl-accent-soft);
-  border-color: transparent;
+.vp-portfolio-home :is(.home-action, .home-tag--link):active {
+  transform: translateY(0) scale(0.985);
   box-shadow: none;
+  transition-duration: 0.08s;
 }
 
-.vp-portfolio-home .home-page-nav__link.is-active {
-  color: var(--dl-ink) !important;
-  background: var(--dl-accent-soft);
-  border-color: var(--dl-accent-line);
-  box-shadow: inset 0 0 0 1px var(--dl-accent-line);
+// Section copy.
+.vp-portfolio-home .home-lead {
+  max-width: var(--home-prose-wide);
+  margin: 0 0 1.2rem;
+  padding: 0;
+  font-size: var(--home-type-body);
+  line-height: 1.72;
+  color: var(--vp-c-text-1);
 }
 
-.vp-portfolio-home .pub-card[id] {
-  scroll-margin-top: var(--home-anchor-offset, 9rem);
+.vp-portfolio-home .home-section-intro {
+  position: relative;
+  z-index: 1;
+  max-width: var(--home-prose);
+  margin: 0 0 1rem;
+  color: var(--vp-c-text-2);
+  font-size: var(--home-type-body);
+  line-height: 1.72;
 }
 
+.vp-portfolio-home .home-section-intro strong {
+  color: var(--vp-c-text-1);
+}
+
+.vp-portfolio-home .home-section-outro {
+  max-width: var(--home-prose);
+  margin: 1.1rem 0 0;
+  color: var(--vp-c-text-3);
+  font-size: var(--home-type-meta);
+  line-height: 1.65;
+}
+
+.vp-portfolio-home .home-section-outro a,
+.vp-portfolio-home .home-section-intro a {
+  color: var(--dl-accent-text);
+  font-weight: 650;
+}
+
+.vp-portfolio-home .home-publication-legend {
+  margin: -0.3rem 0 1rem;
+  padding: 0;
+  color: var(--vp-c-text-3);
+  font-size: var(--home-type-meta);
+  line-height: 1.45;
+}
+
+.vp-portfolio-home .home-publication-legend strong {
+  color: var(--dl-accent-text);
+  font-size: var(--home-type-meta);
+}
+
+.vp-portfolio-home :is(
+  .home-page-nav,
+  .home-mission,
+  .news-timeline,
+  .home-hero-grid,
+  .home-highlight-grid,
+  .pub-grid,
+  .experience-grid,
+  .project-grid,
+  .knowledge-atlas-grid,
+  .knowledge-atlas-note,
+  .tech-grid,
+  .home-resume,
+  .home-connect-panel
+) {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+@media (max-width: 959px) {
+  .vp-portfolio-home .home-card-meta {
+    max-width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 719px) {
+  .vp-portfolio-home .home-page-nav {
+    top: calc(var(--navbar-height, 0px) + 0.35rem);
+    padding: 0.45rem;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 0.5rem;
+    -webkit-mask-image: linear-gradient(90deg, #000 calc(100% - 2.5rem), transparent);
+    mask-image: linear-gradient(90deg, #000 calc(100% - 2.5rem), transparent);
+  }
+
+  .vp-portfolio-home .home-page-nav[data-scroll-end="true"] {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+
+  .vp-portfolio-home .home-page-nav__link {
+    min-height: 2.75rem;
+    padding: 0.5rem 0.85rem;
+  }
+
+  .theme-container.hide-navbar .vp-portfolio-home .home-page-nav {
+    top: 0.35rem;
+  }
+
+  .vp-portfolio-home .home-action {
+    min-height: 2.75rem;
+  }
+
+  // Long metadata ("Jun 2026 – Present") may wrap on phones instead of
+  // pushing the card header past the viewport.
+  .vp-portfolio-home .home-card-time,
+  .vp-portfolio-home .home-card-place {
+    align-items: flex-start;
+    white-space: normal;
+    line-height: 1.35;
+  }
+
+  .vp-portfolio-home .home-card-time::before,
+  .vp-portfolio-home .home-card-place::before {
+    margin-top: 0.16em;
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 6. Homepage sections
+// ---------------------------------------------------------------------------
+
+// Mission block --------------------------------------------------------------
 .vp-portfolio-home .home-mission {
   position: relative;
   isolation: isolate;
@@ -1738,12 +1842,11 @@ body {
   background:
     radial-gradient(circle at 8% 8%, color-mix(in srgb, var(--vp-c-accent-soft) 88%, transparent), transparent 34%),
     radial-gradient(circle at 100% 100%, color-mix(in srgb, var(--vp-c-accent-soft) 52%, transparent), transparent 40%),
-    linear-gradient(
-      135deg,
-      color-mix(in srgb, var(--vp-c-bg) 88%, var(--vp-c-bg-soft)) 0%,
-      color-mix(in srgb, var(--vp-c-bg-soft) 94%, transparent) 100%
-    );
+    linear-gradient(135deg, color-mix(in srgb, var(--vp-c-bg) 88%, var(--vp-c-bg-soft)) 0%, color-mix(in srgb, var(--vp-c-bg-soft) 94%, transparent) 100%);
   box-shadow: var(--dl-shadow-2);
+  transition:
+    background-color var(--vp-t-color),
+    border-color var(--vp-t-color);
 }
 
 .vp-portfolio-home .home-mission::before {
@@ -1756,6 +1859,7 @@ body {
     linear-gradient(90deg, color-mix(in srgb, var(--vp-c-accent) 8%, transparent) 1px, transparent 1px),
     linear-gradient(color-mix(in srgb, var(--vp-c-accent) 7%, transparent) 1px, transparent 1px);
   background-size: 32px 32px;
+  -webkit-mask-image: linear-gradient(135deg, rgba(0, 0, 0, 0.55), transparent 64%);
   mask-image: linear-gradient(135deg, rgba(0, 0, 0, 0.55), transparent 64%);
 }
 
@@ -1764,11 +1868,7 @@ body {
   position: absolute;
   inset: 0 auto 0 0;
   width: 5px;
-  background: linear-gradient(
-    180deg,
-    var(--vp-c-accent),
-    color-mix(in srgb, var(--vp-c-accent) 22%, transparent)
-  );
+  background: linear-gradient(180deg, var(--vp-c-accent), color-mix(in srgb, var(--vp-c-accent) 22%, transparent));
 }
 
 .vp-portfolio-home .home-mission__copy,
@@ -1780,22 +1880,17 @@ body {
 .vp-portfolio-home .home-mission__eyebrow,
 .vp-portfolio-home .home-mission__loop-label {
   margin: 0 0 0.75rem;
-  font-size: var(--home-type-meta);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--vp-c-text-3);
 }
 
 .vp-portfolio-home .home-mission #home-mission-title {
-  max-width: 13.5ch;
+  max-width: 18ch;
   margin: 0;
   padding: 0;
   border: 0;
-  font-size: var(--home-type-display);
-  font-weight: 800;
-  line-height: 1.02;
-  letter-spacing: -0.055em;
+  font-size: var(--home-type-statement);
+  font-weight: 750;
+  line-height: 1.08;
+  letter-spacing: -0.04em;
   color: var(--vp-c-text-1);
 }
 
@@ -1810,6 +1905,45 @@ body {
 .vp-portfolio-home .home-mission__lede strong {
   color: var(--vp-c-text-1);
   font-weight: 650;
+}
+
+.vp-portfolio-home .home-mission__signals-group {
+  margin: 1.25rem 0 0;
+}
+
+.vp-portfolio-home .home-mission__signals {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--dl-space-3);
+  max-width: 46rem;
+  margin: 0;
+}
+
+.vp-portfolio-home .home-mission__signals > div {
+  min-width: 0;
+  padding: 0.8rem 0.85rem;
+  border: 1px solid var(--dl-border);
+  border-radius: var(--dl-radius-md);
+  background: color-mix(in srgb, var(--dl-surface) 76%, transparent);
+  box-shadow: var(--dl-shadow-1);
+}
+
+.vp-portfolio-home .home-mission__signals dt {
+  margin: 0;
+  color: var(--dl-ink);
+  font-family: var(--dl-font-mono);
+  font-size: clamp(1.2rem, 2vw, 1.5rem);
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.vp-portfolio-home .home-mission__signals dd {
+  min-height: 2.7em;
+  margin: 0.35rem 0 0;
+  color: var(--vp-c-text-2);
+  font-size: var(--home-type-caption);
+  line-height: 1.35;
 }
 
 .vp-portfolio-home .home-mission__actions {
@@ -1831,7 +1965,7 @@ body {
   color: var(--vp-c-text-1);
   font-size: var(--home-type-meta);
   font-weight: 700;
-  text-decoration: none !important;
+  text-decoration: none;
   box-shadow: var(--dl-shadow-1);
   transition:
     transform 0.2s ease,
@@ -1841,7 +1975,6 @@ body {
 }
 
 .vp-portfolio-home .home-mission__button:hover {
-  transform: translateY(-2px);
   border-color: var(--dl-accent-line-strong);
   box-shadow: var(--dl-shadow-3);
 }
@@ -1857,70 +1990,96 @@ body {
   color: var(--vp-c-accent-text, #fff);
 }
 
+@media (hover: hover) and (pointer: fine) {
+  .vp-portfolio-home .home-mission__button:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.vp-portfolio-home .home-mission__button:active {
+  transform: translateY(0) scale(0.985);
+  box-shadow: var(--dl-shadow-1);
+  transition-duration: 0.08s;
+}
+
+// The research loop, drawn as a loop: connected discs and a return arrow.
 .vp-portfolio-home .home-mission__loop {
   padding: 1rem 1rem 0.95rem;
   border: 1px solid var(--dl-border);
   border-radius: var(--dl-radius-lg);
   background: var(--dl-surface);
   box-shadow: var(--dl-shadow-1);
+  transition:
+    background-color var(--vp-t-color),
+    border-color var(--vp-t-color);
 }
 
 .vp-portfolio-home .home-mission__loop-label {
-  margin: 0.15rem 0 0.7rem;
+  margin: 0.15rem 0 0.6rem;
   padding: 0 0.2rem;
 }
 
-.vp-portfolio-home .home-mission__loop ol {
+.vp-portfolio-home .home-mission__loop ol,
+.vp-portfolio-home .home-steps {
   display: grid;
-  gap: 0.15rem;
+  gap: 0;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.vp-portfolio-home .home-mission__loop li {
+.vp-portfolio-home .home-mission__loop li,
+.vp-portfolio-home .home-steps li {
   position: relative;
   display: grid;
-  grid-template-columns: 2.25rem 1fr;
+  grid-template-columns: 2rem 1fr;
   gap: var(--dl-space-3);
   align-items: start;
   margin: 0;
-  padding: 0.75rem 0.65rem;
-  border-radius: var(--dl-radius-md);
+  padding: 0.6rem 0.4rem;
 }
 
-.vp-portfolio-home .home-mission__loop li + li {
-  border-top: 1px solid var(--dl-border);
+.vp-portfolio-home .home-mission__loop li::before,
+.vp-portfolio-home .home-steps li::before {
+  content: "";
+  position: absolute;
+  left: calc(0.4rem + 1rem - 1px);
+  top: calc(0.6rem + 2rem);
+  bottom: -0.6rem;
+  width: 2px;
+  background: var(--dl-accent-line);
 }
 
-.vp-portfolio-home .home-mission__step {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  border-radius: 999px;
-  background: var(--dl-accent-soft);
-  color: var(--vp-c-accent);
-  font-size: var(--home-type-meta);
-  font-weight: 800;
-  letter-spacing: 0.04em;
+.vp-portfolio-home .home-mission__loop li:last-child::before,
+.vp-portfolio-home .home-steps li:last-child::before {
+  display: none;
 }
 
-.vp-portfolio-home .home-mission__loop strong {
+.vp-portfolio-home .home-mission__loop strong,
+.vp-portfolio-home .home-steps strong {
   display: block;
-  margin-top: 0.05rem;
+  margin-top: 0.3rem;
   color: var(--vp-c-text-1);
   line-height: 1.35;
 }
 
-.vp-portfolio-home .home-mission__loop p {
+.vp-portfolio-home .home-mission__loop p,
+.vp-portfolio-home .home-steps p {
   margin: 0.2rem 0 0;
   color: var(--vp-c-text-2);
   font-size: var(--home-type-meta);
   line-height: 1.55;
 }
 
+.vp-portfolio-home .home-mission__return {
+  width: 0.9em;
+  height: 0.9em;
+  margin-left: 0.35rem;
+  vertical-align: -0.1em;
+  color: var(--dl-accent-text);
+}
+
+// About ----------------------------------------------------------------------
 .vp-portfolio-home .home-hero-grid,
 .vp-portfolio-home .home-highlight-grid {
   display: grid;
@@ -1928,68 +2087,25 @@ body {
   margin: 1.25rem 0 1.5rem;
 }
 
-.vp-portfolio-home .experience-grid {
-  display: grid;
-  gap: var(--dl-space-4);
-  margin-top: 1rem;
-}
-
-.vp-portfolio-home .project-grid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: var(--dl-space-4);
-  margin-top: 1rem;
-}
-
 .vp-portfolio-home .home-hero-grid {
   grid-template-columns: minmax(0, 1.18fr) minmax(0, 0.82fr);
-  grid-template-areas: "story focus";
   align-items: stretch;
 }
 
-.vp-portfolio-home .home-highlight-grid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
-
-.vp-portfolio-home .home-surface-card,
-.vp-portfolio-home .home-highlight-card,
-.vp-portfolio-home .home-connect-panel {
-  position: relative;
-  overflow: hidden;
-  border-radius: var(--dl-radius-lg);
-  border: 1px solid var(--dl-border);
-  background: var(--dl-surface);
-  box-shadow: var(--dl-shadow-1);
-  transition: background-color var(--vp-t-color);
-}
-
 .vp-portfolio-home .home-surface-card {
+  display: flex;
+  flex-direction: column;
   padding: 1.35rem 1.35rem 1.25rem;
-}
-
-.vp-portfolio-home .home-surface-card--story {
-  grid-area: story;
-  display: flex;
-  flex-direction: column;
-  gap: 0;
-}
-
-.vp-portfolio-home .home-surface-card--focus {
-  grid-area: focus;
-  display: flex;
-  flex-direction: column;
 }
 
 .vp-portfolio-home .home-surface-card .home-card-eyebrow,
 .vp-portfolio-home .home-highlight-kicker {
   position: relative;
   z-index: 1;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
   margin: 0 0 0.7rem;
-  font-size: var(--home-type-meta);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--vp-c-text-3);
 }
 
 .vp-portfolio-home .home-card-title {
@@ -2003,8 +2119,7 @@ body {
 }
 
 .vp-portfolio-home .home-card-copy,
-.vp-portfolio-home .home-highlight-card p,
-.vp-portfolio-home .home-section-intro {
+.vp-portfolio-home .home-highlight-card p {
   position: relative;
   z-index: 1;
   margin: 0;
@@ -2028,16 +2143,24 @@ body {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0;
-  margin-top: 1rem;
+  margin-top: auto;
   padding-top: 1rem;
   border-top: 1px solid var(--dl-border);
+}
+
+.vp-portfolio-home .home-surface-card .home-story-meta {
+  margin-top: 1rem;
+}
+
+.vp-portfolio-home .home-surface-card--focus .home-story-meta {
+  margin-top: auto;
+  padding-top: 1rem;
 }
 
 .vp-portfolio-home .home-story-meta__item {
   display: grid;
   gap: 0.22rem;
   padding: 0.15rem 1rem 0.15rem 0;
-  background: transparent;
 }
 
 .vp-portfolio-home .home-story-meta__item + .home-story-meta__item {
@@ -2046,65 +2169,26 @@ body {
   border-left: 1px solid var(--dl-border);
 }
 
-.vp-portfolio-home .home-story-meta__label {
-  font-size: var(--home-type-meta);
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--vp-c-text-3);
-}
-
 .vp-portfolio-home .home-story-meta__item strong {
   color: var(--vp-c-text-1);
   line-height: 1.4;
 }
 
-.vp-portfolio-home .home-tag {
-  display: inline-flex;
-  align-items: center;
-  min-height: 2rem;
-  padding: 0.35rem 0.8rem;
-  border-radius: 999px;
-  border: 1px solid var(--dl-accent-line);
-  background: var(--dl-accent-soft);
-  color: var(--vp-c-text-1);
-  font-size: var(--home-type-meta);
-  font-weight: 600;
-  letter-spacing: 0.01em;
+.vp-portfolio-home .home-surface-card--focus .home-steps {
+  margin-top: 0.1rem;
 }
 
-.vp-portfolio-home .home-focus-list {
-  position: relative;
-  z-index: 1;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--dl-space-3);
-  flex: 1;
-  align-content: center;
+.vp-portfolio-home .home-surface-card--focus .home-steps li {
+  padding-inline: 0.15rem;
 }
 
-.vp-portfolio-home .home-focus-list li {
-  position: relative;
-  margin: 0;
-  padding-left: 1.1rem;
-  color: var(--vp-c-text-2);
-  font-size: var(--home-type-body);
-  line-height: 1.7;
+.vp-portfolio-home .home-surface-card--focus .home-steps li::before {
+  left: calc(0.15rem + 1rem - 1px);
 }
 
-.vp-portfolio-home .home-focus-list li::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0.68rem;
-  width: 0.45rem;
-  height: 0.45rem;
-  border-radius: 999px;
-  background: var(--vp-c-accent);
-  box-shadow: 0 0 0 5px color-mix(in srgb, var(--vp-c-accent-soft) 80%, transparent);
+// Research (highlight cards) ------------------------------------------------
+.vp-portfolio-home .home-highlight-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .vp-portfolio-home .home-highlight-card {
@@ -2120,64 +2204,302 @@ body {
   color: var(--vp-c-text-1);
 }
 
-.vp-portfolio-home .home-highlight-card p strong,
-.vp-portfolio-home .home-section-intro strong {
+.vp-portfolio-home .home-highlight-card p strong {
   color: var(--vp-c-text-1);
 }
 
-.vp-portfolio-home [vp-content].vp-portfolio-content > #markdown-content > h3 {
-  margin-top: 1.9rem;
-  margin-bottom: 0.8rem;
+.vp-portfolio-home .home-highlight-card__link {
+  position: relative;
+  z-index: 1;
+  display: inline-flex;
+  margin-top: 0.85rem;
+  color: var(--dl-accent-text);
+  font-size: var(--home-type-meta);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.vp-portfolio-home .home-highlight-card__link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+// Updates --------------------------------------------------------------------
+.vp-portfolio-home .news-timeline {
+  margin-top: 1rem;
+}
+
+// Publications ---------------------------------------------------------------
+.vp-portfolio-home .pub-card,
+.vp-portfolio-home .pub-card[id] {
+  scroll-margin-top: var(--home-anchor-offset, 9rem);
+}
+
+// Experience, education, projects -------------------------------------------
+.vp-portfolio-home .experience-grid {
+  display: grid;
+  gap: var(--dl-space-4);
+  margin-top: 1rem;
+}
+
+.vp-portfolio-home .education-item-wrapper {
+  scroll-margin-top: var(--home-anchor-offset, 9rem);
+}
+
+.vp-portfolio-home .project-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--dl-space-4);
+  margin-top: 1rem;
+}
+
+// Knowledge base atlas -------------------------------------------------------
+.vp-portfolio-home .knowledge-atlas-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--dl-space-4);
+  margin: 1rem 0;
+}
+
+.vp-portfolio-home .knowledge-atlas-card {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  padding: 1.25rem 1.25rem 1.15rem;
+  border: 1px solid var(--dl-border);
+  border-radius: var(--dl-radius-lg);
+  background: var(--dl-surface);
+  color: inherit;
+  text-decoration: none;
+  box-shadow: var(--dl-shadow-2);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color var(--vp-t-color);
+}
+
+.vp-portfolio-home .knowledge-atlas-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto;
+  height: 4px;
+  background: linear-gradient(90deg, var(--vp-c-accent), color-mix(in srgb, var(--vp-c-accent) 18%, transparent));
+}
+
+.vp-portfolio-home .knowledge-atlas-card:hover {
+  border-color: var(--dl-accent-line);
+  box-shadow: var(--dl-shadow-3);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .vp-portfolio-home .knowledge-atlas-card:hover {
+    transform: translateY(-3px);
+  }
+}
+
+.vp-portfolio-home .knowledge-atlas-card:active {
+  transform: translateY(0) scale(0.99);
+  box-shadow: var(--dl-shadow-1);
+  transition-duration: 0.08s;
+}
+
+.vp-portfolio-home .knowledge-atlas-card__head {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 0 0 0.9rem;
+}
+
+.vp-portfolio-home .knowledge-atlas-card__eyebrow {
+  margin: 0;
+}
+
+.vp-portfolio-home .knowledge-atlas-card h3 {
+  margin: 0 0 0.55rem;
+  color: var(--vp-c-text-1);
+  font-size: var(--home-type-section);
+  letter-spacing: -0.025em;
+}
+
+.vp-portfolio-home .knowledge-atlas-card > p:not(.knowledge-atlas-card__eyebrow) {
+  margin: 0;
+  color: var(--vp-c-text-2);
+  font-size: var(--home-type-body);
+  line-height: 1.65;
+}
+
+.vp-portfolio-home .knowledge-atlas-card__link {
+  margin-top: auto;
+  padding-top: 0.85rem;
+  color: var(--dl-accent-text);
+  font-size: var(--home-type-meta);
+  font-weight: 700;
+}
+
+.vp-portfolio-home .knowledge-atlas-note {
+  display: grid;
+  grid-template-columns: minmax(150px, 0.35fr) minmax(0, 1fr);
+  gap: var(--dl-space-4);
+  align-items: start;
+  margin: 1rem 0 0;
   padding: 1rem 1.1rem;
   border: 1px solid var(--dl-border);
   border-radius: var(--dl-radius-md);
-  background: var(--dl-surface);
-  box-shadow: var(--dl-shadow-1);
-}
-
-.vp-portfolio-home [vp-content].vp-portfolio-content > #markdown-content > h3 strong {
-  color: inherit;
-}
-
-.vp-portfolio-home [vp-content].vp-portfolio-content > #markdown-content > ul {
-  margin: 0.9rem 0 0;
-  padding: 1rem 1.15rem 1rem 2rem;
-  border-radius: var(--dl-radius-md);
-  border: 1px solid var(--dl-border);
   background: var(--dl-chip);
 }
 
-.vp-portfolio-home [vp-content].vp-portfolio-content > #markdown-content > ul > li {
-  margin-bottom: 0.55rem;
+.vp-portfolio-home .knowledge-atlas-note strong {
+  color: var(--vp-c-text-1);
 }
 
-.vp-portfolio-home [vp-content].vp-portfolio-content > #markdown-content > h3 + p {
-  margin-top: 0.15rem;
-  margin-bottom: 0.85rem;
-  padding: 0.95rem 1.05rem;
-  border-radius: var(--dl-radius-md);
+.vp-portfolio-home .knowledge-atlas-note p {
+  margin: 0;
+  color: var(--vp-c-text-2);
+  font-size: var(--home-type-body);
+  line-height: 1.65;
+}
+
+.vp-portfolio-home .knowledge-atlas-note__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  margin-top: 0.6rem !important;
+}
+
+.vp-portfolio-home .knowledge-atlas-note__links a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 2rem;
+  color: var(--dl-accent-text);
+  font-size: var(--home-type-meta);
+  font-weight: 700;
+}
+
+// Tech stack -----------------------------------------------------------------
+.vp-portfolio-home .tech-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--dl-space-4);
+  align-items: stretch;
+  margin: 1rem 0 0;
+}
+
+.vp-portfolio-home .tech-card {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  min-height: 0;
+  box-sizing: border-box;
+  padding: 1.2rem 1.25rem 1.25rem;
+}
+
+.vp-portfolio-home .tech-card__header {
+  display: flex;
+  align-items: center;
+  gap: var(--dl-space-2);
+  margin: 0 0 0.8rem;
+}
+
+.vp-portfolio-home .tech-card h3 {
+  margin: 0 0 0.55rem;
+  color: var(--vp-c-text-1);
+  font-size: var(--home-type-title);
+  line-height: 1.3;
+  letter-spacing: -0.02em;
+}
+
+.vp-portfolio-home .tech-card__description {
+  margin: 0;
+  color: var(--vp-c-text-2);
+  font-size: var(--home-type-body);
+  line-height: 1.65;
+}
+
+.vp-portfolio-home .tech-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--dl-space-1);
+  margin-top: auto;
+  padding-top: 1rem;
+}
+
+// Résumé ---------------------------------------------------------------------
+.vp-portfolio-home .home-resume {
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
+  gap: clamp(1.2rem, 3vw, 2rem);
+  align-items: center;
+  padding: clamp(1.2rem, 3vw, 1.75rem);
   border: 1px solid var(--dl-border);
+  border-radius: var(--dl-radius-lg);
   background: var(--dl-surface);
+  box-shadow: var(--dl-shadow-2);
+  transition: background-color var(--vp-t-color);
 }
 
-.vp-portfolio-home .home-section-intro {
-  margin: 0 0 1rem;
-  max-width: var(--home-prose);
+// Both pages side by side: page 1 alone ends two-thirds down (Selected
+// Publications starts the next page) and looked like a broken render.
+.vp-portfolio-home .home-resume__spread {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--dl-space-2);
+  align-items: start;
 }
 
-.vp-portfolio-home .home-publication-legend {
-  margin: -0.3rem 0 1rem;
-  padding: 0;
+.vp-portfolio-home .home-resume__spread img {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 772 / 1000;
+  border: 1px solid var(--dl-border);
+  border-radius: var(--dl-radius-sm);
+  background: var(--dl-chip);
+  box-shadow: var(--dl-shadow-2);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .vp-portfolio-home .home-resume__spread:hover img:first-child {
+    transform: translateY(-3px) rotate(-0.5deg);
+    box-shadow: var(--dl-shadow-3);
+  }
+
+  .vp-portfolio-home .home-resume__spread:hover img:last-child {
+    transform: translateY(-3px) rotate(0.5deg);
+    box-shadow: var(--dl-shadow-3);
+  }
+}
+
+// White paper on a dark surface glares; dim it a touch, keep it readable.
+[data-theme="dark"] .vp-portfolio-home .home-resume__spread img,
+[data-theme="dark"] .vp-portfolio-home .pub-img {
+  filter: brightness(0.86) contrast(1.05);
+}
+
+.vp-portfolio-home .home-resume__body {
+  min-width: 0;
+}
+
+.vp-portfolio-home .home-resume__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--dl-space-2);
+  margin-top: var(--dl-space-4);
+}
+
+.vp-portfolio-home .home-resume__note {
+  margin: var(--dl-space-2) 0 0;
   color: var(--vp-c-text-3);
   font-size: var(--home-type-meta);
-  line-height: 1.45;
 }
 
-.vp-portfolio-home .home-publication-legend strong {
-  color: var(--vp-c-accent);
-  font-size: var(--home-type-meta);
-}
-
+// Contact --------------------------------------------------------------------
 .vp-portfolio-home .home-connect-panel {
   margin-top: 0.55rem;
   padding: 1.25rem 1.25rem 1.2rem;
@@ -2186,6 +2508,7 @@ body {
 .vp-portfolio-home .home-connect {
   position: relative;
   z-index: 1;
+  max-width: var(--home-prose-wide);
   margin: 0;
   padding: 0;
   font-size: var(--home-type-body);
@@ -2195,125 +2518,88 @@ body {
   border: none;
 }
 
+.vp-portfolio-home .home-connect strong {
+  color: var(--vp-c-text-1);
+}
+
+.vp-portfolio-home .home-connect-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--dl-space-2);
+  margin-top: var(--dl-space-4);
+}
+
+.vp-portfolio-home .home-connect__email {
+  margin: 0.75rem 0 0;
+  color: var(--vp-c-text-3);
+  font-family: var(--dl-font-mono);
+  font-size: var(--home-type-caption);
+}
+
 .vp-portfolio-home .home-profile-row {
   position: relative;
   z-index: 1;
   margin-top: 1.1rem;
   padding-top: 1rem;
   border-top: 1px solid var(--dl-border);
-  scroll-margin-top: 6rem;
+  scroll-margin-top: var(--home-anchor-offset, 9rem);
 }
 
 .vp-portfolio-home .home-profile-row__label {
   display: block;
-  color: var(--vp-c-text-3);
-  font-size: var(--home-type-meta);
-  font-weight: 750;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
 }
 
 .vp-portfolio-home .home-profile-row .home-tag-row {
   margin-top: 0.65rem;
 }
 
-.vp-portfolio-home .home-tag--link {
-  text-decoration: none !important;
-  transition:
-    transform 0.2s ease,
-    border-color 0.2s ease,
-    background 0.2s ease;
-}
-
-.vp-portfolio-home .home-tag--link:hover {
-  transform: translateY(-1px);
-  border-color: var(--dl-accent-line-strong);
-  background: var(--dl-accent-soft);
-}
-
-// Dark-mode elevation is handled by `--dl-shadow-*`, so the per-component
-// overrides that used to live here are no longer needed. Components that were
-// never listed (the navbar, the affiliation chips, the crosslink cards) now get
-// correct dark shadows for free instead of keeping their light-mode values.
-
-@media (max-width: 959px) {
-  .ai-card-grid,
-  .section-card-grid,
-  .ai-path-grid,
-  .section-path-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .ai-hero,
-  .section-hero,
-  .ai-card,
-  .section-card,
-  .ai-path-card,
-  .section-path-card {
-    border-radius: var(--dl-radius-md);
-  }
-
-  .ai-hero,
-  .section-hero,
-  .ai-card,
-  .section-card,
-  .ai-path-card,
-  .section-path-card {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  .vp-portfolio-home .home-mission,
-  .vp-portfolio-home .home-hero-grid,
-  .vp-portfolio-home .home-highlight-grid,
-  .vp-portfolio-home .home-about-context {
-    grid-template-columns: 1fr;
-  }
-
-  .vp-portfolio-home .home-about-context p {
-    padding: 0;
-  }
-
-  .vp-portfolio-home .home-about-context p + p {
-    margin-top: 1rem;
-    padding-top: 1rem;
-    border-top: 1px solid var(--dl-border);
-    border-left: 0;
-  }
-
-  .vp-portfolio-home .home-hero-grid {
-    grid-template-areas:
-      "story"
-      "focus";
-  }
-
-  .vp-portfolio-home .home-card-meta {
-    max-width: 100%;
-    justify-content: flex-start;
-  }
-}
-
+// Responsive: homepage sections ---------------------------------------------
 @media (min-width: 720px) and (max-width: 1099px) {
+  .vp-portfolio-home .home-highlight-grid,
   .vp-portfolio-home .project-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  // Three cards in two columns: the last one closes the row instead of
+  // leaving an empty half.
+  .vp-portfolio-home .home-highlight-grid > :nth-child(3):last-child,
+  .vp-portfolio-home .project-grid > :nth-child(3):last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 959px) {
+  .vp-portfolio-home .home-mission,
+  .vp-portfolio-home .home-hero-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .vp-portfolio-home .home-resume {
+    grid-template-columns: 1fr;
+  }
+
+  // Keep a definite width so the lazy thumbnails reserve their box instead of
+  // collapsing to 39px and jumping the card when they load.
+  .vp-portfolio-home .home-resume__spread {
+    justify-self: stretch;
+    width: 100%;
+    max-width: 26rem;
+    margin-inline: auto;
   }
 }
 
 @media (max-width: 719px) {
-  .vp-portfolio-home {
-    --home-type-display: clamp(1.85rem, 10vw, 2.6rem);
-  }
-
-  .vp-portfolio-home .home-page-nav {
-    position: static;
-    top: auto;
-    padding: 0.5rem;
-    border-radius: var(--dl-radius-md);
-  }
-
   .vp-portfolio-home .home-hero-grid,
   .vp-portfolio-home .home-highlight-grid {
     gap: var(--dl-space-3);
+  }
+
+  .vp-portfolio-home .home-highlight-grid,
+  .vp-portfolio-home .project-grid,
+  .vp-portfolio-home .knowledge-atlas-grid,
+  .vp-portfolio-home .tech-grid {
+    grid-template-columns: 1fr;
   }
 
   .vp-portfolio-home .home-mission {
@@ -2326,6 +2612,29 @@ body {
     max-width: 15ch;
   }
 
+  .vp-portfolio-home .home-mission__signals {
+    grid-template-columns: 1fr;
+    gap: var(--dl-space-2);
+  }
+
+  .vp-portfolio-home .home-mission__signals > div {
+    display: grid;
+    grid-template-columns: 6rem 1fr;
+    align-items: center;
+    gap: var(--dl-space-3);
+    padding: 0.7rem 0.8rem;
+  }
+
+  .vp-portfolio-home .home-mission__signals dt {
+    font-size: 1.5rem;
+  }
+
+  .vp-portfolio-home .home-mission__signals dd {
+    min-height: 0;
+    margin: 0;
+    font-size: var(--home-type-meta);
+  }
+
   .vp-portfolio-home .home-mission__actions {
     display: grid;
     grid-template-columns: 1fr;
@@ -2333,6 +2642,7 @@ body {
 
   .vp-portfolio-home .home-mission__button {
     width: 100%;
+    min-height: 2.75rem;
     box-sizing: border-box;
   }
 
@@ -2343,19 +2653,14 @@ body {
 
   .vp-portfolio-home .home-surface-card,
   .vp-portfolio-home .home-highlight-card,
-  .vp-portfolio-home .home-connect-panel {
+  .vp-portfolio-home .home-connect-panel,
+  .vp-portfolio-home .knowledge-atlas-card {
+    padding-left: 1rem;
+    padding-right: 1rem;
     border-radius: var(--dl-radius-md);
   }
 
-  .vp-portfolio-home .home-surface-card,
-  .vp-portfolio-home .home-highlight-card,
-  .vp-portfolio-home .home-connect-panel {
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-
-  .vp-portfolio-home .home-story-meta,
-  .vp-portfolio-home .home-focus-list {
+  .vp-portfolio-home .home-story-meta {
     grid-template-columns: 1fr;
   }
 
@@ -2367,51 +2672,166 @@ body {
     border-left: 0;
   }
 
-  .vp-portfolio-home .project-grid {
+  .vp-portfolio-home .knowledge-atlas-note {
     grid-template-columns: 1fr;
   }
 
-  .tech-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .tech-card {
-    min-height: 0;
-  }
-
-  .pub-card {
-    grid-template-columns: 1fr;
-    gap: var(--dl-space-4);
-    padding: 1.05rem 1rem;
-  }
-
-  .pub-head {
-    max-width: 100%;
-  }
-
-  .vp-portfolio-home #portfolio.vp-portfolio .vp-portfolio-medias,
-  .vp-portfolio-home #portfolio.vp-portfolio .vp-social-medias {
-    align-self: center;
-    justify-content: center !important;
+  .vp-portfolio-home .home-resume__spread {
+    max-width: 18rem;
   }
 }
 
 // ---------------------------------------------------------------------------
-// Knowledge system: learning flows, cross-links, and homepage atlas
+// 7. Section landing pages
 // ---------------------------------------------------------------------------
-.knowledge-hero {
-  padding-block: clamp(1.25rem, 3vw, 2rem);
+.section-hero {
+  position: relative;
+  overflow: hidden;
+  margin: 1rem 0 1.5rem;
+  padding: clamp(1.25rem, 3vw, 2rem) 1.35rem;
+  border: 1px solid var(--dl-border);
+  border-radius: var(--dl-radius-lg);
+  background:
+    radial-gradient(circle at 100% 0%, var(--dl-accent-wash), transparent 46%),
+    var(--dl-surface);
+  box-shadow: var(--dl-shadow-2);
 }
 
+.section-hero::before,
+.section-card::before,
+.section-path-card::before,
+.knowledge-flow__item::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--vp-c-accent), color-mix(in srgb, var(--vp-c-accent) 18%, transparent));
+}
+
+.section-eyebrow,
+.section-card__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  margin: 0 0 0.45rem;
+  font-size: var(--home-type-eyebrow);
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--vp-c-text-3);
+}
+
+.section-hero h2,
 .knowledge-hero h2 {
   max-width: 18ch;
+  margin: 0 0 0.55rem;
   font-size: clamp(1.55rem, 3.5vw, 2.35rem);
   line-height: 1.12;
   letter-spacing: -0.035em;
 }
 
-.knowledge-hero p {
+.section-hero p {
   max-width: 54rem;
+  margin: 0;
+  color: var(--vp-c-text-2);
+  line-height: 1.7;
+}
+
+.section-pill-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--dl-space-1);
+  margin-top: 1rem;
+}
+
+.section-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: var(--dl-chip-h-sm);
+  padding: 0.24rem var(--dl-chip-px-sm);
+  border-radius: 999px;
+  border: 1px solid var(--dl-border);
+  background: var(--dl-chip);
+  color: var(--vp-c-text-2);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.section-card-grid,
+.section-path-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: var(--dl-space-4);
+  margin: 1rem 0 1.4rem;
+}
+
+.section-card,
+.section-path-card {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border: 1px solid var(--dl-border);
+  border-radius: var(--dl-radius-lg);
+  padding: 1rem 1.05rem 1.05rem;
+  background: var(--dl-surface);
+  box-shadow: var(--dl-shadow-1);
+  transition:
+    transform 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background-color var(--vp-t-color);
+}
+
+.section-card {
+  color: inherit;
+  text-decoration: none;
+}
+
+.section-card:hover,
+.section-path-card:hover {
+  border-color: var(--dl-accent-line);
+  box-shadow: var(--dl-shadow-3);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .section-card:hover,
+  .section-path-card:hover {
+    transform: translateY(-2px);
+  }
+}
+
+.section-card:active {
+  transform: translateY(0) scale(0.99);
+  box-shadow: var(--dl-shadow-1);
+  transition-duration: 0.08s;
+}
+
+.section-card h3,
+.section-path-card h3 {
+  margin: 0 0 0.45rem;
+  color: var(--vp-c-text-1);
+}
+
+.section-card p,
+.section-path-card p {
+  margin: 0;
+  color: var(--vp-c-text-2);
+  line-height: 1.65;
+}
+
+.section-path-card ol {
+  margin: 0.7rem 0 0;
+  padding-left: 1.2rem;
+}
+
+.section-path-card li {
+  margin: 0.38rem 0;
+  color: var(--vp-c-text-2);
+}
+
+.section-path-card a,
+.section-hero a {
+  font-weight: 600;
 }
 
 .knowledge-flow {
@@ -2432,18 +2852,6 @@ body {
   box-shadow: var(--dl-shadow-1);
 }
 
-.knowledge-flow__item::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto;
-  height: 3px;
-  background: linear-gradient(
-    90deg,
-    var(--vp-c-accent),
-    color-mix(in srgb, var(--vp-c-accent) 14%, transparent)
-  );
-}
-
 .knowledge-flow__index {
   display: inline-flex;
   align-items: center;
@@ -2453,8 +2861,9 @@ body {
   margin-bottom: 0.7rem;
   border-radius: 999px;
   background: var(--dl-accent-soft);
-  color: var(--vp-c-accent);
-  font-size: 0.7rem;
+  color: var(--dl-accent-text);
+  font-family: var(--dl-font-mono);
+  font-size: 0.78rem;
   font-weight: 800;
   letter-spacing: 0.04em;
 }
@@ -2500,160 +2909,28 @@ body {
 }
 
 .knowledge-crosslinks a:hover {
-  transform: translateY(-2px);
   border-color: var(--dl-accent-line-strong);
   box-shadow: var(--dl-shadow-3);
 }
 
-.vp-portfolio-home .knowledge-atlas-grid {
-  display: grid;
-  grid-template-columns: repeat(6, minmax(0, 1fr));
-  gap: var(--dl-space-4);
-  margin: 1rem 0;
+@media (hover: hover) and (pointer: fine) {
+  .knowledge-crosslinks a:hover {
+    transform: translateY(-2px);
+  }
 }
 
-.vp-portfolio-home .knowledge-atlas-card {
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  min-height: 17rem;
-  padding: 1.25rem 1.25rem 1.15rem;
-  border: 1px solid var(--dl-border);
-  border-radius: var(--dl-radius-lg);
-  background: var(--dl-surface);
-  color: inherit;
-  text-decoration: none;
-  box-shadow: var(--dl-shadow-2);
-  transition:
-    transform 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    background-color var(--vp-t-color);
-  grid-column: span 2;
-}
-
-.vp-portfolio-home .knowledge-atlas-card:nth-child(4):nth-last-child(2),
-.vp-portfolio-home .knowledge-atlas-card:nth-child(5):last-child {
-  grid-column: span 3;
-}
-
-.vp-portfolio-home .knowledge-atlas-card::before {
-  content: "";
-  position: absolute;
-  inset: 0 0 auto;
-  height: 4px;
-  background: linear-gradient(
-    90deg,
-    var(--vp-c-accent),
-    color-mix(in srgb, var(--vp-c-accent) 18%, transparent)
-  );
-}
-
-.vp-portfolio-home .knowledge-atlas-card:hover {
-  transform: translateY(-3px);
-  border-color: var(--dl-accent-line);
-  box-shadow: var(--dl-shadow-3);
-}
-
-.vp-portfolio-home .knowledge-atlas-card__index {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: 2.25rem;
-  height: 2.25rem;
-  margin-bottom: 1.2rem;
-  border-radius: 999px;
-  background: var(--dl-accent-soft);
-  color: var(--vp-c-accent);
-  font-size: var(--home-type-meta);
-  font-weight: 800;
-}
-
-.vp-portfolio-home .knowledge-atlas-card__eyebrow {
-  margin: 0 0 0.55rem;
-  color: var(--vp-c-text-3);
-  font-size: var(--home-type-meta);
-  font-weight: 750;
-  letter-spacing: 0.08em;
-  line-height: 1.5;
-  text-transform: uppercase;
-}
-
-.vp-portfolio-home .knowledge-atlas-card h3 {
-  margin: 0 0 0.65rem;
-  color: var(--vp-c-text-1);
-  font-size: var(--home-type-section);
-  letter-spacing: -0.025em;
-}
-
-.vp-portfolio-home .knowledge-atlas-card > p:not(.knowledge-atlas-card__eyebrow) {
-  margin: 0;
-  color: var(--vp-c-text-2);
-  font-size: var(--home-type-body);
-  line-height: 1.65;
-}
-
-.vp-portfolio-home .knowledge-atlas-card__link {
-  margin-top: auto;
-  padding-top: 1rem;
-  color: var(--vp-c-accent);
-  font-size: var(--home-type-meta);
-  font-weight: 700;
-}
-
-.vp-portfolio-home .knowledge-atlas-note {
-  display: grid;
-  grid-template-columns: minmax(150px, 0.35fr) minmax(0, 1fr);
-  gap: var(--dl-space-4);
-  align-items: start;
-  margin: 1rem 0 0;
-  padding: 1rem 1.1rem;
-  border: 1px solid var(--dl-border);
-  border-radius: var(--dl-radius-md);
-  background: var(--dl-chip);
-}
-
-.vp-portfolio-home .knowledge-atlas-note strong {
-  color: var(--vp-c-text-1);
-}
-
-.vp-portfolio-home .knowledge-atlas-note p {
-  margin: 0;
-  color: var(--vp-c-text-2);
-  font-size: var(--home-type-body);
-  line-height: 1.65;
-}
-
-.vp-portfolio-home .knowledge-atlas-note__links {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.55rem 1rem;
-  margin-top: 0.7rem !important;
-}
-
-.vp-portfolio-home .knowledge-atlas-note__links a {
-  font-size: var(--home-type-meta);
-  font-weight: 700;
-}
-
-@media (max-width: 1199px) {
-  .vp-portfolio-home .knowledge-atlas-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+@media (max-width: 959px) {
+  .section-card-grid,
+  .section-path-grid {
+    grid-template-columns: 1fr;
   }
 
-  // Reset the desktop spans before applying the simpler two-column rhythm.
-  .vp-portfolio-home .knowledge-atlas-card,
-  .vp-portfolio-home .knowledge-atlas-card:nth-child(4):nth-last-child(2),
-  .vp-portfolio-home .knowledge-atlas-card:nth-child(5):last-child {
-    min-height: 15rem;
-    grid-column: auto;
-  }
-
-  // With five destinations, let the final card close the row instead of
-  // leaving an empty half-width track.
-  .vp-portfolio-home .knowledge-atlas-card:nth-child(odd):last-child {
-    grid-column: 1 / -1;
+  .section-hero,
+  .section-card,
+  .section-path-card {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    border-radius: var(--dl-radius-md);
   }
 }
 
@@ -2665,52 +2942,19 @@ body {
   .knowledge-flow__item {
     min-height: 0;
   }
-
-  .vp-portfolio-home .knowledge-atlas-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .vp-portfolio-home .knowledge-atlas-card {
-    min-height: 0;
-    padding: 1.1rem 1rem;
-    border-radius: var(--dl-radius-md);
-  }
-
-  .vp-portfolio-home .knowledge-atlas-card:nth-child(odd):last-child {
-    grid-column: auto;
-  }
-
-  .vp-portfolio-home .knowledge-atlas-note {
-    grid-template-columns: 1fr;
-  }
 }
 
 // ---------------------------------------------------------------------------
-// Article pages
+// 8. Note pages, blog list, tabs, code, sidebar
 //
-// Everything above this line styles the portfolio home and the section landing
-// pages. The ~1,500 note pages were left on the theme defaults, so they read as
-// a different site: bare text on the canvas, blue code panels against a warm
-// page, and a sidebar with no selected state to speak of.
-//
-// `main.vp-page` with no second class is a note page — the theme tags the other
-// layouts as `vp-blog`, `vp-blog-home`, `vp-portfolio-home` or `vp-project-home`.
+// `main.vp-page` with no second class is a note page — the theme tags the
+// other layouts as `vp-blog`, `vp-blog-home`, `vp-portfolio-home` or
+// `vp-project-home`.
 // ---------------------------------------------------------------------------
 $doc-page: "main.vp-page:not(.vp-blog):not(.vp-blog-home):not(.vp-portfolio-home):not(.vp-project-home)";
 
-:root {
-  // Modern mono stack. The theme's block-code stack starts at Consolas, which
-  // is not installed on macOS, so blocks fell through to Monaco while inline
-  // code (a different stack) resolved to SF Mono — two monospaced faces on the
-  // same page.
-  --dl-font-mono: ui-monospace, "SF Mono", SFMono-Regular, "JetBrains Mono",
-    "Cascadia Code", Menlo, Consolas, "Liberation Mono", monospace;
-  --code-border-radius: var(--dl-radius-md);
-}
-
 #{$doc-page} {
-  // The note body becomes a sheet on the canvas, matching the card language the
-  // rest of the site now uses.
+  // The note body becomes a sheet on the canvas, matching the card language.
   > [vp-content] {
     padding: 1.75rem 2.5rem 2.5rem;
     border: 1px solid var(--dl-border);
@@ -2719,8 +2963,12 @@ $doc-page: "main.vp-page:not(.vp-blog):not(.vp-blog-home):not(.vp-portfolio-home
     box-shadow: var(--dl-shadow-1);
   }
 
+  // The theme implements anchor offsets on headings with a negative top
+  // margin paired with `padding-top: calc(1rem + navbar)`. Overriding the
+  // margin alone once added ~100px of dead space above every h2; the visual
+  // gap is set here as (desired gap − 1rem − navbar).
   #markdown-content > h2 {
-    margin-top: 2.75rem;
+    margin-top: calc(1.75rem - var(--navbar-height, 3.75rem));
     padding-bottom: 0.4rem;
     border-bottom: 1px solid var(--dl-border);
     letter-spacing: -0.02em;
@@ -2730,8 +2978,6 @@ $doc-page: "main.vp-page:not(.vp-blog):not(.vp-blog-home):not(.vp-portfolio-home
     letter-spacing: -0.01em;
   }
 
-  // Blockquotes had no left rule at all — only a color change, which is easy to
-  // miss in a wall of technical prose.
   #markdown-content blockquote {
     margin-inline: 0;
     padding: 0.2rem 0 0.2rem 1.1rem;
@@ -2739,9 +2985,16 @@ $doc-page: "main.vp-page:not(.vp-blog):not(.vp-blog-home):not(.vp-portfolio-home
     color: var(--vp-c-text-2);
   }
 
+  // Keep the theme's horizontal scroll for wide tables on phones (the old
+  // `overflow: hidden` clipped the right-hand columns).
   #markdown-content table {
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: thin;
+    scrollbar-color: var(--dl-accent-line) transparent;
     border-radius: var(--dl-radius-sm);
-    overflow: hidden;
     border: 1px solid var(--dl-border);
     border-collapse: separate;
     border-spacing: 0;
@@ -2762,11 +3015,6 @@ $doc-page: "main.vp-page:not(.vp-blog):not(.vp-blog-home):not(.vp-portfolio-home
     border-bottom: none;
   }
 
-  // The theme renders breadcrumb, title, body, meta and prev/next as five
-  // siblings of `main`, so the sheet above only wraps the body. Rather than
-  // fight that, the title becomes a page header sitting on the canvas and the
-  // footer chrome below the sheet is grouped and quietened, which reads as
-  // deliberate structure instead of a stray box.
   > .vp-breadcrumb {
     padding-bottom: 0.15rem;
     font-size: 0.86rem;
@@ -2781,11 +3029,8 @@ $doc-page: "main.vp-page:not(.vp-blog):not(.vp-blog-home):not(.vp-portfolio-home
     letter-spacing: -0.03em;
   }
 
-  // These siblings are all `content-box` with `max-width: 780px` and their own
-  // horizontal padding, so their outer edges only line up with the sheet when
-  // that padding matches the sheet's 40px. Left alone, the meta row sat 24px
-  // narrower than the article above it and the prev/next row 8px narrower —
-  // three different left edges down one page.
+  // These siblings are content-box with their own horizontal padding; the
+  // outer edges only line up with the sheet when that padding matches its 40px.
   > .vp-page-meta {
     margin-top: 1.1rem;
     padding-block: 0.85rem;
@@ -2800,7 +3045,6 @@ $doc-page: "main.vp-page:not(.vp-blog):not(.vp-blog-home):not(.vp-portfolio-home
     padding-inline: 40px;
   }
 
-  // Prev / next was a pair of bare links under a top rule.
   .vp-page-nav {
     margin-top: 2.5rem;
     padding-top: 1.5rem;
@@ -2818,11 +3062,10 @@ $doc-page: "main.vp-page:not(.vp-blog):not(.vp-blog-home):not(.vp-portfolio-home
       border-color 0.2s ease,
       transform 0.2s ease,
       box-shadow 0.2s ease,
-    background-color var(--vp-t-color);
+      background-color var(--vp-t-color);
   }
 
   .vp-page-nav a:hover {
-    transform: translateY(-1px);
     border-color: var(--dl-accent-line);
     box-shadow: var(--dl-shadow-1);
   }
@@ -2838,7 +3081,7 @@ div[class*="language-"] code {
   font-family: var(--dl-font-mono);
 }
 
-// Sidebar: the selected page was distinguishable only by text color.
+// Sidebar: the selected page was distinguishable only by text colour.
 .vp-sidebar {
   background: var(--dl-surface);
   border-inline-end: 1px solid var(--dl-border);
@@ -2860,8 +3103,41 @@ div[class*="language-"] code {
 .vp-sidebar .vp-sidebar-link.active,
 .vp-sidebar .vp-sidebar-header.active {
   background: var(--dl-accent-soft);
-  color: var(--vp-c-accent);
+  color: var(--dl-accent-text);
   font-weight: 700;
+}
+
+// Blog list (/article/): the only page that still used the theme's own
+// surfaces — white page in light, 1.06:1 cards in dark.
+.vp-page.vp-blog {
+  background: transparent;
+}
+
+.vp-blog-main .vp-article-item,
+.vp-blog-info-wrapper .vp-blogger-info,
+.vp-blog-info-wrapper .vp-blog-infos {
+  background: var(--dl-surface);
+  border: 1px solid var(--dl-border);
+  border-radius: var(--dl-radius-lg);
+  box-shadow: var(--dl-shadow-1);
+}
+
+.vp-blog-main .vp-article-item .vp-article-hr {
+  border-color: var(--dl-border);
+}
+
+.vp-blogger-avatar {
+  border-radius: 50%;
+}
+
+// Category / tag / timeline counters read "0" because notes carry no such
+// frontmatter; only the article count is meaningful.
+.vp-blogger-info .vp-blog-count:not(:first-child) {
+  display: none;
+}
+
+.vp-blogger-info .vp-blog-counts {
+  justify-content: center;
 }
 
 @media (max-width: 959px) {
@@ -2871,11 +3147,23 @@ div[class*="language-"] code {
   }
 }
 
+// Tablet: the sidebar stays open, so give the prose the room the card chrome
+// was taking.
+@media (min-width: 720px) and (max-width: 959px) {
+  #{$doc-page} > [vp-content] {
+    padding-inline: 1rem;
+    border-radius: var(--dl-radius-sm);
+  }
+
+  #{$doc-page} > .vp-page-meta,
+  #{$doc-page} > .vp-page-nav {
+    padding-inline: 1rem;
+  }
+}
+
 @media (max-width: 719px) {
   // Full-bleed on a phone: a rounded sheet with margins wastes the little
-  // horizontal room a code block has. The meta and prev/next blocks follow the
-  // same edges, otherwise their 40px desktop gutter leaves them indented from
-  // the article they belong to.
+  // horizontal room a code block has.
   #{$doc-page} > [vp-content],
   #{$doc-page} > .vp-page-meta {
     padding-inline: 1rem;
@@ -2889,30 +3177,17 @@ div[class*="language-"] code {
 }
 
 // The theme cross-fades the page background over `--vp-t-color` when the
-// appearance toggle flips, but the surfaces introduced above had no colour
-// transition, so every card and panel snapped a beat ahead of the page behind
-// it. These are the large ones — small chips inside an already-changing card
-// are not worth the extra property.
+// appearance toggle flips; the large surfaces follow so nothing snaps ahead.
 #{$doc-page} > [vp-content],
 #{$doc-page} > .vp-page-meta,
 .vp-sidebar,
-div[class*="language-"],
-.vp-portfolio-home .home-mission,
-.vp-portfolio-home .home-mission__loop {
+div[class*="language-"] {
   transition:
     background-color var(--vp-t-color),
     border-color var(--vp-t-color);
 }
 
-// ---------------------------------------------------------------------------
-// Tab groups used inside the technical notes
-//
-// The theme ships these with a cool grey #ebebef rail, 8px radii and the hard
-// #c2c2c4 border — three values that predate the token scale and are the last
-// obviously "default theme" surface left on the homepage. The active tab was
-// also the same white as the inactive ones, distinguishable only by a sliding
-// underline, which is hard to read at a glance in a seven-tab row.
-// ---------------------------------------------------------------------------
+// Tab groups inside the notes.
 .vp-tabs {
   border: 1px solid var(--dl-border);
   border-radius: var(--dl-radius-md);
@@ -2953,8 +3228,6 @@ div[class*="language-"],
   box-shadow: inset 0 0 0 1px var(--dl-accent-line);
 }
 
-// The sliding underline is redundant once the active tab is a filled pill, and
-// at 8px tall it collided with the pill's own rounding.
 .vp-tabs .vp-tab-nav::after {
   display: none;
 }
@@ -2963,226 +3236,128 @@ div[class*="language-"],
   padding: 1.1rem 1.15rem 1.2rem;
 }
 
-// Closing note under a section's cards — quieter than body copy, and it should
-// not inherit the card grid's top margin.
-.vp-portfolio-home .home-section-outro {
-  margin: 1.1rem 0 0;
-  max-width: var(--home-prose);
-  color: var(--vp-c-text-3);
-  font-size: var(--home-type-meta);
-  line-height: 1.65;
-}
-
-.vp-portfolio-home .home-section-outro a {
-  font-weight: 650;
-}
-
 // ---------------------------------------------------------------------------
-// Actions
+// 9. Footer
 //
-// Matches `.pub-action` on the publication cards so a button reads the same
-// wherever it appears on the page.
+// The theme's footer is one centred line on a bare rule. The HTML string in
+// theme.ts renders the columns below; the copyright line stays the theme's.
 // ---------------------------------------------------------------------------
-.vp-portfolio-home .home-action {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  box-sizing: border-box;
-  height: 2.5rem;
-  padding: 0 0.95rem;
-  gap: 0.42rem;
-  border: 1px solid var(--dl-border);
-  border-radius: 999px;
-  background: var(--dl-chip);
-  color: var(--vp-c-text-1);
-  font-size: var(--home-type-meta);
-  font-weight: 700;
-  line-height: 1;
-  text-decoration: none !important;
-  transition:
-    transform 0.2s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease,
-    background-color 0.2s ease;
-}
-
-.vp-portfolio-home .home-action:hover {
-  transform: translateY(-1px);
-  border-color: var(--dl-accent-line);
-  box-shadow: var(--dl-shadow-1);
-}
-
-.vp-portfolio-home .home-action--primary {
-  border-color: var(--dl-accent-line-strong);
-  background: var(--vp-c-accent);
-  color: var(--vp-c-accent-text, #fff);
-}
-
-.vp-portfolio-home .home-action--primary:hover {
-  background: var(--vp-c-accent-hover);
-  color: var(--vp-c-accent-text, #fff);
-}
-
-// ---------------------------------------------------------------------------
-// Résumé
-// ---------------------------------------------------------------------------
-.vp-portfolio-home .home-resume {
-  display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1fr);
-  gap: clamp(1.2rem, 3vw, 2rem);
-  align-items: center;
-  padding: clamp(1.2rem, 3vw, 1.75rem);
-  border: 1px solid var(--dl-border);
-  border-radius: var(--dl-radius-lg);
-  background: var(--dl-surface);
-  box-shadow: var(--dl-shadow-2);
-}
-
-// Both pages, side by side. Showing page 1 alone was misleading: it ends
-// two-thirds down because Selected Publications does not fit in the remainder
-// and starts the next page, so on its own the thumbnail looked like a broken
-// render rather than a page break.
-.vp-portfolio-home .home-resume__spread {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--dl-space-2);
-  align-items: start;
-}
-
-.vp-portfolio-home .home-resume__spread::after {
-  // Same reason as the old single preview: the plugin's external-link arrow
-  // has nowhere sensible to sit on a link that wraps images.
-  display: none;
-}
-
-.vp-portfolio-home .home-resume__spread img {
+.vp-footer-wrapper {
   display: block;
-  box-sizing: border-box;
-  width: 100%;
-  height: auto;
-  border: 1px solid var(--dl-border);
-  border-radius: var(--dl-radius-sm);
-  background: #fff;
-  box-shadow: var(--dl-shadow-2);
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+  margin-top: 3rem;
+  padding: 2.5rem max(1.5rem, calc((100% - min(84%, 1200px)) / 2)) 1.5rem;
+  background: var(--dl-canvas);
+  border-top: 1px solid var(--dl-border);
+  text-align: start;
+  transition: background-color var(--vp-t-color);
 }
 
-.vp-portfolio-home .home-resume__spread:hover img:first-child {
-  transform: translateY(-3px) rotate(-0.5deg);
-  box-shadow: var(--dl-shadow-3);
+.vp-page + .vp-footer-wrapper {
+  margin-top: 2rem;
 }
 
-.vp-portfolio-home .home-resume__spread:hover img:last-child {
-  transform: translateY(-3px) rotate(0.5deg);
-  box-shadow: var(--dl-shadow-3);
+.vp-footer-wrapper .vp-footer {
+  margin: 0;
+  color: var(--vp-c-text-2);
+  font-size: var(--home-type-meta, 0.9rem);
 }
 
-.vp-portfolio-home .home-resume__body {
+.site-footer {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1fr;
+  gap: 2rem;
+}
+
+.site-footer__col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
   min-width: 0;
 }
 
-.vp-portfolio-home .home-resume__actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--dl-space-2);
-  margin-top: var(--dl-space-4);
+.site-footer__col--brand strong {
+  color: var(--dl-ink);
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
 }
 
-.vp-portfolio-home .home-resume__note {
-  margin: var(--dl-space-2) 0 0;
+.site-footer__col--brand p {
+  max-width: 26rem;
+  margin: 0.45rem 0 0;
+  color: var(--vp-c-text-2);
+  line-height: 1.6;
+}
+
+.site-footer__label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: var(--home-type-eyebrow, 0.74rem);
+  font-weight: 750;
+  letter-spacing: 0.1em;
+  line-height: 1.4;
+  text-transform: uppercase;
   color: var(--vp-c-text-3);
-  font-size: var(--home-type-meta);
 }
 
-// Stack earlier than the other cards: below this the two pages are narrower
-// than a thumbnail needs to be.
+.site-footer a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 1.9rem;
+  color: var(--vp-c-text-2);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.site-footer a:hover {
+  color: var(--dl-accent-text);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.vp-footer-wrapper .vp-copyright {
+  margin: 1.5rem 0 0;
+  padding-top: 1rem;
+  border-top: 1px solid var(--dl-border);
+  color: var(--vp-c-text-3);
+  font-size: var(--home-type-meta, 0.9rem);
+}
+
 @media (max-width: 959px) {
-  .vp-portfolio-home .home-resume {
+  .site-footer {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+
+  .site-footer__col--brand {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 719px) {
+  .site-footer {
     grid-template-columns: 1fr;
+    gap: 1.25rem;
   }
 
-  .vp-portfolio-home .home-resume__spread {
-    max-width: 26rem;
-    justify-self: center;
+  .site-footer a {
+    min-height: 2.5rem;
   }
-}
-
-@media (max-width: 719px) {
-
-  // A full-width spread pushes the copy below the fold on a phone; the pair
-  // only has to say "this is a two-page document".
-  .vp-portfolio-home .home-resume__spread {
-    max-width: 18rem;
-  }
-}
-
-@media (max-width: 719px) {
-  // "Jun 2026 - Present · Intern May 2025 - Dec 2025" is wider than a phone
-  // column, and `nowrap` turns that into the chip's min-content width, which
-  // pushed the whole card header past the viewport where `overflow: hidden`
-  // clipped it. Let the pills wrap instead, and drop them under the title
-  // rather than keeping them ranged right in a single-column layout.
-  .vp-portfolio-home .home-card-meta {
-    max-width: 100%;
-    justify-content: flex-start;
-  }
-
-  .vp-portfolio-home .home-card-time,
-  .vp-portfolio-home .home-card-place {
-    align-items: flex-start;
-    white-space: normal;
-    line-height: 1.35;
-  }
-
-  .vp-portfolio-home .home-card-time::before,
-  .vp-portfolio-home .home-card-place::before {
-    margin-top: 0.16em;
-  }
-}
-
-// The closing section was titled "Let's Connect" but offered no way to do it:
-// topic chips and research-profile links only. The contact icons live in the
-// hero, which is a full page-scroll away by the time a reader reaches here.
-.vp-portfolio-home .home-connect-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--dl-space-2);
-  margin-top: var(--dl-space-4);
 }
 
 // ---------------------------------------------------------------------------
 // Block-level anchors: no hover underline
 //
-// The theme underlines any content link on hover:
-//   [vp-content] a:not(.header-anchor):hover { text-decoration: underline }
-// which is specificity (0,3,1). That is the right default for an inline link
-// inside a paragraph, but a number of anchors here wrap an entire card or
-// control — and `text-decoration` inherits — so hovering a knowledge-base card
-// underlined its eyebrow, its heading, its description and its call-to-action
-// simultaneously.
-//
-// Several of these already opted out at (0,2,0), which silently lost to the
-// theme on the :hover state; others (the path cards, the résumé spread) had no
-// rule at all.
-//
-// This is `!important` on purpose. Specificity alone does not settle it: this
-// stylesheet is injected ahead of the theme's, so on an equal-specificity tie
-// the theme wins on order, and `:is()` contributes only its most specific
-// argument. Rather than keep inflating the selector against a rule we do not
-// control, one deliberate `!important` covers every block anchor on the
-// portfolio home and the section pages alike.
-//
-// The affordance is unaffected: these cards already lift, brighten their border
-// and deepen their shadow on hover.
+// The theme underlines any content link on hover at specificity (0,3,1), and
+// `text-decoration` inherits, so hovering a card that is itself an anchor
+// underlined its eyebrow, heading, description and call-to-action at once.
+// This stylesheet is injected ahead of the theme's, so an equal-specificity
+// tie goes to the theme; one deliberate `!important` covers every block
+// anchor instead of inflating selectors.
 // ---------------------------------------------------------------------------
 .theme-container [vp-content] a:is(
     .home-card-shell,
     .knowledge-atlas-card,
-    .ai-card,
     .section-card,
-    .ai-path-card,
     .section-path-card,
     .home-resume__spread,
     .home-action,
@@ -3190,8 +3365,19 @@ div[class*="language-"],
     .home-tag--link,
     .home-affiliation-strip__link,
     .home-page-nav__link,
+    .home-highlight-card__link,
+    .home-hero__now-cta,
     .pub-action
   ):hover,
 .theme-container [vp-content] .knowledge-crosslinks a:hover {
   text-decoration: none !important;
+}
+
+// Small qualifier inside a story-meta value ("(Google Scholar, Aug 2026)").
+.vp-portfolio-home .home-story-meta__note {
+  display: block;
+  margin-top: 0.1rem;
+  color: var(--vp-c-text-3);
+  font-size: var(--home-type-caption);
+  font-weight: 500;
 }

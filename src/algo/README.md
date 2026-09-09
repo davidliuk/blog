@@ -2,6 +2,11 @@
 title: Algorithms
 description: A structured algorithm knowledge base covering data structures, search, optimization, dynamic programming, and interview problem solving.
 icon: sitemap
+article: false
+comment: false
+pageInfo: false
+sitemap:
+  priority: 0.8
 ---
 
 # Algorithms
@@ -91,8 +96,8 @@ icon: sitemap
   <div class="section-path-card">
     <span class="section-card__eyebrow">Foundation</span>
     <h3>建立算法心智模型</h3>
+    <p>先从数据规模与复杂度估算入手，再按下面的顺序展开。</p>
     <ol>
-      <li>数据规模与复杂度估算</li>
       <li><a href="./data-structure/">Data Structures</a></li>
       <li><a href="./search/">FOR / DFS / BFS</a></li>
       <li><a href="./optimization/">Optimization</a></li>

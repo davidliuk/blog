@@ -2,35 +2,37 @@
 title: AI Systems
 description: A complete AI knowledge system covering foundations, foundation models, engineering, applications, evaluation, and safety.
 icon: brain
+article: false
+comment: false
+pageInfo: false
+sitemap:
+  priority: 0.8
 ---
 
 # AI Systems
 
 这里把 AI 看成一个完整生命周期，而不只是一组模型：数据和目标定义问题，学习算法获得能力，训练与推理系统交付能力，应用把能力连接到用户与环境，评估和安全机制再把真实反馈带回下一轮。
 
-<div class="ai-hero knowledge-hero">
-  <p class="ai-eyebrow">AI Knowledge System</p>
+<div class="section-hero knowledge-hero">
+  <p class="section-eyebrow">AI Knowledge System</p>
   <h2>From foundations and models to reliable systems and real products.</h2>
   <p>
-    内容按六个领域组织：<strong>Foundations</strong>、<strong>Foundation Models</strong>、
-    <strong>AI Engineering</strong>、<strong>Applied AI</strong>、
-    <strong>Evaluation</strong> 与 <strong>Safety</strong>。
-    每个专题都尽量连接原理、实现、失败条件和验证方法。
+    内容按八个板块组织：<strong>Foundations</strong>、<strong>Generative AI</strong>、<strong>PyTorch</strong>、<strong>AI Engineering</strong>、<strong>Recommender Systems</strong>、<strong>Search Systems</strong>、<strong>Evaluation</strong> 与 <strong>Safety</strong>。每个专题都尽量连接原理、实现、失败条件和验证方法。
   </p>
-  <div class="ai-pill-row">
-    <span class="ai-pill">Deep Learning</span>
-    <span class="ai-pill">Foundation Models</span>
-    <span class="ai-pill">Inference</span>
-    <span class="ai-pill">Agents</span>
-    <span class="ai-pill">Recommendation</span>
-    <span class="ai-pill">Evaluation</span>
-    <span class="ai-pill">Safety</span>
+  <div class="section-pill-row">
+    <span class="section-pill">Deep Learning</span>
+    <span class="section-pill">Foundation Models</span>
+    <span class="section-pill">Inference</span>
+    <span class="section-pill">Agents</span>
+    <span class="section-pill">Recommendation</span>
+    <span class="section-pill">Evaluation</span>
+    <span class="section-pill">Safety</span>
   </div>
 </div>
 
 ## The Learning–Delivery Loop
 
-<div class="knowledge-flow knowledge-flow--ai" aria-label="AI system layers">
+<div class="knowledge-flow" aria-label="AI system layers">
   <div class="knowledge-flow__item">
     <span class="knowledge-flow__index">01</span>
     <strong>Specify</strong>
@@ -55,49 +57,49 @@ icon: brain
 
 ## Knowledge Map
 
-<div class="ai-card-grid">
-  <a class="ai-card" href="./foundation/">
-    <span class="ai-card__eyebrow">Layer 1 · Foundation</span>
+<div class="section-card-grid">
+  <a class="section-card" href="./foundation/">
+    <span class="section-card__eyebrow">02 · Learn</span>
     <h3>Foundations</h3>
     <p>数学、深度学习、语言模型、强化学习与参数高效适配。</p>
   </a>
-  <a class="ai-card" href="./gm/">
-    <span class="ai-card__eyebrow">Layer 2 · Model</span>
+  <a class="section-card" href="./gm/">
+    <span class="section-card__eyebrow">02 · Learn</span>
     <h3>Generative AI</h3>
     <p>Text、fine-tuning、alignment、inference、multimodal、RAG 与 agents。</p>
   </a>
-  <a class="ai-card" href="./pytorch/">
-    <span class="ai-card__eyebrow">Layer 3 · Implementation</span>
+  <a class="section-card" href="./pytorch/">
+    <span class="section-card__eyebrow">02 · Learn</span>
     <h3>PyTorch</h3>
     <p>Tensor、autograd、训练循环和实验组织，把概念变成可调试代码。</p>
   </a>
-  <a class="ai-card" href="./engineering/">
-    <span class="ai-card__eyebrow">Cross-layer · Production</span>
+  <a class="section-card" href="./engineering/">
+    <span class="section-card__eyebrow">03 · Deliver</span>
     <h3>AI Engineering</h3>
     <p>Data、experimentation、pipelines、deployment、monitoring 和 reproducibility。</p>
   </a>
-  <a class="ai-card" href="./rec-sys/">
-    <span class="ai-card__eyebrow">Layer 4 · Decision system</span>
+  <a class="section-card" href="./rec-sys/">
+    <span class="section-card__eyebrow">03 · Deliver</span>
     <h3>Recommender Systems</h3>
     <p>召回、粗排、精排、重排、指标与冷启动组成的工业决策链路。</p>
   </a>
-  <a class="ai-card" href="./search/">
-    <span class="ai-card__eyebrow">Layer 4 · Intent system</span>
+  <a class="section-card" href="./search/">
+    <span class="section-card__eyebrow">03 · Deliver</span>
     <h3>Search Systems</h3>
     <p>从显式 query 出发理解检索、相关性排序与搜索推荐的共性。</p>
   </a>
-  <a class="ai-card" href="./evaluation/">
-    <span class="ai-card__eyebrow">Cross-layer · Evidence</span>
+  <a class="section-card" href="./evaluation/">
+    <span class="section-card__eyebrow">04 · Evaluate</span>
     <h3>AI Evaluation</h3>
     <p>Specification、datasets、scoring、agent trajectories、failure slices 与生产反馈闭环。</p>
   </a>
-  <a class="ai-card" href="./safety/">
-    <span class="ai-card__eyebrow">Cross-layer · Risk</span>
+  <a class="section-card" href="./safety/">
+    <span class="section-card__eyebrow">04 · Evaluate</span>
     <h3>Safety & Governance</h3>
     <p>Threat model、privacy、agent authority、security、release gate 和 incident response。</p>
   </a>
-  <a class="ai-card" href="./gm/application/agent/">
-    <span class="ai-card__eyebrow">Current focus</span>
+  <a class="section-card" href="./gm/application/agent/">
+    <span class="section-card__eyebrow">03 · Deliver</span>
     <h3>Agents & Tool Use</h3>
     <p>模型如何检索能力、调用工具、管理上下文并完成长程任务。</p>
   </a>
@@ -105,9 +107,9 @@ icon: brain
 
 ## Choose a Learning Path
 
-<div class="ai-path-grid">
-  <div class="ai-path-card">
-    <span class="ai-card__eyebrow">Model builder</span>
+<div class="section-path-grid">
+  <div class="section-path-card">
+    <span class="section-card__eyebrow">Model builder</span>
     <h3>模型基础路线</h3>
     <ol>
       <li><a href="./foundation/ml/">Math for ML</a></li>
@@ -118,8 +120,8 @@ icon: brain
       <li><a href="./evaluation/">Evaluation</a></li>
     </ol>
   </div>
-  <div class="ai-path-card">
-    <span class="ai-card__eyebrow">AI systems</span>
+  <div class="section-path-card">
+    <span class="section-card__eyebrow">AI systems</span>
     <h3>LLM 系统路线</h3>
     <ol>
       <li><a href="./pytorch/">PyTorch Workflow</a></li>
@@ -131,8 +133,8 @@ icon: brain
       <li><a href="./engineering/">Deployment & Monitoring</a></li>
     </ol>
   </div>
-  <div class="ai-path-card">
-    <span class="ai-card__eyebrow">Applied ML</span>
+  <div class="section-path-card">
+    <span class="section-card__eyebrow">Applied ML</span>
     <h3>推荐与搜索路线</h3>
     <ol>
       <li><a href="./rec-sys/retrieval/">Retrieval</a></li>
@@ -143,8 +145,8 @@ icon: brain
       <li><a href="./evaluation/">Online Evaluation</a></li>
     </ol>
   </div>
-  <div class="ai-path-card">
-    <span class="ai-card__eyebrow">Responsible systems</span>
+  <div class="section-path-card">
+    <span class="section-card__eyebrow">Responsible systems</span>
     <h3>可靠与安全路线</h3>
     <ol>
       <li><a href="./evaluation/">Evaluation System</a></li>

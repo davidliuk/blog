@@ -1,3 +1,8 @@
+---
+dir:
+  order: 4
+---
+
 # Reinforcement Learning
 
 ### 1. 核心算法分类

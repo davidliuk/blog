@@ -2,6 +2,11 @@
 title: Software Engineering
 description: A practical software engineering knowledge base covering languages, data systems, middleware, delivery, observability, and engineering tools.
 icon: gears
+article: false
+comment: false
+pageInfo: false
+sitemap:
+  priority: 0.8
 ---
 
 # Software Engineering
@@ -123,12 +128,13 @@ icon: gears
   <div class="section-path-card">
     <span class="section-card__eyebrow">Language depth</span>
     <h3>语言与运行时路线</h3>
+    <p>每种语言都按同一组问题展开：类型系统、内存模型与错误处理，并发原语与 I/O 模型，标准库、包管理与构建系统，以及 Profiling 与性能诊断。</p>
     <ol>
-      <li><a href="./lang/">Language Models</a></li>
-      <li>类型系统、内存模型与错误处理</li>
-      <li>并发原语与 I/O 模型</li>
-      <li>标准库、包管理与构建系统</li>
-      <li>Profiling 与性能诊断</li>
+      <li><a href="./lang/">Languages & Runtimes</a></li>
+      <li><a href="./lang/java/">Java & JVM</a></li>
+      <li><a href="./lang/python/">Python</a></li>
+      <li><a href="./lang/golang/">Go</a></li>
+      <li><a href="./lang/cpp/">C++</a></li>
     </ol>
   </div>
 </div>

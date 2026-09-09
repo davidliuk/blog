@@ -1,26 +1,51 @@
+import type { Page } from "vuepress";
 import { hopeTheme } from "vuepress-theme-hope";
+
 import { enNavbar } from "./navbar/index.js";
+import { PERSON_ID, SITE, SITE_DESCRIPTION, person } from "./seo/person.js";
 import { enSidebar } from "./sidebar/index.js";
 
+const OG_IMAGE = `${SITE}/og.jpg`;
+const HOME_OG_TITLE = "David Liu — Reliable AI agents, beyond the demo";
+
+/** ISO timestamp of the page's first commit, when the git plugin has recorded one. */
+const gitCreatedTime = (page: { data: unknown }): string | null => {
+  const git = (page.data as { git?: { createdTime?: number } }).git;
+
+  return git?.createdTime ? new Date(git.createdTime).toISOString() : null;
+};
+
+/** Directory index pages (README.md → /algo/) are section landings, not notes. */
+const isNote = (page: Page): boolean =>
+  Boolean(page.filePathRelative) &&
+  !page.frontmatter.home &&
+  page.frontmatter.article !== false &&
+  !page.path.endsWith("/");
+
+// Styled by `.site-footer*` rules in styles/index.scss.
+const FOOTER_HTML =
+  '<div class="site-footer"><div class="site-footer__col site-footer__col--brand"><strong>David Liu</strong><p>AI systems researcher and software engineer in Seattle. Reliable infrastructure for tool-using AI agents.</p></div><div class="site-footer__col"><span class="site-footer__label">On this site</span><a href="/#research">Research</a><a href="/#publications">Publications</a><a href="/#experience">Experience</a><a href="/#projects">Projects</a><a href="/#knowledge-base">Knowledge base</a><a href="/#resume">Résumé</a></div><div class="site-footer__col"><span class="site-footer__label">Notes</span><a href="/algo/">Algorithms</a><a href="/ai/">AI Systems</a><a href="/cs/">CS Foundations</a><a href="/se/">Software Engineering</a><a href="/article/">All notes</a></div><div class="site-footer__col"><span class="site-footer__label">Elsewhere</span><a href="https://github.com/davidliuk" target="_blank" rel="me noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/davidliuk/" target="_blank" rel="me noopener noreferrer">LinkedIn</a><a href="https://scholar.google.com/citations?user=RzdCL4AAAAAJ&amp;hl=en" target="_blank" rel="me noopener noreferrer">Google Scholar</a><a href="https://openreview.net/profile?id=%7EDawei_Liu6" target="_blank" rel="me noopener noreferrer">OpenReview</a><a href="https://dblp.org/pid/57/1575-5.html" target="_blank" rel="me noopener noreferrer">DBLP</a><a href="mailto:davidliu02k@gmail.com">Email</a></div></div>';
+
 export default hopeTheme({
-  hostname: "https://davidliuk.github.io",
+  hostname: SITE,
 
   author: {
     name: "David Liu",
-    url: "https://github.com/davidliuk",
+    url: `${SITE}/`,
   },
 
-  // iconAssets: "iconfont",
-
-  logo: "/logo-ai-v4.png",
+  logo: "/logo-ai-v4-96.png",
 
   repo: "davidliuk/blog",
 
   docsDir: "src",
 
-  pageInfo: ["Author", "Original", "Date", "Category", "Tag", "ReadingTime"],
+  pageInfo: ["ReadingTime", "Word"],
 
   blog: {
+    avatar: "/avatar.jpg",
+    description: SITE_DESCRIPTION,
+    articleInfo: ["ReadingTime"],
     medias: {
       GitHub: "https://github.com/davidliuk",
       LinkedIn: "https://www.linkedin.com/in/davidliuk/",
@@ -52,19 +77,18 @@ export default hopeTheme({
 
   locales: {
     "/": {
-      // navbar
       navbar: enNavbar,
 
-      // sidebar
       sidebar: enSidebar,
 
-      footer: "David Liu · AI Systems & Infrastructure",
+      footer: FOOTER_HTML,
 
       displayFooter: true,
 
+      copyright: "Copyright © 2026 David Liu",
+
       blog: {
-        description:
-          "AI systems researcher and software engineer building reliable agents and maintaining structured notes on algorithms, AI, computer science, and production engineering.",
+        description: SITE_DESCRIPTION,
         intro: "/",
       },
 
@@ -127,6 +151,11 @@ export default hopeTheme({
       // route; embedding rendered excerpts (especially highlighted code) in
       // the global route table makes every visitor download unrelated pages.
       excerpt: false,
+      // Directory index pages are section landings; keep them out of /article/.
+      filter: (page) =>
+        page.frontmatter.article !== false &&
+        !page.path.endsWith("/") &&
+        page.path !== "/404.html",
     },
 
     icon: {
@@ -134,49 +163,133 @@ export default hopeTheme({
       assets: "fontawesome",
     },
 
-    // If you don’t need comment feature, you can remove following option
-    // The following config is for demo ONLY, if you need comment feature, please generate and use your own config, see comment plugin documentation for details.
-    // To avoid disturbing the theme developer and consuming his resources, please DO NOT use the following config directly in your production environment!!!!!
-    comment: {
-      /**
-       * Using Giscus
-       */
-      provider: "Giscus",
-      repo: "davidliuk/davidliuk.github.io",
-      repoId: "R_kgDOIgJd8g",
-      category: "Announcements",
-      categoryId: "DIC_kwDOIgJd8s4CY4CF",
+    // Giscus is not installed on davidliuk/davidliuk.github.io, so the widget
+    // rendered a 403 error box on every note page. Re-enable after installing
+    // the giscus GitHub app on that repository and regenerating repoId /
+    // categoryId from https://giscus.app.
+    comment: false,
 
-      /**
-       * Using Twikoo
-       */
-      // provider: "Twikoo",
-      // envId: "https://twikoo.ccknbc.vercel.app",
+    seo: {
+      canonical: SITE,
+      fallBackImage: OG_IMAGE,
+      isArticle: isNote,
+      ogp: (ogp, page) => {
+        const isHome = page.path === "/";
+        const title = isHome ? HOME_OG_TITLE : ogp["og:title"];
+        const image = ogp["og:image"];
+        // A frontmatter `date` (already in ogp) wins; git fills the gap.
+        const published = ogp["article:published_time"] ?? gitCreatedTime(page);
 
-      /**
-       * Using Waline
-       */
-      // provider: "Waline",
-      // serverURL: "https://vuepress-theme-hope-comment.vercel.app",
+        return {
+          ...ogp,
+          ...(isHome ? { "og:title": title } : {}),
+          ...(image === OG_IMAGE
+            ? {
+                "og:image:width": "1200",
+                "og:image:height": "630",
+                "og:image:type": "image/jpeg",
+              }
+            : {}),
+          "og:image:alt": title,
+          "twitter:card": "summary_large_image",
+          "twitter:image": image,
+          "twitter:image:alt": title,
+          ...(published && ogp["og:type"] === "article"
+            ? { "article:published_time": published }
+            : {}),
+        } as typeof ogp;
+      },
+      jsonLd: (jsonLd, page) => {
+        if (page.path === "/") {
+          return {
+            "@context": "https://schema.org",
+            "@graph": [
+              {
+                "@type": "ProfilePage",
+                "@id": `${SITE}/#profile`,
+                url: `${SITE}/`,
+                name: page.title || "David Liu",
+                description: page.frontmatter.description,
+                mainEntity: { "@id": PERSON_ID },
+              },
+              person,
+            ],
+          } as unknown as typeof jsonLd;
+        }
+
+        if (jsonLd["@type"] !== "Article") return jsonLd;
+
+        const published = jsonLd.datePublished ?? gitCreatedTime(page);
+
+        return {
+          ...jsonLd,
+          mainEntityOfPage: `${SITE}${page.path}`,
+          ...(published ? { datePublished: published } : {}),
+          author: [
+            { "@type": "Person", "@id": PERSON_ID, name: "David Liu", url: `${SITE}/` },
+          ],
+        } as typeof jsonLd;
+      },
+    },
+
+    sitemap: {
+      changefreq: "monthly",
     },
 
     pwa: {
       favicon: "/assets/icon/favicon-v4.png",
       themeColor: "#17352f",
       cacheHTML: false,
-      maxSize: 4608,
       appendBase: true,
       apple: {
         icon: "/assets/icon/apple-touch-icon-180-v4.png",
         statusBarColor: "black",
       },
+      generateSWConfig: {
+        // Precache only the shell; note chunks are cached on demand (runtimeCaching).
+        globPatterns: [
+          "index.html",
+          "404.html",
+          "manifest.webmanifest",
+          "assets/app-*.js",
+          "assets/framework-*.js",
+          "assets/style-*.css",
+          "assets/icon/*.png",
+        ],
+        runtimeCaching: [
+          {
+            urlPattern: /\/assets\/.*\.(?:js|css)$/u,
+            handler: "StaleWhileRevalidate",
+            options: {
+              cacheName: "dl-assets",
+              expiration: { maxEntries: 300, maxAgeSeconds: 60 * 60 * 24 * 30 },
+            },
+          },
+          {
+            urlPattern: /\.(?:png|jpg|jpeg|webp|svg|woff2?)$/u,
+            handler: "CacheFirst",
+            options: {
+              cacheName: "dl-media",
+              expiration: { maxEntries: 120, maxAgeSeconds: 60 * 60 * 24 * 30 },
+            },
+          },
+          {
+            urlPattern: ({ request }) => request.mode === "navigate",
+            handler: "NetworkFirst",
+            options: {
+              cacheName: "dl-pages",
+              networkTimeoutSeconds: 4,
+              expiration: { maxEntries: 60 },
+            },
+          },
+        ],
+      },
       manifest: {
-        name: "David Liu — AI Systems",
+        name: "David Liu — Reliable AI agents",
         short_name: "David Liu",
-        description:
-          "Research and engineering for reliable, resource-efficient tool-using AI agents.",
+        description: SITE_DESCRIPTION,
         theme_color: "#17352f",
-        background_color: "#f5f1e8",
+        background_color: "#f5f4f0",
         icons: [
           {
             src: "/assets/icon/maskable-512-v4.png",
@@ -208,7 +321,7 @@ export default hopeTheme({
             name: "Research",
             short_name: "Research",
             description: "Explore David Liu's research program and publications.",
-            url: "/#research-program",
+            url: "/#research",
           },
           {
             name: "Algorithms",

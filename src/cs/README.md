@@ -2,6 +2,11 @@
 title: CS Foundations
 description: Computer science foundations covering operating systems, networks, object-oriented design, design patterns, and distributed system design.
 icon: laptop-code
+article: false
+comment: false
+pageInfo: false
+sitemap:
+  priority: 0.8
 ---
 
 # CS Foundations
@@ -101,12 +106,11 @@ icon: laptop-code
   <div class="section-path-card">
     <span class="section-card__eyebrow">Software design</span>
     <h3>代码设计路线</h3>
+    <p>贯穿这条路线的主题是接口、依赖与模块边界，以及从对象设计过渡到服务设计。</p>
     <ol>
       <li><a href="./design/ood/">OOD & 5C</a></li>
       <li><a href="./design/pattern/">Design Patterns</a></li>
-      <li>接口、依赖与模块边界</li>
       <li><a href="./design/system/module/">Reusable Modules</a></li>
-      <li>从对象设计过渡到服务设计</li>
     </ol>
   </div>
   <div class="section-path-card">
@@ -141,9 +145,11 @@ icon: laptop-code
   <a href="../se/">Engineering notes cover concrete languages, databases, middleware, and operations →</a>
 </div>
 
+<!--
 ## Maintenance Principle
 
 - 目录页负责建立地图、阅读顺序和跨章节连接。
 - 专题页负责完整解释一个问题，优先加入例子、约束和 tradeoff。
 - 案例页负责把基础知识串成具体方案，不重复堆砌定义。
 - 同一主题从不同角度出现时，使用交叉链接说明关系，而不是复制相同内容。
+-->

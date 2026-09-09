@@ -11,38 +11,45 @@
     </div>
     <div class="edu-right">
       <div class="edu-header">
-        <div>
+        <div class="edu-header__title">
           <p class="home-card-eyebrow">Education</p>
           <h3>{{ school }}</h3>
         </div>
-        <span class="edu-time home-card-time">{{ time }}</span>
+        <div v-if="time || location" class="home-card-meta">
+          <span v-if="time" class="home-card-time edu-time">{{ time }}</span>
+          <span v-if="location" class="home-card-place">{{ location }}</span>
+        </div>
       </div>
-      <div class="edu-degree-line" :aria-label="degree">
-        <span class="edu-degree-abbr">{{ degreeAbbr }}</span>
+      <div class="edu-degree-line">
+        <span v-if="abbr" class="edu-degree-abbr">{{ abbr }}</span>
         <span class="edu-degree-copy">
-          <span class="edu-degree-title">{{ degreeTitle }}</span>
+          <span class="edu-degree-title">{{ degree }}</span>
           <span v-if="major" class="edu-degree-tail"
             ><span class="edu-degree-separator" aria-hidden="true">/</span
             ><span class="edu-degree-major">{{ major }}</span></span
           >
         </span>
       </div>
-      <div v-if="gpa || honorBadges.length" class="edu-meta">
+      <div v-if="gpa || honorList.length" class="edu-meta">
         <div v-if="gpa" class="edu-gpa-row">
           <span class="home-card-label edu-gpa-label">GPA</span>
-          <strong>{{ gpa }}</strong>
+          <strong class="edu-gpa-value">{{ gpa }}</strong>
           <Badge v-if="rank" :text="rank" type="tip" vertical="top" />
         </div>
-        <div v-if="honorBadges.length" class="edu-honors-row">
-          <span
-            v-for="(h, i) in honorBadges"
-            :key="i"
+        <ul v-if="honorList.length" class="edu-honors-row" aria-label="Honors">
+          <li
+            v-for="(h, i) in honorList"
+            :key="`${h.text}-${i}`"
             class="edu-honor"
-            :class="`edu-honor--${h.type}`"
+            :class="[
+              h.kind === 'honor' ? 'home-chip' : 'home-chip home-chip--award',
+              `edu-honor--${h.kind}`,
+            ]"
           >
-            {{ h.text }}
-          </span>
-        </div>
+            <span class="edu-honor__text">{{ h.text }}</span>
+            <span v-if="h.note" class="edu-honor__note">{{ h.note }}</span>
+          </li>
+        </ul>
       </div>
       <div class="edu-details">
         <slot></slot>
@@ -55,50 +62,39 @@
 import { computed } from "vue";
 import { withBase } from "vuepress/client";
 
+type HonorKind = "scholarship" | "annual" | "honor";
+
+interface HonorInput {
+  text: string;
+  /** `scholarship` and `annual` take the gold award chip; `honor` (default) is neutral. */
+  kind?: HonorKind;
+  /** Small muted suffix inside the chip, e.g. "×3" or "annual". */
+  note?: string;
+}
+
 const props = defineProps<{
   logo: string;
   school: string;
-  time: string;
+  time?: string;
+  /** Long degree title, e.g. "Master of Science in Engineering". */
   degree: string;
-  gpa?: string;
-  honors?: string[];
+  /** Short form shown as the accent chip, e.g. "M.S.E.". */
+  abbr?: string;
   major?: string;
+  location?: string;
+  gpa?: string;
   rank?: string;
+  /** Plain strings are treated as `{ text, kind: "honor" }`. */
+  honors?: Array<string | HonorInput>;
 }>();
 
-const honorBadges = computed(() => {
-  return (props.honors ?? []).map((t) => ({
-    text: t,
-    // "Outstanding Student Leader" was a one-time award, so it must not fall
-    // into the "annual" bucket that appends the "Awarded Annually" suffix.
-    type: /Outstanding Student Leader/i.test(t)
-      ? "honor"
-      : /Merit.based Scholarship|Outstanding Student/i.test(t)
-        ? "annual"
-        : /Scholarship/i.test(t)
-          ? "scholarship"
-          : "honor",
-  }));
-});
-
-const degreeAbbr = computed(() => {
-  if (/M\.?S\.?E/i.test(props.degree) || /\bMSE\b/i.test(props.degree))
-    return "M.S.E.";
-  if (/B\.?E/i.test(props.degree) || /\bBE\b/i.test(props.degree)) return "B.E.";
-  return props.degree;
-});
-
-const degreeTitle = computed(() => {
-  if (degreeAbbr.value === "M.S.E.") return "Master of Science in Engineering";
-  if (degreeAbbr.value === "B.E.") return "Bachelor of Engineering";
-  return props.degree;
-});
-
-const major = computed(() => {
-  if (props.major) return props.major;
-  const m = props.degree.match(/in\s+(.+)/i);
-  return m ? m[1] : "";
-});
+const honorList = computed(() =>
+  (props.honors ?? []).map((h) =>
+    typeof h === "string"
+      ? { text: h, kind: "honor" as HonorKind, note: undefined }
+      : { text: h.text, kind: h.kind ?? ("honor" as HonorKind), note: h.note },
+  ),
+);
 
 const logoSrc = computed(() => {
   if (!props.logo) return "";
@@ -143,7 +139,6 @@ const logoSrc = computed(() => {
 
 .edu-time {
   flex-shrink: 0;
-  white-space: nowrap;
 }
 
 .edu-right {
@@ -158,6 +153,9 @@ const logoSrc = computed(() => {
   margin-bottom: 0.8rem;
 }
 
+.edu-header__title {
+  min-width: 0;
+}
 
 .edu-right h3 {
   margin: 0;
@@ -168,7 +166,7 @@ const logoSrc = computed(() => {
 }
 
 .edu-degree-line {
-  display: inline-flex;
+  display: flex;
   align-items: center;
   flex-wrap: wrap;
   gap: 0.48rem 0.62rem;
@@ -182,18 +180,20 @@ const logoSrc = computed(() => {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  min-height: 1.72rem;
-  padding: 0.16rem 0.58rem;
+  box-sizing: border-box;
+  min-height: var(--dl-chip-h-sm, 1.75rem);
+  padding: 0.16rem var(--dl-chip-px-sm, 0.58rem);
   border-radius: 999px;
   border: 1px solid var(--dl-accent-line);
   background: var(--dl-accent-soft);
-  color: var(--vp-c-accent);
+  color: var(--dl-accent-text, color-mix(in srgb, var(--vp-c-accent) 72%, var(--dl-ink)));
   font-size: var(--home-type-meta, 0.9rem);
   font-weight: 800;
   letter-spacing: 0.02em;
 }
 
 .edu-degree-copy {
+  flex: 1 1 12rem;
   display: inline-flex;
   align-items: center;
   flex-wrap: wrap;
@@ -232,53 +232,53 @@ const logoSrc = computed(() => {
   gap: var(--dl-space-3);
   margin-bottom: 0.1rem;
 }
+
 .edu-gpa-row {
   display: flex;
   align-items: center;
   gap: var(--dl-space-2);
   font-weight: 600;
 }
+
 .edu-gpa-label {
   display: inline-flex;
   align-items: center;
-  min-height: 1.75rem;
-  padding: 0.18rem 0.55rem;
+  box-sizing: border-box;
+  min-height: var(--dl-chip-h-sm, 1.75rem);
+  padding: 0.18rem var(--dl-chip-px-sm, 0.58rem);
   border-radius: 999px;
   background: var(--dl-chip);
 }
+
+.edu-gpa-value {
+  font-variant-numeric: tabular-nums;
+}
+
 .edu-honors-row {
   display: flex;
   gap: var(--dl-space-2);
   flex-wrap: wrap;
   align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
+
+/* Chip colours come from the global `.home-chip` / `.home-chip--award`
+   classes so the dark-mode gold ramp is shared with the project cards. */
 .edu-honor {
-  display: inline-flex;
-  align-items: center;
-  min-height: 1.9rem;
-  padding: 0.24rem 0.68rem;
-  border-radius: 999px;
-  border: 1px solid var(--dl-border);
-  background: var(--dl-chip);
-  color: var(--vp-c-text-2);
-  font-size: var(--home-type-meta, 0.9rem);
-  font-weight: 650;
-  line-height: 1.2;
+  margin: 0;
+  white-space: nowrap;
 }
-.edu-honor--scholarship,
-.edu-honor--annual {
-  border-color: color-mix(in srgb, #d29922 32%, var(--vp-c-divider));
-  background: color-mix(in srgb, #f9d66d 16%, var(--vp-c-bg));
-  color: color-mix(in srgb, #8a5f00 80%, var(--vp-c-text-1));
-}
-.edu-honor--annual::after {
-  content: "Awarded Annually";
+
+.edu-honor__note {
   margin-left: 0.42rem;
   padding-left: 0.42rem;
-  border-left: 1px solid color-mix(in srgb, #d29922 36%, transparent);
-  font-size: var(--home-type-meta, 0.9rem);
+  border-left: 1px solid color-mix(in srgb, currentColor 36%, transparent);
+  font-size: var(--home-type-eyebrow, 0.74rem);
   font-weight: 800;
   letter-spacing: 0.08em;
+  line-height: 1;
   text-transform: uppercase;
   opacity: 0.82;
 }
@@ -318,6 +318,18 @@ const logoSrc = computed(() => {
     flex-direction: column;
     align-items: flex-start;
     gap: var(--dl-space-2);
+  }
+
+  .edu-honor {
+    flex-wrap: wrap;
+    white-space: normal;
+  }
+
+  .edu-honor__note {
+    flex-basis: 100%;
+    margin-left: 0;
+    padding-left: 0;
+    border-left: 0;
   }
 
   .edu-details {

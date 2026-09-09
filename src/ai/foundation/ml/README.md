@@ -2,6 +2,8 @@
 title: Math for Machine Learning
 description: Mathematical foundations for representation, uncertainty, optimization, and model interpretation.
 icon: square-root-variable
+dir:
+  order: 1
 ---
 
 # Math for Machine Learning

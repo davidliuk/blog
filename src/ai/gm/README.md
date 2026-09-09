@@ -10,39 +10,39 @@ icon: wand-magic-sparkles
 
 ## System Map
 
-<div class="ai-card-grid">
-  <a class="ai-card" href="./text/">
-    <span class="ai-card__eyebrow">Core model</span>
+<div class="section-card-grid">
+  <a class="section-card" href="./text/">
+    <span class="section-card__eyebrow">Core model</span>
     <h3>Text Models</h3>
     <p>语言模型、decoder-only 思路，以及从 token prediction 到能力涌现的主线。</p>
   </a>
-  <a class="ai-card" href="./training/fine-tuning/">
-    <span class="ai-card__eyebrow">Adaptation</span>
+  <a class="section-card" href="./training/fine-tuning/">
+    <span class="section-card__eyebrow">Adaptation</span>
     <h3>Fine-tuning</h3>
     <p>SFT、FFT、PEFT，关注下游任务适配与训练成本。</p>
   </a>
-  <a class="ai-card" href="./training/">
-    <span class="ai-card__eyebrow">Capability pipeline</span>
+  <a class="section-card" href="./training/">
+    <span class="section-card__eyebrow">Capability pipeline</span>
     <h3>Training Systems</h3>
     <p>Data、objective、optimization、parallelism、checkpoint 和 experiment lineage。</p>
   </a>
-  <a class="ai-card" href="./training/alignment/">
-    <span class="ai-card__eyebrow">Preference</span>
+  <a class="section-card" href="./training/alignment/">
+    <span class="section-card__eyebrow">Preference</span>
     <h3>Alignment</h3>
     <p>从 RLHF 到 RLVR，回答“模型为什么更像人类想要的样子”。</p>
   </a>
-  <a class="ai-card" href="./inference/">
-    <span class="ai-card__eyebrow">Serving</span>
+  <a class="section-card" href="./inference/">
+    <span class="section-card__eyebrow">Serving</span>
     <h3>Inference</h3>
     <p>Prefill / Decode、KV Cache、系统瓶颈与线上吞吐优化。</p>
   </a>
-  <a class="ai-card" href="./multimodal/">
-    <span class="ai-card__eyebrow">Beyond text</span>
+  <a class="section-card" href="./multimodal/">
+    <span class="section-card__eyebrow">Beyond text</span>
     <h3>Multimodal</h3>
     <p>视觉编码器、VLM、扩散和音频，把文本模型扩展到更多模态。</p>
   </a>
-  <a class="ai-card" href="./application/">
-    <span class="ai-card__eyebrow">Product layer</span>
+  <a class="section-card" href="./application/">
+    <span class="section-card__eyebrow">Product layer</span>
     <h3>Application</h3>
     <p>RAG、Agent、工具调用与 prompt 设计，关注能力如何落地。</p>
   </a>
@@ -83,7 +83,7 @@ icon: wand-magic-sparkles
 
 ## Capability Delivery Loop
 
-<div class="knowledge-flow knowledge-flow--ai">
+<div class="knowledge-flow">
   <div class="knowledge-flow__item">
     <span class="knowledge-flow__index">01</span>
     <strong>Pre-train</strong>

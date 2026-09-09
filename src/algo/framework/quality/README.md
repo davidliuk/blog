@@ -1,3 +1,7 @@
+---
+shortTitle: Code Quality
+---
+
 # 代码质量
 
 也称 Coding Style

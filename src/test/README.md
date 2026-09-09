@@ -2,6 +2,11 @@
 title: Test Preparation
 description: A structured TOEFL and GRE preparation system built around diagnosis, deliberate practice, simulation, and review.
 icon: graduation-cap
+article: false
+comment: false
+pageInfo: false
+sitemap:
+  priority: 0.8
 ---
 
 # Test Preparation

@@ -63,7 +63,7 @@ export const enSidebar = sidebar({
     },
     {
       text: "Recommender Systems",
-      icon: "neural-network",
+      icon: "thumbs-up",
       prefix: "rec-sys/",
       children: "structure",
     },

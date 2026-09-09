@@ -1,5 +1,10 @@
 <template>
-  <nav ref="navElement" class="home-page-nav" aria-label="On this page">
+  <nav
+    ref="navElement"
+    class="home-page-nav"
+    aria-label="On this page"
+    :data-scroll-end="scrollEnd ? 'true' : 'false'"
+  >
     <a
       v-for="item in items"
       :key="item.href"
@@ -7,7 +12,7 @@
       :class="{ 'is-active': activeHref === item.href }"
       :aria-current="activeHref === item.href ? 'location' : undefined"
       :href="item.href"
-      @click.prevent="scrollToSection(item.href, undefined, true)"
+      @click.prevent="onLinkClick(item.href)"
     >
       {{ item.label }}
     </a>
@@ -17,36 +22,58 @@
 <script setup lang="ts">
 import { nextTick, onBeforeUnmount, onMounted, ref, watch } from "vue";
 
-const items = [
-  { href: "#about", label: "Story" },
-  { href: "#research-program", label: "Research" },
-  { href: "#selected-publications", label: "Papers" },
-  { href: "#professional-experience", label: "Experience" },
-  { href: "#award-winning-projects", label: "Projects" },
-  { href: "#knowledge-base", label: "Notes" },
+interface NavItem {
+  href: string;
+  label: string;
+}
+
+interface Section {
+  href: string;
+  navHref: string;
+}
+
+interface Target extends Section {
+  el: HTMLElement;
+  /** `scroll-margin-top` of the heading, in px; the one source of truth for offsets. */
+  offset: number;
+}
+
+const items: NavItem[] = [
+  { href: "#about", label: "About" },
+  { href: "#updates", label: "Updates" },
+  { href: "#research", label: "Research" },
+  { href: "#publications", label: "Publications" },
+  { href: "#experience", label: "Experience" },
+  { href: "#projects", label: "Projects" },
+  { href: "#knowledge-base", label: "Knowledge Base" },
   { href: "#resume", label: "Résumé" },
+  { href: "#contact", label: "Contact" },
 ];
 
-// Keep every public section hash addressable even though the visible rail is
-// intentionally grouped into seven major destinations.
-const sections = [
+// Every section hash stays addressable; the rail groups a few of them under
+// one pill (open source under publications, education under experience,
+// tech stack under the knowledge base).
+const sections: Section[] = [
   { href: "#about", navHref: "#about" },
-  { href: "#research-program", navHref: "#research-program" },
-  { href: "#selected-publications", navHref: "#selected-publications" },
-  { href: "#open-source", navHref: "#selected-publications" },
-  { href: "#education", navHref: "#professional-experience" },
-  { href: "#professional-experience", navHref: "#professional-experience" },
-  { href: "#award-winning-projects", navHref: "#award-winning-projects" },
+  { href: "#updates", navHref: "#updates" },
+  { href: "#research", navHref: "#research" },
+  { href: "#publications", navHref: "#publications" },
+  { href: "#open-source", navHref: "#publications" },
+  { href: "#education", navHref: "#experience" },
+  { href: "#experience", navHref: "#experience" },
+  { href: "#projects", navHref: "#projects" },
   { href: "#knowledge-base", navHref: "#knowledge-base" },
   { href: "#tech-stack", navHref: "#knowledge-base" },
   { href: "#resume", navHref: "#resume" },
-  { href: "#let-s-connect", navHref: "#resume" },
+  { href: "#contact", navHref: "#contact" },
 ];
 
-const activeHref = ref(items[0]?.href ?? "");
+const activeHref = ref(items[0].href);
+// True when the rail is scrolled to (or has no) trailing overflow, so CSS can
+// fade the right edge only while more pills are hidden.
+const scrollEnd = ref(true);
 const navElement = ref<HTMLElement | null>(null);
-let cleanupActiveSectionListeners: (() => void) | null = null;
-let cleanupInitialHashAlignment: (() => void) | null = null;
+let cleanup: (() => void) | null = null;
 
 watch(activeHref, () => {
   void nextTick(ensureActiveLinkVisible);
@@ -59,60 +86,67 @@ function prefersReducedMotion(): boolean {
   );
 }
 
-function scrollToSection(
-  hash: string,
-  behavior?: ScrollBehavior,
-  focusTarget = false,
-): void {
+function onLinkClick(hash: string): void {
   if (typeof window === "undefined") return;
 
-  // A deliberate navigation takes ownership from the cold-load alignment
-  // observer described below.
-  if (behavior === undefined) cleanupInitialHashAlignment?.();
+  const target = document.querySelector<HTMLElement>(hash);
+  if (!target) return;
 
-  const target = document.querySelector(hash);
-  if (!(target instanceof HTMLElement)) return;
-
-  const top = target.getBoundingClientRect().top + window.scrollY - getSectionOffset();
-  activeHref.value = hash;
-  window.history.replaceState(null, "", hash);
-  window.scrollTo({
-    top: Math.max(0, top),
-    behavior: behavior ?? (prefersReducedMotion() ? "auto" : "smooth"),
+  activeHref.value = getNavHref(hash);
+  // `scroll-margin-top` on the heading (set in index.scss) already accounts for
+  // the fixed navbar and the sticky rail, so no offset is computed here.
+  target.scrollIntoView({
+    block: "start",
+    behavior: prefersReducedMotion() ? "auto" : "smooth",
   });
+  window.history.replaceState(null, "", hash);
+  focusTarget(target);
+}
 
-  if (focusTarget) {
-    target.tabIndex = -1;
-    target.focus({ preventScroll: true });
+function focusTarget(target: HTMLElement): void {
+  if (!target.hasAttribute("tabindex")) {
+    target.setAttribute("tabindex", "-1");
+    target.addEventListener("blur", () => target.removeAttribute("tabindex"), { once: true });
   }
+  target.focus({ preventScroll: true });
 }
 
 onMounted(() => {
   if (typeof window === "undefined") return;
 
-  // Resolve the section elements once. The previous version queried and read
-  // each target inside an unthrottled scroll handler, so every scroll event
-  // forced repeated synchronous layout — enough to make
-  // the page feel like it was catching on something as you scrolled.
-  const targets = sections
-    .map((section) => ({ ...section, el: document.querySelector(section.href) }))
-    .filter((entry): entry is { href: string; navHref: string; el: HTMLElement } =>
-      entry.el instanceof HTMLElement,
-    );
+  const nav = navElement.value;
+
+  // Resolve the section elements once; reading them inside the scroll handler
+  // forced layout on every event and made scrolling feel like it was catching.
+  const targets: Target[] = sections
+    .map((section) => ({ ...section, el: document.querySelector<HTMLElement>(section.href), offset: 0 }))
+    .filter((entry): entry is Target => entry.el instanceof HTMLElement);
+
+  const measureOffsets = (): void => {
+    for (const target of targets) {
+      target.offset = Number.parseFloat(getComputedStyle(target.el).scrollMarginTop || "0") || 0;
+    }
+  };
 
   const updateActiveSection = (): void => {
-    const probe = window.scrollY + getSectionOffset() + 8;
-
-    let current = items[0]?.href ?? "";
-    for (const { navHref, el } of targets) {
-      if (el.getBoundingClientRect().top + window.scrollY <= probe) current = navHref;
+    let current = items[0].href;
+    for (const { navHref, el, offset } of targets) {
+      if (el.getBoundingClientRect().top <= offset + 8) current = navHref;
     }
-
-    // Scroll position wins. This used to read
-    // `normalizeHash(location.hash) || current`, and since clicking a pill
-    // writes the hash via `replaceState`, the first click froze the highlight
-    // on that section forever — it stopped following the reader.
+    // At the very bottom the last section is the reader's section even when it
+    // is shorter than the viewport and its heading never reaches the probe.
+    const last = targets[targets.length - 1];
+    if (last && window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2) {
+      current = last.navHref;
+    }
+    // Scroll position wins over the hash: clicking a pill writes the hash via
+    // `replaceState`, and honouring it here froze the highlight on that pill.
     activeHref.value = current;
+  };
+
+  const updateScrollEnd = (): void => {
+    if (!nav) return;
+    scrollEnd.value = nav.scrollLeft + nav.clientWidth >= nav.scrollWidth - 1;
   };
 
   let frame = 0;
@@ -124,120 +158,52 @@ onMounted(() => {
     });
   };
 
+  const onResize = (): void => {
+    measureOffsets();
+    updateActiveSection();
+    updateScrollEnd();
+  };
+
   const onHashChange = (): void => {
     const hash = normalizeHash(window.location.hash);
     if (hash) activeHref.value = getNavHref(hash);
     else updateActiveSection();
   };
 
-  // On a cold load with a hash, honour it until the reader scrolls.
+  measureOffsets();
   const initialHash = normalizeHash(window.location.hash);
-  if (initialHash) {
-    activeHref.value = getNavHref(initialHash);
-    // Vue renders the portfolio body after the browser's native fragment pass,
-    // and its async custom cards continue changing the page height for several
-    // frames. A cold load at `/#tech-stack` would otherwise stop thousands of
-    // pixels early. Follow those layout changes until the reader interacts.
-    void nextTick(() => {
-      const content = document.querySelector("#markdown-content");
-      if (!(content instanceof HTMLElement)) return;
-
-      let frame = 0;
-      let settleTimer = 0;
-      const interactionEvents = ["wheel", "touchstart", "pointerdown", "keydown"] as const;
-      const stopAlignment = (): void => {
-        if (frame) window.cancelAnimationFrame(frame);
-        if (settleTimer) window.clearTimeout(settleTimer);
-        observer.disconnect();
-        for (const event of interactionEvents) window.removeEventListener(event, stopAlignment);
-        if (cleanupInitialHashAlignment === stopAlignment) cleanupInitialHashAlignment = null;
-      };
-      const alignToHash = (): void => {
-        if (normalizeHash(window.location.hash) !== initialHash) {
-          stopAlignment();
-          return;
-        }
-        if (frame) window.cancelAnimationFrame(frame);
-        frame = window.requestAnimationFrame(() => {
-          frame = 0;
-          scrollToSection(initialHash, "auto");
-        });
-      };
-      const observer = new ResizeObserver(alignToHash);
-
-      cleanupInitialHashAlignment = stopAlignment;
-      observer.observe(content);
-      for (const event of interactionEvents) {
-        window.addEventListener(event, stopAlignment, { passive: true });
-      }
-      alignToHash();
-      // Registered custom components hydrate after this child component's
-      // mounted hook. The final pass catches that one-time expansion; the
-      // observer handles any earlier incremental changes without polling.
-      settleTimer = window.setTimeout(() => {
-        alignToHash();
-        window.requestAnimationFrame(stopAlignment);
-      }, 1200);
-    });
-  } else updateActiveSection();
-
+  if (initialHash) activeHref.value = getNavHref(initialHash);
+  else updateActiveSection();
+  updateScrollEnd();
   void nextTick(ensureActiveLinkVisible);
 
   window.addEventListener("scroll", onScroll, { passive: true });
+  window.addEventListener("resize", onResize, { passive: true });
   window.addEventListener("hashchange", onHashChange);
-  cleanupActiveSectionListeners = () => {
+  nav?.addEventListener("scroll", updateScrollEnd, { passive: true });
+  // Web fonts change the rail's intrinsic width after first paint.
+  document.fonts?.ready.then(updateScrollEnd).catch(() => {});
+
+  cleanup = () => {
     if (frame) window.cancelAnimationFrame(frame);
     window.removeEventListener("scroll", onScroll);
+    window.removeEventListener("resize", onResize);
     window.removeEventListener("hashchange", onHashChange);
+    nav?.removeEventListener("scroll", updateScrollEnd);
   };
 });
 
 onBeforeUnmount(() => {
-  cleanupActiveSectionListeners?.();
-  cleanupInitialHashAlignment?.();
+  cleanup?.();
+  cleanup = null;
 });
-
-function getSectionOffset(): number {
-  const navbarHeight = getCssLengthPx("--navbar-height", 60);
-  const nav = document.querySelector(".home-page-nav");
-  const navHeight =
-    nav instanceof HTMLElement && getComputedStyle(nav).position === "sticky"
-      ? nav.getBoundingClientRect().height
-      : 0;
-  return navbarHeight + navHeight + 6;
-}
-
-function getCssLengthPx(variableName: string, fallback: number): number {
-  if (typeof window === "undefined") return fallback;
-
-  const raw = getComputedStyle(document.documentElement).getPropertyValue(variableName).trim();
-  if (!raw) return fallback;
-
-  if (raw.endsWith("px")) {
-    const value = Number.parseFloat(raw);
-    return Number.isFinite(value) ? value : fallback;
-  }
-
-  if (raw.endsWith("rem")) {
-    const rem = Number.parseFloat(raw);
-    const rootFontSize = Number.parseFloat(
-      getComputedStyle(document.documentElement).fontSize,
-    );
-    if (Number.isFinite(rem) && Number.isFinite(rootFontSize)) {
-      return rem * rootFontSize;
-    }
-  }
-
-  const value = Number.parseFloat(raw);
-  return Number.isFinite(value) ? value : fallback;
-}
 
 function normalizeHash(hash: string): string {
   return sections.some((section) => section.href === hash) ? hash : "";
 }
 
 function getNavHref(hash: string): string {
-  return sections.find((section) => section.href === hash)?.navHref ?? items[0]?.href ?? "";
+  return sections.find((section) => section.href === hash)?.navHref ?? items[0].href;
 }
 
 function ensureActiveLinkVisible(): void {

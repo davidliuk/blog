@@ -1,3 +1,8 @@
+---
+dir:
+  order: 6
+---
+
 # Cold Start
 
 ### 新笔记冷启动
