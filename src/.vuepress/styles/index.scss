@@ -1,3 +1,5 @@
+@use "./portfolio";
+
 // ===========================================================================
 // David Liu — site styles
 //
@@ -1704,7 +1706,7 @@ body {
 
 // Section copy.
 .vp-portfolio-home .home-lead {
-  max-width: var(--home-prose-wide);
+  max-width: none;
   margin: 0 0 1.2rem;
   padding: 0;
   font-size: var(--home-type-body);
@@ -1712,10 +1714,12 @@ body {
   color: var(--vp-c-text-1);
 }
 
+// Section copy spans the full content width so its line breaks align with
+// the cards that follow instead of stopping at a narrower measure.
 .vp-portfolio-home .home-section-intro {
   position: relative;
   z-index: 1;
-  max-width: var(--home-prose);
+  max-width: none;
   margin: 0 0 1rem;
   color: var(--vp-c-text-2);
   font-size: var(--home-type-body);
@@ -1727,7 +1731,7 @@ body {
 }
 
 .vp-portfolio-home .home-section-outro {
-  max-width: var(--home-prose);
+  max-width: none;
   margin: 1.1rem 0 0;
   color: var(--vp-c-text-3);
   font-size: var(--home-type-meta);
@@ -2508,7 +2512,7 @@ body {
 .vp-portfolio-home .home-connect {
   position: relative;
   z-index: 1;
-  max-width: var(--home-prose-wide);
+  max-width: none;
   margin: 0;
   padding: 0;
   font-size: var(--home-type-body);
@@ -3381,3 +3385,5 @@ div[class*="language-"] {
   font-size: var(--home-type-caption);
   font-weight: 500;
 }
+
+@include portfolio.styles;

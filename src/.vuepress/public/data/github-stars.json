@@ -1,12 +1,12 @@
 {
-  "generatedAt": "2026-09-08T22:25:52.333Z",
+  "generatedAt": "2026-09-12T22:34:30.771Z",
   "repos": {
     "OpenLAIR/dr-claw": {
-      "stars": 1077,
-      "forks": 118
+      "stars": 1096,
+      "forks": 120
     },
     "davidliuk/graph-of-skills": {
-      "stars": 206,
+      "stars": 207,
       "forks": 26
     },
     "Moms-Organic-Agent-Lab/comfyclaw": {
@@ -26,7 +26,7 @@
       "forks": 1
     },
     "zli12321/LHTB": {
-      "stars": 698,
+      "stars": 699,
       "forks": 34
     }
   }

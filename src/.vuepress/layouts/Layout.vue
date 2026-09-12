@@ -1,20 +1,13 @@
 <script setup lang="ts">
 /**
- * Site layout: the theme's Layout with the portfolio hero replaced through its
- * own slots.
- *
- * The stock PortfolioHero renders the welcome line as an <h6>, types the
- * tagline into an empty <h2> after mount (so pre-rendered HTML has no tagline,
- * crawlers see nothing, and the typing ignores prefers-reduced-motion), and
- * the affiliation strip used to be teleported in after hydration, which moved
- * the whole page down by ~96px. Everything below is static markup rendered on
- * the server: one <h1>, plain paragraphs for the captions, the affiliations in
- * reading order, and a small "Now" panel that gives the empty right half of
- * the hero something to say.
+ * Keep the theme's page and navigation, with a server-rendered portfolio
+ * introduction. The portrait lives beside the introduction in reading order,
+ * rather than in the theme's separate absolutely positioned avatar slot.
  */
-import { onMounted, ref } from "vue";
 import { Layout } from "vuepress-theme-hope/client";
-import { withBase } from "vuepress/client";
+import { usePageFrontmatter, withBase } from "vuepress/client";
+
+const frontmatter = usePageFrontmatter<{ avatar?: string; avatarAlt?: string }>();
 
 interface Affiliation {
   name: string;
@@ -65,49 +58,50 @@ const now: NowItem[] = [
   },
 ];
 
-// The tagline types itself in once per browser session; on later visits to
-// the homepage it is simply there. The class is applied after mount, so the
-// server-rendered markup and the first client render agree.
-const typed = ref(false);
-
-onMounted(() => {
-  try {
-    if (window.sessionStorage.getItem("dl-hero-typed")) typed.value = true;
-    else window.sessionStorage.setItem("dl-hero-typed", "1");
-  } catch {
-    // Storage can be unavailable (private mode); the animation simply plays.
-  }
-});
 </script>
 
 <template>
   <Layout>
-    <template #portfolioAvatar="{ avatar, alt, style }">
-      <div class="vp-portfolio-avatar home-hero__avatar">
-        <img
-          v-if="avatar"
-          :src="avatar"
-          :alt="alt"
-          :style="style"
-          width="148"
-          height="148"
-          fetchpriority="high"
-          decoding="async"
-        />
-      </div>
-    </template>
+    <template #portfolioAvatar><!----></template>
 
     <template #portfolioInfo="{ name, welcome, titles }">
-      <div class="vp-portfolio-info home-hero" :class="{ 'home-hero--typed': typed }">
-        <div class="home-hero__identity">
-          <p class="vp-portfolio-welcome">{{ welcome }}</p>
-          <h1 id="main-title" class="vp-portfolio-name">{{ name }}</h1>
-          <p class="vp-portfolio-title">
-            <span class="home-hero__tagline" :style="{ '--tagline-chars': String(titles[0]?.length ?? 0) }">{{ titles[0] }}</span>
-          </p>
+      <div class="portfolio-intro">
+        <div class="portfolio-intro__copy">
+          <p class="portfolio-intro__eyebrow"><span aria-hidden="true"></span> Research · Engineering · Open source</p>
+          <h1 id="main-title" class="portfolio-intro__name"><span aria-hidden="true">{{ welcome }}</span> {{ name }}<span class="portfolio-intro__period" aria-hidden="true">.</span></h1>
+          <p class="portfolio-intro__role">{{ titles[0] }}</p>
+          <p class="portfolio-intro__statement">Reliable AI agents.<br /><em>Beyond the demo.</em></p>
+          <p class="portfolio-intro__description">I build infrastructure that helps AI agents retrieve the right skills, execute with confidence, and recover when things go wrong.</p>
+          <nav class="portfolio-intro__actions" aria-label="Primary links">
+            <a class="portfolio-intro__button portfolio-intro__button--primary" href="#publications">Explore my research <span aria-hidden="true">↗</span></a>
+            <a class="portfolio-intro__button" :href="withBase('/resume/david-liu-resume.pdf')" target="_blank" rel="noopener noreferrer">View résumé <span aria-hidden="true">↗</span></a>
+          </nav>
+          <div class="portfolio-intro__socials"><SocialMedias /></div>
+        </div>
 
+        <aside class="portfolio-profile" aria-label="Portrait and current work">
+          <figure class="portfolio-profile__portrait">
+            <img
+              v-if="frontmatter.avatar"
+              :src="withBase(frontmatter.avatar)"
+              :alt="frontmatter.avatarAlt || `Portrait of ${name}`"
+              width="360"
+              height="360"
+              fetchpriority="high"
+              decoding="async"
+            />
+            <figcaption><span aria-hidden="true">↗</span> Based in Seattle, WA</figcaption>
+          </figure>
+          <div class="portfolio-profile__now">
+            <p class="portfolio-profile__label">Currently</p>
+            <a href="#experience">Software Engineer at TikTok <span aria-hidden="true">↗</span></a>
+            <p>Commerce Ads · Seattle, WA</p>
+          </div>
+        </aside>
+
+        <div class="portfolio-intro__footer">
           <div class="home-affiliation-strip" role="group" aria-labelledby="home-affiliations-label">
-            <span id="home-affiliations-label" class="home-affiliation-strip__eyebrow">Affiliations</span>
+            <span id="home-affiliations-label" class="home-affiliation-strip__eyebrow">Along the way</span>
             <ul class="home-affiliation-strip__logos">
               <li v-for="item in affiliations" :key="item.name" class="home-affiliation-strip__item">
                 <a
@@ -130,31 +124,22 @@ onMounted(() => {
               </li>
             </ul>
           </div>
-
-          <SocialMedias />
+          <p class="portfolio-intro__footnote">From research ideas<br />to systems people can use.</p>
         </div>
-
-        <aside class="home-hero__now" aria-labelledby="home-now-label">
-          <p id="home-now-label" class="home-hero__now-label">At a glance</p>
-          <ul class="home-hero__now-list">
-            <li v-for="item in now" :key="item.label">
-              <span class="home-hero__now-key">{{ item.label }}</span>
-              <span class="home-hero__now-body">
-                <a
-                  v-if="item.href"
-                  :href="item.href"
-                  class="home-hero__now-text"
-                  :class="{ 'no-external-link-icon': !item.external }"
-                  :target="item.external ? '_blank' : undefined"
-                  :rel="item.external ? 'noopener noreferrer' : undefined"
-                >{{ item.text }}</a>
-                <span v-else class="home-hero__now-text">{{ item.text }}</span>
-                <span class="home-hero__now-meta">{{ item.meta }}</span>
-              </span>
-            </li>
-          </ul>
-          <a class="home-hero__now-cta" href="#contact">Get in touch</a>
-        </aside>
+      </div>
+      <div class="portfolio-brief" role="group" aria-label="At a glance">
+        <a
+          v-for="item in now"
+          :key="item.label"
+          :href="item.href"
+          class="portfolio-brief__item"
+          :target="item.external ? '_blank' : undefined"
+          :rel="item.external ? 'noopener noreferrer' : undefined"
+        >
+          <span class="portfolio-brief__label">{{ item.label }}</span>
+          <span class="portfolio-brief__text">{{ item.text }} <span aria-hidden="true">↗</span></span>
+          <span class="portfolio-brief__meta">{{ item.meta }}</span>
+        </a>
       </div>
     </template>
   </Layout>

@@ -3,7 +3,7 @@ home: true
 portfolio: true
 title: David Liu — AI Systems Researcher & Software Engineer
 shortTitle: David Liu
-description: AI systems researcher and software engineer at TikTok, building reliable infrastructure for tool-using AI agents. Structured notes on algorithms, AI systems, and computer science.
+description: AI systems researcher and software engineer at ByteDance, building reliable infrastructure for tool-using AI agents. Structured notes on algorithms, AI systems, and computer science.
 avatar: /avatar.jpg
 avatarAlt: Portrait of David Liu
 name: David Liu
@@ -30,8 +30,8 @@ sitemap:
 
 <section class="home-mission" aria-labelledby="home-mission-title">
   <div class="home-mission__copy">
-    <p class="home-mission__eyebrow">AI systems · research & engineering</p>
-    <h2 id="home-mission-title">I build infrastructure that helps AI agents work reliably beyond the demo.</h2>
+    <p class="home-mission__eyebrow">The research philosophy</p>
+    <h2 id="home-mission-title">Built for the hard cases.</h2>
     <p class="home-mission__lede">Most agents look capable when everything goes right. I care about the harder cases: thousands of available skills, long-running tool use, partial failures, and tight context or latency budgets. My work connects <strong>dependency-aware retrieval</strong>, <strong>execution validation</strong>, and <strong>failure recovery</strong>, then turns those ideas into open systems others can inspect, test, and extend.</p>
     <div class="home-mission__signals-group" role="group" aria-labelledby="home-signals-label">
       <span id="home-signals-label" class="sr-only">Research signals</span>
@@ -50,10 +50,6 @@ sitemap:
         </div>
       </dl>
     </div>
-    <nav class="home-mission__actions" aria-label="Primary links">
-      <a class="home-mission__button home-mission__button--primary" href="#research">Explore my work</a>
-      <a class="home-mission__button" href="#contact">Get in touch</a>
-    </nav>
   </div>
   <aside class="home-mission__loop" aria-labelledby="home-loop-label">
     <p id="home-loop-label" class="home-mission__loop-label">My research loop</p>
@@ -76,7 +72,7 @@ sitemap:
 
 ## About
 
-<p class="home-lead">I am an AI systems researcher and software engineer at <strong>TikTok</strong> (Commerce Ads, Seattle) and a collaborator with <strong>Prof. Lichao Sun's LAIR</strong>. From scientific visualization and distributed tracing to recommendation and agent infrastructure, the constant has been making complex technology <strong>useful, inspectable, and dependable</strong>.</p>
+<p class="home-lead">I am an AI systems researcher and software engineer at <strong>ByteDance</strong> (Commerce Ads, Seattle) and a collaborator with <strong>Prof. Lichao Sun's LAIR</strong>. From scientific visualization and distributed tracing to recommendation and agent infrastructure, the constant has been making complex technology <strong>useful, inspectable, and dependable</strong>.</p>
 
 <div class="home-hero-grid">
   <section class="home-surface-card home-surface-card--story">
@@ -96,7 +92,7 @@ sitemap:
       </div>
       <div class="home-story-meta__item">
         <span class="home-story-meta__label">Current chapter</span>
-        <strong>TikTok + LAIR (OpenLAIR)</strong>
+        <strong>ByteDance + LAIR (OpenLAIR)</strong>
       </div>
     </div>
   </section>
@@ -120,7 +116,7 @@ sitemap:
     <div class="home-story-meta" role="group" aria-label="Research impact and service">
       <div class="home-story-meta__item">
         <span class="home-story-meta__label">Citations</span>
-        <strong>84 · h-index 3 <span class="home-story-meta__note">(Google Scholar, Aug 2026)</span></strong>
+        <strong>80+ · h-index 3 <span class="home-story-meta__note">(Google Scholar, Sep 2026)</span></strong>
       </div>
       <div class="home-story-meta__item">
         <span class="home-story-meta__label">Service</span>
@@ -137,10 +133,11 @@ sitemap:
   :initial="5"
   :items="[
     { date: 'Sep 2026', iso: '2026-09', tag: 'Preprint', highlight: true, html: 'The <a href=\'https://arxiv.org/abs/2609.00365\' target=\'_blank\' rel=\'noopener\'>Dr. Claw</a> system paper is on arXiv, accepted to EMNLP 2026 System Demonstrations.' },
+    { date: 'Aug 2026', iso: '2026-08', tag: 'Paper', highlight: true, html: '<strong>Graph-of-Skills</strong> accepted to EMNLP 2026 (Main Conference); earlier accepted as a poster at the ACM CAIS 2026 Workshop AgentSkills.' },
     { date: 'Jul 2026', iso: '2026-07', tag: 'Paper', html: '<strong>COMFYCLAW</strong> accepted to the ECCV 2026 Workshop MUCG (<a href=\'https://arxiv.org/abs/2607.01709\' target=\'_blank\' rel=\'noopener\'>arXiv:2607.01709</a>); <a href=\'https://github.com/zli12321/LHTB\' target=\'_blank\' rel=\'noopener\'>Long-Horizon Terminal-Bench</a> released with the LAIR community.' },
-    { date: 'Jun 2026', iso: '2026-06', tag: 'Career', highlight: true, html: 'Joined <strong>TikTok</strong> in Seattle full-time as a Software Engineer on Commerce Ads.' },
+    { date: 'Jun 2026', iso: '2026-06', tag: 'Career', highlight: true, html: 'Joined <strong>ByteDance</strong> in Seattle full-time as a Software Engineer on Commerce Ads.' },
     { date: 'May 2026', iso: '2026-05', tag: 'Degree', html: 'Graduated from the <strong>University of Pennsylvania</strong> with an M.S.E. in Computer and Information Science.' },
-    { date: 'Apr 2026', iso: '2026-04', tag: 'Paper', highlight: true, html: '<strong>Graph-of-Skills</strong> accepted to EMNLP 2026 (Main Conference) and the ACM CAIS 2026 Workshop AgentSkills; preprint <a href=\'https://arxiv.org/abs/2604.05333\' target=\'_blank\' rel=\'noopener\'>arXiv:2604.05333</a>.' },
+    { date: 'Apr 2026', iso: '2026-04', tag: 'Preprint', html: '<strong>Graph-of-Skills</strong> preprint released (<a href=\'https://arxiv.org/abs/2604.05333\' target=\'_blank\' rel=\'noopener\'>arXiv:2604.05333</a>).' },
     { date: 'Mar 2026', iso: '2026-03', tag: 'Paper', html: '<strong>A Cookbook of 3D Vision</strong> accepted to the CVPR 2026 Workshop OpenSUN3D; <strong>Multimodal Video Generation Models with Audio</strong> accepted to the ACM MM 2026 Workshop JAV-CG.' },
     { date: '2026', iso: '2026', tag: 'Award', highlight: true, html: 'Named a <strong>Winner of the Apple Swift Student Challenge 2026</strong> for Aura Chef, one of 350 winners from 37 countries and regions.' },
     { date: '2026', iso: '2026', tag: 'Service', html: 'Reviewed manuscripts for the <strong>ACM CAIS 2026 Workshop AgentSkills</strong> through OpenReview.' },
@@ -181,14 +178,14 @@ sitemap:
 <p class="home-section-intro">Ordered by closeness to my current focus, not by date; the first three form the retrieve–execute–recover loop above. Each card carries a one-click BibTeX entry.</p>
 <p class="home-publication-legend"><strong>*</strong> Equal contribution (co-first author). <strong>&dagger;</strong> Core contributor, as designated in the cited paper.</p>
 
-<PublicationList>
+<PublicationList class="publications-selected">
   <PublicationCard
     id="paper-graph-of-skills"
     title="Graph-of-Skills: Dependency-Aware Structural Retrieval for Massive Agent Skills"
     :authors="['Dawei Liu†','Zongxia Li†','Hongyang Du','Xiyang Wu','Shihang Gui','Yongbei Kuang','Lichao Sun']"
-    image="/publication/gos.webp"
-    :imageWidth="408"
-    :imageHeight="196"
+    image="/publication/gos.png"
+    :imageWidth="800"
+    :imageHeight="384"
     venue="EMNLP 2026 Main Conference"
     also="ACM CAIS 2026 Workshop AgentSkills"
     date="Apr 2026"
@@ -208,9 +205,9 @@ sitemap:
     id="paper-comfyclaw"
     title="COMFYCLAW: Self-Evolving Skill Harnesses for Image Generation Workflows"
     :authors="['Zongxia Li*','Dawei Liu*','Fuxiao Liu','Yuhang Zhou','Xiyang Wu','Jingxi Chen','Jing Xie','Xiaomin Wu','Lichao Sun']"
-    image="/publication/comfyclaw.webp"
-    :imageWidth="408"
-    :imageHeight="259"
+    image="/publication/comfyclaw.png"
+    :imageWidth="800"
+    :imageHeight="508"
     venue="ECCV 2026 Workshop MUCG"
     date="Jul 2026"
     paper="https://arxiv.org/abs/2607.01709"
@@ -229,9 +226,9 @@ sitemap:
     id="paper-dr-claw"
     title="Dr. Claw: An AI Scientist Workspace for Vibe Research"
     :authors="['Dingjie Song','Hanrong Zhang','Dawei Liu','Yixin Liu','Zongxia Li','Zhengqing Yuan','Siqi Zhang','Henry Peng Zou','Zhiling Yan','Yuxuan Zhang','Yanfang Ye','Philip S. Yu','Lichao Sun']"
-    image="/publication/drclaw.webp"
-    :imageWidth="408"
-    :imageHeight="198"
+    image="/publication/drclaw.png"
+    :imageWidth="800"
+    :imageHeight="388"
     venue="EMNLP 2026 System Demonstrations"
     date="Sep 2026"
     paper="https://arxiv.org/abs/2609.00365"
@@ -250,9 +247,9 @@ sitemap:
     id="paper-3d-cookbook"
     title="A Cookbook of 3D Vision: Data, Learning Paradigms, and Application"
     :authors="['Hongyang Du*','Zongxia Li*','Dawei Liu*','Runhao Li*','Haoyuan Song','Qingyu Zhang','Yubo Wang','Jingcheng Ni','Shihang Gui','Congchao Dong','Tao Hu']"
-    image="/publication/3dv.webp"
-    :imageWidth="408"
-    :imageHeight="230"
+    image="/publication/3dv.jpeg"
+    :imageWidth="800"
+    :imageHeight="450"
     venue="CVPR 2026 Workshop OpenSUN3D · pp. 8376–8390"
     date="Mar 2026"
     paper="https://openaccess.thecvf.com/content/CVPR2026W/OpenSUN3D/html/Du_A_Cookbook_of_3D_Vision_Data_Learning_Paradigms_and_Application_CVPRW_2026_paper.html"
@@ -271,9 +268,9 @@ sitemap:
     id="paper-multimodal-video"
     title="Multimodal Video Generation Models with Audio: Present and Future"
     :authors="['Dawei Liu','Hongyang Du','Zongxia Li','Xiyang Wu','Lantao Yu','Jingxi Chen','Fuxiao Liu','Xiaomin Wu','Jing Xie','Chengsong Huang','Yicheng He','Guangyao Shi']"
-    image="/publication/vgm.webp"
-    :imageWidth="408"
-    :imageHeight="202"
+    image="/publication/vgm.jpeg"
+    :imageWidth="800"
+    :imageHeight="395"
     venue="ACM MM 2026 Workshop JAV-CG"
     date="Mar 2026"
     abstract="Video generation has advanced rapidly, yet visual content alone is insufficient for many realistic and engaging media experiences: sound is central to immersion, semantic coherence, and perceived causality. Growing demand for synchronized dialogue, effects, music, and ambience has therefore accelerated research on multimodal video generation, which coordinates video and audio generation or uses one modality to control the other instead of treating sound as a separate post-production stage. Recent proprietary and open-weight systems, including Veo 3.1, Gemini Omni Flash, Sora 2, Seedance 2.0, Seedance 2.5, Kling 3.0, MiniMax M2.6, Vidu Q3, Wan 2.6, OVI, and LTX-2, illustrate the shift toward native audiovisual capabilities. This paper surveys the foundations and recent advances of multimodal video generation. We organize the literature around four themes: architectural components and cross-modal fusion; post-training and evaluation methods; applications and active research areas; and persistent challenges in synchronization, efficiency, data, safety, and long-horizon consistency. We identify multi-timescale alignment, from local event timing to global narrative and acoustic continuity, as a unifying challenge across current systems. This perspective connects progress in media creation with emerging uses in world modeling, interactive simulation, embodied intelligence, and human–AI communication."
@@ -292,9 +289,9 @@ sitemap:
     id="paper-timedb"
     title="TIMEDB: tumor immune micro-environment cell composition database with automatic analysis and interactive visualization"
     :authors="['Xueying Wang*','Lingxi Chen*','Wei Liu*','Yuanzheng Zhang','Dawei Liu','Chenxin Zhou','Shuai Shi','Jiajie Dong','Zhengtao Lai','Bingran Zhao','Wenjingyu Zhang','Haoyue Cheng','Shuaicheng Li']"
-    image="/publication/timedb.webp"
-    :imageWidth="408"
-    :imageHeight="218"
+    image="/publication/timedb.png"
+    :imageWidth="800"
+    :imageHeight="427"
     venue="Nucleic Acids Research · 51(D1): D1417–D1424"
     date="Jan 2023"
     note="My role: built the visualization framework and several of the interactive analyses."
@@ -321,11 +318,11 @@ sitemap:
 
 <p class="home-section-intro">Research that leaves behind something people can run. Three projects built with the LAIR community; star counts refresh with each deploy.</p>
 
-<PublicationList>
+<PublicationList class="publications-open-source">
   <PublicationCard
     id="repo-graph-of-skills"
     title="Graph-of-Skills"
-    role="Primary developer &amp; experiment lead"
+    role="Owner"
     date="2026"
     note="Dependency-aware retrieval for large skill libraries: an offline executable skill graph, hybrid seeding, reverse-aware Personalized PageRank, and context-budgeted hydration. The reference implementation behind the EMNLP 2026 paper, with the SkillsBench and ALFWorld experiments."
     paper="https://arxiv.org/abs/2604.05333"

@@ -34,7 +34,7 @@ interface Section {
 
 interface Target extends Section {
   el: HTMLElement;
-  /** `scroll-margin-top` of the heading, in px; the one source of truth for offsets. */
+  /** Heading margin plus the root's scroll padding, matching scrollIntoView. */
   offset: number;
 }
 
@@ -43,6 +43,7 @@ const items: NavItem[] = [
   { href: "#updates", label: "Updates" },
   { href: "#research", label: "Research" },
   { href: "#publications", label: "Publications" },
+  { href: "#open-source", label: "Open Source" },
   { href: "#experience", label: "Experience" },
   { href: "#projects", label: "Projects" },
   { href: "#knowledge-base", label: "Knowledge Base" },
@@ -51,14 +52,13 @@ const items: NavItem[] = [
 ];
 
 // Every section hash stays addressable; the rail groups a few of them under
-// one pill (open source under publications, education under experience,
-// tech stack under the knowledge base).
+// one pill (education under experience, tech stack under the knowledge base).
 const sections: Section[] = [
   { href: "#about", navHref: "#about" },
   { href: "#updates", navHref: "#updates" },
   { href: "#research", navHref: "#research" },
   { href: "#publications", navHref: "#publications" },
-  { href: "#open-source", navHref: "#publications" },
+  { href: "#open-source", navHref: "#open-source" },
   { href: "#education", navHref: "#experience" },
   { href: "#experience", navHref: "#experience" },
   { href: "#projects", navHref: "#projects" },
@@ -93,8 +93,8 @@ function onLinkClick(hash: string): void {
   if (!target) return;
 
   activeHref.value = getNavHref(hash);
-  // `scroll-margin-top` on the heading (set in index.scss) already accounts for
-  // the fixed navbar and the sticky rail, so no offset is computed here.
+  // The browser combines the heading's scroll margin and root scroll padding.
+  // The scroll-spy uses the same combined offset below.
   target.scrollIntoView({
     block: "start",
     behavior: prefersReducedMotion() ? "auto" : "smooth",
@@ -123,15 +123,16 @@ onMounted(() => {
     .filter((entry): entry is Target => entry.el instanceof HTMLElement);
 
   const measureOffsets = (): void => {
+    const rootPadding = Number.parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 0;
     for (const target of targets) {
-      target.offset = Number.parseFloat(getComputedStyle(target.el).scrollMarginTop || "0") || 0;
+      target.offset = (Number.parseFloat(getComputedStyle(target.el).scrollMarginTop) || 0) + rootPadding;
     }
   };
 
   const updateActiveSection = (): void => {
     let current = items[0].href;
     for (const { navHref, el, offset } of targets) {
-      if (el.getBoundingClientRect().top <= offset + 8) current = navHref;
+      if (Math.round(el.getBoundingClientRect().top) <= offset + 8) current = navHref;
     }
     // At the very bottom the last section is the reader's section even when it
     // is shorter than the viewport and its heading never reaches the probe.
