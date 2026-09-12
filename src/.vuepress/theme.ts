@@ -1,6 +1,7 @@
 import type { Page } from "vuepress";
 import { hopeTheme } from "vuepress-theme-hope";
 
+import { profile, socialLinks } from "./data/portfolio.js";
 import { enNavbar } from "./navbar/index.js";
 import { PERSON_ID, SITE, SITE_DESCRIPTION, person } from "./seo/person.js";
 import { enSidebar } from "./sidebar/index.js";
@@ -23,14 +24,45 @@ const isNote = (page: Page): boolean =>
   !page.path.endsWith("/");
 
 // Styled by `.site-footer*` rules in styles/index.scss.
-const FOOTER_HTML =
-  '<div class="site-footer"><div class="site-footer__col site-footer__col--brand"><strong>David Liu</strong><p>AI systems researcher and software engineer in Seattle. Reliable infrastructure for tool-using AI agents.</p></div><div class="site-footer__col"><span class="site-footer__label">On this site</span><a href="/#research">Research</a><a href="/#publications">Publications</a><a href="/#experience">Experience</a><a href="/#projects">Projects</a><a href="/#knowledge-base">Knowledge base</a><a href="/#resume">Résumé</a></div><div class="site-footer__col"><span class="site-footer__label">Notes</span><a href="/algo/">Algorithms</a><a href="/ai/">AI Systems</a><a href="/cs/">CS Foundations</a><a href="/se/">Software Engineering</a><a href="/article/">All notes</a></div><div class="site-footer__col"><span class="site-footer__label">Elsewhere</span><a href="https://github.com/davidliuk" target="_blank" rel="me noopener noreferrer">GitHub</a><a href="https://www.linkedin.com/in/davidliuk/" target="_blank" rel="me noopener noreferrer">LinkedIn</a><a href="https://scholar.google.com/citations?user=RzdCL4AAAAAJ&amp;hl=en" target="_blank" rel="me noopener noreferrer">Google Scholar</a><a href="https://openreview.net/profile?id=%7EDawei_Liu6" target="_blank" rel="me noopener noreferrer">OpenReview</a><a href="https://dblp.org/pid/57/1575-5.html" target="_blank" rel="me noopener noreferrer">DBLP</a><a href="mailto:davidliu02k@gmail.com">Email</a></div></div>';
+const footerColumn = (label: string, links: Array<[string, string]>, external = false): string =>
+  `<div class="site-footer__col"><span class="site-footer__label">${label}</span>${links
+    .map(
+      ([text, href]) =>
+        `<a href="${href}"${external && !href.startsWith("mailto:") ? ' target="_blank" rel="me noopener noreferrer"' : ""}>${text}</a>`,
+    )
+    .join("")}</div>`;
+
+const FOOTER_HTML = [
+  '<div class="site-footer">',
+  `<div class="site-footer__col site-footer__col--brand"><strong>${profile.name}</strong><p>${profile.role} in ${profile.location}. Reliable infrastructure for tool-using AI agents.</p></div>`,
+  footerColumn("On this site", [
+    ["Research", "/#research"],
+    ["Publications", "/#publications"],
+    ["Experience", "/#experience"],
+    ["Projects", "/#projects"],
+    ["Knowledge base", "/#knowledge-base"],
+    ["Résumé", "/#resume"],
+  ]),
+  footerColumn("Notes", [
+    ["Algorithms", "/algo/"],
+    ["AI Systems", "/ai/"],
+    ["CS Foundations", "/cs/"],
+    ["Software Engineering", "/se/"],
+    ["All notes", "/article/"],
+  ]),
+  footerColumn(
+    "Elsewhere",
+    Object.entries(socialLinks).filter(([name]) => name !== "Semantic Scholar"),
+    true,
+  ),
+  "</div>",
+].join("");
 
 export default hopeTheme({
   hostname: SITE,
 
   author: {
-    name: "David Liu",
+    name: profile.name,
     url: `${SITE}/`,
   },
 
@@ -43,35 +75,35 @@ export default hopeTheme({
   pageInfo: ["ReadingTime", "Word"],
 
   blog: {
-    avatar: "/avatar.jpg",
+    avatar: profile.avatar,
     description: SITE_DESCRIPTION,
     articleInfo: ["ReadingTime"],
     medias: {
-      GitHub: "https://github.com/davidliuk",
-      LinkedIn: "https://www.linkedin.com/in/davidliuk/",
+      GitHub: socialLinks.GitHub,
+      LinkedIn: socialLinks.LinkedIn,
       // The theme only accepts an http(s) URL or an inline `<svg>` string as a
       // custom media icon, so these are inlined to avoid an external dependency.
       "Google Scholar": {
-        link: "https://scholar.google.com/citations?user=RzdCL4AAAAAJ&hl=en",
+        link: socialLinks["Google Scholar"],
         icon: '<svg xmlns="http://www.w3.org/2000/svg" class="vp-social-media-icon google-scholar-icon" viewBox="0 0 512 512"><g><path fill="#4285f4" d="M256 411.12L0 202.667 256 0z"/><path fill="#356ac3" d="M256 411.12l256-208.453L256 0z"/><circle fill="#a0c3ff" cx="256" cy="362.667" r="149.333"/><path fill="#76a7fa" d="M121.037 298.667c23.968-50.453 75.392-85.334 134.963-85.334s110.995 34.881 134.963 85.334H121.037z"/></g></svg>',
       },
       "Semantic Scholar": {
-        link: "https://www.semanticscholar.org/author/Dawei-Liu/50439123",
+        link: socialLinks["Semantic Scholar"],
         icon: '<svg xmlns="http://www.w3.org/2000/svg" class="vp-social-media-icon semantic-scholar-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#1857b6"/><g transform="translate(12 12) scale(0.74) translate(-12 -12)"><path fill="#fff" d="M24 8.609c-.848.536-1.436.83-2.146 1.245-4.152 2.509-8.15 5.295-11.247 8.981l-1.488 1.817-4.568-7.268c1.021.814 3.564 3.098 4.603 3.599l3.356-2.526c2.336-1.644 8.946-5.226 11.49-5.848ZM8.046 15.201c.346.277.692.537.969.744.761-3.668.121-7.613-1.886-11.039 3.374-.052 6.731-.087 10.105-.139a14.794 14.794 0 0 1 1.298 5.295c.294-.156.588-.294.883-.433-.104-1.868-.641-3.91-1.662-6.263-4.602-.018-9.188-.018-13.79-.018 2.993 3.547 4.36 7.839 4.083 11.853Zm-.623-.484c.087.086.191.155.277.225-.138-3.409-1.419-6.887-3.824-9.881H1.73c3.098 2.855 4.984 6.299 5.693 9.656Zm-.744-.658c.104.087.208.173.329.277-.9-2.526-2.492-5.018-4.741-7.198H0c2.89 2.076 5.122 4.481 6.679 6.921Z"/></g></svg>',
       },
       OpenReview: {
-        link: "https://openreview.net/profile?id=%7EDawei_Liu6",
+        link: socialLinks.OpenReview,
         icon: '<svg xmlns="http://www.w3.org/2000/svg" class="vp-social-media-icon openreview-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#8c1b13"/><path fill="#fff" d="M6 5.75c0-.69.56-1.25 1.25-1.25h6.62L18 8.63v9.62c0 .69-.56 1.25-1.25 1.25h-9.5C6.56 19.5 6 18.94 6 18.25V5.75Zm2 1v10.5h8V9.5h-3V6.75H8Zm1.5 5.25h5v1.5h-5V12Zm0 3h5v1.5h-5V15Z"/></svg>',
       },
       // A lettermark badge rather than a copy of dblp's own logo: the icon row
       // is desaturated at rest, so what has to survive is the four letters.
       DBLP: {
-        link: "https://dblp.org/pid/57/1575-5.html",
+        link: socialLinks.DBLP,
         icon: '<svg xmlns="http://www.w3.org/2000/svg" class="vp-social-media-icon dblp-icon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="12" fill="#12457a"/><text x="12" y="15.6" text-anchor="middle" font-family="Helvetica, Arial, sans-serif" font-size="9.2" font-weight="700" letter-spacing="-0.5" fill="#fff">dblp</text></svg>',
       },
       // Needs the scheme: a bare address is treated as a relative path, so the
       // hero's mail icon linked to /davidliu02k@gmail.com on the site root.
-      Email: "mailto:davidliu02k@gmail.com",
+      Email: socialLinks.Email,
     },
   },
 
@@ -85,7 +117,7 @@ export default hopeTheme({
 
       displayFooter: true,
 
-      copyright: "Copyright © 2026 David Liu",
+      copyright: `Copyright © 2026 ${profile.name}`,
 
       blog: {
         description: SITE_DESCRIPTION,
@@ -158,6 +190,42 @@ export default hopeTheme({
         page.path !== "/404.html",
     },
 
+    slimsearch: {
+      // Index titles, headings and compact metadata rather than duplicating
+      // the complete 120k-line corpus into a global worker payload.
+      indexContent: false,
+      suggestion: true,
+      queryHistoryCount: 5,
+      resultHistoryCount: 5,
+      customFields: [
+        {
+          getter: (page) => page.frontmatter.description as string | undefined,
+          formatter: "Summary: $content",
+        },
+        {
+          getter: (page) => page.frontmatter.category as string | string[] | undefined,
+          formatter: "Category: $content",
+        },
+        {
+          getter: (page) => page.frontmatter.tag as string | string[] | undefined,
+          formatter: "Tag: $content",
+        },
+      ],
+      indexOptions: {
+        tokenize: (text, fieldName) => {
+          if (fieldName === "id") return [text];
+          const segmenter = new Intl.Segmenter(["zh-CN", "en-US"], {
+            granularity: "word",
+          });
+
+          return [...segmenter.segment(text)]
+            .filter(({ isWordLike, segment }) => isWordLike || /\p{Script=Han}/u.test(segment))
+            .map(({ segment }) => segment.trim())
+            .filter(Boolean);
+        },
+      },
+    },
+
     icon: {
       // 关键词: "iconify", "fontawesome", "fontawesome-with-brands"
       assets: "fontawesome",
@@ -226,7 +294,7 @@ export default hopeTheme({
           mainEntityOfPage: `${SITE}${page.path}`,
           ...(published ? { datePublished: published } : {}),
           author: [
-            { "@type": "Person", "@id": PERSON_ID, name: "David Liu", url: `${SITE}/` },
+            { "@type": "Person", "@id": PERSON_ID, name: profile.name, url: `${SITE}/` },
           ],
         } as typeof jsonLd;
       },
@@ -285,8 +353,8 @@ export default hopeTheme({
         ],
       },
       manifest: {
-        name: "David Liu — Reliable AI agents",
-        short_name: "David Liu",
+        name: `${profile.name} — Reliable AI agents`,
+        short_name: profile.name,
         description: SITE_DESCRIPTION,
         theme_color: "#17352f",
         background_color: "#f5f4f0",

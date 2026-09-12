@@ -1,16 +1,11 @@
-/**
- * Site-wide identity used by the SEO hooks in theme.ts (JSON-LD, canonical
- * URLs, Open Graph fallbacks) and by config.ts / the PWA manifest.
- *
- * Every claim here must be traceable to the résumé; do not add numbers,
- * venues or dates from memory.
- */
-export const SITE = "https://davidliuk.github.io";
+import { education, profile, socialLinks } from "../data/portfolio.js";
+
+/** Site-wide identity derived from the portfolio's single source of truth. */
+export const SITE = profile.site;
 
 export const PERSON_ID = `${SITE}/#person`;
 
-export const SITE_DESCRIPTION =
-  "AI systems researcher and software engineer at TikTok, building reliable infrastructure for tool-using AI agents. Structured notes on algorithms, AI systems, and computer science.";
+export const SITE_DESCRIPTION = profile.description;
 
 /**
  * schema.org Person node. It is emitted inside the homepage `@graph` (without
@@ -19,29 +14,22 @@ export const SITE_DESCRIPTION =
 export const person = {
   "@type": "Person",
   "@id": PERSON_ID,
-  name: "David Liu",
-  alternateName: "Dawei Liu",
+  name: profile.name,
+  alternateName: profile.alternateName,
   url: `${SITE}/`,
-  image: `${SITE}/avatar.jpg`,
-  jobTitle: "AI Systems Researcher · Software Engineer",
-  email: "mailto:davidliu02k@gmail.com",
+  image: `${SITE}${profile.avatar}`,
+  jobTitle: profile.role,
+  email: profile.email,
   worksFor: {
     "@type": "Organization",
-    name: "TikTok",
-    url: "https://www.tiktok.com/",
+    name: profile.current.company,
+    url: profile.current.companyUrl,
   },
-  alumniOf: [
-    {
-      "@type": "CollegeOrUniversity",
-      name: "University of Pennsylvania",
-      url: "https://www.upenn.edu/",
-    },
-    {
-      "@type": "CollegeOrUniversity",
-      name: "Northeastern University (China)",
-      url: "https://www.neu.edu.cn/",
-    },
-  ],
+  alumniOf: education.map((item) => ({
+    "@type": "CollegeOrUniversity",
+    name: item.schemaName,
+    url: item.schemaUrl,
+  })),
   award: [
     "Winner, Apple Swift Student Challenge 2026",
     "National Scholarship for Undergraduate Students (Ministry of Education, China), 2020–2021",
@@ -54,12 +42,7 @@ export const person = {
     "Multimodal AI systems",
     "Distributed systems",
   ],
-  sameAs: [
-    "https://github.com/davidliuk",
-    "https://www.linkedin.com/in/davidliuk/",
-    "https://scholar.google.com/citations?user=RzdCL4AAAAAJ&hl=en",
-    "https://www.semanticscholar.org/author/Dawei-Liu/50439123",
-    "https://openreview.net/profile?id=%7EDawei_Liu6",
-    "https://dblp.org/pid/57/1575-5.html",
-  ],
+  sameAs: Object.entries(socialLinks)
+    .filter(([name]) => name !== "Email")
+    .map(([, href]) => href),
 };

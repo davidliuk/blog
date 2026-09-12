@@ -20,15 +20,21 @@
     }
   },
   "scripts": {
-    "docs:build": "node scripts/fetch-github-stars.mjs && node --max-old-space-size=8192 node_modules/vuepress/bin/vuepress.js build src && node scripts/inject-blog-redirects.mjs",
+    "data:refresh": "node scripts/fetch-github-stars.mjs",
+    "docs:build": "node --max-old-space-size=6144 node_modules/vuepress/bin/vuepress.js build src",
     "docs:clean-dev": "vuepress dev src --clean-cache",
-    "docs:dev": "vuepress dev src"
+    "docs:dev": "vuepress dev src",
+    "docs:verify": "node scripts/verify-site.mjs",
+    "test:e2e": "playwright test",
+    "check": "pnpm run docs:build && pnpm run docs:verify && pnpm run test:e2e"
   },
   "devDependencies": {
+    "@playwright/test": "1.63.0",
     "@vuepress/bundler-vite": "2.0.0-rc.30",
     "@vuepress/plugin-icon": "2.0.0-rc.130",
     "@vuepress/plugin-pwa": "2.0.0-rc.131",
     "@vuepress/plugin-register-components": "2.0.0-rc.130",
+    "@vuepress/plugin-slimsearch": "2.0.0-rc.130",
     "echarts": "^6.1.0",
     "mermaid": "^11.17.2",
     "sass-embedded": "^1.104.0",

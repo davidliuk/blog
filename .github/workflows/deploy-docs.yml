@@ -55,26 +55,19 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # 5. 构建（堆内存上限由 package.json 的 docs:build 脚本设置）
+      # 5. 纯构建：只消费仓库中的快照，不联网、不改源码
       - name: Build
         run: pnpm run docs:build
 
-      # 6. 资源预算：dist 中任何单张图片超过 400 KB 即失败（dist/blog 只含跳转桩，跳过）
-      - name: Check image asset budget
-        run: |
-          set -euo pipefail
-          dist=src/.vuepress/dist
-          over=$(find "$dist" -type f \
-            \( -iname '*.png' -o -iname '*.jpg' -o -iname '*.jpeg' -o -iname '*.webp' -o -iname '*.svg' \) \
-            -not -path "$dist/blog/*" -size +400k -printf '%s\t%p\n' | sort -rn)
-          if [ -n "$over" ]; then
-            echo "::error::Images above the 400 KB budget (bytes, path):"
-            echo "$over"
-            exit 1
-          fi
-          echo "All images under $dist are within the 400 KB budget."
+      # 6. 统一检查资源、语言、内部链接、包体和历史 URL 策略
+      - name: Verify generated site
+        run: pnpm run docs:verify
 
-      # 7. 部署到用户站仓库 davidliuk.github.io（根域名 https://davidliuk.github.io/）
+      # 7. 使用仓库内 Playwright 和 runner 自带 Chrome 做交互回归
+      - name: Browser regression tests
+        run: pnpm run test:e2e
+
+      # 8. 部署到用户站仓库 davidliuk.github.io（根域名 https://davidliuk.github.io/）
       # - Secrets: blog 仓库需配置 GH_PAGES_TOKEN（PAT，对 davidliuk.github.io 有 contents:write）
       # - Pages: 在 davidliuk.github.io → Settings → Pages → Branch 选 gh-pages，目录 /
       #   （站点文件在 gh-pages 分支；main 可只保留 README，避免与 action 抢 main）

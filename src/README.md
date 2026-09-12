@@ -1,25 +1,13 @@
 ---
 home: true
 portfolio: true
-title: David Liu — AI Systems Researcher & Software Engineer
-shortTitle: David Liu
-description: AI systems researcher and software engineer at ByteDance, building reliable infrastructure for tool-using AI agents. Structured notes on algorithms, AI systems, and computer science.
-avatar: /avatar.jpg
-avatarAlt: Portrait of David Liu
-name: David Liu
-titles:
-  - AI Systems Researcher · Software Engineer
-welcome: Hello, I'm
 content: portfolio
 cover: /og.jpg
 head:
-  - - title
-    - {}
-    - David Liu — AI Systems Researcher & Software Engineer
   - - link
     - rel: preload
       as: image
-      href: /avatar.jpg
+      href: /avatar.webp
       fetchpriority: high
 sitemap:
   changefreq: weekly
@@ -183,7 +171,7 @@ sitemap:
     id="paper-graph-of-skills"
     title="Graph-of-Skills: Dependency-Aware Structural Retrieval for Massive Agent Skills"
     :authors="['Dawei Liu†','Zongxia Li†','Hongyang Du','Xiyang Wu','Shihang Gui','Yongbei Kuang','Lichao Sun']"
-    image="/publication/gos.png"
+    image="/publication/gos.webp"
     :imageWidth="800"
     :imageHeight="384"
     venue="EMNLP 2026 Main Conference"
@@ -205,7 +193,7 @@ sitemap:
     id="paper-comfyclaw"
     title="COMFYCLAW: Self-Evolving Skill Harnesses for Image Generation Workflows"
     :authors="['Zongxia Li*','Dawei Liu*','Fuxiao Liu','Yuhang Zhou','Xiyang Wu','Jingxi Chen','Jing Xie','Xiaomin Wu','Lichao Sun']"
-    image="/publication/comfyclaw.png"
+    image="/publication/comfyclaw.webp"
     :imageWidth="800"
     :imageHeight="508"
     venue="ECCV 2026 Workshop MUCG"
@@ -226,7 +214,7 @@ sitemap:
     id="paper-dr-claw"
     title="Dr. Claw: An AI Scientist Workspace for Vibe Research"
     :authors="['Dingjie Song','Hanrong Zhang','Dawei Liu','Yixin Liu','Zongxia Li','Zhengqing Yuan','Siqi Zhang','Henry Peng Zou','Zhiling Yan','Yuxuan Zhang','Yanfang Ye','Philip S. Yu','Lichao Sun']"
-    image="/publication/drclaw.png"
+    image="/publication/drclaw.webp"
     :imageWidth="800"
     :imageHeight="388"
     venue="EMNLP 2026 System Demonstrations"
@@ -247,7 +235,7 @@ sitemap:
     id="paper-3d-cookbook"
     title="A Cookbook of 3D Vision: Data, Learning Paradigms, and Application"
     :authors="['Hongyang Du*','Zongxia Li*','Dawei Liu*','Runhao Li*','Haoyuan Song','Qingyu Zhang','Yubo Wang','Jingcheng Ni','Shihang Gui','Congchao Dong','Tao Hu']"
-    image="/publication/3dv.jpeg"
+    image="/publication/3dv.webp"
     :imageWidth="800"
     :imageHeight="450"
     venue="CVPR 2026 Workshop OpenSUN3D · pp. 8376–8390"
@@ -268,7 +256,7 @@ sitemap:
     id="paper-multimodal-video"
     title="Multimodal Video Generation Models with Audio: Present and Future"
     :authors="['Dawei Liu','Hongyang Du','Zongxia Li','Xiyang Wu','Lantao Yu','Jingxi Chen','Fuxiao Liu','Xiaomin Wu','Jing Xie','Chengsong Huang','Yicheng He','Guangyao Shi']"
-    image="/publication/vgm.jpeg"
+    image="/publication/vgm.webp"
     :imageWidth="800"
     :imageHeight="395"
     venue="ACM MM 2026 Workshop JAV-CG"
@@ -289,7 +277,7 @@ sitemap:
     id="paper-timedb"
     title="TIMEDB: tumor immune micro-environment cell composition database with automatic analysis and interactive visualization"
     :authors="['Xueying Wang*','Lingxi Chen*','Wei Liu*','Yuanzheng Zhang','Dawei Liu','Chenxin Zhou','Shuai Shi','Jiajie Dong','Zhengtao Lai','Bingran Zhao','Wenjingyu Zhang','Haoyue Cheng','Shuaicheng Li']"
-    image="/publication/timedb.png"
+    image="/publication/timedb.webp"
     :imageWidth="800"
     :imageHeight="427"
     venue="Nucleic Acids Research · 51(D1): D1417–D1424"
@@ -318,139 +306,17 @@ sitemap:
 
 <p class="home-section-intro">Research that leaves behind something people can run. Three projects built with the LAIR community; star counts refresh with each deploy.</p>
 
-<PublicationList class="publications-open-source">
-  <PublicationCard
-    id="repo-graph-of-skills"
-    title="Graph-of-Skills"
-    role="Owner"
-    date="2026"
-    note="Dependency-aware retrieval for large skill libraries: an offline executable skill graph, hybrid seeding, reverse-aware Personalized PageRank, and context-budgeted hydration. The reference implementation behind the EMNLP 2026 paper, with the SkillsBench and ALFWorld experiments."
-    paper="https://arxiv.org/abs/2604.05333"
-    github="https://github.com/davidliuk/graph-of-skills"
-  />
-
-  <PublicationCard
-    id="repo-dr-claw"
-    title="Dr. Claw"
-    role="Core contributor"
-    date="2026"
-    note="An open-source AI scientist workspace that wraps coding-agent executors in an auditable, human-in-the-loop workflow. I shipped the Gemini and Codex providers, multi-session and isolated-project workflows, CLI and desktop access, reliability fixes, and cross-platform releases (4th by non-merge commits to main)."
-    paper="https://arxiv.org/abs/2609.00365"
-    github="https://github.com/OpenLAIR/dr-claw"
-  />
-
-  <PublicationCard
-    id="repo-lhtb"
-    title="Long-Horizon Terminal-Bench (LHTB)"
-    role="Contributor"
-    date="Jul 2026"
-    note="A 46-task benchmark measuring how well LLM agents sustain useful work inside a containerized terminal over hundreds of steps, graded by hidden, rebuild-from-artifact verifiers under a dense reward scheme. Tasks span interactive games and puzzles, multimodal analysis, software and reverse engineering, scientific computing, security and performance, and research reproduction."
-    paper="https://arxiv.org/abs/2607.08964"
-    github="https://github.com/zli12321/LHTB"
-    website="https://zli12321.github.io/LHTB/leaderboard.html"
-  />
-</PublicationList>
+<PortfolioOpenSource />
 
 ## Education
 
-<EducationItem
-  school="University of Pennsylvania"
-  abbr="M.S.E."
-  degree="Master of Science in Engineering"
-  major="Computer and Information Science"
-  location="Philadelphia, PA"
-  time="Aug 2024 – May 2026"
-  logo="/UPenn_logo.svg"
-  gpa="3.90 / 4.00"
-  :honors="[{ text: 'Hagan International Scholarship', kind: 'scholarship' }]" />
-
-<EducationItem
-  school="Northeastern University"
-  abbr="B.E."
-  degree="Bachelor of Engineering"
-  major="Software Engineering"
-  location="Shenyang, China"
-  time="Sep 2020 – Jun 2024"
-  logo="/NEU_logo.svg"
-  gpa="3.95 / 4.00"
-  rank="5 / 396 (top 1.3%)"
-  :honors="[
-    { text: 'National Scholarship', kind: 'scholarship', note: 'Ministry of Education, 2020–2021' },
-    { text: 'Merit-based Scholarship', kind: 'annual', note: 'Awarded annually' },
-    { text: 'Outstanding Graduate' },
-    { text: 'Outstanding Student', note: '×3' },
-    { text: 'Outstanding Student Leader' }
-  ]" />
+<PortfolioEducation />
 
 ## Experience
 
 <p class="home-section-intro">Four engineering roles where ranking, observability, platform engineering, and backend reliability met real constraints.</p>
 
-<div class="experience-grid">
-  <ExperienceCard
-    company="TikTok (ByteDance Inc.)"
-    role="Software Engineer"
-    team="Commerce Ads"
-    location="Seattle, WA"
-    time="May 2025 – Present"
-    logo="/TikTok_logo.svg"
-    summary="Production ranking, creative, and serving systems for Shop Ads. Joined as a Software Engineer Intern and returned full-time after graduation."
-    :focus="['Ads ranking','GenAI creative tooling','Low-latency backend','Observability']"
-    :stints="[
-      {
-        role: 'Software Engineer',
-        time: 'Jun 2026 – Present',
-        highlights: [
-          'Build and operate production commerce-ads backends across reliability, latency, observability, service integration, and controlled experiments, using AI-assisted workflows for development, testing, diagnosis, and operational efficiency.'
-        ]
-      },
-      {
-        role: 'Software Engineer Intern',
-        time: 'May 2025 – Dec 2025',
-        highlights: [
-          'Built the Image Selection system with posterior feature modeling, exploration-exploitation ranking, and multimodal LLM quality evaluation, driving 3.4%+ revenue uplift.',
-          'Developed a GenAI image enhancement and generation pipeline backed by Flink, TBase, and Forward Index, contributing 12%+ revenue uplift on high-value products.',
-          'Designed a modular preview flow with unified diagnostics across Ad, Creative, SPU, and Image entities, making rollout debugging much faster.',
-          'Redesigned cache and offline fetching paths in Product Handler, reducing p99 latency by 43.6% and cutting 80% of failure spikes during peak traffic.'
-        ]
-      }
-    ]"
-  />
-
-  <ExperienceCard
-    company="Amazon"
-    role="Software Development Engineer Intern"
-    team="Global-Mile Team"
-    location="Beijing, China"
-    time="Jun 2024 – Aug 2024"
-    logo="/Amazon_logo.svg"
-    summary="Distributed observability infrastructure: tracing and telemetry tools that worked across microservices and serverless environments without invasive code changes."
-    :focus="['OpenTelemetry','Java Agent','Distributed tracing']"
-    :highlights="[
-      'Developed a Java Agent on top of OpenTelemetry and ByteBuddy for non-intrusive runtime instrumentation and payload-aware tracing.',
-      'Implemented a loosely linked tracing module that reconstructed end-to-end call chains with business IDs across partially instrumented systems.',
-      'Added adaptive runtime delivery for Fargate and Lambda using reflection-based environment detection with Kinesis and SQS backends.',
-      'Built a full-stack telemetry console with query, aggregation, pagination, and multiple trace views including tree, table, timeline, and payload inspection.'
-    ]"
-  />
-
-  <ExperienceCard
-    company="JD Technology"
-    role="Software Engineer Intern"
-    team="Algorithm Tools Team"
-    location="Beijing, China"
-    time="Jul 2023 – Oct 2023"
-    logo="/JD.com_logo.png"
-    summary="Platform engineering for internal AI tooling, with an emphasis on automation, modular system design, and cloud-native delivery workflows."
-    :focus="['Platform engineering','GitOps','Multi-tenant delivery']"
-    :highlights="[
-      'Redesigned the Kubernetes resource-management service with ConfigMap automation, Informers, asynchronous recalculation, observer-based updates, and sharded row locking, cutting cold-start time by 20x.',
-      'Refactored campaign page generation using a modular Strategy pattern to improve maintainability and feature reuse.',
-      'Introduced a GenAI-assisted content pipeline to automate campaign page section creation and reduce manual operations.',
-      'Improved CI/CD with Argo Workflows, Argo CD, and Helm-based multi-tenant deployment tooling for hybrid-cloud delivery.'
-    ]"
-  />
-</div>
+<PortfolioExperience />
 
 ## Projects
 
@@ -598,22 +464,4 @@ sitemap:
 
 ## Contact
 
-<div class="home-connect-panel">
-  <p class="home-connect">I'm glad to hear from researchers and engineers working on <strong>agent reliability</strong>, <strong>skill retrieval</strong>, <strong>research automation</strong>, or <strong>AI systems at production scale</strong>, and from teams building something where the demo is the easy part. Email is the fastest way to reach me.</p>
-  <div class="home-connect-actions">
-    <a class="home-action home-action--primary no-external-link-icon" href="mailto:davidliu02k@gmail.com">Email me</a>
-    <CopyButton text="davidliu02k@gmail.com" label="Copy address" doneLabel="Address copied" title="Copy davidliu02k@gmail.com" />
-    <a class="home-action" href="https://www.linkedin.com/in/davidliuk/" target="_blank" rel="me noopener noreferrer">LinkedIn</a>
-    <a class="home-action" href="https://github.com/davidliuk" target="_blank" rel="me noopener noreferrer">GitHub</a>
-  </div>
-  <p class="home-connect__email">davidliu02k@gmail.com</p>
-  <nav id="academic-profiles" class="home-profile-row" aria-label="Academic profiles">
-    <span class="home-profile-row__label">Research profiles</span>
-    <div class="home-tag-row">
-      <a class="home-tag home-tag--link" href="https://scholar.google.com/citations?user=RzdCL4AAAAAJ&amp;hl=en" target="_blank" rel="me noopener noreferrer">Google Scholar</a>
-      <a class="home-tag home-tag--link" href="https://www.semanticscholar.org/author/Dawei-Liu/50439123" target="_blank" rel="me noopener noreferrer">Semantic Scholar</a>
-      <a class="home-tag home-tag--link" href="https://openreview.net/profile?id=%7EDawei_Liu6" target="_blank" rel="me noopener noreferrer">OpenReview</a>
-      <a class="home-tag home-tag--link" href="https://dblp.org/pid/57/1575-5.html" target="_blank" rel="me noopener noreferrer">DBLP</a>
-    </div>
-  </nav>
-</div>
+<PortfolioContact />

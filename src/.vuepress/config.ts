@@ -4,7 +4,10 @@ import { createLogger } from "vite";
 import { defineUserConfig } from "vuepress";
 import { getDirname, path } from "vuepress/utils";
 
+import { profile } from "./data/portfolio.js";
 import { cleanDescriptionPlugin } from "./plugins/clean-description.js";
+import { pageLanguagePlugin } from "./plugins/page-language.js";
+import { portfolioMetadataPlugin } from "./plugins/portfolio-metadata.js";
 import { SITE_DESCRIPTION } from "./seo/person.js";
 import theme from "./theme.js";
 
@@ -32,7 +35,7 @@ export default defineUserConfig({
   locales: {
     "/": {
       lang: "en-US",
-      title: "David Liu",
+      title: profile.name,
       description: SITE_DESCRIPTION,
     },
   },
@@ -55,6 +58,8 @@ export default defineUserConfig({
   shouldPrefetch: false,
 
   plugins: [
+    portfolioMetadataPlugin(),
+    pageLanguagePlugin(),
     registerComponentsPlugin({
       componentsDir: path.resolve(__dirname, "./components"),
     }),

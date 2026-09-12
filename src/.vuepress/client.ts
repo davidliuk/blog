@@ -1,5 +1,7 @@
-import { defineClientConfig, onContentUpdated } from "vuepress/client";
+import { useSSRContext, watchEffect } from "vue";
+import { defineClientConfig, onContentUpdated, usePageLang } from "vuepress/client";
 import Layout from "./layouts/Layout.vue";
+import NotFound from "./layouts/NotFound.vue";
 
 /**
  * Site-wide client behaviour. Everything here is additive: the page is
@@ -214,7 +216,7 @@ function ensureDarkThemeColor(): void {
 }
 
 export default defineClientConfig({
-  layouts: { Layout },
+  layouts: { Layout, NotFound },
 
   enhance({ router }) {
     if (typeof window === "undefined") return;
@@ -277,6 +279,17 @@ export default defineClientConfig({
   },
 
   setup() {
+    const pageLang = usePageLang();
+    const ssrContext = useSSRContext();
+
+    // VuePress keeps page language in route data, but its Vite SSR context
+    // defaults to English and hydration can restore that default. Keep both
+    // render paths synchronized with the active page.
+    watchEffect(() => {
+      if (ssrContext) ssrContext.lang = pageLang.value;
+      else if (typeof document !== "undefined") document.documentElement.lang = pageLang.value;
+    });
+
     onContentUpdated(() => {
       if (typeof window === "undefined") return;
       annotateNewTabLinks();

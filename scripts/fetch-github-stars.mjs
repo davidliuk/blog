@@ -17,10 +17,13 @@ import { fileURLToPath } from "node:url";
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const repoRoot = path.resolve(__dirname, "..");
 const out = path.join(repoRoot, "src/.vuepress/public/data/github-stars.json");
-const homepage = fs.readFileSync(path.join(repoRoot, "src/README.md"), "utf8");
+const sources = [
+  path.join(repoRoot, "src/README.md"),
+  path.join(repoRoot, "src/.vuepress/data/portfolio.ts"),
+].map((file) => fs.readFileSync(file, "utf8")).join("\n");
 
 const repos = [...new Set(
-  [...homepage.matchAll(/github\.com\/([\w.-]+)\/([\w.-]+)/g)]
+  [...sources.matchAll(/github\.com\/([\w.-]+)\/([\w.-]+)/g)]
     .map((m) => `${m[1]}/${m[2]}`)
     .filter((r) => !/^davidliuk\/blog$/.test(r)),
 )];
