@@ -9,7 +9,7 @@ export const portfolioMetadataPlugin = (): PluginFunction => () => ({
     if (page.path !== "/") return;
 
     const metadata = {
-      title: `${profile.name} — AI Systems Researcher & Software Engineer`,
+      title: `${profile.name} — ${profile.role.replace(" · ", " & ")}`,
       shortTitle: profile.name,
       description: profile.description,
       avatar: profile.avatar,

@@ -21,7 +21,7 @@
   },
   "scripts": {
     "data:refresh": "node scripts/fetch-github-stars.mjs",
-    "docs:build": "node --max-old-space-size=6144 node_modules/vuepress/bin/vuepress.js build src",
+    "docs:build": "node --max-old-space-size=5120 node_modules/vuepress/bin/vuepress.js build src",
     "docs:clean-dev": "vuepress dev src --clean-cache",
     "docs:dev": "vuepress dev src",
     "docs:verify": "node scripts/verify-site.mjs",

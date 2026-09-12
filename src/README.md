@@ -60,79 +60,11 @@ sitemap:
 
 ## About
 
-<p class="home-lead">I am an AI systems researcher and software engineer at <strong>ByteDance</strong> (Commerce Ads, Seattle) and a collaborator with <strong>Prof. Lichao Sun's LAIR</strong>. From scientific visualization and distributed tracing to recommendation and agent infrastructure, the constant has been making complex technology <strong>useful, inspectable, and dependable</strong>.</p>
-
-<div class="home-hero-grid">
-  <section class="home-surface-card home-surface-card--story">
-    <p class="home-card-eyebrow">The throughline</p>
-    <h3 class="home-card-title">Research ideas become valuable when people can actually use and improve them.</h3>
-    <p class="home-card-copy">I enjoy the unglamorous middle between a promising prototype and a dependable system: evaluation, interfaces, observability, latency, failure handling, and the thousand small decisions that make software hold together. That mindset now shapes my work on agent skill retrieval, reliable execution, and AI-native research workflows.</p>
-    <div class="home-tag-row" role="group" aria-label="Primary focus areas">
-      <span class="home-tag">Tool-using agents</span>
-      <span class="home-tag">Skill retrieval</span>
-      <span class="home-tag">Execution reliability</span>
-      <span class="home-tag">Open infrastructure</span>
-    </div>
-    <div class="home-story-meta" role="group" aria-label="Current profile highlights">
-      <div class="home-story-meta__item">
-        <span class="home-story-meta__label">Based in</span>
-        <strong>Seattle, Washington</strong>
-      </div>
-      <div class="home-story-meta__item">
-        <span class="home-story-meta__label">Current chapter</span>
-        <strong>ByteDance + LAIR (OpenLAIR)</strong>
-      </div>
-    </div>
-  </section>
-
-  <section class="home-surface-card home-surface-card--focus">
-    <p class="home-card-eyebrow">What I'm working toward</p>
-    <ol class="home-steps">
-      <li>
-        <span class="home-index">01</span>
-        <div><strong>Select the right skills</strong><p>Help agents pick a complete, dependency-aware bundle without loading an entire library into context.</p></div>
-      </li>
-      <li>
-        <span class="home-index">02</span>
-        <div><strong>Validate and recover</strong><p>Make tool execution easier to check, diagnose, and repair when something goes wrong.</p></div>
-      </li>
-      <li>
-        <span class="home-index">03</span>
-        <div><strong>Ship it in the open</strong><p>Release reproducible code, evaluations, and research artifacts that others can adapt.</p></div>
-      </li>
-    </ol>
-    <div class="home-story-meta" role="group" aria-label="Research impact and service">
-      <div class="home-story-meta__item">
-        <span class="home-story-meta__label">Citations</span>
-        <strong>80+ · h-index 3 <span class="home-story-meta__note">(Google Scholar, Sep 2026)</span></strong>
-      </div>
-      <div class="home-story-meta__item">
-        <span class="home-story-meta__label">Service</span>
-        <strong>Reviewer, ACM CAIS Workshop AgentSkills 2026</strong>
-      </div>
-    </div>
-  </section>
-</div>
+<PortfolioAbout />
 
 ## Updates
 
-<NewsTimeline
-  subtitle="Selected milestones, newest first."
-  :initial="5"
-  :items="[
-    { date: 'Sep 2026', iso: '2026-09', tag: 'Preprint', highlight: true, html: 'The <a href=\'https://arxiv.org/abs/2609.00365\' target=\'_blank\' rel=\'noopener\'>Dr. Claw</a> system paper is on arXiv, accepted to EMNLP 2026 System Demonstrations.' },
-    { date: 'Aug 2026', iso: '2026-08', tag: 'Paper', highlight: true, html: '<strong>Graph-of-Skills</strong> accepted to EMNLP 2026 (Main Conference); earlier accepted as a poster at the ACM CAIS 2026 Workshop AgentSkills.' },
-    { date: 'Jul 2026', iso: '2026-07', tag: 'Paper', html: '<strong>COMFYCLAW</strong> accepted to the ECCV 2026 Workshop MUCG (<a href=\'https://arxiv.org/abs/2607.01709\' target=\'_blank\' rel=\'noopener\'>arXiv:2607.01709</a>); <a href=\'https://github.com/zli12321/LHTB\' target=\'_blank\' rel=\'noopener\'>Long-Horizon Terminal-Bench</a> released with the LAIR community.' },
-    { date: 'Jun 2026', iso: '2026-06', tag: 'Career', highlight: true, html: 'Joined <strong>ByteDance</strong> in Seattle full-time as a Software Engineer on Commerce Ads.' },
-    { date: 'May 2026', iso: '2026-05', tag: 'Degree', html: 'Graduated from the <strong>University of Pennsylvania</strong> with an M.S.E. in Computer and Information Science.' },
-    { date: 'Apr 2026', iso: '2026-04', tag: 'Preprint', html: '<strong>Graph-of-Skills</strong> preprint released (<a href=\'https://arxiv.org/abs/2604.05333\' target=\'_blank\' rel=\'noopener\'>arXiv:2604.05333</a>).' },
-    { date: 'Mar 2026', iso: '2026-03', tag: 'Paper', html: '<strong>A Cookbook of 3D Vision</strong> accepted to the CVPR 2026 Workshop OpenSUN3D; <strong>Multimodal Video Generation Models with Audio</strong> accepted to the ACM MM 2026 Workshop JAV-CG.' },
-    { date: '2026', iso: '2026', tag: 'Award', highlight: true, html: 'Named a <strong>Winner of the Apple Swift Student Challenge 2026</strong> for Aura Chef, one of 350 winners from 37 countries and regions.' },
-    { date: '2026', iso: '2026', tag: 'Service', html: 'Reviewed manuscripts for the <strong>ACM CAIS 2026 Workshop AgentSkills</strong> through OpenReview.' },
-    { date: 'Jan 2023', iso: '2023-01', tag: 'Paper', html: '<strong>TIMEDB</strong> published in <em>Nucleic Acids Research</em>; I built the visualization framework and several of its analyses.' },
-    { date: '2022', iso: '2022', tag: 'Award', html: 'Led <strong>Trace Note</strong> to the National Final Second Prize (and Northeast Division First Prize) at the China Collegiate Computing Contest, and <strong>Juejin Clone</strong> to First Prize at ByteDance Youth Camp.' },
-  ]"
-/>
+<PortfolioUpdates />
 
 ## Research
 

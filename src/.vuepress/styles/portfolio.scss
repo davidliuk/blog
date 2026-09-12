@@ -42,8 +42,15 @@
   }
 
   .vp-portfolio-home {
+    --home-type-statement: clamp(1.75rem, 3.4vw, 2.6rem);
     --home-type-section: clamp(1.7rem, 2.8vw, 2.25rem);
     --home-type-title: 1.18rem;
+    --home-type-body: 1rem;
+    --home-type-meta: 0.9rem;
+    --home-type-caption: 0.8rem;
+    --home-type-eyebrow: 0.74rem;
+    --home-prose-wide: 58rem;
+    --home-prose: 52rem;
     --portfolio-serif: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
     background: var(--dl-canvas);
   }
@@ -206,6 +213,22 @@
       }
 
       .vp-social-media:hover { background: var(--dl-logo-well); }
+
+      .vp-social-media svg,
+      .vp-social-media .vp-social-media-icon {
+        width: 1.18rem;
+        height: 1.18rem;
+        display: block;
+        filter: var(--dl-mark-filter);
+        transition: filter 0.2s ease;
+      }
+
+      .vp-social-media:hover svg,
+      .vp-social-media:hover .vp-social-media-icon,
+      .vp-social-media:focus-visible svg,
+      .vp-social-media:focus-visible .vp-social-media-icon {
+        filter: none;
+      }
     }
 
     .portfolio-profile {
@@ -288,6 +311,7 @@
 
     .home-affiliation-strip {
       order: 0;
+      display: flex;
       flex-direction: row;
       align-items: center;
       gap: 1.5rem;
@@ -305,6 +329,8 @@
     }
 
     .home-affiliation-strip__logos {
+      display: flex;
+      align-items: center;
       width: auto;
       flex-wrap: wrap;
       overflow: visible;
@@ -312,14 +338,46 @@
       padding: 0;
       mask-image: none;
       -webkit-mask-image: none;
+      margin: 0;
+      list-style: none;
     }
 
     .home-affiliation-strip__link {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 48px;
       height: 44px;
+      padding: 0 0.62rem;
       border-color: transparent;
       box-shadow: none;
       background: var(--dl-logo-well);
       border-radius: 6px;
+      text-decoration: none;
+    }
+
+    .home-affiliation-strip__item {
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+
+    .home-affiliation-strip__icon {
+      display: block;
+      width: auto;
+      height: auto;
+      max-width: 80px;
+      max-height: 20px;
+      object-fit: contain;
+    }
+
+    .home-affiliation-strip__link[data-mark="crest"] {
+      min-width: 44px;
+    }
+
+    .home-affiliation-strip__link[data-mark="crest"] .home-affiliation-strip__icon {
+      max-width: 30px;
+      max-height: 26px;
     }
 
     .portfolio-intro__footnote {
@@ -365,6 +423,11 @@
 
     .portfolio-brief__text { color: var(--dl-ink); font-size: 0.875rem; font-weight: 600; line-height: 1.5; }
     .portfolio-brief__meta { color: var(--vp-c-text-3); font-size: 0.75rem; line-height: 1.5; }
+  }
+
+  .vp-portfolio-home #portfolio.vp-portfolio :is(.vp-social-media, .home-affiliation-strip__link):active {
+    transform: translateY(0) scale(0.97);
+    box-shadow: var(--dl-shadow-1);
   }
 
   .vp-portfolio-home [vp-content].vp-portfolio-content {
@@ -484,7 +547,14 @@
   .vp-portfolio-home .pub-grid.publications-open-source {
     grid-template-columns: repeat(3, minmax(0, 1fr));
 
-    .pub-card { display: flex; align-items: stretch; padding: 1.4rem; }
+    .pub-card {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr);
+      align-content: start;
+      padding: 1.4rem;
+    }
+    .pub-head { width: 100%; }
+    .pub-img { height: 150px; object-fit: contain; border-radius: 8px; padding: 0.4rem; }
     .pub-body { width: 100%; }
     .pub-meta { flex: 1; }
     .pub-note { margin-bottom: 1.25rem; }
@@ -543,6 +613,12 @@
       .portfolio-intro__socials .vp-social-medias { gap: 0; }
       .portfolio-intro__socials .vp-social-media { width: 40px; }
       .portfolio-profile { grid-template-columns: 88px minmax(0, 1fr); }
+    }
+  }
+
+  @media (hover: hover) and (pointer: fine) {
+    .vp-portfolio-home #portfolio.vp-portfolio :is(.vp-social-media, .home-affiliation-strip__link):hover {
+      transform: translateY(-1px);
     }
   }
 }

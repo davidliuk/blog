@@ -62,6 +62,14 @@ export interface ExperienceItem {
   }>;
 }
 
+export interface UpdateItem {
+  date: string;
+  iso: string;
+  tag: string;
+  html: string;
+  highlight?: boolean;
+}
+
 export const profile = {
   site: "https://davidliuk.github.io",
   name: "David Liu",
@@ -172,6 +180,79 @@ export const atAGlance = [
     text: profile.latest.label,
     meta: profile.latest.meta,
     href: profile.latest.href,
+  },
+];
+
+export const updates: UpdateItem[] = [
+  {
+    date: "Sep 2026",
+    iso: "2026-09",
+    tag: "Preprint",
+    highlight: true,
+    html: 'The <a href="https://arxiv.org/abs/2609.00365" target="_blank" rel="noopener">Dr. Claw</a> system paper is on arXiv, accepted to EMNLP 2026 System Demonstrations.',
+  },
+  {
+    date: "Aug 2026",
+    iso: "2026-08",
+    tag: "Paper",
+    highlight: true,
+    html: "<strong>Graph-of-Skills</strong> accepted to EMNLP 2026 (Main Conference); earlier accepted as a poster at the ACM CAIS 2026 Workshop AgentSkills.",
+  },
+  {
+    date: "Jul 2026",
+    iso: "2026-07",
+    tag: "Paper",
+    html: '<strong>COMFYCLAW</strong> accepted to the ECCV 2026 Workshop MUCG (<a href="https://arxiv.org/abs/2607.01709" target="_blank" rel="noopener">arXiv:2607.01709</a>); <a href="https://github.com/zli12321/LHTB" target="_blank" rel="noopener">Long-Horizon Terminal-Bench</a> released with the LAIR community.',
+  },
+  {
+    date: "Jun 2026",
+    iso: "2026-06",
+    tag: "Career",
+    highlight: true,
+    html: `Joined <strong>${profile.current.company}</strong> in ${profile.locationShort.split(",")[0]} full-time as a ${profile.current.role} on ${profile.current.team}.`,
+  },
+  {
+    date: "May 2026",
+    iso: "2026-05",
+    tag: "Degree",
+    html: "Graduated from the <strong>University of Pennsylvania</strong> with an M.S.E. in Computer and Information Science.",
+  },
+  {
+    date: "Apr 2026",
+    iso: "2026-04",
+    tag: "Preprint",
+    html: '<strong>Graph-of-Skills</strong> preprint released (<a href="https://arxiv.org/abs/2604.05333" target="_blank" rel="noopener">arXiv:2604.05333</a>).',
+  },
+  {
+    date: "Mar 2026",
+    iso: "2026-03",
+    tag: "Paper",
+    html: "<strong>A Cookbook of 3D Vision</strong> accepted to the CVPR 2026 Workshop OpenSUN3D; <strong>Multimodal Video Generation Models with Audio</strong> accepted to the ACM MM 2026 Workshop JAV-CG.",
+  },
+  {
+    date: "2026",
+    iso: "2026",
+    tag: "Award",
+    highlight: true,
+    html: "Named a <strong>Winner of the Apple Swift Student Challenge 2026</strong> for Aura Chef, one of 350 winners from 37 countries and regions.",
+  },
+  {
+    date: "2026",
+    iso: "2026",
+    tag: "Service",
+    html: "Reviewed manuscripts for the <strong>ACM CAIS 2026 Workshop AgentSkills</strong> through OpenReview.",
+  },
+  {
+    date: "Jan 2023",
+    iso: "2023-01",
+    tag: "Paper",
+    html: "<strong>TIMEDB</strong> published in <em>Nucleic Acids Research</em>; I built the visualization framework and several of its analyses.",
+  },
+  {
+    date: "2022",
+    iso: "2022",
+    tag: "Award",
+    html: "Led <strong>Trace Note</strong> to the National Final Second Prize (and Northeast Division First Prize) at the China Collegiate Computing Contest, and <strong>Juejin Clone</strong> to First Prize at ByteDance Youth Camp.",
   },
 ];
 

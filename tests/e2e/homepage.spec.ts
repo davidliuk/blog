@@ -74,7 +74,14 @@ test("homepage is responsive, accessible and interactive", async ({ page }) => {
   await expect(page.locator("#contact")).toBeFocused();
   await expect(contact).toHaveAttribute("aria-current", "location");
 
-  await expect(page.getByRole("button", { name: "Search" })).toBeVisible();
+  const searchButton = page.getByRole("button", { name: "Search" });
+  await expect(searchButton).toBeVisible();
+  await searchButton.click();
+  await page.locator("#slimsearch-input").fill("Speculative Decoding");
+  await expect(page.locator("#slimsearch-results")).toContainText("Speculative Decoding");
+
+  await page.emulateMedia({ reducedMotion: "no-preference" });
+  await expect(page.locator(".pub-card").first()).toHaveCSS("opacity", "1");
   expect(errors).toEqual([]);
 });
 
@@ -82,6 +89,9 @@ test("knowledge pages, language metadata and legacy redirects work", async ({ pa
   await page.goto("/ai/");
   await expect(page.locator("#ai-systems")).toContainText("AI Systems");
   await expect(page.locator(".portfolio-intro")).toHaveCount(0);
+  await expect(page.locator("html")).toHaveAttribute("lang", "en-US");
+
+  await page.goto("/ai/engineering/data.html");
   await expect(page.locator("html")).toHaveAttribute("lang", "zh-CN");
 
   await page.goto("/blog/ai/");
