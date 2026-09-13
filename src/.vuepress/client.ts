@@ -121,6 +121,68 @@ function ensureDarkThemeColor(): void {
   document.head.append(meta);
 }
 
+/**
+ * Promote the active child route to its top-level navbar item. Theme Hope
+ * marks links inside dropdowns, but it does not expose that state on the
+ * dropdown trigger itself, so readers otherwise lose their current section.
+ */
+function syncNavbarRouteState(): void {
+  const items = document.querySelectorAll<HTMLElement>(
+    "#navbar .vp-nav-links > .vp-nav-item:not(.vp-action)",
+  );
+
+  for (const item of items) {
+    const directLink = item.querySelector<HTMLAnchorElement>(":scope > .auto-link");
+    const dropdownTitle = item.querySelector<HTMLButtonElement>(
+      ":scope > .vp-dropdown-wrapper > .vp-dropdown-title",
+    );
+    const active = Boolean(item.querySelector(".auto-link.route-link-active"));
+
+    item.toggleAttribute("data-route-active", active);
+    if (directLink) {
+      if (active) directLink.setAttribute("aria-current", "page");
+      else directLink.removeAttribute("aria-current");
+    }
+    if (dropdownTitle) {
+      if (active) dropdownTitle.setAttribute("aria-current", "location");
+      else dropdownTitle.removeAttribute("aria-current");
+    }
+  }
+}
+
+/** Keep dropdown keyboard state explicit and let Escape reliably close it. */
+function attachNavbarInteractions(): () => void {
+  const navbar = document.getElementById("navbar");
+  if (!navbar) return () => {};
+
+  const syncExpandedState = (): void => {
+    for (const wrapper of navbar.querySelectorAll<HTMLElement>(".vp-dropdown-wrapper")) {
+      const title = wrapper.querySelector<HTMLButtonElement>(":scope > .vp-dropdown-title");
+      title?.setAttribute("aria-expanded", String(wrapper.classList.contains("open")));
+    }
+  };
+
+  const onKeydown = (event: KeyboardEvent): void => {
+    if (event.key !== "Escape") return;
+    const wrapper = navbar.querySelector<HTMLElement>(".vp-dropdown-wrapper.open");
+    const title = wrapper?.querySelector<HTMLButtonElement>(":scope > .vp-dropdown-title");
+    if (!title) return;
+    title.click();
+    title.focus();
+  };
+
+  const observer = new MutationObserver(syncExpandedState);
+  observer.observe(navbar, { attributes: true, subtree: true, attributeFilter: ["class"] });
+  navbar.addEventListener("keydown", onKeydown);
+  syncNavbarRouteState();
+  syncExpandedState();
+
+  return () => {
+    observer.disconnect();
+    navbar.removeEventListener("keydown", onKeydown);
+  };
+}
+
 export default defineClientConfig({
   layouts: { Layout, NotFound },
 
@@ -170,8 +232,9 @@ export default defineClientConfig({
       window.requestAnimationFrame(() => {
         window.requestAnimationFrame(() => {
           if (attachedPath !== path) return;
-          cleanup = [attachCountUp()];
+          cleanup = [attachCountUp(), attachNavbarInteractions()];
           annotateNewTabLinks();
+          syncNavbarRouteState();
         });
       });
     };
@@ -181,6 +244,10 @@ export default defineClientConfig({
       attach(router.currentRoute.value.path);
       ensureDarkThemeColor();
       document.addEventListener("click", onBackToTopClick, true);
+    });
+
+    router.afterEach(() => {
+      window.requestAnimationFrame(syncNavbarRouteState);
     });
   },
 

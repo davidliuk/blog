@@ -343,25 +343,4 @@ export const enNavbar = navbar([
       },
     ],
   },
-  {
-    text: "Archive",
-    icon: "box-archive",
-    children: [
-      {
-        text: "Course Notes",
-        icon: "graduation-cap",
-        link: "/education/",
-      },
-      {
-        text: "Personal Notes",
-        icon: "heart",
-        link: "/hobby/",
-      },
-      {
-        text: "All Notes",
-        icon: "newspaper",
-        link: "/article/",
-      },
-    ],
-  },
 ]);
