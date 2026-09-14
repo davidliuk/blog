@@ -33,7 +33,7 @@ sitemap:
           <dd>papers in 2026, two at EMNLP</dd>
         </div>
         <div>
-          <dt>1,050+</dt>
+          <dt>1,100+</dt>
           <dd>stars on Dr. Claw, where I am a core contributor</dd>
         </div>
       </dl>
