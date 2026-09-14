@@ -194,14 +194,14 @@ sitemap:
     venue="ACM MM 2026 Workshop JAV-CG"
     date="Mar 2026"
     abstract="Video generation has advanced rapidly, yet visual content alone is insufficient for many realistic and engaging media experiences: sound is central to immersion, semantic coherence, and perceived causality. Growing demand for synchronized dialogue, effects, music, and ambience has therefore accelerated research on multimodal video generation, which coordinates video and audio generation or uses one modality to control the other instead of treating sound as a separate post-production stage. Recent proprietary and open-weight systems, including Veo 3.1, Gemini Omni Flash, Sora 2, Seedance 2.0, Seedance 2.5, Kling 3.0, MiniMax M2.6, Vidu Q3, Wan 2.6, OVI, and LTX-2, illustrate the shift toward native audiovisual capabilities. This paper surveys the foundations and recent advances of multimodal video generation. We organize the literature around four themes: architectural components and cross-modal fusion; post-training and evaluation methods; applications and active research areas; and persistent challenges in synchronization, efficiency, data, safety, and long-horizon consistency. We identify multi-timescale alignment, from local event timing to global narrative and acoustic continuity, as a unifying challenge across current systems. This perspective connects progress in media creation with emerging uses in world modeling, interactive simulation, embodied intelligence, and human–AI communication."
-    paper="https://doi.org/10.1145/3840475.3841440"
+    paper="https://openreview.net/forum?id=9rqYE94d0c"
     github="https://github.com/zli12321/Multimodal-VIdeo-Generation-Collections-Video-and-Audio"
     bibtex="@inproceedings{liu2026multimodal,
   title     = {Multimodal Video Generation Models with Audio: Present and Future},
   author    = {Liu, Dawei and Du, Hongyang and Li, Zongxia and Wu, Xiyang and Yu, Lantao and Chen, Jingxi and Liu, Fuxiao and Wu, Xiaomin and Xie, Jing and Huang, Chengsong and He, Yicheng and Shi, Guangyao},
   booktitle = {ACM MM 2026 Workshop JAV-CG},
   year      = {2026},
-  doi       = {10.1145/3840475.3841440}
+  url       = {https://openreview.net/forum?id=9rqYE94d0c}
 }"
   />
 
