@@ -68,7 +68,7 @@ sitemap:
 
 ## Research
 
-<p class="home-section-intro">Three threads, one loop: retrieve the right capabilities, execute them with checks in place, and recover from what goes wrong. Each thread has a paper and a working system behind it.</p>
+<p class="home-section-intro">Three threads, one loop: retrieve the right capabilities, execute them with checks in place, and recover from what goes wrong. Each thread is both a research question and a systems problem, with a paper and a working artifact behind it.</p>
 
 <div class="home-highlight-grid">
   <section class="home-highlight-card">
@@ -236,7 +236,7 @@ sitemap:
 
 ## Open Source
 
-<p class="home-section-intro">Research that leaves behind something people can run. Three projects built with the LAIR community; star counts refresh with each deploy.</p>
+<p class="home-section-intro">Research that leaves behind code, workflows, and evaluation artifacts people can run, inspect, and extend. These projects show different parts of my contribution pattern: first-author systems, core maintenance, and execution harness design.</p>
 
 <PortfolioOpenSource />
 
@@ -246,7 +246,9 @@ sitemap:
 
 ## Experience
 
-<p class="home-section-intro">Four engineering roles where ranking, observability, platform engineering, and backend reliability met real constraints.</p>
+<p class="home-section-intro">Four engineering roles across ads, agent infrastructure, observability, platform engineering, and backend reliability. Together they explain how I approach research problems as systems work, and systems work with research discipline.</p>
+
+<p class="home-section-outro">For a deeper write-up on the production agent work behind the first card, see <a href="/ai/engineering/agent-systems-in-production.html">Agent Systems in Production</a>.</p>
 
 <PortfolioExperience />
 

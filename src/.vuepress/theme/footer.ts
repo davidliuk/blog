@@ -11,7 +11,7 @@ const column = (label: string, links: Array<[string, string]>, external = false)
 /** Theme Hope accepts footer markup, so centralize its data-driven rendering. */
 export const footerHtml = [
   '<div class="site-footer">',
-  `<div class="site-footer__col site-footer__col--brand"><strong>${profile.name}</strong><p>${profile.role} in ${profile.location}. Reliable infrastructure for tool-using AI agents.</p></div>`,
+  `<div class="site-footer__col site-footer__col--brand"><strong>${profile.name}</strong><p>${profile.role} in ${profile.location}. Research, engineering, and open infrastructure for reliable AI systems.</p></div>`,
   column("On this site", [
     ["Research", "/#research"],
     ["Publications", "/#publications"],

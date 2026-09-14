@@ -27,6 +27,11 @@ AI engineering 把模型实验变成可持续运行的产品能力。它同时�
 ## Knowledge Map
 
 <div class="section-card-grid">
+  <a class="section-card" href="./agent-systems-in-production.md">
+    <span class="section-card__eyebrow">Production agent systems</span>
+    <h3>Agent Systems in Production</h3>
+    <p>Bounded autonomy, resumability, evidence-gated validation, and interoperable coding-agent runtimes in real environments.</p>
+  </a>
   <a class="section-card" href="./data.md">
     <span class="section-card__eyebrow">Input system</span>
     <h3>Data Engineering</h3>

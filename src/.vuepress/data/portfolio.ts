@@ -75,13 +75,13 @@ export const profile = {
   name: "David Liu",
   alternateName: "Dawei Liu",
   welcome: "Hello, I'm",
-  role: "AI Systems Researcher · Software Engineer",
-  headline: "Reliable AI agents.",
-  headlineEmphasis: "Beyond the demo.",
+  role: "AI Systems Researcher & Software Engineer",
+  headline: "Reliable AI systems.",
+  headlineEmphasis: "Research that survives contact with reality.",
   description:
-    "AI systems researcher and software engineer at ByteDance, building reliable infrastructure for tool-using AI agents. Structured notes on algorithms, AI systems, and computer science.",
+    "AI systems researcher and software engineer at ByteDance and collaborator with OpenLAIR, building reliable agent infrastructure, retrieval systems, evaluation workflows, and production AI software. Structured notes on algorithms, AI systems, and computer science.",
   introduction:
-    "I build infrastructure that helps AI agents retrieve the right skills, execute with confidence, and recover when things go wrong.",
+    "I work at the boundary of research and engineering: retrieval, execution reliability, observability, evaluation, and the infrastructure that makes AI systems useful beyond a demo.",
   location: "Seattle, Washington",
   locationShort: "Seattle, WA",
   avatar: "/avatar.webp",
@@ -99,10 +99,10 @@ export const profile = {
     organization: "OpenLAIR",
     organizationUrl: "https://github.com/OpenLAIR",
     advisor: "Prof. Lichao Sun",
-    focus: "Reliable tool-using agents with LAIR",
+    focus: "Reliable AI systems, agents, and evaluation with LAIR",
   },
   latest: {
-    label: "Dr. Claw preprint on arXiv",
+    label: "Dr. Claw system paper",
     meta: "EMNLP 2026 System Demonstrations · Sep 2026",
     href: "#paper-dr-claw",
   },
@@ -305,14 +305,21 @@ export const experience: ExperienceItem[] = [
     time: "May 2025 – Present",
     logo: "/TikTok_logo.svg",
     summary:
-      "Production ranking, creative, and serving systems for Shop Ads. Joined as a Software Engineer Intern and returned full-time after graduation.",
-    focus: ["Ads ranking", "GenAI creative tooling", "Low-latency backend", "Observability"],
+      "Built production systems across Shop Ads and AI-assisted engineering workflows, including an evidence-grounded on-call agent, an interoperability layer for coding agents, and a resumable validation framework for controlled service verification.",
+    focus: [
+      "Production agents",
+      "Agent interoperability",
+      "Validation autonomy",
+      "Reliability engineering",
+    ],
     stints: [
       {
         role: profile.current.role,
         time: `${profile.current.since} – Present`,
         highlights: [
-          "Build and operate production commerce-ads backends across reliability, latency, observability, service integration, and controlled experiments, using AI-assisted workflows for development, testing, diagnosis, and operational efficiency.",
+          "Architected and built a production on-call agent that triages alerts using SOPs, runtime telemetry, change history, and service-topology knowledge; designed its deterministic-tool + bounded-LLM architecture, guardrails, and evaluation framework for safe production use.",
+          "Built a multi-protocol interoperability layer that connects a model platform to Claude Code-, Codex-, and Responses/Messages-compatible coding agents while preserving native tool execution, sandboxing, approval policies, multi-agent workflows, and reliable tool continuation.",
+          "Architected a resumable, evidence-gated validation framework for online service changes with contract-defined gates, artifact and runtime checks, side-effect deduplication, auditable ledgers, and explicit human-escalation boundaries for controlled agent autonomy.",
         ],
       },
       {
@@ -320,9 +327,8 @@ export const experience: ExperienceItem[] = [
         time: "May 2025 – Dec 2025",
         highlights: [
           "Built the Image Selection system with posterior feature modeling, exploration-exploitation ranking, and multimodal LLM quality evaluation, driving 3.4%+ revenue uplift.",
-          "Developed a GenAI image enhancement and generation pipeline backed by Flink, TBase, and Forward Index, contributing 12%+ revenue uplift on high-value products.",
-          "Designed a modular preview flow with unified diagnostics across Ad, Creative, SPU, and Image entities, making rollout debugging much faster.",
-          "Redesigned cache and offline fetching paths in Product Handler, reducing p99 latency by 43.6% and cutting 80% of failure spikes during peak traffic.",
+          "Automated high-value-product creative generation and enhancement with scheduled generation, Flink-backed asset persistence, and modular preview and diagnostics for rollout validation, contributing 12%+ revenue uplift.",
+          "Optimized Product Handler serving reliability and tail latency through caching, asynchronous batch fetches, and offline computation, reducing p99 latency by 43.6% and cutting 80% of failure spikes during peak traffic.",
         ],
       },
     ],
@@ -367,10 +373,10 @@ export const openSourceProjects: OpenSourceProject[] = [
   {
     id: "repo-graph-of-skills",
     title: "Graph-of-Skills",
-    role: "Owner",
+    role: "First author · Owner",
     date: "2026",
     note:
-      "Dependency-aware retrieval for large skill libraries: an offline executable skill graph, hybrid seeding, reverse-aware Personalized PageRank, and context-budgeted hydration. The reference implementation behind the EMNLP 2026 paper, with the SkillsBench and ALFWorld experiments.",
+      "The reference implementation behind the EMNLP 2026 paper. I authored the initial public implementation, led the reported experiments, and built dependency-aware retrieval with hybrid semantic-lexical seeding, reverse-aware Personalized PageRank, and context-budgeted hydration.",
     image: "/publication/gos.webp",
     imageWidth: 800,
     imageHeight: 384,
@@ -380,15 +386,28 @@ export const openSourceProjects: OpenSourceProject[] = [
   {
     id: "repo-dr-claw",
     title: "Dr. Claw",
-    role: "Core contributor",
+    role: "Core contributor · Maintainer",
     date: "2026",
     note:
-      "An open-source AI scientist workspace that wraps coding-agent executors in an auditable, human-in-the-loop workflow. I shipped the Gemini and Codex providers, multi-session and isolated-project workflows, CLI and desktop access, reliability fixes, and cross-platform releases (4th by non-merge commits to main).",
+      "An open-source AI scientist workspace that wraps coding-agent executors in an auditable, human-in-the-loop workflow. I am one of the core contributors and active maintainers: 57 non-merge commits to main (#4 contributor), including provider integrations, project/session workflows, reliability fixes, and the merged cross-platform desktop and release work.",
     image: "/publication/drclaw.webp",
     imageWidth: 800,
     imageHeight: 388,
     paper: "https://arxiv.org/abs/2609.00365",
     github: "https://github.com/OpenLAIR/dr-claw",
+  },
+  {
+    id: "repo-comfyclaw",
+    title: "COMFYCLAW",
+    role: "Equal-contribution coauthor",
+    date: "2026",
+    note:
+      "A typed-graph harness for image-generation workflows that makes agent execution more reliable through validation, rollback, repair, visual verification, and skill evolution. My contribution centered on the execution scaffold that turns workflow construction into an auditable, repairable process.",
+    image: "/publication/comfyclaw.webp",
+    imageWidth: 800,
+    imageHeight: 508,
+    paper: "https://arxiv.org/abs/2607.01709",
+    github: "https://github.com/Moms-Organic-Agent-Lab/comfyclaw",
   },
   {
     id: "repo-lhtb",

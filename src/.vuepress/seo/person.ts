@@ -36,9 +36,10 @@ export const person = {
     "Hagan International Scholarship, University of Pennsylvania",
   ],
   knowsAbout: [
-    "Reliable AI agents",
-    "Agent skill retrieval",
-    "Execution validation and failure recovery",
+    "Reliable AI systems",
+    "Agent infrastructure and retrieval",
+    "Execution validation, observability, and failure recovery",
+    "Evaluation workflows for AI systems",
     "Multimodal AI systems",
     "Distributed systems",
   ],

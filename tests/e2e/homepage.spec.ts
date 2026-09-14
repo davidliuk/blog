@@ -139,6 +139,18 @@ test("navbar communicates the active section and supports keyboard dropdowns", a
     await homeItem.locator(":scope > a").evaluate((link) => getComputedStyle(link, "::before").display),
   ).toBe("none");
 
+  const topLevelTriggerHeights = await page
+    .locator("#navbar .vp-nav-links > .vp-nav-item")
+    .evaluateAll((items) =>
+      items.map((item) => {
+        const trigger = item.querySelector<HTMLElement>(
+          ":scope > .auto-link, :scope > .vp-dropdown-wrapper > .vp-dropdown-title",
+        );
+        return trigger?.getBoundingClientRect().height ?? 0;
+      }),
+    );
+  expect(Math.max(...topLevelTriggerHeights) - Math.min(...topLevelTriggerHeights)).toBeLessThanOrEqual(1);
+
   await page.goto("/ai/gm/inference/");
   const aiItem = page.locator("#navbar .vp-nav-links > .vp-nav-item").filter({
     has: page.getByRole("button", { name: "AI Systems", exact: true }),

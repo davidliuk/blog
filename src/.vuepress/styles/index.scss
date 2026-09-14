@@ -351,6 +351,8 @@ body {
   align-items: center;
   justify-content: center;
   gap: 0.25rem;
+  box-sizing: border-box;
+  height: 2.15rem;
   min-height: 2.15rem;
   padding: 0.32rem 0.46rem;
   border-radius: 999px;
