@@ -28,7 +28,10 @@ const frontmatter = usePageFrontmatter<{ avatar?: string; avatarAlt?: string }>(
             <a class="portfolio-intro__button portfolio-intro__button--primary" href="#publications">Explore my research <span aria-hidden="true">↗</span></a>
             <a class="portfolio-intro__button" :href="withBase(profile.resume)" target="_blank" rel="noopener noreferrer">View résumé <span aria-hidden="true">↗</span></a>
           </nav>
-          <div class="portfolio-intro__socials"><SocialMedias /></div>
+          <div class="portfolio-intro__socials">
+            <p class="portfolio-intro__socials-label" aria-hidden="true">Find me on</p>
+            <SocialMedias />
+          </div>
         </div>
 
         <aside class="portfolio-profile" aria-label="Portrait and current work">

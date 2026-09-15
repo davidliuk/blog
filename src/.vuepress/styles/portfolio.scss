@@ -195,32 +195,70 @@
       &:hover { background: var(--dl-ink-2); }
     }
 
+    // The theme renders each social link as a 44px block anchor with the
+    // SVG sitting in its top-left corner, so the hover well drifted away from
+    // the mark. Centre the mark in a round well and let the well carry the
+    // hover state; the marks themselves rest as quiet monochrome coins and
+    // regain their brand colour on hover / focus.
     .portfolio-intro__socials {
-      margin-top: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      margin-top: 1.35rem;
 
       .vp-social-medias {
+        display: flex;
+        flex-wrap: wrap;
         justify-content: flex-start;
+        gap: 0.3rem;
+        margin: 0;
         padding: 0;
-        gap: 0.4rem;
       }
 
       .vp-social-media {
-        width: 44px;
-        height: 44px;
-        border-color: transparent;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        box-sizing: border-box;
+        width: 40px;
+        height: 40px;
+        margin: 0;
+        border: 1px solid transparent;
+        border-radius: 999px;
         background: transparent;
         box-shadow: none;
-      }
+        color: var(--dl-ink);
+        transition:
+          background-color 0.2s ease,
+          border-color 0.2s ease,
+          box-shadow 0.2s ease,
+          transform 0.2s ease;
 
-      .vp-social-media:hover { background: var(--dl-logo-well); }
+        &::after {
+          --balloon-font-size: 11px;
+          border-radius: 6px;
+          padding: 0.3em 0.55em !important;
+          font-family: var(--dl-font-mono);
+          letter-spacing: 0.02em;
+        }
+      }
 
       .vp-social-media svg,
       .vp-social-media .vp-social-media-icon {
-        width: 1.18rem;
-        height: 1.18rem;
         display: block;
+        width: 20px;
+        height: 20px;
+        flex: none;
         filter: var(--dl-mark-filter);
-        transition: filter 0.2s ease;
+        transform: none;
+        transition: filter 0.2s ease, transform 0.2s ease;
+      }
+
+      .vp-social-media:hover,
+      .vp-social-media:focus-visible {
+        border-color: var(--dl-border);
+        background: var(--dl-logo-well);
+        box-shadow: var(--dl-shadow-1);
       }
 
       .vp-social-media:hover svg,
@@ -228,6 +266,29 @@
       .vp-social-media:focus-visible svg,
       .vp-social-media:focus-visible .vp-social-media-icon {
         filter: none;
+        transform: scale(1.08);
+      }
+    }
+
+    .portfolio-intro__socials-label {
+      flex: none;
+      margin: 0;
+      color: var(--vp-c-text-3);
+      font-family: var(--dl-font-mono);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+
+      &::after {
+        content: "";
+        display: inline-block;
+        width: 1.25rem;
+        height: 1px;
+        margin-left: 0.65rem;
+        vertical-align: middle;
+        background: var(--dl-border);
       }
     }
 
@@ -601,8 +662,9 @@
       .portfolio-intro__statement { font-size: clamp(2rem, 8.5vw, 3rem); }
       .portfolio-intro__actions { gap: 0.6rem; }
       .portfolio-intro__button { gap: 0.6rem; padding-inline: 0.85rem; font-size: 0.8rem; }
-      .portfolio-intro__socials .vp-social-medias { gap: 0.15rem; }
-      .portfolio-intro__socials .vp-social-media { width: 44px; height: 44px; }
+      .portfolio-intro__socials { flex-wrap: wrap; gap: 0.5rem 0.85rem; }
+      .portfolio-intro__socials .vp-social-medias { gap: 0.2rem; }
+      .portfolio-intro__socials .vp-social-media { width: 42px; height: 42px; }
       .portfolio-profile { display: grid; grid-template-columns: 112px minmax(0, 1fr); align-items: center; gap: 0.85rem; box-shadow: 4px 5px 0 var(--dl-chip); }
       .portfolio-profile__portrait img { aspect-ratio: 1; }
       .portfolio-profile__portrait figcaption { display: none; }
@@ -630,7 +692,7 @@
       padding-inline: 1rem;
       .portfolio-intro__actions { flex-direction: column; }
       .portfolio-intro__socials .vp-social-medias { gap: 0; }
-      .portfolio-intro__socials .vp-social-media { width: 40px; }
+      .portfolio-intro__socials .vp-social-media { width: 40px; height: 40px; }
       .portfolio-profile { grid-template-columns: 88px minmax(0, 1fr); }
     }
   }

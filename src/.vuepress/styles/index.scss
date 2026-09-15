@@ -69,9 +69,11 @@
   // light well instead of being filtered (which would wreck brand colours).
   --dl-logo-well: var(--dl-surface);
   --dl-logo-well-line: var(--dl-border);
-  // Social marks are desaturated at rest and restored on hover; the filter
-  // lives in a token so the dark variant cannot lose a specificity fight.
-  --dl-mark-filter: grayscale(1) brightness(0.62);
+  // Social marks rest as quiet monochrome coins and regain their brand colour
+  // on hover; the filter lives in a token so the dark variant cannot lose a
+  // specificity fight. Opacity (not brightness) keeps the seven badges, which
+  // range from near-black to mid-blue, at one visual weight.
+  --dl-mark-filter: grayscale(1) opacity(0.58);
 
   // One border colour, three elevation steps.
   --dl-border: color-mix(in srgb, var(--vp-c-divider) 88%, transparent);
@@ -127,7 +129,7 @@
   --dl-gold-icon: #d29922;
   --dl-logo-well: #eef1ef;
   --dl-logo-well-line: color-mix(in srgb, #eef1ef 70%, transparent);
-  --dl-mark-filter: grayscale(1) invert(1) brightness(1.1);
+  --dl-mark-filter: grayscale(1) invert(1) opacity(0.66);
   // Explicit, hue-matched border: the divider-derived one measured 1.04:1
   // against a chip, so cards had no edges at all.
   --dl-border: #343a44;
