@@ -1,7 +1,7 @@
 <template>
   <section ref="rootEl" class="news-timeline home-card-shell" :aria-labelledby="labelId">
     <div class="news-timeline__head">
-      <p :id="labelId" class="home-card-eyebrow news-timeline__eyebrow">Updates</p>
+      <p :id="labelId" class="home-card-eyebrow news-timeline__eyebrow">{{ title }}</p>
       <p v-if="subtitle" class="news-timeline__subtitle">{{ subtitle }}</p>
     </div>
     <ol :id="listId" class="news-timeline__list">
@@ -53,9 +53,11 @@ const props = withDefaults(
     items: NewsItem[];
     /** Entries shown before the "older updates" toggle. */
     initial?: number;
+    /** Card eyebrow; also the list's accessible name. */
+    title?: string;
     subtitle?: string;
   }>(),
-  { initial: 5, subtitle: "" },
+  { initial: 5, title: "Updates", subtitle: "" },
 );
 
 const uid = useId();

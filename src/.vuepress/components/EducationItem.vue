@@ -12,7 +12,7 @@
     <div class="edu-right">
       <div class="edu-header">
         <div class="edu-header__title">
-          <p class="home-card-eyebrow">Education</p>
+          <p class="home-card-eyebrow">{{ level || "Education" }}</p>
           <h3>{{ school }}</h3>
         </div>
         <div v-if="time || location" class="home-card-meta">
@@ -34,6 +34,7 @@
         <div v-if="gpa" class="edu-gpa-row">
           <span class="home-card-label edu-gpa-label">GPA</span>
           <strong class="edu-gpa-value">{{ gpa }}</strong>
+          <span v-if="gpaNote" class="edu-gpa-note">{{ gpaNote }}</span>
           <Badge v-if="rank" :text="rank" type="tip" vertical="top" />
         </div>
         <ul v-if="honorList.length" class="edu-honors-row" aria-label="Honors">
@@ -74,6 +75,8 @@ interface HonorInput {
 
 const props = defineProps<{
   logo: string;
+  /** Eyebrow above the school name, e.g. "Graduate"; defaults to "Education". */
+  level?: string;
   school: string;
   time?: string;
   /** Long degree title, e.g. "Master of Science in Engineering". */
@@ -83,6 +86,8 @@ const props = defineProps<{
   major?: string;
   location?: string;
   gpa?: string;
+  /** Scope of the GPA when it is not the final one, e.g. "first six semesters". */
+  gpaNote?: string;
   rank?: string;
   /** Plain strings are treated as `{ text, kind: "honor" }`. */
   honors?: Array<string | HonorInput>;
@@ -235,9 +240,16 @@ const logoSrc = computed(() => {
 
 .edu-gpa-row {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   gap: var(--dl-space-2);
   font-weight: 600;
+}
+
+.edu-gpa-note {
+  color: var(--vp-c-text-3);
+  font-size: var(--home-type-meta, 0.9rem);
+  font-weight: 500;
 }
 
 .edu-gpa-label {
@@ -318,6 +330,16 @@ const logoSrc = computed(() => {
     flex-direction: column;
     align-items: flex-start;
     gap: var(--dl-space-2);
+  }
+
+  /* The degree title wraps to two or three lines here; keep the chip level
+     with the first line instead of centred on the block. */
+  .edu-degree-line {
+    align-items: flex-start;
+  }
+
+  .edu-degree-copy {
+    padding-top: 0.12rem;
   }
 
   .edu-honor {

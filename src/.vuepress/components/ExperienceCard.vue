@@ -13,7 +13,9 @@
         </div>
         <div class="experience-card__title-group">
           <p class="home-card-eyebrow">{{ company }}</p>
-          <h3>{{ role }}</h3>
+          <!-- The company sits in the eyebrow above; say it in the heading too,
+               so heading navigation does not list three bare job titles. -->
+          <h3>{{ role }}<span class="sr-only">, {{ company }}</span></h3>
           <p v-if="team" class="experience-card__team">{{ team }}</p>
         </div>
       </div>

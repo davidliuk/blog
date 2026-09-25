@@ -47,7 +47,7 @@ test("homepage is responsive, accessible and interactive", async ({ page }) => {
       await page.locator(".publications-open-source").evaluate((grid) =>
         getComputedStyle(grid).gridTemplateColumns.split(" ").length,
       ),
-    ).toBe(width > 1099 ? 3 : 1);
+    ).toBe(width >= 960 ? 2 : 1);
   }
 
   await page.setViewportSize({ width: 1440, height: 1000 });

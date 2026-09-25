@@ -1,10 +1,9 @@
 <template>
   <div class="home-connect-panel">
     <p class="home-connect">
-      I'm glad to hear from researchers, engineers, and collaborators working on
-      <strong>AI systems</strong>, <strong>agent reliability</strong>, <strong>retrieval and evaluation</strong>,
-      <strong>research infrastructure</strong>, or <strong>production-scale ML software</strong>. Email is
-      the fastest way to reach me.
+      I'm glad to hear from researchers and engineers working on <strong>reliable agents</strong>,
+      <strong>retrieval and evaluation</strong>, or <strong>production AI infrastructure</strong>.
+      Email is the fastest way to reach me.
     </p>
     <div class="home-connect-actions">
       <a class="home-action home-action--primary no-external-link-icon" :href="profile.email">Email me</a>

@@ -1,5 +1,5 @@
 <template>
-  <NewsTimeline subtitle="Selected milestones, newest first." :initial="5" :items="updates" />
+  <NewsTimeline title="Selected milestones" subtitle="Newest first" :initial="6" :items="updates" />
 </template>
 
 <script setup lang="ts">

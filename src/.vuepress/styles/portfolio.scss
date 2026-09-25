@@ -331,6 +331,17 @@
       }
     }
 
+    // Same pin as the location chips; the caption is not a link, so it no
+    // longer borrows the ↗ used by every link on the page.
+    .portfolio-profile__pin {
+      flex: none;
+      width: 0.95em;
+      height: 0.95em;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.5;
+    }
+
     .portfolio-profile__now {
       padding: 1.15rem 0.5rem 0.65rem;
 
@@ -441,15 +452,6 @@
       max-height: 26px;
     }
 
-    .portfolio-intro__footnote {
-      flex-shrink: 0;
-      margin: 0;
-      color: var(--vp-c-text-3);
-      font-size: 0.75rem;
-      line-height: 1.55;
-      text-align: right;
-    }
-
     .portfolio-brief {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -512,6 +514,23 @@
         background: var(--dl-border);
       }
     }
+  }
+
+  // The theme justifies and auto-hyphenates every top-level content paragraph
+  // at (1,2,1), which beat the wrapper's `hyphens: none` and split words such
+  // as "recov-er" in the section intros. Match the cards: ragged right, whole
+  // words.
+  .vp-portfolio-home [vp-content].vp-portfolio-content #markdown-content > p {
+    text-align: start;
+    hyphens: none;
+  }
+
+  .vp-portfolio-home .home-nowrap { white-space: nowrap; }
+
+  // The theme resets the footer's start padding to 2rem on pages without a
+  // sidebar, so the columns sat 88px left of the content above them.
+  .theme-container:has(.vp-portfolio-home) .vp-footer-wrapper {
+    padding-inline: max(1.5rem, calc((100% - min(84%, 1200px)) / 2));
   }
 
   // Keep one anchor offset while the theme animates its navbar in or out.
@@ -587,11 +606,21 @@
     box-shadow: none;
   }
 
+  // The three cards share a row; pinning each link to the card's bottom edge
+  // lines the links up whatever the body length.
   .vp-portfolio-home .home-highlight-card {
+    display: flex;
+    flex-direction: column;
     border-top: 2px solid var(--dl-accent-line-strong);
     background: var(--dl-surface);
 
     h3 { font-size: 1.3rem; line-height: 1.4; }
+  }
+
+  .vp-portfolio-home .home-highlight-card__link {
+    align-self: flex-start;
+    margin-top: auto;
+    padding-top: 0.85rem;
   }
 
   .vp-portfolio-home .publications-selected .pub-card {
@@ -605,13 +634,19 @@
     .pub-title { font-size: 1.2rem; line-height: 1.4; }
   }
 
+  // Four repositories: a 2 x 2 grid (one column below 960px, where two
+  // columns wrap the link rows). Three columns left the fourth card alone on
+  // its own row.
   .vp-portfolio-home .pub-grid.publications-open-source {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 
+    // The body fills the row height so each card's links share a baseline
+    // with its neighbour's instead of floating under a shorter note.
     .pub-card {
       display: grid;
       grid-template-columns: minmax(0, 1fr);
-      align-content: start;
+      grid-template-rows: auto 1fr;
+      align-items: stretch;
       padding: 1.4rem;
     }
     .pub-head {
@@ -631,7 +666,7 @@
       padding: 0.4rem;
     }
     .pub-body { width: 100%; }
-    .pub-meta { flex: 1; }
+    .pub-meta { flex: 1; align-content: start; }
     .pub-note { margin-bottom: 1.25rem; }
     .pub-links { margin-top: auto; grid-template-columns: 1fr; }
     .pub-meta-pill { white-space: normal; line-height: 1.4; }
@@ -641,10 +676,11 @@
     .vp-portfolio-home #portfolio.vp-portfolio {
       .portfolio-intro { grid-template-columns: minmax(0, 1fr) 260px; gap: 2rem; }
       .portfolio-intro__footer { gap: 1rem; }
-      .portfolio-intro__footnote { display: none; }
     }
+  }
 
-    .vp-portfolio-home .pub-grid.publications-open-source { grid-template-columns: 1fr; }
+  @media (max-width: 959px) {
+    .vp-portfolio-home .pub-grid.publications-open-source { grid-template-columns: minmax(0, 1fr); }
   }
 
   @media (max-width: 719px) {

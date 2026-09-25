@@ -2,6 +2,7 @@
   <EducationItem
     v-for="item in education"
     :key="item.school"
+    :level="item.level"
     :school="item.school"
     :abbr="item.abbr"
     :degree="item.degree"
@@ -10,6 +11,7 @@
     :time="item.time"
     :logo="item.logo"
     :gpa="item.gpa"
+    :gpa-note="item.gpaNote"
     :rank="item.rank"
     :honors="item.honors"
   />

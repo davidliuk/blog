@@ -18,15 +18,15 @@ sitemap:
 
 <section class="home-mission" aria-labelledby="home-mission-title">
   <div class="home-mission__copy">
-    <p class="home-mission__eyebrow">The research philosophy</p>
+    <p class="home-mission__eyebrow">Research focus</p>
     <h2 id="home-mission-title">Built for the hard cases.</h2>
-    <p class="home-mission__lede">Most agents look capable when everything goes right. I care about the harder cases: thousands of available skills, long-running tool use, partial failures, and tight context or latency budgets. My work connects <strong>dependency-aware retrieval</strong>, <strong>execution validation</strong>, and <strong>failure recovery</strong>, then turns those ideas into open systems others can inspect, test, and extend.</p>
+    <p class="home-mission__lede">Agents often look capable on the happy path. I study what happens off it: skill libraries that grow into the thousands, tool use that spans long horizons, failures that are only partial, and tight context or latency budgets. My work connects <strong>dependency-aware retrieval</strong>, <strong>execution validation</strong>, and <strong>failure recovery</strong>, and carries each idea into an open system that others can inspect, test, and extend.</p>
     <div class="home-mission__signals-group" role="group" aria-labelledby="home-signals-label">
       <span id="home-signals-label" class="sr-only">Research signals</span>
       <dl class="home-mission__signals">
         <div>
           <dt>56.7%</dt>
-          <dd>fewer tokens with Graph-of-Skills</dd>
+          <dd>fewer total tokens with <span class="home-nowrap">Graph-of-Skills</span></dd>
         </div>
         <div>
           <dt>5</dt>
@@ -34,7 +34,7 @@ sitemap:
         </div>
         <div>
           <dt>1,100+</dt>
-          <dd>stars on Dr. Claw, where I am a core contributor</dd>
+          <dd>GitHub stars on Dr. Claw, which I help maintain</dd>
         </div>
       </dl>
     </div>
@@ -44,15 +44,15 @@ sitemap:
     <ol>
       <li>
         <span class="home-mission__step">01</span>
-        <div><strong>Retrieve</strong><p>Find a small, complete set of capabilities, dependencies included.</p></div>
+        <div><strong>Retrieve</strong><p>Find the smallest skill bundle that can actually run, prerequisites included.</p></div>
       </li>
       <li>
         <span class="home-mission__step">02</span>
-        <div><strong>Execute</strong><p>Make tool use observable, bounded, and verifiable as work unfolds.</p></div>
+        <div><strong>Execute</strong><p>Keep tool use observable, bounded, and verifiable throughout a run.</p></div>
       </li>
       <li>
         <span class="home-mission__step">03</span>
-        <div><strong>Recover<svg class="home-mission__return" viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8a5 5 0 1 1-1.5-3.6M13 2v3h-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></strong><p>Turn errors and feedback into repairs and reusable experience, then retrieve again.</p></div>
+        <div><strong>Recover<svg class="home-mission__return" viewBox="0 0 16 16" aria-hidden="true"><path d="M13 8a5 5 0 1 1-1.5-3.6M13 2v3h-3" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></strong><p>Turn errors and verifier feedback into repairs and reusable skills, then retrieve again.</p></div>
       </li>
     </ol>
   </aside>
@@ -68,34 +68,34 @@ sitemap:
 
 ## Research
 
-<p class="home-section-intro">Three threads, one loop: retrieve the right capabilities, execute them with checks in place, and recover from what goes wrong. Each thread is both a research question and a systems problem, with a paper and a working artifact behind it.</p>
+<p class="home-section-intro">Three projects behind the retrieve–execute–recover loop, each pairing a paper that makes the idea precise with an open system that puts it to work.</p>
 
 <div class="home-highlight-grid">
   <section class="home-highlight-card">
     <p class="home-highlight-kicker"><span class="home-index">01</span>Retrieve</p>
-    <h3>Load less context without losing the dependencies that make a skill usable.</h3>
-    <p><strong>Graph-of-Skills</strong> (EMNLP 2026 Main Conference) makes skill retrieval dependency-aware rather than purely semantic: it builds an executable skill graph offline and, at inference time, retrieves a bounded bundle with its prerequisites included. On SkillsBench its strongest setting improved reward by <strong>25.6%</strong> while cutting total tokens by <strong>56.7%</strong>.</p>
-    <a class="home-highlight-card__link" href="#paper-graph-of-skills">Read the paper card</a>
+    <h3>Use less context without leaving essential dependencies behind.</h3>
+    <p><strong>Graph-of-Skills</strong> (EMNLP 2026 Main Conference) makes skill retrieval dependency-aware rather than purely semantic: it builds an executable skill graph offline, then retrieves a bounded bundle with its prerequisites at inference time. On SkillsBench with GPT-5.2 Codex, it raised average reward by <strong>25.6%</strong> over loading every skill while using <strong>56.7%</strong> fewer tokens.</p>
+    <a class="home-highlight-card__link" href="#paper-graph-of-skills">View the publication<span class="sr-only">: Graph-of-Skills</span></a>
   </section>
 
   <section class="home-highlight-card">
     <p class="home-highlight-kicker"><span class="home-index">02</span>Execute &amp; recover</p>
-    <h3>Give agents structure for acting, checking their work, and repairing failures.</h3>
-    <p><strong>COMFYCLAW</strong> (ECCV 2026 Workshop MUCG) combines typed workflow editing, stage-aware tools, rollback, visual verification, and skill evolution to make executable image-generation workflows more reliable.</p>
-    <a class="home-highlight-card__link" href="#paper-comfyclaw">Read the paper card</a>
+    <h3>Structure agent execution so failures can be detected, diagnosed, and repaired.</h3>
+    <p><strong>COMFYCLAW</strong> (ECCV 2026 Workshop MUCG) combines typed workflow editing, stage-aware tools, rollback, visual verification, and skill evolution to make executable image-generation workflows more reliable. It achieved the best average score in all six agent–backbone settings evaluated.</p>
+    <a class="home-highlight-card__link" href="#paper-comfyclaw">View the publication<span class="sr-only">: COMFYCLAW</span></a>
   </section>
 
   <section class="home-highlight-card">
     <p class="home-highlight-kicker"><span class="home-index">03</span>Build in the open</p>
-    <h3>Turn agent research into workspaces that researchers can use every day.</h3>
-    <p>As a core contributor to <strong>Dr. Claw</strong> (EMNLP 2026 System Demonstrations), I shipped the Gemini and Codex providers, multi-session and isolated-project workflows, CLI and desktop access, reliability fixes, and cross-platform releases.</p>
-    <a class="home-highlight-card__link" href="#paper-dr-claw">Read the paper card</a>
+    <h3>Turn agent research into a workspace researchers and engineers can use every day.</h3>
+    <p><strong>Dr. Claw</strong> (EMNLP 2026 System Demonstrations) wraps existing coding agents in an auditable, human-in-the-loop workflow, so planning, execution, and writing become one traceable, recoverable loop. I am one of its core contributors and maintainers.</p>
+    <a class="home-highlight-card__link" href="#paper-dr-claw">View the publication<span class="sr-only">: Dr. Claw</span></a>
   </section>
 </div>
 
 ## Publications
 
-<p class="home-section-intro">Ordered by closeness to my current focus, not by date; the first three form the retrieve–execute–recover loop above. Each card carries a one-click BibTeX entry.</p>
+<p class="home-section-intro">Ordered by relevance to my current research rather than by date; the first three are the projects above. Every card has a one-click BibTeX entry.</p>
 <p class="home-publication-legend"><strong>*</strong> Equal contribution (co-first author). <strong>&dagger;</strong> Core contributor, as designated in the cited paper.</p>
 
 <PublicationList class="publications-selected">
@@ -232,11 +232,11 @@ sitemap:
   />
 </PublicationList>
 
-<p class="home-section-outro">Six selected here. The complete, continuously updated record lives on <a href="https://scholar.google.com/citations?user=RzdCL4AAAAAJ&amp;hl=en" target="_blank" rel="me noopener noreferrer">Google Scholar</a> and <a href="https://dblp.org/pid/57/1575-5.html" target="_blank" rel="me noopener noreferrer">DBLP</a>.</p>
+<p class="home-section-outro">The complete, up-to-date list is on <a href="https://scholar.google.com/citations?user=RzdCL4AAAAAJ&amp;hl=en" target="_blank" rel="me noopener noreferrer">Google Scholar</a> and <a href="https://dblp.org/pid/57/1575-5.html" target="_blank" rel="me noopener noreferrer">DBLP</a>.</p>
 
 ## Open Source
 
-<p class="home-section-intro">Research that leaves behind code, workflows, and evaluation artifacts people can run, inspect, and extend. These projects show different parts of my contribution pattern: first-author systems, core maintenance, and execution harness design.</p>
+<p class="home-section-intro">Repositories that others can run and build on. Each card states my role, from first-author implementation to core maintenance.</p>
 
 <PortfolioOpenSource />
 
@@ -246,15 +246,15 @@ sitemap:
 
 ## Experience
 
-<p class="home-section-intro">Four engineering roles across ads, agent infrastructure, observability, platform engineering, and backend reliability. Together they explain how I approach research problems as systems work, and systems work with research discipline.</p>
+<p class="home-section-intro">Across four engineering roles, I have worked on advertising systems, agent infrastructure, observability, platform engineering, and backend reliability. That experience is why my research questions usually arrive with interfaces, latency budgets, and failure modes attached.</p>
 
-<p class="home-section-outro">For a deeper write-up on the production agent work behind the first card, see <a href="/ai/engineering/agent-systems-in-production.html">Agent Systems in Production</a>.</p>
+<p class="home-section-outro">For more on the production agents in my ByteDance role, read <a href="/ai/engineering/agent-systems-in-production.html">Agent Systems in Production</a>.</p>
 
 <PortfolioExperience />
 
 ## Projects
 
-<p class="home-section-intro">Competition projects where I led the build, from spatial interaction on Apple platforms to recommendation-driven web products.</p>
+<p class="home-section-intro">Competition projects I led from concept to working product: touchless and spatial interaction on Apple platforms, and a recommendation-driven web app.</p>
 
 <div class="project-grid">
   <ProjectCard
@@ -262,7 +262,7 @@ sitemap:
     role="Solo Developer"
     award="Winner · Apple Swift Student Challenge 2026"
     time="2026"
-    summary="A touchless cooking assistant for iPad that removes the “digital friction” of swiping recipes with messy hands, using on-device computer vision so the device fades into the background."
+    summary="A touchless cooking assistant for iPad: on-device hand-pose recognition and voice commands let cooks move through a recipe without touching the screen."
     :highlights="[
       'Tracked 21 hand joints with the Vision framework and a custom low-pass filter to separate intentional gestures from sensor noise.',
       'Designed a Dual Confirmation Ring and large-scale palm gestures for accessibility, with voice control and text-to-speech as fallback modalities.',
@@ -276,7 +276,7 @@ sitemap:
     role="Team Lead · Sole Developer"
     award="National Final 2nd Prize · China Collegiate Computing Contest 2022"
     time="2022"
-    summary="An AR social app for the Mobile Application Innovation track (co-hosted by Apple and Zhejiang University) that lets users anchor and share geo-tagged notes in physical space and earn tokens through daily check-ins."
+    summary="An AR social app for the Mobile Application Innovation track, co-hosted by Apple and Zhejiang University, where users anchor and share geotagged notes in physical space and earn tokens through daily check-ins."
     :highlights="[
       'Also won the Northeast Division Innovation Track First Prize; I led the team and wrote all of the software.',
       'Optimized spatial trace retrieval with Redis Geo for real-time nearby queries and distance-based ranking.',
@@ -291,7 +291,7 @@ sitemap:
     role="Team Leader"
     award="1st Prize · ByteDance Youth Camp 2022"
     time="2022"
-    summary="A rebuilt developer community web app with a personalized “For You” feed, post interactions, and responsive design."
+    summary="A developer-community web app rebuilt with a personalized “For You” feed, social interactions, and responsive design."
     :highlights="[
       'Built the personalized feed with TrustSVD plus timeline signals to address cold start in recommendation.',
       'Automated daily data refresh and model retraining with Spring Scheduler to keep recommendations fresh.',
@@ -303,7 +303,7 @@ sitemap:
 
 ## Knowledge Base
 
-<p class="home-section-intro">A long-running technical knowledge base kept alongside my research and engineering work. The goal is not to collect definitions but to connect first principles, problem-solving methods, and production tradeoffs.</p>
+<p class="home-section-intro">A long-running technical knowledge base, kept alongside my research and engineering work. It aims for reusable mental models rather than definitions, connecting first principles, problem-solving methods, and production tradeoffs.</p>
 
 <div class="knowledge-atlas-grid">
   <a class="knowledge-atlas-card knowledge-atlas-card--algo" href="/algo/">
@@ -335,33 +335,33 @@ sitemap:
 <div class="knowledge-atlas-note">
   <strong>How I write these notes</strong>
   <div>
-    <p>Directory pages build the map. Topic pages explain one complete idea. Case studies connect concepts under realistic constraints. When the same subject appears in multiple areas, I prefer cross-links over duplicated definitions.</p>
+    <p>Directory pages provide the map; topic pages develop one idea at a time; case studies test those ideas under realistic constraints. When a subject spans several areas, I use cross-links rather than duplicate the same explanation.</p>
     <p class="knowledge-atlas-note__links"><a href="/education/">Course archive →</a><a href="/hobby/">Personal notes →</a><a href="/test/">TOEFL &amp; GRE study system →</a><a href="/article/">All notes →</a></p>
   </div>
 </div>
 
 ## Tech Stack
 
-<p class="home-section-intro">Four working layers, from research prototypes to production services. Deeper notes live in the <a href="/ai/">AI</a>, <a href="/cs/">CS</a>, and <a href="/se/">software engineering</a> maps.</p>
+<p class="home-section-intro">Four layers I work across, from research prototypes to production services. Deeper notes live in the <a href="/ai/">AI</a>, <a href="/cs/">CS</a>, and <a href="/se/">software engineering</a> maps.</p>
 
 <TechGrid>
   <TechCard
     index="01"
     eyebrow="Models &amp; agents"
     title="AI &amp; Agent Systems"
-    description="Model, retrieve, evaluate, and operate tool-using systems under real context and latency constraints."
+    description="Model, retrieve, evaluate, and operate tool-using systems under real context, latency, and reliability constraints."
     :items="['PyTorch','Transformers','Agent harnesses','Skill retrieval','RAG / GraphRAG','Multimodal evaluation','Recommendation & ranking']" />
   <TechCard
     index="02"
     eyebrow="Services"
     title="Backend &amp; Distributed Systems"
-    description="Build typed services, ranking paths, streaming jobs, and the interfaces that keep them evolvable."
+    description="Build typed services, ranking pipelines, streaming jobs, and the interfaces that let them evolve safely."
     :items="['Java','Python','Go','SQL','Spring','Thrift / Protobuf','Kafka / Flink','OpenTelemetry']" />
   <TechCard
     index="03"
     eyebrow="Data &amp; infrastructure"
     title="Data &amp; Infrastructure"
-    description="Design storage and delivery foundations with explicit tradeoffs around scale, failure, and observability."
+    description="Design storage and delivery foundations with explicit tradeoffs across scale, failure, cost, and observability."
     :items="['MySQL','Redis','Elasticsearch','Linux','Docker','Kubernetes','Helm','CI/CD','AWS','Grafana']" />
   <TechCard
     index="04"
@@ -381,18 +381,17 @@ sitemap:
     </picture>
     <picture>
       <source type="image/webp" srcset="/resume/david-liu-resume-p2.webp" />
-      <img src="/resume/david-liu-resume-p2.jpg" alt="Page 2 of David Liu's research résumé: selected publications, honors, research impact and service" width="600" height="777" loading="lazy" decoding="async" />
+      <img src="/resume/david-liu-resume-p2.jpg" alt="Page 2 of David Liu's research résumé: selected publications, research impact and service, honors, and technical skills" width="600" height="777" loading="lazy" decoding="async" />
     </picture>
   </a>
   <div class="home-resume__body">
-    <p class="home-card-eyebrow">Two pages</p>
-    <h3 class="home-card-title">The same story, in the form people ask for it.</h3>
-    <p class="home-card-copy">Education, research and open-source work, and the engineering roles behind them on the first page; publications, honors, and research impact on the second. Typeset from source and regenerated with each update rather than edited by hand.</p>
+    <p class="home-card-eyebrow">Updated Sep 2026</p>
+    <h3 class="home-card-title">The same story, in two pages.</h3>
+    <p class="home-card-copy">Page one covers education, research and open-source work, and engineering roles; page two covers publications, research impact, honors, and skills. It is typeset from source and rebuilt with every update.</p>
     <div class="home-resume__actions">
       <a class="home-action home-action--primary" href="/resume/david-liu-resume.pdf" target="_blank" rel="noopener">Open résumé</a>
       <a class="home-action no-external-link-icon" href="/resume/david-liu-resume.pdf" download>Download PDF</a>
     </div>
-    <p class="home-resume__note">PDF · 2 pages · Updated Sep 2026</p>
   </div>
 </div>
 

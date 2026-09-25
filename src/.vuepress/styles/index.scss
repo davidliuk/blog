@@ -1349,8 +1349,7 @@ body {
   padding: 0 0.2rem;
 }
 
-.vp-portfolio-home .home-mission__loop ol,
-.vp-portfolio-home .home-steps {
+.vp-portfolio-home .home-mission__loop ol {
   display: grid;
   gap: 0;
   margin: 0;
@@ -1358,8 +1357,7 @@ body {
   list-style: none;
 }
 
-.vp-portfolio-home .home-mission__loop li,
-.vp-portfolio-home .home-steps li {
+.vp-portfolio-home .home-mission__loop li {
   position: relative;
   display: grid;
   grid-template-columns: 2rem 1fr;
@@ -1369,8 +1367,7 @@ body {
   padding: 0.6rem 0.4rem;
 }
 
-.vp-portfolio-home .home-mission__loop li::before,
-.vp-portfolio-home .home-steps li::before {
+.vp-portfolio-home .home-mission__loop li::before {
   content: "";
   position: absolute;
   left: calc(0.4rem + 1rem - 1px);
@@ -1380,21 +1377,18 @@ body {
   background: var(--dl-accent-line);
 }
 
-.vp-portfolio-home .home-mission__loop li:last-child::before,
-.vp-portfolio-home .home-steps li:last-child::before {
+.vp-portfolio-home .home-mission__loop li:last-child::before {
   display: none;
 }
 
-.vp-portfolio-home .home-mission__loop strong,
-.vp-portfolio-home .home-steps strong {
+.vp-portfolio-home .home-mission__loop strong {
   display: block;
   margin-top: 0.3rem;
   color: var(--vp-c-text-1);
   line-height: 1.35;
 }
 
-.vp-portfolio-home .home-mission__loop p,
-.vp-portfolio-home .home-steps p {
+.vp-portfolio-home .home-mission__loop p {
   margin: 0.2rem 0 0;
   color: var(--vp-c-text-2);
   font-size: var(--home-type-meta);
@@ -1482,11 +1476,6 @@ body {
   margin-top: 1rem;
 }
 
-.vp-portfolio-home .home-surface-card--focus .home-story-meta {
-  margin-top: auto;
-  padding-top: 1rem;
-}
-
 .vp-portfolio-home .home-story-meta__item {
   display: grid;
   gap: 0.22rem;
@@ -1504,16 +1493,27 @@ body {
   line-height: 1.4;
 }
 
-.vp-portfolio-home .home-surface-card--focus .home-steps {
-  margin-top: 0.1rem;
+// A single column of label / value / source rows (the About impact card).
+.vp-portfolio-home .home-story-meta--stack {
+  grid-template-columns: minmax(0, 1fr);
+  margin: 0.15rem 0 0;
+  padding-top: 0;
+  border-top: 0;
 }
 
-.vp-portfolio-home .home-surface-card--focus .home-steps li {
-  padding-inline: 0.15rem;
+.vp-portfolio-home .home-story-meta--stack .home-story-meta__item {
+  padding: 0;
 }
 
-.vp-portfolio-home .home-surface-card--focus .home-steps li::before {
-  left: calc(0.15rem + 1rem - 1px);
+.vp-portfolio-home .home-story-meta--stack .home-story-meta__item + .home-story-meta__item {
+  margin-top: 0.95rem;
+  padding: 0.95rem 0 0;
+  border-top: 1px solid var(--dl-border);
+  border-left: 0;
+}
+
+.vp-portfolio-home .home-story-meta--stack dd {
+  margin: 0;
 }
 
 // Research (highlight cards) ------------------------------------------------
@@ -1821,12 +1821,6 @@ body {
   flex-wrap: wrap;
   gap: var(--dl-space-2);
   margin-top: var(--dl-space-4);
-}
-
-.vp-portfolio-home .home-resume__note {
-  margin: var(--dl-space-2) 0 0;
-  color: var(--vp-c-text-3);
-  font-size: var(--home-type-meta);
 }
 
 // Contact --------------------------------------------------------------------
