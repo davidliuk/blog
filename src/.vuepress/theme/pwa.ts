@@ -42,7 +42,7 @@ export const pwaOptions = {
     ],
   },
   manifest: {
-    name: `${profile.name} — Reliable AI agents`,
+    name: `${profile.name} — ${profile.headline.replace(/[,.]$/u, "")}`,
     short_name: profile.name,
     description: SITE_DESCRIPTION,
     theme_color: "#17352f",

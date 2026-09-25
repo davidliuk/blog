@@ -4,7 +4,8 @@ import { profile } from "../data/portfolio.js";
 import { PERSON_ID, SITE, person } from "../seo/person.js";
 
 const OG_IMAGE = `${SITE}/og.jpg`;
-const HOME_OG_TITLE = `${profile.name} — Reliable AI agents, beyond the demo`;
+// Follows the hero headline so link previews match the page.
+const HOME_OG_TITLE = `${profile.name} — ${profile.headline} ${profile.headlineEmphasis}`.replace(/\.$/u, "");
 
 const gitCreatedTime = (page: { data: unknown }): string | null => {
   const git = (page.data as { git?: { createdTime?: number } }).git;

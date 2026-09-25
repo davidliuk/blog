@@ -1,5 +1,7 @@
 import { expect, test } from "@playwright/test";
 
+import { profile } from "../../src/.vuepress/data/portfolio.ts";
+
 test("homepage is responsive, accessible and interactive", async ({ page }) => {
   const errors: string[] = [];
   page.on("pageerror", (error) => errors.push(error.message));
@@ -11,6 +13,17 @@ test("homepage is responsive, accessible and interactive", async ({ page }) => {
   await expect(page.locator(".portfolio-intro")).toBeVisible();
   await expect(page.locator("h1")).toHaveCount(1);
   await expect(page.locator("vite-error-overlay")).toHaveCount(0);
+
+  // Search snippets and link previews: the written description (not the first
+  // Markdown excerpt), the name once in the title, and the hero's headline.
+  await expect(page).toHaveTitle(`${profile.name} — ${profile.role}`);
+  const description = await page.locator('meta[name="description"]').getAttribute("content");
+  expect(description).toBe(profile.description);
+  expect(description?.length ?? 0).toBeLessThanOrEqual(160);
+  await expect(page.locator('meta[property="og:title"]')).toHaveAttribute(
+    "content",
+    `${profile.name} — ${profile.headline} ${profile.headlineEmphasis}`.replace(/\.$/u, ""),
+  );
 
   const invalidAnchors = await page.locator('a[href^="#"]').evaluateAll((links) =>
     links

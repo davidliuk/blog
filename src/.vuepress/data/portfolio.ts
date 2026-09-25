@@ -76,10 +76,12 @@ export const profile = {
   alternateName: "Dawei Liu",
   welcome: "Hello, I'm",
   role: "AI Systems Researcher & Software Engineer",
-  headline: "Reliable AI systems.",
-  headlineEmphasis: "Research that survives contact with reality.",
+  headline: "Reliable AI systems,",
+  headlineEmphasis: "from research to real use.",
+  // Meta description, link previews and the PWA manifest; keep it under ~160
+  // characters so search results do not truncate it.
   description:
-    "AI systems researcher and software engineer at ByteDance and collaborator with OpenLAIR, building reliable agent infrastructure, retrieval systems, evaluation workflows, and production AI software. Structured notes on algorithms, AI systems, and computer science.",
+    "AI systems researcher and software engineer at ByteDance. Publishes as Dawei Liu on reliable agents, skill retrieval, evaluation, and AI infrastructure.",
   introduction:
     "I work at the boundary of research and engineering: retrieval, execution reliability, observability, evaluation, and the infrastructure that makes AI systems useful beyond a demo.",
   location: "Seattle, Washington",
