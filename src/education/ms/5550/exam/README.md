@@ -9,8 +9,6 @@ This index organizes the archived course material in this section. Schedules, as
 
 ## Contents
 
-- [Midterm 1](<./midterm1.md>)
-- [Midterm 1](<./midterm2.md>)
 - [Internet & Web Systems](<./points.md>)
 - [Review](<./review.md>)
 - [Sample](<./sample.md>)
