@@ -11,5 +11,3 @@ This index organizes the archived course material in this section. Schedules, as
 
 - [Internet & Web Systems](<./points.md>)
 - [Review](<./review.md>)
-- [Sample](<./sample.md>)
-- [Sample 2](<./sample2.md>)

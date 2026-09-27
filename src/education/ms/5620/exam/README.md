@@ -10,6 +10,4 @@ This index organizes the archived course material in this section. Schedules, as
 ## Contents
 
 - [Final](<./final.md>)
-- [Midterm Sample](<./mid-sample.md>)
 - [Midterm Exam](<./mid.md>)
-- [Mid term solution](<./solution.md>)
