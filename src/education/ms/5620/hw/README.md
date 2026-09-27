@@ -9,10 +9,7 @@ This index organizes the archived course material in this section. Schedules, as
 
 ## Contents
 
-- [HW1.1 - Coordinate Transformations](<./1.1.md>)
-- [HW1.2 - Coordinate Transformations](<./1.2.md>)
 - [HW2 - Curve Editor](<./2.md>)
-- [HW3 - Body Kinematics](<./3.md>)
 - [HW4 - Kinematics](<./4.md>)
 - [HW5 - Skinning](<./5.md>)
 - [HW6 - Motion Capture](<./6.md>)
